@@ -117,7 +117,7 @@ if ($_POST['action'] == 'getRecipientId') {
 		
 		if ($id) {
 			if ( count($id) > 1 ) {
-				echo sprintf(__('Please select a name from the drop down list to make sure you send to the right person (%s).', CPC_TEXT_DOMAIN), $name );
+				echo sprintf(__('Please select a name from the drop down list to make sure you send to the right person (%s).', 'cp-communitie'), $name );
 			}
 		} else {
 			echo $id[0];
@@ -191,14 +191,14 @@ if ($_POST['action'] == 'deleteMail') {
 		
 		if ($tray == "in") {
 			if ($wpdb->query( $wpdb->prepare("UPDATE ".$wpdb->base_prefix."cpcommunitie_mail SET mail_in_deleted = 'on' WHERE mail_mid = %d AND mail_to = %d", $mid, $current_user->ID) )) {
-				echo __("Message deleted.", CPC_TEXT_DOMAIN);
+				echo __("Message deleted.", 'cp-communitie');
 			} else {
 				echo __("Failed to delete message: ".$wpdb->last_query, "cp-communitie");				
 			}
 		}
 		if ($tray == "sent") {
 			if ($wpdb->query( $wpdb->prepare("UPDATE ".$wpdb->base_prefix."cpcommunitie_mail SET mail_sent_deleted = 'on' WHERE mail_mid = %d AND mail_from = %d", $mid, $current_user->ID) )) {
-				echo __("Message deleted.", CPC_TEXT_DOMAIN);
+				echo __("Message deleted.", 'cp-communitie');
 			} else {
 				echo __("Failed to delete message: ".$wpdb->last_query, "cp-communitie");				
 			}
@@ -237,9 +237,9 @@ if ($_POST['action'] == 'sendMail') {
 			'mail_subject' => $subject,
 			'mail_message' => $message
 			 ) ) ) {
-				$return = __('Message sent to', CPC_TEXT_DOMAIN).' '.$recipient->display_name;
+				$return = __('Message sent to', 'cp-communitie').' '.$recipient->display_name;
 			 } else {
-				$return = '<p><strong>'.__('There was a problem sending your mail to', CPC_TEXT_DOMAIN).' '.$recipient->display_name.'.</strong></p>';
+				$return = '<p><strong>'.__('There was a problem sending your mail to', 'cp-communitie').' '.$recipient->display_name.'.</strong></p>';
 			 }
 
 			$mail_id = $wpdb->insert_id;
@@ -252,7 +252,7 @@ if ($_POST['action'] == 'sendMail') {
 				$url = __cpc__get_url('mail');
 
 				$body = "<h1>".$subject."</h1>";
-				$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".sprintf(__("Go to %s Mail", CPC_TEXT_DOMAIN), __cpc__get_url('mail'))."...</a></p>";
+				$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".sprintf(__("Go to %s Mail", 'cp-communitie'), __cpc__get_url('mail'))."...</a></p>";
 				$body .= "<p>";
 				$body .= $message;
 				$body .= "</p>";
@@ -272,7 +272,7 @@ if ($_POST['action'] == 'sendMail') {
 				if ( __cpc__sendmail($recipient->user_email, $mail_subject, $body) ) {
 					// email sent ok.
 				} else {
-					$return .= '<p><strong>'.__('There was a problem sending an email notification to', CPC_TEXT_DOMAIN).' '.$recipient->user_email.'.</strong></p>';
+					$return .= '<p><strong>'.__('There was a problem sending an email notification to', 'cp-communitie').' '.$recipient->user_email.'.</strong></p>';
 				}
 			}
 
@@ -425,9 +425,9 @@ if ($_POST['action'] == 'getMailMessage') {
 			
 			// Sender/recipient
 			if ($tray == "in") {
-				$msg = str_replace("[mail_recipient]", __('From', CPC_TEXT_DOMAIN)." ".stripslashes($mail->display_name), $msg);
+				$msg = str_replace("[mail_recipient]", __('From', 'cp-communitie')." ".stripslashes($mail->display_name), $msg);
 			} else {
-				$msg = str_replace("[mail_recipient]", __('To', CPC_TEXT_DOMAIN)." ".stripslashes($mail->display_name), $msg);
+				$msg = str_replace("[mail_recipient]", __('To', 'cp-communitie')." ".stripslashes($mail->display_name), $msg);
 			}
 	
 			// Sent
@@ -439,13 +439,13 @@ if ($_POST['action'] == 'getMailMessage') {
 			// Reply button
 			if ($tray == 'in') {
 				if ($mail->mail_to == $current_user->ID) {		
-					$msg = str_replace("[reply_button]", '<input type="submit" id='.$mail->mail_from.' rel="'.stripslashes($mail->display_name).'" title='.$mail_mid.' class="message_reply __cpc__button" value="'.__('Reply', CPC_TEXT_DOMAIN).'" />', $msg);
+					$msg = str_replace("[reply_button]", '<input type="submit" id='.$mail->mail_from.' rel="'.stripslashes($mail->display_name).'" title='.$mail_mid.' class="message_reply __cpc__button" value="'.__('Reply', 'cp-communitie').'" />', $msg);
 				} else {
 					$msg = str_replace("[reply_button]", '', $msg);
 				}
 			} else {
 				if ($mail->mail_from == $current_user->ID) {		
-					$msg = str_replace("[reply_button]", '<input type="submit" id='.$mail->mail_to.' title='.$mail_mid.' rel="'.stripslashes($mail->display_name).'" class="message_reply __cpc__button" value="'.__('Reply', CPC_TEXT_DOMAIN).'" />', $msg);
+					$msg = str_replace("[reply_button]", '<input type="submit" id='.$mail->mail_to.' title='.$mail_mid.' rel="'.stripslashes($mail->display_name).'" class="message_reply __cpc__button" value="'.__('Reply', 'cp-communitie').'" />', $msg);
 				} else {
 					$msg = str_replace("[reply_button]", '', $msg);
 				}

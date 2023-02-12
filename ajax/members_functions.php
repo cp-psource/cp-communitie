@@ -258,7 +258,7 @@ if ($_POST['action'] == 'getMembers') {
 	
 										// List
 										if ($type == 'list') {
-											if ($value != __('Any', CPC_TEXT_DOMAIN)) {
+											if ($value != __('Any', 'cp-communitie')) {
 												if (__cpc__get_meta($member->uid, $stub) != $value) {
 													$continue = false;
 												}
@@ -346,7 +346,7 @@ if ($_POST['action'] == 'getMembers') {
 											} else {
 												$html .= '<br />';
 											}
-											$html .= __('last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($member->last_activity).". ";
+											$html .= __('last active', 'cp-communitie').' '.__cpc__time_ago($member->last_activity).". ";
 											if ($last_active_minutes >= $offline) {
 												//$html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/loggedout.gif">';
 											} else {
@@ -367,19 +367,19 @@ if ($_POST['action'] == 'getMembers') {
 												) {		
 												if ($measure != 'on') { 
 													$distance = intval(($member->distance/5)*8);
-													$miles = __('km', CPC_TEXT_DOMAIN);
+													$miles = __('km', 'cp-communitie');
 												} else {
 													$distance = $member->distance;
-													$miles = __('miles', CPC_TEXT_DOMAIN);
+													$miles = __('miles', 'cp-communitie');
 												}	
-												$html .= '<br />'.__('Distance', CPC_TEXT_DOMAIN).': '.$distance.' '.$miles;
+												$html .= '<br />'.__('Distance', 'cp-communitie').': '.$distance.' '.$miles;
 												if (CPC_DEBUG) {
 													$html .= ' '.$member->distance;
 													$html .= ' ['.$member->u_lat.'/'.$member->u_long.']';
 													$html .= ' ('.__cpc__get_meta($member->uid, 'plus_lat').'/'.__cpc__get_meta($member->uid, 'plus_lng').')<br />';
 												}
 											} else {
-												$html .= '<br />'.__('Location is set to private', CPC_TEXT_DOMAIN);
+												$html .= '<br />'.__('Location is set to private', 'cp-communitie');
 											}
 										} else {
 											// No distance recorded for member
@@ -424,15 +424,15 @@ if ($_POST['action'] == 'getMembers') {
 										if (is_user_logged_in() && get_option(CPC_OPTIONS_PREFIX.'_show_dir_buttons') && $member->uid != $current_user->ID) {
 											if (__cpc__pending_friendship($member->uid)) {
 												// Pending
-												$html .= sprintf(__('%s request sent.', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'));
+												$html .= sprintf(__('%s request sent.', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'));
 											} else {
 												if (!$is_friend) {
 													// Not a friend
 													$html .= '<div id="addasfriend_done1_'.$member->uid.'">';
-													$html .= '<input class="add_as_friend_message addfriend_text" title="'.$member->uid.'" id="addtext_'.$member->uid.'" type="text" onclick="this.value=\'\'" value="'.sprintf(__('Add as a %s...', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'">';
-													$html .= '<input type="submit" title="'.$member->uid.'" class="addasfriend __cpc__button" value="'.__('Add', CPC_TEXT_DOMAIN).'" /> ';						
+													$html .= '<input class="add_as_friend_message addfriend_text" title="'.$member->uid.'" id="addtext_'.$member->uid.'" type="text" onclick="this.value=\'\'" value="'.sprintf(__('Add as a %s...', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'">';
+													$html .= '<input type="submit" title="'.$member->uid.'" class="addasfriend __cpc__button" value="'.__('Add', 'cp-communitie').'" /> ';						
 													$html .= '</div>';
-													$html .= '<div id="addasfriend_done2_'.$member->uid.'" class="hidden">'.sprintf(__('%s Request Sent', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';	
+													$html .= '<div id="addasfriend_done2_'.$member->uid.'" class="hidden">'.sprintf(__('%s Request Sent', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';	
 												}
 											}
 										}
@@ -453,14 +453,14 @@ if ($_POST['action'] == 'getMembers') {
 		
 		if ($count > 0) {
 			if ($count > $page_length) {
-				$html .= "<div id='showmore_directory_div' style='text-align:center; width:100%'><a href='javascript:void(0)' id='showmore_directory'>".__("more...", CPC_TEXT_DOMAIN)."</a></div>";
+				$html .= "<div id='showmore_directory_div' style='text-align:center; width:100%'><a href='javascript:void(0)' id='showmore_directory'>".__("more...", 'cp-communitie')."</a></div>";
 			}				
 		} else {
-			$html .= "<div style='text-align:center; width:100%'>".__("No members found", CPC_TEXT_DOMAIN)."</div>";
+			$html .= "<div style='text-align:center; width:100%'>".__("No members found", 'cp-communitie')."</div>";
 		}
 
 	} else {
-		$html .= "<div style='text-align:center; width:100%'>".__("No members found", CPC_TEXT_DOMAIN)."</div>";
+		$html .= "<div style='text-align:center; width:100%'>".__("No members found", 'cp-communitie')."</div>";
 	}
 
 	echo $html;

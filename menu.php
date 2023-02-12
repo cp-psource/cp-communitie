@@ -20,7 +20,7 @@ function __cpc__plugin_menu() {
 						// Get details
 						$post = $wpdb->get_row( $wpdb->prepare("SELECT t.*, u.user_email FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->base_prefix."users u ON t.topic_owner = u.ID WHERE tid = %d", $_GET['tid']) );
 	
-						$body = "<span style='font-size:24px'>".__('Your forum post has been rejected by the moderator', CPC_TEXT_DOMAIN).".</span>";
+						$body = "<span style='font-size:24px'>".__('Dein Forumsbeitrag wurde vom Moderator abgelehnt', 'cp-communitie').".</span>";
 						if ($post->topic_parent == 0) { $body .= "<p><strong>".stripslashes($post->topic_subject)."</strong></p>"; }
 						$body .= "<p>".stripslashes($post->topic_post)."</p>";
 						$body = str_replace(chr(13), "<br />", $body);
@@ -29,7 +29,7 @@ function __cpc__plugin_menu() {
 							
 						// Email author to let them know it was deleted
 						if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_rejected') == "on")						
-							__cpc__sendmail($post->user_email, __('Forum Post Rejected', CPC_TEXT_DOMAIN), $body);
+							__cpc__sendmail($post->user_email, __('Forumsbeitrag abgelehnt', 'cp-communitie'), $body);
 
 						// Update
 						$wpdb->query( $wpdb->prepare( "DELETE FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $_GET['tid'] ) );
@@ -56,7 +56,7 @@ function __cpc__plugin_menu() {
 						// Get details
 						$post = $wpdb->get_row( $wpdb->prepare("SELECT t.*, u.user_email, u.display_name FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->base_prefix."users u ON t.topic_owner = u.ID WHERE tid = %d", $_GET['tid']) );
 	
-						$body = "<span style='font-size:24px'>".__('Your forum post has been approved by the moderator', CPC_TEXT_DOMAIN).".</span>";
+						$body = "<span style='font-size:24px'>".__('Dein Forumsbeitrag wurde vom Moderator genehmigt', 'cp-communitie').".</span>";
 						if ($post->topic_parent == 0) { $body .= "<p><strong>".stripslashes($post->topic_subject)."</strong></p>"; }
 						$body .= "<p>".stripslashes($post->topic_post)."</p>";
 						$url = $forum_url.$q."cid=".$post->topic_category."&show=".$_GET['tid'];
@@ -87,16 +87,16 @@ function __cpc__plugin_menu() {
 
 						// Email author to let them know
 						if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_accepted') == "on")						
-							__cpc__sendmail($post->user_email, __('Forum Post Approved', CPC_TEXT_DOMAIN), $body);
+							__cpc__sendmail($post->user_email, __('Forumsbeitrag genehmigt', 'cp-communitie'), $body);
 	
 						// Email people who want to know and prepare body (and post activity comment)
 						if ($post->topic_parent > 0) {						
 							$body = "<span style='font-size:24px'>".$parent->topic_subject."</span><br /><br />";
-							$body .= "<p>".$post->display_name." ".__('replied', CPC_TEXT_DOMAIN)."...</p>";
+							$body .= "<p>".$post->display_name." ".__('antwortete', 'cp-communitie')."...</p>";
 						} else {
 							$body = "<span style='font-size:24px'>".$post->topic_subject."</span><br /><br />";
-							$body .= "<p>".$post->display_name." ".__('started', CPC_TEXT_DOMAIN)."...</p>";
-							$post_url = __('Started a new forum topic:', CPC_TEXT_DOMAIN).' <a href="'.$url.'">'.$post->topic_subject.'</a>';
+							$body .= "<p>".$post->display_name." ".__('gestartet', 'cp-communitie')."...</p>";
+							$post_url = __('Neues Forumsthema gestartet:', 'cp-communitie').' <a href="'.$url.'">'.$post->topic_subject.'</a>';
 							do_action('__cpc__forum_newtopic_hook', $post->topic_owner, $post->display_name, $post->topic_owner, $post_url, 'forum', $_GET['tid']);	
 						}
 						
@@ -135,7 +135,7 @@ function __cpc__plugin_menu() {
 									// Keep track of who sent to so far
 									$email_list .= $user->ID.',';
 
-									__cpc__sendmail($user->user_email, __('New Forum Post', CPC_TEXT_DOMAIN), $body);							
+									__cpc__sendmail($user->user_email, __('Neuer Forumsbeitrag', 'cp-communitie'), $body);							
 								}
 							}
 							
@@ -161,7 +161,7 @@ function __cpc__plugin_menu() {
 									// Keep track of who sent to so far
 									$email_list .= $member->ID.',';
 
-									__cpc__sendmail($member->user_email, __('New Group Forum Post', CPC_TEXT_DOMAIN), $body);							
+									__cpc__sendmail($member->user_email, __('Neuer Beitrag im Gruppenforum', 'cp-communitie'), $body);							
 								}
 							}
 						}							
@@ -225,7 +225,7 @@ function __cpc__plugin_menu() {
 									apply_filters ('__cpc__forum_newreply_filter', $user->ID, $current_user->ID, $current_user->display_name, $url);
 
 									// Send mail
-									__cpc__sendmail($user->user_email, __('New Forum Post', CPC_TEXT_DOMAIN), $body);							
+									__cpc__sendmail($user->user_email, __('Neuer Forumsbeitrag', 'cp-communitie'), $body);							
 									
 								}
 							}
@@ -260,25 +260,25 @@ function __cpc__plugin_menu() {
 		if (__cpc__is_wpmu()) {
 			// WPMS
 			add_menu_page(CPC_WL_SHORT,CPC_WL_SHORT.$count1, 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug', 'none'); 
-			add_submenu_page('cpcommunitie_debug', __('Installation', CPC_TEXT_DOMAIN), __('Installation', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug');
-			add_submenu_page('cpcommunitie_debug', __('Welcome', CPC_TEXT_DOMAIN), __('Welcome', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_welcome', '__cpc__plugin_welcome');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Settings', CPC_TEXT_DOMAIN), __('Settings', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_settings', '__cpc__plugin_settings');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Advertising', CPC_TEXT_DOMAIN), __('Advertising', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_advertising', '__cpc__plugin_advertising');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Thesaurus', CPC_TEXT_DOMAIN), __('Thesaurus', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_thesaurus', '__cpc__plugin_thesaurus');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Templates', CPC_TEXT_DOMAIN), __('Templates', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_templates', '__cpc__plugin_templates');
+			add_submenu_page('cpcommunitie_debug', __('Installation', 'cp-communitie'), __('Installation', 'cp-communitie'), 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug');
+			add_submenu_page('cpcommunitie_debug', __('Willkommen', 'cp-communitie'), __('Willkommen', 'cp-communitie'), 'manage_options', 'cpcommunitie_welcome', '__cpc__plugin_welcome');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Einstellungen', 'cp-communitie'), __('Einstellungen', 'cp-communitie'), 'manage_options', 'cpcommunitie_settings', '__cpc__plugin_settings');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Werbung', 'cp-communitie'), __('Werbung', 'cp-communitie'), 'manage_options', 'cpcommunitie_advertising', '__cpc__plugin_advertising');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Thesaurus', 'cp-communitie'), __('Thesaurus', 'cp-communitie'), 'manage_options', 'cpcommunitie_thesaurus', '__cpc__plugin_thesaurus');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Vorlagen', 'cp-communitie'), __('Vorlagen', 'cp-communitie'), 'manage_options', 'cpcommunitie_templates', '__cpc__plugin_templates');
 			if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") 
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Audit', CPC_TEXT_DOMAIN), __('Audit', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_audit', '__cpc__plugin_audit');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Audit', 'cp-communitie'), __('Audit', 'cp-communitie'), 'manage_options', 'cpcommunitie_audit', '__cpc__plugin_audit');
 	
 			// Aggregate menu items
 			if (get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on") {
-				add_submenu_page('cpcommunitie_debug', __('Options', CPC_TEXT_DOMAIN), __('Options', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_options', '__cpc__menu_options');
-				add_submenu_page('cpcommunitie_debug', __('Manage', CPC_TEXT_DOMAIN), __('Manage', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_manage', '__cpc__menu_manage');
-				if ($count2) add_submenu_page('cpcommunitie_debug', __('Moderate', CPC_TEXT_DOMAIN), sprintf(__('Moderate%s', CPC_TEXT_DOMAIN), $count1), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
+				add_submenu_page('cpcommunitie_debug', __('Optionen', 'cp-communitie'), __('Optionen', 'cp-communitie'), 'manage_options', 'cpcommunitie_options', '__cpc__menu_options');
+				add_submenu_page('cpcommunitie_debug', __('Verwalten', 'cp-communitie'), __('Verwalten', 'cp-communitie'), 'manage_options', 'cpcommunitie_manage', '__cpc__menu_manage');
+				if ($count2) add_submenu_page('cpcommunitie_debug', __('Moderieren', 'cp-communitie'), sprintf(__('Moderiere %s', 'cp-communitie'), $count1), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
 			}
-			add_submenu_page('cpcommunitie_debug', __('Styles', CPC_TEXT_DOMAIN), __('Styles', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_styles', '__cpc__plugin_styles');
+			add_submenu_page('cpcommunitie_debug', __('Stile', 'cp-communitie'), __('Stile', 'cp-communitie'), 'manage_options', 'cpcommunitie_styles', '__cpc__plugin_styles');
 			
 			if (function_exists('__cpc__profile')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Profile', CPC_TEXT_DOMAIN), __('Profile', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_profile', '__cpc__plugin_profile');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Profil', 'cp-communitie'), __('Profil', 'cp-communitie'), 'manage_options', 'cpcommunitie_profile', '__cpc__plugin_profile');
 			}
 			if (function_exists('__cpc__forum')) {
 				if (!current_user_can('manage_options')) {
@@ -299,48 +299,48 @@ function __cpc__plugin_menu() {
 							}
 						}		 														
 					} else {
-						// No WordPress role stored
+						// No ClassicPress role stored
 					}
 					if ($can_moderate)
 						add_menu_page('Moderation','Moderation'.$count1, 'read', 'cpcommunitie_moderation', '__cpc__plugin_moderation', plugin_dir_url( __FILE__ ).'/images/logo_admin_icon.png', 8); 
 				}
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum', CPC_TEXT_DOMAIN), __('Forum', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_forum', '__cpc__plugin_forum');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum Categories', CPC_TEXT_DOMAIN), __('Forum Categories', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_categories', '__cpc__plugin_categories');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum Posts', CPC_TEXT_DOMAIN), sprintf(__('Forum Posts %s', CPC_TEXT_DOMAIN), $count2), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum', 'cp-communitie'), __('Forum', 'cp-communitie'), 'manage_options', 'cpcommunitie_forum', '__cpc__plugin_forum');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forenkategorien', 'cp-communitie'), __('Forenkategorien', 'cp-communitie'), 'manage_options', 'cpcommunitie_categories', '__cpc__plugin_categories');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forenbeiträge', 'cp-communitie'), sprintf(__('Forumsbeiträge %s', 'cp-communitie'), $count2), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
 			}
 			if (function_exists('__cpc__add_notification_bar')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Panel', CPC_TEXT_DOMAIN), __('Panel', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_bar', '__cpc__plugin_bar');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Panel', 'cp-communitie'), __('Panel', 'cp-communitie'), 'manage_options', 'cpcommunitie_bar', '__cpc__plugin_bar');
 			}
 			if (function_exists('__cpc__members')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Member Directory', CPC_TEXT_DOMAIN), __('Member Directory', CPC_TEXT_DOMAIN), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mitgliederverzeichnis', 'cp-communitie'), __('Mitgliederverzeichnis', 'cp-communitie'), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
 			}
 			if (function_exists('__cpc__mail')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail', CPC_TEXT_DOMAIN), __('Mail', CPC_TEXT_DOMAIN), 'update_core', '__cpc__mail_menu', '__cpc__mail_menu');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail Messages', CPC_TEXT_DOMAIN), __('Mail Messages', CPC_TEXT_DOMAIN), 'update_core', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('E-Mail', 'cp-communitie'), __('E-Mail', 'cp-communitie'), 'update_core', '__cpc__mail_menu', '__cpc__mail_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('E-Mail-Nachrichten', 'cp-communitie'), __('E-Mail-Nachrichten', 'cp-communitie'), 'update_core', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
 			}
 		} else {
 			// Single intallation
 			add_menu_page(CPC_WL_SHORT,CPC_WL_SHORT.$count1, 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug', 'none'); 
-			add_submenu_page('cpcommunitie_debug', __('Installation', CPC_TEXT_DOMAIN), __('Installation', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug');
-			add_submenu_page('cpcommunitie_debug', __('Welcome', CPC_TEXT_DOMAIN), __('Welcome', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_welcome', '__cpc__plugin_welcome');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Settings', CPC_TEXT_DOMAIN), __('Settings', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_settings', '__cpc__plugin_settings');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Advertising', CPC_TEXT_DOMAIN), __('Advertising', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_advertising', '__cpc__plugin_advertising');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Thesaurus', CPC_TEXT_DOMAIN), __('Thesaurus', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_thesaurus', '__cpc__plugin_thesaurus');
-			add_submenu_page('cpcommunitie_debug'.$hidden, __('Templates', CPC_TEXT_DOMAIN), __('Templates', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_templates', '__cpc__plugin_templates');
+			add_submenu_page('cpcommunitie_debug', __('Installation', 'cp-communitie'), __('Installation', 'cp-communitie'), 'manage_options', 'cpcommunitie_debug', '__cpc__plugin_debug');
+			add_submenu_page('cpcommunitie_debug', __('Willkommen', 'cp-communitie'), __('Willkommen', 'cp-communitie'), 'manage_options', 'cpcommunitie_welcome', '__cpc__plugin_welcome');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Einstellungen', 'cp-communitie'), __('Einstellungen', 'cp-communitie'), 'manage_options', 'cpcommunitie_settings', '__cpc__plugin_settings');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Werbung', 'cp-communitie'), __('Werbung', 'cp-communitie'), 'manage_options', 'cpcommunitie_advertising', '__cpc__plugin_advertising');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Thesaurus', 'cp-communitie'), __('Thesaurus', 'cp-communitie'), 'manage_options', 'cpcommunitie_thesaurus', '__cpc__plugin_thesaurus');
+			add_submenu_page('cpcommunitie_debug'.$hidden, __('Vorlagen', 'cp-communitie'), __('Vorlagen', 'cp-communitie'), 'manage_options', 'cpcommunitie_templates', '__cpc__plugin_templates');
 			if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") 
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Audit', CPC_TEXT_DOMAIN), __('Audit', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_audit', '__cpc__plugin_audit');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Audit', 'cp-communitie'), __('Audit', 'cp-communitie'), 'manage_options', 'cpcommunitie_audit', '__cpc__plugin_audit');
 			
 			// Aggregate menu items
 			if (get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on") {
-				add_submenu_page('cpcommunitie_debug', __('Options', CPC_TEXT_DOMAIN), __('Options', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_options', '__cpc__menu_options');
-				add_submenu_page('cpcommunitie_debug', __('Manage', CPC_TEXT_DOMAIN), __('Manage', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_manage', '__cpc__menu_manage');
-				if ($count2) add_submenu_page('cpcommunitie_debug', __('Moderate', CPC_TEXT_DOMAIN), sprintf(__('Moderate%s', CPC_TEXT_DOMAIN), $count1), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
+				add_submenu_page('cpcommunitie_debug', __('Optionen', 'cp-communitie'), __('Optionen', 'cp-communitie'), 'manage_options', 'cpcommunitie_options', '__cpc__menu_options');
+				add_submenu_page('cpcommunitie_debug', __('Verwalten', 'cp-communitie'), __('Verwalten', 'cp-communitie'), 'manage_options', 'cpcommunitie_manage', '__cpc__menu_manage');
+				if ($count2) add_submenu_page('cpcommunitie_debug', __('Moderation', 'cp-communitie'), sprintf(__('Moderiere %s', 'cp-communitie'), $count1), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
 			}
 	
-			add_submenu_page('cpcommunitie_debug', __('Styles', CPC_TEXT_DOMAIN), __('Styles', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_styles', '__cpc__plugin_styles');
+			add_submenu_page('cpcommunitie_debug', __('Stile', 'cp-communitie'), __('Stile', 'cp-communitie'), 'manage_options', 'cpcommunitie_styles', '__cpc__plugin_styles');
 			
 			if (function_exists('__cpc__profile')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Profile', CPC_TEXT_DOMAIN), __('Profile', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_profile', '__cpc__plugin_profile');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Profil', 'cp-communitie'), __('Profil', 'cp-communitie'), 'manage_options', 'cpcommunitie_profile', '__cpc__plugin_profile');
 			}
 			if (function_exists('__cpc__forum')) {
 				if (!current_user_can('manage_options')) {
@@ -361,24 +361,24 @@ function __cpc__plugin_menu() {
 							}
 						}		 														
 					} else {
-						// No WordPress role stored
+						// No ClassicPress role stored
 					}
 					if ($can_moderate)
 						add_menu_page('Moderation','Moderation'.$count1, 'read', 'cpcommunitie_moderation', '__cpc__plugin_moderation', plugin_dir_url( __FILE__ ).'/images/logo_admin_icon.png', 8); 
 				}
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum', CPC_TEXT_DOMAIN), __('Forum', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_forum', '__cpc__plugin_forum');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum Categories', CPC_TEXT_DOMAIN), __('Forum Categories', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_categories', '__cpc__plugin_categories');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum Posts', CPC_TEXT_DOMAIN), sprintf(__('Forum Posts %s', CPC_TEXT_DOMAIN), $count2), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forum', 'cp-communitie'), __('Forum', 'cp-communitie'), 'manage_options', 'cpcommunitie_forum', '__cpc__plugin_forum');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forenkategorien', 'cp-communitie'), __('Forenkategorien', 'cp-communitie'), 'manage_options', 'cpcommunitie_categories', '__cpc__plugin_categories');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Forenbeiträge', 'cp-communitie'), sprintf(__('Forumsbeiträge %s', 'cp-communitie'), $count2), 'manage_options', 'cpcommunitie_moderation', '__cpc__plugin_moderation');
 			}
 			if (function_exists('__cpc__add_notification_bar')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Panel', CPC_TEXT_DOMAIN), __('Panel', CPC_TEXT_DOMAIN), 'manage_options', 'cpcommunitie_bar', '__cpc__plugin_bar');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Panel', 'cp-communitie'), __('Panel', 'cp-communitie'), 'manage_options', 'cpcommunitie_bar', '__cpc__plugin_bar');
 			}
 			if (function_exists('__cpc__members')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Member Directory', CPC_TEXT_DOMAIN), __('Member Directory', CPC_TEXT_DOMAIN), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mitgliederverzeichnis', 'cp-communitie'), __('Mitgliederverzeichnis', 'cp-communitie'), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
 			}
 			if (function_exists('__cpc__mail')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail', CPC_TEXT_DOMAIN), __('Mail', CPC_TEXT_DOMAIN), 'manage_options', '__cpc__mail_menu', '__cpc__mail_menu');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail Messages', CPC_TEXT_DOMAIN), __('Mail Messages', CPC_TEXT_DOMAIN), 'manage_options', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __(E-'Mail', 'cp-communitie'), __('E-Mail', 'cp-communitie'), 'manage_options', '__cpc__mail_menu', '__cpc__mail_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail Messages', 'cp-communitie'), __('Mail Messages', 'cp-communitie'), 'manage_options', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
 			}
 		}
 		do_action('__cpc__admin_menu_hook');
@@ -388,50 +388,43 @@ function __cpc__plugin_menu() {
 function __cpc__menu_options() {
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Optionen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('options');
 	
 	echo '<table class="form-table __cpc__admin_table"><tr><td>';
 	
 	$show = '';
-	if (function_exists('__cpc__profile')) $show .= '<li><a href="admin.php?page=cpcommunitie_profile">'.__('Member Profile', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__forum')) $show .= '<li><a href="admin.php?page=cpcommunitie_forum">'.__('Forum', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__members')) $show .= '<li><a href="admin.php?page=__cpc__members_menu">'.__('Member Directory', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__mail')) $show .= '<li><a href="admin.php?page=__cpc__mail_menu">'.sprintf(__('Private %s mail', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__profile')) $show .= '<li><a href="admin.php?page=cpcommunitie_profile">'.__('Mitgliedsprofil', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__forum')) $show .= '<li><a href="admin.php?page=cpcommunitie_forum">'.__('Forum', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__members')) $show .= '<li><a href="admin.php?page=__cpc__members_menu">'.__('Mitgliederverzeichnis', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__mail')) $show .= '<li><a href="admin.php?page=__cpc__mail_menu">'.sprintf(__('Private %s-Mail', 'cp-communitie'), CPC_WL).'</a></li>';
 	
 	if ($show) {
-		echo '<h2>'.__('Options Tabs', CPC_TEXT_DOMAIN).'</h2>';
-		echo '<p><em>'.__('The relevant feature has to be <a href="admin.php?page=cpcommunitie_debug">activated</a>, for its tab above to appear.', CPC_TEXT_DOMAIN).'</em></p>';	
+		echo '<h2>'.__('Registerkarten „Optionen“.', 'cp-communitie').'</h2>';
+		echo '<p><em>'.__('Die entsprechende Funktion muss <a href="admin.php?page=cpcommunitie_debug">aktiviert</a> werden, damit der obige Reiter erscheint.', 'cp-communitie').'</em></p>';	
 		echo '<ul style="list-style-type: square; margin: 10px 0 10px 30px;">';
 		echo $show;
-		if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_categories">'.sprintf(__('Manage Forum Categories', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-		if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_moderation">'.sprintf(__('Manage Forum Posts', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
+		if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_categories">'.sprintf(__('Forenkategorien verwalten', 'cp-communitie'), CPC_WL).'</a></li>';
+		if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_moderation">'.sprintf(__('Forenbeiträge verwalten', 'cp-communitie'), CPC_WL).'</a></li>';
 		echo '</ul>';
 	}
 
 	$show2 = '';
-	if (function_exists('__cpc__add_notification_bar')) $show2 .= '<li><a href="admin.php?page=cpcommunitie_bar">'.__('Panel (notification bar/chat)', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__profile_plus')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/plus_admin.php">'.__('Additional profile related options', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__group')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/gallery_admin.php">'.__('Gallery', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__gallery')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/groups_admin.php">'.sprintf(__('%s Groups', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__news_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/news_admin.php">'.__('Alerts', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__events_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/events_admin.php">'.sprintf(__('%s Events', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__facebook')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php">'.__('Post profile messages to Facebook', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__mailinglist')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php">'.__('Reply to forum topics and replies by email', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__lounge_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php">'.__('The Lounge options (demonstrator)', CPC_TEXT_DOMAIN).'</a></li>';
-	if (function_exists('__cpc__mobile')) $show2 .= '<li><a href="admin.php?page=__cpc__mobile_menu">'.__('Access for mobile devices', CPC_TEXT_DOMAIN).'</a></li>';
-
-	if ($show2) {
-		echo '<h2>'.__('Bronze Member Feature Tabs', CPC_TEXT_DOMAIN).'</h2>';
-		echo '<ul style="list-style-type: square; margin: 10px 0 10px 30px;">';
-		echo $show2;
-		echo '</ul>';
-	}
+	if (function_exists('__cpc__add_notification_bar')) $show2 .= '<li><a href="admin.php?page=cpcommunitie_bar">'.__('Panel (Benachrichtigungsleiste/Chat)', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__profile_plus')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/plus_admin.php">'.__('Zusätzliche profilbezogene Optionen', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__group')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/gallery_admin.php">'.__('Gallerie', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__gallery')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/groups_admin.php">'.sprintf(__('%s Gruppen', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__news_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/news_admin.php">'.__('Benachrichtigungen', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__events_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/events_admin.php">'.sprintf(__('%s Events', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__facebook')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php">'.__('Profilnachrichten auf Facebook posten', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__mailinglist')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php">'.__('Antworte auf Forenthemen und Antworten per E-Mail', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__lounge_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php">'.__('Die Lounge-Optionen (Demonstration)', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__mobile')) $show2 .= '<li><a href="admin.php?page=__cpc__mobile_menu">'.__('Zugriff für mobile Geräte', 'cp-communitie').'</a></li>';
 	
 	if (!$show && !$show2) {
-		echo '<h2>'.sprintf(__('Activate some %s plugins', CPC_TEXT_DOMAIN), CPC_WL).'</h2>';
-		echo '<p>'.sprintf(__('For the relevant option tabs to appear above, <a href="admin.php?page=cpcommunitie_debug">activate</a> some %s features.', CPC_TEXT_DOMAIN), CPC_WL).'</p>';
+		echo '<h2>'.sprintf(__('Einige %s-Plugins aktivieren', 'cp-communitie'), CPC_WL).'</h2>';
+		echo '<p>'.sprintf(__('Damit die relevanten Optionsregisterkarten oben erscheinen, <a href="admin.php?page=cpcommunitie_debug">aktiviere</a> einige %s-Funktionen.', 'cp-communitie'), CPC_WL).'</p>';
 	}
 	
 	echo '</td></tr></table>';	
@@ -442,26 +435,26 @@ function __cpc__menu_options() {
 function __cpc__menu_manage() {
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s-Verwaltung', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_manage_tabs_header('manage');
 	
 	echo '<table class="form-table __cpc__admin_table"><tr><td>';
 	
-	echo '<h2>'.__('Management Tabs', CPC_TEXT_DOMAIN).'</h2>';
+	echo '<h2>'.__('Verwaltungsregisterkarten', 'cp-communitie').'</h2>';
 	echo '<ul style="list-style-type: square; margin: 10px 0 10px 30px;">';
-	echo '<li><a href="admin.php?page=cpcommunitie_settings">'.sprintf(__('Overall settings for %s', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	echo '<li><a href="admin.php?page=cpcommunitie_advertising">'.sprintf(__('Optional advertising blocks', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	echo '<li><a href="admin.php?page=cpcommunitie_thesaurus">'.sprintf(__('Wording alternatives %s', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_categories">'.sprintf(__('%s forum categories and permissions', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_moderation">'.sprintf(__('View and moderation %s forum topics and replies', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__mail')) echo '<li><a href="admin.php?page=__cpc__mail_messages_menu">'.sprintf(__('View and delete %s mail messages', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	echo '<li><a href="admin.php?page=cpcommunitie_templates">'.sprintf(__('%s layout templates', CPC_TEXT_DOMAIN), CPC_WL).'</a></li>';
-	if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<li><a href="admin.php?page=cpcommunitie_audit">'.__('Analyse the audit table', CPC_TEXT_DOMAIN).'</a></li>';
+	echo '<li><a href="admin.php?page=cpcommunitie_settings">'.sprintf(__('Allgemeine Einstellungen für %s', 'cp-communitie'), CPC_WL).'</a></li>';
+	echo '<li><a href="admin.php?page=cpcommunitie_advertising">'.sprintf(__('Optionale Anzeigeblöcke', 'cp-communitie'), CPC_WL).'</a></li>';
+	echo '<li><a href="admin.php?page=cpcommunitie_thesaurus">'.sprintf(__('Formulierungsalternativen %s', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_categories">'.sprintf(__('%s Forenkategorien und Berechtigungen', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_moderation">'.sprintf(__('Anzeigen und Moderieren von %s Forenthemen und Antworten', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__mail')) echo '<li><a href="admin.php?page=__cpc__mail_messages_menu">'.sprintf(__('%s E-Mail-Nachrichten anzeigen und löschen', 'cp-communitie'), CPC_WL).'</a></li>';
+	echo '<li><a href="admin.php?page=cpcommunitie_templates">'.sprintf(__('%s Layoutvorlagen', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<li><a href="admin.php?page=cpcommunitie_audit">'.__('Analysiere die Audit-Tabelle', 'cp-communitie').'</a></li>';
 	echo '</ul>';
 
-	echo '<h2>'.__('User Management', CPC_TEXT_DOMAIN).'</h2>';
-	echo '<strong>'.__('Delete user', CPC_TEXT_DOMAIN).'</strong><br />';
+	echo '<h2>'.__('Benutzerverwaltung', 'cp-communitie').'</h2>';
+	echo '<strong>'.__('Benutzer löschen', 'cp-communitie').'</strong><br />';
 	
 	// Delete user, step 1
 	if ( (isset($_POST['delete_cpc_user'])) && ($_POST['delete_cpc_user'] != '') ) {
@@ -481,20 +474,20 @@ function __cpc__menu_manage() {
 			$user_info = get_user_by('login', 'nobody');
 			if ($user_info) {
 
-				echo sprintf(__('Mail, events, galleries and chat will be deleted. Forum posts and activity will be re-assigned to "nobody".', CPC_TEXT_DOMAIN), $user_login, $id).'<br />';
+				echo sprintf(__('Mail, Events, Galerien und Chat werden gelöscht. Forenbeiträge und -aktivitäten werden „nobody“ zugewiesen.', 'cp-communitie'), $user_login, $id).'<br />';
 
 				echo '<form action="" method="POST">';	
 					echo '<input name="delete_cpc_user_id" type="hidden" value="'.$id.'" />';
 					echo '<input name="delete_cpc_user_transfer" type="hidden" value="'.$user_info->ID.'" />';
-					echo '<input type="submit" class="button-primary" value="'.sprintf(__('Re-assign/delete content and remove %s', CPC_TEXT_DOMAIN), $user_login).'" />';
+					echo '<input type="submit" class="button-primary" value="'.sprintf(__('Inhalt neu zuweisen/löschen und %s entfernen', 'cp-communitie'), $user_login).'" />';
 				echo '</form>';
 			} else {
-				echo '<em>'.__('First <a href="user-new.php">create a user</a> with the username "nobody", email "nobody@example.com" and set the firstname field to something like "Member no longer exists".', CPC_TEXT_DOMAIN).'</em><br />';
+				echo '<em>'.__('<a href="user-new.php">Erstelle zuerst einen Benutzer</a> mit dem Benutzernamen "nobody", sende eine E-Mail an "nobody@example.com" und setze das Vornamenfeld auf etwas wie "Mitglied existiert nicht mehr".', 'cp-communitie').'</em><br />';
 			}
 
 			echo '<br /><br />';
 		} else {
-			echo '<span style="color:red; font-weight:bold">'.sprintf(__('User %s (ID %d) could not be found.', CPC_TEXT_DOMAIN), $user_login, $id).'</span><br /><br />';
+			echo '<span style="color:red; font-weight:bold">'.sprintf(__('Benutzer %s (ID %d) konnte nicht gefunden werden.', 'cp-communitie'), $user_login, $id).'</span><br /><br />';
 		}
 	} 
 
@@ -506,7 +499,7 @@ function __cpc__menu_manage() {
 		$deleting = $user_info->user_login;
 		$user_info = get_userdata($to);
 		$transfer = $user_info->user_login;
-		echo sprintf(__('Deleting %s and re-assigning to %s...', CPC_TEXT_DOMAIN), $deleting, $transfer).' ';
+		echo sprintf(__('%s wird gelöscht und %s neu zugewiesen...', 'cp-communitie'), $deleting, $transfer).' ';
 
 		global $wpdb;
 
@@ -582,17 +575,17 @@ function __cpc__menu_manage() {
 		$sql = "DELETE FROM ".$wpdb->prefix."cpcommunitie_usermeta WHERE uid=%d";
 		$wpdb->query($wpdb->prepare($sql, $id));
 
-		// Delete WordPress user
+		// Delete ClassicPress user
 		wp_delete_user( $id );
 
-		echo __('done.', CPC_TEXT_DOMAIN);
+		echo __('Erledigt.', 'cp-communitie');
 		echo '<br /><br />';
 	}
 
-	echo __('Enter a username, or user ID:', CPC_TEXT_DOMAIN).'<br />';
+	echo __('Gib einen Benutzernamen oder eine Benutzer-ID ein:', 'cp-communitie').'<br />';
 	echo '<form action="" method="POST">';
 	echo '<input type="text" name="delete_cpc_user" />&nbsp;';
-	echo '<input type="submit" class="button-primary" value="'.__('Find user', CPC_TEXT_DOMAIN).'" /><br />';
+	echo '<input type="submit" class="button-primary" value="'.__('Benutzer finden', 'cp-communitie').'" /><br />';
 	echo '</form>';
 
 	echo '</td></tr></table>';	
@@ -617,46 +610,46 @@ function __cpc__plugin_welcome() {
 			    <h3><?php echo CPC_WL; ?></h3>		    
 			    
 				<p class="about-description">
-				<?php echo sprintf(__( 'Thank you for installing %s v%s, welcome aboard! Go ahead and visit the <a href="%s">Installation page</a> to complete your installation/upgrade.', CPC_TEXT_DOMAIN ), CPC_WL, CPC_VER, "admin.php?page=cpcommunitie_debug"); ?>
+				<?php echo sprintf(__( 'Vielen Dank für die Installation von %s v%s, willkommen an Bord! Fahre fort und besuche die <a href="%s">Installationsseite</a>, um Deine Installation/Dein Upgrade abzuschließen.', 'cp-communitie'), CPC_WL, CPC_VER, "admin.php?page=cpcommunitie_debug"); ?>
 			    <?php
 			    $ver = str_replace('.', '-', CPC_VER);
 			    if (strpos($ver, ' ') !== false) $ver = substr($ver, 0, strpos($ver, ' ')); 
-			    echo '<br />'.sprintf(__('Please always read the <a href="%s" target="_blank">release notes</a> before upgrading %s.', CPC_TEXT_DOMAIN), 'http://www.cpcymposium.com/category/releases/', CPC_WL);
-				echo ' '.__( 'And remember, drink tea, tea is good.' );
-				echo ' <img style="width:20px;height:20px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/smilies/coffee.png" alt="Tea is good" />';
-				echo '<br /><br />'.sprintf(__('If this is your first time with %s, the TwentyTen theme is probably best for now, <a href="%s">change it here</a>.', CPC_TEXT_DOMAIN), CPC_WL, 'themes.php');
+			    echo '<br />'.sprintf(__('Bitte lese immer die <a href="%s" target="_blank">Versionshinweise</a>, bevor Du %s aktualisierst.', 'cp-communitie'), 'https://cp-community.n3rds.work/cp-community-erste-schritte/releases/', CPC_WL);
+				echo ' '.__( 'Und denke daran, trinke Tee, Tee ist gut.' );
+				echo ' <img style="width:20px;height:20px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/smilies/coffee.png" alt="Tee ist gut" />';
+				echo '<br /><br />'.sprintf(__('Wenn Du %s zum ersten Mal verwendest, ist das CP-TwentyTen-Theme derzeit wahrscheinlich am besten, <a href="%s">ändere es hier</a>.', 'cp-communitie'), CPC_WL, 'themes.php');
 				?>
 			    </p>
 	
 				<div class="welcome-panel-column-container">
 					<div class="welcome-panel-column" style="margin-left:5px;margin-right:-5px;width:33%;">
-						<h4><?php _e( 'Getting Started' ); ?></h4>
+						<h4><?php _e( 'Lege los' ); ?></h4>
 						<ul>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-view-site" target="_blank" href="%s">%s</a>' ), "http://www.cpcymposium.com/get-started", __('Getting started', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Activate some features', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Add to your site pages', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_settings') ), __('Check your settings', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-write-blog" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_styles') ), __('Pick a color scheme', CPC_TEXT_DOMAIN) ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-view-site" target="_blank" href="%s">%s</a>' ), "https://cp-community.n3rds.work/cp-community-erste-schritte/", __('Erste Schritte', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Aktiviere einige Funktionen', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Füge Deiner Webseite Seiten hinzu', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_settings') ), __('Überprüfe Deine Einstellungen', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-write-blog" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_styles') ), __('Wähle ein Farbschema aus', 'cp-communitie') ); ?></li>
 						</ul>						
 					</div>
 					<div class="welcome-panel-column">
-						<h4><?php _e('Upgrading from previous version?', CPC_TEXT_DOMAIN) ?></h4>
-						<?php echo __('You will need to:', CPC_TEXT_DOMAIN); ?>
+						<h4><?php _e('Upgrade von einer früheren Version?', 'cp-communitie') ?></h4>
+						<?php echo __('Bitte beachte folgendes:', 'cp-communitie'); ?>
 						<ul>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('plugins.php') ), __('Ensure the plugin is activated', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Activate features on the Installation page', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_templates') ), __('Reset your Templates', CPC_TEXT_DOMAIN) ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('plugins.php') ), __('Stelle sicher, dass das Plugin aktiviert ist', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-add-page" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_debug') ), __('Aktiviere Funktionen auf der Installationsseite', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-widgets-menus" href="%s">%s</a>' ), esc_url( admin_url('admin.php?page=cpcommunitie_templates') ), __('Setze Deine Vorlagen zurück', 'cp-communitie') ); ?></li>
 						</ul>
-						<?php echo sprintf(__( 'It\'s <em>very important</em> that you read the <a href="%s" target="_blank">release notes</a>.', CPC_TEXT_DOMAIN ), "http://www.cpcymposium.com/category/releases/"); ?><br />
+						<?php echo sprintf(__( 'Es ist <em>sehr wichtig</em>, dass Du die <a href="%s" target="_blank">Versionshinweise</a> liest.', 'cp-communitie'), "https://cp-community.n3rds.work/cp-community-erste-schritte/releases/"); ?><br />
                     </div>
 					<div class="welcome-panel-column welcome-panel-last">
-						<h4><?php _e( 'Need a little extra help?', CPC_TEXT_DOMAIN ); ?></h4>
+						<h4><?php _e( 'Benötigst Du ein wenig zusätzliche Hilfe?', 'cp-communitie'); ?></h4>
 						<ul>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-view-site" href="%s" target="_blank">%s</a>' ), esc_url( 'http://www.cpcymposium.com/faqs' ), __('Frequently Asked Questions', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url('http://www.cpcymposium.com/trythisfirst'), __('Try this first!', CPC_TEXT_DOMAIN) ); ?></li>
-                        	<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url( 'http://www.cpcymposium.com/admin-guide/' ), __('Read the admin guide', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url('http://www.cpcymposium.com/discuss'), __('Visit the Forum', CPC_TEXT_DOMAIN) ); ?></li>
-							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url('http://www.cpcymposium.com/tutorials'), __('Check out the tutorials', CPC_TEXT_DOMAIN) ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-view-site" href="%s" target="_blank">%s</a>' ), esc_url( 'https://cp-community.n3rds.work/haeufig-gestellte-fragen/' ), __('Häufig gestellte Fragen', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url( 'https://cp-community.n3rds.work/trythisfirst'), __('Versuche dies zuerst!', 'cp-communitie') ); ?></li>
+                        	<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url( 'https://cp-community.n3rds.work/admin-guide/' ), __('Lies den Administratorleitfaden', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url( 'https://cp-community.n3rds.work/discuss'), __('Besuche das Forum', 'cp-communitie') ); ?></li>
+							<li><?php echo sprintf( __( '<a class="welcome-icon welcome-learn-more" href="%s" target="_blank">%s</a>' ), esc_url( 'https://cp-community.n3rds.work/tutorials'), __('Schaue Dir die Tutorials an', 'cp-communitie') ); ?></li>
 						</ul>
                 	</div>
 				</div>
@@ -665,7 +658,7 @@ function __cpc__plugin_welcome() {
 			
 				<form action="index.php" method="post">
 				<div style="float:right;margin-bottom:10px">
-					<input type="submit" class="button-primary" value="<?php _e("Hide this now (it's available via the menu)", CPC_TEXT_DOMAIN); ?>" />
+					<input type="submit" class="button-primary" value="<?php _e("Jetzt ausblenden (verfügbar über das Menü)", 'cp-communitie'); ?>" />
 					<input type="hidden" name="cpcommunitie_hide_motd" value="Y" />
 					<?php wp_nonce_field('cpcommunitie_hide_motd_nonce','cpcommunitie_hide_motd_nonce'); ?>
 				</div>
@@ -695,18 +688,18 @@ function __cpc__plugin_reminder() {
 		<div id="cpc-welcome-panel" class="welcome-panel" style="background-image: none; background-color: #ddf; margin: <?php echo $top_margin; ?>px 20px 0 0;">
 			<div id="motd" class="welcome-panel-content" >
 
-			    <h3><?php echo CPC_WL.__(' - complete your installation', CPC_TEXT_DOMAIN); ?></h3>		    
+			    <h3><?php echo CPC_WL.__(' - Vervollständige Deine Installation', 'cp-communitie'); ?></h3>		    
 			    
 				<p class="about-description">
-				<?php echo sprintf(__( 'Please ensure your installation/upgrade has completed successfully by visiting the <a href="%s">Installation page</a>.', CPC_TEXT_DOMAIN ), "admin.php?page=cpcommunitie_debug"); ?> 
-				<?php echo sprintf(__( 'You should reset your <a href="%s">templates</a>.', CPC_TEXT_DOMAIN ), "admin.php?page=cpcommunitie_templates"); ?>
+				<?php echo sprintf(__( 'Bitte stelle sicher, dass Deine Installation/Dein Upgrade erfolgreich abgeschlossen wurde, indem Du die <a href="%s">Installationsseite</a> besuchst.', 'cp-communitie'), "admin.php?page=cpcommunitie_debug"); ?> 
+				<?php echo sprintf(__( 'Du solltest Deine <a href="%s">Vorlagen</a> zurücksetzen.', 'cp-communitie'), "admin.php?page=cpcommunitie_templates"); ?>
 			    </p>
 	
 			</div>
 			
 				<form action="index.php" method="post">
 				<div style="float:right;margin-bottom:10px; margin-top:20px;">
-					<input type="submit" class="button-primary" value="<?php _e("Thanks, done it...", CPC_TEXT_DOMAIN); ?>" />
+					<input type="submit" class="button-primary" value="<?php _e("Danke, hab ich erledigt...", 'cp-communitie'); ?>" />
 					<input type="hidden" name="cpcommunitie_hide_reminder" value="Y" />
 					<?php wp_nonce_field('cpcommunitie_hide_reminder_nonce','cpcommunitie_hide_reminder_nonce'); ?>
 				</div>
@@ -773,14 +766,14 @@ function __cpc__plugin_templates() {
 		    }   
 	
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Network templates updated:'.$list, CPC_TEXT_DOMAIN)."</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Netzwerkvorlagen aktualisiert:'.$list, 'cp-communitie')."</p></div>";
 		    
 		} else {
 		
 			__cpc__update_templates();
 	
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Site templates updated', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Webseitevorlagen aktualisiert', 'cp-communitie').".</p></div>";
 		}
 		
 	}
@@ -801,18 +794,18 @@ function __cpc__plugin_templates() {
   	echo '<div class="wrap">';
 
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s-Verwaltung', 'cp-communitie'), CPC_WL).'</h2><br />';
 		__cpc__show_manage_tabs_header('templates');
 
 		// Import
 		echo '<div id="cpcommunitie_import_templates_form" style="display:none">';
 		echo '<input type="submit" class="cpcommunitie_templates_cancel button" style="margin-left: 6px;" value="Cancel">';
 		echo '<input id="cpcommunitie_import_file_button" type="submit" class="button-primary" style="float:left" value="Import"><div id="cpcommunitie_import_file_pleasewait" style="display:none;float:left;margin-left:10px;margin-right:5px;margin-top:5px;width:15px;"></div>';
-		echo '<p>'.__('Paste previous exported templates into the text area below - please ensure that you are not including any suspicious code.', CPC_TEXT_DOMAIN).'</h3>';
+		echo '<p>'.__('Füge zuvor exportierte Vorlagen in den Textbereich unten ein – stelle sicher, dass Du keinen verdächtigen Code einfügst.', 'cp-communitie').'</h3>';
 		echo '<br /><table class="widefat">';
 		echo '<thead>';
 		echo '<tr>';
-		echo '<th style="font-size:1.2em">'.__('Import Template', CPC_TEXT_DOMAIN).'</th>';
+		echo '<th style="font-size:1.2em">'.__('Vorlage importieren', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tbody>';
@@ -830,11 +823,11 @@ function __cpc__plugin_templates() {
 		// Export
 		echo '<div id="cpcommunitie_export_templates_form" style="display:none">';
 		echo '<input type="submit" class="cpcommunitie_templates_cancel button" value="Cancel">';
-		echo '<p>'.__('Copy and paste the following into a text editor to backup or share with others. Do not change the comments!', CPC_TEXT_DOMAIN).'</h3>';
+		echo '<p>'.__('Kopiere Folgendes und füge es in einen Texteditor ein, um es zu sichern oder mit anderen zu teilen. Ändere die Kommentare nicht!', 'cp-communitie').'</h3>';
 		echo '<br /><table class="widefat">';
 		echo '<thead>';
 		echo '<tr>';
-		echo '<th style="font-size:1.2em">'.__('Export Template', CPC_TEXT_DOMAIN).'</th>';
+		echo '<th style="font-size:1.2em">'.__('Vorlage exportieren', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tbody>';
@@ -901,17 +894,17 @@ function __cpc__plugin_templates() {
 
 		echo '<div id="cpcommunitie_templates_values">';
 
-			echo '<input id="cpcommunitie_import_templates" type="submit" class="button" style="float:left;margin-right:6px;" value="'.__('Import', CPC_TEXT_DOMAIN).'">';
-			echo '<input id="cpcommunitie_export_templates" type="submit" class="button" style="float:left;" value="'.__('Export', CPC_TEXT_DOMAIN).'">';
+			echo '<input id="cpcommunitie_import_templates" type="submit" class="button" style="float:left;margin-right:6px;" value="'.__('Importieren', 'cp-communitie').'">';
+			echo '<input id="cpcommunitie_export_templates" type="submit" class="button" style="float:left;" value="'.__('Exportieren', 'cp-communitie').'">';
 
 			echo '<form action="" method="post">';
 			echo '<input type="hidden" name="cpcommunitie_template_update" value="on" />';
 		
-			echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', CPC_TEXT_DOMAIN).'">';
+			echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Speichern', 'cp-communitie').'">';
 						
 			$show_super_admin = (is_super_admin() && __cpc__is_wpmu());
 			if ( $show_super_admin )
-				echo '<div style="float:right;margin:5px 10px 0 0;"><input type="checkbox" name="cpcommunitie_templates_network_update" /> '.__('When saving, update entire network', CPC_TEXT_DOMAIN).'</div>';
+				echo '<div style="float:right;margin:5px 10px 0 0;"><input type="checkbox" name="cpcommunitie_templates_network_update" /> '.__('Aktualisiere beim Speichern das gesamte Netzwerk', 'cp-communitie').'</div>';
 
 			// Profile Page Header
 			echo '<br />';
@@ -919,8 +912,8 @@ function __cpc__plugin_templates() {
 				echo '<br /><table class="widefat">';
 				echo '<thead>';
 				echo '<tr>';
-				echo '<th style="font-size:1.2em">'.__('Profile Page Header', CPC_TEXT_DOMAIN);
-				echo ' (<a href="admin.php?page=cpcommunitie_profile">'.__('options', CPC_TEXT_DOMAIN).'</a>)';
+				echo '<th style="font-size:1.2em">'.__('Kopfzeile der Profilseite', 'cp-communitie');
+				echo ' (<a href="admin.php?page=cpcommunitie_profile">'.__('Optionen', 'cp-communitie').'</a>)';
 				echo '</th>';
 				echo '</tr>';
 				echo '</thead>';
@@ -929,46 +922,46 @@ function __cpc__plugin_templates() {
 				echo '<td>';
 					echo '<table style="float:right;width:39%">';
 					echo '<tr>';
-					echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-					echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+					echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tbody>';
 					echo '<tr>';
 					echo '<td>[follow]</td>';
-					echo '<td>'.__('\'Follow\' and \'Unfollow\' buttons (requires Profile Plus)').'</td>';
+					echo '<td>'.__('Schaltflächen \'Folgen\' und \'Entfolgen\' (erfordert Profile Plus)', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[poke]</td>';
-					echo '<td>'.__('Show \'poke\' button as defined in <a href=\'admin.php?page=cpcommunitie_profile\'>Profile settings</a>', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Schaltfläche "Anstupsen“ anzeigen" wie in <a href=\'admin.php?page=cpcommunitie_profile\'>Profileinstellungen</a> definiert', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[display_name]</td>';
-					echo '<td>'.__('Display Name', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Anzeigename', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[profile_label]</td>';
-					echo '<td>'.__('Profile label set by admin', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Vom Administrator festgelegte Profilbezeichnung', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[location]</td>';
-					echo '<td>'.__('City and/or Country', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Stadt und/oder Land', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[born]</td>';
-					echo '<td>'.__('Birthday', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Geburtstag', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[actions]</td>';
-					echo '<td>'.sprintf(__('%s Request/Send Mail/etc buttons', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</td>';
+					echo '<td>'.sprintf(__('%s Schaltflächen zum Anfordern/Senden von E-Mails usw', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[avatar,x]</td>';
-					echo '<td>'.__('Show avatar, size x in pixels (no spaces)', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Avatar anzeigen, Größe x in Pixel (ohne Leerzeichen)', 'cp-communitie').'</td>';
 					echo '</tr>';
 					if (function_exists('__cpc__profile_plus')) {				
 						echo '<tr>';
 						echo '<td>[ext_slug]</td>';
-						echo '<td>'.__('Extended field (replace slug)', CPC_TEXT_DOMAIN).'</td>';
+						echo '<td>'.__('Erweitertes Feld (Slug ersetzen)', 'cp-communitie').'</td>';
 						echo '</tr>';
 					}
 					echo '</tbody>';
@@ -976,7 +969,7 @@ function __cpc__plugin_templates() {
 					echo '<textarea id="profile_header_textarea" name="profile_header_textarea" style="width:60%;height: 260px;">';
 					echo $template_profile_header;
 					echo '</textarea>';
-					echo '<br /><a id="reset_profile_header" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+					echo '<br /><a id="reset_profile_header" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 				echo '</td>';
 				echo '</tr>';
 				echo '</tbody>';
@@ -992,7 +985,7 @@ function __cpc__plugin_templates() {
 				echo '<br /><table class="widefat">';
 				echo '<thead>';
 				echo '<tr>';
-				echo '<th style="font-size:1.2em">'.__('Profile Page Body', CPC_TEXT_DOMAIN).'</th>';
+				echo '<th style="font-size:1.2em">'.__('Body der Profilseite', 'cp-communitie').'</th>';
 				echo '</tr>';
 				echo '</thead>';
 				echo '<tbody>';
@@ -1000,26 +993,26 @@ function __cpc__plugin_templates() {
 				echo '<td>';
 					echo '<table style="float:right;width:39%">';
 					echo '<tr>';
-					echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-					echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+					echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tbody>';
 					echo '<tr>';
 					echo '<td>[default]</td>';
-					echo '<td>'.__('Used to force page parameter (important)', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Wird verwendet, um Seitenparameter zu erzwingen (wichtig)', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[page]</td>';
-					echo '<td>'.__('Where page content will be placed', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Wo Seiteninhalte platziert werden', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[menu]</td>';
-					echo '<td>'.__('Profile menu', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Profilmenü', 'cp-communitie').'</td>';
 					echo '</tr>';
 					if (function_exists('__cpc__profile_plus')) {
 						echo '<tr>';
 						echo '<td>[menu_tabs]</td>';
-						echo '<td>'.__('Horizontal menu', CPC_TEXT_DOMAIN).'</td>';
+						echo '<td>'.__('Horizontales Menü', 'cp-communitie').'</td>';
 						echo '</tr>';
 					}
 					echo '</tbody>';
@@ -1027,8 +1020,8 @@ function __cpc__plugin_templates() {
 					echo '<textarea id="profile_body_textarea" name="profile_body_textarea" style="width:60%;height: 200px;">';
 					echo $template_profile_body;
 					echo '</textarea>';
-					echo '<br /><a id="reset_profile_body" href="javascript:void(0)">'.__('Reset to default (vertical menu)', CPC_TEXT_DOMAIN).'</a>';
-					echo ' | <a id="reset_profile_body_tabs" href="javascript:void(0)">'.__('Reset to default (horizontal menu)', CPC_TEXT_DOMAIN).'</a>';
+					echo '<br /><a id="reset_profile_body" href="javascript:void(0)">'.__('Auf Standard zurücksetzen (vertikales Menü)', 'cp-communitie').'</a>';
+					echo ' | <a id="reset_profile_body_tabs" href="javascript:void(0)">'.__('Auf Standard zurücksetzen (horizontales Menü)', 'cp-communitie').'</a>';
 				echo '</td>';
 				echo '</tr>';
 				echo '</tbody>';
@@ -1043,7 +1036,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Page Footer', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Fußzeile', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1051,24 +1044,24 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[powered_by_message]</td>';
-				echo '<td>'.sprintf(__('Default Powered By %s message', CPC_TEXT_DOMAIN), CPC_WL).'</td>';
+				echo '<td>'.sprintf(__('Standard-Powered-By-%s-Nachricht', 'cp-communitie'), CPC_WL).'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[version]</td>';
-				echo '<td>'.sprintf(__('Version of %s', CPC_TEXT_DOMAIN), CPC_WL).'</td>';
+				echo '<td>'.sprintf(__('Version von %s', 'cp-communitie'), CPC_WL).'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="page_footer_textarea" name="page_footer_textarea" style="width:60%;height: 200px;">';
 				echo $template_page_footer;
 				echo '</textarea>';
-				echo '<br /><a id="reset_page_footer" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_page_footer" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1078,7 +1071,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Mail Page: Tray Item', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Mail-Seite: Tray-Element', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1086,32 +1079,32 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[mail_sent]</td>';
-				echo '<td>'.__('When the message was sent', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wann die Nachricht gesendet wurde', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_from]</td>';
-				echo '<td>'.__('Sender/recipient of the message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Absender/Empfänger der Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_subject]</td>';
-				echo '<td>'.__('Subject of the message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Betreff der Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_message]</td>';
-				echo '<td>'.__('A snippet of the mail message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Ein Ausschnitt der E-Mail-Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_mail_tray_textarea" name="template_mail_tray_textarea" style="width:60%;height: 200px;">';
 				echo $template_mail_tray;
 				echo '</textarea>';
-				echo '<br /><a id="reset_mail_tray" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_mail_tray" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1121,7 +1114,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Mail Page: Message', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Mail-Seite: Nachricht', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1129,44 +1122,44 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[avatar,x]</td>';
-				echo '<td>'.__('Show avatar, size x in pixels (no spaces)', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar anzeigen, Größe x in Pixel (ohne Leerzeichen)', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_subject]</td>';
-				echo '<td>'.__('Subject of the message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Betreff der Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_recipient]</td>';
-				echo '<td>'.__('Sender/recipient of the message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Absender/Empfänger der Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_sent]</td>';
-				echo '<td>'.__('When the message was sent', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wann die Nachricht gesendet wurde', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[delete_button]</td>';
-				echo '<td>'.__('Delete mail button', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('E-Mail löschen Schaltfläche', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[reply_button]</td>';
-				echo '<td>'.__('Reply to mail button', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Mail-Antwort-Button', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[message]</td>';
-				echo '<td>'.__('The mail message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Die Mailnachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_mail_message_textarea" name="template_mail_message_textarea" style="width:60%;height: 200px;">';
 				echo $template_mail_message;
 				echo '</textarea>';
-				echo '<br /><a id="reset_mail_message" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_mail_message" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1176,7 +1169,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Forum Header', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Forum-Kopfzeile', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1184,48 +1177,48 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[breadcrumbs]</td>';
-				echo '<td>'.__('Breadcrumb trail', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Spur aus Brotkrumen', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[new_topic_button]</td>';
-				echo '<td>'.__('New Topic button', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Schaltfläche Neues Thema.', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[new_topic_form]</td>';
-				echo '<td>'.__('Form for new topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Formular für neues Thema', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[digest]</td>';
-				echo '<td>'.__('Subscribe to daily digest', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Abonniere die tägliche Zusammenfassung', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[subscribe]</td>';
-				echo '<td>'.__('Receive email for new topics', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('E-Mail für neue Themen erhalten', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[forum_options]</td>';
-				echo '<td>'.__('Search, All Activity, etc', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Suchen, Alle Aktivitäten usw', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[sharing]</td>';
-				echo '<td>'.__('Sharing icons', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Sharing-Symbole', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[top_advert]</td>';
-				echo '<td>'.__('Advert space above forum', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Werbefläche über dem Forum', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_forum_header_textarea" name="template_forum_header_textarea" style="width:60%;height: 200px;">';
 				echo $template_forum_header;
 				echo '</textarea>';
-				echo '<br /><a id="reset_forum_header" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_forum_header" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1235,7 +1228,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Forum Categories (list)', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Forenkategorien (Liste)', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1243,52 +1236,52 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[avatar,x]</td>';
-				echo '<td>'.__('Show avatar, size x in pixels (no spaces)', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar anzeigen, Größe x in Pixel (ohne Leerzeichen)', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[replied]</td>';
-				echo '<td>'.__('replied or started text', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Geantwortet oder Text begonnen', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[subject]</td>';
-				echo '<td>'.__('Subject of last post/reply', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Betreff des letzten Beitrags/der letzten Antwort', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[subject_text]</td>';
-				echo '<td>'.__('Text from the post', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Text aus dem Beitrag', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[ago]</td>';
-				echo '<td>'.__('Age of last post/reply', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Alter des letzten Beitrags/der letzten Antwort', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[post_count]</td>';
-				echo '<td>'.__('How many posts in next level of this category', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wie viele Beiträge in der nächsten Ebene dieser Kategorie', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[topic_count]</td>';
-				echo '<td>'.__('How many topics in next level of this category', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wie viele Themen in der nächsten Ebene dieser Kategorie', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[category_title]</td>';
-				echo '<td>'.__('Title of the category', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Titel der Kategorie', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[category_desc]</td>';
-				echo '<td>'.__('Description of the category', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Beschreibung der Kategorie', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_forum_category_textarea" name="template_forum_category_textarea" style="width:60%;height: 200px;">';
 				echo $template_forum_category;
 				echo '</textarea>';
-				echo '<br /><a id="reset_template_forum_category" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_template_forum_category" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1298,7 +1291,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Forum Topics (list)', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Forenthemen (Liste)', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1306,56 +1299,56 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[avatarfirst,x]</td>';
-				echo '<td>'.__('Show avatar of initial post, size x in pixels', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar des ursprünglichen Beitrags anzeigen, Größe x in Pixel', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[avatar,x]</td>';
-				echo '<td>'.__('Show avatar of last reply, size x in pixels', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar der letzten Antwort anzeigen, Größe x in Pixel', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[startedby]</td>';
-				echo '<td>'.__('Who posted the initial topic post', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wer hat den ersten Themenbeitrag gepostet?', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[started]</td>';
-				echo '<td>'.__('Age of initial topic post', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Alter des ersten Themenbeitrags', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[replied]</td>';
-				echo '<td>'.__('Who last replied', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wer hat zuletzt geantwortet', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[topic]</td>';
-				echo '<td>'.__('Last reply text', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Letzter Antworttext', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[ago]</td>';
-				echo '<td>'.__('Age of last reply', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Alter der letzten Antwort', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[views]</td>';
-				echo '<td>'.__('View count for this topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Anzahl der Aufrufe für dieses Thema', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[replies]</td>';
-				echo '<td>'.__('Reply count for this topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Anzahl der Antworten für dieses Thema', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[topic_title]</td>';
-				echo '<td>'.__('Title of the topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Titel des Themas', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_forum_topic_textarea" name="template_forum_topic_textarea" style="width:60%;height: 200px;">';
 				echo $template_forum_topic;
 				echo '</textarea>';
-				echo '<br /><a id="reset_template_forum_topic" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_template_forum_topic" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1367,8 +1360,8 @@ function __cpc__plugin_templates() {
 				echo '<table class="widefat">';
 				echo '<thead>';
 				echo '<tr>';
-				echo '<th style="font-size:1.2em">'.__('Group Page', CPC_TEXT_DOMAIN);
-				echo ' (<a href="admin.php?page=cp-communitie/groups_admin.php">'.__('options', CPC_TEXT_DOMAIN).'</a>)';
+				echo '<th style="font-size:1.2em">'.__('Gruppenseite', 'cp-communitie');
+				echo ' (<a href="admin.php?page=cp-communitie/groups_admin.php">'.__('Optionen', 'cp-communitie').'</a>)';
 				echo '</th>';
 				echo '</tr>';
 				echo '</thead>';
@@ -1378,42 +1371,42 @@ function __cpc__plugin_templates() {
 				if (function_exists('__cpc__groups')) {
 					echo '<table style="float:right;width:39%">';
 					echo '<tr>';
-					echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-					echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+					echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tbody>';
 					echo '<tr>';
 					echo '<td>[group_name]</td>';
-					echo '<td>'.__('Group name', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Gruppenname', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[group_description]</td>';
-					echo '<td>'.__('Group description', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Gruppenbeschreibung', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[actions]</td>';
-					echo '<td>'.__('Join/delete/etc buttons', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Beitreten/Löschen/usw.-Schaltflächen', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[avatar,x]</td>';
-					echo '<td>'.__('Show avatar, size x in pixels (no spaces)', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Avatar anzeigen, Größe x in Pixel (ohne Leerzeichen)', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[default]</td>';
-					echo '<td>'.__('Used to force page parameter (important)', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Wird verwendet, um Seitenparameter zu erzwingen (wichtig)', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[page]</td>';
-					echo '<td>'.__('Where page content will be placed', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Wo Seiteninhalte platziert werden', 'cp-communitie').'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[menu]</td>';
-					echo '<td>'.__('Group menu', CPC_TEXT_DOMAIN).'</td>';
+					echo '<td>'.__('Gruppenmenü', 'cp-communitie').'</td>';
 					echo '</tr>';
 					if (function_exists('__cpc__profile_plus')) {
 						echo '<tr>';
 						echo '<td>[menu_tabs]</td>';
-						echo '<td>'.__('Horizontal menu', CPC_TEXT_DOMAIN).'</td>';
+						echo '<td>'.__('Horizontales Menü', 'cp-communitie').'</td>';
 						echo '</tr>';
 					}
 					echo '</tbody>';
@@ -1421,10 +1414,8 @@ function __cpc__plugin_templates() {
 					echo '<textarea id="template_group_textarea" name="template_group_textarea" style="width:60%;height: 200px;">';
 					echo $template_group;
 					echo '</textarea>';
-					echo '<br /><a id="reset_group" href="javascript:void(0)">'.__('Reset to default (vertical menu)', CPC_TEXT_DOMAIN).'</a>';
-					echo ' | <a id="reset_group_tabs" href="javascript:void(0)">'.__('Reset to default (horizontal menu)', CPC_TEXT_DOMAIN).'</a>';
-				} else {
-					echo __('Only available to <a href="http://www.cpcymposium.com">Bronze or higher members</a>.', CPC_TEXT_DOMAIN);
+					echo '<br /><a id="reset_group" href="javascript:void(0)">'.__('Auf Standard zurücksetzen (vertikales Menü)', 'cp-communitie').'</a>';
+					echo ' | <a id="reset_group_tabs" href="javascript:void(0)">'.__('Auf Standard zurücksetzen (horizontales Menü)', 'cp-communitie').'</a>';
 				}
 				echo '</td>';
 				echo '</tr>';
@@ -1440,7 +1431,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.__('Group Forum Topics (list)', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th style="font-size:1.2em">'.__('Themen des Gruppenforums (Liste)', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1448,56 +1439,56 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[avatarfirst,x]</td>';
-				echo '<td>'.__('Show avatar of initial post, size x in pixels', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar des ursprünglichen Beitrags anzeigen, Größe x in Pixel', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[avatar,x]</td>';
-				echo '<td>'.__('Show avatar of last reply, size x in pixels', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Avatar der letzten Antwort anzeigen, Größe x in Pixel', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[startedby]</td>';
-				echo '<td>'.__('Who posted the initial topic post', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wer hat den ersten Themenbeitrag gepostet?', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[started]</td>';
-				echo '<td>'.__('Age of initial topic post', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Alter des ersten Themenbeitrags', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[replied]</td>';
-				echo '<td>'.__('Who last replied', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Wer hat zuletzt geantwortet', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[topic]</td>';
-				echo '<td>'.__('Last reply text', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Letzter Antworttext', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[ago]</td>';
-				echo '<td>'.__('Age of last reply', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Alter der letzten Antwort', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[views]</td>';
-				echo '<td>'.__('View count for this topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Anzahl der Aufrufe für dieses Thema', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[replies]</td>';
-				echo '<td>'.__('Reply count for this topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Anzahl der Antworten für dieses Thema', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[topic_title]</td>';
-				echo '<td>'.__('Title of the topic', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Titel des Themas', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="template_group_forum_topic_textarea" name="template_group_forum_topic_textarea" style="width:60%;height: 200px;">';
 				echo $template_group_forum_topic;
 				echo '</textarea>';
-				echo '<br /><a id="reset_template_group_forum_topic" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_template_group_forum_topic" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 			echo '</tbody>';
@@ -1507,7 +1498,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.sprintf(__('%s Emails', CPC_TEXT_DOMAIN), CPC_WL).'</th>';
+			echo '<th style="font-size:1.2em">'.sprintf(__('%s E-Mails', 'cp-communitie'), CPC_WL).'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1515,32 +1506,32 @@ function __cpc__plugin_templates() {
 			echo '<td>';
 				echo '<table style="float:right;width:39%">';
 				echo '<tr>';
-				echo '<td width="33%">'.__('Codes available', CPC_TEXT_DOMAIN).'</td>';
-				echo '<td>'.__('Output', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td width="33%">'.__('Codes verfügbar', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ausgabe', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[message]</td>';
-				echo '<td>'.__('The email message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Die E-Mail-Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[footer]</td>';
-				echo '<td>'.__('Footer Message', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Nachricht in der Fußzeile', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[powered_by_message]</td>';
-				echo '<td>'.sprintf(__('Default Powered By %s message', CPC_TEXT_DOMAIN), CPC_WL).'</td>';
+				echo '<td>'.sprintf(__('Standard-Powered-By-%s-Nachricht', 'cp-communitie'), CPC_WL).'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[version]</td>';
-				echo '<td>'.sprintf(__('Version of %s', CPC_TEXT_DOMAIN), CPC_WL).'</td>';
+				echo '<td>'.sprintf(__('Version von %s', 'cp-communitie'), CPC_WL).'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
 				echo '<textarea id="email_textarea" name="email_textarea" style="width:60%;height: 200px;">';
 				echo $template_email;
 				echo '</textarea>';
-				echo '<br /><a id="reset_email" href="javascript:void(0)">'.__('Reset to default', CPC_TEXT_DOMAIN).'</a>';
+				echo '<br /><a id="reset_email" href="javascript:void(0)">'.__('Zurücksetzen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 
@@ -1580,7 +1571,7 @@ function __cpc__plugin_moderation() {
 				}
 			}		 														
 		} else {
-			// No WordPress role stored
+			// No ClassicPress role stored
 		}
 	}
 
@@ -1599,10 +1590,10 @@ function __cpc__plugin_moderation() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s-Verwaltung', 'cp-communitie'), CPC_WL).'</h2><br />';
 		__cpc__show_manage_tabs_header('posts');
 		echo '<div style="float:right;">';
-		echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Go to Forum Options', CPC_TEXT_DOMAIN).'</a>';	 
+		echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Gehe zu den Forum-Optionen', 'cp-communitie').'</a>';	 
 		echo '</div>';
 
 		if ($can_moderate) {
@@ -1624,20 +1615,20 @@ function __cpc__plugin_moderation() {
 		  	if ($mod == "orphaned") { $all_class=''; $approved_class=''; $unapproved_class=''; $topics_class=''; $orphaned_class='current'; }
 		  	
 		  	echo '<ul class="subsubsub" style="margin-top:-3px;">';
-			echo "<li><a href='admin.php?page=cpcommunitie_moderation' class='".$all_class."'>".__('All', CPC_TEXT_DOMAIN)." <span class='count'>(".$all.")</span></a> |</li>";
-			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=approved' class='".$approved_class."'>".__('Approved', CPC_TEXT_DOMAIN)." <span class='count'>(".$approved.")</span></a> |</li>"; 
-			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=unapproved' class='".$unapproved_class."'>".__('Unapproved', CPC_TEXT_DOMAIN)." <span class='count'>(".$unapproved.")</span></a></li>";
-			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=topics' class='".$topics_class."'>".__('Just Topics', CPC_TEXT_DOMAIN)." <span class='count'>(".$topics_count.")</span></a></li>";
-			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=orphaned' class='".$orphaned_class."'>".__('Topics with no category', CPC_TEXT_DOMAIN)." <span class='count'>(".$orphaned_count.")</span></a></li>";
+			echo "<li><a href='admin.php?page=cpcommunitie_moderation' class='".$all_class."'>".__('Alle', 'cp-communitie')." <span class='count'>(".$all.")</span></a> |</li>";
+			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=approved' class='".$approved_class."'>".__('Genehmigt', 'cp-communitie')." <span class='count'>(".$approved.")</span></a> |</li>"; 
+			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=unapproved' class='".$unapproved_class."'>".__('Abgelehnt', 'cp-communitie')." <span class='count'>(".$unapproved.")</span></a></li>";
+			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=topics' class='".$topics_class."'>".__('Nur Themen', 'cp-communitie')." <span class='count'>(".$topics_count.")</span></a></li>";
+			echo "<li><a href='admin.php?page=cpcommunitie_moderation&mod=orphaned' class='".$orphaned_class."'>".__('Themen ohne Kategorie', 'cp-communitie')." <span class='count'>(".$orphaned_count.")</span></a></li>";
 			echo "</ul>";
 			
 			$__cpc__search = (isset($_POST['__cpc__search'])) ? $_POST['__cpc__search'] : '';
 			echo '<form action="#" method="POST">';
-			echo '<input type="submit" class="button-primary" style="margin-right:15px;float:right;" value="'.__('Reset', CPC_TEXT_DOMAIN).'" />';
+			echo '<input type="submit" class="button-primary" style="margin-right:15px;float:right;" value="'.__('Zurücksetzen', 'cp-communitie').'" />';
 			echo '<input type="hidden" name="__cpc__search" value="" />';
 			echo '</form>';
 			echo '<form action="#" method="POST">';
-			echo '<input type="submit" class="button-primary" style="margin-right:5px;float:right;" value="'.__('Search', CPC_TEXT_DOMAIN).'" />';
+			echo '<input type="submit" class="button-primary" style="margin-right:5px;float:right;" value="'.__('Suche', 'cp-communitie').'" />';
 			echo '<input type="text" name="__cpc__search" style="margin-right:5px;margin-bottom:5px; float:right;" value="'.$__cpc__search.'" />';
 			echo '</form>';
 			
@@ -1675,25 +1666,25 @@ function __cpc__plugin_moderation() {
 			echo '<thead>';
 			echo '<tr>';
 			echo '<th>ID</td>';
-			echo '<th>'.__('Author', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Cat/ID', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th style="width: 30px; text-align:center;">'.__('Status', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Preview', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('IP &amp; Proxy', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Time', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Action', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th>'.__('Autor', 'cp-communitie').'</th>';
+			echo '<th>'.__('Kat/ID', 'cp-communitie').'</th>';
+			echo '<th style="width: 30px; text-align:center;">'.__('Status', 'cp-communitie').'</th>';
+			echo '<th>'.__('Vorschau', 'cp-communitie').'</th>';
+			echo '<th>'.__('IP &amp; Proxy', 'cp-communitie').'</th>';
+			echo '<th>'.__('Zeit', 'cp-communitie').'</th>';
+			echo '<th>'.__('Aktion', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tfoot>';
 			echo '<tr>';
 			echo '<th>ID</th>';
-			echo '<th>'.__('Author', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Cat/ID', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th style="width: 30px; text-align:center;">'.__('Status', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Preview', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('IP &amp; Proxy', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Time', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('Action', CPC_TEXT_DOMAIN).'</th>';
+			echo '<th>'.__('Autor', 'cp-communitie').'</th>';
+			echo '<th>'.__('Kat/ID', 'cp-communitie').'</th>';
+			echo '<th style="width: 30px; text-align:center;">'.__('Status', 'cp-communitie').'</th>';
+			echo '<th>'.__('Vorschau', 'cp-communitie').'</th>';
+			echo '<th>'.__('IP &amp; Proxy', 'cp-communitie').'</th>';
+			echo '<th>'.__('Zeit', 'cp-communitie').'</th>';
+			echo '<th>'.__('Aktion', 'cp-communitie').'</th>';
 			echo '</tr>';
 			echo '</tfoot>';
 			echo '<tbody>';
@@ -1715,26 +1706,26 @@ function __cpc__plugin_moderation() {
 					echo '<td valign="top" style="width: 30px">'.$post->topic_category.'/'.$post->tid.'</td>';
 					echo '<td valign="top" style="width: 30px; text-align:center;">';
 					if ($post->topic_approved != "on") {
-						echo '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/forum_orange.png" alt="Unapproved" />';
+						echo '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/forum_orange.png" alt="Abgelehnt" />';
 					} else {
-						echo '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/forum_green.png" alt="Unapproved" />';
+						echo '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/forum_green.png" alt="Abgelehnt" />';
 					}
 					echo '</td>';
 					echo '<td style="width:350px;max-width:350px;overflow:hidden;" valign="top">';
 					if ($post->topic_parent == 0) {
 						echo '<a href="'.$forum_url.$q.'cid='.$post->topic_category.'&show='.$post->tid.'">';
-						echo '<strong>'.__('New Topic', CPC_TEXT_DOMAIN).'</strong>';
+						echo '<strong>'.__('Neues Thema', 'cp-communitie').'</strong>';
 					} else {
 						echo '<a href="'.$forum_url.$q.'cid='.$post->topic_category.'&show='.$post->topic_parent.'">';
-						echo '<strong>'.__('New Reply', CPC_TEXT_DOMAIN).'</strong>';
+						echo '<strong>'.__('Neue Antwort', 'cp-communitie').'</strong>';
 					}
 					echo '</a>';
-					echo ' ('.__('Parent', CPC_TEXT_DOMAIN).'='.$post->topic_parent.')<br />';
+					echo ' ('.__('Eltern', 'cp-communitie').'='.$post->topic_parent.')<br />';
 					$preview = stripslashes($post->topic_post);
 					if ( strlen($preview) > 150 ) { $preview = substr($preview, 0, 150)."..."; }
 					echo '<div style="float: left;">'.$preview;
 					if ( strlen($preview) > 150 ) { 
-						echo '<span class="show_full_post" title="'.stripslashes(str_replace('"', '&quot;', $post->topic_post)).'" style="margin-left:6px; cursor:pointer; text-decoration:underline;">'.__('View', CPC_TEXT_DOMAIN).'</span>';
+						echo '<span class="show_full_post" title="'.stripslashes(str_replace('"', '&quot;', $post->topic_post)).'" style="margin-left:6px; cursor:pointer; text-decoration:underline;">'.__('Ansehen', 'cp-communitie').'</span>';
 					}
 					echo '</div>';
 					echo '</td>';
@@ -1743,9 +1734,9 @@ function __cpc__plugin_moderation() {
 					echo '<td valign="top" style="width: 150px">';
 					$showpage = (isset($_GET['showpage'])) ? $_GET['showpage'] : 0;
 					if ($post->topic_approved != "on" ) {
-						echo "<a href='admin.php?page=cpcommunitie_moderation&action=post_approve&showpage=".$showpage."&tid=".$post->tid."'>".__('Approve', CPC_TEXT_DOMAIN)."</a> | ";
+						echo "<a href='admin.php?page=cpcommunitie_moderation&action=post_approve&showpage=".$showpage."&tid=".$post->tid."'>".__('Genehmigen', 'cp-communitie')."</a> | ";
 					}
-					echo "<span class='trash delete'><a href='admin.php?page=cpcommunitie_moderation&action=post_del&showpage=".$showpage."&tid=".$post->tid."'>".__('Trash', CPC_TEXT_DOMAIN)."</a></span>";
+					echo "<span class='trash delete'><a href='admin.php?page=cpcommunitie_moderation&action=post_del&showpage=".$showpage."&tid=".$post->tid."'>".__('Müll', 'cp-communitie')."</a></span>";
 					// Change category
 					echo '<form action="#" method="POST">';
 					echo '<input type="hidden" name="cpcommunitie_cat_list_tid" value="'.$post->tid.'">';
@@ -1756,14 +1747,14 @@ function __cpc__plugin_moderation() {
 						$c = $wpdb->get_results($sql);
 						if ($c) {
 							echo '<SELECT NAME="cpcommunitie_cat_list">';
-							echo '<OPTION VALUE="0">'.__('Change category...', CPC_TEXT_DOMAIN).'</OPTION>';
+							echo '<OPTION VALUE="0">'.__('Kategorie wechseln...', 'cp-communitie').'</OPTION>';
 							foreach ($c as $cat) {
 								echo '<OPTION VALUE="'.$cat->cid.'"';
 								if ($cat->cid == $post->topic_category) echo ' SELECTED';
 								echo '>'.stripslashes($cat->title).'</OPTION>';
 							}
 							echo '</SELECT>';
-							echo '<INPUT TYPE="SUBMIT" CLASS="button-primary" VALUE="'.__('Set', CPC_TEXT_DOMAIN).'" />';
+							echo '<INPUT TYPE="SUBMIT" CLASS="button-primary" VALUE="'.__('Setzen', 'cp-communitie').'" />';
 						}
 						echo "</div></form>";
 					}
@@ -1782,7 +1773,7 @@ function __cpc__plugin_moderation() {
 
 		} else {
 
-			echo __('Sorry, you cannot moderate the forum.', CPC_TEXT_DOMAIN);
+			echo __('Du kannst das Forum leider nicht moderieren.', 'cp-communitie');
 
 		}
 		__cpc__show_manage_tabs_header_end();
@@ -1810,7 +1801,7 @@ function __cpc__plugin_debug() {
 
 	  	// ********** Summary
 		echo '<div style="margin-top:10px; margin-bottom:10px">';
-			echo sprintf(__("Visit this page to complete installation; after you add a %s shortcode to a page; change pages with %s shortcodes; if you change WordPress Permalinks; or if you experience problems.", CPC_TEXT_DOMAIN), CPC_WL, CPC_WL);
+			echo sprintf(__("Besuche diese Seite, um die Installation abzuschließen, nachdem Du einer Seite einen %s-Shortcode hinzugefügt hast, Seiten mit %s Shortcodes wechselst, wenn Du ClassicPress Permalinks änderst, oder wenn Du Probleme hast.", 'cp-communitie'), CPC_WL, CPC_WL);
 		echo '</div>';
 
 		// Check for activated/deactivated sub-plugins	 
@@ -1869,15 +1860,15 @@ function __cpc__plugin_debug() {
 			echo '<thead>';
 			echo '<tr>';
 			if ( $show_super_admin )
-				echo '<th width="10px">'.__('Network&nbsp;Activated', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th width="10px">'.__('Activated', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th width="150px">'.__('Feature', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th>'.__('WordPress page/URL Found', CPC_TEXT_DOMAIN).'</th>';
-			echo '<th  style="text-align:center;width:90px;">'.__('Status', CPC_TEXT_DOMAIN);
+				echo '<th width="10px">'.__('Netzwerk&nbsp;aktiviert', 'cp-communitie').'</th>';
+			echo '<th width="10px">'.__('Aktiviert', 'cp-communitie').'</th>';
+			echo '<th width="150px">'.__('Modul', 'cp-communitie').'</th>';
+			echo '<th>'.__('ClassicPress-Seite/URL gefunden', 'cp-communitie').'</th>';
+			echo '<th  style="text-align:center;width:90px;">'.__('Status', 'cp-communitie');
 			if (current_user_can('update_core'))
 				echo ' [<a href="javascript:void(0);" id="cpcommunitie_url">?</a>]</tg>';
 			if (current_user_can('update_core'))
-				echo '<th class="cpcommunitie_url">'.sprintf(__('%s Settings', CPC_TEXT_DOMAIN), CPC_WL_SHORT).'</th>';
+				echo '<th class="cpcommunitie_url">'.sprintf(__('%s-Einstellungen', 'cp-communitie'), CPC_WL_SHORT).'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1885,7 +1876,7 @@ function __cpc__plugin_debug() {
 				if ( $show_super_admin )
 					echo '<td>&nbsp;</td>';
 				echo '<td style="text-align:center"><img src="'.CPC_PLUGIN_URL.'/images/tick.png" /></td>';
-				echo '<td>'.__('Core', CPC_TEXT_DOMAIN).'</td>';
+				echo '<td>'.__('Core', 'cp-communitie').'</td>';
 				echo '<td>&nbsp;</td>';
 				echo '<td style="text-align:center"><img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/smilies/good.png" /></td>';
 				if (current_user_can('update_core'))
@@ -1896,29 +1887,29 @@ function __cpc__plugin_debug() {
 			$mobile_ver = get_option(CPC_OPTIONS_PREFIX."_mobile_version");
 			if ($mobile_ver != '') $mobile_ver = "v".$mobile_ver;
 
-			__cpc__install_row('profile', __('Profile', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-profile', '__cpc__profile', get_option(CPC_OPTIONS_PREFIX.'_profile_url'), CPC_DIR.'/profile.php', 'admin.php?page=profile', '__cpc__<a href="admin.php?page=cpcommunitie_profile">Options</a>');
-			__cpc__install_row('forum', __('Forum', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-forum', '__cpc__forum', get_option(CPC_OPTIONS_PREFIX.'_forum_url'), CPC_DIR.'/forum.php', 'admin.php?page=forum', '__cpc__<a href="admin.php?page=cpcommunitie_forum">Options</a>');
-			__cpc__install_row('members', __('Members', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-members', '__cpc__members', get_option(CPC_OPTIONS_PREFIX.'_members_url'), CPC_DIR.'/members.php', 'admin.php?page=__cpc__members_menu', '__cpc__<a href="admin.php?page=__cpc__members_menu">Options</a>');
-			__cpc__install_row('mail', __('Mail', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-mail', '__cpc__mail', get_option(CPC_OPTIONS_PREFIX.'_mail_url'), CPC_DIR.'/mail.php', '', '__cpc__<a href="admin.php?page=__cpc__mail_menu">Options</a>');		
-			__cpc__install_row('panel', __('Panel/Chat', CPC_TEXT_DOMAIN), '', '__cpc__add_notification_bar', '-', CPC_DIR.'/panel.php', 'admin.php?page=bar', '__cpc__<a href="admin.php?page=cpcommunitie_bar">Options</a>');
-			__cpc__install_row('wysiwyg', __('Forum WYSIWYG editor', CPC_TEXT_DOMAIN), '', '__cpc__wysiwyg', '-', '', CPC_DIR.'/forum.php', '__cpc__bronze__<a href="admin.php?page=cpcommunitie_forum">Options</a>');
-			__cpc__install_row('profile_plus', __('Profile_Plus', CPC_TEXT_DOMAIN), '', '__cpc__profile_plus', '-', 'cp-communitie/plus.php', 'admin.php?page='.CPC_DIR.'/plus_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/plus_admin.php">Options</a>');
-			__cpc__install_row('groups', __('Groups', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-groups', '__cpc__groups', get_option(CPC_OPTIONS_PREFIX.'_groups_url'), CPC_DIR.'/groups.php', 'admin.php?page='.CPC_DIR.'/groups_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/groups_admin.php">Options</a>');
-			__cpc__install_row('group', __('Group', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-group', '__cpc__group', get_option(CPC_OPTIONS_PREFIX.'_group_url'), CPC_DIR.'/groups.php', '', '__cpc__bronze__');
-			__cpc__install_row('gallery', __('Gallery', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-galleries', '__cpc__gallery', '/gallery/', CPC_DIR.'/gallery.php','admin.php?page='.CPC_DIR.'/gallery_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/gallery_admin.php">Options</a>');
-			__cpc__install_row('alerts', __('Alerts', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-alerts', '__cpc__news_main', '-', CPC_DIR.'/news.php', 'admin.php?page='.CPC_DIR.'/news_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/news_admin.php">Options</a>');
-			__cpc__install_row('events', __('Events', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-events', '__cpc__events_main', '-', CPC_DIR.'/events.php', 'admin.php?page='.CPC_DIR.'/events_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/events_admin.php">Options</a>');
-			__cpc__install_row('mobile', __('Mobile', CPC_TEXT_DOMAIN), '', '__cpc__mobile', '-', CPC_DIR.'/mobile.php', 'admin.php?page=__cpc__mobile_menu', '__cpc__bronze__<a href="admin.php?page=__cpc__mobile_menu">Options</a>');
-			__cpc__install_row('reply_by_email', 'Reply_by_Email', '', '__cpc__mailinglist', '-', CPC_DIR.'/mailinglist.php', 'admin.php?page='.CPC_DIR.'/cpcommunitie_mailinglist_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/mailinglist_admin.php">Options</a>');
-			__cpc__install_row('the_lounge', __('The_Lounge', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX.'-lounge', '__cpc__lounge_main', '-', CPC_DIR.'/lounge.php', 'admin.php?page='.CPC_DIR.'/lounge_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/lounge_admin.php">Options</a>');
-			__cpc__install_row('rss_feed', __('RSS_Feed', CPC_TEXT_DOMAIN), '', '__cpc__rss_main', '-', CPC_DIR.'/rss.php', '', '__cpc__bronze__');
-			__cpc__install_row('facebook', __('Facebook', CPC_TEXT_DOMAIN), '', '__cpc__facebook', '-', CPC_DIR.'/facebook.php', 'admin.php?page='.CPC_DIR.'/facebook_admin.php', '__cpc__bronze__');
+			__cpc__install_row('profile', __('Profile', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-profile', '__cpc__profile', get_option(CPC_OPTIONS_PREFIX.'_profile_url'), CPC_DIR.'/profile.php', 'admin.php?page=profile', '__cpc__<a href="admin.php?page=cpcommunitie_profile">Einstellungen</a>');
+			__cpc__install_row('forum', __('Forum', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-forum', '__cpc__forum', get_option(CPC_OPTIONS_PREFIX.'_forum_url'), CPC_DIR.'/forum.php', 'admin.php?page=forum', '__cpc__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
+			__cpc__install_row('members', __('Mitglieder', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-members', '__cpc__members', get_option(CPC_OPTIONS_PREFIX.'_members_url'), CPC_DIR.'/members.php', 'admin.php?page=__cpc__members_menu', '__cpc__<a href="admin.php?page=__cpc__members_menu">Einstellungen</a>');
+			__cpc__install_row('mail', __('E-Mail', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-mail', '__cpc__mail', get_option(CPC_OPTIONS_PREFIX.'_mail_url'), CPC_DIR.'/mail.php', '', '__cpc__<a href="admin.php?page=__cpc__mail_menu">Einstellungen</a>');		
+			__cpc__install_row('panel', __('Panel/Chat', 'cp-communitie'), '', '__cpc__add_notification_bar', '-', CPC_DIR.'/panel.php', 'admin.php?page=bar', '__cpc__<a href="admin.php?page=cpcommunitie_bar">Einstellungen</a>');
+			__cpc__install_row('wysiwyg', __('Forum-WYSIWYG-Editor', 'cp-communitie'), '', '__cpc__wysiwyg', '-', '', CPC_DIR.'/forum.php', '__cpc__bronze__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
+			__cpc__install_row('profile_plus', __('Profile_Plus', 'cp-communitie'), '', '__cpc__profile_plus', '-', 'cp-communitie/plus.php', 'admin.php?page='.CPC_DIR.'/plus_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/plus_admin.php">Einstellungen</a>');
+			__cpc__install_row('groups', __('Gruppen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-groups', '__cpc__groups', get_option(CPC_OPTIONS_PREFIX.'_groups_url'), CPC_DIR.'/groups.php', 'admin.php?page='.CPC_DIR.'/groups_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/groups_admin.php">Einstellungen</a>');
+			__cpc__install_row('group', __('Gruppe', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-group', '__cpc__group', get_option(CPC_OPTIONS_PREFIX.'_group_url'), CPC_DIR.'/groups.php', '', '__cpc__bronze__');
+			__cpc__install_row('gallery', __('Galerie', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-galleries', '__cpc__gallery', '/gallery/', CPC_DIR.'/gallery.php','admin.php?page='.CPC_DIR.'/gallery_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/gallery_admin.php">Einstellungen</a>');
+			__cpc__install_row('alerts', __('Benachrichtigungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-alerts', '__cpc__news_main', '-', CPC_DIR.'/news.php', 'admin.php?page='.CPC_DIR.'/news_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/news_admin.php">Einstellungen</a>');
+			__cpc__install_row('events', __('Veranstaltungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-events', '__cpc__events_main', '-', CPC_DIR.'/events.php', 'admin.php?page='.CPC_DIR.'/events_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/events_admin.php">Einstellungen</a>');
+			__cpc__install_row('mobile', __('Mobil', 'cp-communitie'), '', '__cpc__mobile', '-', CPC_DIR.'/mobile.php', 'admin.php?page=__cpc__mobile_menu', '__cpc__bronze__<a href="admin.php?page=__cpc__mobile_menu">Optionen</a>');
+			__cpc__install_row('reply_by_email', __('Antwort_per_E-Mail', 'cp-communitie'), '', '__cpc__mailinglist', '-', CPC_DIR.'/mailinglist.php', 'admin.php?page='.CPC_DIR.'/cpcommunitie_mailinglist_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/mailinglist_admin.php">Einstellungen</a>');
+			__cpc__install_row('the_lounge', __('The_Lounge', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-lounge', '__cpc__lounge_main', '-', CPC_DIR.'/lounge.php', 'admin.php?page='.CPC_DIR.'/lounge_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/lounge_admin.php">Einstellungen</a>');
+			__cpc__install_row('rss_feed', __('RSS_Feed', 'cp-communitie'), '', '__cpc__rss_main', '-', CPC_DIR.'/rss.php', '', '__cpc__bronze__');
+			__cpc__install_row('facebook', __('Facebook', 'cp-communitie'), '', '__cpc__facebook', '-', CPC_DIR.'/facebook.php', 'admin.php?page='.CPC_DIR.'/facebook_admin.php', '__cpc__bronze__');
 	
 			do_action('__cpc__installation_hook');
 
 			echo '<tr style="height:50px">';
 				echo '<td style="vertical-align:middle;padding-left:10px;" colspan='.$colspan.'>';
-				echo '<input type="submit" class="button-primary" value="'.__('Update', CPC_TEXT_DOMAIN).'" />';
+				echo '<input type="submit" class="button-primary" value="'.__('Aktualisieren', 'cp-communitie').'" />';
 				echo '</td>';
 			echo '</tr>';
 			
@@ -1955,14 +1946,14 @@ function __cpc__plugin_debug() {
 
 				echo '<form action="" method="POST">';
 				echo '<input type="hidden" name="__cpc__install_assist_action" value="show" />';
-				echo "<input id='__cpc__install_assist_button' type='submit' class='button-secondary' value='".__('Show installation help', CPC_TEXT_DOMAIN)."' />";
+				echo "<input id='__cpc__install_assist_button' type='submit' class='button-secondary' value='".__('Installationshilfe anzeigen', 'cp-communitie')."' />";
 				echo '</form>';
 				
 			} else {
 				
 				echo '<form action="" method="POST">';
 				echo '<input type="hidden" name="__cpc__install_assist_action" value="hide" />';
-				echo "<input id='__cpc__install_assist_button' type='submit' class='button-secondary' value='".__('Hide installation help', CPC_TEXT_DOMAIN)."' />";
+				echo "<input id='__cpc__install_assist_button' type='submit' class='button-secondary' value='".__('Installationshilfe ausblenden', 'cp-communitie')."' />";
 				echo '</form>';
 				
 				echo "<div id='__cpc__install_assist' style='margin-top:15px'>";
@@ -1970,22 +1961,22 @@ function __cpc__plugin_debug() {
 					echo "<div style='width:49%; float:left;'>";
 					
 						echo '<table class="widefat"><tr><td style="padding:0 0 0 10px">';
-							echo '<h2 style="margin-bottom:10px">'.__('Core Information', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Core Information', 'cp-communitie').'</h2>';
 				
 							echo '<p>';
-							echo __('Site domain name', CPC_TEXT_DOMAIN).': '.get_bloginfo('url').'<br />';
+							echo __('Webseite-Domänenname', 'cp-communitie').': '.get_bloginfo('url').'<br />';
 							echo '</p>';
 				
 							echo "<p>";
 				
 								global $blog_id;
-								echo __("WordPress site ID:", CPC_TEXT_DOMAIN)." ".$blog_id.'<br />';
-								echo __("WordPress site name:", CPC_TEXT_DOMAIN)." ".get_bloginfo('name').'<br />';
+								echo __("ClassicPress-Site-ID:", 'cp-communitie')." ".$blog_id.'<br />';
+								echo __("Name der ClassicPress-Site:", 'cp-communitie')." ".get_bloginfo('name').'<br />';
 								echo '<br />';
-								echo sprintf(__("%s internal code version:", CPC_TEXT_DOMAIN), CPC_WL)." ";
+								echo sprintf(__("%s interne Codeversion:", 'cp-communitie'), CPC_WL)." ";
 								$ver = get_option(CPC_OPTIONS_PREFIX."_version");
 								if (!$ver) { 
-									echo "<br /><span style='clear:both;color:red; font-weight:bold;'>Error!</span> ".__('No code version set. Try <a href="admin.php?page=cpcommunitie_debug&force_create_cpc=yes">re-creating/modifying</a> the database tables.', CPC_TEXT_DOMAIN)."</span><br />"; 
+									echo "<br /><span style='clear:both;color:red; font-weight:bold;'>Error!</span> ".__('Keine Codeversion festgelegt. Versuche die Datenbanktabellen <a href="admin.php?page=cpcommunitie_debug&force_create_cpc=yes">neu zu erstellen/zu ändern</a>.', 'cp-communitie')."</span><br />"; 
 								} else {
 									echo $ver."<br />";
 								}
@@ -1996,40 +1987,40 @@ function __cpc__plugin_debug() {
 							$disabled_functions=explode(',', ini_get('disable_functions'));
 							$ok=true;
 							if (!is_callable('curl_init')) {
-								echo $fail.__('CURL PHP extension is not installed, please contact your hosting company.', CPC_TEXT_DOMAIN).$fail2;
+								echo $fail.__('Die CURL-PHP-Erweiterung ist nicht installiert. Bitte wende Dich an Dein Hosting-Unternehmen.', 'cp-communitie').$fail2;
 								$ok=false;
 							} else {
 								if (in_array('curl_init', $disabled_functions)) {
-									echo $fail.__('CURL PHP extension is disabled in php.ini, please contact your hosting company.', CPC_TEXT_DOMAIN).$fail2;
+									echo $fail.__('Die CURL-PHP-Erweiterung ist in php.ini deaktiviert, bitte wende Dich an Dein Hosting-Unternehmen.', 'cp-communitie').$fail2;
 									$ok=false;
 								} else {
-									echo '<p>'.__('CURL PHP extension is installed and enabled in php.ini.', CPC_TEXT_DOMAIN).'</p>';
+									echo '<p>'.__('Die CURL-PHP-Erweiterung ist in php.ini installiert und aktiviert.', 'cp-communitie').'</p>';
 								}
 							}
 							if (!is_callable('json_decode')) {
-								echo $fail.__('JSON PHP extension is not installed, please contact your hosting company.', CPC_TEXT_DOMAIN).$fail2;
+								echo $fail.__('Die JSON-PHP-Erweiterung ist nicht installiert. Bitte wende Dich an Dein Hosting-Unternehmen.', 'cp-communitie').$fail2;
 								$ok=false;
 							} else {
 								if (in_array('json_decode', $disabled_functions)) {
-									echo $fail.__('JSON PHP extension is disabled in php.ini, please contact your hosting company.', CPC_TEXT_DOMAIN).$fail2;
+									echo $fail.__('Die JSON-PHP-Erweiterung ist in php.ini deaktiviert, bitte wende Dich an Dein Hosting-Unternehmen.', 'cp-communitie').$fail2;
 									$ok=false;
 								} else {
-									echo "<p>".__('JSON PHP extension is installed and enabled in php.ini.', CPC_TEXT_DOMAIN)."</p>";
+									echo "<p>".__('Die JSON-PHP-Erweiterung ist in php.ini installiert und aktiviert.', 'cp-communitie')."</p>";
 								}
 							}
 							if (!$ok)
-								echo $fail.__('Please contact your hosting company to ask for the above to be installed/enabled.', CPC_TEXT_DOMAIN).$fail2;
+								echo $fail.__('Bitte wende Dich an Dein Hosting-Unternehmen, um die Installation/Aktivierung des oben Genannten anzufordern.', 'cp-communitie').$fail2;
 							
 							// Debug mode?
 							if (CPC_DEBUG) {
-								echo "<p style='font-weight:bold'>".__('Running in DEBUG mode.', CPC_TEXT_DOMAIN)."</p>";
+								echo "<p style='font-weight:bold'>".__('Wird im DEBUG-Modus ausgeführt.', 'cp-communitie')."</p>";
 							}
 						echo '</td></tr></table>';
 		
 						// Integrity check
 						echo '<table class="widefat" style="margin-top:10px"><tr><td style="padding:0 10px 0 10px">';
 							echo '<a name="ric"></a>';
-							echo '<h2 style="margin-bottom:10px">'.__('Integrity check', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Integritätsprüfung', 'cp-communitie').'</h2>';
 							
 							if (isset($_POST['cpcommunitie_ric'])) {
 								$report = '';
@@ -2063,7 +2054,7 @@ function __cpc__plugin_debug() {
 											$wpdb->query($wpdb->prepare($sql, $missing->uid)); 			
 										}
 									}	
-									$report .= __("User tables syncronized", CPC_TEXT_DOMAIN).".<br />";															
+									$report .= __("Benutzertabellen synchronisiert", 'cp-communitie').".<br />";															
 								}
 								
 								// Fix missing categories, where replies exist with a category
@@ -2084,9 +2075,9 @@ function __cpc__plugin_debug() {
 							  	    }
 							  	}
 							  	if (count($a) > 0) 
-									$report .= sprintf( __("%d topics had missing categories, %d were fixed by copying from one of its replies", CPC_TEXT_DOMAIN), count($a), $updated ).".<br />";
+									$report .= sprintf( __("Bei %d Themen fehlten Kategorien, %d wurden durch Kopieren aus einer ihrer Antworten behoben", 'cp-communitie'), count($a), $updated ).".<br />";
 									if (count($a)-$updated > 0) 
-										$report .= sprintf(__('Fix the remaining orphaned topics <a href="%s">here</a>.', CPC_TEXT_DOMAIN), 'admin.php?page=cpcommunitie_moderation&mod=orphaned').'<br />';
+										$report .= sprintf(__('Korrigiere die verbleibenden verwaisten Themen <a href="%s">hier</a>.', 'cp-communitie'), 'admin.php?page=cpcommunitie_moderation&mod=orphaned').'<br />';
 							  								    	
 								// Update topic categories (if category missing and with a parent)
 								$sql = "SELECT * FROM ".$wpdb->prefix."cpcommunitie_topics
@@ -2101,7 +2092,7 @@ function __cpc__plugin_debug() {
 										$sql = "UPDATE ".$wpdb->prefix."cpcommunitie_topics SET topic_category = %d WHERE tid = %d";
 										$wpdb->query($wpdb->prepare($sql, $parent_cat, $topic->tid));
 									}
-									$report .= sprintf( __("%d replies had missing categories so copied from its parent", CPC_TEXT_DOMAIN), count($topics) )."<br />";
+									$report .= sprintf( __("Bei %d Antworten fehlten Kategorien, die daher von der übergeordneten Kategorie kopiert wurden", 'cp-communitie'), count($topics) )."<br />";
 								}
 								
 								// If a members folder exists in cpc-content, but user doesn't exist, report that it exists (can remove?)
@@ -2113,7 +2104,7 @@ function __cpc__plugin_debug() {
 												if (is_dir($path."/".$sub)) {
 													$id = $wpdb->get_var($wpdb->prepare("SELECT ID FROM ".$wpdb->base_prefix."users WHERE ID = %d", $sub));
 													if (!$id) {
-														$report .= 'User ID ['.$sub.'] not found but '.$path."/".$sub.' exists<br />';
+														$report .= 'Benutzer-ID ['.$sub.'] nicht gefunden, aber '.$path."/".$sub.' existiert<br />';
 														//__cpc__rrmdir($path."/".$sub);
 													}
 												}
@@ -2123,9 +2114,9 @@ function __cpc__plugin_debug() {
 								} else {
 									// Folder doesn't exist so create it
 									if (!mkdir($path, 0777, true)) {
-										$report .= sprintf(__("The %s images/media path could not be created (%s), check rights and re-run the Integrity Check", CPC_TEXT_DOMAIN), CPC_WL, $path);
+										$report .= sprintf(__("Der Bild-/Medienpfad %s konnte nicht erstellt werden (%s), prüfe die Rechte und führe die Integritätsprüfung erneut aus", 'cp-communitie'), CPC_WL, $path);
 									} else {
-										$report .= sprintf(__("The %s images/media path (%s) was created", CPC_TEXT_DOMAIN), CPC_WL, $path);
+										$report .= sprintf(__("Der %s Bilder-/Medienpfad (%s) wurde erstellt", 'cp-communitie'), CPC_WL, $path);
 									}
 								}
 								
@@ -2149,7 +2140,7 @@ function __cpc__plugin_debug() {
 			
 										if ($user->user_id != null) {
 			
-											$report .= '<strong>'.sprintf(__("Found duplicate meta_keys for user %d", CPC_TEXT_DOMAIN), $user->user_id).'</strong><br />';
+											$report .= '<strong>'.sprintf(__("Doppelte meta_keys für Benutzer %d gefunden", 'cp-communitie'), $user->user_id).'</strong><br />';
 			
 											// Get list of meta keys that have duplicates
 											$sql = "SELECT DISTINCT meta_key 
@@ -2173,7 +2164,7 @@ function __cpc__plugin_debug() {
 													$single = $wpdb->get_row($wpdb->prepare($sql, $user->user_id, $meta->meta_key));
 			
 													// Don't include following as standard as may produce large HTML output
-													// $report .= sprintf(__("Setting user %d meta_key '%s' as %s", CPC_TEXT_DOMAIN), $user->user_id, $single->meta_key, $single->meta_value).'<br />';
+													// $report .= sprintf(__("Setting user %d meta_key '%s' as %s", 'cp-communitie'), $user->user_id, $single->meta_key, $single->meta_value).'<br />';
 			
 													// Do the clean up
 													$sql = "DELETE FROM ".$wpdb->base_prefix."usermeta WHERE user_id = %d AND meta_key = %s";
@@ -2192,7 +2183,7 @@ function __cpc__plugin_debug() {
 									if (isset($_POST['cpcommunitie_ric_username']) && $_POST['cpcommunitie_ric_username'] != '') {
 										$sql = "SELECT * FROM ".$wpdb->base_prefix."users WHERE user_login = %s OR display_name = %s";
 										$users = $wpdb->get_results($wpdb->prepare($sql, $_POST['cpcommunitie_ric_username'], $_POST['cpcommunitie_ric_username']));
-										$report .= sprintf(__("Geocoding for %s", CPC_TEXT_DOMAIN), $_POST['cpcommunitie_ric_username']).'<br />';
+										$report .= sprintf(__("Geokodierung für %s", 'cp-communitie'), $_POST['cpcommunitie_ric_username']).'<br />';
 									} else {
 										$sql = "SELECT * FROM ".$wpdb->base_prefix."users";
 										$users = $wpdb->get_results($sql);
@@ -2203,7 +2194,7 @@ function __cpc__plugin_debug() {
 
 										foreach ($users as $user) {
 											if (isset($_POST['cpcommunitie_ric_username']) && $_POST['cpcommunitie_ric_username'] != '')
-												$report .= sprintf(__("Found %s", CPC_TEXT_DOMAIN), $_POST['cpcommunitie_ric_username']).'<br />';
+												$report .= sprintf(__("%s gefunden", 'cp-communitie'), $_POST['cpcommunitie_ric_username']).'<br />';
 											
 											$lat = get_user_meta($user->ID, 'cpcommunitie_plus_lat', true);
 											$lng = get_user_meta($user->ID, 'cpcommunitie_plus_long', true);
@@ -2219,38 +2210,38 @@ function __cpc__plugin_debug() {
 													$fgc = 'http://maps.googleapis.com/maps/api/geocode/json?address='.$city.'+'.$country.'&sensor=false';
 											
 													if ($json = @file_get_contents($fgc) ) {
-														if (CPC_DEBUG || (isset($_POST['cpcommunitie_ric_username']) && $_POST['cpcommunitie_ric_username'] != '')) $report .= "Connect URL to Google API with: ".$fgc."<br />";
+														if (CPC_DEBUG || (isset($_POST['cpcommunitie_ric_username']) && $_POST['cpcommunitie_ric_username'] != '')) $report .= "URL mit Google API verbinden mit: ".$fgc."<br />";
 														$json_output = json_decode($json, true);
 														$json_output_array = __cpc__displayArray($json_output);
 														if (strpos($json_output_array, "OVER_QUERY_LIMIT") !== false) {
 															if (!$not_reported_limit) {
-																$report .= "<span style='color:red; font-weight:bold;'>".__("Google API limit reached, please repeat for remaining users, or enter a user login.", CPC_TEXT_DOMAIN).'</span><br />';														
+																$report .= "<span style='color:red; font-weight:bold;'>".__("Google-API-Limit erreicht, bitte wiederhole dies für verbleibende Nutzer oder gib einen Nutzer-Login ein.", 'cp-communitie').'</span><br />';														
 																$not_reported_limit = true;
 															}
 														} else {
 															$lat_new = $json_output['results'][0]['geometry']['location']['lat'];
 															$lng_new = $json_output['results'][0]['geometry']['location']['lng'];														
 															if (CPC_DEBUG || (isset($_POST['cpcommunitie_ric_username']) && $_POST['cpcommunitie_ric_username'] != ''))
-																$report .= " - Google results: ".$lat_new."/".$lng_new."<br />";
+																$report .= " - Google-Ergebnisse: ".$lat_new."/".$lng_new."<br />";
 			
 															update_user_meta($user->ID, 'cpcommunitie_plus_lat', $lat_new);
 															update_user_meta($user->ID, 'cpcommunitie_plus_long', $lng_new);
 															
 															if (!$not_reported_limit)
-																$report .= sprintf(__("Updated %s [%d] geocode information for %s,%s from %s,%s to %s,%s", CPC_TEXT_DOMAIN), $user->display_name, $user->ID, $city, $country, $lat, $lng, $lat_new, $lng_new).'<br />';
+																$report .= sprintf(__("%s [%d] Geocode-Informationen für %s,%s von %s,%s auf %s,%s aktualisiert", 'cp-communitie'), $user->display_name, $user->ID, $city, $country, $lat, $lng, $lat_new, $lng_new).'<br />';
 														}
 													} else {
-														$report .= "<span style='color:red; font-weight:bold;'>".sprintf(__("Failed to connect to Google API<br>%s", CPC_TEXT_DOMAIN), $json).'</span><br />';
+														$report .= "<span style='color:red; font-weight:bold;'>".sprintf(__("Fehler beim Verbinden mit Google API<br>%s", 'cp-communitie'), $json).'</span><br />';
 													}
 												}
 											}
 										}
 									} else {
-										$report .= __("No users found.").'<br />';
+										$report .= __("Keine Benutzer gefunden.").'<br />';
 									}
 									
 								} else {
-									$report .= __("Not checking geocoding as Profile Plus not activated.").'<br />';
+									$report .= __("Geokodierung wird nicht überprüft, da Profile Plus nicht aktiviert ist.").'<br />';
 								}								
 								
 								// Remove dead friendships
@@ -2273,43 +2264,43 @@ function __cpc__plugin_debug() {
 									$wpdb->query($wpdb->prepare($sql, $orphan->fid));
 									$del_count++;
 								}
-								if ($del_count) $report .= sprintf(__("%d orphaned friendships removed.", CPC_TEXT_DOMAIN), $del_count).'<br />';
+								if ($del_count) $report .= sprintf(__("%d verwaiste Freundschaften entfernt.", 'cp-communitie'), $del_count).'<br />';
 			
 								// Filter
 								$report = apply_filters( '__cpc__integrity_check_hook', $report );						
 			
 								// Done
 								echo "<div style='margin-top:15px;margin-right:15px; border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>";
-								if ($report == '') { $report = __('No problems found.', CPC_TEXT_DOMAIN); }
-								echo "<strong>".__("Integrity check completed.", CPC_TEXT_DOMAIN)."</strong><br />".$report;
+								if ($report == '') { $report = __('Keine Probleme gefunden.', 'cp-communitie'); }
+								echo "<strong>".__("Integritätsprüfung abgeschlossen.", 'cp-communitie')."</strong><br />".$report;
 								echo "</div>";
 								
 							}
 				
 										
-							echo "<p>".sprintf(__('<strong>Only click the button below once!<br />This can take a long while to complete if you have a lot of users - please wait for it to finish.<br />If your browser "times out" you can repeat until it completes.</strong><br />You should run the integrity check regularly, preferably daily. Before reporting a support request, please run the %s integrity check. This will remove potential inaccuracies within the database.', CPC_TEXT_DOMAIN), CPC_WL_SHORT)."</p>";
+							echo "<p>".sprintf(__('<strong>Klicke nur einmal auf die Schaltfläche unten!<br />Dies kann eine Weile dauern, wenn Du viele Benutzer hast. Bitte warte bis es fertig ist.<br />Wenn Dein Browser "zeitüberschreitet", kannst Du den Vorgang Wiederholen, bis er abgeschlossen ist.</strong><br />Du solltest die Integritätsprüfung regelmäßig durchführen, vorzugsweise täglich. Bevor Du eine Support-Anfrage meldest, führe bitte die %s-Integritätsprüfung durch. Dadurch werden potenzielle Ungenauigkeiten in der Datenbank beseitigt.', 'cp-communitie'), CPC_WL_SHORT)."</p>";
 				
 							echo '<form method="post" action="#ric">';
 							echo '<input type="hidden" name="cpcommunitie_ric" value="Y">';
-							echo __('Enter a user login/display name to restrict to one user.', CPC_TEXT_DOMAIN).'<br />';
+							echo __('Gib einen Anmelde-/Anzeigenamen für den Benutzer ein, um ihn auf einen Benutzer zu beschränken.', 'cp-communitie').'<br />';
 							echo '<input type="text" name="cpcommunitie_ric_username" value=""><br />';
-							echo '<input type="checkbox" name="cpcommunitie_ric_syn"> '.__('Syncronize WordPress user tables with CP Community', CPC_TEXT_DOMAIN);
-							echo '<p></p><input type="submit" name="Submit" class="button-primary" value="'.__('Run integrity check', CPC_TEXT_DOMAIN).'" /></p>';
+							echo '<input type="checkbox" name="cpcommunitie_ric_syn"> '.__('Synchronisiere ClassicPress-Benutzertabellen mit CP Community', 'cp-communitie');
+							echo '<p></p><input type="submit" name="Submit" class="button-primary" value="'.__('Führe eine Integritätsprüfung durch', 'cp-communitie').'" /></p>';
 							echo '</form>';
 		
 						echo '</td></tr></table>';
 		
 						// ********** Reset database version
 						echo '<table class="widefat" style="margin-top:10px"><tr><td style="padding:0 0 0 10px">';
-							echo '<h2 style="margin-bottom:10px">'.sprintf(__('Refresh %s', CPC_TEXT_DOMAIN), CPC_WL).'</h2>';
-							echo "<p>".__('To re-run the database table creation/modifications, <a href="admin.php?page=cpcommunitie_debug&force_create_cpc=yes">click here</a>.<br /><strong>This will not destroy any existing tables or data</strong>.', CPC_TEXT_DOMAIN)."</p>";
-							echo "<p>".sprintf(__('This will also display the %s <a href="%s">welcome page</a>.', CPC_TEXT_DOMAIN), CPC_WL, "admin.php?page=cpcommunitie_welcome")."</p>";
+							echo '<h2 style="margin-bottom:10px">'.sprintf(__('Aktualisiere %s', 'cp-communitie'), CPC_WL).'</h2>';
+							echo "<p>".__('Um die Erstellung/Änderung der Datenbanktabelle erneut auszuführen, <a href="admin.php?page=cpcommunitie_debug&force_create_cpc=yes">klicke hier</a>.<br /><strong>Dadurch werden keine vorhandenen Tabellen oder Daten zerstört</strong>.', 'cp-communitie')."</p>";
+							echo "<p>".sprintf(__('Dadurch wird auch die <a href="%s">Willkommensseite</a> von %s angezeigt.', 'cp-communitie'), CPC_WL, "admin.php?page=cpcommunitie_welcome")."</p>";
 						echo '</td></tr></table>';
 		
 						// Purge chat
 						echo '<table class="widefat" style="margin-top:10px"><tr><td style="padding:0 0 0 10px">';
 							echo "<a name='purge'></a>";
-							echo '<h2 style="margin-bottom:10px">'.__('Purge forum/chat', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Forum/Chat löschen', 'cp-communitie').'</h2>';
 			
 							if (isset($_POST['purge_chat']) && $_POST['purge_chat'] != '' && is_numeric($_POST['purge_chat']) ) {
 								
@@ -2319,7 +2310,7 @@ function __cpc__plugin_debug() {
 								$wpdb->query( $sql );
 								
 								echo "<div style='margin-top:10px; border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>";
-								echo "Chat purged: ".$cnt;
+								echo "Chat gelöscht: ".$cnt;
 								echo "</div>";
 							}
 							
@@ -2339,20 +2330,20 @@ function __cpc__plugin_debug() {
 								}
 								
 								echo "<div style='margin-top:10px; border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>";
-								echo "Topics purged: ".$cnt;
+								echo "Gelöschte Themen: ".$cnt;
 								echo "</div>";
 							}
 			
-							echo '<p>'.__('Forum activity and chat purged are <strong>deleted</strong> - you cannot undo this. Take a backup first!', CPC_TEXT_DOMAIN).'</p>';
+							echo '<p>'.__('Forenaktivitäten und gelöschte Chats werden <strong>gelöscht</strong> - Du kannst dies nicht rückgängig machen. Vorher Backup machen!', 'cp-communitie').'</p>';
 				
 							echo '<form action="" method="post"><table style="margin-bottom:10px">';
-							echo '<tr><td style="border:0">'.__('Chat older than', CPC_TEXT_DOMAIN);
+							echo '<tr><td style="border:0">'.__('Chat älter als', 'cp-communitie');
 								echo '</td><td style="border:0"><input type="text" size="3" name="purge_chat"> ';
-								echo __('days', CPC_TEXT_DOMAIN)."</td></tr>";
-							echo '<tr><td style="border:0">'.__('Forum topics older than', CPC_TEXT_DOMAIN);
+								echo __('Tage', 'cp-communitie')."</td></tr>";
+							echo '<tr><td style="border:0">'.__('Forenthemen älter als', 'cp-communitie');
 								echo '</td><td style="border:0"><input type="text" size="3" name="purge_topics"> ';
-								echo __('days', CPC_TEXT_DOMAIN)."</td></tr></table>";
-							echo '<input type="submit" class="button-primary delete" value="'.__('Purge', CPC_TEXT_DOMAIN).'">';
+								echo __('Tage', 'cp-communitie')."</td></tr></table>";
+							echo '<input type="submit" class="button-primary delete" value="'.__('Löschen', 'cp-communitie').'">';
 							echo '</form><br />';
 						echo '</td></tr></table>';
 		
@@ -2362,8 +2353,8 @@ function __cpc__plugin_debug() {
 						// Permalinks
 						echo '<table class="widefat" style="float:right;"><tr><td style="padding:0 0 0 10px">';
 							echo '<a name="perma"></a>';
-							echo '<h2 style="margin-bottom:10px">'.sprintf(__('%s Permalinks', CPC_TEXT_DOMAIN), CPC_WL_SHORT).'</h2>';
-							echo '<p style="font-weight:bold">'.__('It is recommended that you test these before implementing.', CPC_TEXT_DOMAIN).'</p>';
+							echo '<h2 style="margin-bottom:10px">'.sprintf(__('%s Permalinks', 'cp-communitie'), CPC_WL_SHORT).'</h2>';
+							echo '<p style="font-weight:bold">'.__('Es wird empfohlen, diese vor der Implementierung zu testen.', 'cp-communitie').'</p>';
 							
 							// Act on submit
 							$just_switched_on = false;
@@ -2386,7 +2377,7 @@ function __cpc__plugin_debug() {
 								} else {
 			
 									if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
-										echo '<p>'.__('The first time you enable permalinks, please be patient while your database is updated.', CPC_TEXT_DOMAIN).'</p>'; 
+										echo '<p>'.__('Wenn Du Permalinks zum ersten Mal aktivierst, habe bitte etwas Geduld, während Deine Datenbank aktualisiert wird.', 'cp-communitie').'</p>'; 
 									}
 									delete_option('cpcommunitie_permalink_structure');
 									delete_option('cpcommunitie_permalinks_cats');
@@ -2402,7 +2393,7 @@ function __cpc__plugin_debug() {
 										// Can't work with Forum in AJAX mode
 										if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax')) {
 											update_option(CPC_OPTIONS_PREFIX.'_forum_ajax', '');
-											echo '<p style="color:green; font-weight:bold;">'.__('Forum "AJAX mode" has been disabled, as this is not compatible with permalinks.', CPC_TEXT_DOMAIN).'</p>'; 
+											echo '<p style="color:green; font-weight:bold;">'.__('Der "AJAX-Modus" des Forums wurde deaktiviert, da dieser nicht mit Permalinks kompatibel ist.', 'cp-communitie').'</p>'; 
 										}
 				
 										// Do a check to ensure all forum categories have a slug
@@ -2470,7 +2461,7 @@ function __cpc__plugin_debug() {
 												update_option(CPC_OPTIONS_PREFIX.'_rewrite_members_target', 'index.php?pagename='.$members_title.'&stub=$matches[1]');
 			
 												flush_rewrite_rules();
-												echo '<p style="color:green; font-weight:bold;">'.__('Re-write rules saved as default suggested values.', CPC_TEXT_DOMAIN).'</p>'; 
+												echo '<p style="color:green; font-weight:bold;">'.__('Regeln neu schreiben, die als vorgeschlagene Standardwerte gespeichert sind.', 'cp-communitie').'</p>'; 
 												
 												update_option(CPC_OPTIONS_PREFIX.'_permalinks_cats', 'on');
 			
@@ -2483,34 +2474,34 @@ function __cpc__plugin_debug() {
 			
 										// Display fields allowing them to be altered												
 																
-										echo '<strong>'.__('Forum', CPC_TEXT_DOMAIN).'</strong><br />';
+										echo '<strong>'.__('Forum', 'cp-communitie').'</strong><br />';
 										echo '<input type="text" name="cpcommunitie_rewrite_forum_single" style="width:150px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_forum_single').'" /> => ';
 										echo '<input type="text" name="cpcommunitie_rewrite_forum_single_target" style="width:400px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_forum_single_target').'" /><br />';
 										echo '<input type="text" name="cpcommunitie_rewrite_forum_double" style="width:150px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_forum_double').'" /> => ';
 										echo '<input type="text" name="cpcommunitie_rewrite_forum_double_target" style="width:400px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_forum_double_target').'" /><br />';
-										echo '<br /><strong>'.__('Member Profile', CPC_TEXT_DOMAIN).'</strong><br />';
+										echo '<br /><strong>'.__('Mitgliedsprofil', 'cp-communitie').'</strong><br />';
 										echo '<input type="text" name="cpcommunitie_rewrite_members" style="width:150px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_members').'" /> => ';
 										echo '<input type="text" name="cpcommunitie_rewrite_members_target" style="width:400px" value="'.get_option(CPC_OPTIONS_PREFIX.'_rewrite_members_target').'" /><br /><br />';
 										
 										echo '<input type="hidden" name="cpcommunitie_permalinks" value="Y">';
-										echo '<input type="checkbox" name="cpcommunitie_permalinks_enable" CHECKED > '.sprintf(__('%s Permalinks enabled', CPC_TEXT_DOMAIN), CPC_WL_SHORT).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
+										echo '<input type="checkbox" name="cpcommunitie_permalinks_enable" CHECKED > '.sprintf(__('%s Permalinks aktiviert', 'cp-communitie'), CPC_WL_SHORT).'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;';
 										echo '<input type="checkbox" name="cpcommunitie_permalinks_cats"';
 											if (get_option(CPC_OPTIONS_PREFIX.'_permalinks_cats')) echo ' CHECKED';
-											echo '> '.__('Include categories in forum hyperlinks', CPC_TEXT_DOMAIN).'<br /><br />';
-										echo '<input type="checkbox" name="cpcommunitie_permalinks_reset" /> '.__('Reset to default suggested values (if you have altered page names for example)', CPC_TEXT_DOMAIN);
-										echo '<p style="margin: 10px 0 10px 0"><input type="submit" class="button-primary" value="'.__('Update', CPC_TEXT_DOMAIN).'" />';
+											echo '> '.__('Füge Kategorien in Foren-Hyperlinks ein', 'cp-communitie').'<br /><br />';
+										echo '<input type="checkbox" name="cpcommunitie_permalinks_reset" /> '.__('Zurücksetzen auf die vorgeschlagenen Standardwerte (wenn Du beispielsweise Seitennamen geändert hast)', 'cp-communitie');
+										echo '<p style="margin: 10px 0 10px 0"><input type="submit" class="button-primary" value="'.__('Aktualisieren', 'cp-communitie').'" />';
 										
 									} else {
 										echo '<input type="hidden" name="cpcommunitie_permalinks" value="Y">';
-										echo '<input type="checkbox" name="cpcommunitie_permalinks_enable"> '.sprintf(__('Check to enable %s Permalinks', CPC_TEXT_DOMAIN), CPC_WL_SHORT);
-										echo '<p style="margin: 10px 0 10px 0"><input type="submit" class="button-primary" value="'.__('Update', CPC_TEXT_DOMAIN).'" />';
+										echo '<input type="checkbox" name="cpcommunitie_permalinks_enable"> '.sprintf(__('Aktivieren um %s Permalinks zu aktivieren', 'cp-communitie'), CPC_WL_SHORT);
+										echo '<p style="margin: 10px 0 10px 0"><input type="submit" class="button-primary" value="'.__('Aktualisieren', 'cp-communitie').'" />';
 									}
 			
 			
 								echo '</form>';
 			
 							} else {
-								echo '<p>'.__('You cannot use Permalinks if your WordPress <a href="options-permalink.php">permalink setting</a> is default.', CPC_TEXT_DOMAIN).'</p>'; 
+								echo '<p>'.__('Du kannst keine Permalinks verwenden, wenn Deine ClassicPress <a href="options-permalink.php">Permalink-Einstellung</a> die Standardeinstellung ist.', 'cp-communitie').'</p>'; 
 							}
 							
 						echo '</td></tr></table>';
@@ -2520,23 +2511,23 @@ function __cpc__plugin_debug() {
 						
 							if( isset($_POST[ 'cpcommunitie_testemail' ]) && $_POST[ 'cpcommunitie_testemail' ] == 'Y' && $_POST['cpcommunitie_testemail_address'] != '' ) {
 								$to = $_POST['cpcommunitie_testemail_address'];
-								if (__cpc__sendmail($to, sprintf("%s Test Email", CPC_WL), __("This is a test email sent from", CPC_TEXT_DOMAIN)." ".get_bloginfo('url'))) {
+								if (__cpc__sendmail($to, sprintf("%s Test Email", CPC_WL), __("Dies ist eine Test-E-Mail, gesendet von ", 'cp-communitie')." ".get_bloginfo('url'))) {
 									echo "<div class='updated'><p>";
 									$from = get_option(CPC_OPTIONS_PREFIX.'_from_email');
-									echo sprintf(__('Email sent to %s from', CPC_TEXT_DOMAIN), $to);
+									echo sprintf(__('E-Mail gesendet an %s von', 'cp-communitie'), $to);
 									echo ' '.$from;
 									echo "</p></div>";
 								} else {
-									echo "<div class='error'><p>".__("Email failed to send", CPC_TEXT_DOMAIN).".</p></div>";
+									echo "<div class='error'><p>".__("E-Mail konnte nicht gesendet werden", 'cp-communitie').".</p></div>";
 								}
 							}
-							echo '<h2 style="margin-bottom:10px">'.__('Send a test email', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Sende eine Test-E-Mail', 'cp-communitie').'</h2>';
 				
-							echo '<p>'.__('Enter a valid email address to test sending an email from the server', CPC_TEXT_DOMAIN).'.</p>';
+							echo '<p>'.__('Gib eine gültige E-Mail-Adresse ein, um das Senden einer E-Mail vom Server zu testen', 'cp-communitie').'.</p>';
 							echo '<form method="post" action="">';
 							echo '<input type="hidden" name="cpcommunitie_testemail" value="Y">';
 							echo '<p><input type="text" name="cpcommunitie_testemail_address" value="" style="margin-right:15px;height:24px;width:300px" class="regular-text">';
-							echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Send email', CPC_TEXT_DOMAIN).'" /></p';
+							echo '<input type="submit" name="Submit" class="button-primary" value="'.__('E-Mail senden', 'cp-communitie').'" /></p';
 							echo '</form>';
 							
 						echo '</td></tr></table>';
@@ -2544,34 +2535,34 @@ function __cpc__plugin_debug() {
 						// Image uploading
 						echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
 							echo '<a name="image"></a>';
-							echo '<h2 style="margin-bottom:10px">'.__('Image Uploading', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Hochladen von Bildern', 'cp-communitie').'</h2>';
 						
 							echo "<div>";
 							echo "<div id='cpcommunitie_user_login' style='display:none'>".strtolower($current_user->user_login)."</div>";
 							echo "<div id='cpcommunitie_user_email' style='display:none'>".strtolower($current_user->user_email)."</div>";
 							if (get_option(CPC_OPTIONS_PREFIX.'_img_db') == "on") {
-								echo __("<p>You are storing images in the database.</p>", CPC_TEXT_DOMAIN);
+								echo __("<p>Du speicherst Bilder in der Datenbank.</p>", 'cp-communitie');
 							} else {
-								echo __("<p>You are storing images in the file system.</p>", CPC_TEXT_DOMAIN);			
+								echo __("<p>Du speicherst Bilder im Dateisystem.</p>", 'cp-communitie');			
 					
 								if (file_exists(get_option(CPC_OPTIONS_PREFIX.'_img_path'))) {
-									echo "<p>".sprintf(__('The folder %s exists, where images uploaded will be placed.', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_img_path'))."</p>";
+									echo "<p>".sprintf(__('Der Ordner %s existiert, in dem hochgeladene Bilder abgelegt werden.', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_img_path'))."</p>";
 								} else {
-									echo "<p>".sprintf(__('The folder %s does not exist, where images uploaded will be placed, trying to create...', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_img_path'))."</p>";
+									echo "<p>".sprintf(__('Der Ordner %s existiert nicht, in dem hochgeladene Bilder abgelegt werden, versuche zu erstellen...', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_img_path'))."</p>";
 									if (!mkdir(get_option(CPC_OPTIONS_PREFIX.'_img_path'), 0755, true)) {
-										echo '<p>Failed to create '.get_option(CPC_OPTIONS_PREFIX.'_img_path').'.</p>';
+										echo '<p>Fehler beim erstellen von '.get_option(CPC_OPTIONS_PREFIX.'_img_path').'.</p>';
 										$error = error_get_last();
 									    echo '<p>'.$error['message'].'<br />';
-									    echo sprintf(__('For info, this script is in %s.', CPC_TEXT_DOMAIN), __FILE__);
+									    echo sprintf(__('Zur Information, dieses Skript befindet sich in %s.', 'cp-communitie'), __FILE__);
 									} else {
-										echo '<p>Created '.get_option(CPC_OPTIONS_PREFIX.'_img_path').'.</p>';
+										echo '<p>Erstellt '.get_option(CPC_OPTIONS_PREFIX.'_img_path').'.</p>';
 									}
 								}
 								
 								if (get_option(CPC_OPTIONS_PREFIX.'_img_url') == '') {
-									echo "<p>".$fail.__('You must update the URL for your images on the <a href="admin.php?page=cpcommunitie_settings">Settings</a>.', CPC_TEXT_DOMAIN).$fail2."</p>";
+									echo "<p>".$fail.__('Du musst die URL für Deine Bilder in den <a href="admin.php?page=cpcommunitie_settings">Einstellungen</a> aktualisieren.', 'cp-communitie').$fail2."</p>";
 								} else {
-									echo "<p>".__('The URL to your images folder is', CPC_TEXT_DOMAIN)." <a href='".get_option(CPC_OPTIONS_PREFIX.'_img_url')."'>".get_option(CPC_OPTIONS_PREFIX.'_img_url')."</a>.</p>";
+									echo "<p>".__('Die URL zu Deinem Bilderordner lautet', 'cp-communitie')." <a href='".get_option(CPC_OPTIONS_PREFIX.'_img_url')."'>".get_option(CPC_OPTIONS_PREFIX.'_img_url')."</a>.</p>";
 								}
 			
 								$tmpDir = get_option(CPC_OPTIONS_PREFIX.'_img_path').'/tmp';
@@ -2582,21 +2573,21 @@ function __cpc__plugin_debug() {
 								// Does tmp folder exist?
 								if (!file_exists($tmpDir)) {
 									if (@mkdir($tmpDir)) {
-										echo '<p>'.sprintf(__('The %s temporary image folder (%s) does not currently exist', CPC_TEXT_DOMAIN), CPC_WL_SHORT, $tmpDir);
-										echo __(', and has been created.', CPC_TEXT_DOMAIN).'</p>';
+										echo '<p>'.sprintf(__('The %s temporary image folder (%s) does not currently exist', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
+										echo __(', and has been created.', 'cp-communitie').'</p>';
 									} else {
-										echo '<p>'.$fail.sprintf(__('The %s temporary image folder (%s) does not currently exist', CPC_TEXT_DOMAIN), CPC_WL_SHORT, $tmpDir);
-										echo __(', and could not be created - please check permissions of this path.', CPC_TEXT_DOMAIN).$fail2.'</p>';
+										echo '<p>'.$fail.sprintf(__('The %s temporary image folder (%s) does not currently exist', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
+										echo __(', and could not be created - please check permissions of this path.', 'cp-communitie').$fail2.'</p>';
 									}
 								} else {
-									echo '<p>'.sprintf(__('The %s temporary image folder (%s) exists.', CPC_TEXT_DOMAIN), CPC_WL_SHORT, $tmpDir).'</p>';
+									echo '<p>'.sprintf(__('The %s temporary image folder (%s) exists.', 'cp-communitie'), CPC_WL_SHORT, $tmpDir).'</p>';
 									
 									// Check creating a temporary file in tmp
 									if (touch($targetTmpFile)) {
 										@unlink($targetTmpFile);
-										echo "<p>".sprintf(__('Temporary file (%s) created and removed successfully.', CPC_TEXT_DOMAIN), $tmpFile)."</p>";
+										echo "<p>".sprintf(__('Temporary file (%s) created and removed successfully.', 'cp-communitie'), $tmpFile)."</p>";
 									} else {
-										echo '<p>'.$fail.sprintf(__('A temporary file (%s) could not be created (in %s), please check permissions.', CPC_TEXT_DOMAIN), $targetTmpFile, $tmpDir);
+										echo '<p>'.$fail.sprintf(__('A temporary file (%s) could not be created (in %s), please check permissions.', 'cp-communitie'), $targetTmpFile, $tmpDir);
 									}
 								}
 								
@@ -2607,15 +2598,15 @@ function __cpc__plugin_debug() {
 						// Link to licence
 						echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
 							echo '<a name="image"></a>';
-							echo '<h2 style="margin-bottom:10px">'.__('End User Licence Agreement', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('End User Licence Agreement', 'cp-communitie').'</h2>';
 						
-							echo "<p>".sprintf(__("If you do not accept the terms of the <a href='%s'>licence</a>, please remove this plugin", CPC_TEXT_DOMAIN), CPC_PLUGIN_URL."/licence.txt").".</p>";
+							echo "<p>".sprintf(__("If you do not accept the terms of the <a href='%s'>licence</a>, please remove this plugin", 'cp-communitie'), CPC_PLUGIN_URL."/licence.txt").".</p>";
 							
 						echo '</td></tr></table>';
 								
 						// ********** Daily Digest 
 						echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
-							echo '<h2 style="margin-bottom:10px">'.__('Daily Digest', CPC_TEXT_DOMAIN).'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Daily Digest', 'cp-communitie').'</h2>';
 				
 							if( isset($_POST[ 'cpcommunitie_dailydigest' ]) && $_POST[ 'cpcommunitie_dailydigest' ] == 'Y' ) {
 								$to_users = isset($_POST['cpcommunitie_dailydigest_users']) ? $_POST['cpcommunitie_dailydigest_users'] : '';
@@ -2638,12 +2629,12 @@ function __cpc__plugin_debug() {
 									echo "</div>";
 								}
 							}
-							echo '<p>'.__('The Daily Digest also performs some basic database cleanup operations, which can be run at any time', CPC_TEXT_DOMAIN).'.</p>';
+							echo '<p>'.__('The Daily Digest also performs some basic database cleanup operations, which can be run at any time', 'cp-communitie').'.</p>';
 							echo '<form method="post" action="">';
 							echo '<input type="hidden" name="cpcommunitie_dailydigest" value="Y">';
-							echo '<input type="checkbox" name="cpcommunitie_dailydigest_admin" > '.__('Send Daily Digest and summary to admin', CPC_TEXT_DOMAIN).' ('.get_bloginfo('admin_email').')<br />';
-							echo '<input type="checkbox" name="cpcommunitie_dailydigest_users" > '.__('Send Daily Digest to users now (includes summary to admin)', CPC_TEXT_DOMAIN);
-							echo '<p style="margin-top:10px"><input type="submit" name="Submit" class="button-primary" value="'.__('Send Daily Digest', CPC_TEXT_DOMAIN).'" /></p>';
+							echo '<input type="checkbox" name="cpcommunitie_dailydigest_admin" > '.__('Send Daily Digest and summary to admin', 'cp-communitie').' ('.get_bloginfo('admin_email').')<br />';
+							echo '<input type="checkbox" name="cpcommunitie_dailydigest_users" > '.__('Send Daily Digest to users now (includes summary to admin)', 'cp-communitie');
+							echo '<p style="margin-top:10px"><input type="submit" name="Submit" class="button-primary" value="'.__('Send Daily Digest', 'cp-communitie').'" /></p>';
 							echo '</form>';
 						echo '</td></tr></table>';
 		
@@ -2654,37 +2645,37 @@ function __cpc__plugin_debug() {
 					// ********** Stylesheets	
 					echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
 					
-						echo '<h2 style="margin-bottom:10px">'.__('Stylesheets', CPC_TEXT_DOMAIN).'</h2>';
+						echo '<h2 style="margin-bottom:10px">'.__('Stylesheets', 'cp-communitie').'</h2>';
 				
 						// CSS check
 						$myStyleFile = CPC_PLUGIN_DIR . '/css/'.get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file');
 						if ( !file_exists($myStyleFile) ) {
-							echo $fail . sprintf(__('Stylesheet (%s) not found.', CPC_TEXT_DOMAIN), $myStyleFile) . $fail2;
+							echo $fail . sprintf(__('Stylesheet (%s) not found.', 'cp-communitie'), $myStyleFile) . $fail2;
 						} else {
-							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__('Stylesheet (%s) found.', CPC_TEXT_DOMAIN), $myStyleFile) . "</p>";
+							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__('Stylesheet (%s) found.', 'cp-communitie'), $myStyleFile) . "</p>";
 						}
 							
 						// ********** Javascript			
-						echo '<h2 style="margin-bottom:10px">'.__('Javascript', CPC_TEXT_DOMAIN).'</h2>';
+						echo '<h2 style="margin-bottom:10px">'.__('Javascript', 'cp-communitie').'</h2>';
 				
 						// JS check
 						$myJSfile = CPC_PLUGIN_DIR . '/js/'.get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file');
 						if ( !file_exists($myJSfile) ) {
-							echo $fail . sprintf(__('Javascript file (%s) not found.', CPC_TEXT_DOMAIN), $myJSfile) . $fail2;
+							echo $fail . sprintf(__('Javascript file (%s) not found.', 'cp-communitie'), $myJSfile) . $fail2;
 						} else {
-							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__("Javascript file (%s) found.", CPC_TEXT_DOMAIN), $myJSfile) . "</p>";
+							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__("Javascript file (%s) found.", 'cp-communitie'), $myJSfile) . "</p>";
 						}
-						echo "<p>" . sprintf(__("If you find that certain %s things don't work, like buttons or uploading profile photos, it is probably because the %s Javascript file isn't loading and/or working. Usually, this is because of another WordPress plugin. Try deactivating all non-%s plugins and switching to the TwentyEleven theme. If %s then works, re-activate the plug-ins one at a time until the error re-occurs, this will help you locate the plugin that is clashing. Then switch your theme back. Also try using Firefox, with the Firebug add-in installed - this will show you where the Javascript error is occuring.", CPC_TEXT_DOMAIN), CPC_WL, CPC_WL, CPC_WL_SHORT, CPC_WL_SHORT)."</p>";
-						echo "<p>".__("If you are experiencing problems, <a href='http://www.cpcymposium.com/trythisfirst' target='_blank'>try this first</a>.", CPC_TEXT_DOMAIN)."</p>";
+						echo "<p>" . sprintf(__("If you find that certain %s things don't work, like buttons or uploading profile photos, it is probably because the %s Javascript file isn't loading and/or working. Usually, this is because of another ClassicPress plugin. Try deactivating all non-%s plugins and switching to the TwentyEleven theme. If %s then works, re-activate the plug-ins one at a time until the error re-occurs, this will help you locate the plugin that is clashing. Then switch your theme back. Also try using Firefox, with the Firebug add-in installed - this will show you where the Javascript error is occuring.", 'cp-communitie'), CPC_WL, CPC_WL, CPC_WL_SHORT, CPC_WL_SHORT)."</p>";
+						echo "<p>".__("If you are experiencing problems, <a href='https://cp-community.n3rds.work//trythisfirst' target='_blank'>try this first</a>.", 'cp-communitie')."</p>";
 								
-						echo "<div id='jstest'>".$fail.sprintf(__( "You have problems with Javascript. This may be because a plugin is loading another version of jQuery or jQuery UI - try deactivating all plugins apart from %s plugins, and re-activate them one at a time until the error re-occurs, this will help you locate the plugin that is clashing. It might also be because there is an error in a JS file, either the cpcommunitie.js or another plugin script.", CPC_TEXT_DOMAIN), CPC_WL_SHORT).$fail2."</div>";
+						echo "<div id='jstest'>".$fail.sprintf(__( "You have problems with Javascript. This may be because a plugin is loading another version of jQuery or jQuery UI - try deactivating all plugins apart from %s plugins, and re-activate them one at a time until the error re-occurs, this will help you locate the plugin that is clashing. It might also be because there is an error in a JS file, either the cpcommunitie.js or another plugin script.", 'cp-communitie'), CPC_WL_SHORT).$fail2."</div>";
 					echo '</td></tr></table>';
 		
 			
 					// ********** bbPress migration
 					echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
 						echo '<a name="bbpress"></a>';
-						echo '<h2 style="margin-bottom:10px">'.__('bbPress Migration', CPC_TEXT_DOMAIN).'</h2>';
+						echo '<h2 style="margin-bottom:10px">'.__('bbPress Migration', 'cp-communitie').'</h2>';
 				
 						// migrate any chosen bbPress forums
 						if( isset($_POST[ 'cpcommunitie_bbpress' ]) && $_POST[ 'cpcommunitie_bbpress' ] == 'Y' ) {
@@ -2733,7 +2724,7 @@ function __cpc__plugin_debug() {
 									) )
 								) {
 									
-									$success_message .= __("Forum created OK with stub ".$stub.".", CPC_TEXT_DOMAIN)."<br />";
+									$success_message .= __("Forum created OK with stub ".$stub.".", 'cp-communitie')."<br />";
 									
 									$new_forum_id = $wpdb->insert_id;
 			
@@ -2830,15 +2821,15 @@ function __cpc__plugin_debug() {
 			
 														if ($failed_replies == 0) {
 								
-															$success_message .= __("Replies migrated OK.", CPC_TEXT_DOMAIN)."<br />";
+															$success_message .= __("Replies migrated OK.", 'cp-communitie')."<br />";
 															
 														} else {
-															$success_message .= sprintf(__("Failed to migrate %d replies.", CPC_TEXT_DOMAIN), $failed_replies)."<br />";
+															$success_message .= sprintf(__("Failed to migrate %d replies.", 'cp-communitie'), $failed_replies)."<br />";
 															$success = false;
 														}
 			
 													} else {
-														$success_message .= __("No replies to migrate.", CPC_TEXT_DOMAIN)."<br />";
+														$success_message .= __("No replies to migrate.", 'cp-communitie')."<br />";
 													}
 											
 											} else {
@@ -2849,25 +2840,25 @@ function __cpc__plugin_debug() {
 										
 										if ($failed == 0) {
 				
-											$success_message .= __("Topics and replies migrated OK.", CPC_TEXT_DOMAIN)."<br />";
+											$success_message .= __("Topics and replies migrated OK.", 'cp-communitie')."<br />";
 											
 										} else {
-											$success_message .= sprintf(__("Failed to migrate %d topics.", CPC_TEXT_DOMAIN), $failed)."<br />";
+											$success_message .= sprintf(__("Failed to migrate %d topics.", 'cp-communitie'), $failed)."<br />";
 											$success = false;
 										}
 									} else {
-											$success_message .= __("No topics to migrate.", CPC_TEXT_DOMAIN)."<br />";
+											$success_message .= __("No topics to migrate.", 'cp-communitie')."<br />";
 									}
 									
 								} else {
-									$success_message .= __("Forum failed to migrate", CPC_TEXT_DOMAIN)."<br />";
+									$success_message .= __("Forum failed to migrate", 'cp-communitie')."<br />";
 									$success_message .= $wpdb->last_query."<br />";
 									$success = false;
 								}
 									
 									
 							} else {
-								$success_message .= __('Please enter a new forum category title', CPC_TEXT_DOMAIN);
+								$success_message .= __('Please enter a new forum category title', 'cp-communitie');
 							}
 							
 							if ($success) {
@@ -2887,24 +2878,24 @@ function __cpc__plugin_debug() {
 						$sql = "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'forum'";
 						$forums = $wpdb->get_results($sql);
 						if ($forums) {
-							echo '<p>'.sprintf(__('If you have bbPress v2 plugin forums, you can migrate them to your %s forum as a new category.', CPC_TEXT_DOMAIN), CPC_WL).'</p>';
-							echo '<p>'.__('This migration works with the <a href="" target="_blank">WordPress bbPress plugin v2</a>. If you are running a previous or stand-alone version of bbPress, you should upgrade your installation first.', CPC_TEXT_DOMAIN).'</p>';
-							echo '<p>'.__('You should take a backup of your database before migrating, just in case there is a problem.', CPC_TEXT_DOMAIN).'</p>';
+							echo '<p>'.sprintf(__('If you have bbPress v2 plugin forums, you can migrate them to your %s forum as a new category.', 'cp-communitie'), CPC_WL).'</p>';
+							echo '<p>'.__('This migration works with the <a href="" target="_blank">ClassicPress bbPress plugin v2</a>. If you are running a previous or stand-alone version of bbPress, you should upgrade your installation first.', 'cp-communitie').'</p>';
+							echo '<p>'.__('You should take a backup of your database before migrating, just in case there is a problem.', 'cp-communitie').'</p>';
 							echo '<form method="post" action="#bbpress">';
 							echo '<input type="hidden" name="cpcommunitie_bbpress" value="Y">';
-							echo __('Select forum to migrate:', CPC_TEXT_DOMAIN).' ';
+							echo __('Select forum to migrate:', 'cp-communitie').' ';
 							echo '<select name="bbPress_forum">';
 							foreach ($forums AS $forum) {
 								echo '<option value="'.$forum->ID.'">'.$forum->post_title.'</option>';
 							}
 							echo '</select><br />';
-							echo __('Enter new forum category title:', CPC_TEXT_DOMAIN).' ';
+							echo __('Enter new forum category title:', 'cp-communitie').' ';
 							echo '<input type="text" name="bbPress_category" />';
-							echo '<p><em>' . __("Although your bbPress forum is not altered, and only new categories/topics/replies are added, it is recommended that you backup your database first.", CPC_TEXT_DOMAIN) . '</em></p>';
-							echo '<p class="submit"><input type="submit" name="Submit" class="button-primary" value="'.__('Migrate bbPress', CPC_TEXT_DOMAIN).'" /></p>';
+							echo '<p><em>' . __("Although your bbPress forum is not altered, and only new categories/topics/replies are added, it is recommended that you backup your database first.", 'cp-communitie') . '</em></p>';
+							echo '<p class="submit"><input type="submit" name="Submit" class="button-primary" value="'.__('Migrate bbPress', 'cp-communitie').'" /></p>';
 							echo '</form>';
 						} else {
-							echo '<p>'.__('No bbPress forums found', CPC_TEXT_DOMAIN).'.</p>';
+							echo '<p>'.__('No bbPress forums found', 'cp-communitie').'.</p>';
 						}
 					echo '</td></tr></table>';
 		
@@ -2912,7 +2903,7 @@ function __cpc__plugin_debug() {
 					// ********** Mingle migration
 					echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';			
 						echo '<a name="mingle"></a>';
-						echo '<h2 style="margin-bottom:10px">'.__('Mingle Migration', CPC_TEXT_DOMAIN).'</h2>';
+						echo '<h2 style="margin-bottom:10px">'.__('Mingle Migration', 'cp-communitie').'</h2>';
 			
 						// migrate any chosen mingle forums
 						if( isset($_POST[ 'cpcommunitie_mingle' ]) && $_POST[ 'cpcommunitie_mingle' ] == 'Y' ) {
@@ -2948,7 +2939,7 @@ function __cpc__plugin_debug() {
 									) )
 								) {
 									
-									$success_message .= __("Forum created OK.", CPC_TEXT_DOMAIN)."<br />";
+									$success_message .= __("Forum created OK.", 'cp-communitie')."<br />";
 									
 									$new_forum_id = $wpdb->insert_id;
 									
@@ -3056,15 +3047,15 @@ function __cpc__plugin_debug() {
 			
 														if ($failed_replies == 0) {
 								
-															$success_message .= __("Replies migrated OK.", CPC_TEXT_DOMAIN)."<br />";
+															$success_message .= __("Replies migrated OK.", 'cp-communitie')."<br />";
 															
 														} else {
-															$success_message .= sprintf(__("Failed to migrate %d replies.", CPC_TEXT_DOMAIN), $failed_replies)."<br />";
+															$success_message .= sprintf(__("Failed to migrate %d replies.", 'cp-communitie'), $failed_replies)."<br />";
 															$success = false;
 														}
 			
 													} else {
-														$success_message .= __("No replies to migrate.", CPC_TEXT_DOMAIN)."<br />";
+														$success_message .= __("No replies to migrate.", 'cp-communitie')."<br />";
 													}
 																					
 											} else {
@@ -3075,25 +3066,25 @@ function __cpc__plugin_debug() {
 										
 										if ($failed == 0) {
 				
-											$success_message .= __("Topics and replies migrated OK.", CPC_TEXT_DOMAIN)."<br />";
+											$success_message .= __("Topics and replies migrated OK.", 'cp-communitie')."<br />";
 											
 										} else {
-											$success_message .= sprintf(__("Failed to migrate %d topics.", CPC_TEXT_DOMAIN), $failed)."<br />";
+											$success_message .= sprintf(__("Failed to migrate %d topics.", 'cp-communitie'), $failed)."<br />";
 											$success = false;
 										}
 									} else {
-											$success_message .= __("No topics to migrate.", CPC_TEXT_DOMAIN)."<br />";
+											$success_message .= __("No topics to migrate.", 'cp-communitie')."<br />";
 									}
 									
 								} else {
-									$success_message .= __("Forum failed to migrate", CPC_TEXT_DOMAIN)."<br />";
+									$success_message .= __("Forum failed to migrate", 'cp-communitie')."<br />";
 									$success_message .= $wpdb->last_query."<br />";
 									$success = false;
 								}
 									
 									
 							} else {
-								$success_message .= __('Please enter a new forum category title', CPC_TEXT_DOMAIN);
+								$success_message .= __('Please enter a new forum category title', 'cp-communitie');
 							}
 							
 							if ($success) {
@@ -3118,27 +3109,27 @@ function __cpc__plugin_debug() {
 							$sql = "SELECT * FROM ".$wpdb->prefix."forum_forums";
 							$forums = $wpdb->get_results($sql);
 							if ($forums) {
-								echo '<p>'.sprintf(__('If you have the Mingle v1.0.33 (or higher) plugin, you can migrate the forums to your %s forum as a new category.', CPC_TEXT_DOMAIN), CPC_WL).'</p>';
-								echo '<p>'.__('This migration works with the <a href="" target="_blank">WordPress Mingle plugin</a>. If you are running a previous version of Mingle, you should upgrade your installation first.', CPC_TEXT_DOMAIN).'</p>';
-								echo '<p>'.__('You should take a backup of your database before migrating, just in case there is a problem.', CPC_TEXT_DOMAIN).'</p>';
+								echo '<p>'.sprintf(__('If you have the Mingle v1.0.33 (or higher) plugin, you can migrate the forums to your %s forum as a new category.', 'cp-communitie'), CPC_WL).'</p>';
+								echo '<p>'.__('This migration works with the <a href="" target="_blank">ClassicPress Mingle plugin</a>. If you are running a previous version of Mingle, you should upgrade your installation first.', 'cp-communitie').'</p>';
+								echo '<p>'.__('You should take a backup of your database before migrating, just in case there is a problem.', 'cp-communitie').'</p>';
 								echo '<form method="post" action="#mingle">';
 								echo '<input type="hidden" name="cpcommunitie_mingle" value="Y">';
-								echo __('Select forum to migrate:', CPC_TEXT_DOMAIN).' ';
+								echo __('Select forum to migrate:', 'cp-communitie').' ';
 								echo '<select name="mingle_forum">';
 								foreach ($forums AS $forum) {
 									echo '<option value="'.$forum->id.'">'.$forum->name.' ('.$forum->description.')</option>';
 								}
 								echo '</select><br />';
-								echo __('Enter new forum category title:', CPC_TEXT_DOMAIN).' ';
+								echo __('Enter new forum category title:', 'cp-communitie').' ';
 								echo '<input type="text" name="mingle_category" />';
-								echo '<p><em>' . __("Although your Mingle forum is not altered, and only new categories/topics/replies are added, it is recommended that you backup your database first.", CPC_TEXT_DOMAIN) . '</em></p>';
-								echo '<p class="submit"><input type="submit" name="Submit" class="button-primary" value="'.__('Migrate Mingle', CPC_TEXT_DOMAIN).'" /></p>';
+								echo '<p><em>' . __("Although your Mingle forum is not altered, and only new categories/topics/replies are added, it is recommended that you backup your database first.", 'cp-communitie') . '</em></p>';
+								echo '<p class="submit"><input type="submit" name="Submit" class="button-primary" value="'.__('Migrate Mingle', 'cp-communitie').'" /></p>';
 								echo '</form>';
 							} else {
-								echo '<p>'.__('No Mingle forums found', CPC_TEXT_DOMAIN).'.</p>';
+								echo '<p>'.__('No Mingle forums found', 'cp-communitie').'.</p>';
 							}
 						} else {
-								echo '<p>'.__('Mingle forum not installed', CPC_TEXT_DOMAIN).'.</p>';
+								echo '<p>'.__('Mingle forum not installed', 'cp-communitie').'.</p>';
 						}
 					echo '</td></tr></table>';
 				
@@ -3184,7 +3175,7 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 						$network_activated = get_option(CPC_OPTIONS_PREFIX.$function.'_network_activated') ? 'CHECKED' : '';
 						echo '<input type="checkbox" name="'.$function.'_network_activated" '.$network_activated.' />';
 					} else {
-						echo __('n/a', CPC_TEXT_DOMAIN);
+						echo __('n/a', 'cp-communitie');
 					}
 				
 				echo '</td>';
@@ -3202,7 +3193,7 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 						echo '<img src="'.CPC_PLUGIN_URL.'/images/tick.png" />';
 					}
 				} else {
-					echo __('n/a', CPC_TEXT_DOMAIN);
+					echo __('n/a', 'cp-communitie');
 				}
 			
 			echo '</td>';
@@ -3229,10 +3220,10 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 				$url = str_replace(get_bloginfo('url'), '', get_permalink($page->ID));
 				echo '<td>';
 					echo '<a href="'.get_permalink($page->ID).'" target="_blank">'.$url.'</a> ';
-					echo '[<a href="post.php?post='.$page->ID.'&action=edit">'.__('Edit', CPC_TEXT_DOMAIN).'</a>] ';
+					echo '[<a href="post.php?post='.$page->ID.'&action=edit">'.__('Bearbeiten', 'cp-communitie').'</a>] ';
 					if (isset($status) && $status == 'tick') {
 						if ($settings_url != '') {
-							echo '[<a href="'.$settings_url.'">'.__('Configure', CPC_TEXT_DOMAIN).'</a>]';
+							echo '[<a href="'.$settings_url.'">'.__('Konfigurieren', 'cp-communitie').'</a>]';
 						}
 					}
 				if ( (isset($status)) && ($url != $config_url && $status != 'cross') ) $status = 'error';
@@ -3243,32 +3234,32 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 				echo '<td>';
 				if ( (isset($status)) && ($status != 'cross') && ($status != 'notinstalled') && ($shortcode != '') ) {
 					$status = 'add';
-					echo '<div style="padding-top:4px;float:left; width:175px">'.sprintf(__('Add [%s] to:', CPC_TEXT_DOMAIN), $shortcode).'</div>';
-					echo '<input type="submit" class="button cpcommunitie_addnewpage" id="'.$name.'" title="'.$shortcode.'" value="'.__('New Page', CPC_TEXT_DOMAIN).'" />';
+					echo '<div style="padding-top:4px;float:left; width:175px">'.sprintf(__('Add [%s] to:', 'cp-communitie'), $shortcode).'</div>';
+					echo '<input type="submit" class="button cpcommunitie_addnewpage" id="'.$name.'" title="'.$shortcode.'" value="'.__('New Page', 'cp-communitie').'" />';
 					$sql = "SELECT * FROM ".$wpdb->prefix."posts WHERE post_status = 'publish' AND post_type = 'page' ORDER BY post_title";
 					$pages = $wpdb->get_results($sql);
 					if ($pages) {
-						echo ' '.__('or', CPC_TEXT_DOMAIN).' ';
+						echo ' '.__('or', 'cp-communitie').' ';
 						echo '<select id="cpcommunitie_pagechoice_'.$shortcode.'" style="width:120px">';
 						foreach ($pages as $page) {
 							echo '<option value="'.$page->ID.'">'.$page->post_title;
 						}
 						echo '</select> ';
-						echo '<input type="submit" class="button cpcommunitie_addtopage" id="'.$name.'" title="'.$shortcode.'" value="'.__('Add', CPC_TEXT_DOMAIN).'" />';
+						echo '<input type="submit" class="button cpcommunitie_addtopage" id="'.$name.'" title="'.$shortcode.'" value="'.__('Add', 'cp-communitie').'" />';
 					}
 				} else {
 					if (isset($status) && $status == 'tick') {
 						if ($settings_url != '') {
-							echo '[<a href="'.$settings_url.'">'.__('Configure', CPC_TEXT_DOMAIN).'</a>]';
+							echo '[<a href="'.$settings_url.'">'.__('Configure', 'cp-communitie').'</a>]';
 						}
 					}
 					if ($function == '__cpc__wysiwyg') {
 						if (current_user_can('update_core'))
-							echo __('Also activates optional forum BB Code Toolbar', CPC_TEXT_DOMAIN);
+							echo __('Also activates optional forum BB Code Toolbar', 'cp-communitie');
 					}
 					if ($function == '__cpc__add_notification_bar') {
 						if (current_user_can('update_core'))
-							echo ' [<a href="http://www.cpcymposium.com/chat/" target="_blank">'.__('Read this!', CPC_TEXT_DOMAIN).'</a>]';
+							echo ' [<a href="https://cp-community.n3rds.work//chat/" target="_blank">'.__('Read this!', 'cp-communitie').'</a>]';
 					}
 					if (isset($status) && $status == '') $status = 'tick';
 				}
@@ -3287,9 +3278,9 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 						update_option(CPC_OPTIONS_PREFIX.'_'.strtolower($handle).'_url', $url);
 						$fixed_url = true;
 						if ($url != '') {
-							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.sprintf(__("URL updated successfully. It is important to visit this page to complete installation; after you add a %s shortcode to a page; change pages with %s shortcodes; if you change WordPress Permalinks; or if you experience problems.", CPC_TEXT_DOMAIN), CPC_WL, CPC_WL).'">'.__('Updated ok!', CPC_TEXT_DOMAIN).'</a>]';
+							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.sprintf(__("URL updated successfully. It is important to visit this page to complete installation; after you add a %s shortcode to a page; change pages with %s shortcodes; if you change ClassicPress Permalinks; or if you experience problems.", 'cp-communitie'), CPC_WL, CPC_WL).'">'.__('Updated ok!', 'cp-communitie').'</a>]';
 						} else {
-							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.sprintf(__("URL removed. It is important to visit this page to complete installation; after you add a %s shortcode to a page; change pages with %s shortcodes; if you change WordPress Permalinks; or if you experience problems.", CPC_TEXT_DOMAIN), CPC_WL, CPC_WL).'">'.__('URL removed', CPC_TEXT_DOMAIN).'</a>]';
+							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.sprintf(__("URL removed. It is important to visit this page to complete installation; after you add a %s shortcode to a page; change pages with %s shortcodes; if you change ClassicPress Permalinks; or if you experience problems.", 'cp-communitie'), CPC_WL, CPC_WL).'">'.__('URL removed', 'cp-communitie').'</a>]';
 						}
 					} else {
 						if ($current_value) {
@@ -3301,9 +3292,9 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 						
 					if (isset($status) && $status == 'notinstalled') {
 						if ($function != '__cpc__gallery') {
-							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.$install_help.'">'.__('Install', CPC_TEXT_DOMAIN).'</a>]';
+							echo '[<a href="javascript:void(0)" class="cpcommunitie_help" title="'.$install_help.'">'.__('Install', 'cp-communitie').'</a>]';
 						} else {
-							echo __('Coming soon', CPC_TEXT_DOMAIN);
+							echo __('Coming soon', 'cp-communitie');
 						}
 					}
 					if (isset($status) && $status == 'tick') {
@@ -3313,7 +3304,7 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 						echo '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/warning.png" />';
 					}
 					if (isset($status) && $status == 'cross') {			
-						echo '[<a href="plugins.php?plugin_status=inactive">'.__('Activate', CPC_TEXT_DOMAIN).'</a>]';
+						echo '[<a href="plugins.php?plugin_status=inactive">'.__('Activate', 'cp-communitie').'</a>]';
 					}
 		
 					if (isset($status) && $status == 'add') {
@@ -3352,7 +3343,7 @@ function __cpc__field_exists($tablename, $fieldname) {
 	if ($fields) {
 		return true;
 	} else {
-		echo __('Missing Field', CPC_TEXT_DOMAIN).": ".$fieldname."<br />";
+		echo __('Missing Field', 'cp-communitie').": ".$fieldname."<br />";
 		return false;
 	}
 
@@ -3363,7 +3354,7 @@ function __cpc__plugin_bar() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('panel');
 
@@ -3379,13 +3370,13 @@ function __cpc__plugin_bar() {
 			update_option(CPC_OPTIONS_PREFIX.'cpc_panel_offline', isset($_POST[ 'cpc_panel_offline' ]) ? $_POST[ 'cpc_panel_offline' ] : '');
 			
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
 			
 		}
 
 
 			if (!function_exists('__cpc__profile')) { 		
-				echo "<div class='error'><p>".__('The Profile plugin must be activated for chat windows to work. The chat room will work without the Profile plugin.', CPC_TEXT_DOMAIN)."</p></div>";
+				echo "<div class='error'><p>".__('The Profile plugin must be activated for chat windows to work. The chat room will work without the Profile plugin.', 'cp-communitie')."</p></div>";
 			} 
 			?>
 			
@@ -3394,32 +3385,32 @@ function __cpc__plugin_bar() {
 		
 			<table class="form-table __cpc__admin_table">
 
-			<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="cpc_panel_all"><?php echo __('Show all members', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="cpc_panel_all"><?php echo __('Show all members', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="cpc_panel_all" id="cpc_panel_all" 
 				<?php 
 				if (get_option(CPC_OPTIONS_PREFIX.'_cpc_panel_all') == "on") { echo "CHECKED"; } 
 				?> 
 			/>
-			<span class="description"><?php echo __('Enable to include all members, disable to only include friends', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Enable to include all members, disable to only include friends', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="cpc_panel_offline"><?php echo __('Show offline members', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="cpc_panel_offline"><?php echo __('Show offline members', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="cpc_panel_offline" id="cpc_panel_offline" 
 				<?php 
 				if (get_option(CPC_OPTIONS_PREFIX.'cpc_panel_offline') == "on") { echo "CHECKED"; } 
 				?> 
 			/>
-			<span class="description"><?php echo __('Enable to show members who are offline', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Enable to show members who are offline', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="use_chat"><?php echo __('Enable chat windows', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="use_chat"><?php echo __('Enable chat windows', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="use_chat" id="use_chat" 
 				<?php 
@@ -3427,35 +3418,35 @@ function __cpc__plugin_bar() {
 				if (get_option(CPC_OPTIONS_PREFIX.'_use_chat') == "on") { echo "CHECKED"; } 
 				?>
 			/>
-			<span class="description"><?php echo __('Real-time chat windows', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Real-time chat windows', 'cp-communitie'); ?></span></td> 
 			</tr> 
 										
 			<tr valign="top"> 
-			<td scope="row"><label for="bar_polling"><?php echo __('Polling Intervals', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="bar_polling"><?php echo __('Polling Intervals', 'cp-communitie'); ?></label></td> 
 			<td><input name="bar_polling" type="text" id="bar_polling"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bar_polling'); ?>" /> 
-			<span class="description"><?php echo __('Frequency of checks for new mail, friends online, etc, in seconds. Recommended 120.', CPC_TEXT_DOMAIN); ?></td> 
+			<span class="description"><?php echo __('Frequency of checks for new mail, friends online, etc, in seconds. Recommended 120.', 'cp-communitie'); ?></td> 
 			</tr> 
 						
 			<tr valign="top"> 
 			<td scope="row"><label for="chat_polling">&nbsp;</label></td> 
 			<td><input name="chat_polling" type="text" id="chat_polling"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_chat_polling'); ?>" /> 
-			<span class="description"><?php echo __('Frequency of chat window updates in seconds. Recommended 10.', CPC_TEXT_DOMAIN); ?></td> 
+			<span class="description"><?php echo __('Frequency of chat window updates in seconds. Recommended 10.', 'cp-communitie'); ?></td> 
 			</tr> 
 
 			</table> 
 			 
 			
 			<p class="submit" style="margin-left:6px"> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 
 			<p style="margin-left:6px">
-			<strong><?php echo __('Notes:', CPC_TEXT_DOMAIN); ?></strong>
+			<strong><?php echo __('Notes:', 'cp-communitie'); ?></strong>
 			<ol>
-			<li><?php echo __('The polling intervals occur in addition to an initial check on each page load.', CPC_TEXT_DOMAIN); ?></li>
-			<li><?php echo __('The more frequent the polling intervals, the greater the load on your server.', CPC_TEXT_DOMAIN); ?></li>
-			<li><?php echo __('Disabling chat windows will reduce the load on the server.', CPC_TEXT_DOMAIN); ?></li>
+			<li><?php echo __('The polling intervals occur in addition to an initial check on each page load.', 'cp-communitie'); ?></li>
+			<li><?php echo __('The more frequent the polling intervals, the greater the load on your server.', 'cp-communitie'); ?></li>
+			<li><?php echo __('Disabling chat windows will reduce the load on the server.', 'cp-communitie'); ?></li>
 			</ol>
 			</p>
 			
@@ -3471,7 +3462,7 @@ function __cpc__plugin_profile() {
 	echo '<div class="wrap">';
 
 	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('profile');
 
@@ -3511,7 +3502,7 @@ function __cpc__plugin_profile() {
 			update_option(CPC_OPTIONS_PREFIX.'_profile_google_map', $_POST['profile_google_map'] != '' ? $_POST['profile_google_map'] : 250);
 			update_option(CPC_OPTIONS_PREFIX.'_profile_comments', isset($_POST['profile_comments']) ? $_POST['profile_comments'] : '');
 			update_option(CPC_OPTIONS_PREFIX.'_show_dob', isset($_POST['show_dob']) ? $_POST['show_dob'] : '');
-			update_option(CPC_OPTIONS_PREFIX.'_show_dob_format', ($_POST['show_dob_format'] != '') ? $_POST['show_dob_format'] : __('Born', CPC_TEXT_DOMAIN).' %monthname %day%th, %year');
+			update_option(CPC_OPTIONS_PREFIX.'_show_dob_format', ($_POST['show_dob_format'] != '') ? $_POST['show_dob_format'] : __('Born', 'cp-communitie').' %monthname %day%th, %year');
 			update_option(CPC_OPTIONS_PREFIX.'_profile_avatars', isset($_POST['profile_avatars']) ? $_POST['profile_avatars'] : '');
 			update_option(CPC_OPTIONS_PREFIX.'_initial_friend', $_POST['initial_friend']);
 			update_option(CPC_OPTIONS_PREFIX.'_redirect_wp_profile', isset($_POST['redirect_wp_profile']) ? $_POST['redirect_wp_profile'] : '');
@@ -3688,9 +3679,9 @@ Gallery=gallery';
 			}
 			
 			// Add new extended field if applicable
-			if ($_POST['new_name'] != '' && $_POST['new_name'] != __('New label', CPC_TEXT_DOMAIN) ) {
+			if ($_POST['new_name'] != '' && $_POST['new_name'] != __('New label', 'cp-communitie') ) {
 
-				if ( ( $_POST['new_slug'] == '' ) || ( $_POST['new_slug'] == __('New slug', CPC_TEXT_DOMAIN) ) ) { $slug = $_POST['new_name']; } else { $slug = $_POST['new_slug']; }
+				if ( ( $_POST['new_slug'] == '' ) || ( $_POST['new_slug'] == __('New slug', 'cp-communitie') ) ) { $slug = $_POST['new_name']; } else { $slug = $_POST['new_slug']; }
 				$slug = sanitize_title_with_dashes( $slug );
 				$slug = substr( $slug, 0, 64 );
 				
@@ -3723,7 +3714,7 @@ Gallery=gallery';
 			}
 			
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
 			
 		}
 					?>
@@ -3733,28 +3724,28 @@ Gallery=gallery';
 				
 					<table class="form-table __cpc__admin_table"> 
 
-					<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+					<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
 
 					<tr valign="top"> 
-					<td scope="row"><label for="cpc_use_templates"><?php echo __('Custom Profile Page templates', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="cpc_use_templates"><?php echo __('Custom Profile Page templates', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="cpc_use_templates" id="cpc_use_templates" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_templates') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo sprintf(__('Activate <a href="%s">templates</a> for the profile page (default layout used if not)', CPC_TEXT_DOMAIN), 'admin.php?page=cpcommunitie_templates'); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Activate <a href="%s">templates</a> for the profile page (default layout used if not)', 'cp-communitie'), 'admin.php?page=cpcommunitie_templates'); ?></span></td> 
 					</tr> 
 
 					<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_templates') == "on") { ?>
 						<tr valign="top"> 
-						<td scope="row"><label for="cpc_profile_menu_type"><?php echo __('Horizontal menu style', CPC_TEXT_DOMAIN); ?></label></td>
+						<td scope="row"><label for="cpc_profile_menu_type"><?php echo __('Horizontal menu style', 'cp-communitie'); ?></label></td>
 						<td>
 						<input type="checkbox" name="cpc_profile_menu_type" id="cpc_profile_menu_type" <?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_type') == "on") { echo "CHECKED"; } ?>/>
-						<span class="description"><?php echo __('Check to select horizontal menu version with drop-down items, for profile and group pages.', CPC_TEXT_DOMAIN); ?></span><br /><br />
-						<span class="description"><strong><?php echo __('Important! If activated, make sure that you also do the following:', CPC_TEXT_DOMAIN); ?></strong></span><br />
+						<span class="description"><?php echo __('Check to select horizontal menu version with drop-down items, for profile and group pages.', 'cp-communitie'); ?></span><br /><br />
+						<span class="description"><strong><?php echo __('Important! If activated, make sure that you also do the following:', 'cp-communitie'); ?></strong></span><br />
 						<ol>
-						<span class="description"><li><?php echo __('Reset the <a href="admin.php?page=cpcommunitie_templates">Profile Page Body</a> template.', CPC_TEXT_DOMAIN); ?></span><br />
-						<span class="description"><li><?php echo __('Set up your menu (below).', CPC_TEXT_DOMAIN); ?></li></span>
+						<span class="description"><li><?php echo __('Reset the <a href="admin.php?page=cpcommunitie_templates">Profile Page Body</a> template.', 'cp-communitie'); ?></span><br />
+						<span class="description"><li><?php echo __('Set up your menu (below).', 'cp-communitie'); ?></li></span>
 						<?php if (function_exists('__cpc__group')) { ?>
-							<span class="description"><li><?php echo __('Reset the <a href="admin.php?page=cpcommunitie_templates">Group Page</a> template.', CPC_TEXT_DOMAIN); ?></span><br />
-							<span class="description"><li><?php echo sprintf(__('Set up your <a href="%s">group menu</a>.', CPC_TEXT_DOMAIN), 'admin.php?page=cp-communitie/groups_admin.php'); ?></li></span>
+							<span class="description"><li><?php echo __('Reset the <a href="admin.php?page=cpcommunitie_templates">Group Page</a> template.', 'cp-communitie'); ?></span><br />
+							<span class="description"><li><?php echo sprintf(__('Set up your <a href="%s">group menu</a>.', 'cp-communitie'), 'admin.php?page=cp-communitie/groups_admin.php'); ?></li></span>
 						<?php } ?>
 						</ol>
 						</td> 
@@ -3767,156 +3758,156 @@ Gallery=gallery';
 					<?php } ?>
 
 					<tr valign="top"> 
-					<td scope="row"><label for="redirect_wp_profile"><?php echo __('Redirect profile page', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="redirect_wp_profile"><?php echo __('Redirect profile page', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="redirect_wp_profile" id="redirect_wp_profile" <?php if (get_option(CPC_OPTIONS_PREFIX.'_redirect_wp_profile') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo sprintf(__('Redirect WordPress generated links for WordPress profile page to %s profile page', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Redirect ClassicPress generated links for ClassicPress profile page to %s profile page', 'cp-communitie'), CPC_WL_SHORT); ?></span></td> 
 					</tr> 
 				
 					<tr valign="top">
-					<td scope="row"><label for="cpc_default_profile"><?php echo __('Default view', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="cpc_default_profile"><?php echo __('Default view', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="cpc_profile_default">
-						<option value='extended'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'extended') { echo ' SELECTED'; } ?>><?php echo __('Profile', CPC_TEXT_DOMAIN); ?></option>
-						<option value='wall'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'wall') { echo ' SELECTED'; } ?>><?php echo __('My activity', CPC_TEXT_DOMAIN); ?></option>
-						<option value='activity'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'activity') { echo ' SELECTED'; } ?>><?php echo __('Friends activity (includes my activity)', CPC_TEXT_DOMAIN); ?></option>
-						<option value='all'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'all') { echo ' SELECTED'; } ?>><?php echo __('All activity', CPC_TEXT_DOMAIN); ?></option>
+						<option value='extended'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'extended') { echo ' SELECTED'; } ?>><?php echo __('Profile', 'cp-communitie'); ?></option>
+						<option value='wall'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'wall') { echo ' SELECTED'; } ?>><?php echo __('My activity', 'cp-communitie'); ?></option>
+						<option value='activity'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'activity') { echo ' SELECTED'; } ?>><?php echo __('Friends activity (includes my activity)', 'cp-communitie'); ?></option>
+						<option value='all'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_profile_default') == 'all') { echo ' SELECTED'; } ?>><?php echo __('All activity', 'cp-communitie'); ?></option>
 					</select> 
-					<span class="description"><?php echo __("Default view for the member's own profile page", CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __("Default view for the member's own profile page", 'cp-communitie'); ?></span></td> 
 					</tr> 		
 
 					<tr valign="top">
-					<td scope="row"><label for="cpc_default_privacy"><?php echo __('Default privacy level', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="cpc_default_privacy"><?php echo __('Default privacy level', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="cpc_default_privacy">
-						<option value='Nobody'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'Nobody') { echo ' SELECTED'; } ?>><?php echo __('Nobody', CPC_TEXT_DOMAIN); ?></option>
-						<option value='Friends only'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'Friends only') { echo ' SELECTED'; } ?>><?php echo __('Friends only', CPC_TEXT_DOMAIN); ?></option>
+						<option value='Nobody'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'Nobody') { echo ' SELECTED'; } ?>><?php echo __('Nobody', 'cp-communitie'); ?></option>
+						<option value='Friends only'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'Friends only') { echo ' SELECTED'; } ?>><?php echo __('Friends only', 'cp-communitie'); ?></option>
 						<option value='Everyone'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'Everyone') { echo ' SELECTED'; } ?>><?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')); ?></option>
-						<option value='public'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'public') { echo ' SELECTED'; } ?>><?php echo __('Public', CPC_TEXT_DOMAIN); ?></option>
+						<option value='public'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_default_privacy') == 'public') { echo ' SELECTED'; } ?>><?php echo __('Public', 'cp-communitie'); ?></option>
 					</select> 
-					<span class="description"><?php echo __("Default privacy setting for new members", CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __("Default privacy setting for new members", 'cp-communitie'); ?></span></td> 
 					</tr> 		
 
 					<tr valign="top"> 
-					<td scope="row"><label for="initial_friend"><?php echo __('Default Friend', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="initial_friend"><?php echo __('Default Friend', 'cp-communitie'); ?></label></td> 
 					<td><input name="initial_friend" type="text" id="initial_friend"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_initial_friend'); ?>" /> 
-					<span class="description"><?php echo __('Comma separated list of user ID\'s that automatically become friends of new users (leave blank for no-one)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Comma separated list of user ID\'s that automatically become friends of new users (leave blank for no-one)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="profile_avatars"><?php echo __('Profile Photos', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="profile_avatars"><?php echo __('Profile Photos', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="profile_avatars" id="profile_avatars" <?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_avatars') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Allow members to upload their own profile photos, over-riding the internal WordPress avatars', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Allow members to upload their own profile photos, over-riding the internal ClassicPress avatars', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="cpc_use_gravatar"><?php echo __('Use Gravatar', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="cpc_use_gravatar"><?php echo __('Use Gravatar', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="cpc_use_gravatar" id="cpc_use_gravatar" <?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_use_gravatar') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('If allowing member to upload profile photos, should <a href="http://www.gravatar.com" target="_blank">gravatar</a> be used if they have not yet done so?', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('If allowing member to upload profile photos, should <a href="http://www.gravatar.com" target="_blank">gravatar</a> be used if they have not yet done so?', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="use_poke"><?php echo __('Poke/Nudge/Wink/etc', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="use_poke"><?php echo __('Poke/Nudge/Wink/etc', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="use_poke" id="use_poke" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_poke') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Enable this feature', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Enable this feature', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="poke_label"><?php echo __('Poke label', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="poke_label"><?php echo __('Poke label', 'cp-communitie'); ?></label></td> 
 					<td><input name="poke_label" type="text" id="poke_label"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_poke_label'); ?>" /> 
-					<span class="description"><?php echo __('The "poke" button label for your site, beware of trademarked words (includes Poke and Nudge for example)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('The "poke" button label for your site, beware of trademarked words (includes Poke and Nudge for example)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="status_label"><?php echo __('Status label', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="status_label"><?php echo __('Status label', 'cp-communitie'); ?></label></td> 
 					<td><input name="status_label" type="text" id="status_label"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_status_label')); ?>" /> 
-					<span class="description"><?php echo __('The default prompt for new activity posts on the profile page', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('The default prompt for new activity posts on the profile page', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="show_dob"><?php echo __('Use Date of Birth', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="show_dob"><?php echo __('Use Date of Birth', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="show_dob" id="show_dob" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_dob') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Use date of birth on profile', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Use date of birth on profile', 'cp-communitie'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
-					<td scope="row"><label for="show_dob_format"><?php echo __('Date of birth format', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="show_dob_format"><?php echo __('Date of birth format', 'cp-communitie'); ?></label></td>
 					<td><input name="show_dob_format" type="text" id="show_dob_format" style="width:250px;" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_show_dob_format'); ?>" /> 
-					<span class="description"><?php echo sprintf(__('Valid parameters: %%0day %%day %%th %%0month %%month %%monthname %%year (see <a href="%s">admin guide</a>)', CPC_TEXT_DOMAIN), 'https://dl.dropbox.com/u/49355018/cpc.pdf'); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Valid parameters: %%0day %%day %%th %%0month %%month %%monthname %%year (see <a href="%s">admin guide</a>)', 'cp-communitie'), 'https://dl.dropbox.com/u/49355018/cpc.pdf'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
-					<td scope="row"><label for="show_wall_extras"><?php echo __('Recently Active Friends Box', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="show_wall_extras"><?php echo __('Recently Active Friends Box', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="show_wall_extras" id="show_wall_extras" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_wall_extras') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Show Recently Active Friends box on side of wall (may take up space, depending on page template)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Show Recently Active Friends box on side of wall (may take up space, depending on page template)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
-					<td scope="row"><label for="profile_google_map"><?php echo __('Google Map', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="profile_google_map"><?php echo __('Google Map', 'cp-communitie'); ?></label></td> 
 					<td><input name="profile_google_map" type="text" id="profile_google_map" style="width:50px" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_profile_google_map'); ?>" /> 
-					<span class="description"><?php echo __('Size of location map, in pixels. eg: 250. Set to 0 to hide.', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Size of location map, in pixels. eg: 250. Set to 0 to hide.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
-					<td scope="row"><label for="profile_comments"><?php echo __('Show comment fields', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="profile_comments"><?php echo __('Show comment fields', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="profile_comments" id="profile_comments" <?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_comments') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Always show post comment fields (or hover to show)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Always show post comment fields (or hover to show)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
-					<td scope="row"><label for="cpcommunitie_hide_location"><?php echo __('Remove location fields', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="cpcommunitie_hide_location"><?php echo __('Remove location fields', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="cpcommunitie_hide_location" id="cpcommunitie_hide_location" <?php if (get_option(CPC_OPTIONS_PREFIX.'_hide_location') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Hide and disable location profile fields, and exclude distance from member directory', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Hide and disable location profile fields, and exclude distance from member directory', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="enable_password"><?php echo __('Enable Password Change', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="enable_password"><?php echo __('Enable Password Change', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="enable_password" id="enable_password" <?php if (get_option(CPC_OPTIONS_PREFIX.'_enable_password') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Allow members to change their password', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Allow members to change their password', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="online"><?php echo __('Inactivity period', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="online"><?php echo __('Inactivity period', 'cp-communitie'); ?></label></td> 
 					<td><input name="online" type="text" id="online" style="width:50px"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_online'); ?>" /> 
-					<span class="description"><?php echo __('How many minutes before a member is assumed off-line', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('How many minutes before a member is assumed off-line', 'cp-communitie'); ?></span></td> 
 					</tr> 
 										
 					<tr valign="top"> 
 					<td scope="row"><label for="offline">&nbsp;</label></td> 
 					<td><input name="offline" type="text" id="offline" style="width:50px"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_offline'); ?>" /> 
-					<span class="description"><?php echo __('How many minutes before a member is assumed logged out', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('How many minutes before a member is assumed logged out', 'cp-communitie'); ?></span></td> 
 					</tr> 
 					
-					<tr><td colspan="2"><h2><?php _e('Profile Menu Items', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+					<tr><td colspan="2"><h2><?php _e('Profile Menu Items', 'cp-communitie') ?></h2></td></tr>
 
 					<?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_type') || get_option(CPC_OPTIONS_PREFIX.'_use_templates') != "on") { ?>
 
 						<tr valign="top"> 
-						<td scope="row"><label for="profile_menu_structure"><?php echo __('Your page', CPC_TEXT_DOMAIN); ?></label></td>
+						<td scope="row"><label for="profile_menu_structure"><?php echo __('Your page', 'cp-communitie'); ?></label></td>
 						<td>
 						<textarea rows="12" cols="40" name="profile_menu_structure" id="profile_menu_structure"><?php echo get_option(CPC_OPTIONS_PREFIX.'_profile_menu_structure') ?></textarea><br />
 						<span class="description">
-							<?php echo sprintf(__('Only applicable to the horizontal version of the profile page menu', CPC_TEXT_DOMAIN), CPC_WL); ?><br />
-							<?php echo sprintf(__('%%f is replaced by any pending friendship requests in top level items', CPC_TEXT_DOMAIN), CPC_WL); ?>
+							<?php echo sprintf(__('Only applicable to the horizontal version of the profile page menu', 'cp-communitie'), CPC_WL); ?><br />
+							<?php echo sprintf(__('%%f is replaced by any pending friendship requests in top level items', 'cp-communitie'), CPC_WL); ?>
 						</span><br />
-						<a id="__cpc__reset_profile_menu" href="javascript:void(0)"><?php echo __('Reset the above...', CPC_TEXT_DOMAIN); ?></a>
+						<a id="__cpc__reset_profile_menu" href="javascript:void(0)"><?php echo __('Reset the above...', 'cp-communitie'); ?></a>
 						</td> 
 						</tr> 
 					
 						<tr valign="top"> 
-						<td scope="row"><label for="profile_menu_structure_other"><?php echo __('Other members', CPC_TEXT_DOMAIN); ?></label></td>
+						<td scope="row"><label for="profile_menu_structure_other"><?php echo __('Other members', 'cp-communitie'); ?></label></td>
 						<td>
 						<textarea rows="12" cols="40" name="profile_menu_structure_other" id="profile_menu_structure_other"><?php echo get_option(CPC_OPTIONS_PREFIX.'_profile_menu_structure_other') ?></textarea><br />
-						<span class="description"><?php echo sprintf(__('Only applicable to the horizontal version of the profile page menu', CPC_TEXT_DOMAIN), CPC_WL); ?></span><br />
-						<a id="__cpc__reset_profile_menu_other" href="javascript:void(0)"><?php echo __('Reset the above...', CPC_TEXT_DOMAIN); ?></a>
+						<span class="description"><?php echo sprintf(__('Only applicable to the horizontal version of the profile page menu', 'cp-communitie'), CPC_WL); ?></span><br />
+						<a id="__cpc__reset_profile_menu_other" href="javascript:void(0)"><?php echo __('Reset the above...', 'cp-communitie'); ?></a>
 						</td> 
 						</tr> 
 						
@@ -3933,42 +3924,42 @@ Gallery=gallery';
 						<td colspan="2" style="padding:0">
 							<table>
 								<tr style='font-weight:bold'>
-									<td style="width:125px"><?php _e('Menu Item', CPC_TEXT_DOMAIN); ?></td>
-									<td><?php _e('Own Page', CPC_TEXT_DOMAIN); ?></td>
-									<td><?php _e('Own Page Text', CPC_TEXT_DOMAIN); ?></td>
-									<td><?php _e('Other Members', CPC_TEXT_DOMAIN); ?></td>
-									<td><?php _e('Other Members Text', CPC_TEXT_DOMAIN); ?></td>
+									<td style="width:125px"><?php _e('Menu Item', 'cp-communitie'); ?></td>
+									<td><?php _e('Own Page', 'cp-communitie'); ?></td>
+									<td><?php _e('Own Page Text', 'cp-communitie'); ?></td>
+									<td><?php _e('Other Members', 'cp-communitie'); ?></td>
+									<td><?php _e('Other Members Text', 'cp-communitie'); ?></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Profile', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Profile', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_profile" id="menu_profile" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_profile_text" type="text" id="menu_profile_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_profile_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_profile_other" id="menu_profile_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_profile_other_text" type="text" id="menu_profile_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('My Activity', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('My Activity', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_my_activity" id="menu_my_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_my_activity_text" type="text" id="menu_my_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_my_activity_other" id="menu_my_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_my_activity_other_text" type="text" id="menu_my_activity_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Friends Activity', CPC_TEXT_DOMAIN); ?></span></span></td>
+									<td><span class="description"><?php echo __('Friends Activity', 'cp-communitie'); ?></span></span></td>
 									<td align='center'><input type="checkbox" name="menu_friends_activity" id="menu_friends_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_friends_activity_text" type="text" id="menu_friends_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_friends_activity_other" id="menu_friends_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_friends_activity_other_text" type="text" id="menu_friends_activity_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('All Activity', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('All Activity', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_all_activity" id="menu_all_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_all_activity_text" type="text" id="menu_all_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_all_activity_other" id="menu_all_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_all_activity_other_text" type="text" id="menu_all_activity_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Friends', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Friends', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_friends" id="menu_friends" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_friends_text" type="text" id="menu_friends_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_friends_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_friends_other" id="menu_friends_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -3976,7 +3967,7 @@ Gallery=gallery';
 								</tr>
 								<?php if ( function_exists('__cpc__profile_plus') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('Forum @mentions', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Forum @mentions', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_mentions" id="menu_mentions" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_mentions_text" type="text" id="menu_mentions_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_mentions_other" id="menu_mentions_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -3985,7 +3976,7 @@ Gallery=gallery';
 								<?php } ?>
 								<?php if ( function_exists('__cpc__group') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('Groups', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Groups', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_groups" id="menu_groups" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_groups_text" type="text" id="menu_groups_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_groups_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_groups_other" id="menu_groups_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -3994,7 +3985,7 @@ Gallery=gallery';
 								<?php } ?>
 								<?php if ( function_exists('__cpc__events_main') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('Events', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Events', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_events" id="menu_events" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_events') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_events_text" type="text" id="menu_events_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_events_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_events_other" id="menu_events_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_events_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -4003,7 +3994,7 @@ Gallery=gallery';
 								<?php } ?>
 								<?php if ( function_exists('__cpc__gallery') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('Gallery', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Gallery', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_gallery" id="menu_gallery" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_gallery_text" type="text" id="menu_gallery_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_gallery_other" id="menu_gallery_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -4012,14 +4003,14 @@ Gallery=gallery';
 								<?php } ?>
 								<?php if ( function_exists('__cpc__profile_plus') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('Following', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Following', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_following" id="menu_following" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_following') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_following_text" type="text" id="menu_following_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_following_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_following_other" id="menu_following_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_following_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_following_other_text" type="text" id="menu_following_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Followers', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Followers', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_followers" id="menu_followers" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_followers_text" type="text" id="menu_followers_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_followers_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_followers_other" id="menu_followers_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -4028,7 +4019,7 @@ Gallery=gallery';
 								<?php } ?>
 								<?php if ( function_exists('__cpc__lounge_main') ) { ?>
 								<tr>
-									<td><span class="description"><?php echo __('The Lounge', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('The Lounge', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_lounge" id="menu_lounge" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_lounge_text" type="text" id="menu_lounge_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_lounge_other" id="menu_lounge_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -4036,21 +4027,21 @@ Gallery=gallery';
 								</tr>
 								<?php } ?>
 								<tr>
-									<td><span class="description"><?php echo __('Profile Photo', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Profile Photo', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_avatar" id="menu_avatar" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_avatar') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_avatar_text" type="text" id="menu_avatar_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text'); ?>" /></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Profile Details', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Profile Details', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_details" id="menu_details" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_details') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_details_text" type="text" id="menu_details_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_details_text'); ?>" /></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Community Settings', CPC_TEXT_DOMAIN); ?></span></td>
+									<td><span class="description"><?php echo __('Community Settings', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_settings" id="menu_settings" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_settings') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_settings_text" type="text" id="menu_settings_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text'); ?>" /></td>
 									<td>&nbsp;</td>
@@ -4062,10 +4053,10 @@ Gallery=gallery';
 						</tr> 
 	
 						<tr valign="top"> 
-						<td scope="row"><label for="menu_texthtml"><?php echo __('Profile Menu Text/HTML', CPC_TEXT_DOMAIN); ?></label></td>
+						<td scope="row"><label for="menu_texthtml"><?php echo __('Profile Menu Text/HTML', 'cp-communitie'); ?></label></td>
 						<td>
 						<textarea name="menu_texthtml" id="menu_texthtml" rows="4" cols="30"><?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_menu_texthtml')); ?></textarea><br />
-						<span class="description"><?php echo __('Text/HTML that appears at the end of the profile menu', CPC_TEXT_DOMAIN); ?></span></td> 
+						<span class="description"><?php echo __('Text/HTML that appears at the end of the profile menu', 'cp-communitie'); ?></span></td> 
 						</tr> 
 
 					<?php } else {?>
@@ -4149,7 +4140,7 @@ Gallery=gallery';
 						echo apply_filters ( '__cpc__profile_settings_before_ef_hook', "" );
 					?>						
 
-					<tr><td colspan="2"><h2><?php _e('Extended Fields', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+					<tr><td colspan="2"><h2><?php _e('Extended Fields', 'cp-communitie') ?></h2></td></tr>
 
 					<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_templates') != "on") { ?>
 
@@ -4170,7 +4161,7 @@ Gallery=gallery';
 						if ($ext_rows) {
 							?>
 							<tr valign="top"> 
-							<td scope="row"><label for="redirect_wp_profile"><?php echo __('Extended Fields to show<br />on profile page header', CPC_TEXT_DOMAIN); ?></label></td>
+							<td scope="row"><label for="redirect_wp_profile"><?php echo __('Extended Fields to show<br />on profile page header', 'cp-communitie'); ?></label></td>
 							<td>
 							<?php
 							$include = get_option(CPC_OPTIONS_PREFIX.'_profile_extended_fields');
@@ -4192,12 +4183,12 @@ Gallery=gallery';
 					} ?>
 					
 					<tr valign="top"> 
-					<td scope="row"><?php echo __('Current extended fields', CPC_TEXT_DOMAIN); ?></td><td>
+					<td scope="row"><?php echo __('Current extended fields', 'cp-communitie'); ?></td><td>
 					
 						<?php
 						echo '<input type="checkbox" name="profile_show_unchecked" id="profile_show_unchecked"';
 						if (get_option(CPC_OPTIONS_PREFIX.'_profile_show_unchecked') == "on") { echo "CHECKED"; }
-						echo '/> <span class="description">'. __('Display checkboxes fields that are not selected (on member profile page)', CPC_TEXT_DOMAIN).'</span>';
+						echo '/> <span class="description">'. __('Display checkboxes fields that are not selected (on member profile page)', 'cp-communitie').'</span>';
 
 						// Extended Fields table
 						$extensions = $wpdb->get_results("SELECT * FROM ".$wpdb->base_prefix."cpcommunitie_extended ORDER BY extended_order, extended_name");
@@ -4213,13 +4204,13 @@ Gallery=gallery';
 						echo '<table class="widefat">';
 						echo '<thead>';
 						echo '<tr>';
-						echo '<th style="width:40px">'.__('Order', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="width:40px">'.__('Slug', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Label', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Default Value', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Read Only?', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Advanced Search?', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="width:80px">'.__('Type', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th style="width:40px">'.__('Order', 'cp-communitie').'</th>';
+						echo '<th style="width:40px">'.__('Slug', 'cp-communitie').'</th>';
+						echo '<th>'.__('Label', 'cp-communitie').'</th>';
+						echo '<th>'.__('Default Value', 'cp-communitie').'</th>';
+						echo '<th>'.__('Read Only?', 'cp-communitie').'</th>';
+						echo '<th>'.__('Advanced Search?', 'cp-communitie').'</th>';
+						echo '<th style="width:80px">'.__('Type', 'cp-communitie').'</th>';
 						echo '<th style="width:30px">&nbsp;</th>';
 						echo '</tr>';
 						echo '</thead>';
@@ -4252,10 +4243,10 @@ Gallery=gallery';
 									echo '<select name="readonly[]">';
 									echo '<option value=""';
 										if ($extension->readonly != 'on') echo ' SELECTED';
-										echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('No', 'cp-communitie').'</option>';
 									echo '<option value="on"';
 										if ($extension->readonly == 'on') echo ' SELECTED';
-										echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('Yes', 'cp-communitie').'</option>';
 									echo '</select>';
 									echo '</td>';
 									echo '<td>';
@@ -4263,16 +4254,16 @@ Gallery=gallery';
 										echo '<select name="search[]">';
 										echo '<option value=""';
 											if ($extension->search != 'on') echo ' SELECTED';
-											echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+											echo '>'.__('No', 'cp-communitie').'</option>';
 										echo '<option value="on"';
 											if ($extension->search == 'on') echo ' SELECTED';
-											echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+											echo '>'.__('Yes', 'cp-communitie').'</option>';
 										echo '</select>';
 									} else {
 										echo '<select name="search[]">';
 										echo '<option value=""';
 											if ($extension->search != 'on') echo ' SELECTED';
-											echo '>'.__('No (wrong type)', CPC_TEXT_DOMAIN).'</option>';
+											echo '>'.__('No (wrong type)', 'cp-communitie').'</option>';
 										echo '</select>';
 									}
 									echo '</td>';
@@ -4280,20 +4271,20 @@ Gallery=gallery';
 									echo '<select name="type[]">';
 									echo '<option value="Text"';
 										if ($extension->extended_type == 'Text') { echo ' SELECTED'; }
-										echo '>'.__('Text', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('Text', 'cp-communitie').'</option>';
 									echo '<option value="Checkbox"';
 										if ($extension->extended_type == 'Checkbox') { echo ' SELECTED'; }
-										echo '>'.__('Checkbox', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('Checkbox', 'cp-communitie').'</option>';
 									echo '<option value="List"';
 										if ($extension->extended_type == 'List') { echo ' SELECTED'; }
-										echo '>'.__('List', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('List', 'cp-communitie').'</option>';
 									echo '<option value="Textarea"';
 										if ($extension->extended_type == 'Textarea') { echo ' SELECTED'; }
-										echo '>'.__('Textarea', CPC_TEXT_DOMAIN).'</option>';
+										echo '>'.__('Textarea', 'cp-communitie').'</option>';
 									echo '</select>';
 									echo '</td>';
 									echo '<td>';
-									echo "<a href='admin.php?page=cpcommunitie_profile&view=profile&del_eid=".$extension->eid."' class='delete'>".__('Delete', CPC_TEXT_DOMAIN)."</a>";
+									echo "<a href='admin.php?page=cpcommunitie_profile&view=profile&del_eid=".$extension->eid."' class='delete'>".__('Delete', 'cp-communitie')."</a>";
 									echo '</td>';
 								echo '</tr>';
 								if ( $cnt % 2 != 0 ) {
@@ -4302,7 +4293,7 @@ Gallery=gallery';
 									echo '<tr style="background-color:#eee">';
 								}
 								echo '<td colspan="2"></td><td colspan="6">';
-									echo __('Linked WP Metadata', CPC_TEXT_DOMAIN).':<br />';
+									echo __('Linked WP Metadata', 'cp-communitie').':<br />';
                                     echo '<input type="hidden" name="old_wp_usermeta[]" value="'.$extension->wp_usermeta.'" />';
 									echo '<select name="wp_usermeta[]"><option value="" SELECTED></option>';
 									if ($rows) {
@@ -4320,17 +4311,17 @@ Gallery=gallery';
 						echo '</table>';
 						
 						echo '<tr valign="top">';
-						echo '<td scope="row">'.__('Add extended field', CPC_TEXT_DOMAIN).'</td><td>';
+						echo '<td scope="row">'.__('Add extended field', 'cp-communitie').'</td><td>';
 
 						echo '<table class="widefat">';
 						echo '<thead><tr>';
-						echo '<th style="width:40px">'.__('Order', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="width:40px">'.__('Slug', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Label', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Default Value', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th style="width:40px">'.__('Order', 'cp-communitie').'</th>';
+						echo '<th style="width:40px">'.__('Slug', 'cp-communitie').'</th>';
+						echo '<th>'.__('Label', 'cp-communitie').'</th>';
+						echo '<th>'.__('Default Value', 'cp-communitie').'</th>';
 						echo '<th>&nbsp;</th>';
 						echo '<th>&nbsp;</th>';
-						echo '<th style="width:80px">'.__('Type', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th style="width:80px">'.__('Type', 'cp-communitie').'</th>';
 						echo '<th style="width:30px">&nbsp;</th>';
 						echo '</tr></thead>';
 						echo '<tr>';
@@ -4338,34 +4329,34 @@ Gallery=gallery';
 							echo '<input type="text" name="new_order" style="width:40px" onclick="javascript:this.value = \'\'" value="0" />';
 							echo '</td>';
 							echo '<td>';
-							echo '<input type="text" name="new_slug" style="width:75px" onclick="javascript:this.value = \'\'" value="'.__('New slug', CPC_TEXT_DOMAIN).'" />';
+							echo '<input type="text" name="new_slug" style="width:75px" onclick="javascript:this.value = \'\'" value="'.__('New slug', 'cp-communitie').'" />';
 							echo '</td>';
 							echo '<td>';
-							echo '<input type="text" name="new_name" onclick="javascript:this.value = \'\'" value="'.__('New label', CPC_TEXT_DOMAIN).'" />';
+							echo '<input type="text" name="new_name" onclick="javascript:this.value = \'\'" value="'.__('New label', 'cp-communitie').'" />';
 							echo '</td>';
 							echo '<td>';
 							echo '<input type="text" name="new_default" onclick="javascript:this.value = \'\'" value="" />';
 							echo '</td>';
 							echo '<td>';
 							echo '<select name="new_readonly">';
-							echo '<option value="" SELECTED>'.__('No', CPC_TEXT_DOMAIN).'</option>';
-							echo '<option value="on">'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+							echo '<option value="" SELECTED>'.__('No', 'cp-communitie').'</option>';
+							echo '<option value="on">'.__('Yes', 'cp-communitie').'</option>';
 							echo '</select>';
 							echo '</td>';
 							echo '<td></td>';
 							echo '<td>';
 							echo '<select name="new_type">';
-							echo '<option value="Text" SELECTED>'.__('Text', CPC_TEXT_DOMAIN).'</option>';
-							echo '<option value="Checkbox">'.__('Checkbox', CPC_TEXT_DOMAIN).'</option>';
-							echo '<option value="List">'.__('List', CPC_TEXT_DOMAIN).'</option>';
-							echo '<option value="Textarea">'.__('Textarea', CPC_TEXT_DOMAIN).'</option>';
+							echo '<option value="Text" SELECTED>'.__('Text', 'cp-communitie').'</option>';
+							echo '<option value="Checkbox">'.__('Checkbox', 'cp-communitie').'</option>';
+							echo '<option value="List">'.__('List', 'cp-communitie').'</option>';
+							echo '<option value="Textarea">'.__('Textarea', 'cp-communitie').'</option>';
 							echo '</select>';
 							echo '</td>';
 							echo '<td>&nbsp;</td>';
 						echo '</tr>';
 						echo '<tr>';
 							echo '<td colspan="2"></td><td colspan="5">';
-							echo __('Linked WP Metadata', CPC_TEXT_DOMAIN).':<br />';
+							echo __('Linked WP Metadata', 'cp-communitie').':<br />';
 							echo '<select name="new_wp_usermeta"><option value="" SELECTED></option>';
 							if ($rows) {
 								foreach ($rows as $row) {
@@ -4376,31 +4367,31 @@ Gallery=gallery';
 							echo '</td>';
 						echo '</tr>';
 						echo '<tr><td colspan="7"><span class="description">';
-						echo __('For lists, enter all the values separated by commas - the first value is the default choice.', CPC_TEXT_DOMAIN);
-						echo '<br />'.__('For checkboxes, enter a value of \'on\' to default to checked.', CPC_TEXT_DOMAIN);
-						echo '<br />'.__('Slugs should be a single descriptive word.', CPC_TEXT_DOMAIN);
-						echo '<br />'.__('Members extended field values are not shown when they are left empty, except checkboxes where you can choose what happens above.', CPC_TEXT_DOMAIN);
+						echo __('For lists, enter all the values separated by commas - the first value is the default choice.', 'cp-communitie');
+						echo '<br />'.__('For checkboxes, enter a value of \'on\' to default to checked.', 'cp-communitie');
+						echo '<br />'.__('Slugs should be a single descriptive word.', 'cp-communitie');
+						echo '<br />'.__('Members extended field values are not shown when they are left empty, except checkboxes where you can choose what happens above.', 'cp-communitie');
 
-						echo '<br /><br /><strong>'.__('Extended Fields and WordPress Profile Metadata', CPC_TEXT_DOMAIN).'</strong>';
-						echo '<br />'.__('Extended fields can be linked to WordPress profile metadata - make sure you choose the correct type to match the WordPress profile metadata.', CPC_TEXT_DOMAIN);
-						echo '<br />'.__('Only link to WordPress profile metadata that you want your user\'s to access, and use the read-only setting to stop them making changes.', CPC_TEXT_DOMAIN);
+						echo '<br /><br /><strong>'.__('Extended Fields and ClassicPress Profile Metadata', 'cp-communitie').'</strong>';
+						echo '<br />'.__('Extended fields can be linked to ClassicPress profile metadata - make sure you choose the correct type to match the ClassicPress profile metadata.', 'cp-communitie');
+						echo '<br />'.__('Only link to ClassicPress profile metadata that you want your user\'s to access, and use the read-only setting to stop them making changes.', 'cp-communitie');
 
 						// Display user info as an example
 						$rows = $wpdb->get_results("SELECT meta_key, meta_value FROM ".$wpdb->base_prefix."usermeta".$sql." AND user_id = '".$user_ID."'");
 						echo '<br /><br />';
-						echo '<input id="cpcommunitie_meta_show_button" style="margin-bottom:10px;" onclick="document.getElementById(\'cpcommunitie_meta_show\').style.display=\'block\';document.getElementById(\'cpcommunitie_meta_show_button\').style.display=\'none\';document.getElementById(\'cpcommunitie_meta_show_button_hide\').style.display=\'block\';" value="'.__('Show WP metadata for current user', CPC_TEXT_DOMAIN).'" type="button">';
-						echo '<input id="cpcommunitie_meta_show_button_hide" style="margin-bottom:10px;display:none;" onclick="document.getElementById(\'cpcommunitie_meta_show\').style.display=\'none\';document.getElementById(\'cpcommunitie_meta_show_button\').style.display=\'block\';document.getElementById(\'cpcommunitie_meta_show_button_hide\').style.display=\'none\';" value="'.__('Hide WP metadata', CPC_TEXT_DOMAIN).'" type="button">';
+						echo '<input id="cpcommunitie_meta_show_button" style="margin-bottom:10px;" onclick="document.getElementById(\'cpcommunitie_meta_show\').style.display=\'block\';document.getElementById(\'cpcommunitie_meta_show_button\').style.display=\'none\';document.getElementById(\'cpcommunitie_meta_show_button_hide\').style.display=\'block\';" value="'.__('Show WP metadata for current user', 'cp-communitie').'" type="button">';
+						echo '<input id="cpcommunitie_meta_show_button_hide" style="margin-bottom:10px;display:none;" onclick="document.getElementById(\'cpcommunitie_meta_show\').style.display=\'none\';document.getElementById(\'cpcommunitie_meta_show_button\').style.display=\'block\';document.getElementById(\'cpcommunitie_meta_show_button_hide\').style.display=\'none\';" value="'.__('Hide WP metadata', 'cp-communitie').'" type="button">';
 						echo '<div id="cpcommunitie_meta_show" style="display:none;">';
 						
 						echo '<table class="widefat" style="width:400px"><thead><tr>';
-						echo '<th>'.__('WP Metadata', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th>'.__('Value', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th>'.__('WP Metadata', 'cp-communitie').'</th>';
+						echo '<th>'.__('Value', 'cp-communitie').'</th>';
 						echo '</tr></thead><tbody>';
 						foreach ($rows as $row) {
 							echo '<tr><td>'.$row->meta_key.'</td><td>';
 							$meta_value = maybe_unserialize($row->meta_value);
 							if (is_array($meta_value)) {
-								echo '<input class="regular-text all-options disabled" type="text" value="'.__('SERIALIZED DATA', CPC_TEXT_DOMAIN).'" disabled="disabled" />';
+								echo '<input class="regular-text all-options disabled" type="text" value="'.__('SERIALIZED DATA', 'cp-communitie').'" disabled="disabled" />';
 							} else {
 								// let's cut very long strings in parts so that browsers display them correctly
 								$v = str_replace(",", ", ", $row->meta_value);
@@ -4422,32 +4413,32 @@ Gallery=gallery';
 			
 						<table style="margin-left:10px; margin-top:10px;">						
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-stream]</td>
-								<td><?php echo __('Show all activity, with activity box.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Show all activity, with activity box.', 'cp-communitie'); ?></td></tr>
 							<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-profile]</td>
-								<td><?php echo __('Profile page, defaulting to activity.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to activity.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-extended]</td>
-								<td><?php echo __('Profile page, defaulting to extended information.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to extended information.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-activity]</td>
-								<td><?php echo __('Profile page, defaulting to friends activity.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to friends activity.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-settings]</td>
-								<td><?php echo __('Profile page, defaulting to settings.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to settings.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-gallery]</td>
-								<td><?php echo __('Profile page, defaulting to gallery.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to gallery.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-personal]</td>
-								<td><?php echo __('Profile page, defaulting to personal information.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to personal information.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-friends]</td>
-								<td><?php echo __('Profile page, defaulting to friends.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to friends.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-avatar]</td>
-								<td><?php echo __('Profile page, defaulting to avatar upload.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to avatar upload.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-following]</td>
-								<td><?php echo __('Profile page, defaulting to members following.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Profile page, defaulting to members following.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-menu]</td>
-								<td><?php echo __('Display the profile menu.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Display the profile menu.', 'cp-communitie'); ?></td></tr>
 							<tr><td>[<?php echo CPC_SHORTCODE_PREFIX; ?>-member-header]</td>
-								<td><?php echo __('Display just the member profile page header.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Display just the member profile page header.', 'cp-communitie'); ?></td></tr>
 							<?php if (function_exists('__cpc__profile_plus')) { ?>
 							<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-following]</td>
-								<td><?php echo __('Display the profile page, defaulting to show who the member is following.', CPC_TEXT_DOMAIN); ?></td></tr>
+								<td><?php echo __('Display the profile page, defaulting to show who the member is following.', 'cp-communitie'); ?></td></tr>
 							<?php } ?>
 						</table>
 						
@@ -4461,7 +4452,7 @@ Gallery=gallery';
 	
 					<?php
 					echo '<p class="submit" style="margin-left:6px">';
-					echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Save Changes', CPC_TEXT_DOMAIN).'" />';
+					echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Save Changes', 'cp-communitie').'" />';
 					echo '</p>';
 					echo '</form>';
 					
@@ -4477,7 +4468,7 @@ function __cpc__plugin_audit() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Audit', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Audit', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('audit');
 
 	global $wpdb, $blog_id;
@@ -4487,7 +4478,7 @@ function __cpc__plugin_audit() {
 		$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_audit";
 		$wpdb->query($sql);
 
-		echo "<div class='updated slideaway'><p>".__('Log cleared', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Log cleared', 'cp-communitie').".</p></div>";
 
 	}
 
@@ -4531,25 +4522,25 @@ function __cpc__plugin_audit() {
 	<table> 	
 
 		<tr style="font-weight:bold">
-		<td><?php _e('Type', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Blog', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Action', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('User', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Current User', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Meta', CPC_TEXT_DOMAIN); ?></td>
+		<td><?php _e('Type', 'cp-communitie'); ?></td>
+		<td><?php _e('Blog', 'cp-communitie'); ?></td>
+		<td><?php _e('Action', 'cp-communitie'); ?></td>
+		<td><?php _e('User', 'cp-communitie'); ?></td>
+		<td><?php _e('Current User', 'cp-communitie'); ?></td>
+		<td><?php _e('Meta', 'cp-communitie'); ?></td>
 		</tr> 
 		<tr>
 		<form method="post" action=""> 
 		<input type="hidden" name="cpcommunitie_update" value="__cpc__plugin_audit">
 		<td>
 		<select name="type">
-			<option value="all" <?php if ($type == 'all') echo ' SELECTED'; ?>><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
-			<option value="usermeta" <?php if ($type == 'usermeta') echo ' SELECTED'; ?>><?php _e('User meta', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all" <?php if ($type == 'all') echo ' SELECTED'; ?>><?php _e('All', 'cp-communitie'); ?></option>
+			<option value="usermeta" <?php if ($type == 'usermeta') echo ' SELECTED'; ?>><?php _e('User meta', 'cp-communitie'); ?></option>
 		</select>
 		</td> 
 		<td>
 		<select name="blog">
-			<option value="all"><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all"><?php _e('All', 'cp-communitie'); ?></option>
 			<?php 
 		    $blogs = $wpdb->get_results("SELECT * FROM ".$wpdb->base_prefix."blogs");
 		    if ($blogs) {
@@ -4564,7 +4555,7 @@ function __cpc__plugin_audit() {
 		</td> 
 		<td>
 		<select name="action">
-			<option value="all"><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all"><?php _e('All', 'cp-communitie'); ?></option>
 			<?php 
 		    $actions = $wpdb->get_results("SELECT DISTINCT action FROM ".$wpdb->base_prefix."cpcommunitie_audit ORDER BY action");
 		    if ($actions) {
@@ -4579,7 +4570,7 @@ function __cpc__plugin_audit() {
 		</td> 
 		<td>
 		<select name="user_id">
-			<option value="all"><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all"><?php _e('All', 'cp-communitie'); ?></option>
 			<?php 
 		    $users = $wpdb->get_results("SELECT * FROM ".$wpdb->base_prefix."users ORDER BY display_name");
 		    if ($users) {
@@ -4594,7 +4585,7 @@ function __cpc__plugin_audit() {
 		</td> 
 		<td>
 		<select name="current_user_id">
-			<option value="all"><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all"><?php _e('All', 'cp-communitie'); ?></option>
 			<?php 
 		    $users = $wpdb->get_results("SELECT * FROM ".$wpdb->base_prefix."users ORDER BY display_name");
 		    if ($users) {
@@ -4609,7 +4600,7 @@ function __cpc__plugin_audit() {
 		</td>
 		<td>
 		<select name="meta">
-			<option value="all"><?php _e('All', CPC_TEXT_DOMAIN); ?></option>
+			<option value="all"><?php _e('All', 'cp-communitie'); ?></option>
 			<?php 
 		    $meta = $wpdb->get_results("SELECT DISTINCT meta FROM ".$wpdb->base_prefix."cpcommunitie_audit ORDER BY meta");
 		    if ($meta) {
@@ -4625,11 +4616,11 @@ function __cpc__plugin_audit() {
 		</tr>
 		<tr><td colspan="8"><hr /></td></tr>
 		<tr style="font-weight:bold">
-		<td><?php _e('Start', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('End', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Order by', CPC_TEXT_DOMAIN); ?></td>
+		<td><?php _e('Start', 'cp-communitie'); ?></td>
+		<td><?php _e('End', 'cp-communitie'); ?></td>
+		<td><?php _e('Order by', 'cp-communitie'); ?></td>
 		<td></td>
-		<td><?php _e('Count', CPC_TEXT_DOMAIN); ?></td>
+		<td><?php _e('Count', 'cp-communitie'); ?></td>
 		</tr>		
 		<tr>
 		<td>
@@ -4640,29 +4631,29 @@ function __cpc__plugin_audit() {
 		</td> 
 		<td>
 		<select name="orderby">
-			<option value="blog_id" <?php if ($orderby == 'blog') echo ' SELECTED'; ?>><?php _e('Blog', CPC_TEXT_DOMAIN); ?></option>
-			<option value="action" <?php if ($orderby == 'action') echo ' SELECTED'; ?>><?php _e('Action', CPC_TEXT_DOMAIN); ?></option>
-			<option value="user_id" <?php if ($orderby == 'user_id') echo ' SELECTED'; ?>><?php _e('User', CPC_TEXT_DOMAIN); ?></option>
-			<option value="current_user_id" <?php if ($orderby == 'current_user_id') echo ' SELECTED'; ?>><?php _e('Current User', CPC_TEXT_DOMAIN); ?></option>
-			<option value="meta" <?php if ($orderby == 'meta') echo ' SELECTED'; ?>><?php _e('Meta', CPC_TEXT_DOMAIN); ?></option>
-			<option value="timestamp" <?php if ($orderby == 'timestamp') echo ' SELECTED'; ?>><?php _e('Date', CPC_TEXT_DOMAIN); ?></option>
+			<option value="blog_id" <?php if ($orderby == 'blog') echo ' SELECTED'; ?>><?php _e('Blog', 'cp-communitie'); ?></option>
+			<option value="action" <?php if ($orderby == 'action') echo ' SELECTED'; ?>><?php _e('Action', 'cp-communitie'); ?></option>
+			<option value="user_id" <?php if ($orderby == 'user_id') echo ' SELECTED'; ?>><?php _e('User', 'cp-communitie'); ?></option>
+			<option value="current_user_id" <?php if ($orderby == 'current_user_id') echo ' SELECTED'; ?>><?php _e('Current User', 'cp-communitie'); ?></option>
+			<option value="meta" <?php if ($orderby == 'meta') echo ' SELECTED'; ?>><?php _e('Meta', 'cp-communitie'); ?></option>
+			<option value="timestamp" <?php if ($orderby == 'timestamp') echo ' SELECTED'; ?>><?php _e('Date', 'cp-communitie'); ?></option>
 		</select>
 		</td>
 		<td>
 		<select name="asc">
-			<option value=""><?php _e('Ascending', CPC_TEXT_DOMAIN); ?></option>
-			<option value="DESC" <?php if ($asc == 'DESC') echo ' SELECTED'; ?>><?php _e('Descending', CPC_TEXT_DOMAIN); ?></option>
+			<option value=""><?php _e('Ascending', 'cp-communitie'); ?></option>
+			<option value="DESC" <?php if ($asc == 'DESC') echo ' SELECTED'; ?>><?php _e('Descending', 'cp-communitie'); ?></option>
 		</select>
 		</td> 
 		<td>
 			<table><tr><td>
 				<input type="text" name="count" style="float: left;width:35px;margin-right:5px;" value="<?php echo $count; ?>" />
-				<input type="submit" style="float:left; margin-right:15px;" class="button-primary" value="<?php _e('Filter', CPC_TEXT_DOMAIN); ?>" />
+				<input type="submit" style="float:left; margin-right:15px;" class="button-primary" value="<?php _e('Filter', 'cp-communitie'); ?>" />
 				</form>
 			</td><td>
 				<form method="post" action="">
 					<input type="hidden" name="cpcommunitie_update" value="__cpc__plugin_audit_clear">
-					<input type="submit" style="float:left" class="__cpc__are_you_sure button-primary" value="<?php _e('Clear audit log', CPC_TEXT_DOMAIN); ?>" />
+					<input type="submit" style="float:left" class="__cpc__are_you_sure button-primary" value="<?php _e('Clear audit log', 'cp-communitie'); ?>" />
 				</form>
 			</td></tr></table>
 		</td> 
@@ -4673,14 +4664,14 @@ function __cpc__plugin_audit() {
 	<table class="widefat" style="margin-top:30px">
 		<thead>
 		<tr>
-		<th><?php _e('Type', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Blog', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Action', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('User', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Current User', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Meta', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Value', CPC_TEXT_DOMAIN); ?></th>
-		<th><?php _e('Timestamp', CPC_TEXT_DOMAIN); ?></th>
+		<th><?php _e('Type', 'cp-communitie'); ?></th>
+		<th><?php _e('Blog', 'cp-communitie'); ?></th>
+		<th><?php _e('Action', 'cp-communitie'); ?></th>
+		<th><?php _e('User', 'cp-communitie'); ?></th>
+		<th><?php _e('Current User', 'cp-communitie'); ?></th>
+		<th><?php _e('Meta', 'cp-communitie'); ?></th>
+		<th><?php _e('Value', 'cp-communitie'); ?></th>
+		<th><?php _e('Timestamp', 'cp-communitie'); ?></th>
 		</tr> 
 		</thead>
 				
@@ -4716,7 +4707,7 @@ function __cpc__plugin_audit() {
 				echo '</tr>';
 			}
 		} else {
-			echo '<tr><td colspan="8">'.__('No results', CPC_TEXT_DOMAIN).'</td></tr>';
+			echo '<tr><td colspan="8">'.__('No results', 'cp-communitie').'</td></tr>';
 		}
 		
 		?>
@@ -4735,7 +4726,7 @@ function __cpc__plugin_thesaurus() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('thesaurus');
 
 	global $wpdb;
@@ -4750,11 +4741,11 @@ function __cpc__plugin_thesaurus() {
 		echo "<div class='updated slideaway'>";
 		
 		// Put an settings updated message on the screen
-		echo "<p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<p>".__('Saved', 'cp-communitie').".</p></div>";
 		
 	}
 
-	echo '<p>'.sprintf(__('Enter alternatives for the following to match your site. For example, replace Friend/Friends with Colleague/Colleagues. You may also want to change the <a href="%s">Profile menu items</a>.', CPC_TEXT_DOMAIN), esc_url( admin_url('admin.php?page=cpcommunitie_profile') )).'</p>';
+	echo '<p>'.sprintf(__('Enter alternatives for the following to match your site. For example, replace Friend/Friends with Colleague/Colleagues. You may also want to change the <a href="%s">Profile menu items</a>.', 'cp-communitie'), esc_url( admin_url('admin.php?page=cpcommunitie_profile') )).'</p>';
 
 ?>
 	<form method="post" action=""> 
@@ -4763,19 +4754,19 @@ function __cpc__plugin_thesaurus() {
 	<table> 	
 
 		<tr style="font-weight:bold"> 
-		<td width="150"><?php _e('Label', CPC_TEXT_DOMAIN); ?></td> 
-		<td width="200"><?php _e('Singular', CPC_TEXT_DOMAIN); ?></td>
-		<td><?php _e('Plural', CPC_TEXT_DOMAIN); ?></td>
+		<td width="150"><?php _e('Label', 'cp-communitie'); ?></td> 
+		<td width="200"><?php _e('Singular', 'cp-communitie'); ?></td>
+		<td><?php _e('Plural', 'cp-communitie'); ?></td>
 		</tr> 
 												
 		<tr> 
-		<td><label for="alt_friend"><?php echo __('Friends', CPC_TEXT_DOMAIN); ?></label></td> 
+		<td><label for="alt_friend"><?php echo __('Friends', 'cp-communitie'); ?></label></td> 
 		<td><input name="alt_friend" type="text" id="alt_friend" style="width:100px" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_friend')); ?>" class="regular-text" /></td> 
 		<td><input name="alt_friends" type="text" id="alt_friends" style="width:100px" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_friends')); ?>" class="regular-text" /></td> 
 		</tr> 
 												
 		<tr> 
-		<td><label for="alt_everyone"><?php echo __('Everyone', CPC_TEXT_DOMAIN); ?></label></td> 
+		<td><label for="alt_everyone"><?php echo __('Everyone', 'cp-communitie'); ?></label></td> 
 		<td><input name="alt_everyone" type="text" id="alt_everyone" style="width:100px" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')); ?>" class="regular-text" /></td> 
 		<td>&nbsp;</td> 
 		</tr> 
@@ -4783,7 +4774,7 @@ function __cpc__plugin_thesaurus() {
 	</table>
 	 
 	<p class="submit" style="margin-left:6px"> 
-	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 	</p> 
 	
 	<?php
@@ -4800,7 +4791,7 @@ function __cpc__plugin_advertising() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Advertising', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Advertising', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('advertising');
 
 	global $wpdb;
@@ -4816,12 +4807,12 @@ function __cpc__plugin_advertising() {
 		echo "<div class='updated slideaway'>";
 		
 		// Put an settings updated message on the screen
-		echo "<p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<p>".__('Saved', 'cp-communitie').".</p></div>";
 		
 	}
 
-	echo '<p>'.__('Post advertising code below, for example from Google Adsense. You can also include HTML (maybe for layout).', CPC_TEXT_DOMAIN).'</p>';
-	echo '<p>'.__('Please keep in mind that Google set a maximum of three standard ad units per web page.', CPC_TEXT_DOMAIN).'</p>';
+	echo '<p>'.__('Post advertising code below, for example from Google Adsense. You can also include HTML (maybe for layout).', 'cp-communitie').'</p>';
+	echo '<p>'.__('Please keep in mind that Google set a maximum of three standard ad units per web page.', 'cp-communitie').'</p>';
 
 ?>
 	
@@ -4829,21 +4820,21 @@ function __cpc__plugin_advertising() {
 	<form method="post" action=""> 
 	<input type="hidden" name="cpcommunitie_update" value="__cpc__plugin_advertising">
 
-	<h2><?php _e('Forum', CPC_TEXT_DOMAIN); ?></h2>
+	<h2><?php _e('Forum', 'cp-communitie'); ?></h2>
 
-	<?php echo __('Within topic, under the initial starting post, before the replies.', CPC_TEXT_DOMAIN); ?><br />
+	<?php echo __('Within topic, under the initial starting post, before the replies.', 'cp-communitie'); ?><br />
 	<textarea name="ad_forum_topic_start" type="text" id="ad_forum_topic_start" style="width:600px; height:200px;"><?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_ad_forum_topic_start')); ?></textarea><br />
 
-	<?php echo __('On the list of forum categories, or list of topics within a category.', CPC_TEXT_DOMAIN); ?><br />
-	<?php echo sprintf(__('Add [top_advert] to the <a href="%s">Forum Header template</a>, probably after the bottom line that\'s there already.', CPC_TEXT_DOMAIN), esc_url( admin_url('admin.php?page=cpcommunitie_templates')) ); ?><br />
+	<?php echo __('On the list of forum categories, or list of topics within a category.', 'cp-communitie'); ?><br />
+	<?php echo sprintf(__('Add [top_advert] to the <a href="%s">Forum Header template</a>, probably after the bottom line that\'s there already.', 'cp-communitie'), esc_url( admin_url('admin.php?page=cpcommunitie_templates')) ); ?><br />
 	<textarea name="ad_forum_categories" type="text" id="ad_forum_categories" style="width:600px; height:200px;"><?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_ad_forum_categories')); ?></textarea><br />
 												
-	<?php echo __('Within the list of forum categories, or list of topics within a category (after the third item).', CPC_TEXT_DOMAIN); ?><br />
+	<?php echo __('Within the list of forum categories, or list of topics within a category (after the third item).', 'cp-communitie'); ?><br />
 	<textarea name="ad_forum_in_categories" type="text" id="ad_forum_in_categories" style="width:600px; height:200px;"><?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_ad_forum_in_categories')); ?></textarea><br />
 												
 	 
 	<p class="submit" style="margin-left:6px"> 
-	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 	</p> 
 	
 	<?php
@@ -4860,7 +4851,7 @@ function __cpc__plugin_settings() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('settings');
 
 	global $wpdb;
@@ -4924,7 +4915,7 @@ function __cpc__plugin_settings() {
 			}
 			
 			// Put an settings updated message on the screen
-			echo "<p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<p>".__('Saved', 'cp-communitie').".</p></div>";
 			
 		}
 
@@ -4970,107 +4961,107 @@ function __cpc__plugin_settings() {
 
 			<?php if (!$readonly) { ?>
 				<tr valign="top"> 
-				<td scope="row"><label for="cpc_time_out"><?php echo __('Script time out', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="cpc_time_out"><?php echo __('Script time out', 'cp-communitie'); ?></label></td>
 				<td><input name="cpc_time_out" type="text" id="cpc_time_out" style="width:50px" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpc_time_out'); ?>"/> 
-				<span class="description"><?php echo __('Maximum PHP script time out value, set to 0 to disable this setting.', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Maximum PHP script time out value, set to 0 to disable this setting.', 'cp-communitie'); ?></span></td> 
 				</tr> 
 			<?php } ?>
 
 			<?php if (!$readonly) { ?>
 				<tr valign="top">
-				<td scope="row"><label for="cpc_js_file"><?php echo sprintf(__('%s JS files', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></label></td> 
+				<td scope="row"><label for="cpc_js_file"><?php echo sprintf(__('%s JS files', 'cp-communitie'), CPC_WL_SHORT); ?></label></td> 
 				<td>
 				<select name="cpc_js_file">
-					<option value='cpc.min.js'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file') == 'cpc.min.js') { echo ' SELECTED'; } ?>><?php echo __('Minimized', CPC_TEXT_DOMAIN); ?></option>
-					<option value='cpc.js'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file') == 'cpc.js') { echo ' SELECTED'; } ?>><?php echo __('Normal', CPC_TEXT_DOMAIN); ?></option>
+					<option value='cpc.min.js'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file') == 'cpc.min.js') { echo ' SELECTED'; } ?>><?php echo __('Minimized', 'cp-communitie'); ?></option>
+					<option value='cpc.js'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file') == 'cpc.js') { echo ' SELECTED'; } ?>><?php echo __('Normal', 'cp-communitie'); ?></option>
 				</select> 
-				<span class="description"><?php echo __('Minimized loads faster, normal is useful for debugging', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Minimized loads faster, normal is useful for debugging', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 				
 				<tr valign="top">
-				<td scope="row"><label for="cpc_css_file"><?php echo sprintf(__('%s CSS files', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></label></td> 
+				<td scope="row"><label for="cpc_css_file"><?php echo sprintf(__('%s CSS files', 'cp-communitie'), CPC_WL_SHORT); ?></label></td> 
 				<td>
 				<select name="cpc_css_file">
-					<option value='cpc.min.css'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file') == 'cpc.min.css') { echo ' SELECTED'; } ?>><?php echo __('Minimized', CPC_TEXT_DOMAIN); ?></option>
-					<option value='cpc.css'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file') == 'cpc.css') { echo ' SELECTED'; } ?>><?php echo __('Normal', CPC_TEXT_DOMAIN); ?></option>
+					<option value='cpc.min.css'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file') == 'cpc.min.css') { echo ' SELECTED'; } ?>><?php echo __('Minimized', 'cp-communitie'); ?></option>
+					<option value='cpc.css'<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file') == 'cpc.css') { echo ' SELECTED'; } ?>><?php echo __('Normal', 'cp-communitie'); ?></option>
 				</select> 
-				<span class="description"><?php echo __('Minimized loads faster, normal is useful for debugging', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Minimized loads faster, normal is useful for debugging', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 			<?php } ?>
 				
 
 			<?php if (!$readonly) { ?>
 				<tr valign="top"> 
-				<td scope="row" style="width:150px;"><label for="cpc_ajax_widgets"><?php echo __('Widgets AJAX mode', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row" style="width:150px;"><label for="cpc_ajax_widgets"><?php echo __('Widgets AJAX mode', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="cpc_ajax_widgets" id="cpc_ajax_widgets" <?php if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Use AJAX to load %s widgets (or load with page).", CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Use AJAX to load %s widgets (or load with page).", 'cp-communitie'), CPC_WL_SHORT); ?></span></td> 
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row" style="width:150px;"><label for="cpc_lite"><?php echo __('Enable LITE mode', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row" style="width:150px;"><label for="cpc_lite"><?php echo __('Enable LITE mode', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="cpc_lite" id="cpc_lite" <?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_lite') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __("Recommended for shared hosting, or where server load is an issue.", CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __("Recommended for shared hosting, or where server load is an issue.", 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_lite') == "on") { ?>
 					
 					<tr valign="top"></tr> 
 					<td></td><td style="border:1px dotted #999; background-color: #fff;">
-						<strong><?php echo sprintf(__('%s LITE mode', CPC_TEXT_DOMAIN), CPC_WL); ?></strong>
+						<strong><?php echo sprintf(__('%s LITE mode', 'cp-communitie'), CPC_WL); ?></strong>
 						<p>
-						<?php echo sprintf(__('You are running %s in LITE mode, which reduces server load, but disables/reduces certain features of the %s plugins, and will take priority over any other settings you have made.', CPC_TEXT_DOMAIN), CPC_WL, CPC_WL).' '; ?>
-						<?php echo __('If you activate additional plugins, return to this page to see an updated list below.', CPC_TEXT_DOMAIN); ?>
+						<?php echo sprintf(__('You are running %s in LITE mode, which reduces server load, but disables/reduces certain features of the %s plugins, and will take priority over any other settings you have made.', 'cp-communitie'), CPC_WL, CPC_WL).' '; ?>
+						<?php echo __('If you activate additional plugins, return to this page to see an updated list below.', 'cp-communitie'); ?>
 						</p>
 	
-						<p><?php echo __('To improve performance further, it is recommended that you:', CPC_TEXT_DOMAIN); ?></p>
+						<p><?php echo __('To improve performance further, it is recommended that you:', 'cp-communitie'); ?></p>
 						<ul style="list-style-type: circle; margin: 10px 0 20px 30px;">
-							<li><?php echo sprintf(__('minimize the total number of all WordPress plugins and widgets used (%s and others). <a href="plugins.php?plugin_status=active">De-activate as many as possible!</a>', CPC_TEXT_DOMAIN), CPC_WL); ?></li>
+							<li><?php echo sprintf(__('minimize the total number of all ClassicPress plugins and widgets used (%s and others). <a href="plugins.php?plugin_status=active">De-activate as many as possible!</a>', 'cp-communitie'), CPC_WL); ?></li>
 							<?php if (function_exists('__cpc__add_notification_bar')) { ?>
-								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Panel</a> or <a href="admin.php?page=cpcommunitie_bar">set the polling intervals</a> high, eg: at least 300 and 20 seconds.', CPC_TEXT_DOMAIN); ?></li>
+								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Panel</a> or <a href="admin.php?page=cpcommunitie_bar">set the polling intervals</a> high, eg: at least 300 and 20 seconds.', 'cp-communitie'); ?></li>
 							<?php } ?>
 							<?php if (function_exists('__cpc__news_main')) { ?>
-								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Alerts</a> or <a href="admin.php?page='.CPC_DIR.'/news_admin.php">set the polling interval</a> high, eg: at least 120 seconds.', CPC_TEXT_DOMAIN); ?></li>
+								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Alerts</a> or <a href="admin.php?page='.CPC_DIR.'/news_admin.php">set the polling interval</a> high, eg: at least 120 seconds.', 'cp-communitie'); ?></li>
 							<?php } ?>
 						</ul>
 						
 						<?php if (function_exists('__cpc__add_notification_bar')) { ?>
-							<p><strong><?php echo __('Panel', CPC_TEXT_DOMAIN); ?></strong></p>
+							<p><strong><?php echo __('Panel', 'cp-communitie'); ?></strong></p>
 							<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-								<li><?php echo __('Chat windows and the chatroom are disabled', CPC_TEXT_DOMAIN); ?></li>
-								<li><?php echo __('Notification of new mail (etc) requires a page reload', CPC_TEXT_DOMAIN); ?></li>
+								<li><?php echo __('Chat windows and the chatroom are disabled', 'cp-communitie'); ?></li>
+								<li><?php echo __('Notification of new mail (etc) requires a page reload', 'cp-communitie'); ?></li>
 							</ul>
 						<?php } ?>
 						
 						<?php if (function_exists('__cpc__news_main')) { ?>
-						<p><strong><?php echo __('Alerts', CPC_TEXT_DOMAIN); ?></strong></p>
+						<p><strong><?php echo __('Alerts', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Live notification of new messages disabled (page reload required)', CPC_TEXT_DOMAIN); ?></li>
+							<li><?php echo __('Live notification of new messages disabled (page reload required)', 'cp-communitie'); ?></li>
 						</ul>
 						<?php } ?>
 						
-						<p><strong><?php echo __('Forum', CPC_TEXT_DOMAIN); ?></strong></p>
+						<p><strong><?php echo __('Forum', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Topic, post and reply counts are not displayed', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Only new topics are shown, not latest replies', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Answered topics not shown in topics list', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Simplified breadcrumbs (forum navigation links)', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Smilies/emoticons not replaced with images', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('User @tagging will not work', CPC_TEXT_DOMAIN); ?></li>
+							<li><?php echo __('Topic, post and reply counts are not displayed', 'cp-communitie'); ?></li>
+							<li><?php echo __('Only new topics are shown, not latest replies', 'cp-communitie'); ?></li>
+							<li><?php echo __('Answered topics not shown in topics list', 'cp-communitie'); ?></li>
+							<li><?php echo __('Simplified breadcrumbs (forum navigation links)', 'cp-communitie'); ?></li>
+							<li><?php echo __('Smilies/emoticons not replaced with images', 'cp-communitie'); ?></li>
+							<li><?php echo __('User @tagging will not work', 'cp-communitie'); ?></li>
 						</ul>
 						
-						<p><strong><?php echo __('Member Directory', CPC_TEXT_DOMAIN); ?></strong></p>
+						<p><strong><?php echo __('Member Directory', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Latest activity post not shown', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Add as a friend/Send Mail buttons disabled', CPC_TEXT_DOMAIN); ?></li>
+							<li><?php echo __('Latest activity post not shown', 'cp-communitie'); ?></li>
+							<li><?php echo __('Add as a friend/Send Mail buttons disabled', 'cp-communitie'); ?></li>
 						</ul>
 						
-						<p><strong><?php echo __('Profile', CPC_TEXT_DOMAIN); ?></strong></p>
+						<p><strong><?php echo __('Profile', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Friends: Latest activity post not shown', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Friends: New friendships made are not shown', CPC_TEXT_DOMAIN); ?></li>
-							<li><?php echo __('Forum: Posts/replies are not shown on', CPC_TEXT_DOMAIN); ?></li>
+							<li><?php echo __('Friends: Latest activity post not shown', 'cp-communitie'); ?></li>
+							<li><?php echo __('Friends: New friendships made are not shown', 'cp-communitie'); ?></li>
+							<li><?php echo __('Forum: Posts/replies are not shown on', 'cp-communitie'); ?></li>
 						</ul>
 						
 					</td>
@@ -5079,35 +5070,35 @@ function __cpc__plugin_settings() {
 				<?php } ?>
 									
 				<tr valign="top"> 
-				<td scope="row"><label for="img_db"><?php echo __('Store uploads in database', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="img_db"><?php echo __('Store uploads in database', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="img_db" id="img_db" <?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Off by default to save to the file system (recommended). Select to upload to database', CPC_TEXT_DOMAIN).' - '; ?><span style='font-weight:bold; text-decoration: underline'><?php echo __("if you change, images will have to be reloaded, they remain in their storage 'state'.", CPC_TEXT_DOMAIN); ?></span></span></td> 
+				<span class="description"><?php echo __('Off by default to save to the file system (recommended). Select to upload to database', 'cp-communitie').' - '; ?><span style='font-weight:bold; text-decoration: underline'><?php echo __("if you change, images will have to be reloaded, they remain in their storage 'state'.", 'cp-communitie'); ?></span></span></td> 
 				</tr> 
 				
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') != "on") { ?>
 					
 					<tr valign="top" style='border-top: 1px dashed #666; border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-					<td class="highlighted_row" scope="row"><label for="img_path"><?php echo __('Images directory', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td class="highlighted_row" scope="row"><label for="img_path"><?php echo __('Images directory', 'cp-communitie'); ?></label></td> 
 					<td class="highlighted_row"><input name="img_path" type="text" id="img_path"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_img_path'); ?>" class="regular-text" /> 
 					<span class="description">
-					<?php echo __('Image upload directory, eg:', CPC_TEXT_DOMAIN).' '.WP_CONTENT_DIR.'/cpc-content'; ?>
-					<input type="button" onclick="document.getElementById('img_path').value='<?php echo WP_CONTENT_DIR.'/cpc-content'; ?>'" value="<?php _e('Suggest', CPC_TEXT_DOMAIN); ?>" class="button" /></td> 
+					<?php echo __('Image upload directory, eg:', 'cp-communitie').' '.WP_CONTENT_DIR.'/cpc-content'; ?>
+					<input type="button" onclick="document.getElementById('img_path').value='<?php echo WP_CONTENT_DIR.'/cpc-content'; ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
 					</tr> 					
 					
 					<tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-					<td class="highlighted_row" scope="row"><label for="img_url"><?php echo __('Images URL', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td class="highlighted_row" scope="row"><label for="img_url"><?php echo __('Images URL', 'cp-communitie'); ?></label></td> 
 					<td class="highlighted_row"><input name="img_url" type="text" id="img_url"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_img_url'); ?>" class="regular-text" /> 
 					<?php $url = WP_CONTENT_URL.'/cpc-content'; $url = str_replace(__cpc__siteURL(), '', $url); ?>
-					<span class="description"><?php echo __('URL to the images directory, Do not include http:// or your domain name eg: ', CPC_TEXT_DOMAIN).' <a href="'.$url.'">'.$url.'</a>'; ?>
-					<input type="button" onclick="document.getElementById('img_url').value='<?php echo $url; ?>'" value="<?php _e('Suggest', CPC_TEXT_DOMAIN); ?>" class="button" /></td> 
+					<span class="description"><?php echo __('URL to the images directory, Do not include http:// or your domain name eg: ', 'cp-communitie').' <a href="'.$url.'">'.$url.'</a>'; ?>
+					<input type="button" onclick="document.getElementById('img_url').value='<?php echo $url; ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
 					</tr> 					
 	
 					<tr valign="top" style='border-right: 1px dashed #666; border-bottom: 1px dashed #666; border-left: 1px dashed #666; '> 
 					<td class="highlighted_row" colspan=2>
 						<?php $img_tmp = ini_get('upload_tmp_dir'); ?>
-						<?php echo __('For information, from PHP.INI on your server, the PHP temporary upload folder is:', CPC_TEXT_DOMAIN).' '.$img_tmp; ?>
-						<?php if ($img_tmp == '') { echo '<strong>'.__("You need to <a href='http://uk.php.net/manual/en/ini.core.php#ini.upload-tmp-dir'>set this in your php.ini</a> file", CPC_TEXT_DOMAIN).'</strong>'; } ?>
+						<?php echo __('For information, from PHP.INI on your server, the PHP temporary upload folder is:', 'cp-communitie').' '.$img_tmp; ?>
+						<?php if ($img_tmp == '') { echo '<strong>'.__("You need to <a href='http://uk.php.net/manual/en/ini.core.php#ini.upload-tmp-dir'>set this in your php.ini</a> file", 'cp-communitie').'</strong>'; } ?>
 					</td>
 					</tr> 	
 	
@@ -5119,51 +5110,51 @@ function __cpc__plugin_settings() {
 				<?php } ?>
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="images"><?php echo sprintf(__('%s images URL', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></label></td> 
+				<td scope="row"><label for="images"><?php echo sprintf(__('%s images URL', 'cp-communitie'), CPC_WL_SHORT); ?></label></td> 
 				<td><input name="images" type="text" id="images" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_images'); ?>"/> 
-				<span class="description"><?php echo __('Change if you want to create your own set of custom images.', CPC_TEXT_DOMAIN); ?></span>
-				<input type="button" onclick="document.getElementById('images').value='<?php echo str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL.'/images'); ?>'" value="<?php _e('Suggest', CPC_TEXT_DOMAIN); ?>" class="button" /></td> 
+				<span class="description"><?php echo __('Change if you want to create your own set of custom images.', 'cp-communitie'); ?></span>
+				<input type="button" onclick="document.getElementById('images').value='<?php echo str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL.'/images'); ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
 				</tr> 
 					
 				<tr valign="top"> 
-				<td scope="row"><label for="img_crop"><?php echo __('Crop avatar images', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="img_crop"><?php echo __('Crop avatar images', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="img_crop" id="img_crop" <?php if (get_option(CPC_OPTIONS_PREFIX.'_img_crop') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __("Allow uploaded images to be cropped</span>", CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __("Allow uploaded images to be cropped</span>", 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="image_ext"><?php echo __('Image extensions', CPC_TEXT_DOMAIN); ?></label></td> 
+				<td scope="row"><label for="image_ext"><?php echo __('Image extensions', 'cp-communitie'); ?></label></td> 
 				<td><input name="image_ext" type="text" id="image_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_image_ext'); ?>"/> 
-				<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. *.jpg,*.jpeg,*.png and *.gif supported.', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. *.jpg,*.jpeg,*.png and *.gif supported.', 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') != "on") { ?>
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', 'cp-communitie'); ?></label></td> 
 					<td><input name="video_ext" type="text" id="video_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_video_ext'); ?>"/> 
-					<span class="description"><?php echo sprintf(__('A comma separated list of permitted file extensions, leave blank for none. H.264 format supported, <a %s>see here</a>.', CPC_TEXT_DOMAIN), 'href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/12539/supported-video-and-audio-formats" target="_blank"'); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('A comma separated list of permitted file extensions, leave blank for none. H.264 format supported, <a %s>see here</a>.', 'cp-communitie'), 'href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/12539/supported-video-and-audio-formats" target="_blank"'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', 'cp-communitie'); ?></label></td> 
 					<td><input name="doc_ext" type="text" id="doc_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_doc_ext'); ?>"/> 
-					<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. Viewed in separate window or downloaded.', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. Viewed in separate window or downloaded.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 					
 				<?php } else { ?>
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', 'cp-communitie'); ?></label></td> 
 					<td><input name="video_ext" type="hidden" id="video_ext" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_video_ext'); ?>"/> 
-					<span class="description"><?php echo __('Sorry, videos can only be saved when storing to the filesystem.', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Sorry, videos can only be saved when storing to the filesystem.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', 'cp-communitie'); ?></label></td> 
 					<td><input name="doc_ext" type="hidden" id="doc_ext" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_doc_ext'); ?>"/> 
-					<span class="description"><?php echo __('Sorry, documents can only be saved when storing to the filesystem.', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Sorry, documents can only be saved when storing to the filesystem.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 				<?php } ?>
@@ -5171,113 +5162,113 @@ function __cpc__plugin_settings() {
 			<?php } ?>
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="email_footer"><?php echo __('Email Notifications', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="email_footer"><?php echo __('Email Notifications', 'cp-communitie'); ?></label></td> 
 			<td><input name="email_footer" type="text" id="email_footer"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_footer')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('Footer appended to notification emails', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Footer appended to notification emails', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="from_email">&nbsp;</label></td> 
 			<td><input name="from_email" type="text" id="from_email"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_from_email'); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('Email address used for email notifications', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Email address used for email notifications', 'cp-communitie'); ?></span></td> 
 			</tr> 
 										
 			<tr valign="top"> 
-			<td scope="row"><label for="subject_mail_new"><?php echo __('Mail subject lines', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="subject_mail_new"><?php echo __('Mail subject lines', 'cp-communitie'); ?></label></td> 
 			<td><input name="subject_mail_new" type="text" id="subject_mail_new"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_mail_new')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Mail Message, [subject] will be replaced by the message subject', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('New Mail Message, [subject] will be replaced by the message subject', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="subject_forum_new">&nbsp;</label></td> 
 			<td><input name="subject_forum_new" type="text" id="subject_forum_new"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_forum_new')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Forum Topic, [topic] will be replaced by the topic subject', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('New Forum Topic, [topic] will be replaced by the topic subject', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="subject_forum_reply">&nbsp;</label></td> 
 			<td><input name="subject_forum_reply" type="text" id="subject_forum_reply"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Forum Reply, [topic] will be replaced by the topic subject', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('New Forum Reply, [topic] will be replaced by the topic subject', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="wp_width"><?php echo __('Width', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="wp_width"><?php echo __('Width', 'cp-communitie'); ?></label></td>
 			<td><input name="wp_width" type="text" id="wp_width" style="width:50px" value="<?php echo str_replace('pc', '%', get_option(CPC_OPTIONS_PREFIX.'_wp_width')); ?>"/> 
-			<span class="description"><?php echo sprintf(__('Width of all %s plugins, eg: 600px or 100%%', CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+			<span class="description"><?php echo sprintf(__('Width of all %s plugins, eg: 600px or 100%%', 'cp-communitie'), CPC_WL); ?></span></td> 
 			</tr> 
 
 			<tr valign="top">
-			<td scope="row"><label for="wp_alignment"><?php echo __('Alignment', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="wp_alignment"><?php echo __('Alignment', 'cp-communitie'); ?></label></td> 
 			<td>
 			<select name="wp_alignment">
-				<option value='Left'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Left') { echo ' SELECTED'; } ?>><?php echo __('Left', CPC_TEXT_DOMAIN); ?></option>
-				<option value='Center'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Center') { echo ' SELECTED'; } ?>><?php echo __('Center', CPC_TEXT_DOMAIN); ?></option>
-				<option value='Right'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Right') { echo ' SELECTED'; } ?>><?php echo __('Right', CPC_TEXT_DOMAIN); ?></option>
+				<option value='Left'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Left') { echo ' SELECTED'; } ?>><?php echo __('Left', 'cp-communitie'); ?></option>
+				<option value='Center'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Center') { echo ' SELECTED'; } ?>><?php echo __('Center', 'cp-communitie'); ?></option>
+				<option value='Right'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Right') { echo ' SELECTED'; } ?>><?php echo __('Right', 'cp-communitie'); ?></option>
 			</select> 
-			<span class="description"><?php echo sprintf(__('Alignment of all %s plugins', CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+			<span class="description"><?php echo sprintf(__('Alignment of all %s plugins', 'cp-communitie'), CPC_WL); ?></span></td> 
 			</tr> 		
 
 			<tr valign="top"> 
-			<td scope="row"><label for="show_buttons"><?php echo __('Buttons on Activity pages', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="show_buttons"><?php echo __('Buttons on Activity pages', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="show_buttons" id="show_buttons" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Pressing return submits a post/comment, select this option to also show submit buttons.</span>", CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __("Pressing return submits a post/comment, select this option to also show submit buttons.</span>", 'cp-communitie'); ?></span></td> 
 			</tr>
 			<?php 
 			if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == 'on') {
 				?>
 				<tr valign="top"> 
-				<td scope="row"><label for="use_wysiwyg_media_manager"><?php echo __('Use media manager', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="use_wysiwyg_media_manager"><?php echo __('Use media manager', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="use_wysiwyg_media_manager" id="use_wysiwyg_media_manager" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_media_manager') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __("Will switch from entering an image URL (when inserting an image) to a list of images in the WordPress media manager.</span>", CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __("Will switch from entering an image URL (when inserting an image) to a list of images in the ClassicPress media manager.</span>", 'cp-communitie'); ?></span></td> 
 				</tr>
 			<?php } ?>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="striptags"><?php echo __('Strip tags', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="striptags"><?php echo __('Strip tags', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="striptags" id="striptags" <?php if (get_option(CPC_OPTIONS_PREFIX.'_striptags') == "on") { echo "CHECKED"; } ?>/>
 			<span class="description"><?php 
-			echo __("Completely remove HTML/script tags. If unchecked &lt; and &gt; will be replaced with &amp;lt; and &amp;gt;.", CPC_TEXT_DOMAIN); 
-			echo "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".__("NB. The Bronze member WYSIWYG editor, if in use, will display tags, whatever you set here, but not interpret them.", CPC_TEXT_DOMAIN); 
+			echo __("Completely remove HTML/script tags. If unchecked &lt; and &gt; will be replaced with &amp;lt; and &amp;gt;.", 'cp-communitie'); 
+			echo "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".__("NB. The Bronze member WYSIWYG editor, if in use, will display tags, whatever you set here, but not interpret them.", 'cp-communitie'); 
 			?></span></td> 
 			</tr>
 								
 			<tr valign="top"> 
-			<td scope="row"><label for="allow_reports"><?php echo __('Allow reports', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="allow_reports"><?php echo __('Allow reports', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="allow_reports" id="allow_reports" <?php if (get_option(CPC_OPTIONS_PREFIX.'_allow_reports') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Shows a warning symbol to report content to the site administrator.", CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __("Shows a warning symbol to report content to the site administrator.", 'cp-communitie'); ?></span></td> 
 			</tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="basic_upload"><?php echo __('Basic File Upload', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="basic_upload"><?php echo __('Basic File Upload', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="basic_upload" id="basic_upload" <?php if (get_option(CPC_OPTIONS_PREFIX.'_basic_upload') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Use basic HTML file upload to avoid clashes with themes and plugins.", CPC_TEXT_DOMAIN); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Cannot crop avatars, and some features of upload reduced.", CPC_TEXT_DOMAIN); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Can only be used when storing images on the filesystem.", CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __("Use basic HTML file upload to avoid clashes with themes and plugins.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Cannot crop avatars, and some features of upload reduced.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Can only be used when storing images on the filesystem.", 'cp-communitie'); ?></span></td> 
 			</tr>
 			
 			<?php if (!$readonly) { ?>
 
 				<tr valign="top"> 
-				<td scope="row"><label for="cpc_login_url"><?php echo __('Login Page URL', CPC_TEXT_DOMAIN); ?></label></td> 
+				<td scope="row"><label for="cpc_login_url"><?php echo __('Login Page URL', 'cp-communitie'); ?></label></td> 
 				<td><input name="cpc_login_url" type="text" id="cpc_login_url"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_cpc_login_url')); ?>" class="regular-text" /> 
-				<span class="description"><?php echo __('Override link to login page. [url] is substituted with current page URL.', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Override link to login page. [url] is substituted with current page URL.', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="always_load"><?php echo sprintf(__('Load %s on every page', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></label></td>
+				<td scope="row"><label for="always_load"><?php echo sprintf(__('Load %s on every page', 'cp-communitie'), CPC_WL_SHORT); ?></label></td>
 				<td>
 				<input type="checkbox" name="always_load" id="always_load" <?php if (get_option(CPC_OPTIONS_PREFIX.'_always_load') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Will always load %s components, or attempt a check if required.", CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Will always load %s components, or attempt a check if required.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 
 				<tr valign="top"> 
-				<td scope="row"><label for="long_menu"><?php echo __('Admin Tabs', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="long_menu"><?php echo __('Admin Tabs', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="long_menu" id="cpcommunitie_long_menu" <?php if (get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Reduce %s admin menu items and show as tabs.", CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Reduce %s admin menu items and show as tabs.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 			<?php } ?>				
 
@@ -5293,85 +5284,85 @@ function __cpc__plugin_settings() {
 			if (!$readonly) { ?>
 			
 				<tr valign="top"> 
-				<td colspan="2"><?php echo '<h2>'.__('Troubleshooting', CPC_TEXT_DOMAIN).'</h2>'; echo __('The following may solve clashes with other WordPress plugins, etc.', CPC_TEXT_DOMAIN); ?>:</td>
+				<td colspan="2"><?php echo '<h2>'.__('Troubleshooting', 'cp-communitie').'</h2>'; echo __('The following may solve clashes with other ClassicPress plugins, etc.', 'cp-communitie'); ?>:</td>
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="jquery"><?php echo __('Load jQuery', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="jquery"><?php echo __('Load jQuery', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jquery" id="jquery" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jquery') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load jQuery on non-admin pages, disable if causing problems', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Load jQuery on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="jqueryui"><?php echo __('Load jQuery UI', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="jqueryui"><?php echo __('Load jQuery UI', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jqueryui" id="jqueryui" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jqueryui') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load jQuery UI on non-admin pages, disable if causing problems', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Load jQuery UI on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="tinymce"><?php echo __('Do NOT TinyMCE', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="tinymce"><?php echo __('Do NOT TinyMCE', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="tinymce" id="tinymce" <?php if (get_option(CPC_OPTIONS_PREFIX.'_tinymce') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Do NOT load TinyMCE on non-admin pages, check if causing problems', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Do NOT load TinyMCE on non-admin pages, check if causing problems', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="jscharts"><?php echo __('Load JScharts/Jcrop', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="jscharts"><?php echo __('Load JScharts/Jcrop', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jscharts" id="jscharts" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jscharts') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load JSCharts and Jcrop on non-admin pages, disable if causing problems', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Load JSCharts and Jcrop on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
 				</tr>					
 			
 				<tr valign="top"> 
-				<td scope="row"><label for="jwplayer"><?php echo __('Load JW Player', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="jwplayer"><?php echo __('Load JW Player', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jwplayer" id="jwplayer" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jwplayer') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load JW Player for forum video uploads, disable if not required', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Load JW Player for forum video uploads, disable if not required', 'cp-communitie'); ?></span></td> 
 				</tr> 
 			
 				<tr valign="top"> 
-				<td scope="row"><label for="emoticons"><?php echo __('Smilies/Emoticons', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="emoticons"><?php echo __('Smilies/Emoticons', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="emoticons" id="emoticons" <?php if (get_option(CPC_OPTIONS_PREFIX.'_emoticons') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Automatically replace smilies/emoticons with graphical images', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Automatically replace smilies/emoticons with graphical images', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 														
 				<tr valign="top"> 
-				<td scope="row"><label for="elastic"><?php echo __('Elastic Textboxes', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="elastic"><?php echo __('Elastic Textboxes', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="elastic" id="elastic" <?php if (get_option(CPC_OPTIONS_PREFIX.'_elastic') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Include jQuery elastic function (automatically expand textboxes)', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('Include jQuery elastic function (automatically expand textboxes)', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="force_utf8"><?php echo __('Force UTF8 decoding', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="force_utf8"><?php echo __('Force UTF8 decoding', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="force_utf8" id="force_utf8" <?php if (get_option(CPC_OPTIONS_PREFIX.'_force_utf8') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('May solve accented characters not displaying properly', CPC_TEXT_DOMAIN); ?></span></td> 
+				<span class="description"><?php echo __('May solve accented characters not displaying properly', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 	
 				<tr valign="top"> 
-				<td colspan="2"><h2><?php echo __('Developers only', CPC_TEXT_DOMAIN); ?></h2></td>
+				<td colspan="2"><h2><?php echo __('Developers only', 'cp-communitie'); ?></h2></td>
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="audit"><?php echo __('Audit', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="audit"><?php echo __('Audit', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="audit" id="cpcommunitie_audit" <?php if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") { echo "CHECKED"; } ?>/>
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") { ?>
-					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (<a href='%s'>analyse</a>).", CPC_TEXT_DOMAIN), esc_url( admin_url('admin.php?page=cpcommunitie_audit') )); ?></span></td> 
+					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (<a href='%s'>analyse</a>).", 'cp-communitie'), esc_url( admin_url('admin.php?page=cpcommunitie_audit') )); ?></span></td> 
 				<?php } else { ?>
-					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (results then available via %s->Manage->Audit).", CPC_TEXT_DOMAIN), CPC_WL); ?></span></td>
+					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (results then available via %s->Manage->Audit).", 'cp-communitie'), CPC_WL); ?></span></td>
 				<?php } ?>
 				</tr>
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="debug_mode"><?php echo __('Debug mode', CPC_TEXT_DOMAIN); ?></label></td>
+				<td scope="row"><label for="debug_mode"><?php echo __('Debug mode', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="debug_mode" id="debug_mode" <?php if (get_option(CPC_OPTIONS_PREFIX.'_debug_mode') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Display additional %s information on-screen and in dialog boxes.", CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Display additional %s information on-screen and in dialog boxes.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 				
 			<?php } ?>			
@@ -5379,7 +5370,7 @@ function __cpc__plugin_settings() {
 			</table>
 			 
 			<p class="submit" style="margin-left:6px"> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 			</p> 
 			
 			<?php
@@ -5395,7 +5386,7 @@ function __cpc__plugin_forum() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('forum');
 
@@ -5538,7 +5529,7 @@ function __cpc__plugin_forum() {
 			update_option(CPC_OPTIONS_PREFIX.'_forum_reply_comment', serialize($level));	
 			
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
 
 		}
 		
@@ -5551,19 +5542,19 @@ function __cpc__plugin_forum() {
 		
 			<tr><td colspan="2">
 			<div style="float: right; margin-top:-15px;">
-			<?php echo '<a href="admin.php?page=cpcommunitie_categories">'.__('Go to Forum Management', CPC_TEXT_DOMAIN).'</a>'; ?>
+			<?php echo '<a href="admin.php?page=cpcommunitie_categories">'.__('Go to Forum Management', 'cp-communitie').'</a>'; ?>
 			</div>
 			<h2>Editor</h2></td></tr>
 
             <tr valign="top"> 
-            <td scope="row"><label for="use_wysiwyg_width"><?php echo __('Width', CPC_TEXT_DOMAIN); ?></label></td>
-            <td><span class="description"><?php echo __('Width of editor (eg: 300px or 100%)', CPC_TEXT_DOMAIN); ?></span><br />
+            <td scope="row"><label for="use_wysiwyg_width"><?php echo __('Width', 'cp-communitie'); ?></label></td>
+            <td><span class="description"><?php echo __('Width of editor (eg: 300px or 100%)', 'cp-communitie'); ?></span><br />
             <input name="use_wysiwyg_width" type="text" id="use_wysiwyg_width"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_width'); ?>" />
             </td> 
             </tr> 
             <tr valign="top"> 
-            <td scope="row"><label for="use_wysiwyg_height"><?php echo __('Height', CPC_TEXT_DOMAIN); ?></label></td>
-            <td><span class="description"><?php echo __('Height of editor (eg: 250px)', CPC_TEXT_DOMAIN); ?></span><br />
+            <td scope="row"><label for="use_wysiwyg_height"><?php echo __('Height', 'cp-communitie'); ?></label></td>
+            <td><span class="description"><?php echo __('Height of editor (eg: 250px)', 'cp-communitie'); ?></span><br />
             <input name="use_wysiwyg_height" type="text" id="use_wysiwyg_height"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_height'); ?>" />
             </td> 
             </tr> 
@@ -5571,19 +5562,19 @@ function __cpc__plugin_forum() {
 			<?php if (get_option(CPC_OPTIONS_PREFIX.'__cpc__wysiwyg_activated') || get_option(CPC_OPTIONS_PREFIX.'__cpc__wysiwyg_network_activated')) { ?>
 
 	            <tr valign="top"> 
-	            <td scope="row"><label for="use_bbcode"><?php echo __('BB Code toolbar', CPC_TEXT_DOMAIN); ?></label></td>
+	            <td scope="row"><label for="use_bbcode"><?php echo __('BB Code toolbar', 'cp-communitie'); ?></label></td>
 	            <td>
 	            <input type="checkbox" name="use_bbcode" id="use_bbcode" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_bbcode') == "on") { echo "CHECKED"; } ?>/>
 	            <span class="description">
-	            <?php echo __('Use BB Code toolbar on the forums (cannot be used with WYSIWYG editor).', CPC_TEXT_DOMAIN); ?><br />
+	            <?php echo __('Use BB Code toolbar on the forums (cannot be used with WYSIWYG editor).', 'cp-communitie'); ?><br />
 	            </span></td> 
 	            </tr> 
 
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_bbcode') == 'on') { ?>
                     <tr valign="top" style='border-bottom: 1px dashed #666;border-right: 1px dashed #666; border-left: 1px dashed #666; border-top: 1px dashed #666;'> 
-                    <td class="highlighted_row" scope="row"><label for="use_bbcode_icons"><?php echo __('BB Code toolbar icons', CPC_TEXT_DOMAIN).'<br />bold|italic|underline|link|quote|code'; ?></label></td>
+                    <td class="highlighted_row" scope="row"><label for="use_bbcode_icons"><?php echo __('BB Code toolbar icons', 'cp-communitie').'<br />bold|italic|underline|link|quote|code'; ?></label></td>
                     <td class="highlighted_row"><span class="description">
-                    	<?php echo __('Icons to include in the BB Code toolbar.', CPC_TEXT_DOMAIN); ?></span><br />
+                    	<?php echo __('Icons to include in the BB Code toolbar.', 'cp-communitie'); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons')) update_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons', 'bold|italic|underline|link|quote|code'); ?>
                     <input name="use_bbcode_icons" style="width:350px" type="text" id="use_bbcode_icons"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons'); ?>" />
                     </td> 
@@ -5595,52 +5586,52 @@ function __cpc__plugin_forum() {
                 ?>
 
                 <tr valign="top"> 
-                <td scope="row"><label for="use_wysiwyg"><?php echo __('WYSIWYG editor', CPC_TEXT_DOMAIN); ?></label></td>
+                <td scope="row"><label for="use_wysiwyg"><?php echo __('WYSIWYG editor', 'cp-communitie'); ?></label></td>
                 <td>
                 <input type="checkbox" name="use_wysiwyg" id="use_wysiwyg" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == "on") { echo "CHECKED"; } ?>/>
                 <span class="description">
-                <?php echo __('Use the TinyMCE WYSIWYG editor/toolbar on the forums.', CPC_TEXT_DOMAIN); ?><br />
-                <?php echo __('NB. Some themes cause layout problems with TinyMCE. Verified with TwentyEleven and tested with many others, but', CPC_TEXT_DOMAIN); ?><br />
-                <?php echo __('if your editor toolbar layout is broken, check your theme stylesheets.', CPC_TEXT_DOMAIN); ?>
+                <?php echo __('Use the TinyMCE WYSIWYG editor/toolbar on the forums.', 'cp-communitie'); ?><br />
+                <?php echo __('NB. Some themes cause layout problems with TinyMCE. Verified with TwentyEleven and tested with many others, but', 'cp-communitie'); ?><br />
+                <?php echo __('if your editor toolbar layout is broken, check your theme stylesheets.', 'cp-communitie'); ?>
                 </span></td> 
                 </tr> 
             	                
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == 'on') { ?>					
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; border-top: 1px dashed #666;'> 
-                    <td scope="row" class="highlighted_row"><label for="include_context"><?php echo __('Context menu', CPC_TEXT_DOMAIN); ?></label></td>
+                    <td scope="row" class="highlighted_row"><label for="include_context"><?php echo __('Context menu', 'cp-communitie'); ?></label></td>
                     <td class="highlighted_row">
                     <input type="checkbox" name="include_context" id="include_context" <?php if (get_option(CPC_OPTIONS_PREFIX.'_include_context') == "on") { echo "CHECKED"; } ?>/>
-                    <span class="description"><?php echo __('Activate right-mouse click context menu.', CPC_TEXT_DOMAIN); ?></span></td> 
+                    <span class="description"><?php echo __('Activate right-mouse click context menu.', 'cp-communitie'); ?></span></td> 
                     </tr> 
                 
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666;'> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_1"><?php echo __('Editor Toolbars', CPC_TEXT_DOMAIN); ?><br />
-                    <a href="http://www.tinymce.com/wiki.php/Buttons/controls" target="_blank"><?php echo __('See all buttons/controls', CPC_TEXT_DOMAIN) ?></a><br />
-                    <a href="javascript:void(0);" id="use_wysiwyg_reset"><?php echo __('Reset (full)', CPC_TEXT_DOMAIN); ?></a><br />
-                    <a href="javascript:void(0);" id="use_wysiwyg_reset_min"><?php echo __('Reset (minimal)', CPC_TEXT_DOMAIN); ?></a>
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_1"><?php echo __('Editor Toolbars', 'cp-communitie'); ?><br />
+                    <a href="http://www.tinymce.com/wiki.php/Buttons/controls" target="_blank"><?php echo __('See all buttons/controls', 'cp-communitie') ?></a><br />
+                    <a href="javascript:void(0);" id="use_wysiwyg_reset"><?php echo __('Reset (full)', 'cp-communitie'); ?></a><br />
+                    <a href="javascript:void(0);" id="use_wysiwyg_reset_min"><?php echo __('Reset (minimal)', 'cp-communitie'); ?></a>
                     </label></td>
                     <td class="highlighted_row">
-                        <span class="description"><?php echo __('Toolbar row 1', CPC_TEXT_DOMAIN); ?></span><br />
+                        <span class="description"><?php echo __('Toolbar row 1', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_1" style="width:350px; height:80px" id="use_wysiwyg_1"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_1'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 2', CPC_TEXT_DOMAIN); ?></span><br />
+                        <span class="description"><?php echo __('Toolbar row 2', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_2" style="width:350px; height:80px" id="use_wysiwyg_2"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_2'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 3', CPC_TEXT_DOMAIN); ?></span><br />
+                        <span class="description"><?php echo __('Toolbar row 3', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_3" style="width:350px; height:80px" id="use_wysiwyg_3"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_3'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 4', CPC_TEXT_DOMAIN); ?></span><br />
+                        <span class="description"><?php echo __('Toolbar row 4', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_4" style="width:350px; height:80px" id="use_wysiwyg_4"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_4'); ?></textarea><br />
                     </td> 
                     </tr> 
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_css"><?php echo __('Editor CSS', CPC_TEXT_DOMAIN); ?></label></td>
-                    <td class="highlighted_row"><span class="description"><?php echo __('Path for CSS file, eg:', CPC_TEXT_DOMAIN).' '.str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css"); ?></span><br />
-                    <span class="description"><?php echo __('You may need to clear your browsing cache if changing the content of the file.', CPC_TEXT_DOMAIN); ?></span><br />
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_css"><?php echo __('Editor CSS', 'cp-communitie'); ?></label></td>
+                    <td class="highlighted_row"><span class="description"><?php echo __('Path for CSS file, eg:', 'cp-communitie').' '.str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css"); ?></span><br />
+                    <span class="description"><?php echo __('You may need to clear your browsing cache if changing the content of the file.', 'cp-communitie'); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css')) update_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css', str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css")); ?>
                     <input name="use_wysiwyg_css" style="width:350px" type="text" id="use_wysiwyg_css"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css'); ?>" />
                     </td> 
                     </tr> 
                     <tr valign="top" style='border-bottom: 1px dashed #666; border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_skin"><?php echo __('Skin folder', CPC_TEXT_DOMAIN); ?></label></td>
-                    <td class="highlighted_row"><span class="description"><?php echo sprintf(__('Folders are stored in %s/tiny_mce/themes/advanced/skins; eg: cirkuit', CPC_TEXT_DOMAIN), str_replace(get_bloginfo('url'), '', CPC_PLUGIN_URL)); ?></span><br />
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_skin"><?php echo __('Skin folder', 'cp-communitie'); ?></label></td>
+                    <td class="highlighted_row"><span class="description"><?php echo sprintf(__('Folders are stored in %s/tiny_mce/themes/advanced/skins; eg: cirkuit', 'cp-communitie'), str_replace(get_bloginfo('url'), '', CPC_PLUGIN_URL)); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin')) update_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin', 'cirkuit'); ?>
                     <input name="use_wysiwyg_skin" type="text" id="use_wysiwyg_skin"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin'); ?>" />
                     </td> 
@@ -5657,7 +5648,7 @@ function __cpc__plugin_forum() {
 			} else {
 
 				echo '<tr valign="top"><td colspan="2">';
-				echo __("To access WYSWIYG forum editor and BB Code Toolbar settings, <a href='admin.php?page=cpcommunitie_debug'>activate the Bronze member feature</a>.", CPC_TEXT_DOMAIN).'<br />';
+				echo __("To access WYSWIYG forum editor and BB Code Toolbar settings, <a href='admin.php?page=cpcommunitie_debug'>activate the Bronze member feature</a>.", 'cp-communitie').'<br />';
 				echo '<em>NB. Some themes cause layout problems with TinyMCE WYSIWYG editor. The editor is verified with TwentyTwelve and tested with many others, but if your editor toolbar layout is broken, check your theme stylesheets.</em>';
 				echo '</td></tr>';
 				
@@ -5667,97 +5658,97 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><h2>AJAX/Refresh</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_ajax"><?php echo __('Use AJAX', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_ajax"><?php echo __('Use AJAX', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_ajax" id="forum_ajax" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Use AJAX, or hyperlinks and page re-loading?', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Use AJAX, or hyperlinks and page re-loading?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_refresh"><?php echo __('Refresh forum after reply', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_refresh"><?php echo __('Refresh forum after reply', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_refresh" id="forum_refresh" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_refresh') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Reload the page after posting a reply on the forum.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Reload the page after posting a reply on the forum.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr><td colspan="2"><h2>Moderation</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation"><?php echo __('Moderation', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="moderation"><?php echo __('Moderation', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation" id="moderation" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('New topics and posts require admin approval', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('New topics and posts require admin approval', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_email_rejected"><?php echo __('Rejection email', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="moderation_email_rejected"><?php echo __('Rejection email', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation_email_rejected" id="moderation_email_rejected" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_rejected') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Send email to user when forum post rejected', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Send email to user when forum post rejected', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_email_accepted"><?php echo __('Accepted email', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="moderation_email_accepted"><?php echo __('Accepted email', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation_email_accepted" id="moderation_email_accepted" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_accepted') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Send email to user when forum post accepted', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Send email to user when forum post accepted', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr><td colspan="2"><h2>Attachments</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_uploads"><?php echo __('Allow uploads', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_uploads"><?php echo __('Allow uploads', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_uploads" id="forum_uploads" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_uploads') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow members to upload files with forum posts (requires Flash to be installed)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Allow members to upload files with forum posts (requires Flash to be installed)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_thumbs"><?php echo __('Inline attachments', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_thumbs"><?php echo __('Inline attachments', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_thumbs" id="forum_thumbs" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_thumbs') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show uploaded forum attachments as images/videos (not links). Documents are always links.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show uploaded forum attachments as images/videos (not links). Documents are always links.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_thumbs_size"><?php echo __('Thumbnail size', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_thumbs_size"><?php echo __('Thumbnail size', 'cp-communitie'); ?></label></td>
 			<td><input name="forum_thumbs_size" style="width:50px" type="text" id="forum_thumbs_size"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_forum_thumbs_size'); ?>" /> 
-			<span class="description"><?php echo __('If using inline attachments, maximum width', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('If using inline attachments, maximum width', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr><td colspan="2"><h2>Voting</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes"><?php echo __('Use Votes', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="use_votes"><?php echo __('Use Votes', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="use_votes" id="use_votes" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_votes') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow members to vote (plus or minus) on forum posts', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Allow members to vote (plus or minus) on forum posts', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes_min"><?php echo __('Votes (minimum posts)', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="use_votes_min"><?php echo __('Votes (minimum posts)', 'cp-communitie'); ?></label></td>
 			<td><input name="use_votes_min" style="width:50px" type="text" id="use_votes_min"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'); ?>" /> 
-			<span class="description"><?php echo __('How many posts a member must have made in order to vote', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('How many posts a member must have made in order to vote', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes_remove"><?php echo __('Votes (removal point)', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="use_votes_remove"><?php echo __('Votes (removal point)', 'cp-communitie'); ?></label></td>
 			<td><input name="use_votes_remove" style="width:50px" type="text" id="use_votes_remove"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove'); ?>" /> 
-			<span class="description"><?php echo __('When a forum post gets this many votes, it is removed. Can be + or -. Leave as 0 to ignore.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('When a forum post gets this many votes, it is removed. Can be + or -. Leave as 0 to ignore.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_answers"><?php echo __('Votes (answers)', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="use_answers"><?php echo __('Votes (answers)', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="use_answers" id="use_answers" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allows topic owners and administrators to mark a reply as an answer (one per topic)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Allows topic owners and administrators to mark a reply as an answer (one per topic)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr><td colspan="2"><h2>Permissions</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_roles"><?php echo __('Roles that can moderate the forum', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="moderation_roles"><?php echo __('Roles that can moderate the forum', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5775,13 +5766,13 @@ function __cpc__plugin_forum() {
 				}			
 			?>
 			<span class="description">
-					<?php echo sprintf(__('The WordPress roles that can <a href="%s">moderate forum posts</a>. Administrator will always be checked.', CPC_TEXT_DOMAIN), "admin.php?page=cpcommunitie_moderation"); ?><br />
-					<?php echo __('Checked roles can also manage the forum via the front-end.', CPC_TEXT_DOMAIN); ?>
+					<?php echo sprintf(__('The ClassicPress roles that can <a href="%s">moderate forum posts</a>. Administrator will always be checked.', 'cp-communitie'), "admin.php?page=cpcommunitie_moderation"); ?><br />
+					<?php echo __('Checked roles can also manage the forum via the front-end.', 'cp-communitie'); ?>
 			</span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="viewer"><?php echo __('View forum roles', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="viewer"><?php echo __('View forum roles', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5790,11 +5781,11 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_viewer');
 
-				echo '<input type="checkbox" name="viewers[]" value="'.__('everyone', CPC_TEXT_DOMAIN).'"';
-				if (strpos(strtolower($view_roles), strtolower(__('everyone', CPC_TEXT_DOMAIN)).',') !== FALSE) {
+				echo '<input type="checkbox" name="viewers[]" value="'.__('everyone', 'cp-communitie').'"';
+				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Guests', CPC_TEXT_DOMAIN).' ... <span class="description">'.__('means everyone can view the forum if checked', CPC_TEXT_DOMAIN).'</span><br />';						
+				echo '> '.__('Guests', 'cp-communitie').' ... <span class="description">'.__('means everyone can view the forum if checked', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="viewers[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($view_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5803,11 +5794,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The WordPress roles that can view the entire forum (fine tune with <a href="admin.php?page=cpcommunitie_categories">forum categories</a>)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('The ClassicPress roles that can view the entire forum (fine tune with <a href="admin.php?page=cpcommunitie_categories">forum categories</a>)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_editor"><?php echo __('Forum new topic roles', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="forum_editor"><?php echo __('Forum new topic roles', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5816,11 +5807,11 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_editor');
 
-				echo '<input type="checkbox" name="editors[]" value="'.__('everyone', CPC_TEXT_DOMAIN).'"';
-				if (strpos(strtolower($view_roles), strtolower(__('everyone', CPC_TEXT_DOMAIN)).',') !== FALSE) {
+				echo '<input type="checkbox" name="editors[]" value="'.__('everyone', 'cp-communitie').'"';
+				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', CPC_TEXT_DOMAIN).' ... <span class="description">'.__('means all members can post new topics if checked', CPC_TEXT_DOMAIN).'</span><br />';						
+				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can post new topics if checked', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="editors[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($view_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5829,11 +5820,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The WordPress roles that can post a new topic on the forum', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('The ClassicPress roles that can post a new topic on the forum', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_reply"><?php echo __('Forum reply roles', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="forum_reply"><?php echo __('Forum reply roles', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5842,11 +5833,11 @@ function __cpc__plugin_forum() {
 		
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply');
 
-				echo '<input type="checkbox" name="repliers[]" value="'.__('everyone', CPC_TEXT_DOMAIN).'"';
-				if (strpos(strtolower($reply_roles), strtolower(__('everyone', CPC_TEXT_DOMAIN)).',') !== FALSE) {
+				echo '<input type="checkbox" name="repliers[]" value="'.__('everyone', 'cp-communitie').'"';
+				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', CPC_TEXT_DOMAIN).' ... <span class="description">'.__('means all members can reply to topics if checked', CPC_TEXT_DOMAIN).'</span><br />';						
+				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can reply to topics if checked', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="repliers[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($reply_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5855,11 +5846,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The WordPress roles that can reply to a topic on the forum', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('The ClassicPress roles that can reply to a topic on the forum', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_comments"><?php echo __('Forum comment roles', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="forum_comments"><?php echo __('Forum comment roles', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5868,11 +5859,11 @@ function __cpc__plugin_forum() {
 		
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply_comment');
 
-				echo '<input type="checkbox" name="commenters[]" value="'.__('everyone', CPC_TEXT_DOMAIN).'"';
-				if (strpos(strtolower($reply_roles), strtolower(__('everyone', CPC_TEXT_DOMAIN)).',') !== FALSE) {
+				echo '<input type="checkbox" name="commenters[]" value="'.__('everyone', 'cp-communitie').'"';
+				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', CPC_TEXT_DOMAIN).' ... <span class="description">'.__('means all members can comment on replies if checked', CPC_TEXT_DOMAIN).'</span><br />';						
+				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can comment on replies if checked', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="commenters[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($reply_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5881,7 +5872,7 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The WordPress roles that can add comments to forum replies', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('The ClassicPress roles that can add comments to forum replies', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr><td colspan="2"><a name="ranks"></a><h2>Ranks</h2></td></tr>
@@ -5890,10 +5881,10 @@ function __cpc__plugin_forum() {
 			$ranks = explode(';', get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'));
 			?>
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_ranks"><?php echo __('Forum ranks', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_ranks"><?php echo __('Forum ranks', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_ranks" id="forum_ranks" <?php if ($ranks[0] == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Use ranks on the forum?', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Use ranks on the forum?', 'cp-communitie'); ?></span></td> 
 			</tr>
 
 			<?php
@@ -5902,7 +5893,7 @@ function __cpc__plugin_forum() {
 					if ($rank == 1) { 
 
 						echo '<td scope="row">';
-							echo __('Title and Posts Required', CPC_TEXT_DOMAIN);
+							echo __('Title and Posts Required', 'cp-communitie');
 						echo '</td>';
 
 					} else {
@@ -5910,7 +5901,7 @@ function __cpc__plugin_forum() {
 						echo '<td scope="row">';
 						
 							if ($rank == 11) {
-								echo '<em>'.__('(blank ranks are not used)', CPC_TEXT_DOMAIN).'</em>';
+								echo '<em>'.__('(blank ranks are not used)', 'cp-communitie').'</em>';
 							} else {
 								echo "&nbsp;";
 							}
@@ -5943,9 +5934,9 @@ function __cpc__plugin_forum() {
 						<span class="description">
 						<?php 
 						if ($rank == 1) {
-							echo __('Most posts', CPC_TEXT_DOMAIN); 
+							echo __('Most posts', 'cp-communitie'); 
 						} else {
-							echo __('Rank', CPC_TEXT_DOMAIN).' '.($rank-1); 							
+							echo __('Rank', 'cp-communitie').' '.($rank-1); 							
 						}
 						?></span>
 					</td> 
@@ -5958,165 +5949,165 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><a name="display"></a><h2>Display</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="_alt_subs"><?php echo __('Sub Categories', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="_alt_subs"><?php echo __('Sub Categories', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="_alt_subs" id="_alt_subs" <?php if (get_option(CPC_OPTIONS_PREFIX.'_alt_subs') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show child categories under parent categories', CPC_TEXT_DOMAIN); ?></span>
+			<span class="description"><?php echo __('Show child categories under parent categories', 'cp-communitie'); ?></span>
 			</td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination"><?php echo __('Pagination', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="pagination"><?php echo __('Pagination', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="pagination" id="pagination" <?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination') == "on" && get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') != "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Breaks topic replies into pages', CPC_TEXT_DOMAIN); ?></span>
+			<span class="description"><?php echo __('Breaks topic replies into pages', 'cp-communitie'); ?></span>
 			<?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == "on")
-				echo '<br /><span class="description" style="color:red;">'.__('Sorry, this is not compatible if using AJAX on the forum (above).', CPC_TEXT_DOMAIN).'</span>';
+				echo '<br /><span class="description" style="color:red;">'.__('Sorry, this is not compatible if using AJAX on the forum (above).', 'cp-communitie').'</span>';
 			?>
 			</td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination_location"><?php echo __('Pagination Placement', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="pagination_location"><?php echo __('Pagination Placement', 'cp-communitie'); ?></label></td>
 			<td>
 			<select name="pagination_location">
-				<option value="both"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'both') echo ' SELECTED'; ?>><?php echo __('Above and below replies', CPC_TEXT_DOMAIN); ?></option>
-				<option value="top"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'top') echo ' SELECTED'; ?>><?php echo __('Above replies', CPC_TEXT_DOMAIN); ?></option>
-				<option value="bottom"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'bottom') echo ' SELECTED'; ?>><?php echo __('Below replies', CPC_TEXT_DOMAIN); ?></option>
+				<option value="both"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'both') echo ' SELECTED'; ?>><?php echo __('Above and below replies', 'cp-communitie'); ?></option>
+				<option value="top"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'top') echo ' SELECTED'; ?>><?php echo __('Above replies', 'cp-communitie'); ?></option>
+				<option value="bottom"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'bottom') echo ' SELECTED'; ?>><?php echo __('Below replies', 'cp-communitie'); ?></option>
 			</select>
-			<span class="description"><?php echo __('If pagination is used, where to show page navigation', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('If pagination is used, where to show page navigation', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination_size"><?php echo __('Number of replies per page (pagination)', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="pagination_size"><?php echo __('Number of replies per page (pagination)', 'cp-communitie'); ?></label></td>
 			<td><input name="pagination_size" style="width:50px" type="text" id="pagination_size"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_pagination_size') ? get_option(CPC_OPTIONS_PREFIX.'_pagination_size') : 10; ?>" /> 
-			<span class="description"><?php echo __('If pagination is used, how many replies per page.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('If pagination is used, how many replies per page.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="topic_count"><?php echo __('Forum category post count', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="topic_count"><?php echo __('Forum category post count', 'cp-communitie'); ?></label></td>
 			<td><input name="topic_count" style="width:50px" type="text" id="topic_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_topic_count') ? get_option(CPC_OPTIONS_PREFIX.'_topic_count') : 10; ?>" /> 
-			<span class="description"><?php echo __('How many topics are shown in a forum category (use an even number).', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('How many topics are shown in a forum category (use an even number).', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="show_dropdown"><?php echo __('Dropdown category list', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="show_dropdown"><?php echo __('Dropdown category list', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="show_dropdown" id="show_dropdown" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_dropdown') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show a dropdown list of categories for quick navigation', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show a dropdown list of categories for quick navigation', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_info"><?php echo __('Member Info', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_info"><?php echo __('Member Info', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_info" id="forum_info" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_info') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show member info underneath avatar on forum', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show member info underneath avatar on forum', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_stars"><?php echo __('New post stars', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_stars"><?php echo __('New post stars', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_stars" id="forum_stars" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_stars') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show stars for posts added since last login.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show stars for posts added since last login.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_login"><?php echo __('Login Link', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_login"><?php echo __('Login Link', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_login" id="forum_login" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_login') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show login link on forum when not logged in?', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show login link on forum when not logged in?', 'cp-communitie'); ?></span></td> 
 			</tr> 
                                                 			
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_login_form"><?php echo __('Show login link below topic', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_login_form"><?php echo __('Show login link below topic', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_login_form" id="forum_login_form" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_login_form') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('If a user has to log in, show the login link underneath the topic/replies.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('If a user has to log in, show the login link underneath the topic/replies.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr><td colspan="2"><a name="more"></a><h2>Subscriptions</h2></td></tr>
 									
 			<tr valign="top"> 
-			<td scope="row"><label for="suppress_forum_notify"><?php echo __('Forum subscription', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="suppress_forum_notify"><?php echo __('Forum subscription', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="suppress_forum_notify" id="suppress_forum_notify" <?php if (get_option(CPC_OPTIONS_PREFIX.'_suppress_forum_notify') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Hide all forum subscription options', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Hide all forum subscription options', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="clear_forum_subs" id="clear_forum_subs" />
-			<span class="description"><?php echo __('If checked, all forum subscriptions will be cleared when you save (option not saved, applied just once)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('If checked, all forum subscriptions will be cleared when you save (option not saved, applied just once)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="allow_subscribe_all"><?php echo __('Subscribe to all forum activity', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="allow_subscribe_all"><?php echo __('Subscribe to all forum activity', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="allow_subscribe_all" id="allow_subscribe_all" <?php if (get_option(CPC_OPTIONS_PREFIX.'_allow_subscribe_all') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow subscribe to all via Profile page, Profile Details. If you have a lot of users, consider switching this off to improve forum performance.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Allow subscribe to all via Profile page, Profile Details. If you have a lot of users, consider switching this off to improve forum performance.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr><td colspan="2"><a name="more"></a><h2>More...</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="send_summary"><?php echo __('Daily Digest', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="send_summary"><?php echo __('Daily Digest', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="send_summary" id="send_summary" <?php if (get_option(CPC_OPTIONS_PREFIX.'_send_summary') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Enable daily summaries of forum activity to all members via email', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Enable daily summaries of forum activity to all members via email', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="include_admin"><?php echo __('Admin views', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="include_admin"><?php echo __('Admin views', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="include_admin" id="include_admin" <?php if (get_option(CPC_OPTIONS_PREFIX.'_include_admin') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Include administrator viewing a topic in the total view count', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Include administrator viewing a topic in the total view count', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="bump_topics"><?php echo __('Bump topics', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="bump_topics"><?php echo __('Bump topics', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="bump_topics" id="bump_topics" <?php if (get_option(CPC_OPTIONS_PREFIX.'_bump_topics') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Bumps topics to top of forum when new replies are posted', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Bumps topics to top of forum when new replies are posted', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="oldest_first"><?php echo __('Order of replies', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="oldest_first"><?php echo __('Order of replies', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="oldest_first" id="oldest_first" <?php if (get_option(CPC_OPTIONS_PREFIX.'_oldest_first') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show oldest replies first (uncheck to reverse order)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Show oldest replies first (uncheck to reverse order)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_lock"><?php echo __('Post lock time', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="forum_lock"><?php echo __('Post lock time', 'cp-communitie'); ?></label></td>
 			<td><input name="forum_lock" style="width:50px" type="text" id="forum_lock"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_forum_lock'); ?>" /> 
-			<span class="description"><?php echo __('How many minutes before a forum topic/reply can no longer be edited/deleted, 0 for no lock.', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('How many minutes before a forum topic/reply can no longer be edited/deleted, 0 for no lock.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="preview1"><?php echo __('Preview length', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="preview1"><?php echo __('Preview length', 'cp-communitie'); ?></label></td>
 			<td><input name="preview1" style="width:50px" type="text" id="preview1"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_preview1'); ?>" /> 
-			<span class="description"><?php echo __('Maximum number of characters to show in topic preview', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Maximum number of characters to show in topic preview', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
 			<td scope="row"><label for="preview2"></label></td>
 			<td><input name="preview2" style="width:50px" type="text" id="preview2"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_preview2'); ?>" /> 
-			<span class="description"><?php echo __('Maximum number of characters to show in reply preview', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Maximum number of characters to show in reply preview', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="cpc_default_forum"><?php echo __('Default Categories', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="cpc_default_forum"><?php echo __('Default Categories', 'cp-communitie'); ?></label></td>
 			<td><input name="cpc_default_forum" type="text" id="cpc_default_forum"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpc_default_forum'); ?>" /> 
-			<span class="description"><?php echo __('List of forum categories IDs, that new site members automatically subscribe to (comma separated)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('List of forum categories IDs, that new site members automatically subscribe to (comma separated)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="chatroom_banned"><?php echo __('Banned forum words', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="chatroom_banned"><?php echo __('Banned forum words', 'cp-communitie'); ?></label></td> 
 			<td><input name="chatroom_banned" type="text" id="chatroom_banned"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_chatroom_banned'); ?>" /> 
-			<span class="description"><?php echo __('Comma separated list of words not allowed in the forum', CPC_TEXT_DOMAIN); ?></td> 
+			<span class="description"><?php echo __('Comma separated list of words not allowed in the forum', 'cp-communitie'); ?></td> 
 			</tr> 
 
 									
 			<tr valign="top"> 
-			<td scope="row"><label for="closed_word"><?php echo __('Closed word', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="closed_word"><?php echo __('Closed word', 'cp-communitie'); ?></label></td>
 			<td><input name="closed_word" type="text" id="closed_word"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_closed_word'); ?>" /> 
-			<span class="description"><?php echo __('Word used to denote a topic that is closed (see also Styles)', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Word used to denote a topic that is closed (see also Styles)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<?php
@@ -6132,22 +6123,22 @@ function __cpc__plugin_forum() {
 			
 
 			<tr valign="top"> 
-			<td scope="row"><label for="sharing_permalink"><?php echo __('Sharing icons included', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="sharing_permalink"><?php echo __('Sharing icons included', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="sharing_permalink" id="sharing_permalink" <?php if ($sharing_permalink == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Permalink (to copy)', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Permalink (to copy)', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_email" id="sharing_email" <?php if ($sharing_email == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Email', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Email', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_facebook" id="sharing_facebook" <?php if ($sharing_facebook == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Facebook', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Facebook', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_twitter" id="sharing_twitter" <?php if ($sharing_twitter == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Twitter', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Twitter', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_myspace" id="sharing_myspace" <?php if ($sharing_myspace == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('MySpace', CPC_TEXT_DOMAIN); ?></span><br /> 
+			<span class="description"><?php echo __('MySpace', 'cp-communitie'); ?></span><br /> 
 			<input type="checkbox" name="sharing_bebo" id="sharing_bebo" <?php if ($sharing_bebo == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Bebo', CPC_TEXT_DOMAIN); ?></span><br />
+			<span class="description"><?php echo __('Bebo', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_linkedin" id="sharing_linkedin" <?php if ($sharing_linkedin == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('LinkedIn', CPC_TEXT_DOMAIN); ?></span>
+			<span class="description"><?php echo __('LinkedIn', 'cp-communitie'); ?></span>
 			</td> 
 			</tr> 
 
@@ -6155,10 +6146,10 @@ function __cpc__plugin_forum() {
 			<td colspan=2>
 				<p>
 				<span class="description">
-				<strong><?php echo __('Notes', CPC_TEXT_DOMAIN); ?></strong>
+				<strong><?php echo __('Notes', 'cp-communitie'); ?></strong>
 				<ul style='margin-left:6px'>
-				<li>&middot;&nbsp;<?php echo __('Daily summaries (if there is anything to send) are sent when the first visitor comes to the site after midnight, local time.', CPC_TEXT_DOMAIN); ?></li>
-				<li>&middot;&nbsp;<?php echo __('Be aware of any limits set by your hosting provider for sending out bulk emails, they may suspend your website.', CPC_TEXT_DOMAIN); ?></li>
+				<li>&middot;&nbsp;<?php echo __('Daily summaries (if there is anything to send) are sent when the first visitor comes to the site after midnight, local time.', 'cp-communitie'); ?></li>
+				<li>&middot;&nbsp;<?php echo __('Be aware of any limits set by your hosting provider for sending out bulk emails, they may suspend your website.', 'cp-communitie'); ?></li>
 				</ul>
 				</p>
 			</td>
@@ -6167,15 +6158,15 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 
 			<tr><td><?php echo '['.CPC_SHORTCODE_PREFIX.'-forum]'; ?></td>
-				<td><?php _e('Display the forum.', CPC_TEXT_DOMAIN); ?></td></tr>
+				<td><?php _e('Display the forum.', 'cp-communitie'); ?></td></tr>
 			<tr><td><?php echo '['.CPC_SHORTCODE_PREFIX.'-forum cat="2"]'; ?></td>
-				<td><?php _e('Display just forum category ID 2 on a single WordPress page.', CPC_TEXT_DOMAIN); ?></td></tr>
+				<td><?php _e('Display just forum category ID 2 on a single ClassicPress page.', 'cp-communitie'); ?></td></tr>
 			<tr valign="top"> 
 			<td scope="row"><label for="cpcommunitie_forumlatestposts_count"><?php echo '['.CPC_SHORTCODE_PREFIX.'-forumlatestposts]'; ?></label></td>
-			<td><?php _e('Display most recent forum posts and replies.', CPC_TEXT_DOMAIN); ?><br /><input name="cpcommunitie_forumlatestposts_count" style="width:50px" type="text" id="cpcommunitie_forumlatestposts_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpcommunitie_forumlatestposts_count'); ?>" /> 
+			<td><?php _e('Display most recent forum posts and replies.', 'cp-communitie'); ?><br /><input name="cpcommunitie_forumlatestposts_count" style="width:50px" type="text" id="cpcommunitie_forumlatestposts_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpcommunitie_forumlatestposts_count'); ?>" /> 
 			<span class="description"><?php 
-			echo sprintf(__('Default number of topics to show. Can be overridden, eg: [%s-forumlatestposts count=10]', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX).'<br />'; 
-			echo '<span style="margin-left:55px">'.sprintf(__('Forum category IDs can be specified in the shortcode, eg: [%s-forumlatestposts cat=1]', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX).'</span>'; ?></span></td> 
+			echo sprintf(__('Default number of topics to show. Can be overridden, eg: [%s-forumlatestposts count=10]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'<br />'; 
+			echo '<span style="margin-left:55px">'.sprintf(__('Forum category IDs can be specified in the shortcode, eg: [%s-forumlatestposts cat=1]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'</span>'; ?></span></td> 
 			</tr> 
 			
 
@@ -6183,7 +6174,7 @@ function __cpc__plugin_forum() {
 			</table> 	
 		 
 			<p class="submit" style='margin-left:6px;'> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 		
@@ -6199,7 +6190,7 @@ function __cpc__plugin_categories() {
 	global $wpdb;
 
   	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.', CPC_TEXT_DOMAIN) );
+		wp_die( __('You do not have sufficient permissions to access this page.', 'cp-communitie') );
   	}
   	
   	if (isset($_GET['action'])) {
@@ -6251,10 +6242,10 @@ function __cpc__plugin_categories() {
 	}
 		
   	// Add new category?
-  	if ( (isset($_POST['new_title']) && $_POST['new_title'] != '') && ($_POST['new_title'] != __('Add New Category', CPC_TEXT_DOMAIN).'...') ) {
+  	if ( (isset($_POST['new_title']) && $_POST['new_title'] != '') && ($_POST['new_title'] != __('Add New Category', 'cp-communitie').'...') ) {
   		
   		$new_cat_desc = $_POST['new_cat_desc'];
-  		if ($new_cat_desc == __('Optional Description', CPC_TEXT_DOMAIN)."...") {
+  		if ($new_cat_desc == __('Optional Description', 'cp-communitie')."...") {
   			$new_cat_desc = '';  		
   		}
   	
@@ -6299,7 +6290,7 @@ function __cpc__plugin_categories() {
 				$wpdb->query( $wpdb->prepare("UPDATE ".$wpdb->prefix.'cpcommunitie_topics'." SET topic_category = 0 WHERE topic_category = %d", $_GET['cid']) );
 			}
 		} else {
-			echo "<div class='error'><p>".__('You must have at least one category', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='error'><p>".__('You must have at least one category', 'cp-communitie').".</p></div>";
 		}
   	}
  
@@ -6315,17 +6306,17 @@ function __cpc__plugin_categories() {
 			}
 	
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Categories saved', CPC_TEXT_DOMAIN)."</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Categories saved', 'cp-communitie')."</p></div>";
 	
 		}
  	
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('categories');
 	echo '<div style="float:right">';
-	echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Go to Forum Options', CPC_TEXT_DOMAIN).'</a><br /><br />';	 
+	echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Go to Forum Options', 'cp-communitie').'</a><br /><br />';	 
 	echo '</div>';
 	?> 
 	<form method="post" action=""> 
@@ -6334,12 +6325,12 @@ function __cpc__plugin_categories() {
 	<thead>
 	<tr>
 	<th style="width:40px">ID</th>
-	<th style="width:60px"><?php echo __('Parent ID', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Category Title and Description', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Permitted Roles', CPC_TEXT_DOMAIN); ?></th>
-	<th style="text-align:center"><?php echo __('Topics', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Order', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Options', CPC_TEXT_DOMAIN); ?></th>
+	<th style="width:60px"><?php echo __('Parent ID', 'cp-communitie'); ?></th>
+	<th><?php echo __('Category Title and Description', 'cp-communitie'); ?></th>
+	<th><?php echo __('Permitted Roles', 'cp-communitie'); ?></th>
+	<th style="text-align:center"><?php echo __('Topics', 'cp-communitie'); ?></th>
+	<th><?php echo __('Order', 'cp-communitie'); ?></th>
+	<th><?php echo __('Options', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	</tr> 
 	</thead>
@@ -6365,7 +6356,7 @@ function __cpc__plugin_categories() {
 					<tr>
 					<th style="width:20px"></th>
 					<th style="width:60px">&nbsp;</th>
-					<th><strong><?php echo __('The following will not be displayed due to Parent ID (update or delete)', CPC_TEXT_DOMAIN); ?>...</strong></th>
+					<th><strong><?php echo __('The following will not be displayed due to Parent ID (update or delete)', 'cp-communitie'); ?>...</strong></th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -6397,7 +6388,7 @@ function __cpc__plugin_categories() {
 					}
 					echo '> '.$role['name'].'<br />';
 				}				
-				echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', CPC_TEXT_DOMAIN).'</a><br />';
+				echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', 'cp-communitie').'</a><br />';
 				
 				echo '</td>';
 				echo '<td style="text-align:center;">';
@@ -6408,15 +6399,15 @@ function __cpc__plugin_categories() {
 				echo '<select name="allow_new[]">';
 				echo '<option value="on"';
 					if ($category->allow_new == "on") { echo " SELECTED"; }
-					echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+					echo '>'.__('Yes', 'cp-communitie').'</option>';
 				echo '<option value=""';
 					if ($category->allow_new != "on") { echo " SELECTED"; }
-					echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+					echo '>'.__('No', 'cp-communitie').'</option>';
 				echo '</select>';
 				echo '</td>';
 				echo '<td>';
-				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', CPC_TEXT_DOMAIN).'</a><br />';
-				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', CPC_TEXT_DOMAIN).'</a>';
+				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', 'cp-communitie').'</a><br />';
+				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', 'cp-communitie').'</a>';
 				echo '</td>';
 				echo '</tr>';
 				
@@ -6424,7 +6415,7 @@ function __cpc__plugin_categories() {
 		}
 	}
 	echo '<tr><td colspan="8">';
-	echo sprintf(__('Note: "View forum roles", "Forum new topic roles" and "Forum reply roles" on <a href="%s">forum settings</a> effect the overall forum, the above permitted roles are for view and edit per forum category.', CPC_TEXT_DOMAIN), "admin.php?page=cpcommunitie_forum");
+	echo sprintf(__('Note: "View forum roles", "Forum new topic roles" and "Forum reply roles" on <a href="%s">forum settings</a> effect the overall forum, the above permitted roles are for view and edit per forum category.', 'cp-communitie'), "admin.php?page=cpcommunitie_forum");
 	echo '</td></tr>';
 	
 	?>
@@ -6432,12 +6423,12 @@ function __cpc__plugin_categories() {
 	<thead>
 	<tr>
 	<th style="width:20px"></th>
-	<th style="width:60px"><?php echo __('Parent ID', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Add New Category', CPC_TEXT_DOMAIN); ?></th>
+	<th style="width:60px"><?php echo __('Parent ID', 'cp-communitie'); ?></th>
+	<th><?php echo __('Add New Category', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
-	<th><?php echo __('Order', CPC_TEXT_DOMAIN); ?></th>
-	<th><?php echo __('Allow new topics', CPC_TEXT_DOMAIN); ?></th>
+	<th><?php echo __('Order', 'cp-communitie'); ?></th>
+	<th><?php echo __('Allow new topics', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	</tr> 
 	</thead>
@@ -6446,8 +6437,8 @@ function __cpc__plugin_categories() {
 	<td>&nbsp;</td>
 	<td><input name="new_parent" type="text" value="0" style="width:50px" /></td>
 	<td>
-		<input name="new_title" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Add New Category', CPC_TEXT_DOMAIN); ?>..." class="regular-text" style="width:150px" /><br />
-		<input name="new_cat_desc" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Optional Description', CPC_TEXT_DOMAIN); ?>..." class="regular-text" style="width:150px" />
+		<input name="new_title" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Add New Category', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" /><br />
+		<input name="new_cat_desc" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Optional Description', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" />
 	</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
@@ -6461,7 +6452,7 @@ function __cpc__plugin_categories() {
 	</tr>
 	</table> 
 
-	<br /><?php echo __('Default Category', CPC_TEXT_DOMAIN); ?>:
+	<br /><?php echo __('Default Category', 'cp-communitie'); ?>:
 	<?php
 	$categories = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.'cpcommunitie_cats ORDER BY listorder');
 
@@ -6477,15 +6468,15 @@ function __cpc__plugin_categories() {
 	?>
 	 
 	<p class="submit"> 
-	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 	</p> 
 	
 	<p>
 	<?php
-	echo __('Note:', CPC_TEXT_DOMAIN);
-	echo '<li>'.__('choose "Delete category and posts" to delete a category and all topics in that category.', CPC_TEXT_DOMAIN).'</li>';
-	echo '<li>'.sprintf(__('if category descriptions are not showing, try resetting your <a href="%s">forum templates</a>.', CPC_TEXT_DOMAIN), "admin.php?page=cpcommunitie_templates");
-	echo '<span class="__cpc__tooltip" title="'.__('The Forum Categories (list) template should include the [category_desc] code<br />to display the description of the forum category.', CPC_TEXT_DOMAIN).'">?</span></li>';
+	echo __('Note:', 'cp-communitie');
+	echo '<li>'.__('choose "Delete category and posts" to delete a category and all topics in that category.', 'cp-communitie').'</li>';
+	echo '<li>'.sprintf(__('if category descriptions are not showing, try resetting your <a href="%s">forum templates</a>.', 'cp-communitie'), "admin.php?page=cpcommunitie_templates");
+	echo '<span class="__cpc__tooltip" title="'.__('The Forum Categories (list) template should include the [category_desc] code<br />to display the description of the forum category.', 'cp-communitie').'">?</span></li>';
 	?>
 	<p>
 	</form> 
@@ -6544,14 +6535,14 @@ function __cpc__show_forum_children($id, $indent, $list) {
 			echo '<input name="cid[]" type="hidden" value="'.$category->cid.'" />';
 			echo '<td style="'.$style.'">'.str_repeat("...", $indent).'&nbsp;'.$category->cid.'</td>';
 			echo '<td><input name="cat_parent[]" type="text" value="'.stripslashes($category->cat_parent).'" style="width:30px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('ID of the forum category within which this forum category should appear.<br />Allows you to make a hierarchy of forum categories.', CPC_TEXT_DOMAIN).'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('ID of the forum category within which this forum category should appear.<br />Allows you to make a hierarchy of forum categories.', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '<td>';
 			echo str_repeat("&nbsp;&nbsp;&nbsp;", $indent).'<input name="title[]" type="text" value="'.stripslashes($category->title).'" class="regular-text" style="width:150px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Title of the forum category', CPC_TEXT_DOMAIN).'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Title of the forum category', 'cp-communitie').'">?</span>';
 			echo '<br />';
 			echo str_repeat("&nbsp;&nbsp;&nbsp;", $indent).'<input name="cat_desc[]" type="text" value="'.stripslashes($category->cat_desc).'" class="regular-text" style="width:150px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Optional description of the forum category', CPC_TEXT_DOMAIN).'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Optional description of the forum category', 'cp-communitie').'">?</span>';
 
 			// Add option for minimum forum rank if in use
 			$ranks = explode(';', get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'));
@@ -6559,8 +6550,8 @@ function __cpc__show_forum_children($id, $indent, $list) {
 			if ($using_ranks) {
 				echo '<br /><br />';
 				echo '<table>';
-				echo '<tr><td style="border:0px;padding-top:8px">'.sprintf(__('Minimum <a href="%s">rank score</a>', CPC_TEXT_DOMAIN), 'admin.php?page=cpcommunitie_forum#ranks') . ':</td>';
-				echo '<td style="border:0px"><input name="min_rank[]" type="text" value="'.$category->min_rank.'" style="width:50px;" /><span class="__cpc__tooltip" title="'.__('Check Forum Rank scores via the link. A user must have at least<br />the score entered here to view the forum category.', CPC_TEXT_DOMAIN).'">?</span></td></tr>';
+				echo '<tr><td style="border:0px;padding-top:8px">'.sprintf(__('Minimum <a href="%s">rank score</a>', 'cp-communitie'), 'admin.php?page=cpcommunitie_forum#ranks') . ':</td>';
+				echo '<td style="border:0px"><input name="min_rank[]" type="text" value="'.$category->min_rank.'" style="width:50px;" /><span class="__cpc__tooltip" title="'.__('Check Forum Rank scores via the link. A user must have at least<br />the score entered here to view the forum category.', 'cp-communitie').'">?</span></td></tr>';
 				echo '</table>';
 			}
 			echo '</td>';
@@ -6579,50 +6570,50 @@ function __cpc__show_forum_children($id, $indent, $list) {
 				echo '> '.$role['name'].'<br />';
 			}
 			
-			echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', CPC_TEXT_DOMAIN).'</a><br />';
+			echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', 'cp-communitie').'</a><br />';
 			echo '</td>';
 			echo '<td style="text-align:center">';
 			echo $wpdb->get_var("SELECT count(*) FROM ".$wpdb->prefix."cpcommunitie_topics WHERE topic_parent = 0 AND topic_category = ".$category->cid);
 			echo '</td>';
 			echo '<td><input name="listorder[]" type="text" value="'.$category->listorder.'" style="width:50px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Set the order of the categories - use numeric values.', CPC_TEXT_DOMAIN).'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Set the order of the categories - use numeric values.', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '<td>';
-			echo __('Allow new topics?', CPC_TEXT_DOMAIN).'<br />';
+			echo __('Allow new topics?', 'cp-communitie').'<br />';
 			echo '<select name="allow_new[]">';
 			echo '<option value="on"';
 				if ($category->allow_new == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('Yes', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->allow_new != "on") { echo " SELECTED"; }
-				echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('No', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Should users be able to start<br />new topics in this category?<br />Administrators can always<br />create a new topic.', CPC_TEXT_DOMAIN).'">?</span>';
-			echo '<br />'.__('Hide breadcrumbs?', CPC_TEXT_DOMAIN).'<br />';
+			echo '<span class="__cpc__tooltip" title="'.__('Should users be able to start<br />new topics in this category?<br />Administrators can always<br />create a new topic.', 'cp-communitie').'">?</span>';
+			echo '<br />'.__('Hide breadcrumbs?', 'cp-communitie').'<br />';
 			echo '<select name="hide_breadcrumbs[]">';
 			echo '<option value="on"';
 				if ($category->hide_breadcrumbs == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('Yes', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->hide_breadcrumbs != "on") { echo " SELECTED"; }
-				echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('No', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Hide the forum breadcrumbs for this category?', CPC_TEXT_DOMAIN).'">?</span>';
-			echo '<br />'.__('Exclude from forum?', CPC_TEXT_DOMAIN).'<br />';
+			echo '<span class="__cpc__tooltip" title="'.__('Hide the forum breadcrumbs for this category?', 'cp-communitie').'">?</span>';
+			echo '<br />'.__('Exclude from forum?', 'cp-communitie').'<br />';
 			echo '<select name="hide_main[]">';
 			echo '<option value="on"';
 				if ($category->hide_main == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('Yes', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->hide_main != "on") { echo " SELECTED"; }
-				echo '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+				echo '>'.__('No', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Exclude from the main forum?', CPC_TEXT_DOMAIN).'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Exclude from the main forum?', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '</td>';
 			echo '<td>';
-			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', CPC_TEXT_DOMAIN).'</a><br />';
-			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', CPC_TEXT_DOMAIN).'</a>';
+			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', 'cp-communitie').'</a><br />';
+			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 
@@ -6639,12 +6630,12 @@ function __cpc__plugin_styles() {
 	global $wpdb;
 
 	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.', CPC_TEXT_DOMAIN) );
+		wp_die( __('You do not have sufficient permissions to access this page.', 'cp-communitie') );
 	}
 
   	echo '<div class="wrap">';
   		echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.__('Styles', CPC_TEXT_DOMAIN).'</h2>';
+	  	echo '<h2>'.__('Styles', 'cp-communitie').'</h2>';
 
 		// See if the user has saved CSS
 		if( isset($_POST[ 'cpcommunitie_update' ]) && $_POST[ 'cpcommunitie_update' ] == 'CSS' ) {
@@ -6662,7 +6653,7 @@ function __cpc__plugin_styles() {
 		if ( isset($_GET[ 'delstyle' ]) ) {
 			$sql = "DELETE FROM ".$wpdb->prefix."cpcommunitie_styles WHERE sid = %d";
 			if ( $wpdb->query( $wpdb->prepare( $sql, $_GET[ 'delstyle' ])) ) {
-				echo "<div class='updated slideaway'><p>".__('Template Deleted', CPC_TEXT_DOMAIN)."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Template Deleted', 'cp-communitie')."</p></div>";
 			}
 		}	
 		// See if the user has selected a template
@@ -6701,9 +6692,9 @@ function __cpc__plugin_styles() {
 				$style_id = $style->sid;
 
 				// Put an settings updated message on the screen
-				echo "<div class='updated slideaway'><p>".__('Template Applied', CPC_TEXT_DOMAIN)."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Template Applied', 'cp-communitie')."</p></div>";
 			} else {
-				echo "<div class='error'><p>".__('Template Not Found', CPC_TEXT_DOMAIN)."</p></div>";
+				echo "<div class='error'><p>".__('Template Not Found', 'cp-communitie')."</p></div>";
 			}
 		}
 
@@ -6777,7 +6768,7 @@ function __cpc__plugin_styles() {
 				) );	
 						
 				// Put an settings updated message on the screen
-				echo "<div class='updated slideaway'><p>".__('Template Saved', CPC_TEXT_DOMAIN)."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Template Saved', 'cp-communitie')."</p></div>";
 				
 				$style_save_as = $_POST[ 'style_save_as' ];	   
 			} else {
@@ -6811,9 +6802,9 @@ function __cpc__plugin_styles() {
 		echo '<div class="__cpc__wrapper" style="margin-top:15px">';
 	
 			echo '<div id="mail_tabs">';
-			echo '<div class="mail_tab nav-tab-'.$styles_active.'"><a href="admin.php?page=cpcommunitie_styles&view=styles" class="nav-tab-'.$styles_active.'-link">'.__('Styles', CPC_TEXT_DOMAIN).'</a></div>';
-			echo '<div class="mail_tab nav-tab-'.$css_active.'"><a href="admin.php?page=cpcommunitie_styles&view=css" class="nav-tab-'.$css_active.'-link">'.__('CSS', CPC_TEXT_DOMAIN).'</a></div>';
-			echo '<div class="mail_tab nav-tab-'.$responsive_active.'" style="width:100px"><a href="admin.php?page=cpcommunitie_styles&view=responsive" class="nav-tab-'.$responsive_active.'-link">'.__('Responsive', CPC_TEXT_DOMAIN).'</a></div>';
+			echo '<div class="mail_tab nav-tab-'.$styles_active.'"><a href="admin.php?page=cpcommunitie_styles&view=styles" class="nav-tab-'.$styles_active.'-link">'.__('Styles', 'cp-communitie').'</a></div>';
+			echo '<div class="mail_tab nav-tab-'.$css_active.'"><a href="admin.php?page=cpcommunitie_styles&view=css" class="nav-tab-'.$css_active.'-link">'.__('CSS', 'cp-communitie').'</a></div>';
+			echo '<div class="mail_tab nav-tab-'.$responsive_active.'" style="width:100px"><a href="admin.php?page=cpcommunitie_styles&view=responsive" class="nav-tab-'.$responsive_active.'-link">'.__('Responsive', 'cp-communitie').'</a></div>';
 			echo '</div>';
 		
 			echo '<div id="mail-main">';
@@ -6825,9 +6816,9 @@ function __cpc__plugin_styles() {
 					$css = str_replace("[]", chr(13), stripslashes($css));
 
 					echo '<form method="post" action=""> ';
-					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', CPC_TEXT_DOMAIN).'">';
+					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', 'cp-communitie').'">';
 
-					echo __('These styles affect output when your site is viewed on tablets and phones.', CPC_TEXT_DOMAIN);
+					echo __('These styles affect output when your site is viewed on tablets and phones.', 'cp-communitie');
 
 					echo '<input type="hidden" name="cpcommunitie_update" value="responsive">';
 
@@ -6854,8 +6845,8 @@ function __cpc__plugin_styles() {
 					$css = str_replace("[]", chr(13), stripslashes($css));
 
 					echo '<form method="post" action=""> ';
-					echo __('Styles entered here will take priority over linked stylesheets but not the <a href="admin.php?page=cpcommunitie_styles&view=responsive">responsive styles</a>.', CPC_TEXT_DOMAIN);
-					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', CPC_TEXT_DOMAIN).'">';
+					echo __('Styles entered here will take priority over linked stylesheets but not the <a href="admin.php?page=cpcommunitie_styles&view=responsive">responsive styles</a>.', 'cp-communitie');
+					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', 'cp-communitie').'">';
 
 					echo '<input type="hidden" name="cpcommunitie_update" value="CSS">';
 
@@ -6870,20 +6861,20 @@ function __cpc__plugin_styles() {
 					echo '<td>';
 						echo '<table class="widefat">';
 						echo '<tr>';
-						echo '<td style="font-weight:bold">'.__('Notes', CPC_TEXT_DOMAIN).'</td>';
+						echo '<td style="font-weight:bold">'.__('Notes', 'cp-communitie').'</td>';
 						echo '</tr>';
 						echo '<tbody>';
 						echo '<tr><td>';
-						echo __('To speed things up, why not open a new window and refresh it each time you save a change here?', CPC_TEXT_DOMAIN);
+						echo __('To speed things up, why not open a new window and refresh it each time you save a change here?', 'cp-communitie');
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo sprintf(__('CSS will over-ride the %s Styles (other tab), but your theme may take priority.', CPC_TEXT_DOMAIN), CPC_WL);
+						echo sprintf(__('CSS will over-ride the %s Styles (other tab), but your theme may take priority.', 'cp-communitie'), CPC_WL);
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo __('If a style doesn\'t apply, try putting !important after it. eg: color:red !important;', CPC_TEXT_DOMAIN);
+						echo __('If a style doesn\'t apply, try putting !important after it. eg: color:red !important;', 'cp-communitie');
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo __('Refer to www.cpcymposium.com/2013/01/styles for more help and examples.', CPC_TEXT_DOMAIN);
+						echo __('Refer to www.cpcymposium.com/2013/01/styles for more help and examples.', 'cp-communitie');
 						echo '</td></tr>';
 						echo '</tbody>';
 						echo '</table>';
@@ -6907,91 +6898,91 @@ function __cpc__plugin_styles() {
 					<table class="form-table __cpc__admin_table"> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="use_styles"><?php echo __('Use Styles?', CPC_TEXT_DOMAIN); ?></label></td>
+					<td scope="row"><label for="use_styles"><?php echo __('Use Styles?', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="use_styles" id="use_styles" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_styles') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Enable to use styles on this page, disable to rely on stylesheet', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Enable to use styles on this page, disable to rely on stylesheet', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="fontfamily"><?php echo __('Body Text', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="fontfamily"><?php echo __('Body Text', 'cp-communitie'); ?></label></td> 
 					<td><input name="fontfamily" type="text" id="fontfamily" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_fontfamily')); ?>"/> 
-					<span class="description"><?php echo __('Font family for body text', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Font family for body text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="fontsize"></label></td> 
 					<td><input name="fontsize" type="text" id="fontsize" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_fontsize'); ?>"/> 
-					<span class="description"><?php echo __('Font size in pixels for body text', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Font size in pixels for body text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="headingsfamily"><?php echo __('Headings', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="headingsfamily"><?php echo __('Headings', 'cp-communitie'); ?></label></td> 
 					<td><input name="headingsfamily" type="text" id="headingsfamily" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_headingsfamily')); ?>"/> 
-					<span class="description"><?php echo __('Font family for headings and large text', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Font family for headings and large text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="headingssize"></label></td> 
 					<td><input name="headingssize" type="text" id="headingssize" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_headingssize'); ?>"/> 
-					<span class="description"><?php echo __('Font size in pixels for headings and large text', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Font size in pixels for headings and large text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="main_background"><?php echo __('Main background', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="main_background"><?php echo __('Main background', 'cp-communitie'); ?></label></td> 
 					<td><input name="main_background" type="text" id="main_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_main_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
 
-					<span class="description"><?php echo __('Main background colour (for example, new/edit forum topic/post)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Main background colour (for example, new/edit forum topic/post)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="label"><?php echo __('Labels', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="label"><?php echo __('Labels', 'cp-communitie'); ?></label></td> 
 					<td><input name="label" type="text" id="label" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_label'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Colour of text labels outside forum areas', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Colour of text labels outside forum areas', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="text_color"><?php echo __('Text Colour', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="text_color"><?php echo __('Text Colour', 'cp-communitie'); ?></label></td> 
 					<td><input name="text_color" type="text" id="text_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_text_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Primary Text Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Primary Text Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="text_color_2"></label></td> 
 					<td><input name="text_color_2" type="text" id="text_color_2" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_text_color_2'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Secondary Text Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Secondary Text Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="link"><?php echo __('Links', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="link"><?php echo __('Links', 'cp-communitie'); ?></label></td> 
 					<td><input name="link" type="text" id="link" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_link'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Link Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Link Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="link_hover"</label></td> 
 					<td><input name="link_hover" type="text" id="link_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_link_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Link Colour on mouse hover', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Link Colour on mouse hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="underline"><?php echo __('Underlined?', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="underline"><?php echo __('Underlined?', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="underline" id="underline"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='') { echo "selected='selected'"; } ?> value=''><?php echo __('No', CPC_TEXT_DOMAIN); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='on') { echo "selected='selected'"; } ?> value='on'><?php echo __('Yes', CPC_TEXT_DOMAIN); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='') { echo "selected='selected'"; } ?> value=''><?php echo __('No', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='on') { echo "selected='selected'"; } ?> value='on'><?php echo __('Yes', 'cp-communitie'); ?></option> 
 					</select> 
-					<span class="description"><?php echo __('Whether links are underlined or not', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Whether links are underlined or not', 'cp-communitie'); ?></span></td> 
 					</tr> 
 			
 					<tr valign="top"> 
-					<td scope="row"><label for="border_radius"><?php echo __('Corners', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="border_radius"><?php echo __('Corners', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="border_radius" id="border_radius"> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
@@ -7011,63 +7002,63 @@ function __cpc__plugin_styles() {
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='14') { echo "selected='selected'"; } ?> value='14'>14 pixels</option> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='15') { echo "selected='selected'"; } ?> value='15'>15 pixels</option> 
 					</select> 
-					<span class="description"><?php echo __('Rounded Corner radius (not supported in all browsers)', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Rounded Corner radius (not supported in all browsers)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="bigbutton_background"><?php echo __('Buttons', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="bigbutton_background"><?php echo __('Buttons', 'cp-communitie'); ?></label></td> 
 					<td><input name="bigbutton_background" type="text" id="bigbutton_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Background Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_background_hover"></label></td> 
 					<td><input name="bigbutton_background_hover" type="text" id="bigbutton_background_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_background_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background Colour on mouse hover', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Background Colour on mouse hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_color"></label></td> 
 					<td><input name="bigbutton_color" type="text" id="bigbutton_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Text Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_color_hover"></label></td> 
 					<td><input name="bigbutton_color_hover" type="text" id="bigbutton_color_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_color_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour on mouse hover', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Text Colour on mouse hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="bg_color_1"><?php echo __('Tables', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="bg_color_1"><?php echo __('Tables', 'cp-communitie'); ?></label></td> 
 					<td><input name="bg_color_1" type="text" id="bg_color_1" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_1'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Primary Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Primary Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bg_color_2"></label></td> 
 					<td><input name="bg_color_2" type="text" id="bg_color_2" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_2'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Row Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Row Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bg_color_3"></label></td> 
 					<td><input name="bg_color_3" type="text" id="bg_color_3" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_3'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Alternative Row Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Alternative Row Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="table_rollover"></label></td> 
 					<td><input name="table_rollover" type="text" id="table_rollover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_table_rollover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Row colour on mouse hover', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Row colour on mouse hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
@@ -7079,18 +7070,18 @@ function __cpc__plugin_styles() {
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
 					</select> 
-					<span class="description"><?php echo __('Border Size', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Border Size', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="row_border_style"><?php echo __('Table/Rows', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="row_border_style"><?php echo __('Table/Rows', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="row_border_style" id="row_border_styledefault_role"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dotted') { echo "selected='selected'"; } ?> value='dotted'><?php echo __('Dotted', CPC_TEXT_DOMAIN); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dashed') { echo "selected='selected'"; } ?> value='dashed'><?php echo __('Dashed', CPC_TEXT_DOMAIN); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='solid') { echo "selected='selected'"; } ?> value='solid'><?php echo __('Solid', CPC_TEXT_DOMAIN); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dotted') { echo "selected='selected'"; } ?> value='dotted'><?php echo __('Dotted', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dashed') { echo "selected='selected'"; } ?> value='dashed'><?php echo __('Dashed', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='solid') { echo "selected='selected'"; } ?> value='solid'><?php echo __('Solid', 'cp-communitie'); ?></option> 
 					</select> 
-					<span class="description"><?php echo __('Border style between rows', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Border style between rows', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
@@ -7102,11 +7093,11 @@ function __cpc__plugin_styles() {
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
 					</select> 
-					<span class="description"><?php echo __('Border size between rows', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Border size between rows', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
-					<td scope="row"><label for="replies_border_size"><?php echo __('Other borders', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="replies_border_size"><?php echo __('Other borders', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="replies_border_size" id="replies_border_size"> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
@@ -7114,47 +7105,47 @@ function __cpc__plugin_styles() {
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
 						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
 					</select> 
-					<span class="description"><?php echo __('For new topics/replies and topic replies', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('For new topics/replies and topic replies', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="__cpc__categories_background"><?php echo __('Miscellaneous', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="__cpc__categories_background"><?php echo __('Miscellaneous', 'cp-communitie'); ?></label></td> 
 					<td><input name="__cpc__categories_background" type="text" id="__cpc__categories_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_categories_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background colour of, for example, current category', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Background colour of, for example, current category', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="categories_color"></label></td> 
 					<td><input name="categories_color" type="text" id="categories_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_categories_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour', CPC_TEXT_DOMAIN); ?></span></td> 
+					<span class="description"><?php echo __('Text Colour', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td colspan="2"><h3><?php echo __('Forum Styles', CPC_TEXT_DOMAIN); ?></h3></td> 
+					<td colspan="2"><h3><?php echo __('Forum Styles', 'cp-communitie'); ?></h3></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="closed_opacity"><?php echo __('Closed topics', CPC_TEXT_DOMAIN); ?></label></td> 
+					<td scope="row"><label for="closed_opacity"><?php echo __('Closed topics', 'cp-communitie'); ?></label></td> 
 					<td><input name="closed_opacity" type="text" id="closed_opacity" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_closed_opacity'); ?>"  /> 
 					<?php
 					$closed_word = get_option(CPC_OPTIONS_PREFIX.'_closed_word');
 					?>
-					<span class="description"><?php echo sprintf(__('Opacity of topics with {%s} in the subject (between 0.0 and 1.0)', CPC_TEXT_DOMAIN), $closed_word); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Opacity of topics with {%s} in the subject (between 0.0 and 1.0)', 'cp-communitie'), $closed_word); ?></span></td> 
 					</tr> 
 
 					</table> 
 					<br />
 	 
-					<h2><?php echo __('Style Templates', CPC_TEXT_DOMAIN); ?></h2>
+					<h2><?php echo __('Style Templates', 'cp-communitie'); ?></h2>
 						
-					<p><?php echo __('To save as a new style template, enter a name below, otherwise leave blank.', CPC_TEXT_DOMAIN); ?></p>
+					<p><?php echo __('To save as a new style template, enter a name below, otherwise leave blank.', 'cp-communitie'); ?></p>
 
 					<p>
-					<?php echo __('Save as:', CPC_TEXT_DOMAIN); ?>
+					<?php echo __('Save as:', 'cp-communitie'); ?>
 					<input type='text' id='style_save_as' name='style_save_as' value='<?php if (isset($style_save_as)) { echo str_replace("'", "&apos;", stripslashes($style_save_as)); } ?>' />
-					<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save', CPC_TEXT_DOMAIN) ?>" /> 
+					<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save', 'cp-communitie') ?>" /> 
 					</p>
 					</form>
 						
@@ -7165,7 +7156,7 @@ function __cpc__plugin_styles() {
 						echo '<table class="widefat" style="width:450px">';
 						echo '<thead>';
 						echo '<tr>';
-						echo '<th style="font-size:1.2em">'.__('Load Style Template', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th style="font-size:1.2em">'.__('Load Style Template', 'cp-communitie').'</th>';
 						echo '<th style="font-size:1.2em"></th>';
 						echo '</tr>';
 						echo '</thead>';
@@ -7177,8 +7168,8 @@ function __cpc__plugin_styles() {
 							echo '<tr valign="top"><td>';
 								echo stripslashes($style_lib->title);
 							echo "</td><td style='text-align:right'>";
-								echo "<input type='submit' id='style_save_as_button' style='margin-right:10px;' class='button' value='".__('Load', CPC_TEXT_DOMAIN)."' />";
-								echo "<a class='delete' href='admin.php?page=cpcommunitie_styles&delstyle=".$style_lib->sid."'>".__('Delete', CPC_TEXT_DOMAIN)."</a>";
+								echo "<input type='submit' id='style_save_as_button' style='margin-right:10px;' class='button' value='".__('Load', 'cp-communitie')."' />";
+								echo "<a class='delete' href='admin.php?page=cpcommunitie_styles&delstyle=".$style_lib->sid."'>".__('Delete', 'cp-communitie')."</a>";
 							echo "</td>";
 							
 							echo "</tr>";
@@ -7188,7 +7179,7 @@ function __cpc__plugin_styles() {
 					}
 					?>
 					<p style='clear:both;'><br />
-					<?php echo __("NB. If changes don't follow the above, you may be overriding them with the theme stylesheet.", CPC_TEXT_DOMAIN) ?>
+					<?php echo __("NB. If changes don't follow the above, you may be overriding them with the theme stylesheet.", 'cp-communitie') ?>
 					</p>
 	
 					<?php	
@@ -7221,7 +7212,7 @@ function __cpc__mail_messages_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Management', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
 		__cpc__show_manage_tabs_header('messages');
 	  			
 	  	$all = $wpdb->get_var("SELECT count(*) FROM ".$wpdb->base_prefix."cpcommunitie_mail"); 
@@ -7248,21 +7239,21 @@ function __cpc__mail_messages_menu() {
 		echo '<thead>';
 		echo '<tr>';
 		echo '<th>ID</td>';
-		echo '<th>'.__('From', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('To', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Subject', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Sent', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Action', CPC_TEXT_DOMAIN).'</th>';
+		echo '<th>'.__('From', 'cp-communitie').'</th>';
+		echo '<th>'.__('To', 'cp-communitie').'</th>';
+		echo '<th>'.__('Subject', 'cp-communitie').'</th>';
+		echo '<th>'.__('Sent', 'cp-communitie').'</th>';
+		echo '<th>'.__('Action', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tfoot>';
 		echo '<tr>';
 		echo '<th>ID</th>';
-		echo '<th>'.__('From', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('To', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Subject', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Sent', CPC_TEXT_DOMAIN).'</th>';
-		echo '<th>'.__('Action', CPC_TEXT_DOMAIN).'</th>';
+		echo '<th>'.__('From', 'cp-communitie').'</th>';
+		echo '<th>'.__('To', 'cp-communitie').'</th>';
+		echo '<th>'.__('Subject', 'cp-communitie').'</th>';
+		echo '<th>'.__('Sent', 'cp-communitie').'</th>';
+		echo '<th>'.__('Action', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</tfoot>';
 		echo '<tbody>';
@@ -7289,7 +7280,7 @@ function __cpc__mail_messages_menu() {
 				echo '<td valign="top" style="width: 150px">'.$message->mail_sent.'</td>';
 				echo '<td valign="top" style="width: 50px">';
 				$showpage = (isset($_GET['showpage'])) ? $_GET['showpage'] : 0;
-				echo "<span class='trash delete'><a href='admin.php?page=__cpc__mail_messages_menu&action=message_del&showpage=".$showpage."&mail_mid_del=".$message->mail_mid."'>".__('Trash', CPC_TEXT_DOMAIN)."</a></span>";
+				echo "<span class='trash delete'><a href='admin.php?page=__cpc__mail_messages_menu&action=message_del&showpage=".$showpage."&mail_mid_del=".$message->mail_mid."'>".__('Trash', 'cp-communitie')."</a></span>";
 				echo '</td>';
 				echo '</tr>';			
 	
@@ -7331,7 +7322,7 @@ function __cpc__mail_menu() {
 		$message =$_POST['bulk_message'];
 		
 		if ($subject == '' || $message == '') {
-			echo "<div class='error'><p>".__('Please fill in the subject and message fields.', CPC_TEXT_DOMAIN).".</p></div>";
+			echo "<div class='error'><p>".__('Please fill in the subject and message fields.', 'cp-communitie').".</p></div>";
 		} else {
 
 			if (isset($_POST['roles'])) {
@@ -7345,7 +7336,7 @@ function __cpc__mail_menu() {
 				$include_roles = '';
 			}
 
-			// Chosen at least one WordPress role?
+			// Chosen at least one ClassicPress role?
 			if ($include_roles != '') {
 
 		  	$url = __cpc__get_url('mail');	
@@ -7394,7 +7385,7 @@ function __cpc__mail_menu() {
 						if ( __cpc__get_meta($member->ID, 'notify_new_messages') ) {
 		
 							$body = "<h1>".$subject."</h1>";
-							$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".__("Go to Mail", CPC_TEXT_DOMAIN)."...</a></p>";
+							$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".__("Go to Mail", 'cp-communitie')."...</a></p>";
 							$body .= "<p>";
 							$body .= $message;
 							$body .= "</p>";
@@ -7408,7 +7399,7 @@ function __cpc__mail_menu() {
 		
 							// Send real email
 							if (isset($_POST['bulk_email'])) {
-								__cpc__sendmail($member->user_email, __('New Mail Message', CPC_TEXT_DOMAIN), $body);
+								__cpc__sendmail($member->user_email, __('New Mail Message', 'cp-communitie'), $body);
 							}
 						}
 					}		
@@ -7416,16 +7407,16 @@ function __cpc__mail_menu() {
 			
 				echo "<div class='updated'><p>";
 				if (isset($_POST['bulk_email'])) {
-					echo sprintf(__('Bulk message sent to %d members, and to their email addresses.', CPC_TEXT_DOMAIN), $cnt);
+					echo sprintf(__('Bulk message sent to %d members, and to their email addresses.', 'cp-communitie'), $cnt);
 				} else {
-					echo sprintf(__('Bulk message sent to %d members (but not to their email addresses).', CPC_TEXT_DOMAIN), $cnt);
+					echo sprintf(__('Bulk message sent to %d members (but not to their email addresses).', 'cp-communitie'), $cnt);
 				}
 				echo "</p></div>";	
 				$subject = '';
 				$message = '';			
 			} else {
 
-				echo "<div class='error'><p>".__('Please choose at least one WordPress role.', CPC_TEXT_DOMAIN).".</p></div>";
+				echo "<div class='error'><p>".__('Please choose at least one ClassicPress role.', 'cp-communitie').".</p></div>";
 
 			}
 		}
@@ -7440,7 +7431,7 @@ function __cpc__mail_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
 	
 		__cpc__show_tabs_header('mail');
 		?>
@@ -7450,54 +7441,54 @@ function __cpc__mail_menu() {
 	
 			<table class="form-table __cpc__admin_table"> 
 			
-			<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="mail_all"><?php echo __('Mail to all', CPC_TEXT_DOMAIN); ?></label></td>
+			<td scope="row"><label for="mail_all"><?php echo __('Mail to all', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="mail_all" id="mail_all" <?php if ($mail_all == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow mail to all members, even if not a friend?', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Allow mail to all members, even if not a friend?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 															
 			</table> 	
 		 
 			<p class="submit" style='margin-left:6px;'> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 
 		
 		<?php
 		echo '<div style="margin-left:10px">';
-		echo '<h2>'.__('Send bulk mail', CPC_TEXT_DOMAIN).'</h2>';
-		echo '<p>'.sprintf(__('Send a message from you (%s) to all members of this website - if running WordPress MultiSite, this means all members on your site network.', CPC_TEXT_DOMAIN), $current_user->display_name).'</p>';
+		echo '<h2>'.__('Send bulk mail', 'cp-communitie').'</h2>';
+		echo '<p>'.sprintf(__('Send a message from you (%s) to all members of this website - if running ClassicPress MultiSite, this means all members on your site network.', 'cp-communitie'), $current_user->display_name).'</p>';
 		echo '<form method="post" action="">';
-		echo '<strong>'.__('Subject', CPC_TEXT_DOMAIN).'</strong><br />';
+		echo '<strong>'.__('Subject', 'cp-communitie').'</strong><br />';
 		echo '<textarea name="bulk_subject" style="width:500px; height:23px; margin-bottom:15px; overflow:hidden;">'.$subject.'</textarea><br />';
-		echo '<strong>'.__('Select WordPress roles to include', CPC_TEXT_DOMAIN).'</strong><br />';
+		echo '<strong>'.__('Select ClassicPress roles to include', 'cp-communitie').'</strong><br />';
 	  echo '<div style="margin:10px">';
 				// Get list of roles
 				global $wp_roles;
 				$all_roles = $wp_roles->roles;
-				echo '<input type="checkbox" name="roles[]" value="everyone"> '.__('All users', CPC_TEXT_DOMAIN).'<br />';
+				echo '<input type="checkbox" name="roles[]" value="everyone"> '.__('All users', 'cp-communitie').'<br />';
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="roles[]" value="'.$role['name'].'"';
 					echo '> '.$role['name'].'<br />';
 				}			
 		echo '</div>';
-		echo '<strong>'.__('Message', CPC_TEXT_DOMAIN).'</strong><br />';
+		echo '<strong>'.__('Message', 'cp-communitie').'</strong><br />';
 		echo '<textarea name="bulk_message" style="width:500px; height:200px;">'.$message.'</textarea><br />';
-		echo '<p><em>'.__('You can include HTML.', CPC_TEXT_DOMAIN).'</em></p>';
-		echo '<input type="checkbox" name="bulk_email" CHECKED> '.__('Internal mail will be sent, but also send out email notifications?', CPC_TEXT_DOMAIN);
-		echo '<br /><em>'.__('Be wary of limitations from your hosting provider. Members who do not want email notifications will not be sent one.', CPC_TEXT_DOMAIN).'</em><br /><br />';
-		echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Send', CPC_TEXT_DOMAIN).'" />';
+		echo '<p><em>'.__('You can include HTML.', 'cp-communitie').'</em></p>';
+		echo '<input type="checkbox" name="bulk_email" CHECKED> '.__('Internal mail will be sent, but also send out email notifications?', 'cp-communitie');
+		echo '<br /><em>'.__('Be wary of limitations from your hosting provider. Members who do not want email notifications will not be sent one.', 'cp-communitie').'</em><br /><br />';
+		echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Senden', 'cp-communitie').'" />';
 		echo '</form></div>';
 
 		?>
 		<table style="margin-left:10px; margin-top:10px;">						
 			<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 			<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-mail]</td>
-				<td><?php echo __('Display the mail page.', CPC_TEXT_DOMAIN); ?></td></tr>
+				<td><?php echo __('Zeige die Mail-Seite an.', 'cp-communitie'); ?></td></tr>
 		</table>
 		
 		<?php		
@@ -7544,7 +7535,7 @@ function __cpc__members_menu() {
 		update_option(CPC_OPTIONS_PREFIX.'_dir_level', serialize($level));
 		
 		// Put an settings updated message on the screen
-		echo "<div class='updated slideaway'><p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Gespeichert', 'cp-communitie').".</p></div>";
 		
 	}
 
@@ -7555,7 +7546,7 @@ function __cpc__members_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s Optionen', 'cp-communitie'), CPC_WL).'</h2><br />';
 	
 		__cpc__show_tabs_header('directory');
 		?>
@@ -7565,48 +7556,48 @@ function __cpc__members_menu() {
 
 			<table class="form-table __cpc__admin_table">
 
-			<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php _e('Optionen', 'cp-communitie') ?></h2></td></tr>
 			
 			<tr valign="top">
-			<td scope="row"><label for="dir_atoz_order"><?php echo __('Default view', CPC_TEXT_DOMAIN); ?></label></td> 
+			<td scope="row"><label for="dir_atoz_order"><?php echo __('Standardansicht', 'cp-communitie'); ?></label></td> 
 			<td>
 			<select name="dir_atoz_order">
-				<option value='last_activity'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'last_activity') { echo ' SELECTED'; } ?>><?php echo __('Most recently active', CPC_TEXT_DOMAIN); ?></option>
-				<option value='display_name'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'display_name') { echo ' SELECTED'; } ?>><?php echo __('Display name', CPC_TEXT_DOMAIN); ?></option>
-				<option value='surname'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'surname') { echo ' SELECTED'; } ?>><?php echo __('Surname (if entered in display_name)', CPC_TEXT_DOMAIN); ?></option>
+				<option value='last_activity'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'last_activity') { echo ' SELECTED'; } ?>><?php echo __('Zuletzt aktiv', 'cp-communitie'); ?></option>
+				<option value='display_name'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'display_name') { echo ' SELECTED'; } ?>><?php echo __('Anzeigename', 'cp-communitie'); ?></option>
+				<option value='surname'<?php if (get_option(CPC_OPTIONS_PREFIX.'_dir_atoz_order') == 'surname') { echo ' SELECTED'; } ?>><?php echo __('Nachname (falls in display_name eingetragen)', 'cp-communitie'); ?></option>
 			</select> 
-			<span class="description"><?php echo __("Initial view of the member directory", CPC_TEXT_DOMAIN); ?></span></td>
+			<span class="description"><?php echo __("Einstiegsansicht des Mitgliederverzeichnisses", 'cp-communitie'); ?></span></td>
 			</tr> 		
 
 			<tr valign="top"> 
-			<td scope="row"><label for="dir_hide_public"><?php echo __('Make private?', CPC_TEXT_DOMAIN) ?></label></td>
+			<td scope="row"><label for="dir_hide_public"><?php echo __('Privatisieren?', 'cp-communitie') ?></label></td>
 			<td>
 			<input type="checkbox" name="dir_hide_public" id="dir_hide_public" <?php if (isset($dir_hide_public) && $dir_hide_public == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Hide from public view, requires login to see directory', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Aus der öffentlichen Ansicht ausblenden, erfordert eine Anmeldung, um das Verzeichnis anzuzeigen', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="dir_full_ver"><?php echo __('Faster search?', CPC_TEXT_DOMAIN) ?></label></td>
+			<td scope="row"><label for="dir_full_ver"><?php echo __('Schnellere Suche?', 'cp-communitie') ?></label></td>
 			<td>
 			<input type="checkbox" name="dir_full_ver" id="dir_full_ver" <?php if (isset($dir_full_ver) && $dir_full_ver == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Improves search time, but search results are limited and cannot re-order search results', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Verbessert die Suchzeit, aber die Suchergebnisse sind begrenzt und können die Suchergebnisse nicht neu anordnen', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="show_dir_buttons"><?php echo __('Include member actions?', CPC_TEXT_DOMAIN) ?></label></td>
+			<td scope="row"><label for="show_dir_buttons"><?php echo __('Mitgliederaktionen einbeziehen?', 'cp-communitie') ?></label></td>
 			<td>
 			<input type="checkbox" name="show_dir_buttons" id="show_dir_buttons" <?php if ($show_dir_buttons == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Should buttons to add as a friend, or send mail, be shown on the directory?', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Sollen Schaltflächen zum Hinzufügen als Freund oder zum Senden von E-Mails im Verzeichnis angezeigt werden?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="dir_page_length"><?php echo __('Page Length', CPC_TEXT_DOMAIN) ?></label></td> 
+			<td scope="row"><label for="dir_page_length"><?php echo __('Seitenlänge', 'cp-communitie') ?></label></td> 
 			<td><input name="dir_page_length" type="text" id="dir_page_length" style="width:50px" value="<?php echo $dir_page_length; ?>"  /> 
-			<span class="description"><?php echo __('Number of members shown at a time on the directory', CPC_TEXT_DOMAIN); ?></span></td> 
+			<span class="description"><?php echo __('Anzahl der Mitglieder, die gleichzeitig im Verzeichnis angezeigt werden', 'cp-communitie'); ?></span></td> 
 			</tr> 	
 
 			<tr valign="top"> 
-			<td scope="row"><label for="dir_level"><?php echo __('Roles to include in directory', CPC_TEXT_DOMAIN) ?></label></td> 
+			<td scope="row"><label for="dir_level"><?php echo __('Rollen, die in das Verzeichnis aufgenommen werden sollen', 'cp-communitie') ?></label></td> 
 			<td>
 			<?php
 
@@ -7636,19 +7627,19 @@ function __cpc__members_menu() {
 					[<?php echo CPC_SHORTCODE_PREFIX; ?>-members]
 				</td>
 				<td>
-				<?php echo __('Displays a list of members, based upon roles selected above.', CPC_TEXT_DOMAIN).'<br />'; ?>
-				<?php echo '<strong>'.__('Parameters', CPC_TEXT_DOMAIN).'</strong><br />'; ?>
-				<?php echo __('<div style="width:75px;float:left;">roles:</div>over-ride the roles above and limit to those included (comma separated)', CPC_TEXT_DOMAIN).'<br />'; ?>
-				<?php echo '<strong>'.__('Example', CPC_TEXT_DOMAIN).'</strong><br />'; ?>
-				<?php echo sprintf(__('[%s-members roles="administrator,subscriber"]', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX).'<br />'; ?>
-				<span class="description"><?php echo __('You can use this shortcode (with different parameters) on multiple pages.', CPC_TEXT_DOMAIN); ?></span>
+				<?php echo __('Zeigt eine Liste der Mitglieder basierend auf den oben ausgewählten Rollen an.', 'cp-communitie').'<br />'; ?>
+				<?php echo '<strong>'.__('Parameter', 'cp-communitie').'</strong><br />'; ?>
+				<?php echo __('<div style="width:75px;float:left;">roles:</div>Überschreibe die obigen Rollen und beschränke Dich auf die enthaltenen (kommagetrennt)', 'cp-communitie').'<br />'; ?>
+				<?php echo '<strong>'.__('Beispiel', 'cp-communitie').'</strong><br />'; ?>
+				<?php echo sprintf(__('[%s-members roles="administrator,subscriber"]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'<br />'; ?>
+				<span class="description"><?php echo __('Du kannst diesen Shortcode (mit unterschiedlichen Parametern) auf mehreren Seiten verwenden.', 'cp-communitie'); ?></span>
 				</td>
 			</tr>
 									
 			</table>
 		
 			<p class="submit" style="margin-left:6px;"> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', CPC_TEXT_DOMAIN); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 
@@ -7681,21 +7672,21 @@ function __cpc__show_tabs_header($active_tab) {
 		$gallery_active = $active_tab == 'gallery' ? 'active' : 'inactive';
 			
 		echo '<div id="mail_tabs">';
-		echo '<div class="mail_tab nav-tab-'.$options_active.'"><a href="admin.php?page=cpcommunitie_options" class="nav-tab-'.$options_active.'-link">'.__('Options', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__profile')) 		echo '<div class="mail_tab nav-tab-'.$profile_active.'"><a href="admin.php?page=cpcommunitie_profile" class="nav-tab-'.$profile_active.'-link">'.__('Profile', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__profile_plus')) 	echo '<div class="mail_tab nav-tab-'.$plus_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/plus_admin.php" class="nav-tab-'.$plus_active.'-link">'.__('Plus', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__forum')) 		echo '<div class="mail_tab nav-tab-'.$forum_active.'"><a href="admin.php?page=cpcommunitie_forum" class="nav-tab-'.$forum_active.'-link">'.__('Forum', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__members')) 		echo '<div class="mail_tab nav-tab-'.$directory_active.'"><a href="admin.php?page=__cpc__members_menu" class="nav-tab-'.$directory_active.'-link">'.__('Directory', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__mail')) 			echo '<div class="mail_tab nav-tab-'.$mail_active.'"><a href="admin.php?page=__cpc__mail_menu" class="nav-tab-'.$mail_active.'-link">'.__('Mail', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__group')) 		echo '<div class="mail_tab nav-tab-'.$groups_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/groups_admin.php" class="nav-tab-'.$groups_active.'-link">'.__('Groups', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__gallery')) 		echo '<div class="mail_tab nav-tab-'.$gallery_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/gallery_admin.php" class="nav-tab-'.$gallery_active.'-link">'.__('Gallery', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__news_main')) 	echo '<div class="mail_tab nav-tab-'.$alerts_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/news_admin.php" class="nav-tab-'.$alerts_active.'-link">'.__('Alerts', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__add_notification_bar')) 	echo '<div class="mail_tab nav-tab-'.$bar_active.'"><a href="admin.php?page=cpcommunitie_bar" class="nav-tab-'.$bar_active.'-link">'.__('Panel', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__events_main')) 	echo '<div class="mail_tab nav-tab-'.$events_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/events_admin.php" class="nav-tab-'.$events_active.'-link">'.__('Events', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__facebook')) 		echo '<div class="mail_tab nav-tab-'.$facebook_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php" class="nav-tab-'.$facebook_active.'-link">'.__('Facebook', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__mobile')) 		echo '<div class="mail_tab nav-tab-'.$mobile_active.'"><a href="admin.php?page=__cpc__mobile_menu" class="nav-tab-'.$mobile_active.'-link">'.__('Mobile', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__mailinglist')) 	echo '<div class="mail_tab nav-tab-'.$replybyemail_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php" class="nav-tab-'.$replybyemail_active.'-link">'.__('Reply', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__lounge_main')) 	echo '<div class="mail_tab nav-tab-'.$lounge_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php" class="nav-tab-'.$lounge_active.'-link">'.__('Lounge', CPC_TEXT_DOMAIN).'</a></div>';
+		echo '<div class="mail_tab nav-tab-'.$options_active.'"><a href="admin.php?page=cpcommunitie_options" class="nav-tab-'.$options_active.'-link">'.__('Optionen', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__profile')) 		echo '<div class="mail_tab nav-tab-'.$profile_active.'"><a href="admin.php?page=cpcommunitie_profile" class="nav-tab-'.$profile_active.'-link">'.__('Profile', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__profile_plus')) 	echo '<div class="mail_tab nav-tab-'.$plus_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/plus_admin.php" class="nav-tab-'.$plus_active.'-link">'.__('Extra', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__forum')) 		echo '<div class="mail_tab nav-tab-'.$forum_active.'"><a href="admin.php?page=cpcommunitie_forum" class="nav-tab-'.$forum_active.'-link">'.__('Forum', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__members')) 		echo '<div class="mail_tab nav-tab-'.$directory_active.'"><a href="admin.php?page=__cpc__members_menu" class="nav-tab-'.$directory_active.'-link">'.__('Verzeichnis', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__mail')) 			echo '<div class="mail_tab nav-tab-'.$mail_active.'"><a href="admin.php?page=__cpc__mail_menu" class="nav-tab-'.$mail_active.'-link">'.__('Mail', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__group')) 		echo '<div class="mail_tab nav-tab-'.$groups_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/groups_admin.php" class="nav-tab-'.$groups_active.'-link">'.__('Gruppen', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__gallery')) 		echo '<div class="mail_tab nav-tab-'.$gallery_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/gallery_admin.php" class="nav-tab-'.$gallery_active.'-link">'.__('Galerie', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__news_main')) 	echo '<div class="mail_tab nav-tab-'.$alerts_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/news_admin.php" class="nav-tab-'.$alerts_active.'-link">'.__('Benachrichtigungen', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__add_notification_bar')) 	echo '<div class="mail_tab nav-tab-'.$bar_active.'"><a href="admin.php?page=cpcommunitie_bar" class="nav-tab-'.$bar_active.'-link">'.__('Panel', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__events_main')) 	echo '<div class="mail_tab nav-tab-'.$events_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/events_admin.php" class="nav-tab-'.$events_active.'-link">'.__('Veranstaltungen', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__facebook')) 		echo '<div class="mail_tab nav-tab-'.$facebook_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php" class="nav-tab-'.$facebook_active.'-link">'.__('Facebook', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__mobile')) 		echo '<div class="mail_tab nav-tab-'.$mobile_active.'"><a href="admin.php?page=__cpc__mobile_menu" class="nav-tab-'.$mobile_active.'-link">'.__('Mobil', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__mailinglist')) 	echo '<div class="mail_tab nav-tab-'.$replybyemail_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php" class="nav-tab-'.$replybyemail_active.'-link">'.__('Antwort', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__lounge_main')) 	echo '<div class="mail_tab nav-tab-'.$lounge_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php" class="nav-tab-'.$lounge_active.'-link">'.__('Lounge', 'cp-communitie').'</a></div>';
 		echo '</div>';
 	
 		echo '<div id="mail-main">';
@@ -7715,7 +7706,7 @@ function __cpc__show_manage_tabs_header($active_tab) {
 	if (get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on") {
 
 		include_once(dirname(__FILE__).'/show_tabs_style.php');
-		?> <style> .wrap .mail_tab { width: 85px; } </style> <?php
+		?> <style> .wrap .mail_tab { width: 110px; } </style> <?php
 	
 		$manage_active = $active_tab == 'manage' ? 'active' : 'inactive';
 		$categories_active = $active_tab == 'categories' ? 'active' : 'inactive';
@@ -7736,15 +7727,15 @@ function __cpc__show_manage_tabs_header($active_tab) {
 		}
 					
 		echo '<div id="mail_tabs">';
-		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$manage_active.'"><a href="admin.php?page=cpcommunitie_manage" class="nav-tab-'.$manage_active.'-link">'.__('Manage', CPC_TEXT_DOMAIN).'</a></div>';
-		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$settings_active.'"><a href="admin.php?page=cpcommunitie_settings" class="nav-tab-'.$settings_active.'-link">'.__('Settings', CPC_TEXT_DOMAIN).'</a></div>';
-		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$advertising_active.'"><a href="admin.php?page=cpcommunitie_advertising" class="nav-tab-'.$advertising_active.'-link">'.__('Advertising', CPC_TEXT_DOMAIN).'</a></div>';
-		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$thesaurus_active.'"><a href="admin.php?page=cpcommunitie_thesaurus" class="nav-tab-'.$thesaurus_active.'-link">'.__('Thesaurus', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__forum') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$categories_active.'"><a href="admin.php?page=cpcommunitie_categories" class="nav-tab-'.$categories_active.'-link">'.__('Categories', CPC_TEXT_DOMAIN).'</a></div>';
-		if (function_exists('__cpc__forum')) echo '<div class="mail_tab nav-tab-'.$posts_active.'"><a href="admin.php?page=cpcommunitie_moderation" class="nav-tab-'.$posts_active.'-link">'.sprintf(__('Forum %s', CPC_TEXT_DOMAIN), $count2).'</a></div>';
-		if (function_exists('__cpc__mail') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$messages_active.'"><a href="admin.php?page=__cpc__mail_messages_menu" class="nav-tab-'.$messages_active.'-link">'.__('Mail Messages', CPC_TEXT_DOMAIN).'</a></div>';
-		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$templates_active.'"><a href="admin.php?page=cpcommunitie_templates" class="nav-tab-'.$templates_active.'-link">'.__('Templates', CPC_TEXT_DOMAIN).'</a></div>';
-		if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<div class="mail_tab nav-tab-'.$audit_active.'"><a href="admin.php?page=cpcommunitie_audit" class="nav-tab-'.$audit_active.'-link">'.__('Audit', CPC_TEXT_DOMAIN).'</a></div>';
+		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$manage_active.'"><a href="admin.php?page=cpcommunitie_manage" class="nav-tab-'.$manage_active.'-link">'.__('Verwalten', 'cp-communitie').'</a></div>';
+		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$settings_active.'"><a href="admin.php?page=cpcommunitie_settings" class="nav-tab-'.$settings_active.'-link">'.__('Einstellungen', 'cp-communitie').'</a></div>';
+		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$advertising_active.'"><a href="admin.php?page=cpcommunitie_advertising" class="nav-tab-'.$advertising_active.'-link">'.__('Werbung/Anzeigen', 'cp-communitie').'</a></div>';
+		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$thesaurus_active.'"><a href="admin.php?page=cpcommunitie_thesaurus" class="nav-tab-'.$thesaurus_active.'-link">'.__('Thesaurus', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__forum') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$categories_active.'"><a href="admin.php?page=cpcommunitie_categories" class="nav-tab-'.$categories_active.'-link">'.__('Kategorien', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__forum')) echo '<div class="mail_tab nav-tab-'.$posts_active.'"><a href="admin.php?page=cpcommunitie_moderation" class="nav-tab-'.$posts_active.'-link">'.sprintf(__('Forum %s', 'cp-communitie'), $count2).'</a></div>';
+		if (function_exists('__cpc__mail') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$messages_active.'"><a href="admin.php?page=__cpc__mail_messages_menu" class="nav-tab-'.$messages_active.'-link">'.__('E-Mail-Nachrichten', 'cp-communitie').'</a></div>';
+		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$templates_active.'"><a href="admin.php?page=cpcommunitie_templates" class="nav-tab-'.$templates_active.'-link">'.__('Vorlagen', 'cp-communitie').'</a></div>';
+		if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<div class="mail_tab nav-tab-'.$audit_active.'"><a href="admin.php?page=cpcommunitie_audit" class="nav-tab-'.$audit_active.'-link">'.__('Audit', 'cp-communitie').'</a></div>';
 		echo '</div>';
 	
 		echo '<div id="mail-main">';

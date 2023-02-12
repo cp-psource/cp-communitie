@@ -33,7 +33,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			}		 														
 		}
 	}
-	$everyone = str_replace(' ', '', __('everyone', CPC_TEXT_DOMAIN)); // Handle some non-English translations of 'everyone'
+	$everyone = str_replace(' ', '', __('everyone', 'cp-communitie')); // Handle some non-English translations of 'everyone'
 	if (strpos($viewer, $everyone) !== FALSE) $can_view = true;
 	
 	// Can create topic?
@@ -51,7 +51,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			}
 		}		 														
 	}
-	if (strpos($viewer, __('everyone', CPC_TEXT_DOMAIN)) !== FALSE) $can_edit = true;
+	if (strpos($viewer, __('everyone', 'cp-communitie')) !== FALSE) $can_edit = true;
 	if ($group_id > 0) {
 		$sql = "SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id=%d AND valid='on' AND member_id=%d";
 		$member_count = $wpdb->get_var($wpdb->prepare($sql, $group_id, $current_user->ID));
@@ -73,7 +73,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			}
 		}		 														
 	}
-	if (strpos($viewer, __('everyone', CPC_TEXT_DOMAIN)) !== FALSE) $can_reply = true;
+	if (strpos($viewer, __('everyone', 'cp-communitie')) !== FALSE) $can_reply = true;
 	if ($group_id > 0) {
 		$sql = "SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id=%d AND valid='on' AND member_id=%d";
 		$member_count = $wpdb->get_var($wpdb->prepare($sql, $group_id, $current_user->ID));
@@ -97,7 +97,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			}
 		}		 														
 	}
-	if (strpos($viewer, __('everyone', CPC_TEXT_DOMAIN)) !== FALSE) $can_comment = true;
+	if (strpos($viewer, __('everyone', 'cp-communitie')) !== FALSE) $can_comment = true;
 	if ($group_id > 0) {
 		$sql = "SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id=%d AND valid='on' AND member_id=%d";
 		$member_count = $wpdb->get_var($wpdb->prepare($sql, $group_id, $current_user->ID));
@@ -158,7 +158,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 			// Store removal limit for votes
 			$html .= '<div id="cpcommunitie_forum_vote_remove" style="display:none">'.get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove').'</div>';
-			$html .= '<div id="cpcommunitie_forum_vote_remove_msg" style="display:none">'.__('This post has been voted off the forum', CPC_TEXT_DOMAIN).'</div>';
+			$html .= '<div id="cpcommunitie_forum_vote_remove_msg" style="display:none">'.__('This post has been voted off the forum', 'cp-communitie').'</div>';
 		
 
 			$html .= '<div id="__cpc__forum_topic_header">';
@@ -174,12 +174,12 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 						$this_level = $wpdb->get_row($wpdb->prepare("SELECT cid, title, cat_parent, stub FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
 
 						if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') { 
-							$html .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.__('Back to', CPC_TEXT_DOMAIN).' '.trim(stripslashes($this_level->title)).'</a>'; 
+							$html .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 						} else { 
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-								$html .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.__('Back to', CPC_TEXT_DOMAIN).' '.trim(stripslashes($this_level->title)).'</a>'; 
+								$html .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 							} else {
-								$html .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.__('Back to', CPC_TEXT_DOMAIN).' '.trim(stripslashes($this_level->title)).'</a>'; 
+								$html .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 							}
 						} 
 
@@ -195,14 +195,14 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 								if ($this_level->cat_parent == 0) { 
 									if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') { 
-										$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+										$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 										$html .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.trim(stripslashes($this_level->title)).'</a>'; 
 									} else { 
 										if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-											$html .= '<a href="'.$forum_url.'">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+											$html .= '<a href="'.$forum_url.'">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 											$html .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.trim(stripslashes($this_level->title)).'</a>'; 
 										} else {
-											$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+											$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 											$html .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.trim(stripslashes($this_level->title)).'</a>'; 
 										}
 									} 
@@ -212,25 +212,25 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 									if ($parent_level->cat_parent == 0) { 
 										if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') { 
-											$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+											$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 										} else { 
 											if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-												$html .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+												$html .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 											} else {
-												$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; "; 
+												$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; "; 
 											}
 										} 
 									} else { 
 										$parent_level_2 = $wpdb->get_row($wpdb->prepare("SELECT cid, title, cat_parent, stub FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $parent_level->cat_parent)); 
 										if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') { 
-											$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; " ; 
+											$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; " ; 
 											$html .= '<a href="#cid='.$parent_level_2->cid.'" class="category_title" title="'.$parent_level_2->cid.'">'.trim(stripslashes($parent_level_2->title))."</a> &rarr; "; 
 										} else { 
 											if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-												$html .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; " ; 
+												$html .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; " ; 
 												$html .= '<a href="'.$forum_url.'/'.$parent_level_2->stub.'" title="'.$parent_level_2->cid.'">'.trim(stripslashes($parent_level_2->title))."</a> &rarr; "; 
 											} else {
-												$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; " ; 
+												$html .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; " ; 
 												$html .= '<a href="'.$forum_url.$q."cid=".$parent_level_2->cid.'" title="'.$parent_level_2->cid.'">'.trim(stripslashes($parent_level_2->title))."</a> &rarr; "; 
 											}
 										} 
@@ -250,20 +250,20 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								} 
 							} else {
 								if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
-									$html .= '&larr; <a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a>";
+									$html .= '&larr; <a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a>";
 								} else {
 									if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-										$html .= '&larr; <a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a>";
+										$html .= '&larr; <a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</a>";
 									} else {
-										$html .= '&larr; <a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a>";
+										$html .= '&larr; <a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a>";
 									}
 								}
 							}
 
 						} else {
 							// Lite mode
-							$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
-							$html .= '<a href="#cid='.$post->topic_category.'" class="category_title" title="'.$post->topic_category.'">'.__('Topic list', CPC_TEXT_DOMAIN).'</a>';
+							$html .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
+							$html .= '<a href="#cid='.$post->topic_category.'" class="category_title" title="'.$post->topic_category.'">'.__('Topic list', 'cp-communitie').'</a>';
 						}
 										
 					$html .= '</div>';
@@ -285,17 +285,17 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								if ($subscribed_count > 0) { $html .= ' checked'; } 
 								$html .= "> ";
 								if ($forum_all != 'on') {
-									$html .= __("Tell me about replies", CPC_TEXT_DOMAIN)."&nbsp;&nbsp;&nbsp;";
+									$html .= __("Tell me about replies", 'cp-communitie')."&nbsp;&nbsp;&nbsp;";
 								}
 							}
 							if (current_user_can('level_10')) {
 								$html .= "<input type='checkbox' title='".$post->tid."' id='sticky' name='sticky'";
 								if ($post->topic_sticky > 0) { $html .= ' checked'; }
-								$html .= "> ".__("Sticky", CPC_TEXT_DOMAIN);
+								$html .= "> ".__("Sticky", 'cp-communitie');
 								$html .= "&nbsp;&nbsp;&nbsp;<input type='checkbox' title='".$post->tid."' id='replies' name='replies'";
 								$allow_replies = $wpdb->get_var($wpdb->prepare("SELECT allow_replies FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $post->tid));
 								if ($allow_replies == "on") { $html .= ' checked'; }
-								$html .= "> ".__("Replies allowed", CPC_TEXT_DOMAIN);
+								$html .= "> ".__("Replies allowed", 'cp-communitie');
 							}
 						$html .= '</div>';
 
@@ -310,13 +310,13 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 				// Forum options
 				$html .= "<div id='forum_options'>";
 
-					$html .= "<a id='show_search' href='javascript:void(0)'>".__("Search", CPC_TEXT_DOMAIN)."</a>";
-					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", CPC_TEXT_DOMAIN)."</a>";
-					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Latest Topics", CPC_TEXT_DOMAIN)."</a>";
+					$html .= "<a id='show_search' href='javascript:void(0)'>".__("Search", 'cp-communitie')."</a>";
+					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", 'cp-communitie')."</a>";
+					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 
 					if (is_user_logged_in()) {
-						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' href='javascript:void(0)'>".__("My Activity", CPC_TEXT_DOMAIN)."</a>";
-						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' href='javascript:void(0)'>".__("Favorites", CPC_TEXT_DOMAIN)."</a>";
+						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' href='javascript:void(0)'>".__("My Activity", 'cp-communitie')."</a>";
+						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' href='javascript:void(0)'>".__("Favorites", 'cp-communitie')."</a>";
 					}
 
 				$html .= "</div>";
@@ -329,16 +329,16 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 				// Edit Form
 				$html .= '<div id="edit-topic-div">';
 
-					$html .= '<div class="new-topic-subject label">'.__("Topic Subject", CPC_TEXT_DOMAIN).'</div>';
+					$html .= '<div class="new-topic-subject label">'.__("Topic Subject", 'cp-communitie').'</div>';
 					$html .= '<div id="'.$post->tid.'" class="edit-topic-tid"></div>';
 					$html .= '<div id="" class="edit-topic-parent"></div>';
 					$html .= '<input class="new-topic-subject-input" type="text" name="edit_topic_subject">';
-					$html .= '<div class="new-topic-subject label">'.__("Topic Text", CPC_TEXT_DOMAIN).'</div>';
+					$html .= '<div class="new-topic-subject label">'.__("Topic Text", 'cp-communitie').'</div>';
 					$html .= __cpc__bbcode_toolbar('edit_topic_text');
 					$html .= '<textarea class="new-topic-subject-text" id="edit_topic_text" name="edit_topic_text"></textarea>';
 					if ($group_id == 0) {
-						$html .= '<div class="new-category-div" style="float:left;">'.__("Move Category", CPC_TEXT_DOMAIN).': <select name="new-category" class="new-category" style="width: 200px">';
-						$html .= '<option value="">'.__("Select", CPC_TEXT_DOMAIN).'...</option>';
+						$html .= '<div class="new-category-div" style="float:left;">'.__("Move Category", 'cp-communitie').': <select name="new-category" class="new-category" style="width: 200px">';
+						$html .= '<option value="">'.__("Select", 'cp-communitie').'...</option>';
 						$categories = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.'cpcommunitie_cats ORDER BY listorder');			
 						if ($categories) {
 							foreach ($categories as $category) {
@@ -372,7 +372,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 							
 								$sql = "SELECT count(*) FROM ".$wpdb->prefix."cpcommunitie_topics WHERE topic_owner = %d";
 								$count = $wpdb->get_var($wpdb->prepare($sql, $post->topic_owner));
-								$html .= __('Posts:', CPC_TEXT_DOMAIN).' ';
+								$html .= __('Posts:', 'cp-communitie').' ';
 								$html .= '<span class="forum_info_numbers">'.$count.'</span>';
 
 							$html .= "</div>";	
@@ -408,7 +408,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 									}								
 									$count = $wpdb->get_var($wpdb->prepare($sql, $post->topic_owner));
 									if ($count > 0) {
-										$html .= __('Rating:', CPC_TEXT_DOMAIN).' ';
+										$html .= __('Rating:', 'cp-communitie').' ';
 										$html .= '<span class="forum_info_numbers">'.$count.'</span>';
 									}
 									if (CPC_DEBUG) $html .= $wpdb->last_query;
@@ -434,12 +434,12 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 							$now = time();
 							$seconds_left = $reply_posted_expire - $now;
 							if ($seconds_left > 0) {
-								$title = __('Lock in', CPC_TEXT_DOMAIN).' '.gmdate("H:i:s", $seconds_left);
+								$title = __('Lock in', 'cp-communitie').' '.gmdate("H:i:s", $seconds_left);
 							} else {
-								$title = __('Admin only', CPC_TEXT_DOMAIN);
+								$title = __('Admin only', 'cp-communitie');
 							}
 							if (get_option(CPC_OPTIONS_PREFIX.'_forum_lock') == 0) {
-								$title = __('No lock time', CPC_TEXT_DOMAIN);
+								$title = __('No lock time', 'cp-communitie');
 								$seconds_left = 1;
 							}
 							if ( ($post->topic_owner == $current_user->ID && $seconds_left > 0) || (can_manage_forum()) ) {
@@ -456,21 +456,21 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 							$html .= $post_text;
 							$topic_subject = $post_text;
 			
-							if ($post->topic_approved != 'on') { $html .= " <em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>"; }
+							if ($post->topic_approved != 'on') { $html .= " <em>[".__("pending approval", 'cp-communitie')."]</em>"; }
 
 							// Favourites
 							if (is_user_logged_in()) {
 								if (strpos(__cpc__get_meta($current_user->ID, 'forum_favs'), "[".$post->tid."]") === FALSE) { 
-									$html .= "<img title='".$post->tid."' id='fav_link' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/fav-off.png' style='height:22px; width:22px; cursor:pointer;' alt='".__("Click to add to favorites", CPC_TEXT_DOMAIN)."' />";						
+									$html .= "<img title='".$post->tid."' id='fav_link' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/fav-off.png' style='height:22px; width:22px; cursor:pointer;' alt='".__("Click to add to favorites", 'cp-communitie')."' />";						
 								} else {
-									$html .= "<img title='".$post->tid."' id='fav_link' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/fav-on.png' style='height:22px; width:22px; cursor:pointer;' alt='".__("Click to remove to favorites", CPC_TEXT_DOMAIN)."' />";						
+									$html .= "<img title='".$post->tid."' id='fav_link' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/fav-on.png' style='height:22px; width:22px; cursor:pointer;' alt='".__("Click to remove to favorites", 'cp-communitie')."' />";						
 								}
 							}
 
 						$html .= "</div><div style='clear:both'></div>";
 										
 						$html .= "<div class='started-by' style='margin-top:10px'>";
-						$html .= __("Started by", CPC_TEXT_DOMAIN);
+						$html .= __("Started by", 'cp-communitie');
 						if ( substr(get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'), 0, 2) == 'on' ) {
 							$html .= " <span class='forum_rank'>".__cpc__forum_rank($post->topic_owner)."</span>";
 						}
@@ -518,10 +518,10 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								$html .= '<input type="checkbox" id="cpcommunitie_for_info" title="'.$post->tid.'"';
 								if ($post->for_info == 'on') { $html .= " CHECKED"; }
 								$html .= ' /> ';
-								$html .= '<em>'.__('This topic is for information only, no answer will be selected.', CPC_TEXT_DOMAIN).'</em>';
+								$html .= '<em>'.__('This topic is for information only, no answer will be selected.', 'cp-communitie').'</em>';
 							} else {
 								if ($post->for_info == 'on') { 
-									$html .= '<em>'.__('This topic is for information only, no answer will be selected.', CPC_TEXT_DOMAIN).'</em>';
+									$html .= '<em>'.__('This topic is for information only, no answer will be selected.', 'cp-communitie').'</em>';
 								}
 							}
 						}
@@ -749,10 +749,10 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 					// Div to show if can't vote yet
 					$html .= '<div id="cpcommunitie_novote_dialog" style="display:none">';
-					$html .= sprintf(__("Spam Protection", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'));
+					$html .= sprintf(__("Spam Protection", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'));
 					$html .= '</div>';
 					$html .= '<div id="cpcommunitie_novote" style="display:none">';
-					$html .= sprintf(__("Sorry, you can't vote until you have made %d posts.", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'));
+					$html .= sprintf(__("Sorry, you can't vote until you have made %d posts.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'));
 					$html .= '</div>';
 
 					// For pagination
@@ -783,7 +783,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 										
 											$sql = "SELECT count(*) FROM ".$wpdb->prefix."cpcommunitie_topics WHERE topic_owner = %d";
 											$count = $wpdb->get_var($wpdb->prepare($sql, $child->topic_owner));
-											$reply_html .= __('Posts:', CPC_TEXT_DOMAIN).' ';								
+											$reply_html .= __('Posts:', 'cp-communitie').' ';								
 											$reply_html .= '<span class="forum_info_numbers">'.$count.'</span>';
 											
 										$reply_html .= "</div>";	
@@ -803,7 +803,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 												}								
 												$count = $wpdb->get_var($wpdb->prepare($sql, $child->topic_owner));
 												if ($count > 0) {
-													$reply_html .= __('Rating:', CPC_TEXT_DOMAIN).' ';
+													$reply_html .= __('Rating:', 'cp-communitie').' ';
 													$reply_html .= '<span class="forum_info_numbers">'.$count.'</span>';
 												}
 												if (CPC_DEBUG) $reply_html .= $wpdb->last_query;
@@ -823,11 +823,11 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								$reply_html .= "<div class='__cpc__reply_box'>";
 								
 									if ( (get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove') == $score) && (__cpc__get_current_userlevel() < 5) && ($score != 0) ) {
-										$reply_html .= '<p>'.__('This post has been voted off the forum', CPC_TEXT_DOMAIN).'</p>';
+										$reply_html .= '<p>'.__('This post has been voted off the forum', 'cp-communitie').'</p>';
 									} else {
 									
 										if ( (get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove') == $score) && ($score != 0) ) {
-											$reply_html .= '<p>'.__('This post has been voted off the forum (only visible to site admins) with a score of', CPC_TEXT_DOMAIN).' '.$score.'.</p>';
+											$reply_html .= '<p>'.__('This post has been voted off the forum (only visible to site admins) with a score of', 'cp-communitie').' '.$score.'.</p>';
 										}
 										// Votes (if being used)
 										if (get_option(CPC_OPTIONS_PREFIX.'_use_votes') == 'on' && ($child->topic_owner != $current_user->ID || __cpc__get_current_userlevel() == 5)) {
@@ -863,7 +863,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 														if ($post->for_info == 'on') {
 															$reply_html .= "display:none;";
 														}
-														$reply_html .= "'>".__('Accept answer', CPC_TEXT_DOMAIN)."</a>";
+														$reply_html .= "'>".__('Accept answer', 'cp-communitie')."</a>";
 													}
 												}
 											$reply_html .= "</div>";
@@ -880,14 +880,14 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 												$now = time();
 												$seconds_left = $reply_posted_expire - $now;
 												if ($seconds_left > 0) {
-													$title = __('Locking reply in', CPC_TEXT_DOMAIN).' '.gmdate("H:i:s", $seconds_left);
+													$title = __('Locking reply in', 'cp-communitie').' '.gmdate("H:i:s", $seconds_left);
 													$ttitle = '<br /><em>'.$title.'</em>';
 												} else {
-													$title = __('Admin only', CPC_TEXT_DOMAIN);
+													$title = __('Admin only', 'cp-communitie');
 													$ttitle = '';
 												}
 												if (get_option(CPC_OPTIONS_PREFIX.'_forum_lock') == 0) {
-													$title = __('No lock time', CPC_TEXT_DOMAIN);
+													$title = __('No lock time', 'cp-communitie');
 													$seconds_left = 1;
 												}
 												if ( ($child->topic_owner == $current_user->ID && $seconds_left > 0) || (can_manage_forum()) ) {
@@ -903,7 +903,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 											$reply_html .= "<span class='forum_rank'>".__cpc__forum_rank($child->topic_owner)."</span> ";
 										}
 										$reply_html .= __cpc__profile_link($child->topic_owner);
-										$reply_html .= " ".__("replied", CPC_TEXT_DOMAIN)." ".__cpc__time_ago($child->topic_date)."...";
+										$reply_html .= " ".__("replied", 'cp-communitie')." ".__cpc__time_ago($child->topic_date)."...";
 										if (isset($ttitle)) $reply_html .= $ttitle;
 										$reply_html .= "</div>";
 										$reply_html .= "<div id='child_".$child->tid."' class='child-reply-post'>";
@@ -941,7 +941,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 											$reply_text = str_replace('</pre><br />', '</pre>', $reply_text);
 
 											$reply_html .= "<p>".$reply_text;
-											if ($child->topic_approved != 'on') { $reply_html .= " <em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>"; }
+											if ($child->topic_approved != 'on') { $reply_html .= " <em>[".__("pending approval", 'cp-communitie')."]</em>"; }
 											$reply_html .= "</p>";
 		
 										$reply_html .= "</div>";
@@ -1113,7 +1113,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 													$reply_html .= "</div>";
 
 
-													$reply_html .= "<div class='started-by'>".__cpc__profile_link($comment->topic_owner)." ".__('commented', CPC_TEXT_DOMAIN)." ".__cpc__time_ago($comment->topic_date)."</div>";
+													$reply_html .= "<div class='started-by'>".__cpc__profile_link($comment->topic_owner)." ".__('commented', 'cp-communitie')." ".__cpc__time_ago($comment->topic_date)."</div>";
 													$reply_html .= __cpc__buffer(stripslashes($comment->topic_post));
 												$reply_html .= "</div>";
 											$reply_html .= "</div>";
@@ -1127,7 +1127,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								// Quick comment box (show link)
 								if ($can_comment && $can_reply_switch) {
 									$reply_html .= "<div class='quick-comment-box-show'>";
-										$reply_html .= '<a class="quick-comment-box-show-link" href="javascript:void(0);">'.__('Add a quick comment...', CPC_TEXT_DOMAIN).'</a>';
+										$reply_html .= '<a class="quick-comment-box-show-link" href="javascript:void(0);">'.__('Add a quick comment...', 'cp-communitie').'</a>';
 									$reply_html .= "</div>";
 								}
 								
@@ -1136,7 +1136,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								$reply_html .= "<div class='quick-comment-box'>";
 									$reply_html .= "<textarea class='quick-comment-box-comment ".$elastic."'>";
 									$reply_html .= "</textarea><br />";
-									$reply_html .= '<input type="submit" rel="'.$child->tid.'" class="quick-comment-box-add __cpc__button" value="'.__("Add Comment", CPC_TEXT_DOMAIN).'" />';
+									$reply_html .= '<input type="submit" rel="'.$child->tid.'" class="quick-comment-box-add __cpc__button" value="'.__("Add Comment", 'cp-communitie').'" />';
 								$reply_html .= "</div>";
 								
 								$reply_html .= "</div>"; // End comments on the reply
@@ -1162,7 +1162,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			} else {
 		
 				$html .= "<div class='child-reply'>";
-				$html .= __("No replies posted yet.", CPC_TEXT_DOMAIN);
+				$html .= __("No replies posted yet.", 'cp-communitie');
 				$html .= "</div>";
 				$html .= "<div class='sep'></div>";						
 		
@@ -1180,12 +1180,12 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 						$html .= '<input type="hidden" id="__cpc__reply_tid" value="'.$post->tid.'">';
 						$html .= '<input type="hidden" id="__cpc__reply_cid" value="'.$cat_id.'">';
 											
-						$html .= '<div class="reply-topic-subject label">'.__("Reply to this Topic", CPC_TEXT_DOMAIN).'</div>';
+						$html .= '<div class="reply-topic-subject label">'.__("Reply to this Topic", 'cp-communitie').'</div>';
 	
 						if (get_option(CPC_OPTIONS_PREFIX.'_elastic') == 'on') { $elastic = ' elastic'; } else { $elastic = ''; }
 	
 						if (get_option(CPC_OPTIONS_PREFIX.'_use_wp_editor')) {
-							// WordPress TinyMCE
+							// ClassicPress TinyMCE
 							$settings = array(
 							    'wpautop' => true,
 							    'media_buttons' => false,
@@ -1213,11 +1213,11 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 						// For admin's only set this as the answer
 						if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == 'on' && __cpc__get_current_userlevel() == 5) {
-							$html .= '<br /><input type="checkbox" id="quick-reply-answer" /> '.__('Set this as the answer', CPC_TEXT_DOMAIN).'<br />';
+							$html .= '<br /><input type="checkbox" id="quick-reply-answer" /> '.__('Set this as the answer', 'cp-communitie').'<br />';
 						}
 	
 						if ( get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') ) $html .= '<br />';
-						$html .= '<input type="submit" id="quick-reply-warning" class="__cpc__button" style="float: left" value="'.__("Reply", CPC_TEXT_DOMAIN).'" />';
+						$html .= '<input type="submit" id="quick-reply-warning" class="__cpc__button" style="float: left" value="'.__("Reply", 'cp-communitie').'" />';
 	
 						// Upload
 						if (get_option(CPC_OPTIONS_PREFIX.'_forum_uploads')) {
@@ -1229,7 +1229,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 									WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/forum_upload/', 
 									WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/forum_upload/',
 									'forum',
-									__('Attach file', CPC_TEXT_DOMAIN),
+									__('Attach file', 'cp-communitie'),
 									$post->tid
 								);							
 							}
@@ -1286,7 +1286,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 					$html .= '</div>';
 				
 				} else {
-					$html .= "<p style='margin-top:10px'>".__("This topic is closed, no replies are allowed.", CPC_TEXT_DOMAIN);
+					$html .= "<p style='margin-top:10px'>".__("This topic is closed, no replies are allowed.", 'cp-communitie');
 				}				
 
 				// Add page title at the start
@@ -1296,13 +1296,13 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 			} else {
 				if ($group_id == 0) {
-					$html .= "<p>".__("You are not permitted to reply on this forum.", CPC_TEXT_DOMAIN);
-					if (__cpc__get_current_userlevel() == 5) $html .= '<br />'.sprintf(__('Permissions are set via the WordPress admin dashboard->%s->Options->Forum.', CPC_TEXT_DOMAIN), CPC_WL_SHORT).'<br />';	
+					$html .= "<p>".__("You are not permitted to reply on this forum.", 'cp-communitie');
+					if (__cpc__get_current_userlevel() == 5) $html .= '<br />'.sprintf(__('Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum.', 'cp-communitie'), CPC_WL_SHORT).'<br />';	
 					
 					// Show login form, and redirect back here
 					if (get_option(CPC_OPTIONS_PREFIX.'_forum_login') && !is_user_logged_in()) {
 
-						$html .= ' '.__cpc__show_login_link(__("<a href='%s'>Login...</a>", CPC_TEXT_DOMAIN));
+						$html .= ' '.__cpc__show_login_link(__("<a href='%s'>Login...</a>", 'cp-communitie'));
 					}
 
 					$html .= "</p>";
@@ -1312,7 +1312,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			
 		
 		} else {
-			$html = __('Sorry, this topic is no longer available.', CPC_TEXT_DOMAIN);
+			$html = __('Sorry, this topic is no longer available.', 'cp-communitie');
 		}
 		
 		
@@ -1321,13 +1321,13 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 		$sql = "SELECT tid FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d";
 		if ($wpdb->get_var($wpdb->prepare($sql, $topic_id))) {
 			if (is_user_logged_in()) {
-				$html .= __("You do not have permission to view this topic, sorry.", CPC_TEXT_DOMAIN);
+				$html .= __("You do not have permission to view this topic, sorry.", 'cp-communitie');
 			} else {
-				$html .= __cpc__show_login_link(__("You do not have permission to view this topic, sorry. <a href='%s'>Log in...</a>", CPC_TEXT_DOMAIN), false);
+				$html .= __cpc__show_login_link(__("You do not have permission to view this topic, sorry. <a href='%s'>Log in...</a>", 'cp-communitie'), false);
 			}
-			if (__cpc__get_current_userlevel() == 5) $html .= '<br /><br />'.sprintf(__('Permissions are set via the WordPress admin dashboard->%s->Options->Forum.', CPC_TEXT_DOMAIN), CPC_WL_SHORT);
+			if (__cpc__get_current_userlevel() == 5) $html .= '<br /><br />'.sprintf(__('Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum.', 'cp-communitie'), CPC_WL_SHORT);
 		} else {
-			$html = __('Sorry, this topic does not exist.', CPC_TEXT_DOMAIN);
+			$html = __('Sorry, this topic does not exist.', 'cp-communitie');
 		}
 	}
 
@@ -1371,10 +1371,10 @@ function __cpc__forum_dropdown($cat_id, $topic_id, $group_id) {
 	if ($user_role == '') $user_role = 'NONE';
 
 	$html .= '<div id="__cpc__forum_dropdown" style="float:left">';
-	$html .= __('Go to:', CPC_TEXT_DOMAIN).' ';
+	$html .= __('Go to:', 'cp-communitie').' ';
 	$html .= '<select id="__cpc__change_forum_category">';
-	$html .= '<option value=-1>'.__('Select a category...', CPC_TEXT_DOMAIN).'</option>';
-	$html .= '<option value=0>'.__('Top level', CPC_TEXT_DOMAIN).'</option>';
+	$html .= '<option value=-1>'.__('Select a category...', 'cp-communitie').'</option>';
+	$html .= '<option value=0>'.__('Top level', 'cp-communitie').'</option>';
 	$html .= __cpc__forum_dropdown_get_categories(0, 0, $cat_id, $topic_id, $user_role);
 	$html .= '</select></div>';
 	
@@ -1489,14 +1489,14 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 						$allow_new = $this_level->allow_new;
 						if ($this_level->cat_parent == 0) {
 							if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
-								$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+								$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 								$breadcrumbs .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.stripslashes(trim($this_level->title)).'</a>';
 							} else {
 								if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-									$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+									$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 									$breadcrumbs .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.stripslashes(trim($this_level->title)).'</a>';
 								} else {
-									$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+									$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 									$breadcrumbs .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.stripslashes(trim($this_level->title)).'</a>';
 								}
 							}
@@ -1506,25 +1506,25 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 			
 							if ($parent_level->cat_parent == 0) {
 								if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
-									$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+									$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 								} else {
 									if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-										$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+										$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 									} else {
-										$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; ";
+										$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; ";
 									}
 								}
 							} else {
 								$parent_level_2 = $wpdb->get_row($wpdb->prepare("SELECT cid, title, cat_parent, stub FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $parent_level->cat_parent));
 								if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
-									$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a> &rarr; " ;
+									$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a> &rarr; " ;
 									$breadcrumbs .= '<a href="#cid='.$parent_level_2->cid.'" class="category_title" title="'.$parent_level_2->cid.'">'.stripslashes($parent_level_2->title)."</a> &rarr; ";
 								} else {
 									if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-										$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</span></a> &rarr; " ;
+										$breadcrumbs .= '<a href="'.$forum_url.'" title="0">'.__('Forum Home', 'cp-communitie')."</span></a> &rarr; " ;
 										$breadcrumbs .= '<a href="'.$forum_url.'/'.$parent_level_2->stub.'"  title="'.$parent_level_2->cid.'">'.stripslashes($parent_level_2->title)."</a> &rarr; ";
 									} else {
-										$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</span></a> &rarr; " ;
+										$breadcrumbs .= '<a href="'.$forum_url.$q.'cid=0" title="0">'.__('Forum Home', 'cp-communitie')."</span></a> &rarr; " ;
 										$breadcrumbs .= '<a href="'.$forum_url.$q."cid=".$parent_level_2->cid.'"  title="'.$parent_level_2->cid.'">'.stripslashes($parent_level_2->title)."</a> &rarr; ";
 									}
 								}
@@ -1547,9 +1547,9 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 						// Lite mode
 						$this_level = $wpdb->get_row($wpdb->prepare("SELECT allow_new, cat_parent FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
 						$allow_new = $this_level->allow_new;
-						$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', CPC_TEXT_DOMAIN)."</a>";
+						$breadcrumbs .= '<a href="#cid=0" class="category_title" title="0">'.__('Forum Home', 'cp-communitie')."</a>";
 						if ($this_level->cat_parent > 0) {
-							$breadcrumbs .= ' &rarr; <a href="'.$forum_url.$q."cid=".$this_level->cat_parent.'" title="'.$this_level->cat_parent.'">'.__('Up a level', CPC_TEXT_DOMAIN)."</a>" ;
+							$breadcrumbs .= ' &rarr; <a href="'.$forum_url.$q."cid=".$this_level->cat_parent.'" title="'.$this_level->cat_parent.'">'.__('Up a level', 'cp-communitie')."</a>" ;
 						}
 					}
 				
@@ -1600,7 +1600,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 				
 				}	
 			}
-			if (strpos($viewer, __('everyone', CPC_TEXT_DOMAIN)) !== FALSE) $can_edit = true;
+			if (strpos($viewer, __('everyone', 'cp-communitie')) !== FALSE) $can_edit = true;
 			if ($group_id > 0) {
 				$sql = "SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id=%d AND valid='on' AND member_id=%d";
 				$member_count = $wpdb->get_var($wpdb->prepare($sql, $group_id, $current_user->ID));
@@ -1622,7 +1622,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 
 				if ( ($can_edit) && (can_manage_forum() || $allow_new == 'on') ) {
 	
-					$new_topic_button = '<input type="submit" class="__cpc__button floatright" id="new-topic-button" value="'.__("New Topic", CPC_TEXT_DOMAIN).'" />';
+					$new_topic_button = '<input type="submit" class="__cpc__button floatright" id="new-topic-button" value="'.__("New Topic", 'cp-communitie').'" />';
 	
 					$new_topic_form .= '<div name="new-topic" id="new-topic" style="display:none;">';
 						$new_topic_form .= '<input type="hidden" id="cid" value="'.$cat_id.'">';
@@ -1631,7 +1631,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 
 						if ($group_id == 0) {
 	
-							$new_topic_form .= '<div class="new-topic-category label">'.__("Select a Category", CPC_TEXT_DOMAIN).'<br />';
+							$new_topic_form .= '<div class="new-topic-category label">'.__("Select a Category", 'cp-communitie').'<br />';
 							if (can_manage_forum()) {
 								$categories = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.'cpcommunitie_cats ORDER BY title');			
 							} else {
@@ -1669,7 +1669,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											if (isset($defaultcat) && $category->cid == $defaultcat) { $new_topic_form .= " SELECTED"; }
 										}
 										$title = stripslashes($category->title);
-										if ($category->allow_new != 'on') $title .= ' '.__('(admin only)', CPC_TEXT_DOMAIN);
+										if ($category->allow_new != 'on') $title .= ' '.__('(admin only)', 'cp-communitie');
 										if ($cat_id == $category->cid)
 											$new_topic_form .= ' SELECTED';
 										$new_topic_form .= '>'.$title.'</option>';
@@ -1687,11 +1687,11 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 						}
 						
 						$new_topic_form .= '<div style="clear:both"></div>';
-						$new_topic_form .= '<div id="new-topic-subject-label" class="new-topic-subject label">'.__("Topic Subject", CPC_TEXT_DOMAIN).'</div>';
+						$new_topic_form .= '<div id="new-topic-subject-label" class="new-topic-subject label">'.__("Topic Subject", 'cp-communitie').'</div>';
 						$new_topic_form .= '<div style="clear:both"></div>';
 						$new_topic_form .= '<input class="new-topic-subject-input" type="text" id="new_topic_subject" value="">';
 						$new_topic_form .= '<div style="clear:both"></div>';
-						$new_topic_form .= '<div class="new-topic-subject label">'.__("First Post in Topic", CPC_TEXT_DOMAIN).'</div>';
+						$new_topic_form .= '<div class="new-topic-subject label">'.__("First Post in Topic", 'cp-communitie').'</div>';
 						if (get_option(CPC_OPTIONS_PREFIX.'_elastic') == 'on' && get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') != 'on') { $elastic = ' elastic'; } else { $elastic = ''; }
 
 						$new_topic_form .= '<div id="__cpc__new-topic-subject-text_parent" style="width:'.get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_width').'; height:'.get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_height').';">';
@@ -1707,7 +1707,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 								WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/forum_upload/', 
 								WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/forum_upload/',
 								'forum',
-								__('Attach file', CPC_TEXT_DOMAIN)
+								__('Attach file', 'cp-communitie')
 							);							
 							$new_topic_form .= '<div id="forum_file_list" style="clear:both;"></div>';
 						}
@@ -1715,16 +1715,16 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 						$new_topic_form .= '<div>';
 						if (get_option(CPC_OPTIONS_PREFIX.'_suppress_forum_notify') != "on") {
 							if ($forum_all != 'on') {
-								$new_topic_form .= '<input style="margin: 0;" type="checkbox" id="new_topic_subscribe"> '.__("Tell me when I get any replies", CPC_TEXT_DOMAIN).'<br />';
+								$new_topic_form .= '<input style="margin: 0;" type="checkbox" id="new_topic_subscribe"> '.__("Tell me when I get any replies", 'cp-communitie').'<br />';
 							}
 						}
 						if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == 'on') {
-							$new_topic_form .= '<input style="margin: 0 0 10px 0;" type="checkbox" id="info_only"> '.__('This topic is for information only, no answer will be selected.', CPC_TEXT_DOMAIN);
+							$new_topic_form .= '<input style="margin: 0 0 10px 0;" type="checkbox" id="info_only"> '.__('This topic is for information only, no answer will be selected.', 'cp-communitie');
 						}
 						$new_topic_form .= '</div>';
 	
-						$new_topic_form .= '<input id="cpcommunitie_new_post" type="submit" class="__cpc__button" style="float: left" value="'.__("Post", CPC_TEXT_DOMAIN).'" />';
-						$new_topic_form .= '<input id="cancel_post" type="submit" class="__cpc__button clear" onClick="javascript:void(0)" value="'.__("Cancel", CPC_TEXT_DOMAIN).'" />';
+						$new_topic_form .= '<input id="cpcommunitie_new_post" type="submit" class="__cpc__button" style="float: left" value="'.__("Post", 'cp-communitie').'" />';
+						$new_topic_form .= '<input id="cancel_post" type="submit" class="__cpc__button clear" onClick="javascript:void(0)" value="'.__("Cancel", 'cp-communitie').'" />';
 	
 	
 						$new_topic_form .= '</div>';
@@ -1734,12 +1734,12 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 				} else {
 	
 					if ($group_id == 0 && $allow_new == 'on') {
-						$new_topic_form = "<p>".__("You are not permitted to start a new topic.", CPC_TEXT_DOMAIN);	
-						if (__cpc__get_current_userlevel() == 5) $new_topic_form .= sprintf(__('<br />Permissions are set via the WordPress admin dashboard->%s->Options->Forum.', CPC_TEXT_DOMAIN), CPC_WL);	
+						$new_topic_form = "<p>".__("You are not permitted to start a new topic.", 'cp-communitie');	
+						if (__cpc__get_current_userlevel() == 5) $new_topic_form .= sprintf(__('<br />Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum.', 'cp-communitie'), CPC_WL);	
 						$new_topic_forum .= "</p>";
 					}
 					if ($group_id > 0 && $allow_new != 'on' && $member_count > 0) {
-						$new_topic_form = "<p>".__("New topics are disabled on this forum.", CPC_TEXT_DOMAIN)."</p>";							
+						$new_topic_form = "<p>".__("New topics are disabled on this forum.", 'cp-communitie')."</p>";							
 					}
 					$new_topic_button = '';
 					
@@ -1751,8 +1751,8 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 				$new_topic_button = '';
 	
 				if (get_option(CPC_OPTIONS_PREFIX.'_forum_login') == "on") {
-					$new_topic_form .= "<p style='text-align: right;'>".__("Until you login, you can only view the forum.", CPC_TEXT_DOMAIN);
-					$new_topic_form .= " <a href=".wp_login_url( get_permalink() )." class='simplemodal-login' title='".__("Login", CPC_TEXT_DOMAIN)."'>".__("Login", CPC_TEXT_DOMAIN).".</a></p>";
+					$new_topic_form .= "<p style='text-align: right;'>".__("Until you login, you can only view the forum.", 'cp-communitie');
+					$new_topic_form .= " <a href=".wp_login_url( get_permalink() )." class='simplemodal-login' title='".__("Login", 'cp-communitie')."'>".__("Login", 'cp-communitie').".</a></p>";
 				}
 	
 			}
@@ -1769,7 +1769,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 					$digest = "<div class='__cpc__subscribe_option label'>";
 					$digest .= "<input type='checkbox' id='cpcommunitie_digest' name='cpcommunitie_digest'";
 					if ($forum_digest == 'on') { $digest .= ' checked'; } 
-					$digest .= "> ".__("Receive digests via email", CPC_TEXT_DOMAIN);
+					$digest .= "> ".__("Receive digests via email", 'cp-communitie');
 					$digest .= "</div>";
 				}
 				if (get_option(CPC_OPTIONS_PREFIX.'_suppress_forum_notify') != "on") {
@@ -1780,7 +1780,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 								$subscribe = "<div class='__cpc__subscribe_option label'>";
 								$subscribe .= "<input type='checkbox' title='".$cat_id."' id='cpcommunitie_subscribe' name='cpcommunitie_subscribe'";
 								if ($subscribed_count > 0) { $subscribe .= ' checked'; } 
-								$subscribe .= "> ".__("Tell me when there are new topics posted", CPC_TEXT_DOMAIN);
+								$subscribe .= "> ".__("Tell me when there are new topics posted", 'cp-communitie');
 								$subscribe .= "</div>";
 							}
 						} else {
@@ -1788,7 +1788,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 							$subscribe = "<div class='__cpc__subscribe_option label'>";
 							$subscribe .= "<input type='checkbox' title='".(10000+$group_id)."' id='cpcommunitie_subscribe' name='cpcommunitie_subscribe'";
 							if ($subscribed_count > 0) { $subscribe .= ' checked'; } 
-							$subscribe .= "> ".__("Tell me when there are new topics posted", CPC_TEXT_DOMAIN);
+							$subscribe .= "> ".__("Tell me when there are new topics posted", 'cp-communitie');
 							$subscribe .= "</div>";
 						}
 					}
@@ -1799,13 +1799,13 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 			// Options above forum table
 			$forum_options = "<div id='forum_options'>";
 	
-				$forum_options .= "<a id='show_search' class='label' href='javascript:void(0)'>".__("Search", CPC_TEXT_DOMAIN)."</a>";
-				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", CPC_TEXT_DOMAIN)."</a>";
-				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' class='label' href='javascript:void(0)'>".__("Latest Topics", CPC_TEXT_DOMAIN)."</a>";
+				$forum_options .= "<a id='show_search' class='label' href='javascript:void(0)'>".__("Search", 'cp-communitie')."</a>";
+				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", 'cp-communitie')."</a>";
+				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' class='label' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 	
 				if (is_user_logged_in()) {
-					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' class='label' href='javascript:void(0)'>".__("My Activity", CPC_TEXT_DOMAIN)."</a>";
-					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' class='label' href='javascript:void(0)'>".__("Favorites", CPC_TEXT_DOMAIN)."</a>";
+					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' class='label' href='javascript:void(0)'>".__("My Activity", 'cp-communitie')."</a>";
+					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' class='label' href='javascript:void(0)'>".__("Favorites", 'cp-communitie')."</a>";
 				}
 	
 			$forum_options .= "</div>";
@@ -1950,7 +1950,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											}
 											
 											if ($reply) {
-												$row_template = str_replace("[replied]", __cpc__profile_link($reply->topic_owner)." ".__("replied to", CPC_TEXT_DOMAIN)." ", $row_template);	
+												$row_template = str_replace("[replied]", __cpc__profile_link($reply->topic_owner)." ".__("replied to", 'cp-communitie')." ", $row_template);	
 												$subject = __cpc__bbcode_remove($last_topic->topic_subject);
 												if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
 													$subject = '<a title="'.$last_topic->tid.'" class="topic_subject backto row_link_topic" href="#cid='.$category->cid.',tid='.$last_topic->tid.'">'.stripslashes($subject).'</a> ';
@@ -1962,7 +1962,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 														$subject = '<a class="backto row_link_topic" href="'.$forum_url.$q."cid=".$last_topic->topic_category."&show=".$last_topic->tid.'">'.stripslashes($subject).'</a> ';
 													}
 												}
-												if ($reply->topic_approved != 'on') { $subject .= "<em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em> "; }
+												if ($reply->topic_approved != 'on') { $subject .= "<em>[".__("pending approval", 'cp-communitie')."]</em> "; }
 												$subject_text = strip_tags(stripslashes($reply->topic_post));
 												$subject_text = __cpc__bbcode_remove($subject_text);
 												if ( strlen($subject_text) > $snippet_length_long ) { $subject_text = substr($subject_text, 0, $snippet_length_long)."..."; }
@@ -1970,7 +1970,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 												$row_template = str_replace("[subject]", $subject, $row_template);	
 												$row_template = str_replace("[ago]", __cpc__time_ago($reply->topic_date), $row_template);	
 											} else {
-												$row_template = str_replace("[replied]", __cpc__profile_link($last_topic->topic_owner)." ".__("started", CPC_TEXT_DOMAIN)." ", $row_template);	
+												$row_template = str_replace("[replied]", __cpc__profile_link($last_topic->topic_owner)." ".__("started", 'cp-communitie')." ", $row_template);	
 												$subject = __cpc__bbcode_remove($last_topic->topic_subject);
 												if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
 													$subject = '<a title="'.$last_topic->tid.'" class="topic_subject backto row_link_topic" href="#cid='.$category->cid.',tid='.$last_topic->tid.'">'.stripslashes($subject).'</a> ';
@@ -2017,16 +2017,16 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											$topic_count_html = "<div class='post_count' style='color:".$text_color.";'>".$topic_count."</div>";
 											$topic_count_html .= "<div style='color:".$text_color.";' class='post_count_label'>";
 											if ($topic_count != 1) {
-												$topic_count_html .= __("TOPICS", CPC_TEXT_DOMAIN);
+												$topic_count_html .= __("TOPICS", 'cp-communitie');
 											} else {
-												$topic_count_html .= __("TOPIC", CPC_TEXT_DOMAIN);
+												$topic_count_html .= __("TOPIC", 'cp-communitie');
 											}
 											$topic_count_html .= "</div>";
 											$row_template = str_replace("[topic_count]", $topic_count_html, $row_template);	
 										} else {
 											$topic_count_html = "<div class='post_count' style='color:".$text_color.";'>0</div>";
 											$topic_count_html .= "<div style='color:".$text_color.";' class='post_count_label'>";
-											$topic_count_html .= __("TOPICS", CPC_TEXT_DOMAIN);
+											$topic_count_html .= __("TOPICS", 'cp-communitie');
 											$topic_count_html .= "</div>";	
 										}
 										$row_template = str_replace("[topic_count]", $topic_count_html, $row_template);	
@@ -2056,16 +2056,16 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											$post_count_html = "<div class='post_count' style='color:".$text_color.";'>".$post_count."</div>";
 												$post_count_html .= "<div style='color:".$text_color.";' class='post_count_label'>";
 												if ($post_count > 1) {
-													$post_count_html .= __("REPLIES", CPC_TEXT_DOMAIN);
+													$post_count_html .= __("REPLIES", 'cp-communitie');
 												} else {
-													$post_count_html .= __("REPLY", CPC_TEXT_DOMAIN);
+													$post_count_html .= __("REPLY", 'cp-communitie');
 												}
 												$post_count_html .= "</div>";
 												$row_template = str_replace("[post_count]", $post_count_html, $row_template);	
 										} else {
 											$post_count_html = "<div class='post_count' style='color:".$text_color.";'>0</div>";
 											$post_count_html .= "<div style='color:".$text_color.";' class='post_count_label'>";
-											$post_count_html .= __("REPLIES", CPC_TEXT_DOMAIN);
+											$post_count_html .= __("REPLIES", 'cp-communitie');
 											$post_count_html .= "</div>";
 											$row_template = str_replace("[post_count]", $post_count_html, $row_template);	
 										}
@@ -2112,7 +2112,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											$category_title_html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/new.gif' alt='New!' /> ";
 
 									$subscribed = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_subs WHERE cid = %d AND uid = %d", $category->cid, $current_user->ID));
-									if ($subscribed > 0 && $forum_all != 'on') { $category_title_html .= ' <img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/orange-tick.gif" alt="'.__('Subscribed', CPC_TEXT_DOMAIN).'" />'; } 
+									if ($subscribed > 0 && $forum_all != 'on') { $category_title_html .= ' <img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/orange-tick.gif" alt="'.__('Subscribed', 'cp-communitie').'" />'; } 
 									$row_template = str_replace("[category_title]", $category_title_html, $row_template);	
 									
 									// Category description
@@ -2304,7 +2304,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											
 											}
 										}
-										$topic_template = str_replace("[startedby]", __("Started by", CPC_TEXT_DOMAIN)." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
+										$topic_template = str_replace("[startedby]", __("Started by", 'cp-communitie')." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
 										$topic_template = str_replace("[started]", " ".__cpc__time_ago($topic->topic_started).".", $topic_template);	
 										
 										// Last reply
@@ -2321,13 +2321,13 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 											
 											}
 										}
-										$topic_template = str_replace("[replied]", __("Last reply by", CPC_TEXT_DOMAIN)." ".__cpc__profile_link($each_last_post->topic_owner), $topic_template);	
+										$topic_template = str_replace("[replied]", __("Last reply by", 'cp-communitie')." ".__cpc__profile_link($each_last_post->topic_owner), $topic_template);	
 										$topic_template = str_replace("[ago]", " ".__cpc__time_ago($each_last_post->topic_date), $topic_template);	
 										$post = stripslashes($each_last_post->topic_post);
 										$post = strip_tags($post);
 										$post = __cpc__bbcode_remove($post);
 										if ( strlen($post) > $snippet_length_long ) { $post = substr($post, 0, $snippet_length_long)."..."; }
-										if ($each_last_post->topic_approved != 'on') { $post .= " <em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>"; }
+										if ($each_last_post->topic_approved != 'on') { $post .= " <em>[".__("pending approval", 'cp-communitie')."]</em>"; }
 										$topic_template = str_replace("[topic]", " <span class='row_topic_text'>".trim($post)."</span>", $topic_template);										
 
 									}
@@ -2340,13 +2340,13 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 								$topic_template = str_replace("avatar_last_topic'>", "avatar_last_topic' style='display:none'>", $topic_template);
 								$topic_template = str_replace("last_topic_text'>", "last_topic_text' style='display:none'>", $topic_template);
 
-								$topic_template = str_replace("[replied]", __("Last reply by", CPC_TEXT_DOMAIN)." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
+								$topic_template = str_replace("[replied]", __("Last reply by", 'cp-communitie')." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
 								$topic_template = str_replace("[ago]", " ".__cpc__time_ago($topic->topic_date), $topic_template);	
 								$post = stripslashes($topic->topic_post);
 								if ( strlen($post) > $snippet_length_long ) { $post = substr($post, 0, $snippet_length_long)."..."; }
 								$post = __cpc__bbcode_remove($post);
 								$post = strip_tags($post);
-								if ($topic->topic_approved != 'on') { $post .= " <em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>"; }
+								if ($topic->topic_approved != 'on') { $post .= " <em>[".__("pending approval", 'cp-communitie')."]</em>"; }
 								$topic_template = str_replace("[topic]", " <span class='row_topic_text'>".$post."</span>", $topic_template);										
 								
 								// First post
@@ -2363,7 +2363,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 									
 									}
 								}
-								$topic_template = str_replace("[startedby]", __("Started by", CPC_TEXT_DOMAIN)." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
+								$topic_template = str_replace("[startedby]", __("Started by", 'cp-communitie')." ".__cpc__profile_link($topic->topic_owner), $topic_template);	
 								$topic_template = str_replace("[started]", " ".__cpc__time_ago($topic->topic_started).".", $topic_template);	
 													
 							}
@@ -2375,9 +2375,9 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 							if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
 								$views_html = "<div class='post_count' style='".$adjustment."color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";'>".$reply_views."</div>";
 								if ($reply_views != 1) { 
-									$views_html .= "<div style='color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";' class='post_count_label'>".__("VIEWS", CPC_TEXT_DOMAIN)."</div>";
+									$views_html .= "<div style='color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";' class='post_count_label'>".__("VIEWS", 'cp-communitie')."</div>";
 								} else {
-									$views_html .= "<div style='color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";' class='post_count_label'>".__("VIEW", CPC_TEXT_DOMAIN)."</div>";						
+									$views_html .= "<div style='color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";' class='post_count_label'>".__("VIEW", 'cp-communitie')."</div>";						
 								}
 								$topic_template = str_replace("[views]", $views_html, $topic_template);	
 							} else {
@@ -2389,9 +2389,9 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 								$replies_html = "<div class='post_count' style='".$adjustment."color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";'>".$replies."</div>";
 								$replies_html .= "<div style='color:".get_option(CPC_OPTIONS_PREFIX.'_text_color').";' class='post_count_label'>";
 								if ($replies != 1) {
-									$replies_html .= __("REPLIES", CPC_TEXT_DOMAIN);
+									$replies_html .= __("REPLIES", 'cp-communitie');
 								} else {
-									$replies_html .= __("REPLY", CPC_TEXT_DOMAIN);
+									$replies_html .= __("REPLY", 'cp-communitie');
 								}
 								$replies_html .= "</div>";
 								$topic_template = str_replace("[replies]", $replies_html, $topic_template);	
@@ -2407,14 +2407,14 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 							$now = time();
 							$seconds_left = $reply_posted_expire - $now;
 							if ($seconds_left > 0) {
-								$title = __('Lock in', CPC_TEXT_DOMAIN).' '.gmdate("H:i:s", $seconds_left);
+								$title = __('Lock in', 'cp-communitie').' '.gmdate("H:i:s", $seconds_left);
 								$ttitle = '<br /><em>'.$title.'</em>';
 							} else {
-								$title = __('Admin only', CPC_TEXT_DOMAIN);
+								$title = __('Admin only', 'cp-communitie');
 								$ttitle = '';
 							}
 							if (get_option(CPC_OPTIONS_PREFIX.'_forum_lock') == 0) {
-								$title = __('No lock time', CPC_TEXT_DOMAIN);
+								$title = __('No lock time', 'cp-communitie');
 								$ttitle = '';
 								$seconds_left = 1;
 							}
@@ -2431,8 +2431,8 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 							$subject = stripslashes(__cpc__bbcode_remove($topic->topic_subject));
 							$topic_title_html .= '<div class="row_link_div">';
 		
-								if ($topic->for_info == "on") { $topic_title_html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/info.png" alt="'.__('Information only', CPC_TEXT_DOMAIN).'" /> '; }
-								if ($topic->answers > 0) { $topic_title_html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer accepted', CPC_TEXT_DOMAIN).'" /> '; }
+								if ($topic->for_info == "on") { $topic_title_html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/info.png" alt="'.__('Information only', 'cp-communitie').'" /> '; }
+								if ($topic->answers > 0) { $topic_title_html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer accepted', 'cp-communitie').'" /> '; }
 								if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') {
 									$topic_title_html .= '<a title="'.$topic->tid.'" href="#cid='.$topic->topic_category.',tid='.$topic->tid.'" class="topic_subject backto row_link">'.stripslashes($subject).'</a>';
 								} else {
@@ -2449,7 +2449,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 									}	
 								}
 											
-								if ($topic->topic_approved != 'on') { $topic_title_html .= " <em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>"; }
+								if ($topic->topic_approved != 'on') { $topic_title_html .= " <em>[".__("pending approval", 'cp-communitie')."]</em>"; }
 								if (is_user_logged_in()) {
 									$is_subscribed = $wpdb->get_var($wpdb->prepare("SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_subs WHERE cid = 0 AND tid = %d AND uid = %d", $topic->tid, $current_user->ID));
 									if ($is_subscribed > 0 && $forum_all != 'on') { $topic_title_html .= ' <img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/orange-tick.gif" alt="Subscribed" />'; } 
@@ -2482,7 +2482,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 					}
 		
 					if ($num_topics >= $limit_count) {
-						$html .= "<a href='javascript:void(0)' id='showmore_forum' title='".($limit_from+$limit_count).",".$cat_id."'>".__("more...", CPC_TEXT_DOMAIN)."</a>";
+						$html .= "<a href='javascript:void(0)' id='showmore_forum' title='".($limit_from+$limit_count).",".$cat_id."'>".__("more...", 'cp-communitie')."</a>";
 					}
 		
 				if ($limit_from == 0) {
@@ -2497,7 +2497,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 			if ($cat_title) {
 				$html = $cat_title.' | '.html_entity_decode(get_bloginfo('name'), ENT_QUOTES).'[|]'.$html;
 			} else {
-				$html = __('Forum', CPC_TEXT_DOMAIN).' | '.html_entity_decode(get_bloginfo('name'), ENT_QUOTES).'[|]'.$html;
+				$html = __('Forum', 'cp-communitie').' | '.html_entity_decode(get_bloginfo('name'), ENT_QUOTES).'[|]'.$html;
 			}
 		}
 		
@@ -2587,33 +2587,33 @@ function __cpc__show_sharing_icons($cat_id, $topic_id, $sharing, $group_id) {
 		}
 		// Email
 		if (!(strpos($sharing, "em") === FALSE)) {
-			$html .= "<a class='cpcommunitie_social_share' id='share_email' title='".__('Share via email', CPC_TEXT_DOMAIN)."' href='mailto:%20?subject=".str_replace(" ", "%20", $title)."&body=".$pageURL."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_email' title='".__('Share via email', 'cp-communitie')."' href='mailto:%20?subject=".str_replace(" ", "%20", $title)."&body=".$pageURL."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/email-icon.gif' style='margin-left:3px; height:22px; width:22px;' alt='Email icon' /></a>";
 		}
 		// Facebook
 		if (!(strpos($sharing, "fb") === FALSE)) {
 			$pageURL = urlencode($pageURL);
-			$html .= "<a class='cpcommunitie_social_share' id='share_facebook' target='_blank' title='".__('Share on Facebook', CPC_TEXT_DOMAIN)."' href='http://www.facebook.com/share.php?u=".$pageURL."&t=".$title."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_facebook' target='_blank' title='".__('Share on Facebook', 'cp-communitie')."' href='http://www.facebook.com/share.php?u=".$pageURL."&t=".$title."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/facebook-icon.gif' style='margin-left:3px; height:22px; width:22px' alt='Facebook icon' /></a>";
 		}
 		// Twitter
 		if (!(strpos($sharing, "tw") === FALSE)) {
-			$html .= "<a class='cpcommunitie_social_share' id='share_twitter' target='_blank' title='".__('Share on Twitter', CPC_TEXT_DOMAIN)."' href='http://twitter.com/home?status=".$pageURL."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_twitter' target='_blank' title='".__('Share on Twitter', 'cp-communitie')."' href='http://twitter.com/home?status=".$pageURL."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/twitter-icon.gif' style='margin-left:3px; height:22px; width:22px' alt='Twitter icon' /></a>";
 		}
 		// Bebo
 		if (!(strpos($sharing, "be") === FALSE)) {
-			$html .= "<a class='cpcommunitie_social_share' id='share_bebo' target='_blank' title='".__('Share on Bebo', CPC_TEXT_DOMAIN)."' href='http://www.bebo.com/c/share?Url=".$pageURL."&Title=".$title."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_bebo' target='_blank' title='".__('Share on Bebo', 'cp-communitie')."' href='http://www.bebo.com/c/share?Url=".$pageURL."&Title=".$title."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/bebo-icon.gif' style='margin-left:3px; height:22px; width:22px' alt='Bebo icon' /></a>";
 		}
 		// LinkedIn
 		if (!(strpos($sharing, "li") === FALSE)) {
-			$html .= "<a class='cpcommunitie_social_share' id='share_linkedin' target='_blank' title='".__('Share on LinkedIn', CPC_TEXT_DOMAIN)."' href='http://www.linkedin.com/shareArticle?mini=true&url=".$pageURL."&title=".$title."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_linkedin' target='_blank' title='".__('Share on LinkedIn', 'cp-communitie')."' href='http://www.linkedin.com/shareArticle?mini=true&url=".$pageURL."&title=".$title."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/linkedin-icon.gif' style='margin-left:3px; height:22px; width:22px' alt='LinkedIn icon' /></a>";
 		}
 		// MySpace
 		if (!(strpos($sharing, "ms") === FALSE)) {
-			$html .= "<a class='cpcommunitie_social_share' id='share_myspace' target='_blank' title='".__('Share on MySpace', CPC_TEXT_DOMAIN)."' href='http://www.myspace.com/Modules/PostTo/Pages/?u=".$pageURL."&t=".$title."'>";
+			$html .= "<a class='cpcommunitie_social_share' id='share_myspace' target='_blank' title='".__('Share on MySpace', 'cp-communitie')."' href='http://www.myspace.com/Modules/PostTo/Pages/?u=".$pageURL."&t=".$title."'>";
 			$html .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/myspace-icon.gif' style='margin-left:3px; height:22px; width:22px' alt='MySpace icon' /></a>";
 		}
 
@@ -2769,12 +2769,12 @@ function __cpc__show_profile_menu($uid1, $uid2) {
 			
 			if ($uid1 == $uid2 || __cpc__get_current_userlevel() == 5) {
 				if (get_option(CPC_OPTIONS_PREFIX.'_profile_avatars') == 'on' && get_option(CPC_OPTIONS_PREFIX.'_menu_avatar')) {
-					$html .= '<div id="menu_avatar" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text')) != '' ? $t :  __('Profile Photo', CPC_TEXT_DOMAIN)).'</div>';
+					$html .= '<div id="menu_avatar" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text')) != '' ? $t :  __('Profile Photo', 'cp-communitie')).'</div>';
 				}
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_details'))
-					$html .= '<div id="menu_personal" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_details_text')) != '' ? $t :  __('Profile Details', CPC_TEXT_DOMAIN)).'</div>';
+					$html .= '<div id="menu_personal" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_details_text')) != '' ? $t :  __('Profile Details', 'cp-communitie')).'</div>';
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_settings'))
-					$html .= '<div id="menu_settings" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text')) != '' ? $t :  __('Community Settings', CPC_TEXT_DOMAIN)).'</div>';
+					$html .= '<div id="menu_settings" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text')) != '' ? $t :  __('Community Settings', 'cp-communitie')).'</div>';
 
 			}
 			
@@ -2782,7 +2782,7 @@ function __cpc__show_profile_menu($uid1, $uid2) {
 			if (__cpc__get_current_userlevel() == 5 && $uid1 != $current_user->ID && function_exists('__cpc__mail')) {
 				$mailpage = __cpc__get_url('mail');
 				$q = __cpc__string_query($mailpage);
-				$html .= '<a href="'.$mailpage.$q.'uid='.$uid1.'" class="__cpc__profile_menu">'.__('Mail Admin', CPC_TEXT_DOMAIN).'</a>';
+				$html .= '<a href="'.$mailpage.$q.'uid='.$uid1.'" class="__cpc__profile_menu">'.__('Mail Admin', 'cp-communitie').'</a>';
 			}
 			
 		}
@@ -3472,7 +3472,7 @@ function __cpc__time_ago($date,$granularity=1) {
 	$retval = '';
     $date = strtotime($date);
     $difference = (time() - $date) + 1;
-    $periods = array(__('decade', CPC_TEXT_DOMAIN) => 315360000,
+    $periods = array(__('decade', 'cp-communitie') => 315360000,
         'year' => 31536000,
         'month' => 2628000,
         'week' => 604800, 
@@ -3483,13 +3483,13 @@ function __cpc__time_ago($date,$granularity=1) {
 
 	if ($difference > 315360000) {
 
-	    $return = sprintf (__('a while ago', CPC_TEXT_DOMAIN), $retval);
+	    $return = sprintf (__('a while ago', 'cp-communitie'), $retval);
 		
 	} else {
 		
 		if ($difference < 1) {
 			
-		    $return = sprintf (__('just now', CPC_TEXT_DOMAIN), $retval);
+		    $return = sprintf (__('just now', 'cp-communitie'), $retval);
 		    
 		} else {
                                  
@@ -3499,27 +3499,27 @@ function __cpc__time_ago($date,$granularity=1) {
 		            $difference %= $value;
 		            $retval .= ($retval ? ' ' : '').$time.' ';
 		            $key = (($time > 1) ? $key.'s' : $key);
-		            if ($key == 'year') { $key = __('year', CPC_TEXT_DOMAIN); }
-		            if ($key == 'years') { $key = __('years', CPC_TEXT_DOMAIN); }
-		            if ($key == 'month') { $key = __('month', CPC_TEXT_DOMAIN); }
-		            if ($key == 'months') { $key = __('months', CPC_TEXT_DOMAIN); }
-		            if ($key == 'week') { $key = __('week', CPC_TEXT_DOMAIN); }
-		            if ($key == 'weeks') { $key = __('weeks', CPC_TEXT_DOMAIN); }
-		            if ($key == 'day') { $key = __('day', CPC_TEXT_DOMAIN); }
-		            if ($key == 'days') { $key = __('days', CPC_TEXT_DOMAIN); }
-		            if ($key == 'hour') { $key = __('hour', CPC_TEXT_DOMAIN); }
-		            if ($key == 'hours') { $key = __('hours', CPC_TEXT_DOMAIN); }
-		            if ($key == 'minute') { $key = __('minute', CPC_TEXT_DOMAIN); }
-		            if ($key == 'minutes') { $key = __('minutes', CPC_TEXT_DOMAIN); }
-		            if ($key == 'second') { $key = __('second', CPC_TEXT_DOMAIN); }
-		            if ($key == 'seconds') { $key = __('seconds', CPC_TEXT_DOMAIN); }
+		            if ($key == 'year') { $key = __('year', 'cp-communitie'); }
+		            if ($key == 'years') { $key = __('years', 'cp-communitie'); }
+		            if ($key == 'month') { $key = __('month', 'cp-communitie'); }
+		            if ($key == 'months') { $key = __('months', 'cp-communitie'); }
+		            if ($key == 'week') { $key = __('week', 'cp-communitie'); }
+		            if ($key == 'weeks') { $key = __('weeks', 'cp-communitie'); }
+		            if ($key == 'day') { $key = __('day', 'cp-communitie'); }
+		            if ($key == 'days') { $key = __('days', 'cp-communitie'); }
+		            if ($key == 'hour') { $key = __('hour', 'cp-communitie'); }
+		            if ($key == 'hours') { $key = __('hours', 'cp-communitie'); }
+		            if ($key == 'minute') { $key = __('minute', 'cp-communitie'); }
+		            if ($key == 'minutes') { $key = __('minutes', 'cp-communitie'); }
+		            if ($key == 'second') { $key = __('second', 'cp-communitie'); }
+		            if ($key == 'seconds') { $key = __('seconds', 'cp-communitie'); }
 		            $retval .= $key;
 		            $granularity--;
 		        }
 		        if ($granularity == '0') { break; }
 		    }
 
-		    $return = sprintf (__('%s ago', CPC_TEXT_DOMAIN), $retval);
+		    $return = sprintf (__('%s ago', 'cp-communitie'), $retval);
 		    
 		}
     
@@ -3550,14 +3550,14 @@ function __cpc__sendmail($email, $subject, $msg)
 
 	$template =  str_replace('[message]', $msg, $template);
 	$template =  str_replace('[footer]', $footer, $template);
-	$template =  str_replace('[powered_by_message]', sprintf(__('Powered by %s - Social Networking for WordPress', CPC_TEXT_DOMAIN), CPC_WL), $template);
+	$template =  str_replace('[powered_by_message]', sprintf(__('Powered by %s - Social Networking for ClassicPress', 'cp-communitie'), CPC_WL), $template);
 	$template =  str_replace('[version]', CPC_VER, $template);
 
 	$template = str_replace(chr(10), "<br />", $template);
 	
 	if ( strpos($subject, '#TID') ){
 		$from_email = trim(get_option(CPC_OPTIONS_PREFIX.'_mailinglist_from'));
-		$from_name = html_entity_decode(trim(stripslashes(get_bloginfo('name'))), ENT_QUOTES, 'UTF-8').' '.__('Forum', CPC_TEXT_DOMAIN);
+		$from_name = html_entity_decode(trim(stripslashes(get_bloginfo('name'))), ENT_QUOTES, 'UTF-8').' '.__('Forum', 'cp-communitie');
 	} else {
 		$from_email = trim(get_option(CPC_OPTIONS_PREFIX.'_from_email'));
 		$from_name = html_entity_decode(trim(stripslashes(get_bloginfo('name'))), ENT_QUOTES, 'UTF-8');
@@ -3627,7 +3627,7 @@ function __cpc__powered_by() {
 	$template = get_option(CPC_OPTIONS_PREFIX.'_template_page_footer');
 	$template = str_replace("[]", "", stripslashes($template));
 	
-	$template =  str_replace('[powered_by_message]', sprintf(__('Powered by %s - Social Networking for WordPress', CPC_TEXT_DOMAIN), CPC_WL), $template);
+	$template =  str_replace('[powered_by_message]', sprintf(__('Powered by %s - Social Networking for ClassicPress', 'cp-communitie'), CPC_WL), $template);
 	$template =  str_replace('[version]', CPC_VER, $template);		
 	
 	return $template;
@@ -3859,7 +3859,7 @@ function __cpc__profile_body($uid1, $uid2, $post, $version, $limit_from, $exclud
 								$inactive = get_option(CPC_OPTIONS_PREFIX.'_online');
 								$offline = get_option(CPC_OPTIONS_PREFIX.'_offline');
 								
-								$html .= '<div class="profile_panel_friends_div_title">'.sprintf(__('Recently Active %s', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</div>';
+								$html .= '<div class="profile_panel_friends_div_title">'.sprintf(__('Recently Active %s', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</div>';
 								foreach ($friends as $friend) {
 									
 									$time_now = time();
@@ -3872,7 +3872,7 @@ function __cpc__profile_body($uid1, $uid2, $post, $version, $limit_from, $exclud
 										$html .= "</div>";
 										$html .= "<div>";
 											$html .= __cpc__profile_link($friend->friend_to)."<br />";
-											$html .= __('Last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($friend->last_activity).".";
+											$html .= __('Last active', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
 										$html .= "</div>";
 				
 									$html .= "</div>";
@@ -3884,7 +3884,7 @@ function __cpc__profile_body($uid1, $uid2, $post, $version, $limit_from, $exclud
 						$html .= "</div>";
 						
 						if (!$has_extended_fields && !$has_friends) {
-							$html .= __('Make friends and they will be listed here...', CPC_TEXT_DOMAIN);
+							$html .= __('Make friends and they will be listed here...', 'cp-communitie');
 						}
 	
 					$html .= "</div>";
@@ -3905,11 +3905,11 @@ function __cpc__profile_body($uid1, $uid2, $post, $version, $limit_from, $exclud
 			} else {
 	
 				if ($version == "friends_activity") {
-					$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", CPC_TEXT_DOMAIN);
+					$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", 'cp-communitie');
 				}
 	
 				if ($version == "wall") {
-					$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", CPC_TEXT_DOMAIN);
+					$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", 'cp-communitie');
 				}
 				
 			}		
@@ -3917,7 +3917,7 @@ function __cpc__profile_body($uid1, $uid2, $post, $version, $limit_from, $exclud
 			
 		} else {
 
-			return __cpc__show_login_link(__("Please <a href='%s'>login</a> to view this member's profile.", CPC_TEXT_DOMAIN), false);
+			return __cpc__show_login_link(__("Please <a href='%s'>login</a> to view this member's profile.", 'cp-communitie'), false);
 			
 		}
 		
@@ -3982,7 +3982,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 							$whatsup = stripslashes(get_option(CPC_OPTIONS_PREFIX.'_status_label'));
 							$whatsup = str_replace("'", "`", $whatsup);
 						} else {
-							$whatsup = __('Write a comment...', CPC_TEXT_DOMAIN);
+							$whatsup = __('Write a comment...', 'cp-communitie');
 						}
 
 						$html .= "<div id='cpcommunitie_user_id' style='display:none'>".strtolower($current_user->ID)."</div>";
@@ -4000,14 +4000,14 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 							$html .= '</textarea>';
 
 							if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-								$html .= '<input id="__cpc__add_comment" type="submit" class="__cpc__button" style="'.$button_style.'" value="'.__('Post', CPC_TEXT_DOMAIN).'" /><br />';
+								$html .= '<input id="__cpc__add_comment" type="submit" class="__cpc__button" style="'.$button_style.'" value="'.__('Post', 'cp-communitie').'" /><br />';
 							} else {
 								$html .= '<br />';
 							}
 
 							// Embed YouTube...
 							if (get_option(CPC_OPTIONS_PREFIX."_activity_youtube")) {
-								$html .= '<input type="submit" id="activity_youtube_embed_button" onclick="return false;" class="__cpc__button" style="'.$button_style.'" value="'.__('YouTube', CPC_TEXT_DOMAIN).'">';
+								$html .= '<input type="submit" id="activity_youtube_embed_button" onclick="return false;" class="__cpc__button" style="'.$button_style.'" value="'.__('YouTube', 'cp-communitie').'">';
 								$html .= '<div id="activity_youtube_embed_id"></div>';
 							}
 							
@@ -4018,7 +4018,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 									WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/activity_upload/', 
 									WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/activity_upload/',
 									'activity',
-									__('Add image', CPC_TEXT_DOMAIN),
+									__('Add image', 'cp-communitie'),
 									0,
 									0,
 									0,
@@ -4187,8 +4187,8 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 													$already_liked = $wpdb->get_var($wpdb->prepare($sql, $comment->cid, $current_user->ID));
 													if (!$already_liked) {
 														$comment_inner_div .= "<div class='wall_post_like delete_post_top'>";
-															$comment_inner_div .= "<img class='wall_add_like' title='".__('You like this.', CPC_TEXT_DOMAIN)."' data-action='like' rel='".$comment->cid."' style='width:20px;height:20px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' />";
-															$comment_inner_div .= "<img class='wall_add_like' title='".__('You do not like this.', CPC_TEXT_DOMAIN)."' data-action='dislike' rel='".$comment->cid."' style='width:20px;height:20px' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' />";
+															$comment_inner_div .= "<img class='wall_add_like' title='".__('You like this.', 'cp-communitie')."' data-action='like' rel='".$comment->cid."' style='width:20px;height:20px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' />";
+															$comment_inner_div .= "<img class='wall_add_like' title='".__('You do not like this.', 'cp-communitie')."' data-action='dislike' rel='".$comment->cid."' style='width:20px;height:20px' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' />";
 														$comment_inner_div .= "</div>";
 													}
 												}	
@@ -4219,25 +4219,25 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 															$link = '<a id="cpcommunitie_show_likes" href="javascript:void(0)" rel="'.$comment->cid.'">';
 															$comment_inner_div .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' style='width:16px;height:16px' /> ";
 															if ($youlike) {
-																$comment_inner_div .= __('You', CPC_TEXT_DOMAIN);
+																$comment_inner_div .= __('You', 'cp-communitie');
 																$likes--;
 																if ($likes > 1) {
-																	$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> like this.', CPC_TEXT_DOMAIN), $link, $likes);
+																	$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> like this.', 'cp-communitie'), $link, $likes);
 																}
 																if ($likes == 1) {
-																	$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person likes this.', CPC_TEXT_DOMAIN), $link);
+																	$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person likes this.', 'cp-communitie'), $link);
 																}
 																if ($likes == 0) {
-																	$comment_inner_div .= ' '.__('like this.', CPC_TEXT_DOMAIN);
+																	$comment_inner_div .= ' '.__('like this.', 'cp-communitie');
 																}
 															} else {
 																if ($likes > 1) {
-																	$comment_inner_div .= sprintf(__('%s%d people</a> like this.', CPC_TEXT_DOMAIN), $link, $likes);
+																	$comment_inner_div .= sprintf(__('%s%d people</a> like this.', 'cp-communitie'), $link, $likes);
 																}
 																if ($likes == 1) {
 																	$sql = "SELECT uid FROM ".$wpdb->base_prefix."cpcommunitie_likes WHERE cid = %d AND type = 'like'";
 																	$uid = $wpdb->get_var($wpdb->prepare($sql, $comment->cid));
-																	$comment_inner_div .= __cpc__profile_link($uid).' '.__('likes this.', CPC_TEXT_DOMAIN);
+																	$comment_inner_div .= __cpc__profile_link($uid).' '.__('likes this.', 'cp-communitie');
 																}															
 															}
 														}
@@ -4246,25 +4246,25 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 															$link = '<a id="cpcommunitie_show_likes" href="javascript:void(0)" rel="'.$comment->cid.'">';
 															$comment_inner_div .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' style='width:16px;height:16px' /> ";
 															if ($youdislike) {
-																$comment_inner_div .= __('You', CPC_TEXT_DOMAIN);
+																$comment_inner_div .= __('You', 'cp-communitie');
 																$dislikes--;
 																if ($dislikes > 1) {
-																	$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> don\'t like this.', CPC_TEXT_DOMAIN), $link, $dislikes);
+																	$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> don\'t like this.', 'cp-communitie'), $link, $dislikes);
 																}
 																if ($dislikes == 1) {
-																	$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person don\'t like this.', CPC_TEXT_DOMAIN), $link);
+																	$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person don\'t like this.', 'cp-communitie'), $link);
 																}
 																if ($dislikes == 0) {
-																	$comment_inner_div .= ' '.__('don\'t like this.', CPC_TEXT_DOMAIN);
+																	$comment_inner_div .= ' '.__('don\'t like this.', 'cp-communitie');
 																}
 															} else {
 																if ($dislikes > 1) {
-																	$comment_inner_div .= sprintf(__('%s%d people</a> don\'t like this.', CPC_TEXT_DOMAIN), $link, $dislikes);
+																	$comment_inner_div .= sprintf(__('%s%d people</a> don\'t like this.', 'cp-communitie'), $link, $dislikes);
 																}
 																if ($dislikes == 1) {
 																	$sql = "SELECT uid FROM ".$wpdb->base_prefix."cpcommunitie_likes WHERE cid = %d AND type = 'dislike'";
 																	$uid = $wpdb->get_var($wpdb->prepare($sql, $comment->cid));
-																	$comment_inner_div .= __cpc__profile_link($uid).' '.__('doesn\'t like this.', CPC_TEXT_DOMAIN);
+																	$comment_inner_div .= __cpc__profile_link($uid).' '.__('doesn\'t like this.', 'cp-communitie');
 																}															
 															}
 														}
@@ -4352,7 +4352,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 											   		}
 													if ($cnt > 7 && $action == 'added') {
 														$text .= '<div id="cpc_gallery_comment_more" style="clear:both;cursor:pointer">';
-														$text .= __('more...', CPC_TEXT_DOMAIN).'</div>';
+														$text .= __('more...', 'cp-communitie').'</div>';
 													}
 												}
 												if ($action == 'comment') {
@@ -4401,7 +4401,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 												$q = __cpc__string_query($url);
 												$url .= $q.'gid='.$comment->subject_uid.'&post='.$comment->cid;
 												$group_name = $wpdb->get_var($wpdb->prepare("SELECT name FROM ".$wpdb->base_prefix."cpcommunitie_groups WHERE gid = %d", $comment->subject_uid));
-												$comment_inner_div .= __("Group post in", CPC_TEXT_DOMAIN)." <a href='".$url."'>".stripslashes($group_name)."</a>: ".__cpc__make_url($text);
+												$comment_inner_div .= __("Group post in", 'cp-communitie')." <a href='".$url."'>".stripslashes($group_name)."</a>: ".__cpc__make_url($text);
 											} else {
 												$comment_inner_div .= __cpc__make_url($text);
 											}
@@ -4421,7 +4421,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 											if ($replies) {
 												if (count($replies) > 4) {
 													$comment_inner_div .= "<div id='view_all_comments_div'>";
-													$comment_inner_div .= "<a title='".$comment->cid."' class='view_all_comments' href='javascript:void(0);'>".__(sprintf("View all %d comments", count($replies)), CPC_TEXT_DOMAIN)."</a>";
+													$comment_inner_div .= "<a title='".$comment->cid."' class='view_all_comments' href='javascript:void(0);'>".__(sprintf("View all %d comments", count($replies)), 'cp-communitie')."</a>";
 													$comment_inner_div .= "</div>";
 												}
 												foreach ($replies as $reply) {
@@ -4447,8 +4447,8 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 																	$already_liked = $wpdb->get_var($wpdb->prepare($sql, $reply->cid, $current_user->ID));
 																	if (!$already_liked) {
 																		$comment_inner_div .= "<div class='wall_post_like delete_reply' style='margin:0;padding:0;'>";
-																			$comment_inner_div .= "<img class='wall_add_like' title='".__('You like this.', CPC_TEXT_DOMAIN)."' data-action='like' rel='".$reply->cid."' style='padding:0;width:20px;height:20px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' />";
-																			$comment_inner_div .= "<img class='wall_add_like' title='".__('You do not like this.', CPC_TEXT_DOMAIN)."' data-action='dislike' rel='".$reply->cid."' style='padding:0;width:20px;height:20px' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' />";
+																			$comment_inner_div .= "<img class='wall_add_like' title='".__('You like this.', 'cp-communitie')."' data-action='like' rel='".$reply->cid."' style='padding:0;width:20px;height:20px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' />";
+																			$comment_inner_div .= "<img class='wall_add_like' title='".__('You do not like this.', 'cp-communitie')."' data-action='dislike' rel='".$reply->cid."' style='padding:0;width:20px;height:20px' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' />";
 																		$comment_inner_div .= "</div>";
 																	}
 																}	
@@ -4475,25 +4475,25 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 																			$link = '<a id="cpcommunitie_show_likes" href="javascript:void(0)" rel="'.$reply->cid.'">';
 																			$comment_inner_div .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/good.png' style='width:16px;height:16px' /> ";
 																			if ($youlike) {
-																				$comment_inner_div .= __('You', CPC_TEXT_DOMAIN);
+																				$comment_inner_div .= __('You', 'cp-communitie');
 																				$likes--;
 																				if ($likes > 1) {
-																					$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> like this.', CPC_TEXT_DOMAIN), $link, $likes);
+																					$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> like this.', 'cp-communitie'), $link, $likes);
 																				}
 																				if ($likes == 1) {
-																					$comment_inner_div .= ' '.sprintf(__('and %s1 other person</a> likes this.', CPC_TEXT_DOMAIN), $link);
+																					$comment_inner_div .= ' '.sprintf(__('and %s1 other person</a> likes this.', 'cp-communitie'), $link);
 																				}
 																				if ($likes == 0) {
-																					$comment_inner_div .= ' '.__('like this.', CPC_TEXT_DOMAIN);
+																					$comment_inner_div .= ' '.__('like this.', 'cp-communitie');
 																				}
 																			} else {
 																				if ($likes > 1) {
-																					$comment_inner_div .= sprintf(__('%s%d people</a> like this.', CPC_TEXT_DOMAIN), $link, $likes);
+																					$comment_inner_div .= sprintf(__('%s%d people</a> like this.', 'cp-communitie'), $link, $likes);
 																				}
 																				if ($likes == 1) {
 																					$sql = "SELECT uid FROM ".$wpdb->base_prefix."cpcommunitie_likes WHERE cid = %d AND type = 'like'";
 																					$uid = $wpdb->get_var($wpdb->prepare($sql, $reply->cid));
-																					$comment_inner_div .= __cpc__profile_link($uid).' '.__('likes this.', CPC_TEXT_DOMAIN);
+																					$comment_inner_div .= __cpc__profile_link($uid).' '.__('likes this.', 'cp-communitie');
 																				}															
 																			}
 																		}
@@ -4502,25 +4502,25 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 																			$link = '<a id="cpcommunitie_show_likes" href="javascript:void(0)" rel="'.$reply->cid.'">';
 																			$comment_inner_div .= "<img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/smilies/bad.png' style='width:16px;height:16px' /> ";
 																			if ($youdislike) {
-																				$comment_inner_div .= __('You', CPC_TEXT_DOMAIN);
+																				$comment_inner_div .= __('You', 'cp-communitie');
 																				$dislikes--;
 																				if ($dislikes > 1) {
-																					$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> don\'t like this.', CPC_TEXT_DOMAIN), $link, $dislikes);
+																					$comment_inner_div .= ' '.sprintf(__('and %s%d others</a> don\'t like this.', 'cp-communitie'), $link, $dislikes);
 																				}
 																				if ($dislikes == 1) {
-																					$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person don\'t like this.', CPC_TEXT_DOMAIN), $link);
+																					$comment_inner_div .= ' '.sprintf(__('and %s1 other</a> person don\'t like this.', 'cp-communitie'), $link);
 																				}
 																				if ($dislikes == 0) {
-																					$comment_inner_div .= ' '.__('don\'t like this.', CPC_TEXT_DOMAIN);
+																					$comment_inner_div .= ' '.__('don\'t like this.', 'cp-communitie');
 																				}
 																			} else {
 																				if ($dislikes > 1) {
-																					$comment_inner_div .= sprintf(__('%s%d people</a> don\'t like this.', CPC_TEXT_DOMAIN), $link, $dislikes);
+																					$comment_inner_div .= sprintf(__('%s%d people</a> don\'t like this.', 'cp-communitie'), $link, $dislikes);
 																				}
 																				if ($dislikes == 1) {
 																					$sql = "SELECT uid FROM ".$wpdb->base_prefix."cpcommunitie_likes WHERE cid = %d AND type = 'dislike'";
 																					$uid = $wpdb->get_var($wpdb->prepare($sql, $reply->cid));
-																					$comment_inner_div .= __cpc__profile_link($uid).' '.__('doesn\'t like this.', CPC_TEXT_DOMAIN);
+																					$comment_inner_div .= __cpc__profile_link($uid).' '.__('doesn\'t like this.', 'cp-communitie');
 																				}															
 																			}
 																		}
@@ -4559,10 +4559,10 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 	
 													$comment_inner_div .= '<textarea title="'.$comment->cid.'" class="__cpc__reply';
 													if (get_option(CPC_OPTIONS_PREFIX.'_elastic')) $comment_inner_div .= ' elastic';
-													$comment_inner_div .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Write a comment...', CPC_TEXT_DOMAIN).'\' : this.value;" onfocus="this.value=(this.value==\''.__('Write a comment...', CPC_TEXT_DOMAIN).'\') ? \'\' : this.value;">'.__('Write a comment...', CPC_TEXT_DOMAIN).'</textarea>';
+													$comment_inner_div .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Write a comment...', 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__('Write a comment...', 'cp-communitie').'\') ? \'\' : this.value;">'.__('Write a comment...', 'cp-communitie').'</textarea>';
 													
 													if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-														$comment_inner_div .= '<br /><input title="'.$comment->cid.'" type="submit" style="width:75px;'.$button_style.'" class="__cpc__button cpcommunitie_add_reply" value="'.__('Add', CPC_TEXT_DOMAIN).'" />';
+														$comment_inner_div .= '<br /><input title="'.$comment->cid.'" type="submit" style="width:75px;'.$button_style.'" class="__cpc__button cpcommunitie_add_reply" value="'.__('Add', 'cp-communitie').'" />';
 													}
 													$comment_inner_div .= '<input id="cpcommunitie_author_'.$comment->cid.'" type="hidden" value="'.$comment->subject_uid.'" />';
 													$comment_inner_div .= '</div>';
@@ -4600,15 +4600,15 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 						// Set next comment to show
 						// old version was $next (regression testing) = $limit_from+$cnt+1;
 						$next = $limit_from+$limit_count;
-						if (is_user_logged_in()) $html .= "<a href='javascript:void(0)' id='".$id."' class='showmore_wall' title='".($next)."'>".__("more...", CPC_TEXT_DOMAIN)."</a>";
+						if (is_user_logged_in()) $html .= "<a href='javascript:void(0)' id='".$id."' class='showmore_wall' title='".($next)."'>".__("more...", 'cp-communitie')."</a>";
 					} else {
 						if ($post == '') {
-							$html .= "<br />".__("Nothing to show, sorry.", CPC_TEXT_DOMAIN);
+							$html .= "<br />".__("Nothing to show, sorry.", 'cp-communitie');
 						}
 					}
 						
 				} else {
-					$html .= "<br />".__("Nothing to show, sorry.", CPC_TEXT_DOMAIN);
+					$html .= "<br />".__("Nothing to show, sorry.", 'cp-communitie');
 				}
 			
 			$html .= "</div>";
@@ -4616,11 +4616,11 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 			} else {
 
 			if ($version == "friends_activity") {
-				$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", CPC_TEXT_DOMAIN);
+				$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", 'cp-communitie');
 			}
 
 			if ($version == "wall") {
-				$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", CPC_TEXT_DOMAIN);
+				$html .= '<p>'.__("Sorry, this member has chosen not to share their activity.", 'cp-communitie');
 			}
 			
 		}		
@@ -4629,7 +4629,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 		
 	} else {
 
-		return __cpc__show_login_link(__("Please <a href='%s'>login</a> to view this member's profile.", CPC_TEXT_DOMAIN), false);
+		return __cpc__show_login_link(__("Please <a href='%s'>login</a> to view this member's profile.", 'cp-communitie'), false);
 		
 	}
 		
@@ -4798,10 +4798,10 @@ function do_recent_Widget($__cpc__recent_count,$__cpc__recent_desc,$__cpc__recen
 								}
 							}
 							$html .= '<br />';
-							$html .= __('Last active', CPC_TEXT_DOMAIN)." ";
+							$html .= __('Last active', 'cp-communitie')." ";
 							$html .= __cpc__time_ago($member->last_activity).".";
 							if (function_exists('__cpc__mail') && $__cpc__recent_show_mail == 'on' && __cpc__friend_of($member->ID, $current_user->ID) ) {
-								$html .= " <a title='".$member->display_name."' href='".$mail_url.$q."view=compose&to=".$member->ID."'>".__('Send Mail', CPC_TEXT_DOMAIN)."</a>";
+								$html .= " <a title='".$member->display_name."' href='".$mail_url.$q."view=compose&to=".$member->ID."'>".__('Send Mail', 'cp-communitie')."</a>";
 							}
 						$html .= "</div>";
 					$html .= "</div>";
@@ -4814,7 +4814,7 @@ function do_recent_Widget($__cpc__recent_count,$__cpc__recent_desc,$__cpc__recen
 			$html .= "</div>";				
 	} else {
 		$html .= "<div id='__cpc__new_members'>";
-		$html .= __("Nobody recently online.", CPC_TEXT_DOMAIN);
+		$html .= __("Nobody recently online.", 'cp-communitie');
 		$html .= "</div>";							
 	}
 		
@@ -4950,7 +4950,7 @@ function __cpc__do_members_Widget($__cpc__members_count) {
 						$html .= "</a>";
 					$html .= "</div>";
 					$html .= "<div class='__cpc__new_members_row_member'>";
-						$html .= __cpc__profile_link($member->ID)."<br />".__('Joined', CPC_TEXT_DOMAIN)." ";
+						$html .= __cpc__profile_link($member->ID)."<br />".__('Joined', 'cp-communitie')." ";
 						$html .= __cpc__time_ago($member->user_registered).".";
 					$html .= "</div>";
 				$html .= "</div>";
@@ -5001,9 +5001,9 @@ function __cpc__do_friends_Widget($__cpc__friends_count,$__cpc__friends_desc,$__
 				
 				if ($__cpc__friends_mode == 'split') {
 					if ($l==1) {
-						$html .= '<div style="font-weight:bold">'.__('Online', CPC_TEXT_DOMAIN).'</div>';
+						$html .= '<div style="font-weight:bold">'.__('Online', 'cp-communitie').'</div>';
 					} else {
-						$html .= '<div style="clear:both;margin-top:6px;font-weight:bold">'.__('Offline', CPC_TEXT_DOMAIN).'</div>';
+						$html .= '<div style="clear:both;margin-top:6px;font-weight:bold">'.__('Offline', 'cp-communitie').'</div>';
 					}
 					
 				}
@@ -5041,10 +5041,10 @@ function __cpc__do_friends_Widget($__cpc__friends_count,$__cpc__friends_desc,$__
 											}
 										}
 									}
-									$html .= __('last active', CPC_TEXT_DOMAIN)." ";
+									$html .= __('last active', 'cp-communitie')." ";
 									$html .= __cpc__time_ago($member->last_activity).".";
 									if (function_exists('__cpc__mail') && $__cpc__friends_show_mail == 'on') {
-										$html .= " <a title='".$member->display_name."' href='".$mail_url.$q."view=compose&to=".$member->ID."'>".__('Send Mail', CPC_TEXT_DOMAIN)."</a>";
+										$html .= " <a title='".$member->display_name."' href='".$mail_url.$q."view=compose&to=".$member->ID."'>".__('Send Mail', 'cp-communitie')."</a>";
 									}
 								$html .= "</div>";
 							$html .= "</div>";
@@ -5056,14 +5056,14 @@ function __cpc__do_friends_Widget($__cpc__friends_count,$__cpc__friends_desc,$__
 					}
 				}
 				if ($cnt == 0) {
-					$html .= __('Nobody', CPC_TEXT_DOMAIN);
+					$html .= __('Nobody', 'cp-communitie');
 				}
 			}
 			
 			$html .= "</div>";				
 	} else {
 		$html .= "<div id='__cpc__new_members'>";
-		$html .= sprintf(__("No %s yet, add %s via their profile page.", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'));
+		$html .= sprintf(__("No %s yet, add %s via their profile page.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'));
 		$html .= "</div>";							
 	}
 	
@@ -5144,12 +5144,12 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 											$text = __cpc__bbcode_remove($text);
 											if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
 											if ($post->parent_parent == 0) {
-												$html .= " ".__('replied', CPC_TEXT_DOMAIN);
+												$html .= " ".__('replied', 'cp-communitie');
 											} else {
-												$html .= " ".__('commented', CPC_TEXT_DOMAIN);
+												$html .= " ".__('commented', 'cp-communitie');
 											}
 											if ($text == '')
-												$text = __('(No text)', CPC_TEXT_DOMAIN);
+												$text = __('(No text)', 'cp-communitie');
 											if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 												$perma_cat = __cpc__get_forum_category_part_url($post->topic_category);
 												$html .= " <a href='".$forum_url.'/'.$perma_cat.$post->parent_stub."'>".$text."</a>";
@@ -5159,10 +5159,10 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 											if ($incl_parent) {
 												if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 													$perma_cat = __cpc__get_forum_category_part_url($post->parent_category);
-													$html .= ' '.__('to', CPC_TEXT_DOMAIN)." <a href='".$forum_url.'/'.$perma_cat.$post->parent_stub."'>".strip_tags(stripslashes($post->parent_subject))."</a> ";
+													$html .= ' '.__('to', 'cp-communitie')." <a href='".$forum_url.'/'.$perma_cat.$post->parent_stub."'>".strip_tags(stripslashes($post->parent_subject))."</a> ";
 												} else {
 													if ($post->parent_parent == 0) {
-														$html .= ' '.__('to', CPC_TEXT_DOMAIN)." <a href='".$forum_url.$forum_q."cid=".$post->parent_category."&show=".$post->topic_parent."'>".strip_tags(stripslashes($post->parent_subject))."</a> ";
+														$html .= ' '.__('to', 'cp-communitie')." <a href='".$forum_url.$forum_q."cid=".$post->parent_category."&show=".$post->topic_parent."'>".strip_tags(stripslashes($post->parent_subject))."</a> ";
 													}
 												}
 											}
@@ -5170,9 +5170,9 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 												if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 													$cat = stripslashes($wpdb->get_var($wpdb->prepare('SELECT title FROM '.$wpdb->prefix.'cpcommunitie_cats WHERE cid = %d', $post->parent_category)));
 													$perma_cat = __cpc__get_forum_category_part_url($post->parent_category);
-													$html .= ' '.__('in', CPC_TEXT_DOMAIN)." <a href='".$forum_url.'/'.$perma_cat."'>".$cat."</a> ";
+													$html .= ' '.__('in', 'cp-communitie')." <a href='".$forum_url.'/'.$perma_cat."'>".$cat."</a> ";
 												} else {
-													$html .= ' '.__('in', CPC_TEXT_DOMAIN)." <a href='".$forum_url.$forum_q."cid=".$post->parent_category."'>".$cat."</a> ";
+													$html .= ' '.__('in', 'cp-communitie')." <a href='".$forum_url.$forum_q."cid=".$post->parent_category."'>".$cat."</a> ";
 												}
 											}
 										} else {
@@ -5197,7 +5197,7 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 													$q = "?gid=".$post->topic_group."&";
 												}
 											}
-											$html .= " ".__('started', CPC_TEXT_DOMAIN);
+											$html .= " ".__('started', 'cp-communitie');
 											if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 												$perma_cat = __cpc__get_forum_category_part_url($post->topic_category);
 												$html .= " <a href='".$url.'/'.$perma_cat.$post->stub."'>".$text."</a>";
@@ -5208,9 +5208,9 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 												if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 													$cat = stripslashes($wpdb->get_var($wpdb->prepare('SELECT title FROM '.$wpdb->prefix.'cpcommunitie_cats WHERE cid = %d', $post->topic_category)));
 													$perma_cat = __cpc__get_forum_category_part_url($post->topic_category);
-													$html .= ' '.__('in', CPC_TEXT_DOMAIN)." <a href='".$forum_url.'/'.$perma_cat."'>".$cat."</a> ";
+													$html .= ' '.__('in', 'cp-communitie')." <a href='".$forum_url.'/'.$perma_cat."'>".$cat."</a> ";
 												} else {
-													$html .= ' '.__('in', CPC_TEXT_DOMAIN)." <a href='".$forum_url.$forum_q."cid=".$post->topic_category."'>".$cat."</a> ";
+													$html .= ' '.__('in', 'cp-communitie')." <a href='".$forum_url.$forum_q."cid=".$post->topic_category."'>".$cat."</a> ";
 												}
 											}
 										}
@@ -5236,7 +5236,7 @@ function __cpc__do_Forumrecentposts_Widget($postcount,$preview,$cat_id,$show_rep
 		$html .= "</div>";
 
 	} else {
-		$html .= __('None', CPC_TEXT_DOMAIN);
+		$html .= __('None', 'cp-communitie');
 	}
 		
 	echo $html;
@@ -5288,10 +5288,10 @@ function __cpc__do_summary_Widget($show_loggedout,$show_form,$login_url,$show_av
 
 					echo "<li id='cpcommunitie_summary_mail'>";
 						$total_mail = $wpdb->get_var($wpdb->prepare("SELECT count(*) FROM ".$wpdb->base_prefix."cpcommunitie_mail WHERE mail_to = %d AND mail_in_deleted != 'on'", $current_user->ID));
-						echo "<a href='".$mail_url."'>".__("Messages:", CPC_TEXT_DOMAIN)."</a> ".$total_mail;
+						echo "<a href='".$mail_url."'>".__("Messages:", 'cp-communitie')."</a> ".$total_mail;
 						$unread_mail = $wpdb->get_var($wpdb->prepare("SELECT count(*) FROM ".$wpdb->base_prefix."cpcommunitie_mail WHERE mail_to = %d AND mail_in_deleted != 'on' AND mail_read != 'on'", $current_user->ID));
 						if ($unread_mail > 0) {
-							echo " (".$unread_mail." ".__("unread",CPC_TEXT_DOMAIN).")";
+							echo " (".$unread_mail." ".__("unread", 'cp-communitie').")";
 						}
 					echo "</li>";
 				}
@@ -5315,10 +5315,10 @@ function __cpc__do_summary_Widget($show_loggedout,$show_form,$login_url,$show_av
 						$friend_requests = $wpdb->get_var($wpdb->prepare($sql, $current_user->ID));
 
 						if ($friend_requests == 1) {	
-							echo " (".$friend_requests." ".__("request",CPC_TEXT_DOMAIN).")";
+							echo " (".$friend_requests." ".__("request", 'cp-communitie').")";
 						}
 						if ($friend_requests > 1) {	
-							echo " (".$friend_requests." ".__("requests",CPC_TEXT_DOMAIN).")";
+							echo " (".$friend_requests." ".__("requests", 'cp-communitie').")";
 						}
 					echo "</li>";
 
@@ -5362,7 +5362,7 @@ function __cpc__do_summary_Widget($show_loggedout,$show_form,$login_url,$show_av
 
 			if ($show_loggedout == 'on' && $show_form == '') {
 				echo wp_loginout( get_permalink(), true);
-				echo ' (<a href="'.wp_lostpassword_url( get_bloginfo('url') ).'" title="'.__('Forgot Password?', CPC_TEXT_DOMAIN).'">'.__('Forgot Password?', CPC_TEXT_DOMAIN).'</a>)<br />';
+				echo ' (<a href="'.wp_lostpassword_url( get_bloginfo('url') ).'" title="'.__('Forgot Password?', 'cp-communitie').'">'.__('Forgot Password?', 'cp-communitie').'</a>)<br />';
 				echo wp_register( "", "", true);
 			}
 
@@ -5478,7 +5478,7 @@ function __cpc__do_Forumnoanswer_Widget($preview,$cat_id,$cat_id_exclude,$timesc
 												$q = "?gid=".$post->topic_group."&";
 											}
 										}
-										$html .= " ".__('started', CPC_TEXT_DOMAIN)." <a href='".$url.$q."cid=".$post->topic_category."&show=".$post->tid."'>".$text."</a>";
+										$html .= " ".__('started', 'cp-communitie')." <a href='".$url.$q."cid=".$post->topic_category."&show=".$post->tid."'>".$text."</a>";
 									} else {
 										$html .= "<br />";
 									}
@@ -5486,9 +5486,9 @@ function __cpc__do_Forumnoanswer_Widget($preview,$cat_id,$cat_id_exclude,$timesc
 									if ($post->replies > 0) {
 										$html .= $post->replies.' ';
 										if ($post->replies != 1) {
-											$html .= __('replies', CPC_TEXT_DOMAIN);
+											$html .= __('replies', 'cp-communitie');
 										} else {
-											$html .= __('reply', CPC_TEXT_DOMAIN);
+											$html .= __('reply', 'cp-communitie');
 										}
 										$html .= ".";
 									}
@@ -5602,7 +5602,7 @@ function __cpc__do_Alerts_Widget($postcount) {
 					if ($pages) {
 						$url = get_permalink($pages[0]->ID);
 					}
-					echo '<a id="__cpc__alerts_widget_more" style="float:right" href="'.$url.'">'.__('more...', CPC_TEXT_DOMAIN).'</a>';
+					echo '<a id="__cpc__alerts_widget_more" style="float:right" href="'.$url.'">'.__('more...', 'cp-communitie').'</a>';
 					
 				echo '</div>';
 
@@ -5612,7 +5612,7 @@ function __cpc__do_Alerts_Widget($postcount) {
 		}
 		
 	} else {
-		echo __('Alerts module not activated. You can activate it on the CP Community installation page.', CPC_TEXT_DOMAIN);
+		echo __('Alerts module not activated. You can activate it on the CP Community installation page.', 'cp-communitie');
 	}
 	
 }
@@ -5659,9 +5659,9 @@ function __cpc__bronze_countdown() {
 	if (substr($saved_code,0,3) == 'vip' || substr($saved_code,0,3) == 'cpc') {
 		
 		if (substr($saved_code,0,3) == 'vip') {
-			return array(365, '<p>'.__('This is a lifetime activation code.', CPC_TEXT_DOMAIN).'</p>');
+			return array(365, '<p>'.__('This is a lifetime activation code.', 'cp-communitie').'</p>');
 		} else {
-			return array(365, '<p>'.__('This is a temporary activation code, it should not be used permenantly.', CPC_TEXT_DOMAIN).'</p>');
+			return array(365, '<p>'.__('This is a temporary activation code, it should not be used permenantly.', 'cp-communitie').'</p>');
 		}
 		
 	} else {
@@ -5682,9 +5682,9 @@ function __cpc__bronze_countdown() {
 		$seconds = $seconds > 9 ? $seconds : '0'.(string)$seconds;
 
 		if ($days < 366) {
-			return array($days, '<p>'.__('Your current "Bronze+" activation code expires on', CPC_TEXT_DOMAIN).' '.@date('l d F Y', $code).' ('.sprintf('%d days, %d:%s:%s', $days, $hours, $minutes, $seconds).')'.', '.__('<a href="http://www.cpcymposium.com/membership" target="_new">get a new activation code</a> before it runs out to reset for another 365 days.', CPC_TEXT_DOMAIN).'<br />'.sprintf(__('Note that this may not tie in with your %s expiry payment date.', CPC_TEXT_DOMAIN), CPC_WL).'</p>');
+			return array($days, '<p>'.__('Your current "Bronze+" activation code expires on', 'cp-communitie').' '.@date('l d F Y', $code).' ('.sprintf('%d days, %d:%s:%s', $days, $hours, $minutes, $seconds).')'.', '.__('<a href="https://cp-community.n3rds.work//membership" target="_new">get a new activation code</a> before it runs out to reset for another 365 days.', 'cp-communitie').'<br />'.sprintf(__('Note that this may not tie in with your %s expiry payment date.', 'cp-communitie'), CPC_WL).'</p>');
 		} else {
-			return array($days, '<p style="color:red">'.__('<strong>Invalid activation code</strong> - <a href="http://www.cpcymposium.com/membership" target="_new">please get a valid activation code</a>', CPC_TEXT_DOMAIN).'.</p>');
+			return array($days, '<p style="color:red">'.__('<strong>Invalid activation code</strong> - <a href="https://cp-community.n3rds.work//membership" target="_new">please get a valid activation code</a>', 'cp-communitie').'.</p>');
 		}
 	
 		
@@ -5697,18 +5697,18 @@ function __cpc__get_monthname($month) {
 	$monthname = '';
 	switch($month) {									
 		case 0:$monthname = "";break;
-		case 1:$monthname = __("January", CPC_TEXT_DOMAIN);break;
-		case 2:$monthname = __("February", CPC_TEXT_DOMAIN);break;
-		case 3:$monthname = __("March", CPC_TEXT_DOMAIN);break;
-		case 4:$monthname = __("April", CPC_TEXT_DOMAIN);break;
-		case 5:$monthname = __("May", CPC_TEXT_DOMAIN);break;
-		case 6:$monthname = __("June", CPC_TEXT_DOMAIN);break;
-		case 7:$monthname = __("July", CPC_TEXT_DOMAIN);break;
-		case 8:$monthname = __("August", CPC_TEXT_DOMAIN);break;
-		case 9:$monthname = __("September", CPC_TEXT_DOMAIN);break;
-		case 10:$monthname = __("October", CPC_TEXT_DOMAIN);break;
-		case 11:$monthname = __("November", CPC_TEXT_DOMAIN);break;
-		case 12:$monthname = __("December", CPC_TEXT_DOMAIN);break;
+		case 1:$monthname = __("January", 'cp-communitie');break;
+		case 2:$monthname = __("February", 'cp-communitie');break;
+		case 3:$monthname = __("March", 'cp-communitie');break;
+		case 4:$monthname = __("April", 'cp-communitie');break;
+		case 5:$monthname = __("May", 'cp-communitie');break;
+		case 6:$monthname = __("June", 'cp-communitie');break;
+		case 7:$monthname = __("July", 'cp-communitie');break;
+		case 8:$monthname = __("August", 'cp-communitie');break;
+		case 9:$monthname = __("September", 'cp-communitie');break;
+		case 10:$monthname = __("October", 'cp-communitie');break;
+		case 11:$monthname = __("November", 'cp-communitie');break;
+		case 12:$monthname = __("December", 'cp-communitie');break;
 	}
 	return $monthname;
 }
@@ -5796,7 +5796,7 @@ function can_manage_forum() {
 				}
 			}		 														
 		} else {
-			// No WordPress role stored
+			// No ClassicPress role stored
 		}
 	}	
 	return $can_moderate;

@@ -44,11 +44,11 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_label') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_label', '#000');
 	if (get_option(CPC_OPTIONS_PREFIX.'_footer') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_footer', __('Please don\'t reply to this email', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_footer', __('Please don\'t reply to this email', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_send_summary') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_send_summary', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_forum_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_forum_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));	 			  
+		update_option(CPC_OPTIONS_PREFIX.'_forum_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));	 			  
 	if (get_option(CPC_OPTIONS_PREFIX.'_from_email') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_from_email', 'noreply@example.com');
 	if (get_option(CPC_OPTIONS_PREFIX.'_underline') === false)	
@@ -68,7 +68,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_closed_opacity') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_closed_opacity', '1.0');
 	if (get_option(CPC_OPTIONS_PREFIX.'_closed_word') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_closed_word', __('closed', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_closed_word', __('closed', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_fontfamily') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_fontfamily', 'Georgia,Times');
 	if (get_option(CPC_OPTIONS_PREFIX.'_headingsfamily') === false)	
@@ -90,7 +90,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_moderation') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_moderation', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_mail_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_mail_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_mail_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_online') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_online', 3);
 	if (get_option(CPC_OPTIONS_PREFIX.'_offline') === false)	
@@ -100,7 +100,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_enable_password') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_enable_password', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_members_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_members_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_members_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_sharing') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_sharing', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_use_styles') === false)	
@@ -126,11 +126,11 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_reminder') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_reminder', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_profile_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_profile_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_profile_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_groups_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_groups_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_groups_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_group_url') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_group_url', __('Important: Please Visit Installation Page!', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_group_url', __('Important: Please Visit Installation Page!', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_group_all_create') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_group_all_create', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_group_invites') === false)	
@@ -301,7 +301,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_ajax_widgets', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_status_label') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_status_label', __('What`s up?', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_status_label', __('What`s up?', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_jscharts') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_jscharts', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') === false)	
@@ -325,11 +325,11 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_forum_refresh') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_forum_refresh', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_mail_new') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_subject_mail_new', __('New Mail Message: [subject]', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_subject_mail_new', __('New Mail Message: [subject]', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_forum_new') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_subject_forum_new', __('New Forum Topic', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_subject_forum_new', __('New Forum Topic', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply', __('New Forum Reply', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply', __('New Forum Reply', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_profile_comments') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_profile_comments', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_forum_login_form') === false)	
@@ -391,59 +391,59 @@
 	
 	// Profile menu text
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_profile_text', __('My Profile', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_profile_text', __('My Profile', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text', __('My Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text', __('My Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text', __('Friends Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text', __('Friends Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text', __('All Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text', __('All Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_text', __('My Friends', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_text', __('My Friends', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text', __('Forum @mentions', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text', __('Forum @mentions', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_groups_text', __('My Groups', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_groups_text', __('My Groups', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_events_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_events_text', __('My Events', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_events_text', __('My Events', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text', __('My Gallery', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text', __('My Gallery', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_following_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_following_text', __('I am Following', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_following_text', __('I am Following', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_followers_text', __('My Followers', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_followers_text', __('My Followers', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text', __('The Lounge', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text', __('The Lounge', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text', __('Profile Photo', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text', __('Profile Photo', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_details_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_details_text', __('Profile Details', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_details_text', __('Profile Details', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_settings_text', __('Community Settings', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_settings_text', __('Community Settings', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text', __('Profile', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text', __('Profile', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text', __('Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text', __('Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text', __('Friends Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text', __('Friends Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text', __('All Activity', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text', __('All Activity', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_other_text', __('Friends', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_friends_other_text', __('Friends', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other_text', __('Forum @mentions', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other_text', __('Forum @mentions', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_groups_other_text', __('Groups', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_groups_other_text', __('Groups', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text', __('Events', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text', __('Events', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text', __('Gallery', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text', __('Gallery', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text', __('Following', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text', __('Following', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_followers_other_text', __('Followers', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_followers_other_text', __('Followers', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text') === false) 
-		update_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text', __('The Lounge', CPC_TEXT_DOMAIN));
+		update_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text', __('The Lounge', 'cp-communitie'));
 
 	// Add fields to user meta
 	if (get_option(CPC_OPTIONS_PREFIX.'_plus_lat') === false)
@@ -547,7 +547,7 @@ Directory=members';
 		update_option(CPC_OPTIONS_PREFIX.'_template_profile_body', "<div id='profile_wrapper'>[]<div id='force_profile_page' style='display:none'>[default]</div>[]<div id='profile_body_wrapper'>[]<div id='profile_body'>[page]</div>[]</div>[]<div id='profile_menu'>[menu]</div>[]</div>");
 	}
 	if (get_option(CPC_OPTIONS_PREFIX.'_template_page_footer') == '') {
-		update_option(CPC_OPTIONS_PREFIX.'_template_page_footer', "<div id='powered_by_cpc'>[]<a href='http://www.cpcymposium.com' target='_blank'>[powered_by_message] v[version]</a>[]</div>");
+		update_option(CPC_OPTIONS_PREFIX.'_template_page_footer', "<div id='powered_by_cpc'>[]<a href='https://cp-community.n3rds.work/' target='_blank'>[powered_by_message] v[version]</a>[]</div>");
 	}
 	if (get_option(CPC_OPTIONS_PREFIX.'_template_mail_tray') == '') {
 		update_option(CPC_OPTIONS_PREFIX.'_template_mail_tray', "<div class='bulk_actions'>[bulk_action]</div>[]<div id='mail_mid' class='mail_item mail_read'>[]<div class='mailbox_message_from'>[mail_from]</div>[]<div class='mail_item_age'>[mail_sent]</div>[]<div class='mailbox_message_subject'>[mail_subject]</div>[]<div class='mailbox_message'>[mail_message]</div>[]</div>");
@@ -556,7 +556,7 @@ Directory=members';
 		update_option(CPC_OPTIONS_PREFIX.'_template_mail_message', "<div id='message_header'><div id='message_header_delete'>[reply_button][delete_button]</div><div id='message_header_avatar'>[avatar,44]</div>[mail_subject]<br />[mail_recipient] [mail_sent]</div><div id='message_mail_message'>[message]</div>");
 	}
 	if (get_option(CPC_OPTIONS_PREFIX.'_template_email') == '') {
-		update_option(CPC_OPTIONS_PREFIX.'_template_email', "<style> body { background-color: #fff; } </style>[]<div style='margin: 20px;'>[][message][]<br /><hr />[][footer]<br />[]<a href='http://www.cpcymposium.com' target='_blank'>[powered_by_message] v[version]</a>[]</div>");
+		update_option(CPC_OPTIONS_PREFIX.'_template_email', "<style> body { background-color: #fff; } </style>[]<div style='margin: 20px;'>[][message][]<br /><hr />[][footer]<br />[]<a href='https://cp-community.n3rds.work/' target='_blank'>[powered_by_message] v[version]</a>[]</div>");
 	}
 	if (get_option(CPC_OPTIONS_PREFIX.'_template_forum_header') == '') {
 		update_option(CPC_OPTIONS_PREFIX.'_template_forum_header', "[breadcrumbs][new_topic_button][new_topic_form][][digest][subscribe][][forum_options][][sharing]");

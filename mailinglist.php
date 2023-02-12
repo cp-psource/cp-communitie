@@ -22,7 +22,7 @@ function __cpc__mailinglist() {
 function __cpc__mailinglist_filter_cron_schedules( $schedules ) {
 	$schedules['__cpc__mailinglist_interval'] = array(
 		'interval' => get_option(CPC_OPTIONS_PREFIX.'_mailinglist_cron'),
-		'display' => sprintf(__('%s reply-by-email interval', CPC_TEXT_DOMAIN), CPC_WL)
+		'display' => sprintf(__('%s reply-by-email interval', 'cp-communitie'), CPC_WL)
 	);
 	return $schedules;
 }
@@ -55,9 +55,9 @@ function __cpc__check_pop3($output=false,$process=true) {
 			
 			if ($output) {
 				if ($process) {
-					echo '<h3>'.__('Processing waiting email...', CPC_TEXT_DOMAIN).'</h3>';
+					echo '<h3>'.__('Processing waiting email...', 'cp-communitie').'</h3>';
 				} else {
-					echo '<h3>'.__('Checking for waiting email, but not processing...', CPC_TEXT_DOMAIN).'</h3>';
+					echo '<h3>'.__('Checking for waiting email, but not processing...', 'cp-communitie').'</h3>';
 				}
 			}
 		
@@ -68,10 +68,10 @@ function __cpc__check_pop3($output=false,$process=true) {
 			
 			if ($mbox = imap_open ("{".$server.":".$port."/pop3}INBOX", $username, $password) ) {
 				
-				if ($output) echo __('Connected', CPC_TEXT_DOMAIN).', ';
+				if ($output) echo __('Connected', 'cp-communitie').', ';
 				
 				$num_msg = imap_num_msg($mbox);
-				if ($output) echo __('number of messages found', CPC_TEXT_DOMAIN).': '.$num_msg.'<br /><br />';
+				if ($output) echo __('number of messages found', 'cp-communitie').': '.$num_msg.'<br /><br />';
 		
 				$carimap = array("=C3=A9", "=C3=A8", "=C3=AA", "=C3=AB", "=C3=A7", "=C3=A0", "=20", "=C3=80", "=C3=89", "\n", "> ");
 				$carhtml = array("�", "�", "�", "�", "�", "�", "&nbsp;", "�", "�", "<br>", "");
@@ -82,10 +82,10 @@ function __cpc__check_pop3($output=false,$process=true) {
 						echo '<table class="widefat">';
 						echo '<thead>';
 						echo '<tr>';
-						echo '<th style="font-size:1.2em">'.__('From', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="font-size:1.2em">'.__('Date', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="font-size:1.2em">'.__('Topic ID', CPC_TEXT_DOMAIN).'</th>';
-						echo '<th style="font-size:1.2em" width="50%">'.__('Snippet', CPC_TEXT_DOMAIN).'</th>';
+						echo '<th style="font-size:1.2em">'.__('From', 'cp-communitie').'</th>';
+						echo '<th style="font-size:1.2em">'.__('Date', 'cp-communitie').'</th>';
+						echo '<th style="font-size:1.2em">'.__('Topic ID', 'cp-communitie').'</th>';
+						echo '<th style="font-size:1.2em" width="50%">'.__('Snippet', 'cp-communitie').'</th>';
 						echo '</tr>';
 						echo '</thead>';
 						echo '<tbody>';
@@ -159,41 +159,41 @@ function __cpc__check_pop3($output=false,$process=true) {
 
 											if ($cpc_forum->add_reply($tid, $body, $uid, true)) {
 	
-												$snippet .= '<span style="color:green">'.__('Added to forum.', CPC_TEXT_DOMAIN).'</span>';
+												$snippet .= '<span style="color:green">'.__('Added to forum.', 'cp-communitie').'</span>';
 
 						        				// Delete from mailbox
 												imap_delete($mbox, $i);
 	
 											} else {
 												
-												$snippet = '<span style="color:red">'.__('Failed to add to forum', CPC_TEXT_DOMAIN).' '.$tid.'</span>';
+												$snippet = '<span style="color:red">'.__('Failed to add to forum', 'cp-communitie').' '.$tid.'</span>';
 												$snippet .= '<br>'.$subject;
 												
 											}		
 											
 										} else {
-											$snippet ='<span style="color:green">'.__('Not added, just checking.', CPC_TEXT_DOMAIN).'</span>';
+											$snippet ='<span style="color:green">'.__('Not added, just checking.', 'cp-communitie').'</span>';
 											$snippet .= '<br>'.$subject;
 										}
 										
 														
 									} else {
 										
-										$snippet = '<span style="color:red">'.__('Empty reply. No boundaries found', CPC_TEXT_DOMAIN).'</span>';
+										$snippet = '<span style="color:red">'.__('Empty reply. No boundaries found', 'cp-communitie').'</span>';
 										
 									}
 									
 									
 								} else {
 		
-									$tid = '<span style="color:red">'.__('Topic ID not found', CPC_TEXT_DOMAIN).': '.$tid.'</span>';
+									$tid = '<span style="color:red">'.__('Topic ID not found', 'cp-communitie').': '.$tid.'</span>';
 									$snippet = $subject;
 									
 								}
 								
 							} else {
 								
-								$tid = '<span style="color:red">'.__('No TID found in subject', CPC_TEXT_DOMAIN).'.</span>';
+								$tid = '<span style="color:red">'.__('No TID found in subject', 'cp-communitie').'.</span>';
 								$snippet = '';
 								
 							}
@@ -201,7 +201,7 @@ function __cpc__check_pop3($output=false,$process=true) {
 							
 						} else {
 							
-							$email = '<span style="color:red">'.$email.' '.__('not found in users', CPC_TEXT_DOMAIN).'.</span>';
+							$email = '<span style="color:red">'.$email.' '.__('not found in users', 'cp-communitie').'.</span>';
 							$tid = '';
 							$snippet = '';
 							
@@ -222,7 +222,7 @@ function __cpc__check_pop3($output=false,$process=true) {
 											
 				} else {
 					
-					if ($output) echo __('No messages found', CPC_TEXT_DOMAIN).'.';
+					if ($output) echo __('No messages found', 'cp-communitie').'.';
 					
 				}
 
@@ -233,15 +233,15 @@ function __cpc__check_pop3($output=false,$process=true) {
 				
 			} else {
 			
-				if ($output) echo __('Problem connecting to mail server', CPC_TEXT_DOMAIN).': ' . imap_last_error().' '.__('(or no internet connection)', CPC_TEXT_DOMAIN).'.<br />';		
-				if ($output) echo __('Check your mail server address and port number, username and password', CPC_TEXT_DOMAIN).'.';
+				if ($output) echo __('Problem connecting to mail server', 'cp-communitie').': ' . imap_last_error().' '.__('(or no internet connection)', 'cp-communitie').'.<br />';		
+				if ($output) echo __('Check your mail server address and port number, username and password', 'cp-communitie').'.';
 				
 			}
 			
 			$_SESSION['__cpc__mailinglist_lock'] = '';
 			
 		} else {
-			if ($output) echo __('Currently processing, please try again in a few minutes.', CPC_TEXT_DOMAIN).'.<br />';		
+			if ($output) echo __('Currently processing, please try again in a few minutes.', 'cp-communitie').'.<br />';		
 		}
 	}
 }
@@ -254,7 +254,7 @@ function __cpc__check_pop3($output=false,$process=true) {
 function __cpc__add_mailinglist_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Reply by Email', CPC_TEXT_DOMAIN), __('Reply by Email', CPC_TEXT_DOMAIN), 'manage_options', CPC_DIR.'/mailinglist_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Reply by Email', 'cp-communitie'), __('Reply by Email', 'cp-communitie'), 'manage_options', CPC_DIR.'/mailinglist_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_mailinglist_to_admin_menu');
 

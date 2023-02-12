@@ -96,7 +96,7 @@ if (upload_file_is_logged_in($uid, $user_login, $user_email)) {
 			}
 		} else {
 			// Invalid extension, just remove uploaded file
-			$html .= __('Invalid file extension, the following are permitted:', CPC_TEXT_DOMAIN).' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
+			$html .= __('Invalid file extension, the following are permitted:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
 		}
 
 		echo $html;
@@ -104,7 +104,7 @@ if (upload_file_is_logged_in($uid, $user_login, $user_email)) {
 	
 	} else {
 	
-		echo __("Failed to upload the file.", CPC_TEXT_DOMAIN);
+		echo __("Failed to upload the file.", 'cp-communitie');
 		exit;
 	}
 } else {

@@ -17,7 +17,7 @@ function __cpc__load_widget_yesno_vote() {
 /** Vote ************************************************************************* **/
 class __cpc__vote_Widget extends WP_Widget {
 
-	function __cpc__vote_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => '__cpc__widget_vote', 'description' => 'Ermöglicht den Mitgliedern, über eine JA/NEIN-Frage abzustimmen.' );
 		
@@ -27,7 +27,7 @@ class __cpc__vote_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    '__cpc__vote_widget', 
-		    CPC_WL_SHORT.': '.__('Abstimmung', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Abstimmung', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -84,9 +84,9 @@ class __cpc__vote_Widget extends WP_Widget {
 			if ($voted == "on") {
 				
 				echo "<p>";
-				echo __('Danke für Deine Stimme', CPC_TEXT_DOMAIN).".";
+				echo __('Danke für Deine Stimme', 'cp-communitie').".";
 				if ($__cpc__vote_forum != '') {
-					echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', CPC_TEXT_DOMAIN)."...</a>";
+					echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', 'cp-communitie')."...</a>";
 				}
 				echo "</p>";
 
@@ -94,19 +94,19 @@ class __cpc__vote_Widget extends WP_Widget {
 			
 			
 				echo "<div id='__cpc__vote_forum'>";
-					echo "<p>".__('Your vote', CPC_TEXT_DOMAIN).": ";
-					echo "<a href='javascript:void(0)' title='yes' class='cpcommunitie_answer' value='".__("Ja", CPC_TEXT_DOMAIN)."'>".__("Ja", CPC_TEXT_DOMAIN)."</a> ".__('oder', CPC_TEXT_DOMAIN)." ";
-					echo "<a href='javascript:void(0)' title='no' class='cpcommunitie_answer' value='".__("Nein", CPC_TEXT_DOMAIN)."'>".__("Nein", CPC_TEXT_DOMAIN)."</a>";
+					echo "<p>".__('Your vote', 'cp-communitie').": ";
+					echo "<a href='javascript:void(0)' title='yes' class='cpcommunitie_answer' value='".__("Ja", 'cp-communitie')."'>".__("Ja", 'cp-communitie')."</a> ".__('oder', 'cp-communitie')." ";
+					echo "<a href='javascript:void(0)' title='no' class='cpcommunitie_answer' value='".__("Nein", 'cp-communitie')."'>".__("Nein", 'cp-communitie')."</a>";
 					if ($__cpc__vote_forum != '') {
-						echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', CPC_TEXT_DOMAIN)."...</a>";
+						echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', 'cp-communitie')."...</a>";
 					}
 					echo "</p>";
 				echo "</div>";
 				
 				echo "<div id='__cpc__vote_thankyou'>";
-					echo "<p>".__("Vielen Dank für Deine Stimmabgabe. Aktualisiere die Seite für die neuesten Ergebnisse", CPC_TEXT_DOMAIN);
+					echo "<p>".__("Vielen Dank für Deine Stimmabgabe. Aktualisiere die Seite für die neuesten Ergebnisse", 'cp-communitie');
 					if ($__cpc__vote_forum != '') {
-						echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', CPC_TEXT_DOMAIN)."...</a>";
+						echo "<br /><a href='".$__cpc__vote_forum."'>".__('Diskutiere dies im Forum', 'cp-communitie')."...</a>";
 					}
 					echo "</p>";
 				echo "</div>";
@@ -115,7 +115,7 @@ class __cpc__vote_Widget extends WP_Widget {
 			
 		} else {
 			
-			echo "<p>".__("Melde Dich an, um abzustimmen...", CPC_TEXT_DOMAIN)."</p>";
+			echo "<p>".__("Melde Dich an, um abzustimmen...", 'cp-communitie')."</p>";
 			
 		}
 				
@@ -155,15 +155,15 @@ class __cpc__vote_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		/* Set up some default widget settings. */
-		$defaults = array( 'cpcommunitie_vote_question' => __('Eine Ja/Nein-Frage...', CPC_TEXT_DOMAIN), '__cpc__vote_forum' => '', 'cpcommunitie_vote_counts' => '', 'cpcommunitie_vote_type' => 'bar', 'cpcommunitie_vote_key' => '' );
+		$defaults = array( 'cpcommunitie_vote_question' => __('Eine Ja/Nein-Frage...', 'cp-communitie'), '__cpc__vote_forum' => '', 'cpcommunitie_vote_counts' => '', 'cpcommunitie_vote_type' => 'bar', 'cpcommunitie_vote_key' => '' );
 		$instance = wp_parse_args( (array) $instance, $defaults ); 
 
 		$__cpc__vote_yes = get_option(CPC_OPTIONS_PREFIX."_vote_yes");
 		$__cpc__vote_no = get_option(CPC_OPTIONS_PREFIX."_vote_no");
 
-		echo "<p><span style='font-weight:bold'>".__('Bisherige Ergebnisse', CPC_TEXT_DOMAIN)."</span><br />";
-		echo __("Yes", CPC_TEXT_DOMAIN).": ".$__cpc__vote_yes."<br />";
-		echo __("No", CPC_TEXT_DOMAIN).": ".$__cpc__vote_no."</p>";
+		echo "<p><span style='font-weight:bold'>".__('Bisherige Ergebnisse', 'cp-communitie')."</span><br />";
+		echo __("Yes", 'cp-communitie').": ".$__cpc__vote_yes."<br />";
+		echo __("No", 'cp-communitie').": ".$__cpc__vote_no."</p>";
 		?>		
 		<p>
 			<?php
@@ -174,35 +174,35 @@ class __cpc__vote_Widget extends WP_Widget {
 			Stelle sicher, dass die Domain, die Du mit Jumpeye Components festlegst, mit der Domain Deiner Webseite übereinstimmt!';
 			?>
 			<span class="__cpc__tooltip" title="<?php echo $msg ?>">?</span>
-			<label 	for="<?php echo $this->get_field_id( 'cpcommunitie_vote_key' ); ?>"><?php echo __('Domänenschlüssel', CPC_TEXT_DOMAIN); ?>:
+			<label 	for="<?php echo $this->get_field_id( 'cpcommunitie_vote_key' ); ?>"><?php echo __('Domänenschlüssel', 'cp-communitie'); ?>:
 			<br /></label>
 			<input 	id="<?php echo $this->get_field_id( 'cpcommunitie_vote_key' ); ?>" 
 					name="<?php echo $this->get_field_name( 'cpcommunitie_vote_key' ); ?>" 
 					value="<?php echo $instance['cpcommunitie_vote_key']; ?>" />
 		<br /><br />
-		<label 	for="<?php echo $this->get_field_id( 'cpcommunitie_vote_question' ); ?>"><?php echo __('Frage', CPC_TEXT_DOMAIN); ?>:<br /></label>
+		<label 	for="<?php echo $this->get_field_id( 'cpcommunitie_vote_question' ); ?>"><?php echo __('Frage', 'cp-communitie'); ?>:<br /></label>
 			<input 	id="<?php echo $this->get_field_id( 'cpcommunitie_vote_question' ); ?>" 
 					name="<?php echo $this->get_field_name( 'cpcommunitie_vote_question' ); ?>" 
 					value="<?php echo $instance['cpcommunitie_vote_question']; ?>" />
 		<br /><br />
-			<label 	for="<?php echo $this->get_field_id( '__cpc__vote_forum' ); ?>"><?php echo __('Forum-Link', CPC_TEXT_DOMAIN); ?>:<br /></label>
+			<label 	for="<?php echo $this->get_field_id( '__cpc__vote_forum' ); ?>"><?php echo __('Forum-Link', 'cp-communitie'); ?>:<br /></label>
 			<input 	id="<?php echo $this->get_field_id( '__cpc__vote_forum' ); ?>" 
 					name="<?php echo $this->get_field_name( '__cpc__vote_forum' ); ?>" 
 					value="<?php echo $instance['__cpc__vote_forum']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_vote_counts' ); ?>"><?php echo __('Ergebnisse anzeigen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_vote_counts' ); ?>"><?php echo __('Ergebnisse anzeigen', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_vote_counts' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_vote_counts' ); ?>"
 			<?php if ($instance['cpcommunitie_vote_counts'] == 'on') { echo " CHECKED"; } ?>
 			/>
 			<br /><em>(if not, percentages shown)</em>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_vote_type' ); ?>"><?php echo __('Diagramm Typ', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_vote_type' ); ?>"><?php echo __('Diagramm Typ', 'cp-communitie'); ?>:</label>
 			<select type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_vote_type' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_vote_type' ); ?>">
 				<option value="pie" <?php if ($instance['cpcommunitie_vote_type'] == 'pie') { echo " SELECTED"; } ?> >Pie</option>
 				<option value="bar" <?php if ($instance['cpcommunitie_vote_type'] == 'bar') { echo " SELECTED"; } ?> >Bar</option>
 			</select>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_reset_votes' ); ?>"><?php echo __('Stimmen zurücksetzen?', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_reset_votes' ); ?>"><?php echo __('Stimmen zurücksetzen?', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_reset_votes' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_reset_votes' ); ?>"
 			 />
 		</p>

@@ -1,0 +1,3747 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: CP Community\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-02-10 14:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.6.3; wp-4.9.22\n"
+"X-Domain: CPC_TEXT_DOMAIN"
+
+#: facebook_admin.php:41
+msgid " button"
+msgstr ""
+
+#: ajax/events_functions.php:497
+#, php-format
+msgid " has booked %d ticket(s) for event (%s) ID:"
+msgstr ""
+
+#: ajax/events_functions.php:437
+#, php-format
+msgid " has cancelled their booking for event (%s) ID:"
+msgstr ""
+
+#: ajax/profile_functions.php:71
+msgid " has sent you a "
+msgstr ""
+
+#: news.php:205
+msgid " hat dir geschickt "
+msgstr ""
+
+#: ajax/events_functions.php:176
+#, php-format
+msgid "%d ticket confirmed"
+msgid_plural "%d tickets confirmed"
+msgstr[0] ""
+msgstr[1] ""
+
+#: profile.php:492 profile.php:862
+#, php-format
+msgid "%s Anfrage abbrechen"
+msgstr ""
+
+#: profile.php:493 profile.php:863
+#, php-format
+msgid "%s Anfrage abgebrochen"
+msgstr ""
+
+#: news.php:233
+#, php-format
+msgid "%s Anfrage akzeptiert von"
+msgstr ""
+
+#: profile.php:508 profile.php:878
+#, php-format
+msgid "%s Anfrage gesendet"
+msgstr ""
+
+#: hooks_filters.php:272
+#, php-format
+msgid "%s Debug Mode"
+msgstr ""
+
+#: mobile.php:85 news_admin.php:5 plus_admin.php:7
+#, php-format
+msgid "%s Einstellungen"
+msgstr ""
+
+#: plus_admin.php:294
+#, php-format
+msgid "%s Forumsthemen in Suchergebnisse einbeziehen"
+msgstr ""
+
+#: plus_admin.php:266
+#, php-format
+msgid "%s Fotoalben in Suchergebnisse einbeziehen"
+msgstr ""
+
+#: ajax/profile_functions.php:822 ajax/profile_functions.php:828
+#, php-format
+msgid "%s group activity"
+msgstr ""
+
+#: plus_admin.php:273
+#, php-format
+msgid "%s Gruppen in Suchergebnisse einbeziehen"
+msgstr ""
+
+#: hooks_filters.php:381 hooks_filters.php:398 ajax/gallery_functions.php:699
+#: ajax/profile_functions.php:1220 ajax/profile_functions.php:1241
+#, php-format
+msgid "%s Only"
+msgstr ""
+
+#: events_admin.php:4 facebook_admin.php:27 gallery_admin.php:4
+#: groups_admin.php:4 lounge_admin.php:13 mailinglist_admin.php:5
+#, php-format
+msgid "%s Options"
+msgstr ""
+
+#: mailinglist.php:25
+#, php-format
+msgid "%s reply-by-email interval"
+msgstr ""
+
+#: ajax/profile_functions.php:1804 ajax/profile_functions.php:1812
+#, php-format
+msgid "%s request"
+msgstr ""
+
+#: ajax/profile_functions.php:1940 ajax/profile_functions.php:1947
+#, php-format
+msgid "%s request accepted"
+msgstr ""
+
+#: members.php:424 ajax/members_functions.php:435
+#, php-format
+msgid "%s Request Sent"
+msgstr ""
+
+#: cp-communitie.php:1207
+#, php-format
+msgid "%s request sent"
+msgstr ""
+
+#: members.php:416 ajax/members_functions.php:427
+#: ajax/profile_functions.php:2130
+#, php-format
+msgid "%s request sent."
+msgstr ""
+
+#: ajax/profile_functions.php:2001
+#, php-format
+msgid "%s Requests"
+msgstr ""
+
+#: panel.php:121 widgets.php:36
+#, php-format
+msgid "%s Status"
+msgstr ""
+
+#: cp-communitie.php:343
+#, php-format
+msgid "%s version"
+msgstr ""
+
+#: ajax/plus_functions.php:412 ajax/plus_functions.php:419
+#, php-format
+msgid "%s your %s"
+msgstr ""
+
+#: ajax/profile_functions.php:808 ajax/profile_functions.php:814
+#, php-format
+msgid "%s's activity"
+msgstr ""
+
+#: cp-communitie.php:246
+#, php-format
+msgid "(%s unread)"
+msgstr ""
+
+#: facebook_admin.php:46
+msgid "(including trailing slash)."
+msgstr ""
+
+#: mailinglist.php:236 mailinglist_admin.php:63
+msgid "(or no internet connection)"
+msgstr ""
+
+#: ajax/profile_functions.php:1119
+msgid ") is not available, it must be unique, sorry."
+msgstr ""
+
+#: groups_admin.php:149
+msgid "-- Select a group --"
+msgstr ""
+
+#: ajax/events_functions.php:79
+msgid "<<"
+msgstr ""
+
+#: news_admin.php:101
+msgid ""
+"<div style=\"width:75px;float:left;\">count:</div>Überschreibe die "
+"Standardanzahl der angezeigten Warnungen (50)"
+msgstr ""
+
+#: ajax/forum_functions.php:1583
+msgid "<p>You have not replied to any forum topics.</p>"
+msgstr ""
+
+#: ajax/forum_functions.php:1517
+msgid "<p>You have not started any forum topics.</p>"
+msgstr ""
+
+#: widgets.php:893 widgets.php:1005
+msgid ""
+"<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 "
+"for none)"
+msgstr ""
+
+#: widgets.php:890 widgets.php:1002
+msgid ""
+"<strong>Categories to include</strong><br />List IDs, comma separated. (0 "
+"for all)"
+msgstr ""
+
+#: ajax/events_functions.php:80
+msgid ">>"
+msgstr ""
+
+#: ajax/profile_functions.php:745
+msgid "@mentions"
+msgstr ""
+
+#: news_admin.php:103
+#, php-format
+msgid "[%s-alerts count=200]"
+msgstr ""
+
+#: groups.php:453 ajax/groups_functions.php:25 ajax/groups_functions.php:162
+msgid "[No name]"
+msgstr ""
+
+#: facebook_admin.php:36
+msgid ""
+"A Facebook application is used to post messages to Facebook Walls - you need "
+"to create a Facebook application for your website:"
+msgstr ""
+
+#: ajax/forum_functions.php:2314
+#, php-format
+msgid ""
+"A maxium of %d search results will be displayed, please narrow your search."
+msgstr ""
+
+#: news_admin.php:54
+msgid "Abfrageintervall (Sekunden)"
+msgstr ""
+
+#: plus.php:87
+msgid "Abonnenten"
+msgstr ""
+
+#: news.php:250
+msgid "Abonnierte Forumantwort von"
+msgstr ""
+
+#: news.php:260
+msgid "Abonnierter Forumskommentar von"
+msgstr ""
+
+#: news.php:241
+msgid "Abonniertes Forumsthema von"
+msgstr ""
+
+#: plus_admin.php:149
+msgid ""
+"Abstand über dem Menü, wenn sie sich mit der Seite nach unten bewegt (Pixel)"
+msgstr ""
+
+#: yesno.php:30
+msgid "Abstimmung"
+msgstr ""
+
+#: ajax/group_functions.php:1386 ajax/profile_functions.php:2018
+msgid "Accept"
+msgstr ""
+
+#: groups_admin.php:70
+#, php-format
+msgid ""
+"Activate <a href=\"%s\">templates</a> for the group page (default layout "
+"used if not)"
+msgstr ""
+
+#: groups.php:210
+msgid "Active Members"
+msgstr ""
+
+#: create_options.php:426 hooks_filters.php:190 ajax/group_functions.php:746
+msgid "Activity"
+msgstr ""
+
+#: class.cpc_ui.php:44 cp-communitie.php:1222 lounge.php:28 members.php:422
+#: ajax/group_functions.php:1236 ajax/lounge_functions.php:23
+#: ajax/members_functions.php:433
+msgid "Add"
+msgstr ""
+
+#: lounge.php:27 ajax/lounge_functions.php:20 ajax/lounge_functions.php:21
+#: ajax/lounge_functions.php:22
+msgid "Add a comment.."
+msgstr ""
+
+#: cp-communitie.php:1221
+msgid "Add a comment:"
+msgstr ""
+
+#: cp-communitie.php:1206 members.php:421 ajax/members_functions.php:432
+#, php-format
+msgid "Add as a %s..."
+msgstr ""
+
+#: events.php:75
+msgid "Added by"
+msgstr ""
+
+#: ajax/gallery_functions.php:883 server/file_upload_form.php:261
+msgid "Added to"
+msgstr ""
+
+#: gallery.php:148
+msgid "added to "
+msgstr ""
+
+#: mailinglist.php:162
+msgid "Added to forum."
+msgstr ""
+
+#: cp-communitie.php:341
+msgid "Admin Email"
+msgstr ""
+
+#: members.php:68
+msgid "Advanced search"
+msgstr ""
+
+#: plus_admin.php:197
+msgid "Aktiviere @user-Tags"
+msgstr ""
+
+#: plus_admin.php:243
+#, php-format
+msgid ""
+"Aktiviert das Hover-Feld, wenn der Cursor über den Profil-Avatar bewegt wird."
+" Erfordert die Aktivierung von <a href=\"%s\">Profilfotos</a>."
+msgstr ""
+
+#: plus_admin.php:173
+msgid "Aktivität Gefällt mir/Gefällt mir nicht"
+msgstr ""
+
+#: plus_admin.php:189
+msgid "Aktivität/Status YouTube zulassen"
+msgstr ""
+
+#: plus_admin.php:181
+msgid "Aktivitäts-/Statusbilder zulassen"
+msgstr ""
+
+#: news.php:72
+msgid "Alerts"
+msgstr ""
+
+#: widgets.php:513
+msgid "All"
+msgstr ""
+
+#: create_options.php:400 create_options.php:430 hooks_filters.php:206
+#: hooks_filters.php:211
+msgid "All Activity"
+msgstr ""
+
+#: ajax/gallery_functions.php:595
+msgid "All albums"
+msgstr ""
+
+#: groups.php:203
+msgid "All Groups"
+msgstr ""
+
+#: groups_admin.php:74
+msgid "All users can create"
+msgstr ""
+
+#: groups_admin.php:77
+msgid "All users or restricted to administrators only"
+msgstr ""
+
+#: plus_admin.php:122
+msgid "Alle Benutzer sind jetzt miteinander befreundet."
+msgstr ""
+
+#: plus_admin.php:79 plus_admin.php:90
+msgid "Alle Benutzer zu Freunden machen"
+msgstr ""
+
+#: plus_admin.php:232
+msgid "Alle sind Freunde?"
+msgstr ""
+
+#: groups_admin.php:90
+msgid "Allow group admin's to invite people to join via email."
+msgstr ""
+
+#: groups_admin.php:87
+msgid "Allow group invites"
+msgstr ""
+
+#: ajax/group_functions.php:721
+msgid "Allow members to create forum topics?"
+msgstr ""
+
+#: mailinglist_admin.php:106
+msgid ""
+"Allows members to reply to forum topics by email (by replying to the "
+"notification received)."
+msgstr ""
+
+#: profile.php:498 profile.php:868
+#, php-format
+msgid "Als %s hinzufügen"
+msgstr ""
+
+#: news_admin.php:74
+msgid "Als Menüpunkt hinzufügen"
+msgstr ""
+
+#: facebook_admin.php:62
+msgid "Also called your OAuth client_id"
+msgstr ""
+
+#: facebook_admin.php:68
+msgid "Also called your OAuth client_secret"
+msgstr ""
+
+#: news.php:151
+msgid "Alt"
+msgstr ""
+
+#: plus_admin.php:225
+msgid "Alternative anzeigen"
+msgstr ""
+
+#: forum.php:204 ajax/forum_functions.php:1565 ajax/forum_functions.php:1681
+#: ajax/forum_functions.php:1831
+msgid "Answer Accepted"
+msgstr ""
+
+#: ajax/forum_functions.php:48 ajax/forum_functions.php:51
+msgid "Answer accepted"
+msgstr ""
+
+#: members.php:100 ajax/members_functions.php:261
+msgid "Any"
+msgstr ""
+
+#: hooks_filters.php:447 ajax/profile_functions.php:1322
+msgid "April"
+msgstr ""
+
+#: cp-communitie.php:1197
+msgid "Are you sure?"
+msgstr ""
+
+#: cp-communitie.php:1199
+msgid "Attach an image"
+msgstr ""
+
+#: cp-communitie.php:1200 server/file_upload_form.php:222
+msgid "Attach file"
+msgstr ""
+
+#: ajax/events_functions.php:499
+#, php-format
+msgid "Attendee booking for Event (%s) ID:"
+msgstr ""
+
+#: ajax/events_functions.php:439
+#, php-format
+msgid "Attendee cancellation for Event (%s) ID:"
+msgstr ""
+
+#: ajax/events_functions.php:374
+#, php-format
+msgid "Attendee confirmation for Event (%s) ID:"
+msgstr ""
+
+#: ajax/events_functions.php:412
+#, php-format
+msgid "Attendee removal for Event (%s) ID:"
+msgstr ""
+
+#: cp-communitie.php:1234
+msgid "Attendees"
+msgstr ""
+
+#: news.php:270
+msgid "auf Deinem Profil gepostet hat."
+msgstr ""
+
+#: hooks_filters.php:451 ajax/profile_functions.php:1326
+msgid "August"
+msgstr ""
+
+#: news_admin.php:68
+msgid ""
+"Ausblenden, wenn Probleme auftreten, der Menüpunkt wechselt stattdessen zur "
+"Seite „Warnungen“."
+msgstr ""
+
+#: panel.php:135 panel.php:136 panel.php:143
+msgid "Ausloggen"
+msgstr ""
+
+#: plus_admin.php:246
+msgid "Autocomplete search box"
+msgstr ""
+
+#: groups_admin.php:175
+msgid "Available users"
+msgstr ""
+
+#: server/file_upload_form.php:120
+msgid "Avatar updated!"
+msgstr ""
+
+#: ajax/group_functions.php:1325
+msgid "Awaiting approval"
+msgstr ""
+
+#: ajax/events_functions.php:178
+#, php-format
+msgid "Awaiting confirmation for %d ticket."
+msgid_plural "Awaiting confirmation for %d tickets."
+msgstr[0] ""
+msgstr[1] ""
+
+#: events.php:137 ajax/events_functions.php:1058
+#, php-format
+msgid "Awaiting confirmation from the organiser for %d ticket."
+msgid_plural "Awaiting confirmation from the organiser for %d tickets."
+msgstr[0] ""
+msgstr[1] ""
+
+#: mail.php:135
+msgid "Back to mail"
+msgstr ""
+
+#: news_admin.php:102
+msgid "Beispiel"
+msgstr ""
+
+#: news_admin.php:65
+msgid "Benachrichtigungsliste ausblenden"
+msgstr ""
+
+#: mobile.php:113
+msgid "Benutzeragent anzeigen"
+msgstr ""
+
+#: plus_admin.php:184
+msgid "Benutzern erlauben, Bilder in den Aktivitätsfeed hochzuladen"
+msgstr ""
+
+#: yesno.php:164
+msgid "Bisherige Ergebnisse"
+msgstr ""
+
+#: plus_admin.php:80
+msgid ""
+"Bist Du sicher, dass Du ALLE Benutzer miteinander befreunden möchtes? "
+"<strong>Dies kann nicht rückgängig gemacht werden!</strong> Bitte erstelle "
+"zuerst eine Sicherungskopie Deiner Datenbank!"
+msgstr ""
+
+#: profile.php:568 profile.php:630
+#, php-format
+msgid ""
+"Bitte <a href='%s'>anmelden</a>, um das Profil dieses Mitglieds anzuzeigen."
+msgstr ""
+
+#: news.php:187
+msgid "Bitte einloggen, danke."
+msgstr ""
+
+#: ajax/plus_functions.php:98
+msgid "Blog Post"
+msgstr ""
+
+#: plus_admin.php:284
+msgid "Blogbeiträge"
+msgstr ""
+
+#: events.php:127 ajax/events_functions.php:167 ajax/events_functions.php:1061
+msgid "Book"
+msgstr ""
+
+#: ajax/events_functions.php:319 ajax/events_functions.php:368
+#: ajax/events_functions.php:513
+msgid "Booking confirmation"
+msgstr ""
+
+#: ajax/events_functions.php:261
+msgid "Booking reference:"
+msgstr ""
+
+#: cp-communitie.php:1229
+msgid "Bookings require confirmation:"
+msgstr ""
+
+#: mailinglist_admin.php:177
+msgid "Bottom divider"
+msgstr ""
+
+#: cp-communitie.php:1198
+msgid "Browse for file"
+msgstr ""
+
+#: mail.php:59
+msgid "Bulk action..."
+msgstr ""
+
+#: widgets.php:763
+msgid "Button text"
+msgstr ""
+
+#: ajax/forum_functions.php:2364 ajax/forum_functions.php:2380
+#: ajax/news_functions.php:163
+msgid "by"
+msgstr ""
+
+#: events_admin.php:66
+msgid "Calendar"
+msgstr ""
+
+#: events_admin.php:80
+msgid ""
+"Can non-administrators set up event bookings (or just list basic information)"
+"?"
+msgstr ""
+
+#: cp-communitie.php:1192 events.php:129 groups.php:404 mail.php:83
+#: ajax/events_functions.php:170 ajax/events_functions.php:970
+#: ajax/events_functions.php:1063 ajax/gallery_functions.php:806
+msgid "Cancel"
+msgstr ""
+
+#: cp-communitie.php:234
+msgid "Categories"
+msgstr ""
+
+#: widgets.php:640
+msgid "Category ID (0 for all)"
+msgstr ""
+
+#: groups_admin.php:171
+msgid "Change this group&apos;s order"
+msgstr ""
+
+#: ajax/profile_functions.php:1041
+msgid "Change your password"
+msgstr ""
+
+#: ajax/chat/clear_chat.php:16
+#, php-format
+msgid "Chat cleared by %s at %s"
+msgstr ""
+
+#: mailinglist_admin.php:201
+msgid "Check for replies now (but don't process any)"
+msgstr ""
+
+#: mailinglist_admin.php:197
+msgid "Check for replies now and process"
+msgstr ""
+
+#: mailinglist_admin.php:183
+msgid "Check Frequency"
+msgstr ""
+
+#: mailinglist.php:237 mailinglist_admin.php:64
+msgid "Check your mail server address and port number, username and password"
+msgstr ""
+
+#: mailinglist.php:60
+msgid "Checking for waiting email, but not processing..."
+msgstr ""
+
+#: ajax/group_functions.php:802
+msgid "Choose an image for the group..."
+msgstr ""
+
+#: ajax/profile_functions.php:870
+msgid "Choose an image..."
+msgstr ""
+
+#: cp-communitie.php:342
+msgid "ClassicPress version"
+msgstr ""
+
+#: cp-communitie.php:1190
+msgid "Clear"
+msgstr ""
+
+#: ajax/profile_functions.php:1024 ajax/profile_functions.php:1031
+msgid "Clear all existing forum subscriptions"
+msgstr ""
+
+#: facebook_admin.php:41
+msgid "Click on "
+msgstr ""
+
+#: facebook_admin.php:47
+msgid "Click on <strong>Save Changes</strong> on Facebook"
+msgstr ""
+
+#: facebook_admin.php:46
+msgid ""
+"Click on <strong>Website with Facebook Login</strong> and enter your site "
+"URL, eg: "
+msgstr ""
+
+#: mailinglist_admin.php:127
+msgid ""
+"Click on the button below to check for replies by email and add to the forum "
+"(this may take a few minutes)."
+msgstr ""
+
+#: create_options.php:71
+msgid "closed"
+msgstr ""
+
+#: groups_admin.php:83
+msgid ""
+"Comma separated list of group ID's that new members are assigned to (leave "
+"blank for none)"
+msgstr ""
+
+#: ajax/forum_functions.php:877
+msgid "commented"
+msgstr ""
+
+#: ajax/gallery_functions.php:228
+msgid "Commented on"
+msgstr ""
+
+#: create_options.php:422 hooks_filters.php:564
+msgid "Community Settings"
+msgstr ""
+
+#: mail.php:40 mail.php:143
+msgid "Compose"
+msgstr ""
+
+#: cp-communitie.php:1233
+msgid "Confirmation Email"
+msgstr ""
+
+#: events.php:135
+#, php-format
+msgid "Confirmed by the event organiser for %d ticket."
+msgid_plural "Confirmed by the event organiser for %d tickets."
+msgstr[0] ""
+msgstr[1] ""
+
+#: mailinglist.php:71 mailinglist_admin.php:37
+msgid "Connected"
+msgstr ""
+
+#: facebook_admin.php:48
+msgid ""
+"Copy and Paste the <strong>App ID</strong> and <strong>App Secret</strong> "
+"below, and click on the Save Changes button below"
+msgstr ""
+
+#: events.php:90
+msgid "Cost per ticket:"
+msgstr ""
+
+#: ajax/events_functions.php:144
+msgid "Cost:"
+msgstr ""
+
+#. Name of the plugin
+msgid "CP Community"
+msgstr ""
+
+#: groups.php:403 ajax/gallery_functions.php:581 ajax/gallery_functions.php:805
+msgid "Create"
+msgstr ""
+
+#: ajax/events_functions.php:918 ajax/events_functions.php:969
+msgid "Create Event"
+msgstr ""
+
+#: groups.php:389
+msgid "Create Group"
+msgstr ""
+
+#: ajax/gallery_functions.php:606
+msgid "Create sub album"
+msgstr ""
+
+#: mailinglist.php:244 mailinglist_admin.php:71
+msgid "Currently processing, please try again in a few minutes."
+msgstr ""
+
+#: groups_admin.php:67
+msgid "Custom Group Page templates"
+msgstr ""
+
+#: cp-communitie.php:344
+msgid "Daily Digest mode"
+msgstr ""
+
+#: cp-communitie.php:474
+msgid "Daily Digest sent count"
+msgstr ""
+
+#: cp-communitie.php:488
+msgid "Daily Digest Summary Report"
+msgstr ""
+
+#: cp-communitie.php:449
+msgid "Daily Forum Digest"
+msgstr ""
+
+#: cp-communitie.php:462
+msgid "Daily Forum Digest (admin only)"
+msgstr ""
+
+#: yesno.php:87
+msgid "Danke für Deine Stimme"
+msgstr ""
+
+#: news_admin.php:34
+msgid ""
+"Das Alerts-Plugin aktualisiert ein DIV (das sich in einem ClassicPress-"
+"Menüelement befindet oder in ein Design eingebettet sein kann), das das "
+"Mitglied über Neuigkeiten/Benachrichtigungen wie neue E-"
+"Mails/Freunde/Aktivitäten/usw. benachrichtigt – Benachrichtigungen können "
+"von anderen Plugins hinzugefügt werden."
+msgstr ""
+
+#: plus_admin.php:139
+msgid ""
+"Das Profilmenü (nur vertikale Version) scrollt mit der Seite nach unten und "
+"bleibt sichtbar"
+msgstr ""
+
+#: mailinglist.php:86
+msgid "Date"
+msgstr ""
+
+#: hooks_filters.php:271
+msgid "De-activate"
+msgstr ""
+
+#: hooks_filters.php:455 ajax/profile_functions.php:1330
+msgid "December"
+msgstr ""
+
+#: groups_admin.php:81
+msgid "Default Groups"
+msgstr ""
+
+#: groups_admin.php:94
+msgid "Default maximum members"
+msgstr ""
+
+#: mail.php:62
+msgid "Delete all mail!"
+msgstr ""
+
+#: mail.php:60
+msgid "Delete checked items"
+msgstr ""
+
+#: groups.php:168 groups.php:171
+msgid "Delete Group"
+msgstr ""
+
+#: groups_admin.php:134
+msgid "Delete group / manage group members"
+msgstr ""
+
+#: mailinglist_admin.php:205
+msgid "Delete POP3 mailbox contents"
+msgstr ""
+
+#: ajax/gallery_functions.php:605
+msgid "Delete this album"
+msgstr ""
+
+#: groups_admin.php:168
+msgid "Delete this group"
+msgstr ""
+
+#: mailinglist_admin.php:33
+msgid "Deleting POP3 mailbox contents"
+msgstr ""
+
+#. Author of the plugin
+msgid "DerN3rd"
+msgstr ""
+
+#: groups.php:398 ajax/events_functions.php:928
+msgid "Description"
+msgstr ""
+
+#: widgets.php:201
+msgid "Details als Liste anzeigen"
+msgstr ""
+
+#: yesno.php:199
+msgid "Diagramm Typ"
+msgstr ""
+
+#: mobile.php:109
+msgid "Die Thread-Ansicht ist ebenfalls auf die letzten 7 Tage beschränkt"
+msgstr ""
+
+#: news.php:143
+msgid "Diesen Monat"
+msgstr ""
+
+#: facebook_admin.php:45
+msgid "Disable <strong>Sandbox Mode</strong>"
+msgstr ""
+
+#: profile.php:1087
+msgid "Disconnect"
+msgstr ""
+
+#: hooks_filters.php:152
+msgid "Discuss on the forum..."
+msgstr ""
+
+#: yesno.php:89 yesno.php:101 yesno.php:109
+msgid "Diskutiere dies im Forum"
+msgstr ""
+
+#: cp-communitie.php:1213
+msgid "Dislikes"
+msgstr ""
+
+#: members.php:132
+msgid "Display name"
+msgstr ""
+
+#: events_admin.php:68
+msgid "Display the global events page as a list or as a calendar"
+msgstr ""
+
+#: groups_admin.php:194
+msgid "Display the groups on the site."
+msgstr ""
+
+#: gallery_admin.php:77
+msgid "Displays a gallery of all the user albums."
+msgstr ""
+
+#: members.php:139 members.php:366 ajax/members_functions.php:375
+msgid "Distance"
+msgstr ""
+
+#: plus_admin.php:211
+msgid "Distanz aktivieren"
+msgstr ""
+
+#: plus_admin.php:214
+msgid "Distanz im Mitgliederverzeichnis aktivieren"
+msgstr ""
+
+#: ajax/group_functions.php:682
+msgid "Do new members have to be accepted?"
+msgstr ""
+
+#: events_admin.php:74
+msgid "Do not display events that have finished (by end date)"
+msgstr ""
+
+#: class.cpc_forum.php:331 ajax/forum_functions.php:512
+#: ajax/forum_functions.php:900 ajax/forum_functions.php:1255
+msgid "do not edit"
+msgstr ""
+
+#: yesno.php:177
+msgid "Domänenschlüssel"
+msgstr ""
+
+#: news.php:215
+msgid "Du hast eine neue Nachricht von"
+msgstr ""
+
+#: profile.php:485 profile.php:515 profile.php:856
+msgid "E-Mail senden..."
+msgstr ""
+
+#: events.php:68 ajax/events_functions.php:992
+msgid "Edit to publish"
+msgstr ""
+
+#: plus_admin.php:204
+msgid "Eindeutige Anzeigenamen"
+msgstr ""
+
+#: yesno.php:158
+msgid "Eine Ja/Nein-Frage..."
+msgstr ""
+
+#: plus_admin.php:259
+msgid "Eingabeaufforderung für Suchfeldtext"
+msgstr ""
+
+#: mobile.php:96 news_admin.php:31
+msgid "Einstellungen"
+msgstr ""
+
+#: mailinglist_admin.php:161
+msgid "Email address to reply to, eg: forum@example.com"
+msgstr ""
+
+#: mailinglist_admin.php:159
+msgid "Email sent from"
+msgstr ""
+
+#: hooks_filters.php:606
+msgid "Emails for all new forum topics and replies"
+msgstr ""
+
+#: hooks_filters.php:595
+msgid "Emails for posts on the Wall"
+msgstr ""
+
+#: hooks_filters.php:587
+msgid "Emails for private messages"
+msgstr ""
+
+#: mailinglist.php:182
+msgid "Empty reply. No boundaries found"
+msgstr ""
+
+#: cp-communitie.php:1226
+msgid "Enable booking places:"
+msgstr ""
+
+#: ajax/group_functions.php:711
+msgid "Enable the group forum?"
+msgstr ""
+
+#: ajax/events_functions.php:950
+msgid "End Date"
+msgstr ""
+
+#: ajax/events_functions.php:952
+msgid "End Time"
+msgstr ""
+
+#: events.php:111 ajax/events_functions.php:1033
+msgid "End: "
+msgstr ""
+
+#: cp-communitie.php:1244
+msgid "Enter a website URL..."
+msgstr ""
+
+#: facebook_admin.php:42
+msgid ""
+"Enter an <strong>App Display Name</strong> (that will appear under Facebook "
+"Wall posts), eg: Example Web Site"
+msgstr ""
+
+#: ajax/group_functions.php:28
+msgid ""
+"Enter email addresses of people you would like to invite to your group, "
+"separated by commas, or on separate lines."
+msgstr ""
+
+#: cp-communitie.php:1246
+msgid "Enter text to show..."
+msgstr ""
+
+#: facebook_admin.php:44
+msgid "Enter the security check words to continue to the next screen"
+msgstr ""
+
+#: profile.php:265 profile.php:753
+msgid "Entfolgen"
+msgstr ""
+
+#: yesno.php:193
+msgid "Ergebnisse anzeigen"
+msgstr ""
+
+#: plus_admin.php:200
+msgid ""
+"Ersetze @user durch einen Link zur Profilseite. Versteht Benutzernamen und "
+"Anzeigenamen (ohne Leerzeichen)"
+msgstr ""
+
+#: events.php:85 ajax/events_functions.php:187
+msgid "Event full"
+msgstr ""
+
+#: ajax/events_functions.php:922
+msgid "Event Name"
+msgstr ""
+
+#: create_options.php:438 events.php:233 events.php:235 events.php:295
+#: events.php:295 ajax/events_functions.php:913
+msgid "Events"
+msgstr ""
+
+#: forum.php:90
+msgid "everyone"
+msgstr ""
+
+#: facebook_admin.php:79
+msgid "Example Facebook Application values"
+msgstr ""
+
+#: facebook.php:26
+msgid "Facebook"
+msgstr ""
+
+#: facebook_admin.php:60
+msgid "Facebook Application ID"
+msgstr ""
+
+#: facebook_admin.php:66
+msgid "Facebook Application Secret"
+msgstr ""
+
+#: facebook_admin.php:52
+msgid "Facebook Application values"
+msgstr ""
+
+#: facebook_admin.php:15
+msgid "Facebook options saved"
+msgstr ""
+
+#: mailinglist.php:169
+msgid "Failed to add to forum"
+msgstr ""
+
+#: ajax/profile_functions.php:384
+msgid "Failed to connect to Facebook"
+msgstr ""
+
+#: ajax/forum_functions.php:94
+msgid "Failed to remove image"
+msgstr ""
+
+#: ajax/forum_functions.php:79
+msgid "Failed to remove image from database"
+msgstr ""
+
+#: ajax/profile_functions.php:1151
+msgid "Failed to update password, sorry."
+msgstr ""
+
+#: ajax/upload_activity_file.php:107 server/upload_activity.php:126
+#: server/upload_avatar.php:195 server/upload_forum.php:235
+#: server/upload_gallery.php:259 server/upload_group_avatar.php:206
+msgid "Failed to upload the file."
+msgstr ""
+
+#: hooks_filters.php:445 ajax/profile_functions.php:1320
+msgid "February"
+msgstr ""
+
+#: profile.php:267 profile.php:755
+msgid "Folgen"
+msgstr ""
+
+#: plus.php:85
+msgid "Folgt"
+msgstr ""
+
+#: cp-communitie.php:1209 ajax/plus_functions.php:327
+msgid "Follow"
+msgstr ""
+
+#: create_options.php:444 ajax/plus_functions.php:206
+msgid "Followers"
+msgstr ""
+
+#: create_options.php:442 ajax/plus_functions.php:190
+msgid "Following"
+msgstr ""
+
+#: plus_admin.php:160
+msgid "Forenantworten in Activity Stream aufnehmen"
+msgstr ""
+
+#: widgets.php:766
+msgid "Forgot password prompt"
+msgstr ""
+
+#: widgets.php:747
+msgid "Forgotten password?"
+msgstr ""
+
+#: ajax/plus_functions.php:66
+msgid "FORUM"
+msgstr ""
+
+#: cp-communitie.php:233 ajax/group_functions.php:749
+msgid "Forum"
+msgstr ""
+
+#: create_options.php:404 create_options.php:434 plus.php:41 plus.php:44
+msgid "Forum @mentions"
+msgstr ""
+
+#: plus_admin.php:157
+msgid "Forum Antworten in Aktivität"
+msgstr ""
+
+#: ajax/plus_functions.php:83
+msgid "Forum Comment"
+msgstr ""
+
+#: cp-communitie.php:258
+msgid "Forum not activated"
+msgstr ""
+
+#: ajax/plus_functions.php:86
+msgid "Forum Reply"
+msgstr ""
+
+#: hooks_filters.php:617 ajax/profile_functions.php:984
+msgid "Forum signature"
+msgstr ""
+
+#: ajax/plus_functions.php:76
+msgid "Forum Topic"
+msgstr ""
+
+#: cp-communitie.php:473
+msgid "Forum topic count for previous day (midnight to midnight)"
+msgstr ""
+
+#: yesno.php:188
+msgid "Forum-Link"
+msgstr ""
+
+#: plus_admin.php:291
+msgid "Forumsthemen"
+msgstr ""
+
+#: yesno.php:183
+msgid "Frage"
+msgstr ""
+
+#: mailinglist_admin.php:185
+msgid ""
+"Frequency (in seconds) to check, uses ClassicPress cron schedule, so "
+"requires your site to be visited. Not too low!!"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Friday"
+msgstr ""
+
+#: create_options.php:432 hooks_filters.php:242
+msgid "Friends"
+msgstr ""
+
+#: create_options.php:398 create_options.php:428 hooks_filters.php:196
+msgid "Friends Activity"
+msgstr ""
+
+#: tutorials/profile_page_template/wps_profile_page_4.php:68
+msgid "Friendship requested."
+msgstr ""
+
+#: mailinglist.php:85 ajax/ajax_functions.php:31 ajax/ajax_functions.php:54
+#: ajax/mail_functions.php:428
+msgid "From"
+msgstr ""
+
+#: ajax/group_functions.php:14 ajax/group_functions.php:77
+msgid "From:"
+msgstr ""
+
+#: plus_admin.php:168
+msgid "Füge Antworten aus Gruppenforen in den Activity Stream ein"
+msgstr ""
+
+#: plus_admin.php:287
+msgid "Füge ClassicPress-Blogbeiträge in die Suchergebnisse ein"
+msgstr ""
+
+#: plus_admin.php:280
+msgid "Füge ClassicPress-Seiten in die Suchergebnisse ein"
+msgstr ""
+
+#: plus_admin.php:176
+msgid ""
+"Fügt allen Aktivitätsbeiträgen ein „Gefällt mir“- und „Gefällt mir nicht“-"
+"Symbol hinzu"
+msgstr ""
+
+#: plus_admin.php:263
+msgid "Galerie"
+msgstr ""
+
+#: create_options.php:440 gallery.php:47 gallery.php:338 gallery.php:338
+#: gallery.php:362 ajax/gallery_functions.php:578
+msgid "Gallery"
+msgstr ""
+
+#: profile.php:420 profile.php:791
+msgid "Geboren"
+msgstr ""
+
+#: panel.php:147
+#, php-format
+msgid "Gehe zu %s"
+msgstr ""
+
+#: panel.php:155
+msgid "Gehe zu Mail"
+msgstr ""
+
+#: mobile.php:70 plus_admin.php:56
+msgid "Gespeichert"
+msgstr ""
+
+#: news.php:131
+msgid "Gestern"
+msgstr ""
+
+#: events_admin.php:50
+msgid "Global events list"
+msgstr ""
+
+#: cp-communitie.php:1243 facebook_admin.php:40
+msgid "Go"
+msgstr ""
+
+#: ajax/profile_functions.php:1810 ajax/profile_functions.php:1945
+msgid "Go to"
+msgstr ""
+
+#: class.cpc_mail.php:196 ajax/mail_functions.php:255
+#, php-format
+msgid "Go to %s Mail"
+msgstr ""
+
+#: cp-communitie.php:256
+msgid "Go to Forum"
+msgstr ""
+
+#: cp-communitie.php:289
+msgid "Go to Group Directory"
+msgstr ""
+
+#: cp-communitie.php:273
+msgid "Go to Mail"
+msgstr ""
+
+#: cp-communitie.php:281
+msgid "Go to Member Directory"
+msgstr ""
+
+#: cp-communitie.php:265
+msgid "Go to Profile"
+msgstr ""
+
+#: ajax/group_functions.php:248
+msgid "Go to the group"
+msgstr ""
+
+#: ajax/group_functions.php:889 ajax/group_functions.php:981
+msgid "Go to the group post"
+msgstr ""
+
+#: ajax/plus_functions.php:418 ajax/profile_functions.php:412
+#: ajax/profile_functions.php:490 ajax/profile_functions.php:511
+#: ajax/profile_functions.php:539
+msgid "Go to the post"
+msgstr ""
+
+#: ajax/plus_functions.php:146
+msgid "Group"
+msgstr ""
+
+#: groups.php:206
+msgid "Group Activity"
+msgstr ""
+
+#: ajax/group_functions.php:1376
+msgid "group admin"
+msgstr ""
+
+#: server/file_upload_form.php:130
+msgid "Group avatar updated!"
+msgstr ""
+
+#: ajax/group_functions.php:14
+msgid "Group Delete Request"
+msgstr ""
+
+#: groups.php:169
+msgid "Group deleted."
+msgstr ""
+
+#: ajax/group_functions.php:674
+msgid "Group description"
+msgstr ""
+
+#: groups.php:208
+msgid "Group Forum"
+msgstr ""
+
+#: ajax/group_functions.php:74 ajax/group_functions.php:99
+msgid "Group Invitation"
+msgstr ""
+
+#: ajax/group_functions.php:26
+msgid "Group Invitations"
+msgstr ""
+
+#: groups.php:215
+msgid "Group Invites"
+msgstr ""
+
+#: groups_admin.php:180
+msgid "Group members"
+msgstr ""
+
+#: ajax/group_functions.php:246 ajax/group_functions.php:251
+msgid "Group Membership"
+msgstr ""
+
+#: groups.php:145
+msgid "Group membership is full."
+msgstr ""
+
+#: groups_admin.php:114
+msgid "Group Menu Items"
+msgstr ""
+
+#: ajax/group_functions.php:666
+msgid "Group name"
+msgstr ""
+
+#: groups.php:246
+msgid "Group not found, sorry."
+msgstr ""
+
+#: ajax/group_functions.php:988
+msgid "Group post:"
+msgstr ""
+
+#: ajax/group_functions.php:896
+msgid "Group reply:"
+msgstr ""
+
+#: ajax/group_functions.php:388 ajax/group_functions.php:402
+msgid "Group Request"
+msgstr ""
+
+#: groups.php:213
+msgid "Group Settings"
+msgstr ""
+
+#: ajax/plus_functions.php:144
+msgid "GROUPS"
+msgstr ""
+
+#: create_options.php:436 groups.php:507 groups.php:507 hooks_filters.php:222
+#: ajax/profile_functions.php:1607
+msgid "Groups"
+msgstr ""
+
+#: cp-communitie.php:291
+msgid "Groups not activated"
+msgstr ""
+
+#: plus_admin.php:270
+msgid "Gruppen"
+msgstr ""
+
+#: plus_admin.php:165
+msgid "Gruppenforum-Antworten auf Aktivität"
+msgstr ""
+
+#: ajax/profile_functions.php:410
+msgid "has added a new post on your profile"
+msgstr ""
+
+#: ajax/group_functions.php:979
+msgid "has added a new post to the group"
+msgstr ""
+
+#: ajax/group_functions.php:887
+msgid "has added a new reply to the group"
+msgstr ""
+
+#: ajax/profile_functions.php:1954
+msgid "Has made friends with"
+msgstr ""
+
+#: ajax/group_functions.php:988
+msgid "has posted in"
+msgstr ""
+
+#: ajax/group_functions.php:896
+msgid "has replied in"
+msgstr ""
+
+#: ajax/profile_functions.php:509
+msgid "has replied to a post started on your profile"
+msgstr ""
+
+#: ajax/profile_functions.php:537
+msgid "has replied to a post you are involved in"
+msgstr ""
+
+#: ajax/profile_functions.php:488
+msgid "has replied to a post you started"
+msgstr ""
+
+#: ajax/forum_functions.php:417 ajax/forum_functions.php:488
+msgid "has started a new topic"
+msgstr ""
+
+#: news.php:297
+msgid "hat auf einen Beitrag geantwortet, an dem Du beteiligt bist"
+msgstr ""
+
+#: news.php:282
+msgid "hat auf einen Beitrag in Deinem Profil geantwortet"
+msgstr ""
+
+#: news.php:285
+msgid "hat auf einen von Dir gestarteten Beitrag geantwortet"
+msgstr ""
+
+#: facebook_admin.php:40
+msgid "here"
+msgstr ""
+
+#: news.php:127
+msgid "Heute"
+msgstr ""
+
+#: cp-communitie.php:1225
+msgid "Hi"
+msgstr ""
+
+#: events_admin.php:72
+msgid "Hide expired events"
+msgstr ""
+
+#: mobile.php:99
+msgid "Hinweis für Mobilgeräte/Tablets"
+msgstr ""
+
+#: profile.php:504 profile.php:874
+msgid "Hinzufügen"
+msgstr ""
+
+#: news_admin.php:40
+msgid "Horizontaler Versatz"
+msgstr ""
+
+#: plus_admin.php:240
+msgid "Hoverbox aktivieren"
+msgstr ""
+
+#: groups_admin.php:105
+msgid ""
+"How many invitations to join the group can be sent out at one time (to avoid "
+"spamming from your server)."
+msgstr ""
+
+#: cp-communitie.php:1239
+msgid "How many tickets do you want?"
+msgstr ""
+
+#: cp-communitie.php:1237
+msgid "HTML for payment:"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://n2rds.work"
+msgstr ""
+
+#. URI of the plugin
+msgid "https://n3rds.work"
+msgstr ""
+
+#: create_options.php:412
+msgid "I am Following"
+msgstr ""
+
+#: plus.php:80
+msgid "Ich folge"
+msgstr ""
+
+#: ajax/events_functions.php:411 ajax/events_functions.php:438
+msgid "If a refund is required, please follow this up."
+msgstr ""
+
+#: ajax/events_functions.php:373 ajax/events_functions.php:498
+msgid "If payment is required, please follow this up."
+msgstr ""
+
+#: ajax/group_functions.php:30
+msgid ""
+"If they are not members of this site, they will be able to register before "
+"logging in."
+msgstr ""
+
+#: ajax/events_functions.php:262
+msgid ""
+"If you have already paid, please do not pay again - your payment is being "
+"processed. Thank you."
+msgstr ""
+
+#: hooks_filters.php:619
+msgid ""
+"If you want a signature to be appended automatically under your forum posts"
+msgstr ""
+
+#: ajax/forum_functions.php:97
+msgid "Image to remove is not there..."
+msgstr ""
+
+#: server/file_upload_form.php:190
+msgid "Image uploaded"
+msgstr ""
+
+#: news_admin.php:71
+msgid "Implementieren"
+msgstr ""
+
+#: create_options.php:51 create_options.php:93 create_options.php:103
+#: create_options.php:129 create_options.php:131 create_options.php:133
+msgid "Important: Please Visit Installation Page!"
+msgstr ""
+
+#: ajax/forum_functions.php:419 ajax/forum_functions.php:491
+msgid "in"
+msgstr ""
+
+#: mailinglist_admin.php:119
+#, php-format
+msgid "in %d seconds"
+msgstr ""
+
+#: mail.php:41
+msgid "In Box"
+msgstr ""
+
+#: ajax/forum_functions.php:2348
+msgid "in reply to"
+msgstr ""
+
+#: mail.php:144
+msgid "Inbox"
+msgstr ""
+
+#: ajax/group_functions.php:760
+msgid "Include activity posts in Alerts?"
+msgstr ""
+
+#: widgets.php:632
+msgid "Include category"
+msgstr ""
+
+#: widgets.php:902 widgets.php:1014
+msgid "Include groups"
+msgstr ""
+
+#: widgets.php:310
+msgid "Include site activity"
+msgstr ""
+
+#: mobile.php:127
+msgid "Installationsschritte"
+msgstr ""
+
+#: ajax/profile_functions.php:1162
+msgid "Invalid email address, please re-enter"
+msgstr ""
+
+#: ajax/upload_activity_file.php:99 server/upload_activity.php:118
+#: server/upload_forum.php:138 server/upload_forum.php:225
+msgid "Invalid file extension, the following are permitted:"
+msgstr ""
+
+#: ajax/group_functions.php:35
+msgid "Invite"
+msgstr ""
+
+#: ajax/group_functions.php:692
+msgid "Is content hidden from non-members?"
+msgstr ""
+
+#: ajax/profile_functions.php:929
+msgid "Is this member trusted (highlighted on forum)?"
+msgstr ""
+
+#: hooks_filters.php:573
+msgid "Is this member trusted?"
+msgstr ""
+
+#: plus_admin.php:83 yesno.php:98 yesno.php:98
+msgid "Ja"
+msgstr ""
+
+#: hooks_filters.php:444 ajax/profile_functions.php:1319
+msgid "January"
+msgstr ""
+
+#: plus_admin.php:252
+msgid ""
+"Je mehr Ergebnisse enthalten sind, desto langsamer kann die Suche sein und "
+"desto größer sind die Auswirkungen auf Deinn Server/Deine Datenbank."
+msgstr ""
+
+#: news_admin.php:35
+msgid ""
+"Je nach verwendetem Theme ist die Position der Liste der Warnungen "
+"möglicherweise nicht genau so, wie Du es wünschst."
+msgstr ""
+
+#: plus_admin.php:81
+msgid ""
+"Je nachdem, wie viele Benutzer Du hast, kann dies einige Minuten dauern."
+msgstr ""
+
+#: groups.php:138
+msgid "Join Group"
+msgstr ""
+
+#: hooks_filters.php:450 ajax/profile_functions.php:1325
+msgid "July"
+msgstr ""
+
+#: hooks_filters.php:449 ajax/profile_functions.php:1324
+msgid "June"
+msgstr ""
+
+#: widgets.php:617
+msgid "Just member's own posts"
+msgstr ""
+
+#: members.php:361 members.php:371 ajax/members_functions.php:370
+msgid "km"
+msgstr ""
+
+#: news.php:135
+msgid "Kürzlich"
+msgstr ""
+
+#: widgets.php:129
+msgid "Kürzlich online"
+msgstr ""
+
+#: ajax/plus_functions.php:260 ajax/plus_functions.php:263
+#: ajax/plus_functions.php:265 ajax/profile_functions.php:2091
+#: ajax/profile_functions.php:2094 ajax/profile_functions.php:2096
+msgid "Last active"
+msgstr ""
+
+#: groups.php:460 members.php:341 ajax/groups_functions.php:169
+#: ajax/group_functions.php:1365 ajax/members_functions.php:349
+#: ajax/profile_functions.php:1640
+msgid "last active"
+msgstr ""
+
+#: members.php:129
+msgid "Last activity"
+msgstr ""
+
+#: ajax/news_functions.php:142
+msgid "Last month"
+msgstr ""
+
+#: ajax/forum_functions.php:1436 ajax/forum_functions.php:1507
+#: ajax/forum_functions.php:1943
+msgid "last one"
+msgstr ""
+
+#: ajax/forum_functions.php:1572
+msgid "last reply by"
+msgstr ""
+
+#: ajax/news_functions.php:134
+msgid "Last week"
+msgstr ""
+
+#: widgets.php:540
+msgid "Latest Forum Posts"
+msgstr ""
+
+#: widgets.php:332
+msgid "Latest New Members"
+msgstr ""
+
+#: ajax/profile_functions.php:1382
+msgid "Latitude/Longitude (from Google API)"
+msgstr ""
+
+#: widgets.php:797
+msgid ""
+"Leave blank for current page (if the current page has values after # in the "
+"URL, they are not included as not passed to ClassicPress authentication)."
+msgstr ""
+
+#: groups.php:159
+msgid "Leave Group"
+msgstr ""
+
+#: plus_admin.php:236
+msgid "Lege alle Benutzer als Freunde für alle fest"
+msgstr ""
+
+#: news.php:139
+msgid "Letzte Woche"
+msgstr ""
+
+#: news.php:147
+msgid "Letzten Monat"
+msgstr ""
+
+#: cp-communitie.php:1212
+msgid "Likes"
+msgstr ""
+
+#: ajax/plus_functions.php:303
+msgid "Limit reached"
+msgstr ""
+
+#: events_admin.php:52
+msgid ""
+"Limits the members included when using [cpcommunitie-events]. Enter User IDs "
+"(comma separated) or leave blank for all."
+msgstr ""
+
+#: mailinglist_admin.php:167
+msgid "Line of text to appear as a prompt where to enter reply text"
+msgstr ""
+
+#: hooks_filters.php:81
+msgid "Link to Forum"
+msgstr ""
+
+#: events_admin.php:65
+msgid "List"
+msgstr ""
+
+#: cp-communitie.php:475
+msgid "List of recipients sent to:"
+msgstr ""
+
+#: ajax/events_functions.php:925
+msgid "Location"
+msgstr ""
+
+#: ajax/members_functions.php:382
+msgid "Location is set to private"
+msgstr ""
+
+#: invite.php:31
+msgid "Log In"
+msgstr ""
+
+#: facebook_admin.php:39
+msgid "Log in to "
+msgstr ""
+
+#: ajax/plus_functions.php:260 ajax/profile_functions.php:2091
+msgid "Logged out"
+msgstr ""
+
+#: groups.php:231 widgets.php:747
+msgid "Login"
+msgstr ""
+
+#: widgets.php:794
+msgid "Login URL (if using login form)"
+msgstr ""
+
+#: invite.php:41 invite.php:43
+msgid "Lost your password?"
+msgstr ""
+
+#: cp-communitie.php:242
+msgid "Mail"
+msgstr ""
+
+#: cp-communitie.php:275
+msgid "Mail not activated"
+msgstr ""
+
+#: widgets.php:212
+msgid "Mail-Link anzeigen"
+msgstr ""
+
+#: cp-communitie.php:1217
+msgid "Mailbox"
+msgstr ""
+
+#: hooks_filters.php:446 ajax/profile_functions.php:1321
+msgid "March"
+msgstr ""
+
+#: mail.php:61
+msgid "Mark all mail as read"
+msgstr ""
+
+#: widgets.php:307 widgets.php:643 widgets.php:905
+msgid "Max length of preview"
+msgstr ""
+
+#: gallery.php:107
+msgid "Max number of albums"
+msgstr ""
+
+#: widgets.php:304 widgets.php:637
+msgid "Max number of posts"
+msgstr ""
+
+#: widgets.php:391 widgets.php:486
+msgid "Max number shown"
+msgstr ""
+
+#: cp-communitie.php:1230
+msgid "Max tickets per booking:"
+msgstr ""
+
+#: widgets.php:198
+msgid "Maximal angezeigt"
+msgstr ""
+
+#: widgets.php:101
+msgid "Maximale Anzahl von Beiträgen"
+msgstr ""
+
+#: mobile.php:107
+msgid "Maximale Anzahl von Themen"
+msgstr ""
+
+#: widgets.php:104
+msgid "Maximale Länge der Vorschau"
+msgstr ""
+
+#: groups_admin.php:102
+msgid "Maximum invitations"
+msgstr ""
+
+#: widgets.php:1020 widgets.php:1103
+msgid "Maximum number of experts"
+msgstr ""
+
+#: ajax/group_functions.php:702
+msgid "Maximum number of members (0 for unlimited)"
+msgstr ""
+
+#: groups_admin.php:97
+msgid ""
+"Maximum number of members a new group allows (can be changed in group "
+"settings), 0=unlimited."
+msgstr ""
+
+#: widgets.php:911
+msgid "Maximum number of posts"
+msgstr ""
+
+#: lounge_admin.php:28
+msgid "Maximum number of returned rows"
+msgstr ""
+
+#: cp-communitie.php:1227 cp-communitie.php:1228
+msgid "Maximum places:"
+msgstr ""
+
+#: hooks_filters.php:448 ajax/profile_functions.php:1323
+msgid "May"
+msgstr ""
+
+#: plus.php:82
+msgid "Meine Abonnenten"
+msgstr ""
+
+#: yesno.php:118
+msgid "Melde Dich an, um abzustimmen..."
+msgstr ""
+
+#: groups.php:458 ajax/groups_functions.php:167 ajax/group_functions.php:1287
+#: ajax/profile_functions.php:1638
+msgid "Member Count:"
+msgstr ""
+
+#: cp-communitie.php:283
+msgid "Member Directory not activated"
+msgstr ""
+
+#: cp-communitie.php:1216
+msgid "Member Profile"
+msgstr ""
+
+#: ajax/group_functions.php:1331
+msgid "Members"
+msgstr ""
+
+#: groups_admin.php:117
+msgid "Menu structure"
+msgstr ""
+
+#: mail.php:123
+msgid "Message"
+msgstr ""
+
+#: ajax/mail_functions.php:194 ajax/mail_functions.php:201
+msgid "Message deleted."
+msgstr ""
+
+#: ajax/mail_functions.php:240
+msgid "Message sent to"
+msgstr ""
+
+#: cp-communitie.php:1211
+msgid "Message sent!"
+msgstr ""
+
+#: members.php:364 members.php:369 ajax/members_functions.php:373
+msgid "miles"
+msgstr ""
+
+#: profile.php:625
+msgid "Mitglied nicht gefunden, tut mir leid"
+msgstr ""
+
+#: mobile.php:56
+msgid "Mobil"
+msgstr ""
+
+#: mobile.php:56
+msgid "Mobile"
+msgstr ""
+
+#: mobile.php:142
+#, php-format
+msgid "Mobile Version von %s"
+msgstr ""
+
+#: ajax/forum_functions.php:428 ajax/forum_functions.php:429
+msgid "Moderation Required"
+msgstr ""
+
+#: class.cpc_forum.php:425 class.cpc_forum.php:426
+#: ajax/forum_functions.php:1357 ajax/forum_functions.php:1358
+msgid "Moderation required for a reply"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Monday"
+msgstr ""
+
+#: events.php:119 ajax/events_functions.php:1048
+msgid "More info"
+msgstr ""
+
+#: cp-communitie.php:1232
+msgid "More Information"
+msgstr ""
+
+#: cp-communitie.php:1195 gallery.php:288 gallery.php:311 members.php:443
+#: ajax/gallery_functions.php:326 ajax/gallery_functions.php:347
+#: ajax/group_functions.php:1249 ajax/members_functions.php:456
+#: ajax/profile_functions.php:2139
+msgid "more..."
+msgstr ""
+
+#: create_options.php:396 hooks_filters.php:179
+msgid "My Activity"
+msgstr ""
+
+#: create_options.php:408 events.php:225 events.php:227
+msgid "My Events"
+msgstr ""
+
+#: create_options.php:414
+msgid "My Followers"
+msgstr ""
+
+#: create_options.php:402 hooks_filters.php:238
+msgid "My Friends"
+msgstr ""
+
+#: hooks_filters.php:185
+msgid "My Friends Activity"
+msgstr ""
+
+#: create_options.php:410 gallery.php:359
+msgid "My Gallery"
+msgstr ""
+
+#: create_options.php:406 hooks_filters.php:219
+msgid "My Groups"
+msgstr ""
+
+#: create_options.php:394 hooks_filters.php:168
+msgid "My Profile"
+msgstr ""
+
+#: groups.php:393
+msgid "Name of Group"
+msgstr ""
+
+#: ajax/gallery_functions.php:795
+msgid "Name of new album"
+msgstr ""
+
+#: plus_admin.php:85 yesno.php:99 yesno.php:99
+msgid "Nein"
+msgstr ""
+
+#: news.php:224
+#, php-format
+msgid "Neue %s Anfrage von"
+msgstr ""
+
+#: plus_admin.php:235
+msgid "Neue Benutzer automatisch als Freunde zu allen hinzufügen"
+msgstr ""
+
+#: create_options.php:332
+msgid "New Forum Reply"
+msgstr ""
+
+#: create_options.php:330
+msgid "New Forum Topic"
+msgstr ""
+
+#: ajax/group_functions.php:436 ajax/group_functions.php:452
+msgid "New group member"
+msgstr ""
+
+#: ajax/group_functions.php:389
+#, php-format
+msgid "New group member request for %s"
+msgstr ""
+
+#: ajax/group_functions.php:893 ajax/group_functions.php:985
+msgid "New Group Post"
+msgstr ""
+
+#: mail.php:134
+msgid "New mail can only be sent by this member."
+msgstr ""
+
+#: create_options.php:328
+msgid "New Mail Message: [subject]"
+msgstr ""
+
+#: ajax/profile_functions.php:540
+msgid "New Post Reply"
+msgstr ""
+
+#: ajax/profile_functions.php:413
+msgid "New Profile Post"
+msgstr ""
+
+#: cp-communitie.php:392
+msgid "New Topics"
+msgstr ""
+
+#: cp-communitie.php:1196
+msgid "Next"
+msgstr ""
+
+#: mailinglist_admin.php:116 mailinglist_admin.php:118
+msgid "Next scheduled run"
+msgstr ""
+
+#: hooks_filters.php:413 yesno.php:166 ajax/profile_functions.php:1260
+msgid "No"
+msgstr ""
+
+#: ajax/gallery_functions.php:352
+msgid "No albums to show"
+msgstr ""
+
+#: ajax/gallery_functions.php:672
+msgid "No albums yet."
+msgstr ""
+
+#: server/file_upload_form.php:228
+msgid "No bigger than 300x300 pixels."
+msgstr ""
+
+#: events.php:148 ajax/events_functions.php:1069
+msgid "No events yet."
+msgstr ""
+
+#: groups.php:491
+msgid "No group found...."
+msgstr ""
+
+#: groups_admin.php:201
+msgid "No groups created yet."
+msgstr ""
+
+#: ajax/groups_functions.php:183
+msgid "No groups created yet...."
+msgstr ""
+
+#: ajax/gallery_functions.php:448 ajax/gallery_functions.php:539
+msgid "No item ID passed"
+msgstr ""
+
+#: ajax/group_functions.php:1395
+msgid "No members"
+msgstr ""
+
+#: members.php:446 ajax/members_functions.php:459
+#: ajax/members_functions.php:463
+msgid "No members found"
+msgstr ""
+
+#: ajax/forum_functions.php:257
+msgid "No message"
+msgstr ""
+
+#: mailinglist.php:225 mailinglist_admin.php:52
+msgid "No messages found"
+msgstr ""
+
+#: gallery.php:297 ajax/gallery_functions.php:335
+#: ajax/gallery_functions.php:777
+msgid "No photos yet."
+msgstr ""
+
+#: ajax/forum_functions.php:1512
+msgid "No replies"
+msgstr ""
+
+#: ajax/profile_functions.php:1279
+msgid "No sound"
+msgstr ""
+
+#: ajax/forum_functions.php:256
+msgid "No subject"
+msgstr ""
+
+#: mailinglist.php:196
+msgid "No TID found in subject"
+msgstr ""
+
+#: ajax/forum_functions.php:1448 ajax/forum_functions.php:1714
+msgid "No topics started yet"
+msgstr ""
+
+#: cp-communitie.php:457
+msgid "No users have selected to receive the digest."
+msgstr ""
+
+#: hooks_filters.php:378 hooks_filters.php:395 ajax/gallery_functions.php:696
+#: ajax/profile_functions.php:1217 ajax/profile_functions.php:1238
+msgid "Nobody"
+msgstr ""
+
+#: news.php:174
+msgid "Noch nichts zu zeigen."
+msgstr ""
+
+#: events_admin.php:78
+msgid "Non-admin event manager"
+msgstr ""
+
+#: hooks_filters.php:104
+msgid "None"
+msgstr ""
+
+#: ajax/profile_functions.php:1650
+msgid "Not a member of any groups."
+msgstr ""
+
+#: mailinglist.php:175
+msgid "Not added, just checking."
+msgstr ""
+
+#: mailinglist.php:204
+msgid "not found in users"
+msgstr ""
+
+#: groups_admin.php:106
+msgid ""
+"Note: If people who are invited to join via email are not members they will "
+"be able to register first (if the option is set in ClassicPress)."
+msgstr ""
+
+#: ajax/news_functions.php:169
+msgid "Nothing to show yet."
+msgstr ""
+
+#: ajax/group_functions.php:1252 ajax/plus_functions.php:306
+#: ajax/profile_functions.php:852 ajax/profile_functions.php:2143
+msgid "Nothing to show, sorry."
+msgstr ""
+
+#: ajax/group_functions.php:731
+msgid "Notify admin when a new member joins by email?"
+msgstr ""
+
+#: hooks_filters.php:454 ajax/profile_functions.php:1329
+msgid "November"
+msgstr ""
+
+#: gallery_admin.php:61
+msgid "Number of albums to show on the gallery page (shortcode)"
+msgstr ""
+
+#: mailinglist.php:74
+msgid "number of messages found"
+msgstr ""
+
+#: mailinglist_admin.php:40
+msgid "number of messages to be deleted"
+msgstr ""
+
+#: gallery_admin.php:67
+msgid ""
+"Number of photos to show on one row as an album preview on the gallery page "
+"(shortcode)"
+msgstr ""
+
+#: mobile.php:116
+msgid ""
+"Nur zur Verwendung durch den Administrator, um den Benutzeragenten für "
+"mobile Geräte zu überprüfen"
+msgstr ""
+
+#: plus_admin.php:192
+msgid "Nutzern erlauben, YouTube in den Aktivitätsfeed einzubetten"
+msgstr ""
+
+#: hooks_filters.php:453 ajax/profile_functions.php:1328
+msgid "October"
+msgstr ""
+
+#: yesno.php:98
+msgid "oder"
+msgstr ""
+
+#: ajax/plus_functions.php:263 ajax/profile_functions.php:2094
+msgid "Offline"
+msgstr ""
+
+#: panel.php:132
+msgid "Offline erscheinen?"
+msgstr ""
+
+#: ajax/news_functions.php:146
+msgid "Old"
+msgstr ""
+
+#: widgets.php:519
+msgid "Online only"
+msgstr ""
+
+#: widgets.php:207
+msgid "Online-Statusanzeige anzeigen"
+msgstr ""
+
+#: widgets.php:516
+msgid "Online/offline split"
+msgstr ""
+
+#: groups_admin.php:120
+msgid ""
+"Only applicable to the horizontal version of the group page menu, set on the "
+"Plus options tab."
+msgstr ""
+
+#: members.php:62
+msgid "Only friends"
+msgstr ""
+
+#: ajax/ajax_functions.php:16
+msgid "Only site administrators can de-activate debug mode."
+msgstr ""
+
+#: events_admin.php:47 gallery_admin.php:43 groups_admin.php:64
+#: lounge_admin.php:19 mailinglist_admin.php:103 plus_admin.php:132
+msgid "Options"
+msgstr ""
+
+#: ajax/profile_functions.php:871
+msgid "or click here to remove"
+msgstr ""
+
+#: ajax/gallery_functions.php:75
+msgid "Order saved, reload page to view new order."
+msgstr ""
+
+#: ajax/plus_functions.php:114
+msgid "Page"
+msgstr ""
+
+#: gallery_admin.php:59
+msgid "Page size"
+msgstr ""
+
+#: ajax/plus_functions.php:112
+msgid "PAGES"
+msgstr ""
+
+#: news_admin.php:100
+msgid "Parameter"
+msgstr ""
+
+#: mailinglist_admin.php:153 widgets.php:747
+msgid "Password"
+msgstr ""
+
+#: invite.php:41 invite.php:43
+msgid "Password Lost and Found"
+msgstr ""
+
+#: mailinglist_admin.php:155
+msgid "Password of mail account"
+msgstr ""
+
+#: widgets.php:757
+msgid "Password prompt"
+msgstr ""
+
+#: ajax/profile_functions.php:1154
+msgid "Passwords different, please try again."
+msgstr ""
+
+#: ajax/events_functions.php:173
+msgid "Pay!"
+msgstr ""
+
+#: events.php:132 ajax/events_functions.php:1056
+msgid "Payment"
+msgstr ""
+
+#: forum.php:226
+msgid "pending approval"
+msgstr ""
+
+#: forum.php:111
+#, php-format
+msgid ""
+"Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum."
+msgstr ""
+
+#: ajax/profile_functions.php:2152
+msgid "Personal information is private."
+msgstr ""
+
+#: ajax/profile_functions.php:2149
+#, php-format
+msgid "Personal information only for %s."
+msgstr ""
+
+#: profile.php:451 profile.php:822
+#, php-format
+msgid "Persönliche Informationen nur für %s."
+msgstr ""
+
+#: profile.php:455 profile.php:826
+msgid "Persönliche Informationen sind privat."
+msgstr ""
+
+#: ajax/plus_functions.php:131
+msgid "Photo Album"
+msgstr ""
+
+#: ajax/plus_functions.php:129
+msgid "PHOTO ALBUMS"
+msgstr ""
+
+#: ajax/gallery_functions.php:445
+msgid "Photo deleted."
+msgstr ""
+
+#: plus_admin.php:147
+msgid "Platz über dem Menü"
+msgstr ""
+
+#: ajax/group_functions.php:79
+#, php-format
+msgid "Please come and join my group on %s"
+msgstr ""
+
+#: ajax/gallery_functions.php:476
+msgid "Please delete sub albums first."
+msgstr ""
+
+#: create_options.php:47
+msgid "Please don't reply to this email"
+msgstr ""
+
+#: server/file_upload_form.php:225
+msgid "Please ensure that the image is no bigger than 300x300 pixels."
+msgstr ""
+
+#: ajax/gallery_functions.php:561
+msgid "Please enter a title"
+msgstr ""
+
+#: ajax/news_functions.php:182
+msgid "Please login, thank you."
+msgstr ""
+
+#: cp-communitie.php:1245
+msgid "Please make sure all BB Codes have open and close tags!"
+msgstr ""
+
+#: ajax/events_functions.php:538
+msgid "Please now purchase your tickets below:"
+msgstr ""
+
+#: cp-communitie.php:213
+msgid ""
+"Please remove the following folders via FTP.<br />Do <strong>NOT</strong> "
+"remove them via the plugins admin page as this could delete data from your "
+"database:"
+msgstr ""
+
+#: ajax/mail_functions.php:120
+#, php-format
+msgid ""
+"Please select a name from the drop down list to make sure you send to the "
+"right person (%s)."
+msgstr ""
+
+#: cp-communitie.php:1193
+msgid "Please wait"
+msgstr ""
+
+#: cp-communitie.php:73 cp-communitie.php:1144
+msgid "Please Wait..."
+msgstr ""
+
+#: cp-communitie.php:253
+msgid "Plugins"
+msgstr ""
+
+#: ajax/profile_functions.php:1282
+msgid "Pop"
+msgstr ""
+
+#: mailinglist_admin.php:141
+msgid "Port"
+msgstr ""
+
+#: mailinglist_admin.php:143
+msgid "Port used by mail server, eg: 110"
+msgstr ""
+
+#: ajax/group_functions.php:1135
+msgid "Post"
+msgstr ""
+
+#: cp-communitie.php:1202
+msgid "Post added to your activity."
+msgstr ""
+
+#: ajax/forum_functions.php:2407
+msgid "Posted by"
+msgstr ""
+
+#: ajax/profile_functions.php:807 ajax/profile_functions.php:821
+msgid "Posted on"
+msgstr ""
+
+#: ajax/plus_functions.php:96
+msgid "POSTS"
+msgstr ""
+
+#: gallery_admin.php:65
+msgid "Preview photos"
+msgstr ""
+
+#: cp-communitie.php:1238
+msgid "Price per booking:"
+msgstr ""
+
+#: cp-communitie.php:1204
+msgid "Private Mail"
+msgstr ""
+
+#: cp-communitie.php:1205
+msgid "Private mail sent!"
+msgstr ""
+
+#: mailinglist.php:236 mailinglist_admin.php:63
+msgid "Problem connecting to mail server"
+msgstr ""
+
+#: mailinglist.php:58
+msgid "Processing waiting email..."
+msgstr ""
+
+#: create_options.php:424 hooks_filters.php:171
+msgid "Profile"
+msgstr ""
+
+#: create_options.php:420 hooks_filters.php:369
+msgid "Profile Details"
+msgstr ""
+
+#: events_admin.php:89
+msgid "Profile Menu Items"
+msgstr ""
+
+#: cp-communitie.php:267
+msgid "Profile not activated"
+msgstr ""
+
+#: ajax/profile_functions.php:932
+msgid "Profile page header label"
+msgstr ""
+
+#: create_options.php:418
+msgid "Profile Photo"
+msgstr ""
+
+#: plus.php:25
+msgid "Profile Plus"
+msgstr ""
+
+#: ajax/profile_functions.php:491 ajax/profile_functions.php:512
+msgid "Profile Reply"
+msgstr ""
+
+#: mailinglist_admin.php:165
+msgid "Prompt"
+msgstr ""
+
+#: plus_admin.php:207
+#, php-format
+msgid ""
+"Prüfung auf eindeutige Anzeigenamen in %s-Profil-Community-Einstellungen "
+"einbeziehen"
+msgstr ""
+
+#: hooks_filters.php:387 hooks_filters.php:404 ajax/gallery_functions.php:705
+#: ajax/profile_functions.php:1226 ajax/profile_functions.php:1247
+msgid "Public"
+msgstr ""
+
+#: mailinglist_admin.php:110
+msgctxt "Publish box date format"
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: hooks_filters.php:418 ajax/profile_functions.php:1255
+msgid "Publish your activity via RSS (only your initial posts)?"
+msgstr ""
+
+#: ajax/profile_functions.php:1047
+msgid "Re-enter to confirm"
+msgstr ""
+
+#: gallery_admin.php:46
+msgid "Re-size photos in slideshow"
+msgstr ""
+
+#: gallery_admin.php:49
+msgid ""
+"Re-sizing photos will ensure that are displayed at nice size and speed up "
+"loading, but will stretch small images"
+msgstr ""
+
+#: hooks_filters.php:610 ajax/profile_functions.php:1023
+msgid "Receive an email for all new forum topics and replies?"
+msgstr ""
+
+#: ajax/profile_functions.php:1003
+#, php-format
+msgid "Receive an email when a %s adds a post?"
+msgstr ""
+
+#: hooks_filters.php:599
+msgid "Receive an email when a friend adds a post?"
+msgstr ""
+
+#: hooks_filters.php:591 ajax/profile_functions.php:995
+msgid "Receive an email when you get new mail messages?"
+msgstr ""
+
+#: ajax/profile_functions.php:1012
+msgid "Receive an email when you receive likes/dislikes?"
+msgstr ""
+
+#: ajax/group_functions.php:1114
+msgid "Receive emails when there are new posts and replies"
+msgstr ""
+
+#: widgets.php:239
+msgid "Recent Activity"
+msgstr ""
+
+#: widgets.php:1042
+msgid "Recent Alerts"
+msgstr ""
+
+#: ajax/forum_functions.php:1384
+msgid "Recent Topics"
+msgstr ""
+
+#: ajax/news_functions.php:130
+msgid "Recently"
+msgstr ""
+
+#: mail.php:63
+msgid "Recover all deleted mail"
+msgstr ""
+
+#: ajax/profile_functions.php:967
+msgid "Refer to others with @tags, using their display name (without spaces)."
+msgstr ""
+
+#: server/file_upload_form.php:191
+msgid "refresh album"
+msgstr ""
+
+#: cp-communitie.php:1240
+msgid ""
+"Ref|User|Booked|Confirmation email sent|# Tickets|Payment "
+"Confirmed|Actions|Confirm attendee|Send Mail|Re-send confirmation "
+"email|Remove attendee|Confirm payment"
+msgstr ""
+
+#: invite.php:40 widgets.php:747
+msgid "Register"
+msgstr ""
+
+#: widgets.php:769
+msgid "Register prompt"
+msgstr ""
+
+#: ajax/group_functions.php:1383 ajax/profile_functions.php:2015
+msgid "Reject"
+msgstr ""
+
+#: ajax/events_functions.php:185
+msgid "Remaining:"
+msgstr ""
+
+#: invite.php:29
+msgid "Remember Me"
+msgstr ""
+
+#: widgets.php:760
+msgid "Remember me prompt"
+msgstr ""
+
+#: widgets.php:747
+msgid "Remember me?"
+msgstr ""
+
+#: ajax/profile_functions.php:2041
+msgid "Remove all friends"
+msgstr ""
+
+#: cp-communitie.php:1241
+msgid ""
+"Rename|Photo renamed.|Drag thumbnails to re-order, and then|save|Delete this "
+"photo|Set as album cover"
+msgstr ""
+
+#: class.cpc_forum.php:302 ajax/forum_functions.php:1234
+#: ajax/forum_functions.php:1667 ajax/forum_functions.php:1818
+msgid "replied"
+msgstr ""
+
+#: ajax/profile_functions.php:780
+msgid "Replied to"
+msgstr ""
+
+#: ajax/forum_functions.php:1183
+#, php-format
+msgid "Replied to a forum topic in %s:"
+msgstr ""
+
+#: ajax/forum_functions.php:1185
+#, php-format
+msgid "Replied to a group forum topic in %s:"
+msgstr ""
+
+#: ajax/profile_functions.php:813 ajax/profile_functions.php:827
+msgid "Replied to a post on"
+msgstr ""
+
+#: cp-communitie.php:238
+msgid "Replies"
+msgstr ""
+
+#: ajax/forum_functions.php:1435 ajax/forum_functions.php:1506
+#: ajax/forum_functions.php:1942
+msgid "replies"
+msgstr ""
+
+#: cp-communitie.php:413
+msgid "Replies in"
+msgstr ""
+
+#: ajax/mail_functions.php:442 ajax/mail_functions.php:448
+msgid "Reply"
+msgstr ""
+
+#: ajax/forum_functions.php:1432 ajax/forum_functions.php:1503
+#: ajax/forum_functions.php:1939
+msgid "reply"
+msgstr ""
+
+#: mailinglist.php:257
+msgid "Reply by Email"
+msgstr ""
+
+#: groups.php:141
+msgid "Request to Join"
+msgstr ""
+
+#: server/file_upload_form.php:134
+msgid "Reset"
+msgstr ""
+
+#: groups_admin.php:121
+msgid "Reset the above..."
+msgstr ""
+
+#: ajax/forum_functions.php:2419
+msgid "Results found:"
+msgstr ""
+
+#: events_admin.php:56
+msgid "Reverse list order"
+msgstr ""
+
+#: events_admin.php:92
+msgid "Roles who get \"My Events\" on profile page"
+msgstr ""
+
+#: hooks_filters.php:409
+msgid "RSS feed"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Saturday"
+msgstr ""
+
+#: lounge_admin.php:30 ajax/profile_functions.php:1065
+#: ajax/profile_functions.php:1488
+msgid "Save"
+msgstr ""
+
+#: events_admin.php:125 facebook_admin.php:75 gallery_admin.php:82
+#: groups_admin.php:130 mailinglist_admin.php:191
+msgid "Save Changes"
+msgstr ""
+
+#: ajax/group_functions.php:807
+msgid "Save settings"
+msgstr ""
+
+#: events_admin.php:34 gallery_admin.php:27 groups_admin.php:46
+#: mailinglist_admin.php:91
+msgid "Saved"
+msgstr ""
+
+#: cp-communitie.php:1194
+msgid "Saving"
+msgstr ""
+
+#: cp-communitie.php:72 cp-communitie.php:1145
+msgid "Saving..."
+msgstr ""
+
+#: panel.php:120
+msgid "Schließen"
+msgstr ""
+
+#: plus_admin.php:136
+msgid "Scrollendes Profilmenü"
+msgstr ""
+
+#: gallery.php:180 groups.php:425 groups.php:480 groups_admin.php:155
+#: mail.php:54 members.php:60
+msgid "Search"
+msgstr ""
+
+#: cp-communitie.php:1215
+msgid "Search Gallery"
+msgstr ""
+
+#: cp-communitie.php:1214
+msgid "Search on forum"
+msgstr ""
+
+#: plus_admin.php:277
+msgid "Seiten"
+msgstr ""
+
+#: widgets.php:107
+msgid "Seiten-Aktivität einbeziehen"
+msgstr ""
+
+#: groups_admin.php:137
+msgid ""
+"Select a group to show current members. Then type part of a member's display "
+"name or username to search. Keep blank for all users."
+msgstr ""
+
+#: hooks_filters.php:96
+msgid "Select a topic"
+msgstr ""
+
+#: server/upload_avatar.php:169 server/upload_group_avatar.php:181
+msgid "Select an area above..."
+msgstr ""
+
+#: events_admin.php:58
+msgid "Select to reverse list order (by start date)"
+msgstr ""
+
+#: mail.php:84
+msgid "Send"
+msgstr ""
+
+#: cp-communitie.php:1203
+msgid "Send a private mail..."
+msgstr ""
+
+#: cp-communitie.php:1235
+msgid "Send confirmation email:"
+msgstr ""
+
+#: cp-communitie.php:1242
+msgid "Sending"
+msgstr ""
+
+#: cp-communitie.php:74
+msgid "Sending..."
+msgstr ""
+
+#: mail.php:145 ajax/ajax_functions.php:33
+msgid "Sent"
+msgstr ""
+
+#: mail.php:42
+msgid "Sent Items"
+msgstr ""
+
+#: hooks_filters.php:452 ajax/profile_functions.php:1327
+msgid "September"
+msgstr ""
+
+#: mailinglist_admin.php:135
+msgid "Server"
+msgstr ""
+
+#: mailinglist_admin.php:137
+msgid "Server URL or IP address, eg: mail.example.com"
+msgstr ""
+
+#: ajax/gallery_functions.php:692
+msgid "Share with:"
+msgstr ""
+
+#: lounge_admin.php:68
+msgid "Shortcode to display The Lounge within a page."
+msgstr ""
+
+#: news_admin.php:92
+msgid "Shortcodes"
+msgstr ""
+
+#: widgets.php:509
+msgid "Show"
+msgstr ""
+
+#: events_admin.php:120
+msgid "Show all events on a site."
+msgstr ""
+
+#: widgets.php:776
+msgid "Show avatar"
+msgstr ""
+
+#: widgets.php:489
+msgid "Show details as list"
+msgstr ""
+
+#: widgets.php:792
+msgid "Show Login Form"
+msgstr ""
+
+#: widgets.php:784
+msgid "Show Login/Logout links"
+msgstr ""
+
+#: widgets.php:500
+msgid "Show mail link"
+msgstr ""
+
+#: widgets.php:495
+msgid "Show online status indicator"
+msgstr ""
+
+#: cp-communitie.php:1223
+msgid "Show original"
+msgstr ""
+
+#: widgets.php:627
+msgid "Show parent (replies)"
+msgstr ""
+
+#: widgets.php:622
+msgid "Show replies"
+msgstr ""
+
+#: gallery.php:39
+msgid "Shows albums that have had new items recently uploaded into them."
+msgstr ""
+
+#: widgets.php:777
+msgid "Size of avatar (in pixels, eg: 100)"
+msgstr ""
+
+#: gallery_admin.php:55
+msgid "Size of gallery thumbnails"
+msgstr ""
+
+#: mailinglist.php:88
+msgid "Snippet"
+msgstr ""
+
+#: mobile.php:130
+msgid ""
+"So installierst Du das Mobile/SEO/Accessibility-Plugin auf Deiner Webseite:"
+msgstr ""
+
+#: forum.php:110
+msgid "Sorry, but you are not permitted to view the forum."
+msgstr ""
+
+#: server/file_upload_form.php:110
+msgid "Sorry, file type not allowed."
+msgstr ""
+
+#: ajax/profile_functions.php:713
+msgid "Sorry, there is no personal information to show."
+msgstr ""
+
+#: ajax/profile_functions.php:719
+msgid "Sorry, this member has chosen not to share their personal information."
+msgstr ""
+
+#: members.php:125
+msgid "Sort by:"
+msgstr ""
+
+#: ajax/profile_functions.php:1274
+msgid "Sound for new chat messages? (refresh browser after changing)"
+msgstr ""
+
+#: ajax/gallery_functions.php:670
+msgid "Start by creating an album"
+msgstr ""
+
+#: ajax/events_functions.php:933
+msgid "Start Date"
+msgstr ""
+
+#: ajax/events_functions.php:935
+msgid "Start Time"
+msgstr ""
+
+#: events.php:108 ajax/events_functions.php:1030
+msgid "Start: "
+msgstr ""
+
+#: ajax/profile_functions.php:797
+msgid "Started"
+msgstr ""
+
+#: forum.php:210 ajax/forum_functions.php:1687 ajax/forum_functions.php:1837
+msgid "started"
+msgstr ""
+
+#: ajax/forum_functions.php:436
+#, php-format
+msgid "Started a new forum topic in %s:"
+msgstr ""
+
+#: ajax/forum_functions.php:212
+msgid "Started a new forum topic:"
+msgstr ""
+
+#: ajax/forum_functions.php:438
+msgid "Started a new group forum topic:"
+msgstr ""
+
+#: ajax/forum_functions.php:1416
+msgid "Started by"
+msgstr ""
+
+#: plus_admin.php:221
+msgid "Stelle die Entfernung auf Meilen ein, sonst auf Kilometer"
+msgstr ""
+
+#: yesno.php:205
+msgid "Stimmen zurücksetzen?"
+msgstr ""
+
+#: events_admin.php:62
+msgid "Style of display"
+msgstr ""
+
+#: mail.php:119 ajax/ajax_functions.php:34
+msgid "Subject"
+msgstr ""
+
+#: plus.php:132
+msgid "Suche..."
+msgstr ""
+
+#: mobile.php:159
+msgid "Suchmaschinen"
+msgstr ""
+
+#: cp-communitie.php:1231 widgets.php:664
+msgid "Summary"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Sunday"
+msgstr ""
+
+#: members.php:135
+msgid "Surname (if entered in display name)"
+msgstr ""
+
+#: profile.php:1085
+#, php-format
+msgid "Teile den Beitrag auf Facebook als <a target='_blank' href='%s'>%s</a>"
+msgstr ""
+
+#: mobile.php:102
+msgid ""
+"Text, der oben auf der relevanten Seite angezeigt wird, wenn ein "
+"Handy/Tablet erkannt wird (HTML/Links erlaubt).<br />Geben Sie 'hide' ein, "
+"um die Anzeige zu vermeiden."
+msgstr ""
+
+#: plus_admin.php:257
+msgid "Textaufforderung"
+msgstr ""
+
+#: ajax/forum_functions.php:126
+msgid ""
+"Thank you for voting. You can only have one vote per post, so your previous "
+"vote has been replaced."
+msgstr ""
+
+#: mailinglist_admin.php:179
+msgid "The bottom boundary of where replies should be entered"
+msgstr ""
+
+#: facebook_admin.php:81
+msgid ""
+"The following settings are used with the www.cpcymposium.com website, as an "
+"example."
+msgstr ""
+
+#: hooks_filters.php:497
+#, php-format
+msgid ""
+"The Google map that will be displayed on top of your %s profile page, "
+"resulting from your personal data above."
+msgstr ""
+
+#: create_options.php:416 create_options.php:446 lounge.php:84 lounge.php:87
+#: lounge.php:124 lounge.php:124
+msgid "The Lounge"
+msgstr ""
+
+#: lounge_admin.php:26
+msgid "The Lounge plugin provides a site wide chat room (\"shoutbox\")."
+msgstr ""
+
+#: ajax/gallery_functions.php:713
+msgid "The maximum size of uploaded files is"
+msgstr ""
+
+#: ajax/forum_functions.php:879
+msgid "The reply commented on is"
+msgstr ""
+
+#: mailinglist_admin.php:173
+msgid "The top boundary of where replies should be entered"
+msgstr ""
+
+#: ajax/mail_functions.php:275
+msgid "There was a problem sending an email notification to"
+msgstr ""
+
+#: ajax/mail_functions.php:242
+msgid "There was a problem sending your mail to"
+msgstr ""
+
+#: ajax/chat/load_message.php:23
+msgid "These are unreceived messages from the previous chat session!"
+msgstr ""
+
+#: ajax/profile_functions.php:923
+msgid "These options are only visible to site administrator."
+msgstr ""
+
+#: ajax/group_functions.php:29
+msgid ""
+"They will receive an email with a link to click on that will take them to "
+"this site and group page."
+msgstr ""
+
+#: activity.php:53
+msgid "This activity is now not available publicly."
+msgstr ""
+
+#: ajax/news_functions.php:138
+msgid "This month"
+msgstr ""
+
+#: widgets.php:1098
+msgid "This widget is only shown to logged in users."
+msgstr ""
+
+#: gallery_admin.php:53
+msgid "Thumbnail size"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Thursday"
+msgstr ""
+
+#: events.php:83 ajax/events_functions.php:1005
+msgid "Tickets left:"
+msgstr ""
+
+#: widgets.php:908 widgets.php:1017
+msgid "Time period (days)"
+msgstr ""
+
+#: ajax/ajax_functions.php:32 ajax/mail_functions.php:430
+msgid "To"
+msgstr ""
+
+#: invite.php:20
+msgid "To continue, please log in or register."
+msgstr ""
+
+#: ajax/group_functions.php:76
+msgid "To:"
+msgstr ""
+
+#: ajax/events_functions.php:81 ajax/news_functions.php:122
+msgid "Today"
+msgstr ""
+
+#: mailinglist_admin.php:171
+msgid "Top divider"
+msgstr ""
+
+#: widgets.php:932
+msgid "Top Experts"
+msgstr ""
+
+#: class.cpc_ui.php:120 class.cpc_ui.php:121
+msgid "Top Level"
+msgstr ""
+
+#: mailinglist.php:87
+msgid "Topic ID"
+msgstr ""
+
+#: mailinglist.php:189
+msgid "Topic ID not found"
+msgstr ""
+
+#: cp-communitie.php:236
+msgid "Topics"
+msgstr ""
+
+#: widgets.php:817
+msgid "Topics without an accepted answer"
+msgstr ""
+
+#: ajax/group_functions.php:771
+msgid "Transfer group admin to:"
+msgstr ""
+
+#: ajax/events_functions.php:320 ajax/events_functions.php:369
+#: ajax/events_functions.php:522
+#, php-format
+msgid "Tried to send an email to %s, but it failed, sorry."
+msgstr ""
+
+#: hooks_filters.php:569
+msgid "Trusted Member?"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Tuesday"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Turn your ClassicPress site into a social network. Activate features on the "
+"Installation page."
+msgstr ""
+
+#: news_admin.php:36
+msgid ""
+"Um die Liste der Warnungen nach links/rechts oder oben/unten zu verschieben, "
+"ändere die Offset-Werte unten. Verwende negative Werte, um sie nach "
+"links/oben zu bewegen, und positive Werte, um sie nach rechts/unten zu "
+"bewegen."
+msgstr ""
+
+#: plus_admin.php:251
+#, php-format
+msgid ""
+"Um eine Mitgliedersuche hinzuzufügen, verwende den Shortcode [%s-search] "
+"oder verwende &quot;echo %ssearch(150)&quot; in PHP, wobei 150 die Breite in "
+"Pixel ist."
+msgstr ""
+
+#: cp-communitie.php:1210 ajax/plus_functions.php:343
+msgid "Unfollow"
+msgstr ""
+
+#: mail.php:146
+msgid "Unread only"
+msgstr ""
+
+#: cp-communitie.php:1191 groups_admin.php:185
+msgid "Update"
+msgstr ""
+
+#: server/file_upload_form.php:190
+msgid "Upload another"
+msgstr ""
+
+#: ajax/group_functions.php:797 ajax/profile_functions.php:879
+msgid "Upload photo"
+msgstr ""
+
+#: ajax/gallery_functions.php:721
+msgid "Upload photo(s)"
+msgstr ""
+
+#: events_admin.php:84
+msgid "Use WYSIWYG editor"
+msgstr ""
+
+#: events_admin.php:86
+msgid ""
+"Use WYSIWYG editor for more information and confirmation email (not summary)?"
+msgstr ""
+
+#: groups_admin.php:192
+msgid ""
+"Used to display a group page, should not be included in user navigation or "
+"menu."
+msgstr ""
+
+#: invite.php:22 invite.php:26 mailinglist_admin.php:147 widgets.php:747
+msgid "Username"
+msgstr ""
+
+#: mailinglist_admin.php:149
+msgid "Username of mail account"
+msgstr ""
+
+#: widgets.php:754
+msgid "Username prompt"
+msgstr ""
+
+#: profile.php:1106
+msgid "Verbinde dich mit Facebook"
+msgstr ""
+
+#: news_admin.php:43
+msgid "Verschiebe die Position der Liste der Warnungen nach links/rechts"
+msgstr ""
+
+#: news_admin.php:50
+msgid "Verschiebe die Position der Liste der Warnungen nach oben/unten"
+msgstr ""
+
+#: news_admin.php:47
+msgid "Vertikaler Versatz"
+msgstr ""
+
+#: plus_admin.php:218
+msgid "Verwende Meilen für die Geokodierung der Entfernung"
+msgstr ""
+
+#: cp-communitie.php:425
+msgid "video"
+msgstr ""
+
+#: yesno.php:107
+msgid ""
+"Vielen Dank für Deine Stimmabgabe. Aktualisiere die Seite für die neuesten "
+"Ergebnisse"
+msgstr ""
+
+#: cp-communitie.php:427
+msgid "View topic"
+msgstr ""
+
+#: cp-communitie.php:240
+msgid "Views"
+msgstr ""
+
+#: news.php:168
+msgid "von"
+msgstr ""
+
+#: ajax/ajax_functions.php:54
+msgid "Warning Report"
+msgstr ""
+
+#: cp-communitie.php:339
+msgid "Website Title"
+msgstr ""
+
+#: cp-communitie.php:340
+msgid "Website URL"
+msgstr ""
+
+#: ajax/events_functions.php:86
+msgid "Wednesday"
+msgstr ""
+
+#: groups.php:204 ajax/group_functions.php:752
+msgid "Welcome page"
+msgstr ""
+
+#: news_admin.php:61
+msgid ""
+"Wenn Dein Theme Probleme mit der Dropdown-Liste verursacht, besteht eine "
+"Alternative darin, die Dropdown-Liste auszublenden, und der Benutzer wird "
+"zur Seite „Warnungen“ weitergeleitet, wenn auf das Menüelement geklickt wird:"
+msgstr ""
+
+#: ajax/group_functions.php:741
+msgid "What should the default page be?"
+msgstr ""
+
+#: create_options.php:304
+msgid "What`s up?"
+msgstr ""
+
+#: ajax/profile_functions.php:966
+msgid "When your @tag is clicked, the browser is taken to your profile page."
+msgstr ""
+
+#: hooks_filters.php:487 ajax/profile_functions.php:1369
+msgid "Which country are you in?"
+msgstr ""
+
+#: hooks_filters.php:482 ajax/profile_functions.php:1361
+msgid "Which town/city are you in?"
+msgstr ""
+
+#: cp-communitie.php:1218
+msgid "Who am I following?"
+msgstr ""
+
+#: hooks_filters.php:374 ajax/profile_functions.php:1212
+msgid "Who do you want to share personal information with?"
+msgstr ""
+
+#: hooks_filters.php:391 ajax/profile_functions.php:1233
+msgid "Who do you want to share your activity with?"
+msgstr ""
+
+#: gallery.php:104 widgets.php:301 widgets.php:388 widgets.php:483
+#: widgets.php:614 widgets.php:751 widgets.php:887 widgets.php:999
+#: widgets.php:1100
+msgid "Widget Title"
+msgstr ""
+
+#: widgets.php:98 widgets.php:195
+msgid "Widget-Titel"
+msgstr ""
+
+#: server/file_upload_include.php:34
+msgid "will be attached to your post."
+msgstr ""
+
+#: server/file_upload_form.php:133
+msgid "will be attached..."
+msgstr ""
+
+#: widgets.php:62 widgets.php:157 widgets.php:265 widgets.php:357
+#: widgets.php:443 widgets.php:571 widgets.php:699 widgets.php:846
+#: widgets.php:960 widgets.php:1068
+msgid "Wird geladen..."
+msgstr ""
+
+#: class.cpc_ui.php:58 class.cpc_ui.php:68 cp-communitie.php:1224
+#: ajax/group_functions.php:930 ajax/group_functions.php:1126
+#: ajax/group_functions.php:1233 ajax/group_functions.php:1233
+#: ajax/group_functions.php:1233
+msgid "Write a comment..."
+msgstr ""
+
+#: hooks_filters.php:416 yesno.php:165 ajax/profile_functions.php:1263
+msgid "Yes"
+msgstr ""
+
+#: ajax/news_functions.php:126
+msgid "Yesterday"
+msgstr ""
+
+#: groups.php:160
+msgid "You are no longer a member of this group."
+msgstr ""
+
+#: groups.php:139
+msgid "You are now a member of this group."
+msgstr ""
+
+#: ajax/forum_functions.php:1962
+msgid ""
+"You can add your favourite forum topics by clicking on the heart beside any "
+"forum topic title."
+msgstr ""
+
+#: ajax/group_functions.php:32
+#, php-format
+msgid "You can invite a maximum of %d people at a time."
+msgstr ""
+
+#: facebook_admin.php:43
+msgid ""
+"You can leave <strong>App Namespace</strong> blank and ignore <strong>Web "
+"Hosting</strong>, click on Continue"
+msgstr ""
+
+#: cp-communitie.php:435
+msgid "You can stop receiving these emails at"
+msgstr ""
+
+#: cp-communitie.php:1236
+msgid "You can use the following:"
+msgstr ""
+
+#: groups_admin.php:138
+msgid ""
+"You cannot add or remove the group administrator. Group administrators are "
+"not displayed."
+msgstr ""
+
+#: ajax/forum_functions.php:50
+msgid ""
+"You have accepted an answer. If a better answer is posted, you can change "
+"your selection."
+msgstr ""
+
+#: ajax/profile_functions.php:69
+msgid "You have been sent a "
+msgstr ""
+
+#: ajax/forum_functions.php:47
+msgid ""
+"You have changed the answer. If a better answer is posted, you can change "
+"your selection again."
+msgstr ""
+
+#: ajax/events_functions.php:372
+#, php-format
+msgid ""
+"You have confirmed the booking for %s, for %d ticket(s) for event (%s) ID:"
+msgstr ""
+
+#: ajax/profile_functions.php:1805
+#, php-format
+msgid "You have received a %s request from %s"
+msgstr ""
+
+#: ajax/group_functions.php:247
+msgid "You have successfully joined this group"
+msgstr ""
+
+#: mail.php:151
+msgid "You have to login to access your mail."
+msgstr ""
+
+#: groups.php:251
+#, php-format
+msgid "You need to <a href='%s'>login</a> to access this group."
+msgstr ""
+
+#: ajax/events_functions.php:279 ajax/events_functions.php:545
+#, php-format
+msgid "You need to be <a href='%s'>logged in</a> to book events."
+msgstr ""
+
+#: ajax/events_functions.php:804
+#, php-format
+msgid "You need to be <a href='%s'>logged in</a> to delete events."
+msgstr ""
+
+#: members.php:29
+#, php-format
+msgid "You need to be <a href='%s'>logged in</a> to view the directory."
+msgstr ""
+
+#: ajax/profile_functions.php:1657
+#, php-format
+msgid "You need to be <a href='%s'>logged in</a> to view this member's groups."
+msgstr ""
+
+#: ajax/forum_functions.php:1455
+msgid "You recently started"
+msgstr ""
+
+#: ajax/events_functions.php:410
+#, php-format
+msgid "You removed %s from event (%s) ID:"
+msgstr ""
+
+#: ajax/forum_functions.php:1569
+msgid "You replied"
+msgstr ""
+
+#: widgets.php:412
+#, php-format
+msgid "Your %s"
+msgstr ""
+
+#: cp-communitie.php:1220
+#, php-format
+msgid "Your %s request has been sent."
+msgstr ""
+
+#: ajax/profile_functions.php:1941
+#, php-format
+msgid "Your %s request to %s has been accepted"
+msgstr ""
+
+#: ajax/events_functions.php:443
+msgid ""
+"Your booking has been cancelled, the event organiser has been informed.<br />"
+"<br />If you need a refund, please contact the event organiser directly."
+msgstr ""
+
+#: ajax/events_functions.php:526
+msgid "Your booking has been reserved, the event organiser has been informed."
+msgstr ""
+
+#: hooks_filters.php:427 ajax/profile_functions.php:1301
+msgid "Your date of birth"
+msgstr ""
+
+#: ajax/profile_functions.php:976
+msgid "Your email address"
+msgstr ""
+
+#: ajax/profile_functions.php:943
+msgid "Your first name"
+msgstr ""
+
+#: ajax/profile_functions.php:951
+msgid "Your last name"
+msgstr ""
+
+#: groups.php:142
+msgid "Your membership is awaiting approval."
+msgstr ""
+
+#: ajax/profile_functions.php:959
+msgid "Your name as shown"
+msgstr ""
+
+#: ajax/forum_functions.php:1524
+msgid "Your recent replies"
+msgstr ""
+
+#: groups.php:151
+msgid "Your request to join is awaiting approval."
+msgstr ""
+
+#: ajax/profile_functions.php:964
+msgid "Your user tag is "
+msgstr ""
+
+#: yesno.php:97
+msgid "Your vote"
+msgstr ""
+
+#: plus_admin.php:228
+msgid "z.B. Wenn oben Meilen eingestellt, werden auch Kilometer angezeigt"
+msgstr ""
+
+#: plus_admin.php:302
+msgid "Zeige das Suchformular für die automatische Vervollständigung an."
+msgstr ""
+
+#: news_admin.php:99
+msgid "Zeigt die neuesten Benachrichtigungen eines Mitglieds an."
+msgstr ""
+
+#: widgets.php:121
+msgid "Zeigt Mitglieder an, die kürzlich online waren."
+msgstr ""
+
+#: mobile.php:151
+#, php-format
+msgid "Zugängliche Version von %s"
+msgstr ""
+
+#: news_admin.php:86
+msgid "Zum Hinzufügen zu einer Theme-Vorlage"
+msgstr ""
+
+#: news_admin.php:57
+msgid ""
+"Ändere das Abrufintervall, um die Belastung Deines Servers zu verringern"
+msgstr ""
+
+#: mobile.php:122 news_admin.php:110 plus_admin.php:307
+msgid "Änderungen speichern"
+msgstr ""

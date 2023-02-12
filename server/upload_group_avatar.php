@@ -178,7 +178,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					$html .= '</div>';
 			
 					$html .= '<div id="image_instructions"> ';
-					$html .= '<p>'.__('Select an area above...', CPC_TEXT_DOMAIN).'</p>';
+					$html .= '<p>'.__('Select an area above...', 'cp-communitie').'</p>';
 						$html .= '<input type="hidden" id="x" name="x" />';
 						$html .= '<input type="hidden" id="y" name="y" />';
 						$html .= '<input type="hidden" id="x2" name="x2" />';
@@ -203,7 +203,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", CPC_TEXT_DOMAIN);
+			echo __("Failed to upload the file.", 'cp-communitie');
 			exit;
 		}
 		

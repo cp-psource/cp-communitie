@@ -3,7 +3,7 @@
  * Template Name: Demo profile page 4
  * Description: A Profile Page Template to demonstrate using classes
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
@@ -65,7 +65,7 @@ This also assumes the .css file is also in the current theme folder along with t
 				} else {
 					// Pending friend?
 					if ($cpc_user->is_pending_friend()) {
-						echo __('Friendship requested.', CPC_TEXT_DOMAIN);
+						echo __('Friendship requested.', 'cp-communitie');
 						echo $cpc_ui->friendship_cancel($cpc_user->get_id(), 'Cancel', 'Cancelled!', 'my-submit-button');
 					} else {
 						// Not a friend

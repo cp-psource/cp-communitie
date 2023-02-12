@@ -1,7 +1,7 @@
 <?php
 /*
 CP Community Lounge
-Description: Shoutbox plugin compatible with CP Community. Put [cpcommunitie-lounge] on any WordPress page. Also acts as demonstration for CP Community development.
+Description: Shoutbox plugin compatible with CP Community. Put [cpcommunitie-lounge] on any ClassicPress page. Also acts as demonstration for CP Community development.
 */
 
 
@@ -24,8 +24,8 @@ function __cpc__lounge_main() {
 	
 			// Display the comment form
 			$html .= '<div id="__cpc__lounge_add_comment_div">';
-			$html .= '<input type="text" class="input-field" id="__cpc__lounge_add_comment" onblur="this.value=(this.value==\'\') ? \''.__("Add a comment..", CPC_TEXT_DOMAIN).'\' : this.value;" onfocus="this.value=(this.value==\''.__("Add a comment..", CPC_TEXT_DOMAIN).'\') ? \'\' : this.value;" value="'.__("Add a comment..", CPC_TEXT_DOMAIN).'">';
-			$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', CPC_TEXT_DOMAIN).'" /> ';
+			$html .= '<input type="text" class="input-field" id="__cpc__lounge_add_comment" onblur="this.value=(this.value==\'\') ? \''.__("Add a comment..", 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__("Add a comment..", 'cp-communitie').'\') ? \'\' : this.value;" value="'.__("Add a comment..", 'cp-communitie').'">';
+			$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', 'cp-communitie').'" /> ';
 			$html .= '</div>';
 		
 		}
@@ -81,10 +81,10 @@ function __cpc__add_lounge_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,
 	
 			if ($uid1 == $uid2) {
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge'))
-					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text')) != '' ? $t :  __('The Lounge', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text')) != '' ? $t :  __('The Lounge', 'cp-communitie')).'</div>';  
 			} else {
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other'))
-					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text')) != '' ? $t :  __('The Lounge', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text')) != '' ? $t :  __('The Lounge', 'cp-communitie')).'</div>';  
 			}
 		}
 		
@@ -121,7 +121,7 @@ add_filter('__cpc__profile_menu_tabs', '__cpc__add_lounge_menu_tabs', 10, 9);
 function __cpc__add_lounge_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('The Lounge', CPC_TEXT_DOMAIN), __('The Lounge', CPC_TEXT_DOMAIN), 'edit_themes', CPC_DIR.'/lounge_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('The Lounge', 'cp-communitie'), __('The Lounge', 'cp-communitie'), 'edit_themes', CPC_DIR.'/lounge_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_lounge_to_admin_menu');
 

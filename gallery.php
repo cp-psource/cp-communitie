@@ -34,9 +34,9 @@ function __cpc__gallery_load_widgets() {
 
 class Gallery_Widget extends WP_Widget {
 
-	function Gallery_Widget() {
+	public function __construct() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'widget_gallery', 'description' => __('Shows albums that have had new items recently uploaded into them.', CPC_TEXT_DOMAIN) );
+		$widget_ops = array( 'classname' => 'widget_gallery', 'description' => __('Shows albums that have had new items recently uploaded into them.', 'cp-communitie') );
 		
 		/* Widget control settings. */
 		$control_ops = array( 'id_base' => 'gallery-widget' );
@@ -44,7 +44,7 @@ class Gallery_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'gallery-widget', 
-		    CPC_WL_SHORT.': '.__('Gallery', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Gallery', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -101,10 +101,10 @@ class Gallery_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'albumcount' ); ?>"><?php echo __('Max number of albums', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'albumcount' ); ?>"><?php echo __('Max number of albums', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'albumcount' ); ?>" name="<?php echo $this->get_field_name( 'albumcount' ); ?>" value="<?php echo $instance['albumcount']; ?>" style="width: 30px" />
 		</p>
 		<?php
@@ -145,7 +145,7 @@ function __cpc__do_Gallery_Widget($albumcount) {
 									echo get_avatar($album->owner, 32);
 								echo "</div>";
 								echo "<div class='__cpc__gallery_recent_activity_row_post'>";
- 									$text = __('added to ', CPC_TEXT_DOMAIN)." <a href='".$profile_url.$q."uid=".$album->owner."&embed=on&album_id=".$album->gid."'>".stripslashes($album->name)."</a>";
+ 									$text = __('added to ', 'cp-communitie')." <a href='".$profile_url.$q."uid=".$album->owner."&embed=on&album_id=".$album->gid."'>".stripslashes($album->name)."</a>";
 									echo "<a href='".$profile_url.$q."uid=".$album->owner."'>".$album->display_name."</a> ".$text." ".__cpc__time_ago($album->updated);
 								echo "</div>";
 							echo "</div>";
@@ -177,7 +177,7 @@ function __cpc__show_gallery() {
 		
 	$html .= "<div style='padding:0px'>";
 	$html .= '<input type="text" id="gallery_member" autocomplete="off" name="gallery_member" class="gallery_member_box" value="'.$term.'" style="margin-right:10px" />';
-	$html .= '<input id="gallery_go_button" type="submit" class="__cpc__button" value="'.__("Search", CPC_TEXT_DOMAIN).'" />';
+	$html .= '<input id="gallery_go_button" type="submit" class="__cpc__button" value="'.__("Search", 'cp-communitie').'" />';
 	$html .= "</div>";	
 	
 	$sql = "SELECT g.*, u.display_name FROM ".$wpdb->base_prefix."cpcommunitie_gallery g
@@ -285,7 +285,7 @@ function __cpc__show_gallery() {
 					     				$html .= '</div>';
 			
 						       		if (count($photos) > $preview_count && $cnt == $preview_count) {
-						       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('more...', CPC_TEXT_DOMAIN).'<div style="clear:both"></div></div>';
+						       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('more...', 'cp-communitie').'<div style="clear:both"></div></div>';
 						       		}   		
 					      				
 					       		}
@@ -294,7 +294,7 @@ function __cpc__show_gallery() {
 							
 							} else {
 							
-						      	 $html .= __("No photos yet.", CPC_TEXT_DOMAIN);
+						      	 $html .= __("No photos yet.", 'cp-communitie');
 						     
 							}
 			
@@ -308,7 +308,7 @@ function __cpc__show_gallery() {
 		
 		}
 	
-		$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("more...", CPC_TEXT_DOMAIN)."</a></div>";
+		$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("more...", 'cp-communitie')."</a></div>";
 		
 		$html .= '</div>';
 		
@@ -335,7 +335,7 @@ if (!is_admin()) {
 function __cpc__add_gallery_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Gallery', CPC_TEXT_DOMAIN), __('Gallery', CPC_TEXT_DOMAIN), 'manage_options', CPC_DIR.'/gallery_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Gallery', 'cp-communitie'), __('Gallery', 'cp-communitie'), 'manage_options', CPC_DIR.'/gallery_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_gallery_to_admin_menu');
 
@@ -356,10 +356,10 @@ function __cpc__add_gallery_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
   
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery'))
-				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text')) != '' ? $t :  __('My Gallery', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text')) != '' ? $t :  __('My Gallery', 'cp-communitie')).'</div>';  
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other'))
-				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text')) != '' ? $t :  __('Gallery', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text')) != '' ? $t :  __('Gallery', 'cp-communitie')).'</div>';  
 		}
 	}
 	return $html;

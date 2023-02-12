@@ -107,17 +107,17 @@ if (is_user_logged_in()) {
 					//echo "Stored in: " . $_FILES["file"]["tmp_name"];
 					
 					if (!$extAllowed) {
-						echo __('Sorry, file type not allowed.', CPC_TEXT_DOMAIN);
+						echo __('Sorry, file type not allowed.', 'cp-communitie');
 					} else {
 						// Copy file to tmp location
 						if (move_uploaded_file($_FILES["file"]["tmp_name"], $targetFile)) {
 							if ($uploader_ver == 'activity') {
-								// echo __('Image uploaded to '.$_FILES["file"]["tmp_name"].' and moved to '.$targetFile, CPC_TEXT_DOMAIN);
+								// echo __('Image uploaded to '.$_FILES["file"]["tmp_name"].' and moved to '.$targetFile, 'cp-communitie');
 							}
 							if ($uploader_ver == 'avatar') {
 								// update database
 								__cpc__update_meta($current_user->ID, 'profile_photo', "'".$filename."'");
-								echo __('Avatar updated!', CPC_TEXT_DOMAIN);
+								echo __('Avatar updated!', 'cp-communitie');
 							} 
 							if ($uploader_ver == 'group_avatar') {
 								// update database
@@ -127,11 +127,11 @@ if (is_user_logged_in()) {
 									array( '%s' ), 
 									array( '%d' )
 									);
-								echo __('Group avatar updated!', CPC_TEXT_DOMAIN);
+								echo __('Group avatar updated!', 'cp-communitie');
 							} 
 							if ($uploader_ver == 'forum' || $uploader_ver == 'activity') {
-								echo '<div id="forum_file_list">'.$filename.' '.__('will be attached...', CPC_TEXT_DOMAIN).'</div>';
-								echo '<a href="file_upload_form.php?uploader_uid='.$current_user->ID.'&uploader_tid='.$tid.'&uploader_gid='.$uploader_gid.'&uploader_aid='.$uploader_aid.'&uploader_dir='.$uploader_dir.'&uploader_url='.$uploader_url.'&uploader_ver='.$uploader_ver.'">'.__('Reset', CPC_TEXT_DOMAIN).'</a>';
+								echo '<div id="forum_file_list">'.$filename.' '.__('will be attached...', 'cp-communitie').'</div>';
+								echo '<a href="file_upload_form.php?uploader_uid='.$current_user->ID.'&uploader_tid='.$tid.'&uploader_gid='.$uploader_gid.'&uploader_aid='.$uploader_aid.'&uploader_dir='.$uploader_dir.'&uploader_url='.$uploader_url.'&uploader_ver='.$uploader_ver.'">'.__('Reset', 'cp-communitie').'</a>';
 							}
 							if ($uploader_ver == 'gallery') {
 							
@@ -187,8 +187,8 @@ if (is_user_logged_in()) {
 		
 								$profile_url = __cpc__get_url('profile');
 								$q = __cpc__string_query($profile_url);
-								echo __('Image uploaded', CPC_TEXT_DOMAIN).'. <a href="file_upload_form.php?uploader_uid='.$current_user->ID.'&uploader_tid='.$tid.'&uploader_gid='.$uploader_gid.'&uploader_aid='.$uploader_aid.'&uploader_dir='.$uploader_dir.'&uploader_url='.$uploader_url.'&uploader_ver='.$uploader_ver.'">'.__('Upload another', CPC_TEXT_DOMAIN).'</a>';
-								echo ', or <a target="_parent" href="'.$profile_url.$q.'?view=gallery&album_id='.$uploader_aid.'&embed=on">'.__('refresh album', CPC_TEXT_DOMAIN).'</a>?';
+								echo __('Image uploaded', 'cp-communitie').'. <a href="file_upload_form.php?uploader_uid='.$current_user->ID.'&uploader_tid='.$tid.'&uploader_gid='.$uploader_gid.'&uploader_aid='.$uploader_aid.'&uploader_dir='.$uploader_dir.'&uploader_url='.$uploader_url.'&uploader_ver='.$uploader_ver.'">'.__('Upload another', 'cp-communitie').'</a>';
+								echo ', or <a target="_parent" href="'.$profile_url.$q.'?view=gallery&album_id='.$uploader_aid.'&embed=on">'.__('refresh album', 'cp-communitie').'</a>?';
 								
 								add_to_create_activity_feed($uploader_aid);
 							}
@@ -219,13 +219,13 @@ if (is_user_logged_in()) {
 		$subject_uid = isset($_GET['subject_uid']) ? $_GET['subject_uid'] : $current_user->ID;
 		 
 		if ($uploader_ver == 'forum' || $uploader_ver == 'activity') {
-			echo '<div id="__cpc__file_upload_basic_label" style="font-weight:bold;">'.__('Attach file', CPC_TEXT_DOMAIN).'</div>';
+			echo '<div id="__cpc__file_upload_basic_label" style="font-weight:bold;">'.__('Attach file', 'cp-communitie').'</div>';
 		} 
 		if ($uploader_ver == 'avatar') {
-			echo '<strong>'.__('Please ensure that the image is no bigger than 300x300 pixels.', CPC_TEXT_DOMAIN).'</strong><br />';
+			echo '<strong>'.__('Please ensure that the image is no bigger than 300x300 pixels.', 'cp-communitie').'</strong><br />';
 		}
 		if ($uploader_ver == 'group_avatar') {
-			echo '<strong>'.__('No bigger than 300x300 pixels.', CPC_TEXT_DOMAIN).'</strong><br />';
+			echo '<strong>'.__('No bigger than 300x300 pixels.', 'cp-communitie').'</strong><br />';
 		}
 
 		echo '<form action="file_upload_form.php" enctype="multipart/form-data" method="post">';
@@ -258,7 +258,7 @@ function add_to_create_activity_feed($aid) {
 	$name = $wpdb->get_var($wpdb->prepare($sql, $aid));
 	
 	// Work out message
-	$msg = __("Added to", CPC_TEXT_DOMAIN).' '.$name.'[]'.$aid.'[]added';
+	$msg = __("Added to", 'cp-communitie').' '.$name.'[]'.$aid.'[]added';
 	
 	// First remove any older messages to avoid duplication that mention this album
 	$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_comments WHERE subject_uid = ".$current_user->ID." AND author_uid = ".$current_user->ID." AND comment LIKE '%".$name."%' AND type = 'gallery'";

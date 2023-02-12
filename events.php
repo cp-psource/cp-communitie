@@ -65,14 +65,14 @@ function __cpc__events_main() {
 							if ( ($event->event_owner == $current_user->ID) || (__cpc__get_current_userlevel() == 5) ) {
 								$html .= "<div class='__cpc__event_list_item_icons'>";
 								if ($event->event_live != 'on') {
-									$html .= '<div style="font-style:italic;float:right;">'.__('Edit to publish', CPC_TEXT_DOMAIN).'</div>';
+									$html .= '<div style="font-style:italic;float:right;">'.__('Edit to publish', 'cp-communitie').'</div>';
 								}
 								$html .= "<a href='javascript:void(0)' class='cpcommunitie_delete_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/delete.png' /></a>";
 								$html .= "<a href='javascript:void(0)' class='__cpc__edit_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/edit.png' /></a>";
 								$html .= "</div>";
 							}
 												
-							$html .= '<div class="__cpc__event_list_owner">'.__("Added by", CPC_TEXT_DOMAIN)." ".__cpc__profile_link($event->ID).'</div>';
+							$html .= '<div class="__cpc__event_list_owner">'.__("Added by", 'cp-communitie')." ".__cpc__profile_link($event->ID).'</div>';
 							$html .= '<div class="__cpc__event_list_name">'.stripslashes($event->event_name).'</div>';
 							$html .= '<div class="__cpc__event_list_location">'.stripslashes($event->event_location).'</div>';
 							if ($event->event_enable_places && $event->event_show_max) {
@@ -80,14 +80,14 @@ function __cpc__events_main() {
 								$taken = $wpdb->get_var($wpdb->prepare($sql, $event->eid));
 								$html .= '<div class="__cpc__event_list_places">';
 									if ($event->event_max_places-$taken > 0) {
-										$html .= __('Tickets left:', CPC_TEXT_DOMAIN).' '.($event->event_max_places-$taken);
+										$html .= __('Tickets left:', 'cp-communitie').' '.($event->event_max_places-$taken);
 									} else {
-										$html .= __('Event full', CPC_TEXT_DOMAIN);
+										$html .= __('Event full', 'cp-communitie');
 									}
 								$html .= '</div>';
 							}
 							if (isset($event->event_cost) && $event->event_cost !== null) {
-								$html .= '<div class="cpcommunitie_event_cost">'.__('Cost per ticket:', CPC_TEXT_DOMAIN).' '.$event->event_cost.'</div>';
+								$html .= '<div class="cpcommunitie_event_cost">'.__('Cost per ticket:', 'cp-communitie').' '.$event->event_cost.'</div>';
 							}
 							$html .= '<div class="__cpc__event_list_description">';
 							$html .= stripslashes($event->event_description);
@@ -105,10 +105,10 @@ function __cpc__events_main() {
 							$html .= '</div>';
 							$html .= '<div class="__cpc__event_list_times">';
 								if ($event->event_start_hours != 99) {
-									$html .= __('Start: ', CPC_TEXT_DOMAIN).$event->event_start_hours.":".sprintf('%1$02d', $event->event_start_minutes);
+									$html .= __('Start: ', 'cp-communitie').$event->event_start_hours.":".sprintf('%1$02d', $event->event_start_minutes);
 								}
 								if ($event->event_end_hours != 99) {
-									$html .= ' '.__('End: ', CPC_TEXT_DOMAIN).$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
+									$html .= ' '.__('End: ', 'cp-communitie').$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
 								}
 							$html .= '</div>';
 	
@@ -116,7 +116,7 @@ function __cpc__events_main() {
 							if ($event->event_more) {
 								$more = str_replace(chr(10), '<br />', stripslashes($event->event_more));
 								$html .= '<div id="cpcommunitie_more_'.$event->eid.'" title="'.stripslashes($event->event_name).'" class="__cpc__dialog_content"><div style="text-align:left">'.$more.'</div></div>';
-								$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("More info", CPC_TEXT_DOMAIN).'" />';
+								$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("More info", 'cp-communitie').'" />';
 							}
 							if (is_user_logged_in() && $event->event_enable_places) {
 									// check to see if already booked
@@ -124,17 +124,17 @@ function __cpc__events_main() {
 									$ret = $wpdb->get_row($wpdb->prepare($sql, $event->eid, $current_user->ID));
 									if (!$ret || !$ret->tickets) {
 										if ($event->event_max_places-$taken > 0)
-											$html .= '<input type="submit" id="cpcommunitie_book_event" data-eid="'.$event->eid.'" data-max="'.$event->event_tickets_per_booking.'" class="__cpc__button cpcommunitie_book_event_button" value="'.__("Book", CPC_TEXT_DOMAIN).'" />';
+											$html .= '<input type="submit" id="cpcommunitie_book_event" data-eid="'.$event->eid.'" data-max="'.$event->event_tickets_per_booking.'" class="__cpc__button cpcommunitie_book_event_button" value="'.__("Book", 'cp-communitie').'" />';
 									} else {
-										$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'"  class="__cpc__button cpcommunitie_cancel_event_button" value="'.__("Cancel", CPC_TEXT_DOMAIN).'" />';
+										$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'"  class="__cpc__button cpcommunitie_cancel_event_button" value="'.__("Cancel", 'cp-communitie').'" />';
 									}
 									if ($ret && !$ret->confirmed && !$ret->payment_processed && $ret->tickets && $ret->event_cost)
-										$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'" style="margin-left:5px" class="__cpc__button" value="'.__("Payment", CPC_TEXT_DOMAIN).'" />';
+										$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'" style="margin-left:5px" class="__cpc__button" value="'.__("Payment", 'cp-communitie').'" />';
 									if ($ret && $ret->tickets ) {
 										if ($ret->confirmed) {
-											$html .= '<br />'.sprintf(_n('Confirmed by the event organiser for %d ticket.','Confirmed by the event organiser for %d tickets.', $ret->tickets, CPC_TEXT_DOMAIN), $ret->tickets);
+											$html .= '<br />'.sprintf(_n('Confirmed by the event organiser for %d ticket.','Confirmed by the event organiser for %d tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);
 										} else {
-											$html .= '<br />'.sprintf(_n('Awaiting confirmation from the organiser for %d ticket.','Awaiting confirmation from the organiser for %d tickets.', $ret->tickets, CPC_TEXT_DOMAIN), $ret->tickets);
+											$html .= '<br />'.sprintf(_n('Awaiting confirmation from the organiser for %d ticket.','Awaiting confirmation from the organiser for %d tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);
 										}
 									}
 										
@@ -145,7 +145,7 @@ function __cpc__events_main() {
 					}
 				}
 			} else {
-				$html .= __('No events yet.', CPC_TEXT_DOMAIN);
+				$html .= __('No events yet.', 'cp-communitie');
 			}
 		
 		$html .= '</div>';		
@@ -222,17 +222,17 @@ function __cpc__add_events_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_events')) {
 				if ($extra_class == '') {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', 'cp-communitie')).'</div>';  
 				} else {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', 'cp-communitie')).'</div>';  
 				}
 			}
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_events_other')) {
 				if ($extra_class == '') {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text')) != '' ? $t :  __('Events', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text')) != '' ? $t :  __('Events', 'cp-communitie')).'</div>';  
 				} else {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text')) != '' ? $t :  __('Events', CPC_TEXT_DOMAIN)).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_other_text')) != '' ? $t :  __('Events', 'cp-communitie')).'</div>';  
 				}
 			}
 		}
@@ -292,7 +292,7 @@ add_filter('__cpc__profile_menu_tabs_filter', '__cpc__add_events_menu_tabs', 9, 
 function __cpc__add_events_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Events', CPC_TEXT_DOMAIN), __('Events', CPC_TEXT_DOMAIN), 'manage_options', CPC_DIR.'/events_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Events', 'cp-communitie'), __('Events', 'cp-communitie'), 'manage_options', CPC_DIR.'/events_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_events_to_admin_menu');
 

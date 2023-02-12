@@ -115,7 +115,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 				
 			} else {
 				// Invalid extension, just remove uploaded file
-				$html .= __('Invalid file extension, the following are permitted:', CPC_TEXT_DOMAIN).' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
+				$html .= __('Invalid file extension, the following are permitted:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
 			}
 	
 			echo $html;
@@ -123,7 +123,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", CPC_TEXT_DOMAIN);
+			echo __("Failed to upload the file.", 'cp-communitie');
 			exit;
 		}
 	} else {

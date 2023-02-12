@@ -11,7 +11,7 @@ if ($_POST['action'] == 'requestDelete') {
 	$group_id = $_POST['group_id'];
 	$request_text = $_POST['request_text'];
 
-	__cpc__sendmail(get_bloginfo('admin_email'), __('Group Delete Request', CPC_TEXT_DOMAIN), __('From:', CPC_TEXT_DOMAIN).': '.$current_user->display_name.'<br /><br />'.$request_text.'<br /><br />Ref: '.$group_id);							
+	__cpc__sendmail(get_bloginfo('admin_email'), __('Group Delete Request', 'cp-communitie'), __('From:', 'cp-communitie').': '.$current_user->display_name.'<br /><br />'.$request_text.'<br /><br />Ref: '.$group_id);							
 
 	exit;	
 }
@@ -23,16 +23,16 @@ if ($_POST['action'] == 'group_menu_invites') {
 
 	if (is_user_logged_in()) {
 
-		$html .= '<h1>'.__('Group Invitations', CPC_TEXT_DOMAIN).'</h1>';
+		$html .= '<h1>'.__('Group Invitations', 'cp-communitie').'</h1>';
 		
-		$html .= '<p>'.__('Enter email addresses of people you would like to invite to your group, separated by commas, or on separate lines.', CPC_TEXT_DOMAIN).' ';
-		$html .= __('They will receive an email with a link to click on that will take them to this site and group page.', CPC_TEXT_DOMAIN).' ';
-		$html .= __('If they are not members of this site, they will be able to register before logging in.', CPC_TEXT_DOMAIN).'</p>';
+		$html .= '<p>'.__('Enter email addresses of people you would like to invite to your group, separated by commas, or on separate lines.', 'cp-communitie').' ';
+		$html .= __('They will receive an email with a link to click on that will take them to this site and group page.', 'cp-communitie').' ';
+		$html .= __('If they are not members of this site, they will be able to register before logging in.', 'cp-communitie').'</p>';
 
-		$html .= '<p style="font-weight:bold">'.sprintf(__('You can invite a maximum of %d people at a time.', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_group_invites_max')).'</p>';
+		$html .= '<p style="font-weight:bold">'.sprintf(__('You can invite a maximum of %d people at a time.', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_group_invites_max')).'</p>';
 		
 		$html .= '<textarea id="cpcommunitie_group_invites" rows="10" style="width:98%; margin-bottom:10px;"></textarea>';
-		$html .= '<input type="submit" id="cpcommunitie_group_invites_button" name="Submit" class="__cpc__button" value="'.__('Invite', CPC_TEXT_DOMAIN).'" /> ';
+		$html .= '<input type="submit" id="cpcommunitie_group_invites_button" name="Submit" class="__cpc__button" value="'.__('Invite', 'cp-communitie').'" /> ';
 
 		$html .= '<div id="cpcommunitie_group_invites_sent" style="display:none"></div>';
 		
@@ -71,12 +71,12 @@ if ($_POST['action'] == 'sendInvites') {
 			foreach ($email_addresses as $email_address) {
 					
 				if (trim($email_address)) {
-					$body = "<h1>".__('Group Invitation', CPC_TEXT_DOMAIN)."</h1>";
+					$body = "<h1>".__('Group Invitation', 'cp-communitie')."</h1>";
 		
-					$body .= '<p>'.__('To:', CPC_TEXT_DOMAIN).' '.$email_address.'<br />';
-					$body .= __('From:', CPC_TEXT_DOMAIN).' '.$current_user->user_email.'</p>';
+					$body .= '<p>'.__('To:', 'cp-communitie').' '.$email_address.'<br />';
+					$body .= __('From:', 'cp-communitie').' '.$current_user->user_email.'</p>';
 		
-					$body .= '<p>'.sprintf(__("Please come and join my group on %s", CPC_TEXT_DOMAIN), $blog_name).'!</p>';
+					$body .= '<p>'.sprintf(__("Please come and join my group on %s", 'cp-communitie'), $blog_name).'!</p>';
 		
 					$body .= '<h2>'.$group->name.'</h2>';
 					$body .= '<p>'.$group->description.'</p>';
@@ -96,7 +96,7 @@ if ($_POST['action'] == 'sendInvites') {
 					$headers .= "From: ".$from_email . $crlf;
 		
 					// finally send mail
-					if (__cpc__sendmail($email_address, __('Group Invitation', CPC_TEXT_DOMAIN), $body)) {
+					if (__cpc__sendmail($email_address, __('Group Invitation', 'cp-communitie'), $body)) {
 						$html .= $email_address.'<br />';
 					} else {
 						$html .= $email_address.' (failed)<br />';
@@ -243,12 +243,12 @@ if ($_POST['action'] == 'acceptGroup') {
 				
 		if ($recipient) {
 							
-			$body = "<h1>".__("Group Membership", CPC_TEXT_DOMAIN)."</h1>";
-			$body .= "<p>".__('You have successfully joined this group', CPC_TEXT_DOMAIN).".</p>";
-			$body .= "<p><a href='".__cpc__get_url('group')."&gid=".$gid."'>".__('Go to the group', CPC_TEXT_DOMAIN)."...</a></p>";
+			$body = "<h1>".__("Group Membership", 'cp-communitie')."</h1>";
+			$body .= "<p>".__('You have successfully joined this group', 'cp-communitie').".</p>";
+			$body .= "<p><a href='".__cpc__get_url('group')."&gid=".$gid."'>".__('Go to the group', 'cp-communitie')."...</a></p>";
 
 			if ( $recipient->ID != $current_user->ID) {
-				__cpc__sendmail($recipient->user_email, __('Group Membership', CPC_TEXT_DOMAIN), $body);
+				__cpc__sendmail($recipient->user_email, __('Group Membership', 'cp-communitie'), $body);
 			}
 		}
 
@@ -385,8 +385,8 @@ if ($_POST['action'] == 'joinGroup') {
 					WHERE m.group_id = %d AND m.admin = 'on'";
 			$email_address = $wpdb->get_var($wpdb->prepare($sql, $gid));
 	
-			$body = "<h1>".__('Group Request', CPC_TEXT_DOMAIN)."</h1>";
-			$body .= '<p>'.sprintf(__("New group member request for %s", CPC_TEXT_DOMAIN), stripslashes($group->name)).': '.$current_user->display_name.'</p>';
+			$body = "<h1>".__('Group Request', 'cp-communitie')."</h1>";
+			$body .= '<p>'.sprintf(__("New group member request for %s", 'cp-communitie'), stripslashes($group->name)).': '.$current_user->display_name.'</p>';
 	
 			$url = __cpc__get_url('group');
 			$url .= __cpc__string_query($url);
@@ -399,7 +399,7 @@ if ($_POST['action'] == 'joinGroup') {
 			$body = str_replace("\\", "", $body);
 		
 			// finally send mail
-			if (__cpc__sendmail($email_address, __('Group Request', CPC_TEXT_DOMAIN), $body)) {
+			if (__cpc__sendmail($email_address, __('Group Request', 'cp-communitie'), $body)) {
 				$html = '';
 			} else {
 				$html = 'Failed to send email to '.$email_address;
@@ -433,7 +433,7 @@ function __cpc__inform_members($group_name, $gid, $new_member_emails) {
 	if ($new_member_emails == 'on') {
 		
 		$body = "<h1>".stripslashes($group_name)."</h1>";
-		$body .= '<p>'.__("New group member", CPC_TEXT_DOMAIN).': '.$current_user->display_name.'</p>';
+		$body .= '<p>'.__("New group member", 'cp-communitie').': '.$current_user->display_name.'</p>';
 	
 		$url = __cpc__get_url('group');
 		$url .= __cpc__string_query($url);
@@ -449,7 +449,7 @@ function __cpc__inform_members($group_name, $gid, $new_member_emails) {
 		$recipients = $wpdb->get_results($wpdb->prepare($sql, $gid));	
 	
 		foreach ($recipients AS $recipient) {
-			if (__cpc__sendmail($recipient->user_email, __('New group member', CPC_TEXT_DOMAIN), $body)) {
+			if (__cpc__sendmail($recipient->user_email, __('New group member', 'cp-communitie'), $body)) {
 				//$html .= 'Sent to '.$recipient->user_email.' ';
 			} else {
 				$html .= 'Failed to send email to '.$recipient->user_email.'<br />';
@@ -663,7 +663,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 		
 					// Display name
 					$html .= '<div style="clear:right; margin-bottom:15px;">';
-						$html .= __('Group name', CPC_TEXT_DOMAIN);
+						$html .= __('Group name', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="text" id="groupname" value="'.$groupname.'">';
 						$html .= '</div>';
@@ -671,7 +671,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 					
 					// Description
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Group description', CPC_TEXT_DOMAIN);
+						$html .= __('Group description', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="text" id="groupdescription" value="'.$groupdescription.'">';
 						$html .= '</div>';
@@ -679,7 +679,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 					
 					// Private?
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Do new members have to be accepted?', CPC_TEXT_DOMAIN);
+						$html .= __('Do new members have to be accepted?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="checkbox" name="private" id="private"';
 								if ($private == "on") { $html .= "CHECKED"; }
@@ -689,7 +689,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 				
 					// Private Content to non-members?
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Is content hidden from non-members?', CPC_TEXT_DOMAIN);
+						$html .= __('Is content hidden from non-members?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="checkbox" name="content_private" id="content_private"';
 								if ($content_private == "on") { $html .= "CHECKED"; }
@@ -699,7 +699,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 
 					// Max number of members
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Maximum number of members (0 for unlimited)', CPC_TEXT_DOMAIN);
+						$html .= __('Maximum number of members (0 for unlimited)', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="text" style="width:50px" name="max_members" id="max_members" value="'.$max_members.'">';
 						$html .= '</div>';
@@ -708,7 +708,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 	
 					// Forum?
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Enable the group forum?', CPC_TEXT_DOMAIN);
+						$html .= __('Enable the group forum?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="checkbox" name="group_forum" id="group_forum"';
 								if ($group_forum == "on") { $html .= "CHECKED"; }
@@ -718,7 +718,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 				
 					// Allow new topics
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Allow members to create forum topics?', CPC_TEXT_DOMAIN);
+						$html .= __('Allow members to create forum topics?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="checkbox" name="allow_new_topics" id="allow_new_topics"';
 								if ($allow_new_topics == "on") { $html .= "CHECKED"; }
@@ -728,7 +728,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 							
 					// Inform members of new group members
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Notify admin when a new member joins by email?', CPC_TEXT_DOMAIN);
+						$html .= __('Notify admin when a new member joins by email?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<input type="checkbox" name="new_member_emails" id="new_member_emails"';
 								if ($new_member_emails == "on") { $html .= "CHECKED"; }
@@ -738,18 +738,18 @@ if ($_POST['action'] == 'group_menu_settings') {
 				
 					// Default group page
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('What should the default page be?', CPC_TEXT_DOMAIN);
+						$html .= __('What should the default page be?', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$html .= '<select name="default_page" id="default_page">';
 								$html .= '<option value="activity"';
 									if ($default_page == 'activity') { $html .= ' SELECTED'; }
-									$html .= '>'.__('Activity', CPC_TEXT_DOMAIN).'</option>';
+									$html .= '>'.__('Activity', 'cp-communitie').'</option>';
 								$html .= '<option value="forum"';
 									if ($default_page == 'forum') { $html .= ' SELECTED'; }
-									$html .= '>'.__('Forum', CPC_TEXT_DOMAIN).'</option>';
+									$html .= '>'.__('Forum', 'cp-communitie').'</option>';
 								$html .= '<option value="about"';
 									if ($default_page == 'about') { $html .= ' SELECTED'; }
-									$html .= '>'.__('Welcome page', CPC_TEXT_DOMAIN).'</option>';
+									$html .= '>'.__('Welcome page', 'cp-communitie').'</option>';
 							$html .= '</select>';
 						$html .= '</div>';
 					$html .= '</div>';
@@ -757,7 +757,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 					// Add activity to alerts?
 					if (function_exists('__cpc__news_add')) {
 						$html .= '<div style="clear: right; margin-bottom:15px;">';
-							$html .= __('Include activity posts in Alerts?', CPC_TEXT_DOMAIN);
+							$html .= __('Include activity posts in Alerts?', 'cp-communitie');
 							$html .= '<div style="float:right;">';
 								$html .= '<input type="checkbox" name="add_alerts" id="add_alerts"';
 									if ($add_alerts == "on") { $html .= "CHECKED"; }
@@ -768,7 +768,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 				
 					// Transfer group ownership
 					$html .= '<div style="clear: right; margin-bottom:15px;">';
-						$html .= __('Transfer group admin to:', CPC_TEXT_DOMAIN);
+						$html .= __('Transfer group admin to:', 'cp-communitie');
 						$html .= '<div style="float:right;">';
 							$sql = "SELECT u.ID, u.display_name, m.admin
 									FROM ".$wpdb->base_prefix."users u
@@ -794,17 +794,17 @@ if ($_POST['action'] == 'group_menu_settings') {
 								WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/group_avatar_upload/', 
 								WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/group_avatar_upload/',
 								'group_avatar',
-								__('Upload photo', CPC_TEXT_DOMAIN),
+								__('Upload photo', 'cp-communitie'),
 								0,
 								$gid
 							);
 						$html .= '</div>';								
-						$html .= '<p>'.__('Choose an image for the group...', CPC_TEXT_DOMAIN).'</p>';
+						$html .= '<p>'.__('Choose an image for the group...', 'cp-communitie').'</p>';
 						$html .= '<div id="group_image_to_crop" style="width:95%;margin-bottom:15px; float:left;"></div>';
 					$html .= '</div>';								
 
 					$html .= '<p style="clear:both">';
-					$html .= '<input type="submit" id="updateGroupSettingsButton" name="Submit" class="__cpc__button" value="'.__('Save settings', CPC_TEXT_DOMAIN).'" /> ';
+					$html .= '<input type="submit" id="updateGroupSettingsButton" name="Submit" class="__cpc__button" value="'.__('Save settings', 'cp-communitie').'" /> ';
 					$html .= '</p>';
 
 				
@@ -884,16 +884,16 @@ if ($_POST['action'] == 'group_addComment') {
 			if ($recipients) {
 								
 				$body = "<h1>".stripslashes($group_name)."</h1>";
-				$body .= "<p>".$author_name." ".__('has added a new reply to the group', CPC_TEXT_DOMAIN).":</p>";
+				$body .= "<p>".$author_name." ".__('has added a new reply to the group', 'cp-communitie').":</p>";
 				$body .= "<p>".stripslashes($text)."</p>";
-				$body .= "<p><a href='".$url."'>".__('Go to the group post', CPC_TEXT_DOMAIN)."...</a></p>";
+				$body .= "<p><a href='".$url."'>".__('Go to the group post', 'cp-communitie')."...</a></p>";
 				foreach ($recipients as $recipient) {
 					if ( $recipient->ID != $current_user->ID) {
 						if ($recipient->notify == 'on') {
-							__cpc__sendmail($recipient->user_email, __('New Group Post', CPC_TEXT_DOMAIN), $body);
+							__cpc__sendmail($recipient->user_email, __('New Group Post', 'cp-communitie'), $body);
 						}
 						if (function_exists('__cpc__news_add') && $add_alerts == 'on') {
-							__cpc__news_add($current_user->ID, $recipient->ID, "<a href='".$url."'>".__("Group reply:", CPC_TEXT_DOMAIN)." ".$author_name." ".__("has replied in", CPC_TEXT_DOMAIN)." ".$group_name."</a>");
+							__cpc__news_add($current_user->ID, $recipient->ID, "<a href='".$url."'>".__("Group reply:", 'cp-communitie')." ".$author_name." ".__("has replied in", 'cp-communitie')." ".$group_name."</a>");
 						}
 					}
 				}
@@ -927,7 +927,7 @@ if ($_POST['action'] == 'group_addStatus') {
 
 	if (is_user_logged_in()) {
 		
-		if ( ($text != __("Write a comment...", CPC_TEXT_DOMAIN)) && ($text != '') ) {
+		if ( ($text != __("Write a comment...", 'cp-communitie')) && ($text != '') ) {
 
 			$wpdb->query( $wpdb->prepare( "
 				INSERT INTO ".$wpdb->base_prefix."cpcommunitie_comments
@@ -976,16 +976,16 @@ if ($_POST['action'] == 'group_addStatus') {
 			if ($recipients) {
 								
 				$body = "<h1>".stripslashes($group_name)."</h1>";
-				$body .= "<p>".$author_name." ".__('has added a new post to the group', CPC_TEXT_DOMAIN).":</p>";
+				$body .= "<p>".$author_name." ".__('has added a new post to the group', 'cp-communitie').":</p>";
 				$body .= "<p>".stripslashes($text)."</p>";
-				$body .= "<p><a href='".$url."'>".__('Go to the group post', CPC_TEXT_DOMAIN)."...</a></p>";
+				$body .= "<p><a href='".$url."'>".__('Go to the group post', 'cp-communitie')."...</a></p>";
 				foreach ($recipients as $recipient) {
 					if ( $recipient->ID != $current_user->ID) {
 						if ($recipient->notify == 'on') {
-							__cpc__sendmail($recipient->user_email, __('New Group Post', CPC_TEXT_DOMAIN), $body);
+							__cpc__sendmail($recipient->user_email, __('New Group Post', 'cp-communitie'), $body);
 						}
 						if (function_exists('__cpc__news_add') && $add_alerts == 'on') {
-							__cpc__news_add($author_uid, $recipient->ID, "<a href='".$url."'>".__("Group post:", CPC_TEXT_DOMAIN)." ".$author_name." ".__("has posted in", CPC_TEXT_DOMAIN)." ".$group_name."</a>");							
+							__cpc__news_add($author_uid, $recipient->ID, "<a href='".$url."'>".__("Group post:", 'cp-communitie')." ".$author_name." ".__("has posted in", 'cp-communitie')." ".$group_name."</a>");							
 						}
 					}
 				}
@@ -1111,7 +1111,7 @@ if ($_POST['action'] == 'group_menu_wall') {
 			$notify = $wpdb->get_var($wpdb->prepare("SELECT notify FROM ".$wpdb->prefix . "cpcommunitie_group_members WHERE group_id = %d AND member_id = %d", $uid1, $uid2));
 			$html .= "<input type='checkbox' id='group_notify'";
 			if ($notify == "on") { $html .= " CHECKED"; }
-			$html .= "> ".__("Receive emails when there are new posts and replies", CPC_TEXT_DOMAIN);
+			$html .= "> ".__("Receive emails when there are new posts and replies", 'cp-communitie');
 		}
 			
 		// Wall
@@ -1123,7 +1123,7 @@ if ($_POST['action'] == 'group_menu_wall') {
 				// Add status surrounding div
 				$html .= '<div id="cpcommunitie_add_status">';
 
-					$whatsup = __('Write a comment...', CPC_TEXT_DOMAIN);
+					$whatsup = __('Write a comment...', 'cp-communitie');
 
 					$html .= '<textarea ';
 					if (get_option(CPC_OPTIONS_PREFIX.'_elastic')) $html .= 'class="elastic" ';
@@ -1132,7 +1132,7 @@ if ($_POST['action'] == 'group_menu_wall') {
 					$html .= '</textarea>';
 
 					if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-						$html .= '<br /><input id="cpcommunitie_group_add_comment" type="submit" class="__cpc__button" style="width:75px;" value="'.__('Post', CPC_TEXT_DOMAIN).'" /> ';
+						$html .= '<br /><input id="cpcommunitie_group_add_comment" type="submit" class="__cpc__button" style="width:75px;" value="'.__('Post', 'cp-communitie').'" /> ';
 					}
 					
 				$html .= '</div>';
@@ -1230,10 +1230,10 @@ if ($_POST['action'] == 'group_menu_wall') {
 
 												$html .= '<textarea id="__cpc__reply_'.$comment->cid.'" title="'.$comment->cid.'" class="__cpc__group_reply';
 												if (get_option(CPC_OPTIONS_PREFIX.'_elastic')) $html .= ' elastic';
-												$html .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Write a comment...', CPC_TEXT_DOMAIN).'\' : this.value;" onfocus="this.value=(this.value==\''.__('Write a comment...', CPC_TEXT_DOMAIN).'\') ? \'\' : this.value;">'.__('Write a comment...', CPC_TEXT_DOMAIN).'</textarea>';
+												$html .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Write a comment...', 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__('Write a comment...', 'cp-communitie').'\') ? \'\' : this.value;">'.__('Write a comment...', 'cp-communitie').'</textarea>';
 												
 												if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-													$html .= '<br /><input title="'.$comment->cid.'" id="__cpc__reply_'.$comment->cid.'" type="submit" style="width:75px" class="__cpc__button reply_field-button" value="'.__('Add', CPC_TEXT_DOMAIN).'" />';
+													$html .= '<br /><input title="'.$comment->cid.'" id="__cpc__reply_'.$comment->cid.'" type="submit" style="width:75px" class="__cpc__button reply_field-button" value="'.__('Add', 'cp-communitie').'" />';
 												}
 												$html .= '<input id="cpcommunitie_author_'.$comment->cid.'" type="hidden" value="'.$comment->author_uid.'" />';
 									$html .= '</div>';
@@ -1246,10 +1246,10 @@ if ($_POST['action'] == 'group_menu_wall') {
 							
 				}
 
-				$html .= "<a href='javascript:void(0)' id='showmore_group_wall' title='".($limit_from+$limit_count)."'>".__("more...", CPC_TEXT_DOMAIN)."</a>";
+				$html .= "<a href='javascript:void(0)' id='showmore_group_wall' title='".($limit_from+$limit_count)."'>".__("more...", 'cp-communitie')."</a>";
 
 			} else {
-				$html .= "<br />".__("Nothing to show, sorry.", CPC_TEXT_DOMAIN);
+				$html .= "<br />".__("Nothing to show, sorry.", 'cp-communitie');
 			}
 		
 		$html .= "</div>";
@@ -1284,7 +1284,7 @@ if ($_POST['action'] == 'group_menu_members') {
 		$sql = "SELECT COUNT(*) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id=%d";
 		$member_count = $wpdb->get_var($wpdb->prepare($sql, $uid1));
 		
-		$html .= "<div id='group_member_count'>".__("Member Count:", CPC_TEXT_DOMAIN)." ".$member_count."</div>";
+		$html .= "<div id='group_member_count'>".__("Member Count:", 'cp-communitie')." ".$member_count."</div>";
 		
 		$sql = "SELECT u.ID, g.admin, g.valid 
 		FROM ".$wpdb->prefix."cpcommunitie_group_members g 
@@ -1322,13 +1322,13 @@ if ($_POST['action'] == 'group_menu_members') {
 			foreach ($members as $member) {
 				
 				if ($member['valid'] != "on" && $shown_pending_title == false) {
-					$html .= "<br /><p><strong>".__("Awaiting approval", CPC_TEXT_DOMAIN)."</strong></p>";
+					$html .= "<br /><p><strong>".__("Awaiting approval", 'cp-communitie')."</strong></p>";
 					$shown_pending_title = true;
 					$shown_members_title = false;					
 				}
 				
 				if ($member['valid'] == "on" && $shown_members_title == false) {
-					$html .= "<br /><p><strong>".__("Members", CPC_TEXT_DOMAIN)."</strong></p>";
+					$html .= "<br /><p><strong>".__("Members", 'cp-communitie')."</strong></p>";
 				}
 				
 				$time_now = time();
@@ -1362,7 +1362,7 @@ if ($_POST['action'] == 'group_menu_members') {
 						$html .= "<div class='members_avatar'>";
 							$html .= get_avatar($member['ID'], 64);
 						$html .= "</div>";
-						$html .= __cpc__profile_link($member['ID']).', '.__('last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($member['last_activity']).". ";
+						$html .= __cpc__profile_link($member['ID']).', '.__('last active', 'cp-communitie').' '.__cpc__time_ago($member['last_activity']).". ";
 						if ($last_active_minutes >= $offline) {
 							//$html .= '<img src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/loggedout.gif">';
 						} else {
@@ -1373,17 +1373,17 @@ if ($_POST['action'] == 'group_menu_members') {
 							}
 						}
 						if ($member['admin'] == "on") {
-							$html .= "<br />[".__("group admin", CPC_TEXT_DOMAIN)."]";
+							$html .= "<br />[".__("group admin", 'cp-communitie')."]";
 						}
 						
 						// Requesting group membership...
 						if ($member['valid'] != "on") {
 							$html .= "<div style='clear: both; margin-bottom:15px;'>";
 								$html .= "<div style='float:right;'>";
-									$html .= '<input type="submit" title="'.$member['ID'].'" id="rejectgrouprequest" class="__cpc__button" value="'.__('Reject', CPC_TEXT_DOMAIN).'" /> ';
+									$html .= '<input type="submit" title="'.$member['ID'].'" id="rejectgrouprequest" class="__cpc__button" value="'.__('Reject', 'cp-communitie').'" /> ';
 								$html .= "</div>";
 								$html .= "<div style='float:right;'>";
-									$html .= '<input type="submit" title="'.$member['ID'].'" id="acceptgrouprequest" class="__cpc__button" value="'.__('Accept', CPC_TEXT_DOMAIN).'" /> ';
+									$html .= '<input type="submit" title="'.$member['ID'].'" id="acceptgrouprequest" class="__cpc__button" value="'.__('Accept', 'cp-communitie').'" /> ';
 								$html .= "</div>";
 							$html .= "</div>";
 						}
@@ -1392,7 +1392,7 @@ if ($_POST['action'] == 'group_menu_members') {
 			}
 
 		} else {
-			$html .= __('No members', CPC_TEXT_DOMAIN)."....";
+			$html .= __('No members', 'cp-communitie')."....";
 		}			
 			
 	$html .= "</div>";

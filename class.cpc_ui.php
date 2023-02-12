@@ -17,7 +17,7 @@ class cpc_ui {
 	}
 
 	function mail_send_button($button_text='Update', $button_class='') {
-		return '<input id="mail_send_button" type="submit" class="'.$button_class.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" /> ';
+		return '<input id="mail_send_button" type="submit" class="'.$button_class.'" value="'.__($button_text, 'cp-communitie').'" /> ';
 	}
 	
 	// *** PROFILE
@@ -28,7 +28,7 @@ class cpc_ui {
 	}
 
 	function whatsup_button($button_text='Update', $button_class='') {
-		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" /> ';
+		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, 'cp-communitie').'" /> ';
 	}
 
 	function friendship_add($id, $message='Add a message', $sent_message='Request sent.', $box_class='input-field') {
@@ -41,7 +41,7 @@ class cpc_ui {
 		return $html;
 	}
 	function friendship_add_button($id, $button_class='') {
-		return '<input type="submit" title="'.$id.'" id="addasfriend" class="'.$button_class.'" value="'.__('Add', CPC_TEXT_DOMAIN).'" />';
+		return '<input type="submit" title="'.$id.'" id="addasfriend" class="'.$button_class.'" value="'.__('Add', 'cp-communitie').'" />';
 	}
 	function friendship_cancel($id, $cancel_text='Cancel', $done_cancel_text='Cancelled', $button_class='', $style = '') {
 		$html = '<input type="submit" title="'.$id.'" id="cancelfriendrequest" class="'.$button_class.'" style="'.$style.'" value="'.$cancel_text.'" />';
@@ -55,22 +55,22 @@ class cpc_ui {
 	}
 	
 	function activity_post($post_text='', $box_class='input-field') {
-		$post_text = $post_text ? $post_text : __('Write a comment...', CPC_TEXT_DOMAIN);	
+		$post_text = $post_text ? $post_text : __('Write a comment...', 'cp-communitie');	
 		$post_text = str_replace('\'', '`', $post_text);	
 		return '<input id="__cpc__comment"  type="text" name="post_comment" class="'.$box_class.'" onblur="this.value=(this.value==\'\') ? \''.$post_text.'\' : this.value;" onfocus="this.value=(this.value==\''.$post_text.'\') ? \'\' : this.value;" value="'.$post_text.'" />';		
 	}
 
 	function activity_post_button($button_text='Post', $button_class='') {
-		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" /> ';
+		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, 'cp-communitie').'" /> ';
 	}
 	
 	function comment_post($post_text='', $box_class='input-field') {
-		$post_text = $post_text ? $post_text : __('Write a comment...', CPC_TEXT_DOMAIN);		
+		$post_text = $post_text ? $post_text : __('Write a comment...', 'cp-communitie');		
 		return '<input id="__cpc__comment"  type="text" name="post_comment" class="'.$box_class.'" onblur="this.value=(this.value==\'\') ? \''.$post_text.'\' : this.value;" onfocus="this.value=(this.value==\''.$post_text.'\') ? \'\' : this.value;" value="'.$post_text.'" />';		
 	}
 
 	function comment_post_button($button_text='Post', $button_class='') {
-		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" /> ';
+		return '<input id="__cpc__add_comment" type="submit" class="'.$button_class.'" value="'.__($button_text, 'cp-communitie').'" /> ';
 	}
 	
 	function poke_button($text='Hey!', $button_class='', $style='') {
@@ -87,7 +87,7 @@ class cpc_ui {
 	
 	function mail_button($button_text='Send Mail', $button_class='', $style='') {
 		$html = '';
-		$html .= '<input type="submit" class="'.$button_class.'" id="profile_send_mail_button" style="'.$style.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" />';
+		$html .= '<input type="submit" class="'.$button_class.'" id="profile_send_mail_button" style="'.$style.'" value="'.__($button_text, 'cp-communitie').'" />';
 		return $html;
 	}
 	
@@ -117,8 +117,8 @@ class cpc_ui {
 				$row_array['order'] = 0;
 				$row_array['cat_id'] = 0;
 				$row_array['this_id'] = 0;
-				$row_array['cat_title'] = __('Top Level', CPC_TEXT_DOMAIN);
-				$row_array['cat_description'] = __('Top Level', CPC_TEXT_DOMAIN);
+				$row_array['cat_title'] = __('Top Level', 'cp-communitie');
+				$row_array['cat_description'] = __('Top Level', 'cp-communitie');
 				array_push($return_array,$row_array);	
 			}
 		}
@@ -168,7 +168,7 @@ class cpc_ui {
 		$html = '';
 		$html .= '<form action="'.$post_url.'" method="POST">';
 		$html .= '<textarea class="textarea_Editor '.$textarea_class.$elastic.'" name="__cpc__reply_text" id="__cpc__reply_text"></textarea><br />';
-		$html .= '<input id="mail_send_button" type="submit" class="'.$button_class.'" value="'.__($button_text, CPC_TEXT_DOMAIN).'" /> ';
+		$html .= '<input id="mail_send_button" type="submit" class="'.$button_class.'" value="'.__($button_text, 'cp-communitie').'" /> ';
 		$html .= '</form>';
 		
 		return $html;

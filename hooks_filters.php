@@ -78,7 +78,7 @@ function __cpc__add_custom_post_box() {
 	if (function_exists('__cpc__forum')) {
 	    add_meta_box( 
 	        'myplugin_sectionid',
-	        __( 'Link to Forum', CPC_TEXT_DOMAIN ),
+	        __( 'Link to Forum', 'cp-communitie'),
 	        '__cpc__inner_custom_box',
 	        'post' 
 	    );
@@ -93,7 +93,7 @@ function __cpc__inner_custom_box( $post ) {
 
   // The actual fields for data entry
   echo '<label for="myplugin_new_field">';
-       _e("Select a topic", CPC_TEXT_DOMAIN );
+       _e("Select a topic", 'cp-communitie');
   echo '</label> ';
   $value = get_post_meta($post->ID, 'CPC post link', true);
   echo '<select id="myplugin_new_field" name="myplugin_new_field">';
@@ -101,7 +101,7 @@ function __cpc__inner_custom_box( $post ) {
   $topics = $wpdb->get_results($sql);
   echo '<option value=0';
   if ($value == 0 || $value == '') { echo " SELECTED"; }
-  echo '>'.__('None', CPC_TEXT_DOMAIN).'</option>';  
+  echo '>'.__('None', 'cp-communitie').'</option>';  
   if ($topics) {
 	  foreach ($topics AS $topic) {
 	      echo '<option value='.$topic->tid;
@@ -149,7 +149,7 @@ function __cpc__post_content_filter( $content ) {
     	if ($value && $value != '') {
 	    	$forum_url = __cpc__get_url('forum');
 			$q = __cpc__string_query($forum_url);		
-    		$content .= "<p><a href='".$forum_url.$q."show=".$value."'>".__('Discuss on the forum...', CPC_TEXT_DOMAIN)."</a></p>";
+    		$content .= "<p><a href='".$forum_url.$q."show=".$value."'>".__('Discuss on the forum...', 'cp-communitie')."</a></p>";
     	}
     	
     }
@@ -165,10 +165,10 @@ function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 			if ( ( get_option(CPC_OPTIONS_PREFIX.'_menu_profile') == 'on') ) {
 				if ($uid1 == $uid2) {
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile'))
-						$html .= '<div id="menu_extended" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_profile_text')) != '' ? $t :  __('My Profile', CPC_TEXT_DOMAIN)).'</div>';
+						$html .= '<div id="menu_extended" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_profile_text')) != '' ? $t :  __('My Profile', 'cp-communitie')).'</div>';
 				} else {
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other'))
-						$html .= '<div id="menu_extended" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text')) != '' ? $t :  __('Profile', CPC_TEXT_DOMAIN)).'</div>';
+						$html .= '<div id="menu_extended" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text')) != '' ? $t :  __('Profile', 'cp-communitie')).'</div>';
 				}
 			}
 
@@ -176,24 +176,24 @@ function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 
 				if ($uid1 == $uid2) {
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity') == 'on') {
-						$html .= '<div id="menu_wall" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text')) != '' ? $t :  __('My Activity', CPC_TEXT_DOMAIN)).'</div>';
+						$html .= '<div id="menu_wall" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text')) != '' ? $t :  __('My Activity', 'cp-communitie')).'</div>';
 					}
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity') == 'on') {
 						if (strtolower($share) == 'public' && !(is_user_logged_in())) {
 							// don't show friends activity to public
 						} else {
-							$html .= '<div id="menu_activity" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text')) != '' ? $t :  __('My Friends Activity', CPC_TEXT_DOMAIN)).'</div>';
+							$html .= '<div id="menu_activity" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text')) != '' ? $t :  __('My Friends Activity', 'cp-communitie')).'</div>';
 						}
 					}
 				} else {
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other') == 'on') {
-						$html .= '<div id="menu_wall" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text')) != '' ? $t :  __('Activity', CPC_TEXT_DOMAIN)).'</div>';
+						$html .= '<div id="menu_wall" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text')) != '' ? $t :  __('Activity', 'cp-communitie')).'</div>';
 					}
 					if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other') == 'on') {
 						if (strtolower($share) == 'public' && !(is_user_logged_in())) {
 							// don't show friends activity to public
 						} else {
-							$html .= '<div id="menu_activity" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text')) != '' ? $t :  __('Friends Activity', CPC_TEXT_DOMAIN)).'</div>';
+							$html .= '<div id="menu_activity" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text')) != '' ? $t :  __('Friends Activity', 'cp-communitie')).'</div>';
 						}
 					}
 				}
@@ -203,12 +203,12 @@ function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 				} else {
 					if ($uid1 == $uid2) {
 						if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity')) {
-							$t = ($t = get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text')) != '' ? $t :  __('All Activity', CPC_TEXT_DOMAIN);
+							$t = ($t = get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text')) != '' ? $t :  __('All Activity', 'cp-communitie');
 							$html .= '<div id="menu_all" class="__cpc__profile_menu '.$extra_class.'">'.$t.'</div>';
 						}
 					} else {
 						if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other')) {
-							$t = ($t = get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text')) != '' ? $t :  __('All Activity', CPC_TEXT_DOMAIN);
+							$t = ($t = get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other_text')) != '' ? $t :  __('All Activity', 'cp-communitie');
 							$html .= '<div id="menu_all" class="__cpc__profile_menu '.$extra_class.'">'.$t.'</div>';
 						}
 					}					
@@ -216,10 +216,10 @@ function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 				if (function_exists('__cpc__group')) {
 					if ($uid1 == $uid2) {
 						if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups'))
-							$html .= '<div id="menu_groups" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_groups_text')) != '' ? $t :  __('My Groups', CPC_TEXT_DOMAIN)).'</div>';
+							$html .= '<div id="menu_groups" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_groups_text')) != '' ? $t :  __('My Groups', 'cp-communitie')).'</div>';
 					} else {
 						if (get_option(CPC_OPTIONS_PREFIX.'_menu_groups_other'))
-							$html .= '<div id="menu_groups" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_groups_other_text')) != '' ? $t :  __('Groups', CPC_TEXT_DOMAIN)).'</div>';
+							$html .= '<div id="menu_groups" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_groups_other_text')) != '' ? $t :  __('Groups', 'cp-communitie')).'</div>';
 					}
 				}				
 			}
@@ -235,11 +235,11 @@ function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 							} else {
 								$pending_friends = "";
 							}
-							$html .= '<div id="menu_friends" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_text')) != '' ? $t :  __('My Friends', CPC_TEXT_DOMAIN)).' '.$pending_friends.'</div>';
+							$html .= '<div id="menu_friends" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_text')) != '' ? $t :  __('My Friends', 'cp-communitie')).' '.$pending_friends.'</div>';
 						}
 					} else {
 						if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_other'))
-							$html .= '<div id="menu_friends" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_other_text')) != '' ? $t :  __('Friends', CPC_TEXT_DOMAIN)).'</div>';
+							$html .= '<div id="menu_friends" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_friends_other_text')) != '' ? $t :  __('Friends', 'cp-communitie')).'</div>';
 					}
 				}
 			}
@@ -268,8 +268,8 @@ function __cpc__header() {
 	
 		if (CPC_DEBUG) {
 			echo '<div style="overflow:auto; border:1px solid #000; background-color:#ccc; color: black; font-size:12px; padding:6px 12px 6px 12px; margin-left:auto; margin-right:auto; margin-top:10px; margin-bottom:10px; border-radius:5px;">';
-			echo '<input style="float:right" id="cpcommunitie_deactivate_debug" type="submit" value="'.__('De-activate', CPC_TEXT_DOMAIN).'" />';
-			echo '<strong>'.sprintf(__('%s Debug Mode', CPC_TEXT_DOMAIN), CPC_WL).'</strong><br />';
+			echo '<input style="float:right" id="cpcommunitie_deactivate_debug" type="submit" value="'.__('De-activate', 'cp-communitie').'" />';
+			echo '<strong>'.sprintf(__('%s Debug Mode', 'cp-communitie'), CPC_WL).'</strong><br />';
 	
 			global $wp_rewrite;
 			echo '<a href="javascript:void(0);" rel="rewrite_rules" class="cpcommunitie-dialog">Show rewrite rules</a><br />';
@@ -366,56 +366,56 @@ function __cpc__show_metadata($user) {
 	$forum_all = __cpc__get_meta($uid, 'forum_all');
 	$signature = __cpc__get_meta($uid, 'signature');
 	
-	$html = '<h3>' . __("Profile Details", CPC_TEXT_DOMAIN) . '</h3>';
+	$html = '<h3>' . __("Profile Details", 'cp-communitie') . '</h3>';
 
 	$html .= '<table class="form-table">';
 	
 	// Share personal information
-	$html .= '<tr><th><label for="share">'.__('Who do you want to share personal information with?', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="share">'.__('Who do you want to share personal information with?', 'cp-communitie').'</label></th>';
 	$html .= '<td><select id="share" name="share">';
 	$html .= "<option value='Nobody'";
 		if ($share == 'Nobody') { $html .= ' SELECTED '; }
-		$html .= '>'.__('Nobody', CPC_TEXT_DOMAIN).'</option>';
+		$html .= '>'.__('Nobody', 'cp-communitie').'</option>';
 	$html .= "<option value='Friends only'";
 		if ($share == 'Friends only') { $html .= ' SELECTED '; }
-		$html .= '>'.sprintf(__('%s Only', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
+		$html .= '>'.sprintf(__('%s Only', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
 	$html .= "<option value='Everyone'";
 		if ($share == 'Everyone') { $html .= ' SELECTED '; }
 		$html .= '>'.stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')).'</option>';
 	$html .= "<option value='public'";
 		if ($share == 'public') { $html .= ' SELECTED '; }
-		$html .= '>'.__('Public', CPC_TEXT_DOMAIN).'</option>';
+		$html .= '>'.__('Public', 'cp-communitie').'</option>';
 	$html .= '</select></td></tr>';
 	
 	// Share Wall / Activity
-	$html .= '<tr><th><label for="wall_share">'.__('Who do you want to share your activity with?', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="wall_share">'.__('Who do you want to share your activity with?', 'cp-communitie').'</label></th>';
 	$html .= '<td><select id="wall_share" name="wall_share">';
 	$html .= "<option value='Nobody'";
 		if ($wall_share == 'Nobody') { $html .= ' SELECTED '; }
-		$html .= '>'.__('Nobody', CPC_TEXT_DOMAIN).'</option>';
+		$html .= '>'.__('Nobody', 'cp-communitie').'</option>';
 	$html .= "<option value='Friends only'";
 		if ($wall_share == 'Friends only') { $html .= ' SELECTED '; }
-		$html .= '>'.sprintf(__('%s Only', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
+		$html .= '>'.sprintf(__('%s Only', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
 	$html .= "<option value='Everyone'";
 		if ($wall_share == 'Everyone') { $html .= ' SELECTED '; }
 		$html .= '>'.stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')).'</option>';
 	$html .= "<option value='public'";
 		if ($wall_share == 'public') { $html .= ' SELECTED '; }
-		$html .= '>'.__('Public', CPC_TEXT_DOMAIN).'</option>';
+		$html .= '>'.__('Public', 'cp-communitie').'</option>';
 	$html .= '</select></td></tr>';
 	
 	// Publish RSS feed?
 	if (function_exists('__cpc__rss_main')) {
-		$html .= '<tr><th><label for="rss_share">'.__('RSS feed', CPC_TEXT_DOMAIN).'</label></th>';
+		$html .= '<tr><th><label for="rss_share">'.__('RSS feed', 'cp-communitie').'</label></th>';
 		$html .= '<td><select id="rss_share" name="rss_share">';
 			$html .= "<option value=''";
 				if ($rss_share == '') { $html .= ' SELECTED '; }
-				$html .= '>'.__('No', CPC_TEXT_DOMAIN).'</option>';
+				$html .= '>'.__('No', 'cp-communitie').'</option>';
 			$html .= "<option value='on'";
 				if ($rss_share == 'on') { $html .= ' SELECTED '; }
-				$html .= '>'.__('Yes', CPC_TEXT_DOMAIN).'</option>';
+				$html .= '>'.__('Yes', 'cp-communitie').'</option>';
 		$html .= '</select> ';
-		$html .= '<span class="description">'.__('Publish your activity via RSS (only your initial posts)?', CPC_TEXT_DOMAIN).'</span>';
+		$html .= '<span class="description">'.__('Publish your activity via RSS (only your initial posts)?', 'cp-communitie').'</span>';
 		$html .= '</td></tr>';
 	} else {
 		$html .= '<input type="hidden" id="rss_share" value="">';
@@ -424,7 +424,7 @@ function __cpc__show_metadata($user) {
 	// Birthday
 	if (get_option(CPC_OPTIONS_PREFIX.'_show_dob') == 'on') {
 
-		$html .= '<tr><th><label for="dob">'.__('Your date of birth', CPC_TEXT_DOMAIN).'</label></th>';
+		$html .= '<tr><th><label for="dob">'.__('Your date of birth', 'cp-communitie').'</label></th>';
 		$html .= '<td><select id="dob_day" name="dob_day">';
 			$html .= '<option value=0';
 				if ($dob_day == 0) { $html .= ' SELECTED '; }
@@ -441,18 +441,18 @@ function __cpc__show_metadata($user) {
 				$html .= '>---</option>';
 			for ($i = 1; $i <= 12; $i++) {
 				switch($i) {									
-					case 1:$monthname = __("January", CPC_TEXT_DOMAIN);break;
-					case 2:$monthname = __("February", CPC_TEXT_DOMAIN);break;
-					case 3:$monthname = __("March", CPC_TEXT_DOMAIN);break;
-					case 4:$monthname = __("April", CPC_TEXT_DOMAIN);break;
-					case 5:$monthname = __("May", CPC_TEXT_DOMAIN);break;
-					case 6:$monthname = __("June", CPC_TEXT_DOMAIN);break;
-					case 7:$monthname = __("July", CPC_TEXT_DOMAIN);break;
-					case 8:$monthname = __("August", CPC_TEXT_DOMAIN);break;
-					case 9:$monthname = __("September", CPC_TEXT_DOMAIN);break;
-					case 10:$monthname = __("October", CPC_TEXT_DOMAIN);break;
-					case 11:$monthname = __("November", CPC_TEXT_DOMAIN);break;
-					case 12:$monthname = __("December", CPC_TEXT_DOMAIN);break;
+					case 1:$monthname = __("January", 'cp-communitie');break;
+					case 2:$monthname = __("February", 'cp-communitie');break;
+					case 3:$monthname = __("March", 'cp-communitie');break;
+					case 4:$monthname = __("April", 'cp-communitie');break;
+					case 5:$monthname = __("May", 'cp-communitie');break;
+					case 6:$monthname = __("June", 'cp-communitie');break;
+					case 7:$monthname = __("July", 'cp-communitie');break;
+					case 8:$monthname = __("August", 'cp-communitie');break;
+					case 9:$monthname = __("September", 'cp-communitie');break;
+					case 10:$monthname = __("October", 'cp-communitie');break;
+					case 11:$monthname = __("November", 'cp-communitie');break;
+					case 12:$monthname = __("December", 'cp-communitie');break;
 				}
 				$html .= '<option value="'.$i.'"';
 					if ($dob_month == $i) { $html .= ' SELECTED '; }
@@ -479,12 +479,12 @@ function __cpc__show_metadata($user) {
 	}
 	
 	// City
-	$html .= '<tr><th><label for="extended_city">'.__('Which town/city are you in?', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="extended_city">'.__('Which town/city are you in?', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="text" class="input-field" id="extended_city" name="extended_city" style="width:300px" value="'.trim($city, "'").'">';
 	$html .= '</td></tr>';
 	
 	// Country
-	$html .= '<tr><th><label for="extended_country">'.__('Which country are you in?', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="extended_country">'.__('Which country are you in?', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="text" class="input-field" id="extended_country" name="extended_country" style="width:300px" value="'.trim($country, "'").'">';
 	$html .= '</td></tr>';
 	
@@ -494,7 +494,7 @@ function __cpc__show_metadata($user) {
 		$html .= '<tr><th></th><td>';
 		$html .= '<a target="_blank" style="width:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px; height:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px;" href="http://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$city.',+'.$country.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$city.',+'.$country.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
 		$html .= '<img src="http://maps.google.com/maps/api/staticmap?center='.$city.',.+'.$country.'&zoom=5&size='.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'x'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$city.',+'.$country.'&sensor=false" />';
-		$html .= '</a><br /><span class="description"> '.sprintf(__("The Google map that will be displayed on top of your %s profile page, resulting from your personal data above.", CPC_TEXT_DOMAIN), CPC_WL).'</span></td></tr>';
+		$html .= '</a><br /><span class="description"> '.sprintf(__("The Google map that will be displayed on top of your %s profile page, resulting from your personal data above.", 'cp-communitie'), CPC_WL).'</span></td></tr>';
 	
 	}
 	
@@ -561,16 +561,16 @@ function __cpc__show_metadata($user) {
 	
 	$html .= '</table>';
 	
-	$html .= '<h3>' . __("Community Settings", CPC_TEXT_DOMAIN) . '</h3>';
+	$html .= '<h3>' . __("Community Settings", 'cp-communitie') . '</h3>';
 	$html .= '<table class="form-table">';
 	
 	// Trusted member (for example, for support staff)
 	if (__cpc__get_current_userlevel() == 5) {
-		$html .= '<tr><th><label for="trusted">'.__('Trusted Member?', CPC_TEXT_DOMAIN).'</label></th>';
+		$html .= '<tr><th><label for="trusted">'.__('Trusted Member?', 'cp-communitie').'</label></th>';
 		$html .= '<td><input type="checkbox" name="trusted" id="trusted"';
 		if ($trusted == 'on') { $html .= ' CHECKED '; }
 		$html .= '/> ';
-		$html .= '<span class="description">'.__('Is this member trusted?', CPC_TEXT_DOMAIN).'</span>';
+		$html .= '<span class="description">'.__('Is this member trusted?', 'cp-communitie').'</span>';
 		$html .= '</td></tr>';
 	} else {
 		$html .= '<tr><td><input type="hidden" name="trusted_hidden" id="trusted_hidden" value="'.$trusted.'" /><td></tr>';
@@ -584,39 +584,39 @@ function __cpc__show_metadata($user) {
 	// forum_digest
 	
 	// Email notifications for private messages
-	$html .= '<tr><th><label for="notify_new_messages">'.__('Emails for private messages', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="notify_new_messages">'.__('Emails for private messages', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="checkbox" name="notify_new_messages" id="notify_new_messages"';
 	if ($notify_new_messages =='on') { $html .= ' CHECKED '; }
 	$html .= '/> ';
-	$html .= '<span class="description">'.__('Receive an email when you get new mail messages?', CPC_TEXT_DOMAIN).'</span>';
+	$html .= '<span class="description">'.__('Receive an email when you get new mail messages?', 'cp-communitie').'</span>';
 	$html .= '</td></tr>';
 	
 	// Email notifications for wall posts
-	$html .= '<tr><th><label for="notify_new_wall">'.__('Emails for posts on the Wall', CPC_TEXT_DOMAIN).'</label></th>';
+	$html .= '<tr><th><label for="notify_new_wall">'.__('Emails for posts on the Wall', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="checkbox" name="notify_new_wall" id="notify_new_wall"';
 	if ($notify_new_wall == 'on') { $html .= ' CHECKED '; }
 	$html .= '/> ';
-	$html .= '<span class="description">'.__('Receive an email when a friend adds a post?', CPC_TEXT_DOMAIN).'</span>';
+	$html .= '<span class="description">'.__('Receive an email when a friend adds a post?', 'cp-communitie').'</span>';
 	$html .= '</td></tr>';
 	
 	if (function_exists('__cpc__forum')) {
 		
 		// Email notifications for all forum activity (if allowed)
 		if (get_option(CPC_OPTIONS_PREFIX.'_allow_subscribe_all') == "on") {
-			$html .= '<tr><th><label for="forum_all">'.__('Emails for all new forum topics and replies', CPC_TEXT_DOMAIN).'</label></th>';
+			$html .= '<tr><th><label for="forum_all">'.__('Emails for all new forum topics and replies', 'cp-communitie').'</label></th>';
 			$html .= '<td><input type="checkbox" name="forum_all" id="forum_all"';
 			if ($forum_all == 'on') { $html .= ' CHECKED '; }
 			$html .= '/> ';
-			$html .= '<span class="description">'.__('Receive an email for all new forum topics and replies?', CPC_TEXT_DOMAIN).'</span><br />';
+			$html .= '<span class="description">'.__('Receive an email for all new forum topics and replies?', 'cp-communitie').'</span><br />';
 			$html .= '</td></tr>';
 		} else {
 			$html .= '<input type="hidden" name="forum_all" value="" />';
 		}
 	
 		// Signature in the forum
-		$html .= '<tr><th><label for="signature">'.__('Forum signature', CPC_TEXT_DOMAIN).'</label></th>';
+		$html .= '<tr><th><label for="signature">'.__('Forum signature', 'cp-communitie').'</label></th>';
 		$html .= '<td><input type="text" class="input-field" id="signature" name="signature" style="width:300px" value="'.stripslashes(trim($signature, "'")).'"><br />';
-		$html .= '<span class="description">'.__('If you want a signature to be appended automatically under your forum posts', CPC_TEXT_DOMAIN).'</span></td></tr>';
+		$html .= '<span class="description">'.__('If you want a signature to be appended automatically under your forum posts', 'cp-communitie').'</span></td></tr>';
 	}
 	
 	// Facebook
@@ -671,7 +671,7 @@ function __cpc__save_metadata($uid) {
 					$sql = "UPDATE ".$wpdb->base_prefix."usermeta SET meta_value = %s WHERE user_id = %d AND meta_key = %s";
 					$wpdb->query($wpdb->prepare($sql, $value, $uid, 'cpcommunitie_'.$slug));
 				} else {					
-					//	A linked field, so update CPC field (WP field updated by WordPress)
+					//	A linked field, so update CPC field (WP field updated by ClassicPress)
 					$um = $extension->wp_usermeta;
 					if ($um == 'show_admin_bar_front') $um = 'admin_bar_front';
 					$value = (isset($_POST[$um])) ? $_POST[$um] : '';

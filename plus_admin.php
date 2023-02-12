@@ -4,7 +4,7 @@
 
 
 
-echo '<h2>'.sprintf(__('%s Einstellungen', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 
 __cpc__show_tabs_header('plus');
@@ -53,7 +53,7 @@ __cpc__show_tabs_header('plus');
 
 		
 		// Put an settings updated message on the screen
-		echo "<div class='updated slideaway'><p>".__('Gespeichert', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Gespeichert', 'cp-communitie').".</p></div>";
 		
 	}
 
@@ -76,18 +76,18 @@ __cpc__show_tabs_header('plus');
 	
 	// Force friends retrospectively?
 	if (isset($_POST['force_all_friends']) && $_POST['force_all_friends']) {
-		echo "<div class='updated' style='padding-bottom:10px'><p style='font-weight:bold'>".__('Force friends to all', CPC_TEXT_DOMAIN)."</p>";
-		echo "<p>".__("Are you sure you want to make ALL users friends with each other? <strong>This cannot be reversed!</strong> Please take a backup of your database first!", CPC_TEXT_DOMAIN)."</p>";
-		echo "<p>".__("Depending on how many users you have, this may take a few minutes.", CPC_TEXT_DOMAIN)."</p>";
+		echo "<div class='updated' style='padding-bottom:10px'><p style='font-weight:bold'>".__('Alle Benutzer zu Freunden machen', 'cp-communitie')."</p>";
+		echo "<p>".__("Bist Du sicher, dass Du ALLE Benutzer miteinander befreunden möchtes? <strong>Dies kann nicht rückgängig gemacht werden!</strong> Bitte erstelle zuerst eine Sicherungskopie Deiner Datenbank!", 'cp-communitie')."</p>";
+		echo "<p>".__("Je nachdem, wie viele Benutzer Du hast, kann dies einige Minuten dauern.", 'cp-communitie')."</p>";
 		echo "<table border=0><tr><td>";
-		echo "<form method='post' action=''><input type='hidden' name='force_all_friends_confirm' value='Y' /><input type='submit' class='button-primary' value='".__("Yes", CPC_TEXT_DOMAIN)."' /></form>";
+		echo "<form method='post' action=''><input type='hidden' name='force_all_friends_confirm' value='Y' /><input type='submit' class='button-primary' value='".__("Ja", 'cp-communitie')."' /></form>";
 		echo "</td><td>";
-		echo "<form method='post' action=''><input type='hidden' name='force_all_friends_confirm' value='N' /><input type='submit' class='button-primary' value='".__("No", CPC_TEXT_DOMAIN)."' /></form>";
+		echo "<form method='post' action=''><input type='hidden' name='force_all_friends_confirm' value='N' /><input type='submit' class='button-primary' value='".__("Nein", 'cp-communitie')."' /></form>";
 		echo "</td><tr></table>";
 		echo "</div>";
 	}
 	if (isset($_POST['force_all_friends_confirm']) && $_POST['force_all_friends_confirm'] == 'Y') {
-		echo "<div class='updated slideaway'><p style='font-weight:bold'>".__('Force friends to all', CPC_TEXT_DOMAIN)."</p>";
+		echo "<div class='updated slideaway'><p style='font-weight:bold'>".__('Alle Benutzer zu Freunden machen', 'cp-communitie')."</p>";
 		// Delete existing friendships
 		$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_friends";
 		$wpdb->query($sql);
@@ -119,7 +119,7 @@ __cpc__show_tabs_header('plus');
 			}
 			
 		}
-		echo "<p>".__("All users are now friends with each other.", CPC_TEXT_DOMAIN)."</p>";
+		echo "<p>".__("Alle Benutzer sind jetzt miteinander befreundet.", 'cp-communitie')."</p>";
 		echo "</div>";
 	}
 	
@@ -129,14 +129,14 @@ __cpc__show_tabs_header('plus');
 	<input type='hidden' name='__cpc__profile_plus_updated' value='Y'>
 	<table class="form-table __cpc__admin_table"> 
 
-	<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+	<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
 		
 <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_templates') == "on") { ?>
 	<tr valign="top"> 
-	<td scope="row"><label for="profile_menu_scrolls"><?php echo __('Scrolling profile menu', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="profile_menu_scrolls"><?php echo __('Scrollendes Profilmenü', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="profile_menu_scrolls" id="profile_menu_scrolls" <?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_scrolls') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Profile menu (vertical version only) scrolls down with page, remaining visible', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Das Profilmenü (nur vertikale Version) scrollt mit der Seite nach unten und bleibt sichtbar', 'cp-communitie'); ?></span></td> 
 	</tr> 
 <?php } else { ?>
 	<input type="hidden" name="profile_menu_scrolls" id="profile_menu_scrolls" value="<?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_scrolls') == "on") { echo "on"; } ?>" />
@@ -144,9 +144,9 @@ __cpc__show_tabs_header('plus');
 
 <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_templates') == "on") { ?>
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="profile_menu_delta"><?php echo __('Space above menu', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row" style="text-align:right"><label for="profile_menu_delta"><?php echo __('Platz über dem Menü', 'cp-communitie'); ?></label></td> 
 	<td><input name="profile_menu_delta" type="text" id="profile_menu_delta" style="width:50px" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_profile_menu_delta'); ?>" /> 
-	<span class="description"><?php echo __('Space above the menu when moving down with the page (pixels)', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Abstand über dem Menü, wenn sie sich mit der Seite nach unten bewegt (Pixel)', 'cp-communitie'); ?></td> 
 	</tr> 
 <?php } else { ?>
 	<input type="hidden" name="profile_menu_delta" id="profile_menu_delta" value="<?php if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_delta') == "on") { echo "on"; } ?>" />
@@ -154,144 +154,144 @@ __cpc__show_tabs_header('plus');
 
 
 	<tr valign="top"> 
-	<td scope="row"><label for="show_forum_replies_on_activity"><?php _e('Forum Replies on Activity', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="show_forum_replies_on_activity"><?php _e('Forum Antworten in Aktivität', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="show_forum_replies_on_activity" id="show_forum_replies_on_activity" <?php if ($show_forum_replies_on_activity == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Include forum replies in activity stream', CPC_TEXT_DOMAIN); ?></span>
+	<span class="description"><?php echo __('Forenantworten in Activity Stream aufnehmen', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
 	<tr valign="top"> 
-	<td scope="row"><label for="show_group_replies_on_activity"><?php _e('Group Forum Replies on Activity', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="show_group_replies_on_activity"><?php _e('Gruppenforum-Antworten auf Aktivität', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="show_group_replies_on_activity" id="show_group_replies_on_activity" <?php if ($show_group_replies_on_activity == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Include group forum replies in activity stream', CPC_TEXT_DOMAIN); ?></span>
+	<span class="description"><?php echo __('Füge Antworten aus Gruppenforen in den Activity Stream ein', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
 	<tr valign="top"> 
-	<td scope="row"><label for="activity_likes"><?php _e('Activity Like/Dislike', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="activity_likes"><?php _e('Aktivität Gefällt mir/Gefällt mir nicht', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="activity_likes" id="activity_likes" <?php if ($activity_likes == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Adds a like and dislike icon to all activity posts', CPC_TEXT_DOMAIN); ?></span>
+	<span class="description"><?php echo __('Fügt allen Aktivitätsbeiträgen ein „Gefällt mir“- und „Gefällt mir nicht“-Symbol hinzu', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
 	<tr valign="top"> 
-	<td scope="row"><label for="activity_images"><?php _e('Allow activity/status images', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="activity_images"><?php _e('Aktivitäts-/Statusbilder zulassen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="activity_images" id="activity_images" <?php if ($activity_images == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Allow users to upload images to the activity feed', CPC_TEXT_DOMAIN); ?></span>
+	<span class="description"><?php echo __('Benutzern erlauben, Bilder in den Aktivitätsfeed hochzuladen', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
 	<tr valign="top"> 
-	<td scope="row"><label for="activity_youtube"><?php _e('Allow activity/status YouTube', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="activity_youtube"><?php _e('Aktivität/Status YouTube zulassen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="activity_youtube" id="activity_youtube" <?php if ($activity_youtube == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Allow users to embed YouTube to the activity feed', CPC_TEXT_DOMAIN); ?></span>
+	<span class="description"><?php echo __('Nutzern erlauben, YouTube in den Aktivitätsfeed einzubetten', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_tags"><?php _e('Enable @user tags', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="cpcommunitie_tags"><?php _e('Aktiviere @user-Tags', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpcommunitie_tags" id="cpcommunitie_tags" <?php if ($__cpc__tags == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Replace @user with a link to profile page. Understands usernames and display names (with spaces removed)', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Ersetze @user durch einen Link zur Profilseite. Versteht Benutzernamen und Anzeigenamen (ohne Leerzeichen)', 'cp-communitie'); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="unique_display_name"><?php _e('Unique display names', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="unique_display_name"><?php _e('Eindeutige Anzeigenamen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="unique_display_name" id="unique_display_name" <?php if ($unique_display_name == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo sprintf(__('Include check for unique display names on %s profile community settings', CPC_TEXT_DOMAIN), CPC_WL_SHORT); ?></span></td> 
+	<span class="description"><?php echo sprintf(__('Prüfung auf eindeutige Anzeigenamen in %s-Profil-Community-Einstellungen einbeziehen', 'cp-communitie'), CPC_WL_SHORT); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="use_distance"><?php _e('Enable distance', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="use_distance"><?php _e('Distanz aktivieren', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="use_distance" id="use_distance" <?php if ($use_distance == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Enable distance in the member directory', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Distanz im Mitgliederverzeichnis aktivieren', 'cp-communitie'); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="lat_long"><?php _e('Use miles for geocoding distance', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="lat_long"><?php _e('Verwende Meilen für die Geokodierung der Entfernung', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="lat_long" id="lat_long" <?php if ($lat_long == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Set distance to miles, otherwise kilometers', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Stelle die Entfernung auf Meilen ein, sonst auf Kilometer', 'cp-communitie'); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="show_alt"><?php _e('Show alternative', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="show_alt"><?php _e('Alternative anzeigen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="show_alt" id="show_alt" <?php if ($show_alt == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('eg. If above set to miles, also show kilometers', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('z.B. Wenn oben Meilen eingestellt, werden auch Kilometer angezeigt', 'cp-communitie'); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="all_friends"><?php _e('Friends to all?', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="all_friends"><?php _e('Alle sind Freunde?', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="all_friends" id="all_friends" <?php if ($all_friends == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Automatically add new users as friends to all', CPC_TEXT_DOMAIN); ?>
-	<br /><input type="checkbox" name="force_all_friends" /> <?php echo __('Set all users as friends to all', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Neue Benutzer automatisch als Freunde zu allen hinzufügen', 'cp-communitie'); ?>
+	<br /><input type="checkbox" name="force_all_friends" /> <?php echo __('Lege alle Benutzer als Freunde für alle fest', 'cp-communitie'); ?></span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row"><label for="cpc_show_hoverbox"><?php echo __('Enable hover box', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="cpc_show_hoverbox"><?php echo __('Hoverbox aktivieren', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_show_hoverbox" id="cpc_show_hoverbox" <?php if (get_option(CPC_OPTIONS_PREFIX.'_cpc_show_hoverbox') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo sprintf(__('Enables the hover box when cursor moved over profile avatar. Requires <a href="%s">Profile Photos</a> to be activated.', CPC_TEXT_DOMAIN), 'admin.php?page=cpcommunitie_profile'); ?></span></td> 
+	<span class="description"><?php echo sprintf(__('Aktiviert das Hover-Feld, wenn der Cursor über den Profil-Avatar bewegt wird. Erfordert die Aktivierung von <a href="%s">Profilfotos</a>.', 'cp-communitie'), 'admin.php?page=cpcommunitie_profile'); ?></span></td> 
 	</tr> 
 
-	<tr><td colspan="2"><h2><?php _e('Autocomplete search box', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+	<tr><td colspan="2"><h2><?php _e('Autocomplete search box', 'cp-communitie') ?></h2></td></tr>
 
 	<tr valign="top"> 
 	<td colspan="2">
 	<span class="description">
-		<?php echo sprintf(__('To add a member search, use [%s-search] shortcode, or put &quot;echo %ssearch(150)&quot; in PHP, where 150 is the width in pixels.', CPC_TEXT_DOMAIN), CPC_SHORTCODE_PREFIX, '__cpc__'); ?><br />
-		<?php echo __('The more results that are included, the slower the search may be and greater the impact on your server/database.', CPC_TEXT_DOMAIN); ?>
+		<?php echo sprintf(__('Um eine Mitgliedersuche hinzuzufügen, verwende den Shortcode [%s-search] oder verwende &quot;echo %ssearch(150)&quot; in PHP, wobei 150 die Breite in Pixel ist.', 'cp-communitie'), CPC_SHORTCODE_PREFIX, '__cpc__'); ?><br />
+		<?php echo __('Je mehr Ergebnisse enthalten sind, desto langsamer kann die Suche sein und desto größer sind die Auswirkungen auf Deinn Server/Deine Datenbank.', 'cp-communitie'); ?>
 	</span></td> 
 	</tr> 
 	
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_prompt"><?php echo __('Text prompt', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_prompt"><?php echo __('Textaufforderung', 'cp-communitie'); ?></label></td> 
 	<td><input name="cpc_site_search_prompt" type="text" id="cpc_site_search_prompt"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_site_search_prompt'); ?>" /> 
-	<span class="description"><?php echo __('Search box text prompt', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Eingabeaufforderung für Suchfeldtext', 'cp-communitie'); ?></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_gallery"><?php echo __('Gallery', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_gallery"><?php echo __('Galerie', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_site_search_gallery" id="cpc_site_search_gallery" <?php if (get_option(CPC_OPTIONS_PREFIX.'_site_search_gallery') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo sprintf(__('Include %s Photo albums in search results', CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+	<span class="description"><?php echo sprintf(__('%s Fotoalben in Suchergebnisse einbeziehen', 'cp-communitie'), CPC_WL); ?></span></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_groups"><?php echo __('Groups', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_groups"><?php echo __('Gruppen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_site_search_groups" id="cpc_site_search_groups" <?php if (get_option(CPC_OPTIONS_PREFIX.'_site_search_groups') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo sprintf(__('Include %s Groups in search results', CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+	<span class="description"><?php echo sprintf(__('%s Gruppen in Suchergebnisse einbeziehen', 'cp-communitie'), CPC_WL); ?></span></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_pages"><?php echo __('Pages', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_pages"><?php echo __('Seiten', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_site_search_pages" id="cpc_site_search_pages" <?php if (get_option(CPC_OPTIONS_PREFIX.'_site_search_pages') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Include WordPress pages in search results', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Füge ClassicPress-Seiten in die Suchergebnisse ein', 'cp-communitie'); ?></span></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_posts"><?php echo __('Blog Posts', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_posts"><?php echo __('Blogbeiträge', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_site_search_posts" id="cpc_site_search_posts" <?php if (get_option(CPC_OPTIONS_PREFIX.'_site_search_posts') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Include WordPress blog posts in search results', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Füge ClassicPress-Blogbeiträge in die Suchergebnisse ein', 'cp-communitie'); ?></span></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row" style="text-align:right"><label for="cpc_site_search_topics"><?php echo __('Forum Topics', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row" style="text-align:right"><label for="cpc_site_search_topics"><?php echo __('Forumsthemen', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="cpc_site_search_topics" id="cpc_site_search_topics" <?php if (get_option(CPC_OPTIONS_PREFIX.'_site_search_topics') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo sprintf(__('Include %s Forum topics in search results', CPC_TEXT_DOMAIN), CPC_WL); ?></span></td> 
+	<span class="description"><?php echo sprintf(__('%s Forumsthemen in Suchergebnisse einbeziehen', 'cp-communitie'), CPC_WL); ?></span></td> 
 	</tr> 
 
 	</table>
@@ -299,12 +299,12 @@ __cpc__show_tabs_header('plus');
 	<table style="margin-left:10px; margin-top:10px;">						
 		<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 		<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-search]</td>
-			<td><?php echo __('Display the autocomplete search form.', CPC_TEXT_DOMAIN); ?></td></tr>
+			<td><?php echo __('Zeige das Suchformular für die automatische Vervollständigung an.', 'cp-communitie'); ?></td></tr>
 	</table>
 	<?php 	
 				
 	echo '<p class="submit" style="margin-left:12px">';
-	echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Save Changes', CPC_TEXT_DOMAIN).'" />';
+	echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Änderungen speichern', 'cp-communitie').'" />';
 	echo '</p>';
 	
 	echo '</form>';

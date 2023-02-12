@@ -1,7 +1,7 @@
 <?php
 /*
 CP Community Profile
-Description: Member Profile component for the Symposium suite of plug-ins. Also enables Friends. Put [cpcommunitie-profile], [cpcommunitie-settings], [cpcommunitie-personal], [cpcommunitie-friends] or [cpcommunitie-extended] on any WordPress page to display relevant content. If Gallery in use, can also use [cpcommunitie-galleries].
+Description: Member Profile component for the Symposium suite of plug-ins. Also enables Friends. Put [cpcommunitie-profile], [cpcommunitie-settings], [cpcommunitie-personal], [cpcommunitie-friends] or [cpcommunitie-extended] on any ClassicPress page to display relevant content. If Gallery in use, can also use [cpcommunitie-galleries].
 */
 
 
@@ -262,9 +262,9 @@ function __cpc__show_profile($page)
 			// Follow/Unfollow
 			if (function_exists('__cpc__profile_plus') && is_user_logged_in() && $uid != $uid2) {
 				if (__cpc__is_following($uid2, $uid)) {
-					$html = str_replace("[follow]", '<input type="submit" ref="unfollow" value="'.__('Entfolgen', CPC_TEXT_DOMAIN).'" class="__cpc__button follow-button">', $html);
+					$html = str_replace("[follow]", '<input type="submit" ref="unfollow" value="'.__('Entfolgen', 'cp-communitie').'" class="__cpc__button follow-button">', $html);
 				} else {
-					$html = str_replace("[follow]", '<input type="submit" ref="follow" value="'.__('Folgen', CPC_TEXT_DOMAIN).'" class="__cpc__button follow-button">', $html);
+					$html = str_replace("[follow]", '<input type="submit" ref="follow" value="'.__('Folgen', 'cp-communitie').'" class="__cpc__button follow-button">', $html);
 				}
 			} else {
 				$html = str_replace("[follow]", '', $html);
@@ -417,7 +417,7 @@ function __cpc__show_profile($page)
 					if ($day == 0) $day = '';
 					if ($year == 0) $year = '';
 					$born = get_option(CPC_OPTIONS_PREFIX.'_show_dob_format');
-					$born = ( $born != '') ? $born : __('Geboren', CPC_TEXT_DOMAIN).' %monthname %day%th, %year';
+					$born = ( $born != '') ? $born : __('Geboren', 'cp-communitie').' %monthname %day%th, %year';
 					$day0 = str_pad($day, 2, '0', STR_PAD_LEFT);
 					$month = ($month > 0) ? str_pad($month, 2, '0', STR_PAD_LEFT) : '';
 					$month0 = ($month > 0) ? str_pad($month, 2, '0', STR_PAD_LEFT) : '';
@@ -448,11 +448,11 @@ function __cpc__show_profile($page)
 			} else {
 			
 				if (strtolower($privacy) == 'friends only') {
-					$html = str_replace("[born]", sprintf(__("Persönliche Informationen nur für %s.", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')), $html);						
+					$html = str_replace("[born]", sprintf(__("Persönliche Informationen nur für %s.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')), $html);						
 				}
 		
 				if (strtolower($privacy) == 'nobody') {
-					$html = str_replace("[born]", __("Persönliche Informationen sind privat.", CPC_TEXT_DOMAIN), $html);						
+					$html = str_replace("[born]", __("Persönliche Informationen sind privat.", 'cp-communitie'), $html);						
 				}
 				
 			}
@@ -482,37 +482,37 @@ function __cpc__show_profile($page)
 						// A friend
 						// Send mail
 						if (function_exists('__cpc__mail'))
-							$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', CPC_TEXT_DOMAIN).'" />';
+							$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
 						
 					} 
 					if (!__cpc__friend_of($uid, $uid2)) {
 						
 						if (__cpc__pending_friendship($uid)) {
 							// Pending
-							$actions .= '<input type="submit" title="'.$uid.'" id="cancelfriendrequest" class="__cpc__button" value="'.sprintf(__('%s Anfrage abbrechen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'" /> ';
-							$actions .= '<div id="cancelfriendrequest_done" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage abgebrochen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
+							$actions .= '<input type="submit" title="'.$uid.'" id="cancelfriendrequest" class="__cpc__button" value="'.sprintf(__('%s Anfrage abbrechen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'" /> ';
+							$actions .= '<div id="cancelfriendrequest_done" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage abgebrochen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
 						} else {							
 							// Not a friend
 							$actions .= '<div id="addasfriend_done1_'.$uid.'" class="addasfriend_input">';
 							$actions .= '<div id="add_as_friend_message">';
-							$actions .= '<input type="text" title="'.$uid.'" id="addfriend" class="input-field" onclick="this.value=\'\'" value="'.sprintf(__('Als %s hinzufügen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...."';
+							$actions .= '<input type="text" title="'.$uid.'" id="addfriend" class="input-field" onclick="this.value=\'\'" value="'.sprintf(__('Als %s hinzufügen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...."';
 							if (!get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
 								$actions .= ' style="width:210px"';
 							}
 							$actions .= '>';
 							if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-								$actions .= '<input type="submit" title="'.$uid.'" id="addasfriend" class="__cpc__button" value="'.__('Hinzufügen', CPC_TEXT_DOMAIN).'" /> ';
+								$actions .= '<input type="submit" title="'.$uid.'" id="addasfriend" class="__cpc__button" value="'.__('Hinzufügen', 'cp-communitie').'" /> ';
 							}
 			
 							$actions .= '</div></div>';
-							$actions .= '<div id="addasfriend_done2_'.$uid.'" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage gesendet', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
+							$actions .= '<div id="addasfriend_done2_'.$uid.'" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage gesendet', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
 							
 						}
 
 						if (__cpc__get_current_userlevel() == 5) {
 							// Send mail if CPC admin
 							if (function_exists('__cpc__mail'))
-								$actions .= '<input type="submit" class="__cpc__button" style="float:left" id="profile_send_mail_button" value="'.__('E-Mail senden...', CPC_TEXT_DOMAIN).'" />';
+								$actions .= '<input type="submit" class="__cpc__button" style="float:left" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
 						}
 						
 					}				
@@ -565,7 +565,7 @@ function __cpc__show_profile($page)
 			
 		} else {
 			
-			$html = __cpc__show_login_link(__("Bitte <a href='%s'>anmelden</a>, um das Profil dieses Mitglieds anzuzeigen.", CPC_TEXT_DOMAIN));
+			$html = __cpc__show_login_link(__("Bitte <a href='%s'>anmelden</a>, um das Profil dieses Mitglieds anzuzeigen.", 'cp-communitie'));
 			
 		}
 
@@ -622,12 +622,12 @@ function __cpc__show_profile($page)
 				
 			} else {
 				
-				$html = __("Mitglied nicht gefunden, tut mir leid", CPC_TEXT_DOMAIN);
+				$html = __("Mitglied nicht gefunden, tut mir leid", 'cp-communitie');
 			}
 		
 		} else {
 			
-			$html = __cpc__show_login_link(__("Bitte <a href='%s'>anmelden</a>, um das Profil dieses Mitglieds anzuzeigen.", CPC_TEXT_DOMAIN));
+			$html = __cpc__show_login_link(__("Bitte <a href='%s'>anmelden</a>, um das Profil dieses Mitglieds anzuzeigen.", 'cp-communitie'));
 			
 		}	
 	
@@ -750,9 +750,9 @@ function __cpc__profile_header($uid1, $uid2, $url, $display_name) {
 	// Follow/Unfollow
 	if (function_exists('__cpc__profile_plus') && is_user_logged_in() && $uid1 != $uid2) {
 		if (__cpc__is_following($uid2, $uid1)) {
-			$html = str_replace("[follow]", '<input type="submit" ref="unfollow" value="'.__('Entfolgen', CPC_TEXT_DOMAIN).'" class="__cpc__button follow-button">', $html);
+			$html = str_replace("[follow]", '<input type="submit" ref="unfollow" value="'.__('Entfolgen', 'cp-communitie').'" class="__cpc__button follow-button">', $html);
 		} else {
-			$html = str_replace("[follow]", '<input type="submit" ref="follow" value="'.__('Folgen', CPC_TEXT_DOMAIN).'" class="__cpc__button follow-button">', $html);
+			$html = str_replace("[follow]", '<input type="submit" ref="follow" value="'.__('Folgen', 'cp-communitie').'" class="__cpc__button follow-button">', $html);
 		}
 	} else {
 		$html = str_replace("[follow]", '', $html);
@@ -788,7 +788,7 @@ function __cpc__profile_header($uid1, $uid2, $url, $display_name) {
 			if ($day == 0) $day = '';
 			if ($year == 0) $year = '';
 			$born = get_option(CPC_OPTIONS_PREFIX.'_show_dob_format');
-			$born = ( $born != '') ? $born : __('Geboren', CPC_TEXT_DOMAIN).' %monthname %day%th, %year';
+			$born = ( $born != '') ? $born : __('Geboren', 'cp-communitie').' %monthname %day%th, %year';
 			$day0 = str_pad($day, 2, '0', STR_PAD_LEFT);
 			$month = ($month > 0) ? str_pad($month, 2, '0', STR_PAD_LEFT) : '';
 			$month0 = ($month > 0) ? str_pad($month, 2, '0', STR_PAD_LEFT) : '';
@@ -819,11 +819,11 @@ function __cpc__profile_header($uid1, $uid2, $url, $display_name) {
 	} else {
 	
 		if (strtolower($privacy) == 'friends only') {
-			$html = str_replace("[born]", sprintf(__("Persönliche Informationen nur für %s.", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')), $html);						
+			$html = str_replace("[born]", sprintf(__("Persönliche Informationen nur für %s.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')), $html);						
 		}
 
 		if (strtolower($privacy) == 'nobody') {
-			$html = str_replace("[born]", __("Persönliche Informationen sind privat.", CPC_TEXT_DOMAIN), $html);						
+			$html = str_replace("[born]", __("Persönliche Informationen sind privat.", 'cp-communitie'), $html);						
 		}
 		
 	}
@@ -853,29 +853,29 @@ function __cpc__profile_header($uid1, $uid2, $url, $display_name) {
 				// A friend
 				// Send mail
 				if (function_exists('__cpc__mail'))
-					$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', CPC_TEXT_DOMAIN).'" />';
+					$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
 				
 			} else {
 				
 				if (__cpc__pending_friendship($uid1)) {
 					// Pending
-					$actions .= '<input type="submit" title="'.$uid1.'" id="cancelfriendrequest" class="__cpc__button" value="'.sprintf(__('%s Anfrage abbrechen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'" /> ';
-					$actions .= '<div id="cancelfriendrequest_done" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage abgebrochen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
+					$actions .= '<input type="submit" title="'.$uid1.'" id="cancelfriendrequest" class="__cpc__button" value="'.sprintf(__('%s Anfrage abbrechen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'" /> ';
+					$actions .= '<div id="cancelfriendrequest_done" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage abgebrochen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
 				} else {							
 					// Not a friend
 					$actions .= '<div id="addasfriend_done1_'.$uid1.'" class="addasfriend_input" >';
 					$actions .= '<div id="add_as_friend_message">';
-					$actions .= '<input type="text" title="'.$uid1.'"id="addfriend" class="input-field" onclick="this.value=\'\'" value="'.sprintf(__('Als %s hinzufügen', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...."';
+					$actions .= '<input type="text" title="'.$uid1.'"id="addfriend" class="input-field" onclick="this.value=\'\'" value="'.sprintf(__('Als %s hinzufügen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...."';
 					if (!get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
 						$actions .= ' style="width:210px"';
 					}
 					$actions .= '>';
 					if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-						$actions .= '<input type="submit" title="'.$uid1.'" id="addasfriend" class="__cpc__button" value="'.__('Hinzufügen', CPC_TEXT_DOMAIN).'" /> ';
+						$actions .= '<input type="submit" title="'.$uid1.'" id="addasfriend" class="__cpc__button" value="'.__('Hinzufügen', 'cp-communitie').'" /> ';
 					}
 	
 					$actions .= '</div></div>';
-					$actions .= '<div id="addasfriend_done2_'.$uid1.'" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage gesendet', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
+					$actions .= '<div id="addasfriend_done2_'.$uid1.'" class="hidden addasfriend_input">'.sprintf(__('%s Anfrage gesendet', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</div>';
 					
 				}
 			}				
@@ -1082,9 +1082,9 @@ function __cpc__get_facebook() {
 		    $user_profile = $__cpc__facebook->api('/me');
 		    
 			$fhtml .= "<input type='checkbox' CHECKED id='post_to_facebook' /> ";
-			$fhtml .= sprintf(__("Teile den Beitrag auf Facebook als <a target='_blank' href='%s'>%s</a>", CPC_TEXT_DOMAIN), $user_profile['link'], $user_profile['name']);
+			$fhtml .= sprintf(__("Teile den Beitrag auf Facebook als <a target='_blank' href='%s'>%s</a>", 'cp-communitie'), $user_profile['link'], $user_profile['name']);
 	
-		    $fhtml .= ' (<a href="'.$profile_url.$q.'fb=lo">'.__('Disconnect', CPC_TEXT_DOMAIN).'</a>)';
+		    $fhtml .= ' (<a href="'.$profile_url.$q.'fb=lo">'.__('Disconnect', 'cp-communitie').'</a>)';
 			
 		  } catch (__cpc__FacebookApiException $e) {
 		      
@@ -1103,7 +1103,7 @@ function __cpc__get_facebook() {
 			    'scope'  => 'publish_actions,user_about_me',
 			    'fbconnect' => 1
 			);
-		  $fhtml .= '<a href="'.$__cpc__facebook->getLoginUrl($params).'">'.__('Verbinde dich mit Facebook', CPC_TEXT_DOMAIN).'</a>';
+		  $fhtml .= '<a href="'.$__cpc__facebook->getLoginUrl($params).'">'.__('Verbinde dich mit Facebook', 'cp-communitie').'</a>';
 	
 		}
 				

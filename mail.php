@@ -1,7 +1,7 @@
 <?php
 /*
 CP Community Mail
-Description: Mail component for the CP Community suite of plug-ins. Put [cpcommunitie-mail] on any WordPress page.
+Description: Mail component for the CP Community suite of plug-ins. Put [cpcommunitie-mail] on any ClassicPress page.
 */
 
 // Get constants
@@ -37,9 +37,9 @@ function __cpc__mail() {
 
 		$template = '';
 		$template .= '<div id="mail_tabs">';
-		$template .= '<div id="cpcommunitie_compose_tab" class="mail_tab nav-tab-'.$compose_active.'"><a href="javascript:void(0)" class="nav-tab-'.$compose_active.'-link" style="text-decoration:none !important;">'.__('Compose', CPC_TEXT_DOMAIN).'</a></div>';
-		$template .= '<div id="cpcommunitie_inbox_tab" class="mail_tab nav-tab-'.$inbox_active.'"><a href="javascript:void(0)" class="nav-tab-'.$inbox_active.'-link" style="text-decoration:none !important;">'.__('In Box', CPC_TEXT_DOMAIN).' <span id="in_unread"></span></a></div>';
-		$template .= '<div id="cpcommunitie_sent_tab" class="mail_tab nav-tab-'.$sent_active.'"><a href="javascript:void(0)" class="nav-tab-'.$sent_active.'-link" style="text-decoration:none !important;">'.__('Sent Items', CPC_TEXT_DOMAIN).'</a></div>';
+		$template .= '<div id="cpcommunitie_compose_tab" class="mail_tab nav-tab-'.$compose_active.'"><a href="javascript:void(0)" class="nav-tab-'.$compose_active.'-link" style="text-decoration:none !important;">'.__('Compose', 'cp-communitie').'</a></div>';
+		$template .= '<div id="cpcommunitie_inbox_tab" class="mail_tab nav-tab-'.$inbox_active.'"><a href="javascript:void(0)" class="nav-tab-'.$inbox_active.'-link" style="text-decoration:none !important;">'.__('In Box', 'cp-communitie').' <span id="in_unread"></span></a></div>';
+		$template .= '<div id="cpcommunitie_sent_tab" class="mail_tab nav-tab-'.$sent_active.'"><a href="javascript:void(0)" class="nav-tab-'.$sent_active.'-link" style="text-decoration:none !important;">'.__('Sent Items', 'cp-communitie').'</a></div>';
 		$template .= '</div>';	
 		
 		$template .= '<div id="mail-main-div">';
@@ -51,16 +51,16 @@ function __cpc__mail() {
 			$template .= "<div id='mailbox'>";
 				$template .= "<div id='__cpc__search'>";
 					$template .= "<input id='search_inbox' type='text' style='width: 160px'>";
-					$template .= "<input id='search_inbox_go' class='__cpc__button message_search' type='submit' style='margin-left:10px;' value='".__('Search', CPC_TEXT_DOMAIN)."'>";
+					$template .= "<input id='search_inbox_go' class='__cpc__button message_search' type='submit' style='margin-left:10px;' value='".__('Search', 'cp-communitie')."'>";
 					$template .= "[unread]";
 				$template .= "</div>";
 				$template .= "<div>";
 					$template .= "<select id='__cpc__mail_bulk_action'>";
-					$template .= "<option value=''>".__('Bulk action...', CPC_TEXT_DOMAIN).'</option>';
-					$template .= "<option value='delete'>".__('Delete checked items', CPC_TEXT_DOMAIN).'</option>';
-					$template .= "<option id='__cpc__mark_all' value='readall'>".__('Mark all mail as read', CPC_TEXT_DOMAIN).'</option>';
-					$template .= "<option value='deleteall'>".__('Delete all mail!', CPC_TEXT_DOMAIN).'</option>';
-					$template .= "<option value='recoverall'>".__('Recover all deleted mail', CPC_TEXT_DOMAIN).'</option>';
+					$template .= "<option value=''>".__('Bulk action...', 'cp-communitie').'</option>';
+					$template .= "<option value='delete'>".__('Delete checked items', 'cp-communitie').'</option>';
+					$template .= "<option id='__cpc__mark_all' value='readall'>".__('Mark all mail as read', 'cp-communitie').'</option>';
+					$template .= "<option value='deleteall'>".__('Delete all mail!', 'cp-communitie').'</option>';
+					$template .= "<option value='recoverall'>".__('Recover all deleted mail', 'cp-communitie').'</option>';
 					$template .= "</select>";
 				$template .= "</div>";
 				$template .= "<div id='mailbox_list'></div>";
@@ -80,8 +80,8 @@ function __cpc__mail() {
 				$compose .= '<div id="compose_mail_to">';
 
 					$compose .= '<div class="send_button" style="padding:4px;">';
-					$compose .= '<input type="submit" id="mail_cancel_button" class="__cpc__button" value="'.__('Cancel', CPC_TEXT_DOMAIN).'" />';
-					$compose .= '<input type="submit" id="mail_send_button" class="__cpc__button" value="'.__('Send', CPC_TEXT_DOMAIN).'" />';
+					$compose .= '<input type="submit" id="mail_cancel_button" class="__cpc__button" value="'.__('Cancel', 'cp-communitie').'" />';
+					$compose .= '<input type="submit" id="mail_send_button" class="__cpc__button" value="'.__('Send', 'cp-communitie').'" />';
 					$compose .= '</div>';
 	 	
 					$compose .= '<select id="mail_recipient_list">';
@@ -116,11 +116,11 @@ function __cpc__mail() {
 					$compose .= '</select>';
 	 			$compose .= '</div>';	
 				
-				$compose .= '<div class="new-topic-subject label">'.__('Subject', CPC_TEXT_DOMAIN).'</div>';
+				$compose .= '<div class="new-topic-subject label">'.__('Subject', 'cp-communitie').'</div>';
  				$compose .= "<input type='text' id='compose_subject' class='new-topic-subject-input' value='' />";
 				
 				$compose .= '<div id="compose_mail_message">';
-					$compose .= '<div class="new-topic-subject label">'.__('Message', CPC_TEXT_DOMAIN).'</div>';
+					$compose .= '<div class="new-topic-subject label">'.__('Message', 'cp-communitie').'</div>';
 					$compose .= '<textarea class="reply-topic-subject-text" id="compose_text"></textarea>';
 	 			$compose .= '</div>';
 				
@@ -131,8 +131,8 @@ function __cpc__mail() {
 		} else {
 			
 			$compose = '<div id="compose_form" style="display:none">';
-				$compose .= __('New mail can only be sent by this member.', CPC_TEXT_DOMAIN).'<br /><br />';
-				$compose .= '<input id="mail_cancel_button" type="submit" class="__cpc__button" value="'.__('Back to mail', CPC_TEXT_DOMAIN).'" />';
+				$compose .= __('New mail can only be sent by this member.', 'cp-communitie').'<br /><br />';
+				$compose .= '<input id="mail_cancel_button" type="submit" class="__cpc__button" value="'.__('Back to mail', 'cp-communitie').'" />';
 			$compose .= "</div>";
 			
 			
@@ -140,15 +140,15 @@ function __cpc__mail() {
 				
 		// Replace template codes
 		$html = str_replace("[compose_form]", $compose, stripslashes($html));
-		$html = str_replace("[compose]", __("Compose", CPC_TEXT_DOMAIN), stripslashes($html));
-		$html = str_replace("[inbox]", __("Inbox", CPC_TEXT_DOMAIN), stripslashes($html));
-		$html = str_replace("[sent]", __("Sent", CPC_TEXT_DOMAIN), stripslashes($html));
-		$html = str_replace("[unread]", "<input type='checkbox' id='unread_only' /> ".__("Unread only", CPC_TEXT_DOMAIN), stripslashes($html));
+		$html = str_replace("[compose]", __("Compose", 'cp-communitie'), stripslashes($html));
+		$html = str_replace("[inbox]", __("Inbox", 'cp-communitie'), stripslashes($html));
+		$html = str_replace("[sent]", __("Sent", 'cp-communitie'), stripslashes($html));
+		$html = str_replace("[unread]", "<input type='checkbox' id='unread_only' /> ".__("Unread only", 'cp-communitie'), stripslashes($html));
 		
 
 	} else {
 		// Not logged in
-		$html .= __('You have to login to access your mail.', CPC_TEXT_DOMAIN);
+		$html .= __('You have to login to access your mail.', 'cp-communitie');
 	}
 	
 	// Send HTML

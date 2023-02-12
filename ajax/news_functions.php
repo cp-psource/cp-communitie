@@ -119,31 +119,31 @@ if ($_POST['action'] == 'menu_news') {
 	
 				$heading = '';
 				if (!$shown_heading_today && $days == 0) {
-					$heading = __('Today', CPC_TEXT_DOMAIN);
+					$heading = __('Today', 'cp-communitie');
 					$shown_heading_today = true;
 				}
 				if (!$shown_heading_yesterday && $days == 1) {
-					$heading = __('Yesterday', CPC_TEXT_DOMAIN);
+					$heading = __('Yesterday', 'cp-communitie');
 					$shown_heading_yesterday = true;
 				}
 				if (!$shown_heading_recent && $days >= 2 && $days <= 6) {
-					$heading = __('Recently', CPC_TEXT_DOMAIN);
+					$heading = __('Recently', 'cp-communitie');
 					$shown_heading_recent = true;
 				}
 				if (!$shown_heading_lastweek && $days >= 7 && $days <= 13) {
-					$heading = __('Last week', CPC_TEXT_DOMAIN);
+					$heading = __('Last week', 'cp-communitie');
 					$shown_heading_lastweek = true;
 				}
 				if (!$shown_heading_thismonth && $days >= 14 && $months == 0) {
-					$heading = __('This month', CPC_TEXT_DOMAIN);
+					$heading = __('This month', 'cp-communitie');
 					$shown_heading_thismonth = true;
 				}
 				if (!$shown_heading_lastmonth && $months == 1) {
-					$heading = __('Last month', CPC_TEXT_DOMAIN);
+					$heading = __('Last month', 'cp-communitie');
 					$shown_heading_lastmonth = true;
 				}
 				if (!$shown_heading_old && $months > 1) {
-					$heading = __('Old', CPC_TEXT_DOMAIN);
+					$heading = __('Old', 'cp-communitie');
 					$shown_heading_old = true;
 				}
 					
@@ -160,13 +160,13 @@ if ($_POST['action'] == 'menu_news') {
 					$html .= "<div class='__cpc__news_history_avatar'>";
 					$html .= $item->news;
 					$html .= "<br /><span class='__cpc__news_history_ago'>".__cpc__time_ago($item->added)."</span>";
-					$html .= ' '.__('by', CPC_TEXT_DOMAIN).' <a href="'.$profile_url.$q.'uid='.$item->author.'">'.stripslashes($item->display_name).'</a>';
+					$html .= ' '.__('by', 'cp-communitie').' <a href="'.$profile_url.$q.'uid='.$item->author.'">'.stripslashes($item->display_name).'</a>';
 					$html .= "</div>";
 				$html .= "</div>";
 			}
 		} else {
 
-			$html .= __("Nothing to show yet.", CPC_TEXT_DOMAIN);
+			$html .= __("Nothing to show yet.", 'cp-communitie');
 
 		}
 		$html .= "</div>";
@@ -179,7 +179,7 @@ if ($_POST['action'] == 'menu_news') {
 
 	} else {
 		
-		$html .= __("Please login, thank you.", CPC_TEXT_DOMAIN);
+		$html .= __("Please login, thank you.", 'cp-communitie');
 		
 	}
 

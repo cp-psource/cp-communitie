@@ -13,7 +13,7 @@ if ($action == "deactivate_debug") {
 	if (is_user_logged_in() && __cpc__get_current_userlevel()==5) {
 		update_option(CPC_OPTIONS_PREFIX.'_debug_mode', '');
 	} else {
-		echo __('Only site administrators can de-activate debug mode.', CPC_TEXT_DOMAIN);
+		echo __('Only site administrators can de-activate debug mode.', 'cp-communitie');
 	}
 	exit;
 }
@@ -28,10 +28,10 @@ if ($action == "get_mail_message") {
 		LEFT JOIN ".$wpdb->base_prefix."users u2 on m.mail_to = u2.ID
 		WHERE mail_mid = %d LIMIT 0,1";
 		$message = $wpdb->get_row($wpdb->prepare($sql, $_POST['mail_mid']));
-		$r = __('From', CPC_TEXT_DOMAIN).': '.$message->u1_display_name.'<br />';
-		$r .= __('To', CPC_TEXT_DOMAIN).': '.$message->u2_display_name;
-		$r .= '<p style="font-style:italic">'.__('Sent', CPC_TEXT_DOMAIN).': '.$message->mail_sent.'</p>';
-		$r .= '<p style="font-weight:bold">'.__('Subject', CPC_TEXT_DOMAIN).': '.stripslashes($message->mail_subject).'</p>';
+		$r = __('From', 'cp-communitie').': '.$message->u1_display_name.'<br />';
+		$r .= __('To', 'cp-communitie').': '.$message->u2_display_name;
+		$r .= '<p style="font-style:italic">'.__('Sent', 'cp-communitie').': '.$message->mail_sent.'</p>';
+		$r .= '<p style="font-weight:bold">'.__('Subject', 'cp-communitie').': '.stripslashes($message->mail_subject).'</p>';
 		$r .= '<p>'.stripslashes($message->mail_message).'</p>';
 		echo $r;
 	} else {
@@ -51,7 +51,7 @@ if ($action == "sendReport") {
 	$report_text = $_POST['report_text'];
 	$url = $_POST['url'];
 
-	__cpc__sendmail(get_bloginfo('admin_email'), __('Warning Report', CPC_TEXT_DOMAIN), __('From', CPC_TEXT_DOMAIN).': '.$current_user->display_name.'<br /><br />'.$report_text.'<br /><br />URL: '.$url.'<br /><br />Ref: '.$code);							
+	__cpc__sendmail(get_bloginfo('admin_email'), __('Warning Report', 'cp-communitie'), __('From', 'cp-communitie').': '.$current_user->display_name.'<br /><br />'.$report_text.'<br /><br />URL: '.$url.'<br /><br />Ref: '.$code);							
 
 	exit;	
 }

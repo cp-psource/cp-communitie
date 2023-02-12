@@ -3,7 +3,7 @@
  * Template Name: Demo profile page 3
  * Description: A Profile Page Template to demonstrate using classes
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */

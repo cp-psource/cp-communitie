@@ -16,7 +16,8 @@
 	.wrap .mail_tab {
 		border: 1px solid #666;
 		padding: 3px;
-		width: 53px;
+		min-width: 53px;
+		width:auto;
 		text-align: center;
 		float: left;
 		margin-right: 1px;

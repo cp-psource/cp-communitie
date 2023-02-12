@@ -23,7 +23,7 @@ function __cpc__load_widgets() {
 /** Profile: Friends Recent Posts ************************************************************************* **/
 class __cpc__friends_status_Widget extends WP_Widget {
 
-	function __cpc__friends_status_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_friends_status', 'description' => 'Zeigt die Beiträge von Freunden (keine Antworten, dh ihren Status). Enthält keine Gruppenbeiträge. Datenschutzeinstellungen beachtet.' );
 		
@@ -33,7 +33,7 @@ class __cpc__friends_status_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'friends_status-widget', 
-		    CPC_WL_SHORT.': '.sprintf(__('%s Status', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')),
+		    CPC_WL_SHORT.': '.sprintf(__('%s Status', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -59,7 +59,7 @@ class __cpc__friends_status_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="__cpc__friends_status_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="__cpc__friends_status_postcount" style="display:none">'.$postcount.'</div>';
 			echo '<div id="__cpc__friends_status_preview" style="display:none">'.$preview.'</div>';
 			echo '<div id="__cpc__friends_status_forum" style="display:none">'.$forum.'</div>';
@@ -95,16 +95,16 @@ class __cpc__friends_status_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget-Titel', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget-Titel', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximale Anzahl von Beiträgen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximale Anzahl von Beiträgen', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Maximale Länge der Vorschau', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Maximale Länge der Vorschau', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'preview' ); ?>" name="<?php echo $this->get_field_name( 'preview' ); ?>" value="<?php echo $instance['preview']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'forum' ); ?>"><?php echo __('Seiten-Aktivität einbeziehen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'forum' ); ?>"><?php echo __('Seiten-Aktivität einbeziehen', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'forum' ); ?>" name="<?php echo $this->get_field_name( 'forum' ); ?>"
 			<?php if ($instance['forum'] == 'on') { echo " CHECKED"; } ?>
 			/>
@@ -116,9 +116,9 @@ class __cpc__friends_status_Widget extends WP_Widget {
 /** Recently Online ************************************************************************* **/
 class __cpc__recent_Widget extends WP_Widget {
 
-	function __cpc__recent_Widget() {
+	public function __construct() {
 		/* Widget settings. */
-		$widget_ops = array( 'classname' => 'widget_cpcommunitie_recent', 'description' => __('Zeigt Mitglieder an, die kürzlich online waren.', CPC_TEXT_DOMAIN) );
+		$widget_ops = array( 'classname' => 'widget_cpcommunitie_recent', 'description' => __('Zeigt Mitglieder an, die kürzlich online waren.', 'cp-communitie') );
 		
 		/* Widget control settings. */
 		$control_ops = array( 'id_base' => 'cpcommunitie_recent-widget' );
@@ -126,7 +126,7 @@ class __cpc__recent_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'cpcommunitie_recent-widget', 
-		    CPC_WL_SHORT.': '.__('Kürzlich online', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Kürzlich online', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -154,7 +154,7 @@ class __cpc__recent_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="__cpc__recent_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="__cpc__recent_Widget_count" style="display:none">'.$__cpc__recent_count.'</div>';
 			echo '<div id="__cpc__recent_Widget_desc" style="display:none">'.$__cpc__recent_desc.'</div>';
 			echo '<div id="__cpc__recent_Widget_show_light" style="display:none">'.$__cpc__recent_show_light.'</div>';
@@ -192,24 +192,24 @@ class __cpc__recent_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_title' ); ?>"><?php echo __('Widget-Titel', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_title' ); ?>"><?php echo __('Widget-Titel', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_recent_title' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_recent_title' ); ?>" value="<?php echo $instance['cpcommunitie_recent_title']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_count' ); ?>"><?php echo __('Maximal angezeigt', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_count' ); ?>"><?php echo __('Maximal angezeigt', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_recent_count' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_recent_count' ); ?>" value="<?php echo $instance['cpcommunitie_recent_count']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_desc' ); ?>"><?php echo __('Details als Liste anzeigen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_desc' ); ?>"><?php echo __('Details als Liste anzeigen', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_recent_desc' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_recent_desc' ); ?>"
 			<?php if ($instance['cpcommunitie_recent_desc'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<?php if ($instance['cpcommunitie_recent_desc'] == 'on') { ?>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_light' ); ?>"><?php echo __('Online-Statusanzeige anzeigen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_light' ); ?>"><?php echo __('Online-Statusanzeige anzeigen', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_light' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_recent_show_light' ); ?>"
 			<?php if ($instance['cpcommunitie_recent_show_light'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_mail' ); ?>"><?php echo __('Mail-Link anzeigen', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_mail' ); ?>"><?php echo __('Mail-Link anzeigen', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_recent_show_mail' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_recent_show_mail' ); ?>"
 			<?php if ($instance['cpcommunitie_recent_show_mail'] == 'on') { echo " CHECKED"; } ?>
 			/>
@@ -226,7 +226,7 @@ class __cpc__recent_Widget extends WP_Widget {
 /** Profile: Recent Posts ************************************************************************* **/
 class __cpc__recentactivity_Widget extends WP_Widget {
 
-	function __cpc__recentactivity_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_recentactivity', 'description' => 'Shows recent member posts (not replies, ie. their status). Does not include Group posts. Observes privacy settings.' );
 		
@@ -236,7 +236,7 @@ class __cpc__recentactivity_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'recentactivity-widget', 
-		    CPC_WL_SHORT.': '.__('Recent Activity', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Recent Activity', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -262,7 +262,7 @@ class __cpc__recentactivity_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="cpcommunitie_Recentactivity_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="cpcommunitie_Recentactivity_Widget_postcount" style="display:none">'.$postcount.'</div>';
 			echo '<div id="cpcommunitie_Recentactivity_Widget_preview" style="display:none">'.$preview.'</div>';
 			echo '<div id="cpcommunitie_Recentactivity_Widget_forum" style="display:none">'.$forum.'</div>';
@@ -298,16 +298,16 @@ class __cpc__recentactivity_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Max number of posts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Max number of posts', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'preview' ); ?>" name="<?php echo $this->get_field_name( 'preview' ); ?>" value="<?php echo $instance['preview']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'forum' ); ?>"><?php echo __('Include site activity', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'forum' ); ?>"><?php echo __('Include site activity', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'forum' ); ?>" name="<?php echo $this->get_field_name( 'forum' ); ?>"
 			<?php if ($instance['forum'] == 'on') { echo " CHECKED"; } ?>
 			/>
@@ -319,7 +319,7 @@ class __cpc__recentactivity_Widget extends WP_Widget {
 /** New Members ************************************************************************* **/
 class __cpc__members_Widget extends WP_Widget {
 
-	function __cpc__members_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_cpcommunitie_members', 'description' => 'Shows recent new members.' );
 		
@@ -329,7 +329,7 @@ class __cpc__members_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'cpcommunitie_members-widget', 
-		    CPC_WL_SHORT.': '.__('Latest New Members', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Latest New Members', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -354,7 +354,7 @@ class __cpc__members_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="cpcommunitie_members_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="cpcommunitie_members_Widget_count" style="display:none">'.$__cpc__members_count.'</div>';
 			echo '</div>';
 		} else {
@@ -385,10 +385,10 @@ class __cpc__members_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_members_count_title' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_members_count_title' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_members_count_title' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_members_count_title' ); ?>" value="<?php echo $instance['cpcommunitie_members_count_title']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_members_count' ); ?>"><?php echo __('Max number shown', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_members_count' ); ?>"><?php echo __('Max number shown', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_members_count' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_members_count' ); ?>" value="<?php echo $instance['cpcommunitie_members_count']; ?>" style="width: 30px" />
 		</p>
 		<?php
@@ -399,7 +399,7 @@ class __cpc__members_Widget extends WP_Widget {
 /** Friends ************************************************************************* **/
 class __cpc__friends_Widget extends WP_Widget {
 
-	function __cpc__friends_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_cpcommunitie_friends', 'description' => 'Shows a member friends, when logged in.' );
 		
@@ -409,7 +409,7 @@ class __cpc__friends_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'cpcommunitie_friends-widget', 
-			CPC_WL_SHORT.': '.sprintf(__('Your %s', CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')),
+			CPC_WL_SHORT.': '.sprintf(__('Your %s', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -440,7 +440,7 @@ class __cpc__friends_Widget extends WP_Widget {
 			if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 				// Parameters for AJAX
 				echo '<div id="cpcommunitie_friends_Widget">';
-				echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+				echo __('Wird geladen...', 'cp-communitie');
 				echo '<div id="cpcommunitie_friends_count" style="display:none">'.$__cpc__friends_count.'</div>';
 				echo '<div id="cpcommunitie_friends_desc" style="display:none">'.$__cpc__friends_desc.'</div>';
 				echo '<div id="cpcommunitie_friends_mode" style="display:none">'.$__cpc__friends_mode.'</div>';
@@ -480,24 +480,24 @@ class __cpc__friends_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_count_title' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_count_title' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_friends_count_title' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_count_title' ); ?>" value="<?php echo $instance['cpcommunitie_friends_count_title']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_count' ); ?>"><?php echo __('Max number shown', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_count' ); ?>"><?php echo __('Max number shown', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cpcommunitie_friends_count' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_count' ); ?>" value="<?php echo $instance['cpcommunitie_friends_count']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_desc' ); ?>"><?php echo __('Show details as list', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_desc' ); ?>"><?php echo __('Show details as list', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_friends_desc' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_desc' ); ?>"
 			<?php if ($instance['cpcommunitie_friends_desc'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<?php if ($instance['cpcommunitie_friends_desc'] == 'on') { ?>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_light' ); ?>"><?php echo __('Show online status indicator', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_light' ); ?>"><?php echo __('Show online status indicator', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_light' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_show_light' ); ?>"
 			<?php if ($instance['cpcommunitie_friends_show_light'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_mail' ); ?>"><?php echo __('Show mail link', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_mail' ); ?>"><?php echo __('Show mail link', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_mail' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_show_mail' ); ?>"
 			<?php if ($instance['cpcommunitie_friends_show_mail'] == 'on') { echo " CHECKED"; } ?>
 			/>
@@ -506,17 +506,17 @@ class __cpc__friends_Widget extends WP_Widget {
 			<input type="hidden" id="<?php echo $this->get_field_id( 'cpcommunitie_friends_show_mail' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_show_mail' ); ?>" value="<?php echo $instance['cpcommunitie_friends_show_mail']; ?>" style="width: 30px" />
 		<?php }  ?>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_mode' ); ?>"><?php echo __('Show', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cpcommunitie_friends_mode' ); ?>"><?php echo __('Show', 'cp-communitie'); ?>:</label>
 			<select id="<?php echo $this->get_field_id( 'cpcommunitie_friends_mode' ); ?>" name="<?php echo $this->get_field_name( 'cpcommunitie_friends_mode' ); ?>">
 				<option value='all'
 					<?php if ($instance['cpcommunitie_friends_mode'] == 'all') { echo " SELECTED"; } ?>
-					><?php _e("All", CPC_TEXT_DOMAIN); ?>
+					><?php _e("All", 'cp-communitie'); ?>
 				<option value='split'
 					<?php if ($instance['cpcommunitie_friends_mode'] == 'split') { echo " SELECTED"; } ?>
-					><?php _e("Online/offline split", CPC_TEXT_DOMAIN); ?>
+					><?php _e("Online/offline split", 'cp-communitie'); ?>
 				<option value='online'
 					<?php if ($instance['cpcommunitie_friends_mode'] == 'online') { echo " SELECTED"; } ?>
-					><?php _e("Online only", CPC_TEXT_DOMAIN); ?>					
+					><?php _e("Online only", 'cp-communitie'); ?>					
 			</select>
 		</p>
 		<?php
@@ -527,7 +527,7 @@ class __cpc__friends_Widget extends WP_Widget {
 /** Forum: Recent Posts ************************************************************************* **/
 class __cpc__forumrecentposts_Widget extends WP_Widget {
 
-	function __cpc__forumrecentposts_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_forumrecentposts', 'description' => 'Shows a number of recent posts.' );
 		
@@ -537,7 +537,7 @@ class __cpc__forumrecentposts_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'forumrecentposts-widget', 
-		    CPC_WL_SHORT.': '.__('Latest Forum Posts', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Latest Forum Posts', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -568,7 +568,7 @@ class __cpc__forumrecentposts_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="__cpc__Forumrecentposts_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="__cpc__Forumrecentposts_Widget_postcount" style="display:none">'.$postcount.'</div>';
 			echo '<div id="__cpc__Forumrecentposts_Widget_preview" style="display:none">'.$preview.'</div>';
 			echo '<div id="__cpc__Forumrecentposts_Widget_cat_id" style="display:none">'.$cat_id.'</div>';
@@ -611,36 +611,36 @@ class __cpc__forumrecentposts_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'just_own' ); ?>"><?php echo __('Just member\'s own posts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'just_own' ); ?>"><?php echo __('Just member\'s own posts', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'just_own' ); ?>" name="<?php echo $this->get_field_name( 'just_own' ); ?>"
 			<?php if ($instance['just_own'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'show_replies' ); ?>"><?php echo __('Show replies', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'show_replies' ); ?>"><?php echo __('Show replies', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'show_replies' ); ?>" name="<?php echo $this->get_field_name( 'show_replies' ); ?>"
 			<?php if ($instance['show_replies'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'incl_parent' ); ?>"><?php echo __('Show parent (replies)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'incl_parent' ); ?>"><?php echo __('Show parent (replies)', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'incl_parent' ); ?>" name="<?php echo $this->get_field_name( 'incl_parent' ); ?>"
 			<?php if (isset($instance['incl_parent']) && $instance['incl_parent'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'incl_cat' ); ?>"><?php echo __('Include category', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'incl_cat' ); ?>"><?php echo __('Include category', 'cp-communitie'); ?>:</label>
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'incl_cat' ); ?>" name="<?php echo $this->get_field_name( 'incl_cat' ); ?>"
 			<?php if ($instance['incl_cat'] == 'on') { echo " CHECKED"; } ?>
 			/>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Max number of posts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Max number of posts', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('Category ID (0 for all)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('Category ID (0 for all)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cat_id' ); ?>" name="<?php echo $this->get_field_name( 'cat_id' ); ?>" value="<?php echo $instance['cat_id']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'preview' ); ?>" name="<?php echo $this->get_field_name( 'preview' ); ?>" value="<?php echo $instance['preview']; ?>" style="width: 30px" />
 		</p>
 		<?php
@@ -651,7 +651,7 @@ class __cpc__forumrecentposts_Widget extends WP_Widget {
 /** Login/Summary Widget ************************************************************************* **/
 class __cpc__summary_Widget extends WP_Widget {
 
-	function __cpc__summary_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_cpcommunitie_summary', 'description' => sprintf('When logged in, shows a summary of the %s user.', CPC_WL) );
 		
@@ -661,7 +661,7 @@ class __cpc__summary_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'cpcommunitie_summary-widget', 
-			CPC_WL_SHORT.': '.__('Summary', CPC_TEXT_DOMAIN),
+			CPC_WL_SHORT.': '.__('Summary', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -696,7 +696,7 @@ class __cpc__summary_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="cpcommunitie_summary_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="cpcommunitie_summary_Widget_show_loggedout" style="display:none">'.$show_loggedout.'</div>';
 			echo '<div id="cpcommunitie_summary_Widget_form" style="display:none">'.$show_form.'</div>';
 			echo '<div id="cpcommunitie_summary_Widget_login_url" style="display:none">'.$login_url.'</div>';
@@ -744,44 +744,44 @@ class __cpc__summary_Widget extends WP_Widget {
 	function form( $instance ) {
 
 		/* Set up some default widget settings. */
-		$defaults = array( 'show_avatar_size' => '100', 'wtitle' => 'Welcome...', 'show_loggedout' => 'on', 'show_loggedout' => '', 'login_username' => __('Username', CPC_TEXT_DOMAIN), 'login_password' => __('Password', CPC_TEXT_DOMAIN), 'login_remember_me' => __('Remember me?', CPC_TEXT_DOMAIN), 'login_button' => __('Login', CPC_TEXT_DOMAIN), 'login_forgot' => __('Forgotten password?', CPC_TEXT_DOMAIN), 'login_register' => __('Register', CPC_TEXT_DOMAIN) );
+		$defaults = array( 'show_avatar_size' => '100', 'wtitle' => 'Welcome...', 'show_loggedout' => 'on', 'show_loggedout' => '', 'login_username' => __('Username', 'cp-communitie'), 'login_password' => __('Password', 'cp-communitie'), 'login_remember_me' => __('Remember me?', 'cp-communitie'), 'login_button' => __('Login', 'cp-communitie'), 'login_forgot' => __('Forgotten password?', 'cp-communitie'), 'login_register' => __('Register', 'cp-communitie') );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'login_username' ); ?>"><?php echo __('Username prompt', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_username' ); ?>"><?php echo __('Username prompt', 'cp-communitie'); ?>:</label><br />
 			<?php $login_username = (isset($instance['login_username'])) ? $instance['login_username'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_username' ); ?>" name="<?php echo $this->get_field_name( 'login_username' ); ?>" value="<?php echo $login_username; ?>" /><br />
-			<label for="<?php echo $this->get_field_id( 'login_password' ); ?>"><?php echo __('Password prompt', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_password' ); ?>"><?php echo __('Password prompt', 'cp-communitie'); ?>:</label><br />
 			<?php $login_password = (isset($instance['login_password'])) ? $instance['login_password'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_password' ); ?>" name="<?php echo $this->get_field_name( 'login_password' ); ?>" value="<?php echo $login_password; ?>" /><br />
-			<label for="<?php echo $this->get_field_id( 'login_remember_me' ); ?>"><?php echo __('Remember me prompt', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_remember_me' ); ?>"><?php echo __('Remember me prompt', 'cp-communitie'); ?>:</label><br />
 			<?php $login_remember_me = (isset($instance['login_remember_me'])) ? $instance['login_remember_me'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_remember_me' ); ?>" name="<?php echo $this->get_field_name( 'login_remember_me' ); ?>" value="<?php echo $login_remember_me; ?>" /><br />
-			<label for="<?php echo $this->get_field_id( 'login_button' ); ?>"><?php echo __('Button text', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_button' ); ?>"><?php echo __('Button text', 'cp-communitie'); ?>:</label><br />
 			<?php $login_button = (isset($instance['login_button'])) ? $instance['login_button'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_button' ); ?>" name="<?php echo $this->get_field_name( 'login_button' ); ?>" value="<?php echo $login_button; ?>" /><br />
-			<label for="<?php echo $this->get_field_id( 'login_forgot' ); ?>"><?php echo __('Forgot password prompt', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_forgot' ); ?>"><?php echo __('Forgot password prompt', 'cp-communitie'); ?>:</label><br />
 			<?php $login_forgot = (isset($instance['login_forgot'])) ? $instance['login_forgot'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_forgot' ); ?>" name="<?php echo $this->get_field_name( 'login_forgot' ); ?>" value="<?php echo $login_forgot; ?>" /><br />
-			<label for="<?php echo $this->get_field_id( 'login_register' ); ?>"><?php echo __('Register prompt', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'login_register' ); ?>"><?php echo __('Register prompt', 'cp-communitie'); ?>:</label><br />
 			<?php $login_register = (isset($instance['login_register'])) ? $instance['login_register'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_register' ); ?>" name="<?php echo $this->get_field_name( 'login_register' ); ?>" value="<?php echo $login_register; ?>" /><br />
 		<br /><br />
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'show_avatar' ); ?>" name="<?php echo $this->get_field_name( 'show_avatar' ); ?>"
 			<?php if (isset($instance['show_avatar']) && $instance['show_avatar'] == 'on') { echo " CHECKED"; } ?>
 			/>
-			<label for="<?php echo $this->get_field_id( 'show_avatar' ); ?>"><?php echo __('Show avatar', CPC_TEXT_DOMAIN); ?></label><br />
-			<label for="<?php echo $this->get_field_id( 'show_avatar_size' ); ?>"><?php echo __('Size of avatar (in pixels, eg: 100)', CPC_TEXT_DOMAIN); ?>:</label><br />
+			<label for="<?php echo $this->get_field_id( 'show_avatar' ); ?>"><?php echo __('Show avatar', 'cp-communitie'); ?></label><br />
+			<label for="<?php echo $this->get_field_id( 'show_avatar_size' ); ?>"><?php echo __('Size of avatar (in pixels, eg: 100)', 'cp-communitie'); ?>:</label><br />
 			<?php $show_avatar_size = (isset($instance['show_avatar_size'])) ? $instance['show_avatar_size'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'show_avatar_size' ); ?>" style="width: 50px" name="<?php echo $this->get_field_name( 'show_avatar_size' ); ?>" value="<?php echo $show_avatar_size; ?>" /><br />
 		<br />
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'show_loggedout' ); ?>" name="<?php echo $this->get_field_name( 'show_loggedout' ); ?>"
 			<?php if ($instance['show_loggedout'] == 'on') { echo " CHECKED"; } ?>
 			/>
-			<label for="<?php echo $this->get_field_id( 'show_loggedout' ); ?>"><?php echo __('Show Login/Logout links', CPC_TEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_loggedout' ); ?>"><?php echo __('Show Login/Logout links', 'cp-communitie'); ?></label>
 		<br />
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'show_form' ); ?>" name="<?php echo $this->get_field_name( 'show_form' ); ?>"
 			<?php 
@@ -789,12 +789,12 @@ class __cpc__summary_Widget extends WP_Widget {
 			if ($show_form == 'on') { echo " CHECKED"; } 
 			?>
 			/>
-			<label for="<?php echo $this->get_field_id( 'show_form' ); ?>"><?php echo __('Show Login Form', CPC_TEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id( 'show_form' ); ?>"><?php echo __('Show Login Form', 'cp-communitie'); ?></label>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'login_url' ); ?>"><?php echo __('Login URL (if using login form)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'login_url' ); ?>"><?php echo __('Login URL (if using login form)', 'cp-communitie'); ?>:</label>
 			<?php $login_url = (isset($instance['login_url'])) ? $instance['login_url'] : ''; ?>
 			<input id="<?php echo $this->get_field_id( 'login_url' ); ?>" name="<?php echo $this->get_field_name( 'login_url' ); ?>" value="<?php echo $login_url; ?>" /><br />
-			<?php echo __('Leave blank for current page (if the current page has values after # in the URL, they are not included as not passed to WordPress authentication).', CPC_TEXT_DOMAIN); ?>
+			<?php echo __('Leave blank for current page (if the current page has values after # in the URL, they are not included as not passed to ClassicPress authentication).', 'cp-communitie'); ?>
 		</p>
 		<?php
 	}
@@ -804,7 +804,7 @@ class __cpc__summary_Widget extends WP_Widget {
 /** Forum: Needs answering ************************************************************************* **/
 class __cpc__forumnoanswer_Widget extends WP_Widget {
 
-	function __cpc__forumnoanswer_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_forumrnoanswer', 'description' => 'Shows recent posts without an answer.' );
 		
@@ -814,7 +814,7 @@ class __cpc__forumnoanswer_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'forumnoanswer-widget', 
-		    CPC_WL_SHORT.': '.__('Topics without an accepted answer', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Topics without an accepted answer', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -843,7 +843,7 @@ class __cpc__forumnoanswer_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="__cpc__Forumnoanswer_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="__cpc__Forumnoanswer_Widget_preview" style="display:none">'.$preview.'</div>';
 			echo '<div id="__cpc__Forumnoanswer_Widget_cat_id" style="display:none">'.$cat_id.'</div>';
 			echo '<div id="__cpc__Forumnoanswer_Widget_cat_id_exclude" style="display:none">'.$cat_id_exclude.'</div>';
@@ -884,13 +884,13 @@ class __cpc__forumnoanswer_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('<strong>Categories to include</strong><br />List IDs, comma separated. (0 for all)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('<strong>Categories to include</strong><br />List IDs, comma separated. (0 for all)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cat_id' ); ?>" name="<?php echo $this->get_field_name( 'cat_id' ); ?>" value="<?php echo $instance['cat_id']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>"><?php echo __('<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 for none)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>"><?php echo __('<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 for none)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>" name="<?php echo $this->get_field_name( 'cat_id_exclude' ); ?>" value="<?php echo $instance['cat_id_exclude']; ?>" />
 		<br /><br />
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'groups' ); ?>" name="<?php echo $this->get_field_name( 'groups' ); ?>"
@@ -899,16 +899,16 @@ class __cpc__forumnoanswer_Widget extends WP_Widget {
 			if ($groups == 'on') { echo " CHECKED"; } ?>
 			/>
 			<?php if (function_exists('__cpc__groups')) { ?>
-			<label for="<?php echo $this->get_field_id( 'groups' ); ?>"><?php echo __('Include groups', CPC_TEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id( 'groups' ); ?>"><?php echo __('Include groups', 'cp-communitie'); ?></label>
 			<?php } ?>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'preview' ); ?>"><?php echo __('Max length of preview', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'preview' ); ?>" name="<?php echo $this->get_field_name( 'preview' ); ?>" value="<?php echo $instance['preview']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'timescale' ); ?>"><?php echo __('Time period (days)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'timescale' ); ?>"><?php echo __('Time period (days)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'timescale' ); ?>" name="<?php echo $this->get_field_name( 'timescale' ); ?>" value="<?php echo $instance['timescale']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of posts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of posts', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		</p>
 		<?php
@@ -919,7 +919,7 @@ class __cpc__forumnoanswer_Widget extends WP_Widget {
 /** Forum: Top experts ************************************************************************* **/
 class __cpc__forumexperts_Widget extends WP_Widget {
 
-	function __cpc__forumexperts_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_forumexperts', 'description' => 'Shows top members with answers accepted.' );
 		
@@ -929,7 +929,7 @@ class __cpc__forumexperts_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'forumexperts-widget', 
-		    CPC_WL_SHORT.': '.__('Top Experts', CPC_TEXT_DOMAIN),
+		    CPC_WL_SHORT.': '.__('Top Experts', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -957,7 +957,7 @@ class __cpc__forumexperts_Widget extends WP_Widget {
 		if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 			// Parameters for AJAX
 			echo '<div id="__cpc__Forumexperts_Widget">';
-			echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+			echo __('Wird geladen...', 'cp-communitie');
 			echo '<div id="__cpc__Forumexperts_Widget_cat_id" style="display:none">'.$cat_id.'</div>';
 			echo '<div id="__cpc__Forumexperts_Widget_cat_id_exclude" style="display:none">'.$cat_id_exclude.'</div>';
 			echo '<div id="__cpc__Forumexperts_Widget_timescale" style="display:none">'.$timescale.'</div>';
@@ -996,13 +996,13 @@ class __cpc__forumexperts_Widget extends WP_Widget {
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
 		
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('<strong>Categories to include</strong><br />List IDs, comma separated. (0 for all)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cat_id' ); ?>"><?php echo __('<strong>Categories to include</strong><br />List IDs, comma separated. (0 for all)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cat_id' ); ?>" name="<?php echo $this->get_field_name( 'cat_id' ); ?>" value="<?php echo $instance['cat_id']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>"><?php echo __('<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 for none)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>"><?php echo __('<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 for none)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'cat_id_exclude' ); ?>" name="<?php echo $this->get_field_name( 'cat_id_exclude' ); ?>" value="<?php echo $instance['cat_id_exclude']; ?>" />
 		<br /><br />
 			<input type="checkbox" id="<?php echo $this->get_field_id( 'groups' ); ?>" name="<?php echo $this->get_field_name( 'groups' ); ?>"
@@ -1011,13 +1011,13 @@ class __cpc__forumexperts_Widget extends WP_Widget {
 			if ($groups == 'on') { echo " CHECKED"; } ?>
 			/>
 			<?php if (function_exists('__cpc__groups')) { ?>
-			<label for="<?php echo $this->get_field_id( 'groups' ); ?>"><?php echo __('Include groups', CPC_TEXT_DOMAIN); ?></label>
+			<label for="<?php echo $this->get_field_id( 'groups' ); ?>"><?php echo __('Include groups', 'cp-communitie'); ?></label>
 			<?php } ?>
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'timescale' ); ?>"><?php echo __('Time period (days)', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'timescale' ); ?>"><?php echo __('Time period (days)', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'timescale' ); ?>" name="<?php echo $this->get_field_name( 'timescale' ); ?>" value="<?php echo $instance['timescale']; ?>" style="width: 30px" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of experts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of experts', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		</p>
 		<?php
@@ -1029,7 +1029,7 @@ class __cpc__forumexperts_Widget extends WP_Widget {
 class __cpc__alerts_Widget extends WP_Widget {
  
 
-	function __cpc__alerts_Widget() {
+	public function __construct() {
 		/* Widget settings. */
 		$widget_ops = array( 'classname' => 'widget_alerts', 'description' => 'Shows recent alerts for the member.' );
 		
@@ -1039,7 +1039,7 @@ class __cpc__alerts_Widget extends WP_Widget {
 		/* Create the widget. */
 		parent::__construct( 
 		    'alerts-widget', 
-			CPC_WL_SHORT.': '.__('Recent Alerts', CPC_TEXT_DOMAIN),
+			CPC_WL_SHORT.': '.__('Recent Alerts', 'cp-communitie'),
 		    $widget_ops, 
 		    $control_ops 
 		);
@@ -1065,7 +1065,7 @@ class __cpc__alerts_Widget extends WP_Widget {
 			if (get_option(CPC_OPTIONS_PREFIX.'_ajax_widgets') == 'on') {
 				// Parameters for AJAX
 				echo '<div id="__cpc__Alerts_Widget">';
-				echo __('Wird geladen...', CPC_TEXT_DOMAIN);
+				echo __('Wird geladen...', 'cp-communitie');
 				echo '<div id="__cpc__Alerts_Widget_postcount" style="display:none">'.$postcount.'</div>';
 				echo '</div>';
 			} else {
@@ -1095,12 +1095,12 @@ class __cpc__alerts_Widget extends WP_Widget {
 		/* Set up some default widget settings. */
 		$defaults = array( 'wtitle' => 'Recent Alerts', 'postcount' => 10 );
 		$instance = wp_parse_args( (array) $instance, $defaults ); ?>
-		<?php '<p>'._e('This widget is only shown to logged in users.', CPC_TEXT_DOMAIN).'</p>'; ?>
+		<?php '<p>'._e('This widget is only shown to logged in users.', 'cp-communitie').'</p>'; ?>
 		<p>
-			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'wtitle' ); ?>"><?php echo __('Widget Title', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'wtitle' ); ?>" name="<?php echo $this->get_field_name( 'wtitle' ); ?>" value="<?php echo $instance['wtitle']; ?>" />
 		<br /><br />
-			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of experts', CPC_TEXT_DOMAIN); ?>:</label>
+			<label for="<?php echo $this->get_field_id( 'postcount' ); ?>"><?php echo __('Maximum number of experts', 'cp-communitie'); ?>:</label>
 			<input id="<?php echo $this->get_field_id( 'postcount' ); ?>" name="<?php echo $this->get_field_name( 'postcount' ); ?>" value="<?php echo $instance['postcount']; ?>" style="width: 30px" />
 		</p>
 		<?php

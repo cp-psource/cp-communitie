@@ -1044,68 +1044,73 @@
 /* 
 	LEVEL ONE
 */
-ul.__cpc__dropdown                         { z-index:999 !important;
-											 overflow:visible !important;
-											 position: relative; 
-											 list-style-type: none; 
-											 margin: 0px !important; 
-											 padding: 0px !important;
-										   }
-ul.__cpc__dropdown li                      { z-index:999 !important;
-											 position: relative;
-											 float: left; 
-											 width:85px;
-											 text-align:center;
-											 border-radius:0px; 
-											 border-top-left-radius: 3px;
-											 border-top-right-radius: 3px;
-											 moz-border-radius:0px; 
-											 moz-border-top-left-radius: 3px;
-											 moz-border-top-right-radius: 3px;
-											 color: #000; 
-											 margin-left:6px; 
-											 margin-bottom:0px !important;
-											 list-style-type: none; 
-											 border: 1px solid #000;
-											 text-decoration: none !important; 
-											 cursor:default; 
-											 display: block; 
-											 padding: 4px 8px 4px 8px; 
-											 text-decoration:none !important; 
-										   }
-ul.__cpc__dropdown li:hover                { position: relative;
-											 z-index: 999 !important;
-										   }
+ul.__cpc__dropdown{ 
+	z-index:999 !important;
+	overflow:visible !important;
+	position: relative; 
+	list-style-type: none; 
+	margin: 0px !important; 
+	padding: 0px !important;
+}
+ul.__cpc__dropdown li{ 
+	z-index:999 !important;
+	position: relative;
+	float: left; 
+	width:95px;
+	text-align:center;
+	border-radius:0px; 
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	moz-border-radius:0px; 
+	moz-border-top-left-radius: 3px;
+	moz-border-top-right-radius: 3px;
+	color: #000; 
+	margin-left:6px; 
+	margin-bottom:0px !important;
+	list-style-type: none; 
+	border: 1px solid #000;
+	text-decoration: none !important; 
+	cursor:default; 
+	display: block; 
+	padding: 4px 8px 4px 8px; 
+	text-decoration:none !important; 
+}
+ul.__cpc__dropdown li:hover{ 
+	position: relative;
+	z-index: 999 !important;
+}
 
 
 /* 
 	LEVEL TWO
 */
-ul.__cpc__dropdown ul 						{ width: 220px; 
-											  visibility: hidden; 
-											  position: absolute; 
-											  top: 100%; 
-											  left: -1px; 
-											  z-index:1000 !important;
-											  padding:0 !important;
-											  margin-top: 0px;
-											  margin: 0px !important;
-											  box-shadow: 2px 2px 3px #888888;
-											}
-ul.__cpc__dropdown ul li 					{ z-index:1000 !important;
-											  width:100% !important;
-											  text-align:left;
-											  cursor:pointer;
-											  font-weight: normal; 
-											  border-radius:0px; 
-											  moz-border-radius:0px; 
-											  background-color: #eee;
-											  float: none; 
-											  padding: 4px 0 4px 8px !important; 
-											  margin: 0px !important;
-											  border: 0;
-											  opacity: 0.9;
-											}
+ul.__cpc__dropdown ul{ 
+	width: 220px; 
+	visibility: hidden; 
+	position: absolute; 
+	top: 100%; 
+	left: -1px; 
+	z-index:1000 !important;
+	padding:0 !important;
+	margin-top: 0px;
+	margin: 0px !important;
+	box-shadow: 2px 2px 3px #888888;
+}
+ul.__cpc__dropdown ul li{ 
+	z-index:1000 !important;
+	width:100% !important;
+	text-align:left;
+	cursor:pointer;
+	font-weight: normal; 
+	border-radius:0px; 
+	moz-border-radius:0px; 
+	background-color: #eee;
+	float: none; 
+	padding: 4px 0 4px 8px !important; 
+	margin: 0px !important;
+	border: 0;
+	opacity: 0.9;
+}
 ul.__cpc__dropdown ul li:first-child 		{ margin-top:1px;  }
 ul.__cpc__dropdown ul li:last-child 		{ border-bottom:0; }
 ul.__cpc__dropdown ul li:hover 				{ }
@@ -2815,7 +2820,7 @@ table.calendar tr td div.__cpc__events_calendar_event {
 
 
 .__cpc__wrapper #__cpc__lounge_add_comment {
-	width: 250px;
+	width: 100%;
 }
 
 .__cpc__wrapper #__cpc__lounge_add_comment_button {
@@ -2846,7 +2851,9 @@ table.calendar tr td div.__cpc__events_calendar_event {
 	float: right;
 }
 
-
+input#groupdescription {
+    min-width: 450px;
+}
 
 #__cpc__rss_icon {
 	background: transparent url('images/rss.gif') center center no-repeat;

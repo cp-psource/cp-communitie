@@ -63,7 +63,7 @@ if (isset($_GET['term'])) {
 				switch($item->type) {
 					case 'topic': 
 						if ( ($item->owner == $current_user->ID) || (strtolower($item->sharing) == 'public') || (is_user_logged_in() && strtolower($item->sharing) == 'everyone') || (strtolower($item->sharing) == 'public') || (strtolower($item->sharing) == 'friends only' && __cpc__friend_of($item->owner, $current_user->ID)) || __cpc__get_current_userlevel() == 5) {
-							if (!$done_topics) { $row_array['name'] = __('FORUM', CPC_TEXT_DOMAIN); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_topics = true; }
+							if (!$done_topics) { $row_array['name'] = __('FORUM', 'cp-communitie'); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_topics = true; }
 							$row_array['country'] = '';
 							$row_array['id'] = $item->ID;
 							$row_array['value'] = $item->ID;
@@ -73,17 +73,17 @@ if (isset($_GET['term'])) {
 							$row_array['owner'] = $item->owner;
 							$row_array['avatar'] = get_avatar($item->owner, 40);
 							if ($item->url == 0) {
-								$row_array['city'] = __('Forum Topic', CPC_TEXT_DOMAIN);
+								$row_array['city'] = __('Forum Topic', 'cp-communitie');
 							} else {
 								$sql = "SELECT t.topic_parent AS parent, t2.topic_parent AS grandparent FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->prefix."cpcommunitie_topics t2 ON t.topic_parent = t2.tid WHERE t.tid = %d";
 								$parents = $wpdb->get_row($wpdb->prepare($sql, $item->ID));
 								$topic_parent = $parents->parent;
 								$topic_grandparent = $parents->grandparent;
 								if ($topic_grandparent > 0) {
-									$row_array['city'] = __('Forum Comment', CPC_TEXT_DOMAIN);
+									$row_array['city'] = __('Forum Comment', 'cp-communitie');
 									$row_array['id'] = $topic_grandparent;
 								} else {
-									$row_array['city'] = __('Forum Reply', CPC_TEXT_DOMAIN);
+									$row_array['city'] = __('Forum Reply', 'cp-communitie');
 									if (topic_grandparent == 0) $row_array['id'] = $topic_parent;
 								}
 							}
@@ -93,9 +93,9 @@ if (isset($_GET['term'])) {
 						break;
 					case 'post': 
 						if ( ($item->owner == $current_user->ID) || (strtolower($item->sharing) == 'public') || (is_user_logged_in() && strtolower($item->sharing) == 'everyone') || (strtolower($item->sharing) == 'public') || (strtolower($item->sharing) == 'friends only' && __cpc__friend_of($item->owner, $current_user->ID)) || __cpc__get_current_userlevel() == 5) {
-							if (!$done_posts) { $row_array['name'] = __('POSTS', CPC_TEXT_DOMAIN); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_posts = true; }
+							if (!$done_posts) { $row_array['name'] = __('POSTS', 'cp-communitie'); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_posts = true; }
 							$row_array['avatar'] = get_avatar($item->owner, 40);
-							$row_array['city'] = __('Blog Post', CPC_TEXT_DOMAIN);
+							$row_array['city'] = __('Blog Post', 'cp-communitie');
 							$row_array['country'] = '';
 							$row_array['country'] = '';
 							$row_array['id'] = $item->ID;
@@ -109,9 +109,9 @@ if (isset($_GET['term'])) {
 						break;
 					case 'page': 
 						if ( ($item->owner == $current_user->ID) || (strtolower($item->sharing) == 'public') || (is_user_logged_in() && strtolower($item->sharing) == 'everyone') || (strtolower($item->sharing) == 'public') || (strtolower($item->sharing) == 'friends only' && __cpc__friend_of($item->owner, $current_user->ID)) || __cpc__get_current_userlevel() == 5) {
-							if (!$done_pages) { $row_array['name'] = __('PAGES', CPC_TEXT_DOMAIN); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_pages = true; }
+							if (!$done_pages) { $row_array['name'] = __('PAGES', 'cp-communitie'); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_pages = true; }
 							$row_array['avatar'] = get_avatar($item->owner, 40);
-							$row_array['city'] = __('Page', CPC_TEXT_DOMAIN);
+							$row_array['city'] = __('Page', 'cp-communitie');
 							$row_array['country'] = '';
 							$row_array['url'] = home_url().'/?p='.$item->url;
 							$row_array['country'] = '';
@@ -126,9 +126,9 @@ if (isset($_GET['term'])) {
 						break;
 					case 'gallery': 
 						if ( ($item->owner == $current_user->ID) || (strtolower($item->sharing) == 'public') || (is_user_logged_in() && strtolower($item->sharing) == 'everyone') || (strtolower($item->sharing) == 'public') || (strtolower($item->sharing) == 'friends only' && __cpc__friend_of($item->owner, $current_user->ID)) || __cpc__get_current_userlevel() == 5) {
-							if (!$done_gallery) { $row_array['name'] = __('PHOTO ALBUMS', CPC_TEXT_DOMAIN); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_gallery = true; }
+							if (!$done_gallery) { $row_array['name'] = __('PHOTO ALBUMS', 'cp-communitie'); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_gallery = true; }
 							$row_array['avatar'] = get_avatar($item->ID, 40);
-							$row_array['city'] = __('Photo Album', CPC_TEXT_DOMAIN);
+							$row_array['city'] = __('Photo Album', 'cp-communitie');
 							$row_array['country'] = '';
 							$row_array['country'] = '';
 							$row_array['id'] = $item->ID;
@@ -141,9 +141,9 @@ if (isset($_GET['term'])) {
 						}
 						break;
 					case 'group': 
-							if (!$done_groups) { $row_array['name'] = __('GROUPS', CPC_TEXT_DOMAIN); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_groups = true; }
+							if (!$done_groups) { $row_array['name'] = __('GROUPS', 'cp-communitie'); $row_array['type'] = 'sep'; array_push($return_arr,$row_array); $done_groups = true; }
 							$row_array['avatar'] = __cpc__get_group_avatar($item->ID, 40);
-							$row_array['city'] = __('Group', CPC_TEXT_DOMAIN);
+							$row_array['city'] = __('Group', 'cp-communitie');
 							$row_array['country'] = '';
 							$row_array['country'] = '';
 							$row_array['id'] = $item->ID;
@@ -187,7 +187,7 @@ if ($_POST['action'] == 'menu_plus' || $_POST['action'] == 'menu_plus_me') {
 
 			$friends_list = $wpdb->get_results($wpdb->prepare($sql, $id));
 
-			$html = "<p class='__cpc__profile_heading'>".__('Following', CPC_TEXT_DOMAIN)."</p>";
+			$html = "<p class='__cpc__profile_heading'>".__('Following', 'cp-communitie')."</p>";
 			
 			$friends_array = array();
 			foreach ($friends_list as $friend) {
@@ -203,7 +203,7 @@ if ($_POST['action'] == 'menu_plus' || $_POST['action'] == 'menu_plus_me') {
 
 		} else {
 
-			$html = "<p class='__cpc__profile_heading'>".__('Followers', CPC_TEXT_DOMAIN)."</p>";
+			$html = "<p class='__cpc__profile_heading'>".__('Followers', 'cp-communitie')."</p>";
 
 			$sql = "SELECT f.uid, f.following
 				FROM ".$wpdb->base_prefix."cpcommunitie_following f 
@@ -257,12 +257,12 @@ if ($_POST['action'] == 'menu_plus' || $_POST['action'] == 'menu_plus_me') {
 						$html .= __cpc__profile_link($id);
 						$html .= "<br />";
 						if ($last_active_minutes >= $offline) {
-							$html .= __('Logged out', CPC_TEXT_DOMAIN).'. '.__('Last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($friend['last_activity']).".";
+							$html .= __('Logged out', 'cp-communitie').'. '.__('Last active', 'cp-communitie').' '.__cpc__time_ago($friend['last_activity']).".";
 						} else {
 							if ($last_active_minutes >= $inactive) {
-								$html .= __('Offline', CPC_TEXT_DOMAIN).'. '.__('Last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($friend['last_activity']).".";
+								$html .= __('Offline', 'cp-communitie').'. '.__('Last active', 'cp-communitie').' '.__cpc__time_ago($friend['last_activity']).".";
 							} else {
-								$html .= __('Last active', CPC_TEXT_DOMAIN).' '.__cpc__time_ago($friend['last_activity']).".";
+								$html .= __('Last active', 'cp-communitie').' '.__cpc__time_ago($friend['last_activity']).".";
 							}
 						}
 						if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
@@ -300,10 +300,10 @@ if ($_POST['action'] == 'menu_plus' || $_POST['action'] == 'menu_plus_me') {
 			}
 
 			if ($count == $limit_count) {
-				$html .= __('Limit reached', CPC_TEXT_DOMAIN);
+				$html .= __('Limit reached', 'cp-communitie');
 			}
 		} else {
-			$html .= __("Nothing to show, sorry.", CPC_TEXT_DOMAIN);
+			$html .= __("Nothing to show, sorry.", 'cp-communitie');
 		}		
 
 	echo $html;
@@ -324,7 +324,7 @@ if ($_POST['action'] == 'toggle_following') {
 			// Exists so clear
 			$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_following WHERE fid=%d";
 			$wpdb->query($wpdb->prepare($sql, $fid));
-			echo __('Follow', CPC_TEXT_DOMAIN);
+			echo __('Follow', 'cp-communitie');
 		} else {
 			// Add as not currently there
 			$wpdb->query( $wpdb->prepare( "
@@ -340,7 +340,7 @@ if ($_POST['action'] == 'toggle_following') {
 				date("Y-m-d H:i:s")
 				) 
 			) );
-			echo __('Unfollow', CPC_TEXT_DOMAIN);
+			echo __('Unfollow', 'cp-communitie');
 		}
 
 	} else {
@@ -409,16 +409,16 @@ if ($_POST['action'] == 'likeDislike') {
 					$goto = $author->comment_parent;
 				}
 				
-				$body = "<p>".$current_user->display_name." ".sprintf(__('%s your %s', CPC_TEXT_DOMAIN), $verb, $type).":</p>";
+				$body = "<p>".$current_user->display_name." ".sprintf(__('%s your %s', 'cp-communitie'), $verb, $type).":</p>";
 				$comment = $author->comment;
 				if ($author->type == 'gallery' && strpos($comment, "[]")) {
 					$comment = substr($comment, 0, strpos($comment, "[]")); // strip off images
 				}
 				$body .= "<p>".$comment."</p>";
-				$body .= "<p><a href='".__cpc__get_url('profile')."?uid=".$author->author_uid."&post=".$goto."'>".__('Go to the post', CPC_TEXT_DOMAIN)."...</a></p>";
-				__cpc__sendmail($recipient->user_email, $current_user->display_name." ".sprintf(__('%s your %s', CPC_TEXT_DOMAIN), $verb, $type), $body);
+				$body .= "<p><a href='".__cpc__get_url('profile')."?uid=".$author->author_uid."&post=".$goto."'>".__('Go to the post', 'cp-communitie')."...</a></p>";
+				__cpc__sendmail($recipient->user_email, $current_user->display_name." ".sprintf(__('%s your %s', 'cp-communitie'), $verb, $type), $body);
 				
-				//echo $current_user->display_name." ".sprintf(__('%s your %s', CPC_TEXT_DOMAIN), $verb, $type);
+				//echo $current_user->display_name." ".sprintf(__('%s your %s', 'cp-communitie'), $verb, $type);
 
 			}
 			

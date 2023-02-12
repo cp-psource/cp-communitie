@@ -17,10 +17,10 @@ if ($_POST['action'] == 'menu_lounge') {
 		$html .= '<div id="__cpc__lounge_add_comment_div">';
 		$html .= '<input type="text" class="input-field" id="__cpc__lounge_add_comment" 
 			onblur="this.value=(this.value==\'\') 
-			? \''.__("Add a comment..", CPC_TEXT_DOMAIN).'\' 
-			: this.value;" onfocus="this.value=(this.value==\''.__("Add a comment..", CPC_TEXT_DOMAIN).'\') ? \'\' 
-			: this.value;" value="'.__("Add a comment..", CPC_TEXT_DOMAIN).'">';
-		$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', CPC_TEXT_DOMAIN).'" /> ';
+			? \''.__("Add a comment..", 'cp-communitie').'\' 
+			: this.value;" onfocus="this.value=(this.value==\''.__("Add a comment..", 'cp-communitie').'\') ? \'\' 
+			: this.value;" value="'.__("Add a comment..", 'cp-communitie').'">';
+		$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', 'cp-communitie').'" /> ';
 		$html .= '</div>';
 
 	}

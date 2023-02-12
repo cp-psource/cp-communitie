@@ -1,7 +1,7 @@
 <div class="wrap">
 <div id="icon-themes" class="icon32"><br /></div>
 <?php
-echo '<h2>'.sprintf(__('%s Options', CPC_TEXT_DOMAIN), CPC_WL).'</h2><br />';
+echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 __cpc__show_tabs_header('events');
 
@@ -31,7 +31,7 @@ __cpc__show_tabs_header('events');
 		update_option(CPC_OPTIONS_PREFIX.'_events_profile_include', serialize($level));
 
         // Put an settings updated message on the screen
-		echo "<div class='updated slideaway'><p>".__('Saved', CPC_TEXT_DOMAIN).".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
 		
     }
 
@@ -44,52 +44,52 @@ __cpc__show_tabs_header('events');
 	<input type='hidden' name='cpcommunitie_events_updated' value='Y'>
 	<table class="form-table __cpc__admin_table"> 
 
-	<tr><td colspan="2"><h2><?php _e('Options', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+	<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
 
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_global_list"><?php _e('Global events list', CPC_TEXT_DOMAIN); ?></label></td>
+	<td scope="row"><label for="cpcommunitie_events_global_list"><?php _e('Global events list', 'cp-communitie'); ?></label></td>
 	<td><input name="cpcommunitie_events_global_list" type="text" style="width:150px" id="cpcommunitie_events_global_list" value="<?php echo $__cpc__events_global_list; ?>" class="regular-text" /> 
-	<span class="description"><?php echo __('Limits the members included when using [cpcommunitie-events]. Enter User IDs (comma separated) or leave blank for all.', CPC_TEXT_DOMAIN); ?></span></td> 
+	<span class="description"><?php echo __('Limits the members included when using [cpcommunitie-events]. Enter User IDs (comma separated) or leave blank for all.', 'cp-communitie'); ?></span></td> 
 	</tr> 
 
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_sort_order"><?php echo __('Reverse list order', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row"><label for="cpcommunitie_events_sort_order"><?php echo __('Reverse list order', 'cp-communitie'); ?></label></td> 
 	<td><input type="checkbox" name="cpcommunitie_events_sort_order" id="cpcommunitie_events_sort_order" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_sort_order') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Select to reverse list order (by start date)', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Select to reverse list order (by start date)', 'cp-communitie'); ?></td> 
 	</tr> 
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_calendar"><?php echo __('Style of display', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row"><label for="cpcommunitie_events_calendar"><?php echo __('Style of display', 'cp-communitie'); ?></label></td> 
 	<td>
 	<select name="cpcommunitie_events_calendar">
-		<option value="list" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_calendar') != "calendar") { echo "SELECTED"; } ?>><?php _e('List', CPC_TEXT_DOMAIN); ?></option>
-		<option value="calendar" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_calendar') == "calendar") { echo "SELECTED"; } ?>><?php _e('Calendar', CPC_TEXT_DOMAIN); ?></option>
+		<option value="list" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_calendar') != "calendar") { echo "SELECTED"; } ?>><?php _e('List', 'cp-communitie'); ?></option>
+		<option value="calendar" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_calendar') == "calendar") { echo "SELECTED"; } ?>><?php _e('Calendar', 'cp-communitie'); ?></option>
 	</select>
-	<span class="description"><?php echo __('Display the global events page as a list or as a calendar', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Display the global events page as a list or as a calendar', 'cp-communitie'); ?></td> 
 	</tr> 
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_hide_expired"><?php echo __('Hide expired events', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row"><label for="cpcommunitie_events_hide_expired"><?php echo __('Hide expired events', 'cp-communitie'); ?></label></td> 
 	<td><input type="checkbox" name="cpcommunitie_events_hide_expired" id="cpcommunitie_events_hide_expired" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_hide_expired') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Do not display events that have finished (by end date)', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Do not display events that have finished (by end date)', 'cp-communitie'); ?></td> 
 	</tr> 
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_user_places"><?php echo __('Non-admin event manager', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row"><label for="cpcommunitie_events_user_places"><?php echo __('Non-admin event manager', 'cp-communitie'); ?></label></td> 
 	<td><input type="checkbox" name="cpcommunitie_events_user_places" id="cpcommunitie_events_user_places" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_user_places') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Can non-administrators set up event bookings (or just list basic information)?', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Can non-administrators set up event bookings (or just list basic information)?', 'cp-communitie'); ?></td> 
 	</tr> 
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="cpcommunitie_events_use_wysiwyg"><?php echo __('Use WYSIWYG editor', CPC_TEXT_DOMAIN); ?></label></td> 
+	<td scope="row"><label for="cpcommunitie_events_use_wysiwyg"><?php echo __('Use WYSIWYG editor', 'cp-communitie'); ?></label></td> 
 	<td><input type="checkbox" name="cpcommunitie_events_use_wysiwyg" id="cpcommunitie_events_use_wysiwyg" <?php if (get_option(CPC_OPTIONS_PREFIX.'_events_use_wysiwyg') == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Use WYSIWYG editor for more information and confirmation email (not summary)?', CPC_TEXT_DOMAIN); ?></td> 
+	<span class="description"><?php echo __('Use WYSIWYG editor for more information and confirmation email (not summary)?', 'cp-communitie'); ?></td> 
 	</tr> 
 
-	<tr><td colspan="2"><h2><?php _e('Profile Menu Items', CPC_TEXT_DOMAIN) ?></h2></td></tr>
+	<tr><td colspan="2"><h2><?php _e('Profile Menu Items', 'cp-communitie') ?></h2></td></tr>
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="dir_level"><?php echo __('Roles who get "My Events" on profile page', CPC_TEXT_DOMAIN) ?></label></td> 
+	<td scope="row"><label for="dir_level"><?php echo __('Roles who get "My Events" on profile page', 'cp-communitie') ?></label></td> 
 	<td>
 	<?php
 
@@ -117,12 +117,12 @@ __cpc__show_tabs_header('events');
 	<table style="margin-left:10px; margin-top:10px;">						
 		<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 		<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-events]</td>
-			<td><?php echo __('Show all events on a site.', CPC_TEXT_DOMAIN); ?></td></tr>
+			<td><?php echo __('Show all events on a site.', 'cp-communitie'); ?></td></tr>
 	</table>
 	<?php 	
 	 					
 	echo '<p class="submit" style="margin-left:12px">';
-	echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Save Changes', CPC_TEXT_DOMAIN).'" />';
+	echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Save Changes', 'cp-communitie').'" />';
 	echo '</p>';
 	echo '</form>';
 					  

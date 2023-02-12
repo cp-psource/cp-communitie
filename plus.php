@@ -22,7 +22,7 @@ require_once(CPC_PLUGIN_DIR . '/functions.php');
 function cpcommunitie_add_profile_plus_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Profile Plus', CPC_TEXT_DOMAIN), __('Profile Plus', CPC_TEXT_DOMAIN), 'manage_options', CPC_DIR.'/plus_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Profile Plus', 'cp-communitie'), __('Profile Plus', 'cp-communitie'), 'manage_options', CPC_DIR.'/plus_admin.php');
 }
 add_action('__cpc__admin_menu_hook', 'cpcommunitie_add_profile_plus_to_admin_menu');
 
@@ -38,10 +38,10 @@ function __cpc__add_mentions_menu($html,$uid1,$uid2,$privacy,$is_friend,$extende
 
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions'))
-				$html .= '<div id="menu_mentions" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text')) != '' ? $t :  __('Forum @mentions', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_mentions" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_text')) != '' ? $t :  __('Forum @mentions', 'cp-communitie')).'</div>';  
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other'))
-				$html .= '<div id="menu_mentions" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other_text')) != '' ? $t :  __('Forum @mentions', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_mentions" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_mentions_other_text')) != '' ? $t :  __('Forum @mentions', 'cp-communitie')).'</div>';  
 		}
 		
 	}
@@ -77,14 +77,14 @@ function __cpc__add_following_menu($html,$uid1,$uid2,$privacy,$is_friend,$extend
 
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_following'))
-				$html .= '<div id="menu_plus" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_following_text')) != '' ? $t :  __('Ich folge', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_plus" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_following_text')) != '' ? $t :  __('Ich folge', 'cp-communitie')).'</div>';  
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers'))
-				$html .= '<div id="menu_plus_me" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_followers_text')) != '' ? $t :  __('Meine Abonnenten', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_plus_me" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_followers_text')) != '' ? $t :  __('Meine Abonnenten', 'cp-communitie')).'</div>';  
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_following_other'))
-				$html .= '<div id="menu_plus" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text')) != '' ? $t :  __('Folgt', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_plus" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_following_other_text')) != '' ? $t :  __('Folgt', 'cp-communitie')).'</div>';  
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_followers_other'))
-				$html .= '<div id="menu_plus_me" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_followers_other_text')) != '' ? $t :  __('Abonnenten', CPC_TEXT_DOMAIN)).'</div>';  
+				$html .= '<div id="menu_plus_me" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_followers_other_text')) != '' ? $t :  __('Abonnenten', 'cp-communitie')).'</div>';  
 		}
 		
 	}
@@ -129,7 +129,7 @@ add_filter('__cpc__profile_menu_tabs', '__cpc__add_followers_menu_tabs', 10, 9);
 function __cpc__search($width='200')  
 {  
 	$width = 'style="width:'.$width.'px"';
-   	$prompt = ($prompt = get_option(CPC_OPTIONS_PREFIX.'_site_search_prompt')) ? $prompt : __('Suche...', CPC_TEXT_DOMAIN);
+   	$prompt = ($prompt = get_option(CPC_OPTIONS_PREFIX.'_site_search_prompt')) ? $prompt : __('Suche...', 'cp-communitie');
 	
 	$html = '<input type="text" id="__cpc__member_small" '.$width.' 
 				onblur="this.value=(this.value==\'\') ? \''.$prompt.'\' : this.value;" 

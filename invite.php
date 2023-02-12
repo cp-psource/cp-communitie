@@ -17,18 +17,18 @@ if (is_user_logged_in() && isset($_GET['u'])) {
 	<div class="login" style="width:400px; margin: 80px auto;">
 	
 		<form name="loginform" id="loginform" action="<?php echo site_url('wp-login.php', 'login_post') ?>" method="post">
-			<p><?php _e('To continue, please log in or register.', CPC_TEXT_DOMAIN); ?></p>
+			<p><?php _e('To continue, please log in or register.', 'cp-communitie'); ?></p>
 			<p> 
-				<label><?php _e('Username', CPC_TEXT_DOMAIN) ?><br /> 
+				<label><?php _e('Username', 'cp-communitie') ?><br /> 
 				<input type="text" name="log" id="user_login" class="input" value="" size="20" tabindex="10" /></label> 
 			</p> 
 			<p> 
-				<label><?php _e('Username', CPC_TEXT_DOMAIN) ?><br /> 
+				<label><?php _e('Username', 'cp-communitie') ?><br /> 
 				<input type="password" name="pwd" id="user_pass" class="input" value="" size="20" tabindex="20" /></label> 
 			</p> 
-			<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="90" /> <?php esc_attr_e('Remember Me', CPC_TEXT_DOMAIN); ?></label></p> 
+			<p class="forgetmenot"><label><input name="rememberme" type="checkbox" id="rememberme" value="forever" tabindex="90" /> <?php esc_attr_e('Remember Me', 'cp-communitie'); ?></label></p> 
 			<p class="submit"> 
-				<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="<?php esc_attr_e('Log In', CPC_TEXT_DOMAIN); ?>" tabindex="100" />
+				<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="<?php esc_attr_e('Log In', 'cp-communitie'); ?>" tabindex="100" />
 				<input type="hidden" name="redirect_to" value="<?php echo $_GET['u']; ?>" /> 
 				<input type="hidden" name="testcookie" value="1" /> 
 			</p> 
@@ -37,10 +37,10 @@ if (is_user_logged_in() && isset($_GET['u'])) {
 		<p id="nav">
 		<?php if ( isset($_GET['checkemail']) && in_array( $_GET['checkemail'], array('confirm', 'newpass') ) ) : ?>
 		<?php elseif ( get_option('users_can_register') ) : ?>
-		<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>"><?php _e('Register', CPC_TEXT_DOMAIN) ?></a> |
-		<a href="<?php echo site_url('wp-login.php?action=lostpassword', 'login') ?>" title="<?php _e('Password Lost and Found', CPC_TEXT_DOMAIN) ?>"><?php _e('Lost your password?', CPC_TEXT_DOMAIN) ?></a>
+		<a href="<?php echo site_url('wp-login.php?action=register', 'login') ?>"><?php _e('Register', 'cp-communitie') ?></a> |
+		<a href="<?php echo site_url('wp-login.php?action=lostpassword', 'login') ?>" title="<?php _e('Password Lost and Found', 'cp-communitie') ?>"><?php _e('Lost your password?', 'cp-communitie') ?></a>
 		<?php else : ?>
-		<a href="<?php echo site_url('wp-login.php?action=lostpassword', 'login') ?>" title="<?php _e('Password Lost and Found', CPC_TEXT_DOMAIN) ?>"><?php _e('Lost your password?', CPC_TEXT_DOMAIN) ?></a>
+		<a href="<?php echo site_url('wp-login.php?action=lostpassword', 'login') ?>" title="<?php _e('Password Lost and Found', 'cp-communitie') ?>"><?php _e('Lost your password?', 'cp-communitie') ?></a>
 		<?php endif; ?>
 		</p>
 	

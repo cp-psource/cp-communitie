@@ -44,11 +44,11 @@ if ($_POST['action'] == 'acceptAnswer') {
 			// Hook for answer removed (previously there was an topic reply with topic_answer set to 'on'
 			if ($answers) {
 				do_action('cpcommunitie_forum_answer_removed_hook', $tid, $topic_owner, $topic_parent, $original_post_owner, $current_user->ID);
-				$row_array['message'] = __('You have changed the answer. If a better answer is posted, you can change your selection again.', CPC_TEXT_DOMAIN);
-				$row_array['title'] = __('Answer accepted', CPC_TEXT_DOMAIN);
+				$row_array['message'] = __('You have changed the answer. If a better answer is posted, you can change your selection again.', 'cp-communitie');
+				$row_array['title'] = __('Answer accepted', 'cp-communitie');
 			} else {
-				$row_array['message'] = __('You have accepted an answer. If a better answer is posted, you can change your selection.', CPC_TEXT_DOMAIN);
-				$row_array['title'] = __('Answer accepted', CPC_TEXT_DOMAIN);
+				$row_array['message'] = __('You have accepted an answer. If a better answer is posted, you can change your selection.', 'cp-communitie');
+				$row_array['title'] = __('Answer accepted', 'cp-communitie');
 			}
 			array_push($return_arr, $row_array);
 
@@ -76,7 +76,7 @@ if ($_POST['action'] == 'removeUploadedImage') {
 		if ($wpdb->query( $wpdb->prepare( "DELETE FROM ".$wpdb->prefix."cpcommunitie_topics_images WHERE filename = %s AND tid = %d AND uid = %d", $file, $folder, $current_user->ID  ) ) ) {
 			$html .= 'OK';
 		} else {
-			$html .= __('Failed to remove image from database', CPC_TEXT_DOMAIN);
+			$html .= __('Failed to remove image from database', 'cp-communitie');
 		}
 
 	} else {
@@ -91,10 +91,10 @@ if ($_POST['action'] == 'removeUploadedImage') {
 			if (unlink($src)) {
 				$html .= 'OK';
 			} else {
-				$html .= __('Failed to remove image', CPC_TEXT_DOMAIN);
+				$html .= __('Failed to remove image', 'cp-communitie');
 			}
 		} else {
-			$html .= __('Image to remove is not there...', CPC_TEXT_DOMAIN).' '.$src;
+			$html .= __('Image to remove is not there...', 'cp-communitie').' '.$src;
 		}
 	}
 	
@@ -123,7 +123,7 @@ if ($_POST['action'] == 'updateTopicScore') {
 				$sql = "DELETE FROM ".$wpdb->prefix."cpcommunitie_topics_scores WHERE tid = %d and uid = %d";
 				$wpdb->query($wpdb->prepare($sql, $tid, $current_user->ID));
 				
-				$r = __('Thank you for voting. You can only have one vote per post, so your previous vote has been replaced.', CPC_TEXT_DOMAIN);
+				$r = __('Thank you for voting. You can only have one vote per post, so your previous vote has been replaced.', 'cp-communitie');
 			}			
 
 			// Insert new vote
@@ -209,7 +209,7 @@ if ($_POST['action'] == 'deleteTopic') {
 				// Delete comments
 				$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_comments WHERE subject_uid = %d 
 					AND author_uid = %d 
-					AND comment LIKE '%".__('Started a new forum topic:', CPC_TEXT_DOMAIN)."%' 
+					AND comment LIKE '%".__('Started a new forum topic:', 'cp-communitie')."%' 
 					AND comment LIKE '%show=%d%%' 
 					AND type = 'forum'";					
 				$wpdb->query($wpdb->prepare($sql, $current_user->ID, $current_user->ID, $tid));	
@@ -253,8 +253,8 @@ if ($_POST['action'] == 'forumNewPost') {
 			$topic_approved = "on";
 		}
 
-		if ($new_topic_subject == '') { $new_topic_subject = __('No subject', CPC_TEXT_DOMAIN); }
-		if ($new_topic_text == '') { $new_topic_text = __('No message', CPC_TEXT_DOMAIN);  }
+		if ($new_topic_subject == '') { $new_topic_subject = __('No subject', 'cp-communitie'); }
+		if ($new_topic_text == '') { $new_topic_text = __('No message', 'cp-communitie');  }
 	
 		// Get forum URL worked out
 		$forum_url = __cpc__get_url('forum');
@@ -414,9 +414,9 @@ if ($_POST['action'] == 'forumNewPost') {
 		}
 		if ($topic_approved != 'on') {
 			$owner_name = $wpdb->get_var($wpdb->prepare("SELECT display_name FROM ".$wpdb->base_prefix."users WHERE ID = %d", $current_user->ID));
-			$body = "<p>".$owner_name." ".__('has started a new topic', CPC_TEXT_DOMAIN);
+			$body = "<p>".$owner_name." ".__('has started a new topic', 'cp-communitie');
 			$category = $wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
-			$body .= " ".__('in', CPC_TEXT_DOMAIN)." ".$category;
+			$body .= " ".__('in', 'cp-communitie')." ".$category;
 			$body .= "...</p>";
 							
 			$body .= "<span style='font-size:24px'>".$new_topic_subject."</span><br /><br />";
@@ -425,17 +425,17 @@ if ($_POST['action'] == 'forumNewPost') {
 			$body = str_replace(chr(13), "<br />", $body);
 			$body = str_replace("\\r\\n", "<br />", $body);
 			$body = str_replace("\\", "", $body);
-			$body = "<span style='font-size:24px font-style:italic;'>".__('Moderation Required', CPC_TEXT_DOMAIN)."</span><br /><br />".$body;
-			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation Required', CPC_TEXT_DOMAIN), $body);
+			$body = "<span style='font-size:24px font-style:italic;'>".__('Moderation Required', 'cp-communitie')."</span><br /><br />".$body;
+			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation Required', 'cp-communitie'), $body);
 		}
 
 		// Hook to add new forum topic to activity
 		if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
 			$category = '<a href="'.$cat_url.'">'.$wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id)).'</a>';
 			if ($group_id == 0) {
-				$prompt = sprintf(__('Started a new forum topic in %s:', CPC_TEXT_DOMAIN), $category);
+				$prompt = sprintf(__('Started a new forum topic in %s:', 'cp-communitie'), $category);
 			} else {
-				$prompt = sprintf(__('Started a new group forum topic:', CPC_TEXT_DOMAIN), $category);
+				$prompt = sprintf(__('Started a new group forum topic:', 'cp-communitie'), $category);
 			}
 			$post = $prompt.' <a href="'.$url.'">'.$new_topic_subject.'</a>';
 			do_action('__cpc__forum_newtopic_hook', $current_user->ID, $current_user->display_name, $current_user->ID, $post, 'forum', $new_tid);			
@@ -485,10 +485,10 @@ if ($_POST['action'] == 'forumNewPostEmails') {
 	
 			// Get post owner name and prepare email body
 			$owner_name = $wpdb->get_var($wpdb->prepare("SELECT display_name FROM ".$wpdb->base_prefix."users WHERE ID = %d", $current_user->ID));
-			$body = "<p>".$owner_name." ".__('has started a new topic', CPC_TEXT_DOMAIN);
+			$body = "<p>".$owner_name." ".__('has started a new topic', 'cp-communitie');
 			$category = $wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
 							
-			$body .= " ".__('in', CPC_TEXT_DOMAIN)." ".$category;
+			$body .= " ".__('in', 'cp-communitie')." ".$category;
 			$body .= "...</p>";
 
 			$body .= "<span style='font-size:24px'>".$new_topic_subject."</span><br /><br />";
@@ -509,7 +509,7 @@ if ($_POST['action'] == 'forumNewPostEmails') {
 			$body = str_replace("\\", "", $body);
 
 			if (function_exists('__cpc__mailinglist')) { 
-				$subject_add = ' #TID='.$new_tid.' ['.__('do not edit', CPC_TEXT_DOMAIN).']'; 
+				$subject_add = ' #TID='.$new_tid.' ['.__('do not edit', 'cp-communitie').']'; 
 				$body_prefix = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />';
 			} else {
 				$subject_add = '';
@@ -681,13 +681,13 @@ if ($_POST['action'] == 'forumNewPostEmails') {
 // Get Topic ****************************************************************
 if ($_POST['action'] == 'getTopic') {
 		
-	$topic_id = $_POST['topic_id'];
-	$group_id = $_POST['group_id'];
+	$topic_id = filter_var($_POST['topic_id'], FILTER_VALIDATE_INT);
+	$group_id = filter_var($_POST['group_id'], FILTER_VALIDATE_INT);
 
-	if (is_int($topic_id) && is_int($group_id)):
+	if ($topic_id !== false && $group_id !== false):
 		echo __cpc__getTopic($topic_id, $group_id);
 	else:
-		echo 'Possible SQL injection (forum_functions.php): '.$topic_id.'|'.$group_id;
+		echo 'Possible SQL injection (forum_functions.php): '.$_POST['topic_id'].'|'.$_POST['group_id'];
 	endif;
 
 	exit;
@@ -874,9 +874,9 @@ if ($_POST['action'] == 'replycommentemails') {
 		if (CPC_DEBUG) echo $owner_name.','.$parent.','.$stub.','.$group_id.'.<br />';
 		
 		$body = "<span style='font-size:24px'>".$parent."</span><br /><br />";
-		$body .= "<p>".$owner_name." ".__('commented', CPC_TEXT_DOMAIN)."...</p>";
+		$body .= "<p>".$owner_name." ".__('commented', 'cp-communitie')."...</p>";
 		$body .= "<p>".$comment_text."</p>";
-		$body .= "<p>".__('The reply commented on is', CPC_TEXT_DOMAIN)."...</p>";
+		$body .= "<p>".__('The reply commented on is', 'cp-communitie')."...</p>";
 		$body .= "<p>".$reply_text."</p>";
 		if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 			$perma_cat = __cpc__get_forum_category_part_url($cat_id);
@@ -897,7 +897,7 @@ if ($_POST['action'] == 'replycommentemails') {
 	
 		// add section for reply-by-email
 		if (function_exists('__cpc__mailinglist')) { 
-			$subject_add = ' #TID='.$reply->topic_parent.' ['.__('do not edit', CPC_TEXT_DOMAIN).']'; 
+			$subject_add = ' #TID='.$reply->topic_parent.' ['.__('do not edit', 'cp-communitie').']'; 
 			$body = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />'.'<br /><br />'.$body;
 		} else {
 			$subject_add = '';
@@ -1180,11 +1180,11 @@ if ($_POST['action'] == 'reply') {
 				$subject = $wpdb->get_var($wpdb->prepare("SELECT topic_subject FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $tid));
 				$category = '<a href="'.$cat_url.'">'.$wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id)).'</a>';
 				if ($group_id == 0) {
-					$prompt = sprintf(__('Replied to a forum topic in %s:', CPC_TEXT_DOMAIN), $category);
+					$prompt = sprintf(__('Replied to a forum topic in %s:', 'cp-communitie'), $category);
 				} else {
-					$prompt = sprintf(__('Replied to a group forum topic in %s:', CPC_TEXT_DOMAIN), $category);
+					$prompt = sprintf(__('Replied to a group forum topic in %s:', 'cp-communitie'), $category);
 				}
-				$post = __($prompt, CPC_TEXT_DOMAIN).' <a href="'.$url.'">'.$subject.'</a>';
+				$post = __($prompt, 'cp-communitie').' <a href="'.$url.'">'.$subject.'</a>';
 				do_action('__cpc__forum_newtopic_hook', $current_user->ID, $current_user->display_name, $current_user->ID, $post, 'forum', $tid);	
 			}
 
@@ -1231,7 +1231,7 @@ if ($_POST['action'] == 'forumReplyEmails') {
 		if (CPC_DEBUG) echo $owner_name.','.$parent.','.$stub.','.$group_id.','.$topic_approved.'<br />';
 		
 		$body = "<span style='font-size:24px'>".$parent."</span><br /><br />";
-		$body .= "<p>".$owner_name." ".__('replied', CPC_TEXT_DOMAIN)."...</p>";
+		$body .= "<p>".$owner_name." ".__('replied', 'cp-communitie')."...</p>";
 		$body .= "<p>".$reply_text."</p>";
 		if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 			$perma_cat = __cpc__get_forum_category_part_url($cat_id);
@@ -1252,7 +1252,7 @@ if ($_POST['action'] == 'forumReplyEmails') {
 	
 		// add section for reply-by-email
 		if (function_exists('__cpc__mailinglist')) { 
-			$subject_add = ' #TID='.$reply->topic_parent.' ['.__('do not edit', CPC_TEXT_DOMAIN).']'; 
+			$subject_add = ' #TID='.$reply->topic_parent.' ['.__('do not edit', 'cp-communitie').']'; 
 			$body = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />'.'<br /><br />'.$body;
 		} else {
 			$subject_add = '';
@@ -1354,8 +1354,8 @@ if ($_POST['action'] == 'forumReplyEmails') {
 			}
 		} else {
 			// Email admin if post needs approval
-			$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation required for a reply", CPC_TEXT_DOMAIN)."</span><br /><br />".$body;
-			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation required for a reply', CPC_TEXT_DOMAIN), $body);
+			$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation required for a reply", 'cp-communitie')."</span><br /><br />".$body;
+			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation required for a reply', 'cp-communitie'), $body);
 		}		
 		
 	} else {
@@ -1381,7 +1381,7 @@ if ($_POST['action'] == 'getActivity') {
 	
 		$html .= '<div id="forum_activity_all_new_topics">';
 		
-			$html .= '<div id="forum_activity_title">'.__('Recent Topics', CPC_TEXT_DOMAIN).'</div>';
+			$html .= '<div id="forum_activity_title">'.__('Recent Topics', 'cp-communitie').'</div>';
 		
 			// All topics started
 			$sql = "SELECT t.*, u.display_name FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->base_prefix."users u ON t.topic_owner = u.ID WHERE t.topic_approved = 'on' AND topic_parent = 0 ORDER BY topic_started DESC LIMIT 0,40";
@@ -1413,7 +1413,7 @@ if ($_POST['action'] == 'getActivity') {
 						if ( strlen($text) > $snippet_length ) { $text = substr($text, 0, $snippet_length)."..."; }
 						$html .= $text."<br />";
 	
-						$html .= "<em>".__("Started by", CPC_TEXT_DOMAIN)." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started);
+						$html .= "<em>".__("Started by", 'cp-communitie')." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started);
 						
 						// Replies
 						$replies = $wpdb->get_results($wpdb->prepare("SELECT t.*, u.display_name FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->base_prefix."users u ON t.topic_owner = u.ID WHERE topic_parent = %d ORDER BY topic_date DESC", $topic->tid));
@@ -1429,11 +1429,11 @@ if ($_POST['action'] == 'getActivity') {
 								$html .= ". ".$cnt." ";
 								if ($cnt == 1) 
 								{ 
-									$html .= __("reply", CPC_TEXT_DOMAIN);
+									$html .= __("reply", 'cp-communitie');
 									$html .= ", ".__cpc__time_ago($dt)." by ".$reply->display_name;
 								} else {
-									$html .= __("replies", CPC_TEXT_DOMAIN);
-									$html .= ", ".__("last one", CPC_TEXT_DOMAIN)." ".__cpc__time_ago($dt)." by ".$reply->display_name;
+									$html .= __("replies", 'cp-communitie');
+									$html .= ", ".__("last one", 'cp-communitie')." ".__cpc__time_ago($dt)." by ".$reply->display_name;
 								}
 								
 							}
@@ -1445,14 +1445,14 @@ if ($_POST['action'] == 'getActivity') {
 					
 				}
 			} else {
-				$html .= "<p>".__("No topics started yet", CPC_TEXT_DOMAIN).".</p>";
+				$html .= "<p>".__("No topics started yet", 'cp-communitie').".</p>";
 			}
 		
 		$html .= '</div>';
 
 		$html .= '<div id="forum_activity_new_topics">';
 		
-			$html .= '<div id="forum_activity_title">'.__('You recently started', CPC_TEXT_DOMAIN).'</div>';
+			$html .= '<div id="forum_activity_title">'.__('You recently started', 'cp-communitie').'</div>';
 		
 			// Topics Started
 			$sql = "SELECT * FROM ".$wpdb->prefix."cpcommunitie_topics WHERE topic_approved = 'on' AND topic_owner = %d AND topic_parent = 0 ORDER BY topic_started DESC LIMIT 0,100";
@@ -1500,28 +1500,28 @@ if ($_POST['action'] == 'getActivity') {
 								$html .= "<em>".$cnt." ";
 								if ($cnt == 1) 
 								{ 
-									$html .= __("reply", CPC_TEXT_DOMAIN);
+									$html .= __("reply", 'cp-communitie');
 									$html .= ", ".__cpc__time_ago($dt)." by ".$display_name.".</em>";
 								} else {
-									$html .= __("replies", CPC_TEXT_DOMAIN);
-									$html .= ", ".__("last one", CPC_TEXT_DOMAIN)." ".__cpc__time_ago($dt)." by ".$display_name.".</em>";
+									$html .= __("replies", 'cp-communitie');
+									$html .= ", ".__("last one", 'cp-communitie')." ".__cpc__time_ago($dt)." by ".$display_name.".</em>";
 								}
 								
 							}
 						} else {
-							$html .= "<em>".__("No replies", CPC_TEXT_DOMAIN)."</em>";
+							$html .= "<em>".__("No replies", 'cp-communitie')."</em>";
 						}				
 					}
 				}
 			} else {
-				$html .= __("<p>You have not started any forum topics.</p>", CPC_TEXT_DOMAIN);
+				$html .= __("<p>You have not started any forum topics.</p>", 'cp-communitie');
 			}
 		
 		$html .= '</div>';
 		
 		$html .= '<div id="forum_activity_replies">';
 		
-			$html .= '<div id="forum_activity_title">'.__('Your recent replies', CPC_TEXT_DOMAIN).'</div>';
+			$html .= '<div id="forum_activity_title">'.__('Your recent replies', 'cp-communitie').'</div>';
 		
 			// Topics Replied to
 			
@@ -1562,14 +1562,14 @@ if ($_POST['action'] == 'getActivity') {
 							if ( strlen($text) > $snippet_length ) { $text = substr($text, 0, $snippet_length)."..."; }
 							$html .= $text;
 							if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == 'on' && $topic->topic_answer == 'on') {
-								$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', CPC_TEXT_DOMAIN).'" />';
+								$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', 'cp-communitie').'" />';
 							}
 							$html .= "<br />";
 							$html .= "<em>";
-							$html .= __("You replied", CPC_TEXT_DOMAIN)." ".__cpc__time_ago($topic->topic_date);
+							$html .= __("You replied", 'cp-communitie')." ".__cpc__time_ago($topic->topic_date);
 							$last_reply = $wpdb->get_row($wpdb->prepare("SELECT t.*, u.display_name FROM ".$wpdb->prefix."cpcommunitie_topics t LEFT JOIN ".$wpdb->base_prefix."users u ON t.topic_owner = u.ID WHERE topic_parent = %d ORDER BY tid DESC LIMIT 0,1", $topic->topic_parent));
 							if ($last_reply->topic_owner != $topic->topic_owner) {
-								$html .= ", ".__("last reply by", CPC_TEXT_DOMAIN)." ".$last_reply->display_name." ".__cpc__time_ago($last_reply->topic_date).".";
+								$html .= ", ".__("last reply by", 'cp-communitie')." ".$last_reply->display_name." ".__cpc__time_ago($last_reply->topic_date).".";
 							} else {
 								$html .= ".";
 							}
@@ -1580,7 +1580,7 @@ if ($_POST['action'] == 'getActivity') {
 					}
 				}
 			} else {
-				$html .= __("<p>You have not replied to any forum topics.</p>", CPC_TEXT_DOMAIN);
+				$html .= __("<p>You have not replied to any forum topics.</p>", 'cp-communitie');
 			}
 		
 		$html .= '</div>';		
@@ -1664,7 +1664,7 @@ if ($_POST['action'] == 'getAllActivity') {
 							if ($post->topic_parent > 0) {
 								$text = strip_tags(stripslashes($post->topic_post));
 								if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
-								$html .= __cpc__profile_link($post->topic_owner)." ".__('replied', CPC_TEXT_DOMAIN)." ";
+								$html .= __cpc__profile_link($post->topic_owner)." ".__('replied', 'cp-communitie')." ";
 
 								if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 									$stub = $wpdb->get_var($wpdb->prepare("SELECT stub FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $post->topic_parent));
@@ -1678,13 +1678,13 @@ if ($_POST['action'] == 'getAllActivity') {
 								$html .= __cpc__time_ago($post->topic_date).".";
 
 								if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == 'on' && $post->topic_answer == 'on') {
-									$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', CPC_TEXT_DOMAIN).'" />';
+									$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', 'cp-communitie').'" />';
 								}
 								$html .= "<br>";
 							} else {
 								$text = strip_tags(stripslashes($post->topic_subject));
 								if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
-								$html .= __cpc__profile_link($post->topic_owner)." ".__('started', CPC_TEXT_DOMAIN)." ";
+								$html .= __cpc__profile_link($post->topic_owner)." ".__('started', 'cp-communitie')." ";
 								
 								if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 									$stub = $wpdb->get_var($wpdb->prepare("SELECT stub FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $post->tid));
@@ -1711,7 +1711,7 @@ if ($_POST['action'] == 'getAllActivity') {
 			}
 
 		} else {
-			$html .= "<p>".__("No topics started yet", CPC_TEXT_DOMAIN).".</p>";
+			$html .= "<p>".__("No topics started yet", 'cp-communitie').".</p>";
 		}
 	
 	$html .= '</div>';
@@ -1815,7 +1815,7 @@ function showThreadChildren($parent, $level, $gid, $cpcommunitie_last_login) {
 						if ($post->topic_parent > 0) {
 							$text = strip_tags(stripslashes($post->topic_post));
 							if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
-							$html .= __cpc__profile_link($post->topic_owner)." ".__('replied', CPC_TEXT_DOMAIN)." ";
+							$html .= __cpc__profile_link($post->topic_owner)." ".__('replied', 'cp-communitie')." ";
 						
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 								$stub = $wpdb->get_var($wpdb->prepare("SELECT stub FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $post->topic_parent));
@@ -1828,13 +1828,13 @@ function showThreadChildren($parent, $level, $gid, $cpcommunitie_last_login) {
 					
 							$html .= __cpc__time_ago($post->topic_date);
 							if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == 'on' && $post->topic_answer == 'on') {
-								$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', CPC_TEXT_DOMAIN).'" />';
+								$html .= ' <img style="width:12px; height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', 'cp-communitie').'" />';
 							}
 							$html .= "<br>";
 						} else {
 							$text = stripslashes($post->topic_subject);
 							if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
-							$html .= __cpc__profile_link($post->topic_owner)." ".__('started', CPC_TEXT_DOMAIN)." ";
+							$html .= __cpc__profile_link($post->topic_owner)." ".__('started', 'cp-communitie')." ";
 
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
 								$stub = $wpdb->get_var($wpdb->prepare("SELECT stub FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $post->tid));
@@ -1936,11 +1936,11 @@ if ($_POST['action'] == 'getFavs') {
 									$html .= "<em>".$cnt." ";
 									if ($cnt == 1) 
 									{ 
-										$html .= __("reply", CPC_TEXT_DOMAIN);
+										$html .= __("reply", 'cp-communitie');
 										$html .= ", ".__cpc__time_ago($dt).".</em>";
 									} else {
-										$html .= __("replies", CPC_TEXT_DOMAIN);
-										$html .= ", ".__("last one", CPC_TEXT_DOMAIN)." ".__cpc__time_ago($dt).".</em>";
+										$html .= __("replies", 'cp-communitie');
+										$html .= ", ".__("last one", 'cp-communitie')." ".__cpc__time_ago($dt).".</em>";
 									}
 								
 								}
@@ -1959,7 +1959,7 @@ if ($_POST['action'] == 'getFavs') {
 	
 		if ($html == '') {
 		
-			$html .= __("You can add your favourite forum topics by clicking on the heart beside any forum topic title.", CPC_TEXT_DOMAIN);
+			$html .= __("You can add your favourite forum topics by clicking on the heart beside any forum topic title.", 'cp-communitie');
 		}
 	
 		echo $html;
@@ -2311,7 +2311,7 @@ if ($_POST['action'] == 'getSearch') {
 					if ($gid == 0 || __cpc__member_of($gid) == "yes") {
 	
 						if ($found_count > $max_return) { 
-							$html .= '<p>'.sprintf(__('A maxium of %d search results will be displayed, please narrow your search.', CPC_TEXT_DOMAIN), $max_return).'</p>';
+							$html .= '<p>'.sprintf(__('A maxium of %d search results will be displayed, please narrow your search.', 'cp-communitie'), $max_return).'</p>';
 							break; 
 						}
 	
@@ -2345,7 +2345,7 @@ if ($_POST['action'] == 'getSearch') {
 	
 							if ($topic->topic_parent != 0) {
 								$html .= $topic->display_name.' ';
-								$html .= __("in reply to", CPC_TEXT_DOMAIN)." ";
+								$html .= __("in reply to", 'cp-communitie')." ";
 								$topic_subject = __cpc__bbcode_remove(stripslashes($topic->parent_topic_subject));
 								$topic_subject = preg_replace(
 								  "/(>|^)([^<]+)(?=<|$)/esx",
@@ -2361,7 +2361,7 @@ if ($_POST['action'] == 'getSearch') {
 								} else {
 									$html .= "<a class='__cpc__search_subject' href='".$thispage.$q.'cid='.$topic->topic_category.'&show='.$topic->parent_tid."'>".stripslashes($topic_subject)."</a> ";
 								}
-								$html .= __("by", CPC_TEXT_DOMAIN)." ".$topic->parent_display_name.", ".__cpc__time_ago($topic->parent_topic_started).".";
+								$html .= __("by", 'cp-communitie')." ".$topic->parent_display_name.", ".__cpc__time_ago($topic->parent_topic_started).".";
 							} else {
 								$topic_subject = __cpc__bbcode_remove(stripslashes($topic->topic_subject));
 								$topic_subject = preg_replace(
@@ -2377,7 +2377,7 @@ if ($_POST['action'] == 'getSearch') {
 								} else {
 									$html .= "<a class='__cpc__search_subject' href='".$thispage.$q.'cid='.$topic->topic_category.'&show='.$topic->tid."'>".stripslashes($topic_subject)."</a> ";
 								}
-								$html .= __("by", CPC_TEXT_DOMAIN)." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started).".";
+								$html .= __("by", 'cp-communitie')." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started).".";
 							}
 	
 							$html .= "</div>";
@@ -2404,7 +2404,7 @@ if ($_POST['action'] == 'getSearch') {
 								
 								$html .= stripslashes($result)."<br />";	
 								if ($topic->topic_parent != 0) {
-									$html .= "<em>".__("Posted by", CPC_TEXT_DOMAIN)." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started).".</em>";
+									$html .= "<em>".__("Posted by", 'cp-communitie')." ".$topic->display_name.", ".__cpc__time_ago($topic->topic_started).".</em>";
 								}
 							}
 			
@@ -2416,7 +2416,7 @@ if ($_POST['action'] == 'getSearch') {
 		
 		}
 
-		$html .= "<p><br />".__("Results found:", CPC_TEXT_DOMAIN)." ".$found_count."</p>";				
+		$html .= "<p><br />".__("Results found:", 'cp-communitie')." ".$found_count."</p>";				
 
 	}
 	

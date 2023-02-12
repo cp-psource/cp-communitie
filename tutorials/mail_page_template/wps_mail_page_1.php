@@ -3,7 +3,7 @@
  * Template Name: Demo mail page 1
  * Description: A Mail Page Template to demonstrate using classes
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */

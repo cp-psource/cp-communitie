@@ -256,7 +256,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", CPC_TEXT_DOMAIN);
+			echo __("Failed to upload the file.", 'cp-communitie');
 			exit;
 		}
 	} else {

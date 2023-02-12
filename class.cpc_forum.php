@@ -299,7 +299,7 @@ class cpc_forum {
 					$parent = $wpdb->get_var($wpdb->prepare("SELECT topic_subject FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $tid));
 					
 					$body = "<span style='font-size:24px'>".$parent."</span><br /><br />";
-					$body .= "<p>".$owner_name." ".__('replied', CPC_TEXT_DOMAIN)."...</p>";
+					$body .= "<p>".$owner_name." ".__('replied', 'cp-communitie')."...</p>";
 					$body .= "<p>".$reply_text."</p>";
 					$url = $forum_url.$q."cid=".$cat_id."&show=".$tid;
 					$body .= "<p><a href='".$url."'>".$url."</a></p>";
@@ -328,7 +328,7 @@ class cpc_forum {
 
 								// Check for Reply-By-Email						
 								if ($replybyemail || function_exists('__cpc__mailinglist')) { 
-									$subject_add = ' #TID='.$tid.' ['.__('do not edit', CPC_TEXT_DOMAIN).']'; 
+									$subject_add = ' #TID='.$tid.' ['.__('do not edit', 'cp-communitie').']'; 
 									$body = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />'.'<br /><br />'.$body;
 								} else {
 									$subject_add = '';
@@ -422,22 +422,22 @@ class cpc_forum {
 						
 					} else {
 						// Email admin if post needs approval
-						$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation required for a reply", CPC_TEXT_DOMAIN)."</span><br /><br />".$body;
-						__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation required for a reply', CPC_TEXT_DOMAIN), $body);
+						$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation required for a reply", 'cp-communitie')."</span><br /><br />".$body;
+						__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation required for a reply', 'cp-communitie'), $body);
 					}	
 										
 					return $new_id;
 					
 				} else {
 					
-					//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', CPC_TEXT_DOMAIN), 'Query:'.$wpdb->last_query);
+					//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', 'cp-communitie'), 'Query:'.$wpdb->last_query);
 					return false;
 					
 				}
 				
 			} else {
 				
-				//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', CPC_TEXT_DOMAIN), 'Duplicate skipped: '.$wpdb->last_query);
+				//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', 'cp-communitie'), 'Duplicate skipped: '.$wpdb->last_query);
 				return false;
 				
 			} // End duplicate check
@@ -445,7 +445,7 @@ class cpc_forum {
 			
 		} else {
 			
-			//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', CPC_TEXT_DOMAIN), 'No tid passed');
+			//__cpc__sendmail(get_bloginfo('admin_email'), __('POP3 insert failed', 'cp-communitie'), 'No tid passed');
 			return false;
 			
 		}

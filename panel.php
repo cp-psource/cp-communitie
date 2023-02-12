@@ -117,8 +117,8 @@ function __cpc__add_notification_bar()
 				echo "<div id='__cpc__who_online'>";
 				
 					echo "<div id='__cpc__who_online_header'>";
-						echo "<div id='__cpc__who_online_close'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/close.png' alt='".__("Close", CPC_TEXT_DOMAIN)."' /></div>";
-						echo "<div id='__cpc__who_online_close_label'>".sprintf(__("%s Status", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'))."</div>";
+						echo "<div id='__cpc__who_online_close'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/close.png' alt='".__("Schließen", 'cp-communitie')."' /></div>";
+						echo "<div id='__cpc__who_online_close_label'>".sprintf(__("%s Status", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'))."</div>";
 					echo "</div>";
 					echo "<div id='__cpc__friends_online_list'></div>";
 													
@@ -129,22 +129,22 @@ function __cpc__add_notification_bar()
 					echo "<div id='__cpc__online_status_div'>";
 						echo "<input type='checkbox' id='__cpc__online_status' ";
 						if (__cpc__get_meta($current_user->ID, 'status') == "offline") { echo " CHECKED"; }
-						echo "> ".__("Appear offline?", CPC_TEXT_DOMAIN);
+						echo "> ".__("Offline erscheinen?", 'cp-communitie');
 					echo "</div>";
 					echo "<div id='__cpc__online_status_div'>";
-						echo "<img style='float: left; margin-left: 1px; margin-right: 5px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/close.png' alt='".__("Logout", CPC_TEXT_DOMAIN)."' />";
-						echo "<a id='__cpc__logout-link' href='javascript:void(0);'>".__("Logout", CPC_TEXT_DOMAIN)."</a>";
+						echo "<img style='float: left; margin-left: 1px; margin-right: 5px;' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/close.png' alt='".__("Ausloggen", 'cp-communitie')."' />";
+						echo "<a id='__cpc__logout-link' href='javascript:void(0);'>".__("Ausloggen", 'cp-communitie')."</a>";
 					echo "</div>";
 				echo "</div>";
 
 				echo '<div id="__cpc__notification_bar" >';
 
 					// Log out
-					echo "<div id='__cpc__logout'>".__('Logout', CPC_TEXT_DOMAIN)."</div>";
+					echo "<div id='__cpc__logout'>".__('Ausloggen', 'cp-communitie')."</div>";
 
 					// Pending Friends
 					if (function_exists('__cpc__profile')) {
-						echo "<div id='__cpc__friends_box' title='".sprintf(__("Go to %s", CPC_TEXT_DOMAIN), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'))."' class='__cpc__friends_box __cpc__friends_box-none'>";
+						echo "<div id='__cpc__friends_box' title='".sprintf(__("Gehe zu %s", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'))."' class='__cpc__friends_box __cpc__friends_box-none'>";
 					} else {
 						echo "<div id='__cpc__friends_box' style='display:none'>";
 					}
@@ -152,7 +152,7 @@ function __cpc__add_notification_bar()
 					
 					// Unread Mail
 					if (function_exists('__cpc__mail')) {
-						echo "<div id='__cpc__email_box' title='".__("Go to Mail", CPC_TEXT_DOMAIN)."' class='__cpc__email_box __cpc__email_box-read'>";
+						echo "<div id='__cpc__email_box' title='".__("Gehe zu Mail", 'cp-communitie')."' class='__cpc__email_box __cpc__email_box-read'>";
 					} else {
 						echo "<div id='__cpc__email_box' style='display:none'>";
 					}

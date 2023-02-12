@@ -347,7 +347,7 @@ jQuery(document).ready(function() {
 	});
 	jQuery("#reset_page_footer").click(function() {
 		if (confirm(areyousure)) {
-			var reset = "<div id='powered_by_cpc'>[]<a href='http://www.cpcymposium.com' target='_blank'>[powered_by_message] v[version]</a>[]</div>";
+			var reset = "<div id='powered_by_cpc'>[]<a href='https://cp-community.n3rds.work/' target='_blank'>[powered_by_message] v[version]</a>[]</div>";
 			reset = reset.replace(/\[\]/g, String.fromCharCode(13));
 			jQuery("#page_footer_textarea").val(reset);
 		}
@@ -368,7 +368,7 @@ jQuery(document).ready(function() {
 	});
 	jQuery("#reset_email").click(function() {
 		if (confirm(areyousure)) {
-			var reset = "<style> body { background-color: #fff; } </style>[]<div style='margin: 20px;'>[][message][]<br /><hr />[][footer]<br />[]<a href='http://www.cpcymposium.com' target='_blank'>[powered_by_message] v[version]</a>[]</div>";
+			var reset = "<style> body { background-color: #fff; } </style>[]<div style='margin: 20px;'>[][message][]<br /><hr />[][footer]<br />[]<a href='https://cp-community.n3rds.work/' target='_blank'>[powered_by_message] v[version]</a>[]</div>";
 			reset = reset.replace(/\[\]/g, String.fromCharCode(13));
 			jQuery("#email_textarea").val(reset);
 		}
@@ -452,7 +452,7 @@ jQuery(document).ready(function() {
 	*/
 	
 	// Search for members
-	jQuery("#user_list_search_button").live('click', function() {
+	jQuery("#user_list_search_button").on('click', function() {
 
 		var gid = jQuery('#group_list').val();
 
@@ -503,7 +503,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Select new group	
-	jQuery('#group_list').live('change', function() {
+	jQuery('#group_list').on('change', function() {
 
 		jQuery("#group_list_delete").show();
 		jQuery('#group_order_update').show();
@@ -542,7 +542,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete a group
-	jQuery('#group_list_delete').live('click', function() {
+	jQuery('#group_list_delete').on('click', function() {
 		var answer = confirm("This cannot be un-done - are you really sure?");
 
 		if (answer) {
@@ -565,7 +565,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Change group's order
-	jQuery('#group_order_update').live('click', function() {
+	jQuery('#group_order_update').on('click', function() {
 		var answer = prompt("Enter order number (lower shown first)");
 
 		if (answer) {
@@ -590,7 +590,7 @@ jQuery(document).ready(function() {
 
 	
 	// Add or remove a user to/from a group selection
-	jQuery(".user_list_item").live('click', function() {
+	jQuery(".user_list_item").on('click', function() {
 
 		var id = jQuery(this).attr("id");
 		var parent_id = jQuery(this).parent().attr("id");
@@ -616,7 +616,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Add button
-	jQuery("#users_add_button").live('click', function() {
+	jQuery("#users_add_button").on('click', function() {
 
 		if (jQuery('#group_list').val() > 0) {
 

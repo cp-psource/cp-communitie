@@ -1,5 +1,5 @@
 <?php
-// If uninstall not called from WordPress exit
+// If uninstall not called from ClassicPress exit
 if( !defined( 'WP_UNINSTALL_PLUGIN' ) )
 exit ();
 

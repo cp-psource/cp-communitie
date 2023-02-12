@@ -3,7 +3,7 @@
  * Template Name: Demo forum page 1
  * Description: A Forum Page Template to demonstrate using classes
  *
- * @package WordPress
+ * @package ClassicPress
  * @subpackage Twenty_Eleven
  * @since Twenty Eleven 1.0
  */
@@ -46,10 +46,10 @@ This also assumes the .css file is also in the current theme folder along with t
 <div id="primary">
 	<div id="content" role="main">
 	
-	<!-- WordPress page content components -->
+	<!-- ClassicPress page content components -->
 	<?php the_post(); ?>
 	<?php get_template_part( 'content', 'page' ); ?>
-	<!-- End WordPress page content components -->
+	<!-- End ClassicPress page content components -->
 
 
 	<?php	

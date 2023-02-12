@@ -11,11 +11,11 @@ class cpc_user {
 		$user_info = get_userdata($id);
 
 		if ($user_info) {
-			$this->display_name = $user_info->display_name;						// WordPress display name
-			$this->first_name = $user_info->first_name;							// WordPress first name
-			$this->last_name = $user_info->last_name;							// WordPress last name
-			$this->user_login = $user_info->user_login;							// WordPress user login
-			$this->user_email = $user_info->user_email;							// WordPress user email address
+			$this->display_name = $user_info->display_name;						// ClassicPress display name
+			$this->first_name = $user_info->first_name;							// ClassicPress first name
+			$this->last_name = $user_info->last_name;							// ClassicPress last name
+			$this->user_login = $user_info->user_login;							// ClassicPress user login
+			$this->user_email = $user_info->user_email;							// ClassicPress user email address
 			$this->city = __cpc__get_meta($id, 'extended_city');				// City
 			$this->country = __cpc__get_meta($id, 'extended_country');		// Country
 			$this->avatar = '';													// Avatar (readonly)

@@ -44,7 +44,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_label') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_label', '#000');
 	if (get_option(CPC_OPTIONS_PREFIX.'_footer') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_footer', __('Bitte antworte nicht auf diese E-Mail', 'cp-communitie'));
+		update_option(CPC_OPTIONS_PREFIX.'_footer', __('Bitte antworte nicht auf diese Mail', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_send_summary') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_send_summary', 'on');
 	if (get_option(CPC_OPTIONS_PREFIX.'_forum_url') === false)	
@@ -325,7 +325,7 @@
 	if (get_option(CPC_OPTIONS_PREFIX.'_forum_refresh') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_forum_refresh', '');
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_mail_new') === false)	
-		update_option(CPC_OPTIONS_PREFIX.'_subject_mail_new', __('Neue E-Mail-Nachricht: [subject]', 'cp-communitie'));
+		update_option(CPC_OPTIONS_PREFIX.'_subject_mail_new', __('Neue Mail-Nachricht: [subject]', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_forum_new') === false)	
 		update_option(CPC_OPTIONS_PREFIX.'_subject_forum_new', __('Neues Forumsthema', 'cp-communitie'));
 	if (get_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply') === false)	

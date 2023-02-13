@@ -584,30 +584,30 @@ function __cpc__show_metadata($user) {
 	// forum_digest
 	
 	// Email notifications for private messages
-	$html .= '<tr><th><label for="notify_new_messages">'.__('E-Mails für private Nachrichten', 'cp-communitie').'</label></th>';
+	$html .= '<tr><th><label for="notify_new_messages">'.__('Mails für private Nachrichten', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="checkbox" name="notify_new_messages" id="notify_new_messages"';
 	if ($notify_new_messages =='on') { $html .= ' CHECKED '; }
 	$html .= '/> ';
-	$html .= '<span class="description">'.__('Erhalte eine E-Mail, wenn Du neue E-Mail-Nachrichten erhältst?', 'cp-communitie').'</span>';
+	$html .= '<span class="description">'.__('Erhalte eine Mail, wenn Du neue Mail-Nachrichten erhältst?', 'cp-communitie').'</span>';
 	$html .= '</td></tr>';
 	
 	// Email notifications for wall posts
-	$html .= '<tr><th><label for="notify_new_wall">'.__('E-Mails für Posts auf der Pinnwand', 'cp-communitie').'</label></th>';
+	$html .= '<tr><th><label for="notify_new_wall">'.__('Mails für Posts auf der Pinnwand', 'cp-communitie').'</label></th>';
 	$html .= '<td><input type="checkbox" name="notify_new_wall" id="notify_new_wall"';
 	if ($notify_new_wall == 'on') { $html .= ' CHECKED '; }
 	$html .= '/> ';
-	$html .= '<span class="description">'.__('Eine E-Mail erhalten, wenn ein Freund einen Beitrag hinzufügt?', 'cp-communitie').'</span>';
+	$html .= '<span class="description">'.__('Eine Mail erhalten, wenn ein Freund einen Beitrag hinzufügt?', 'cp-communitie').'</span>';
 	$html .= '</td></tr>';
 	
 	if (function_exists('__cpc__forum')) {
 		
 		// Email notifications for all forum activity (if allowed)
 		if (get_option(CPC_OPTIONS_PREFIX.'_allow_subscribe_all') == "on") {
-			$html .= '<tr><th><label for="forum_all">'.__('E-Mails für alle neuen Forenthemen und Antworten', 'cp-communitie').'</label></th>';
+			$html .= '<tr><th><label for="forum_all">'.__('Mails für alle neuen Forenthemen und Antworten', 'cp-communitie').'</label></th>';
 			$html .= '<td><input type="checkbox" name="forum_all" id="forum_all"';
 			if ($forum_all == 'on') { $html .= ' CHECKED '; }
 			$html .= '/> ';
-			$html .= '<span class="description">'.__('Erhalte eine E-Mail für alle neuen Forenthemen und Antworten?', 'cp-communitie').'</span><br />';
+			$html .= '<span class="description">'.__('Erhalte eine Mail für alle neuen Forenthemen und Antworten?', 'cp-communitie').'</span><br />';
 			$html .= '</td></tr>';
 		} else {
 			$html .= '<input type="hidden" name="forum_all" value="" />';

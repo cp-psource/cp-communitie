@@ -315,8 +315,8 @@ function __cpc__plugin_menu() {
 				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mitgliederverzeichnis', 'cp-communitie'), __('Mitgliederverzeichnis', 'cp-communitie'), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
 			}
 			if (function_exists('__cpc__mail')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('E-Mail', 'cp-communitie'), __('E-Mail', 'cp-communitie'), 'update_core', '__cpc__mail_menu', '__cpc__mail_menu');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('E-Mail-Nachrichten', 'cp-communitie'), __('E-Mail-Nachrichten', 'cp-communitie'), 'update_core', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail', 'cp-communitie'), __('Mail', 'cp-communitie'), 'update_core', '__cpc__mail_menu', '__cpc__mail_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail-Nachrichten', 'cp-communitie'), __('Mail-Nachrichten', 'cp-communitie'), 'update_core', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
 			}
 		} else {
 			// Single intallation
@@ -377,8 +377,8 @@ function __cpc__plugin_menu() {
 				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mitgliederverzeichnis', 'cp-communitie'), __('Mitgliederverzeichnis', 'cp-communitie'), 'manage_options', '__cpc__members_menu', '__cpc__members_menu');
 			}
 			if (function_exists('__cpc__mail')) {
-				add_submenu_page('cpcommunitie_debug'.$hidden, __(E-'Mail', 'cp-communitie'), __('E-Mail', 'cp-communitie'), 'manage_options', '__cpc__mail_menu', '__cpc__mail_menu');
-				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail Messages', 'cp-communitie'), __('Mail Messages', 'cp-communitie'), 'manage_options', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail', 'cp-communitie'), __('Mail', 'cp-communitie'), 'manage_options', '__cpc__mail_menu', '__cpc__mail_menu');
+				add_submenu_page('cpcommunitie_debug'.$hidden, __('Mail-Nachrichten', 'cp-communitie'), __('Mail-Nachrichten', 'cp-communitie'), 'manage_options', '__cpc__mail_messages_menu', '__cpc__mail_messages_menu');
 			}
 		}
 		do_action('__cpc__admin_menu_hook');
@@ -388,7 +388,7 @@ function __cpc__plugin_menu() {
 function __cpc__menu_options() {
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Optionen', 'cp-communitie'), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('options');
 	
@@ -418,7 +418,7 @@ function __cpc__menu_options() {
 	if (function_exists('__cpc__news_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/news_admin.php">'.__('Benachrichtigungen', 'cp-communitie').'</a></li>';
 	if (function_exists('__cpc__events_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/events_admin.php">'.sprintf(__('%s Events', 'cp-communitie'), CPC_WL).'</a></li>';
 	if (function_exists('__cpc__facebook')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php">'.__('Profilnachrichten auf Facebook posten', 'cp-communitie').'</a></li>';
-	if (function_exists('__cpc__mailinglist')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php">'.__('Antworte auf Forenthemen und Antworten per E-Mail', 'cp-communitie').'</a></li>';
+	if (function_exists('__cpc__mailinglist')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php">'.__('Antworte auf Forenthemen und Antworten per Mail', 'cp-communitie').'</a></li>';
 	if (function_exists('__cpc__lounge_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php">'.__('Die Lounge-Optionen (Demonstration)', 'cp-communitie').'</a></li>';
 	if (function_exists('__cpc__mobile')) $show2 .= '<li><a href="admin.php?page=__cpc__mobile_menu">'.__('Zugriff für mobile Geräte', 'cp-communitie').'</a></li>';
 	
@@ -448,7 +448,7 @@ function __cpc__menu_manage() {
 	echo '<li><a href="admin.php?page=cpcommunitie_thesaurus">'.sprintf(__('Formulierungsalternativen %s', 'cp-communitie'), CPC_WL).'</a></li>';
 	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_categories">'.sprintf(__('%s Forenkategorien und Berechtigungen', 'cp-communitie'), CPC_WL).'</a></li>';
 	if (function_exists('__cpc__forum')) echo '<li><a href="admin.php?page=cpcommunitie_moderation">'.sprintf(__('Anzeigen und Moderieren von %s Forenthemen und Antworten', 'cp-communitie'), CPC_WL).'</a></li>';
-	if (function_exists('__cpc__mail')) echo '<li><a href="admin.php?page=__cpc__mail_messages_menu">'.sprintf(__('%s E-Mail-Nachrichten anzeigen und löschen', 'cp-communitie'), CPC_WL).'</a></li>';
+	if (function_exists('__cpc__mail')) echo '<li><a href="admin.php?page=__cpc__mail_messages_menu">'.sprintf(__('%s Mail-Nachrichten anzeigen und löschen', 'cp-communitie'), CPC_WL).'</a></li>';
 	echo '<li><a href="admin.php?page=cpcommunitie_templates">'.sprintf(__('%s Layoutvorlagen', 'cp-communitie'), CPC_WL).'</a></li>';
 	if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<li><a href="admin.php?page=cpcommunitie_audit">'.__('Analysiere die Audit-Tabelle', 'cp-communitie').'</a></li>';
 	echo '</ul>';
@@ -482,7 +482,7 @@ function __cpc__menu_manage() {
 					echo '<input type="submit" class="button-primary" value="'.sprintf(__('Inhalt neu zuweisen/löschen und %s entfernen', 'cp-communitie'), $user_login).'" />';
 				echo '</form>';
 			} else {
-				echo '<em>'.__('<a href="user-new.php">Erstelle zuerst einen Benutzer</a> mit dem Benutzernamen "nobody", sende eine E-Mail an "nobody@example.com" und setze das Vornamenfeld auf etwas wie "Mitglied existiert nicht mehr".', 'cp-communitie').'</em><br />';
+				echo '<em>'.__('<a href="user-new.php">Erstelle zuerst einen Benutzer</a> mit dem Benutzernamen "nobody", sende eine Mail an "nobody@example.com" und setze das Vornamenfeld auf etwas wie "Mitglied existiert nicht mehr".', 'cp-communitie').'</em><br />';
 			}
 
 			echo '<br /><br />';
@@ -952,7 +952,7 @@ function __cpc__plugin_templates() {
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[actions]</td>';
-					echo '<td>'.sprintf(__('%s Schaltflächen zum Anfordern/Senden von E-Mails usw', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</td>';
+					echo '<td>'.sprintf(__('%s Schaltflächen zum Anfordern/Senden von Mails usw', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'</td>';
 					echo '</tr>';
 					echo '<tr>';
 					echo '<td>[avatar,x]</td>';
@@ -1097,7 +1097,7 @@ function __cpc__plugin_templates() {
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[mail_message]</td>';
-				echo '<td>'.__('Ein Ausschnitt der E-Mail-Nachricht', 'cp-communitie').'</td>';
+				echo '<td>'.__('Ein Ausschnitt der Mail-Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '</tbody>';
 				echo '</table>';
@@ -1144,7 +1144,7 @@ function __cpc__plugin_templates() {
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[delete_button]</td>';
-				echo '<td>'.__('E-Mail löschen Schaltfläche', 'cp-communitie').'</td>';
+				echo '<td>'.__('Mail löschen Schaltfläche', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[reply_button]</td>';
@@ -1199,7 +1199,7 @@ function __cpc__plugin_templates() {
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[subscribe]</td>';
-				echo '<td>'.__('E-Mail für neue Themen erhalten', 'cp-communitie').'</td>';
+				echo '<td>'.__('Mail für neue Themen erhalten', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[forum_options]</td>';
@@ -1498,7 +1498,7 @@ function __cpc__plugin_templates() {
 			echo '<br /><table class="widefat">';
 			echo '<thead>';
 			echo '<tr>';
-			echo '<th style="font-size:1.2em">'.sprintf(__('%s E-Mails', 'cp-communitie'), CPC_WL).'</th>';
+			echo '<th style="font-size:1.2em">'.sprintf(__('%s Mails', 'cp-communitie'), CPC_WL).'</th>';
 			echo '</tr>';
 			echo '</thead>';
 			echo '<tbody>';
@@ -1512,7 +1512,7 @@ function __cpc__plugin_templates() {
 				echo '<tbody>';
 				echo '<tr>';
 				echo '<td>[message]</td>';
-				echo '<td>'.__('Die E-Mail-Nachricht', 'cp-communitie').'</td>';
+				echo '<td>'.__('Die Mail-Nachricht', 'cp-communitie').'</td>';
 				echo '</tr>';
 				echo '<tr>';
 				echo '<td>[footer]</td>';
@@ -1890,20 +1890,20 @@ function __cpc__plugin_debug() {
 			__cpc__install_row('profile', __('Profile', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-profile', '__cpc__profile', get_option(CPC_OPTIONS_PREFIX.'_profile_url'), CPC_DIR.'/profile.php', 'admin.php?page=profile', '__cpc__<a href="admin.php?page=cpcommunitie_profile">Einstellungen</a>');
 			__cpc__install_row('forum', __('Forum', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-forum', '__cpc__forum', get_option(CPC_OPTIONS_PREFIX.'_forum_url'), CPC_DIR.'/forum.php', 'admin.php?page=forum', '__cpc__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
 			__cpc__install_row('members', __('Mitglieder', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-members', '__cpc__members', get_option(CPC_OPTIONS_PREFIX.'_members_url'), CPC_DIR.'/members.php', 'admin.php?page=__cpc__members_menu', '__cpc__<a href="admin.php?page=__cpc__members_menu">Einstellungen</a>');
-			__cpc__install_row('mail', __('E-Mail', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-mail', '__cpc__mail', get_option(CPC_OPTIONS_PREFIX.'_mail_url'), CPC_DIR.'/mail.php', '', '__cpc__<a href="admin.php?page=__cpc__mail_menu">Einstellungen</a>');		
+			__cpc__install_row('mail', __('Mail', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-mail', '__cpc__mail', get_option(CPC_OPTIONS_PREFIX.'_mail_url'), CPC_DIR.'/mail.php', '', '__cpc__<a href="admin.php?page=__cpc__mail_menu">Einstellungen</a>');		
 			__cpc__install_row('panel', __('Panel/Chat', 'cp-communitie'), '', '__cpc__add_notification_bar', '-', CPC_DIR.'/panel.php', 'admin.php?page=bar', '__cpc__<a href="admin.php?page=cpcommunitie_bar">Einstellungen</a>');
-			__cpc__install_row('wysiwyg', __('Forum-WYSIWYG-Editor', 'cp-communitie'), '', '__cpc__wysiwyg', '-', '', CPC_DIR.'/forum.php', '__cpc__bronze__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
-			__cpc__install_row('profile_plus', __('Profile_Plus', 'cp-communitie'), '', '__cpc__profile_plus', '-', 'cp-communitie/plus.php', 'admin.php?page='.CPC_DIR.'/plus_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/plus_admin.php">Einstellungen</a>');
-			__cpc__install_row('groups', __('Gruppen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-groups', '__cpc__groups', get_option(CPC_OPTIONS_PREFIX.'_groups_url'), CPC_DIR.'/groups.php', 'admin.php?page='.CPC_DIR.'/groups_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/groups_admin.php">Einstellungen</a>');
-			__cpc__install_row('group', __('Gruppe', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-group', '__cpc__group', get_option(CPC_OPTIONS_PREFIX.'_group_url'), CPC_DIR.'/groups.php', '', '__cpc__bronze__');
-			__cpc__install_row('gallery', __('Galerie', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-galleries', '__cpc__gallery', '/gallery/', CPC_DIR.'/gallery.php','admin.php?page='.CPC_DIR.'/gallery_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/gallery_admin.php">Einstellungen</a>');
-			__cpc__install_row('alerts', __('Benachrichtigungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-alerts', '__cpc__news_main', '-', CPC_DIR.'/news.php', 'admin.php?page='.CPC_DIR.'/news_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/news_admin.php">Einstellungen</a>');
-			__cpc__install_row('events', __('Veranstaltungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-events', '__cpc__events_main', '-', CPC_DIR.'/events.php', 'admin.php?page='.CPC_DIR.'/events_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/events_admin.php">Einstellungen</a>');
-			__cpc__install_row('mobile', __('Mobil', 'cp-communitie'), '', '__cpc__mobile', '-', CPC_DIR.'/mobile.php', 'admin.php?page=__cpc__mobile_menu', '__cpc__bronze__<a href="admin.php?page=__cpc__mobile_menu">Optionen</a>');
-			__cpc__install_row('reply_by_email', __('Antwort_per_E-Mail', 'cp-communitie'), '', '__cpc__mailinglist', '-', CPC_DIR.'/mailinglist.php', 'admin.php?page='.CPC_DIR.'/cpcommunitie_mailinglist_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/mailinglist_admin.php">Einstellungen</a>');
-			__cpc__install_row('the_lounge', __('The_Lounge', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-lounge', '__cpc__lounge_main', '-', CPC_DIR.'/lounge.php', 'admin.php?page='.CPC_DIR.'/lounge_admin.php', '__cpc__bronze__<a href="admin.php?page=cp-communitie/lounge_admin.php">Einstellungen</a>');
-			__cpc__install_row('rss_feed', __('RSS_Feed', 'cp-communitie'), '', '__cpc__rss_main', '-', CPC_DIR.'/rss.php', '', '__cpc__bronze__');
-			__cpc__install_row('facebook', __('Facebook', 'cp-communitie'), '', '__cpc__facebook', '-', CPC_DIR.'/facebook.php', 'admin.php?page='.CPC_DIR.'/facebook_admin.php', '__cpc__bronze__');
+			__cpc__install_row('wysiwyg', __('Forum-WYSIWYG-Editor', 'cp-communitie'), '', '__cpc__wysiwyg', '-', '', CPC_DIR.'/forum.php', '__cpc__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
+			__cpc__install_row('profile_plus', __('Profile_Plus', 'cp-communitie'), '', '__cpc__profile_plus', '-', 'cp-communitie/plus.php', 'admin.php?page='.CPC_DIR.'/plus_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/plus_admin.php">Einstellungen</a>');
+			__cpc__install_row('groups', __('Gruppen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-groups', '__cpc__groups', get_option(CPC_OPTIONS_PREFIX.'_groups_url'), CPC_DIR.'/groups.php', 'admin.php?page='.CPC_DIR.'/groups_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/groups_admin.php">Einstellungen</a>');
+			__cpc__install_row('group', __('Gruppe', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-group', '__cpc__group', get_option(CPC_OPTIONS_PREFIX.'_group_url'), CPC_DIR.'/groups.php', '', '__cpc__');
+			__cpc__install_row('gallery', __('Galerie', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-galleries', '__cpc__gallery', '/gallery/', CPC_DIR.'/gallery.php','admin.php?page='.CPC_DIR.'/gallery_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/gallery_admin.php">Einstellungen</a>');
+			__cpc__install_row('alerts', __('Benachrichtigungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-alerts', '__cpc__news_main', '-', CPC_DIR.'/news.php', 'admin.php?page='.CPC_DIR.'/news_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/news_admin.php">Einstellungen</a>');
+			__cpc__install_row('events', __('Veranstaltungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-events', '__cpc__events_main', '-', CPC_DIR.'/events.php', 'admin.php?page='.CPC_DIR.'/events_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/events_admin.php">Einstellungen</a>');
+			__cpc__install_row('mobile', __('Mobil', 'cp-communitie'), '', '__cpc__mobile', '-', CPC_DIR.'/mobile.php', 'admin.php?page=__cpc__mobile_menu', '__cpc__<a href="admin.php?page=__cpc__mobile_menu">Optionen</a>');
+			__cpc__install_row('reply_by_email', __('Antwort_per_Mail', 'cp-communitie'), '', '__cpc__mailinglist', '-', CPC_DIR.'/mailinglist.php', 'admin.php?page='.CPC_DIR.'/cpcommunitie_mailinglist_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/mailinglist_admin.php">Einstellungen</a>');
+			__cpc__install_row('the_lounge', __('The_Lounge', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-lounge', '__cpc__lounge_main', '-', CPC_DIR.'/lounge.php', 'admin.php?page='.CPC_DIR.'/lounge_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/lounge_admin.php">Einstellungen</a>');
+			__cpc__install_row('rss_feed', __('RSS_Feed', 'cp-communitie'), '', '__cpc__rss_main', '-', CPC_DIR.'/rss.php', '', '__cpc__');
+			__cpc__install_row('facebook', __('Facebook', 'cp-communitie'), '', '__cpc__facebook', '-', CPC_DIR.'/facebook.php', 'admin.php?page='.CPC_DIR.'/facebook_admin.php', '__cpc__');
 	
 			do_action('__cpc__installation_hook');
 
@@ -2511,23 +2511,23 @@ function __cpc__plugin_debug() {
 						
 							if( isset($_POST[ 'cpcommunitie_testemail' ]) && $_POST[ 'cpcommunitie_testemail' ] == 'Y' && $_POST['cpcommunitie_testemail_address'] != '' ) {
 								$to = $_POST['cpcommunitie_testemail_address'];
-								if (__cpc__sendmail($to, sprintf("%s Test Email", CPC_WL), __("Dies ist eine Test-E-Mail, gesendet von ", 'cp-communitie')." ".get_bloginfo('url'))) {
+								if (__cpc__sendmail($to, sprintf("%s Test Email", CPC_WL), __("Dies ist eine Test-Mail, gesendet von ", 'cp-communitie')." ".get_bloginfo('url'))) {
 									echo "<div class='updated'><p>";
 									$from = get_option(CPC_OPTIONS_PREFIX.'_from_email');
-									echo sprintf(__('E-Mail gesendet an %s von', 'cp-communitie'), $to);
+									echo sprintf(__('Mail gesendet an %s von', 'cp-communitie'), $to);
 									echo ' '.$from;
 									echo "</p></div>";
 								} else {
-									echo "<div class='error'><p>".__("E-Mail konnte nicht gesendet werden", 'cp-communitie').".</p></div>";
+									echo "<div class='error'><p>".__("Mail konnte nicht gesendet werden", 'cp-communitie').".</p></div>";
 								}
 							}
-							echo '<h2 style="margin-bottom:10px">'.__('Sende eine Test-E-Mail', 'cp-communitie').'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Sende eine Test-Mail', 'cp-communitie').'</h2>';
 				
-							echo '<p>'.__('Gib eine gültige E-Mail-Adresse ein, um das Senden einer E-Mail vom Server zu testen', 'cp-communitie').'.</p>';
+							echo '<p>'.__('Gib eine gültige Mail-Adresse ein, um das Senden einer Mail vom Server zu testen', 'cp-communitie').'.</p>';
 							echo '<form method="post" action="">';
 							echo '<input type="hidden" name="cpcommunitie_testemail" value="Y">';
 							echo '<p><input type="text" name="cpcommunitie_testemail_address" value="" style="margin-right:15px;height:24px;width:300px" class="regular-text">';
-							echo '<input type="submit" name="Submit" class="button-primary" value="'.__('E-Mail senden', 'cp-communitie').'" /></p';
+							echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Mail senden', 'cp-communitie').'" /></p';
 							echo '</form>';
 							
 						echo '</td></tr></table>';
@@ -2573,21 +2573,21 @@ function __cpc__plugin_debug() {
 								// Does tmp folder exist?
 								if (!file_exists($tmpDir)) {
 									if (@mkdir($tmpDir)) {
-										echo '<p>'.sprintf(__('The %s temporary image folder (%s) does not currently exist', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
-										echo __(', and has been created.', 'cp-communitie').'</p>';
+										echo '<p>'.sprintf(__('Der temporäre %s Bildordner (%s) existiert derzeit nicht', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
+										echo __(', und wurde erstellt.', 'cp-communitie').'</p>';
 									} else {
-										echo '<p>'.$fail.sprintf(__('The %s temporary image folder (%s) does not currently exist', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
-										echo __(', and could not be created - please check permissions of this path.', 'cp-communitie').$fail2.'</p>';
+										echo '<p>'.$fail.sprintf(__('Der temporäre %s Bildordner (%s) existiert derzeit nicht', 'cp-communitie'), CPC_WL_SHORT, $tmpDir);
+										echo __(', und konnte nicht erstellt werden - bitte überprüfe die Berechtigungen dieses Pfades.', 'cp-communitie').$fail2.'</p>';
 									}
 								} else {
-									echo '<p>'.sprintf(__('The %s temporary image folder (%s) exists.', 'cp-communitie'), CPC_WL_SHORT, $tmpDir).'</p>';
+									echo '<p>'.sprintf(__('Der temporäre %s Bildordner (%s) existiert.', 'cp-communitie'), CPC_WL_SHORT, $tmpDir).'</p>';
 									
 									// Check creating a temporary file in tmp
 									if (touch($targetTmpFile)) {
 										@unlink($targetTmpFile);
-										echo "<p>".sprintf(__('Temporary file (%s) created and removed successfully.', 'cp-communitie'), $tmpFile)."</p>";
+										echo "<p>".sprintf(__('Temporäre Datei (%s) erfolgreich erstellt und entfernt.', 'cp-communitie'), $tmpFile)."</p>";
 									} else {
-										echo '<p>'.$fail.sprintf(__('A temporary file (%s) could not be created (in %s), please check permissions.', 'cp-communitie'), $targetTmpFile, $tmpDir);
+										echo '<p>'.$fail.sprintf(__('Eine temporäre Datei (%s) konnte nicht erstellt werden (in %s), bitte überprüfe die Berechtigungen.', 'cp-communitie'), $targetTmpFile, $tmpDir);
 									}
 								}
 								
@@ -2598,43 +2598,43 @@ function __cpc__plugin_debug() {
 						// Link to licence
 						echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
 							echo '<a name="image"></a>';
-							echo '<h2 style="margin-bottom:10px">'.__('End User Licence Agreement', 'cp-communitie').'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Endbenutzer-Lizenzvereinbarung', 'cp-communitie').'</h2>';
 						
-							echo "<p>".sprintf(__("If you do not accept the terms of the <a href='%s'>licence</a>, please remove this plugin", 'cp-communitie'), CPC_PLUGIN_URL."/licence.txt").".</p>";
+							echo "<p>".sprintf(__("Wenn Du die Bedingungen der <a href='%s'>Lizenz</a> nicht akzeptierst, entferne bitte dieses Plugin", 'cp-communitie'), CPC_PLUGIN_URL."/licence.txt").".</p>";
 							
 						echo '</td></tr></table>';
 								
 						// ********** Daily Digest 
 						echo '<table class="widefat" style="margin-top:10px; float:right;"><tr><td style="padding:0 0 0 10px">';
-							echo '<h2 style="margin-bottom:10px">'.__('Daily Digest', 'cp-communitie').'</h2>';
+							echo '<h2 style="margin-bottom:10px">'.__('Tägliche Zusammenfassung', 'cp-communitie').'</h2>';
 				
 							if( isset($_POST[ 'cpcommunitie_dailydigest' ]) && $_POST[ 'cpcommunitie_dailydigest' ] == 'Y' ) {
 								$to_users = isset($_POST['cpcommunitie_dailydigest_users']) ? $_POST['cpcommunitie_dailydigest_users'] : '';
 								$to_admin = isset($_POST['cpcommunitie_dailydigest_admin']) ? $_POST['cpcommunitie_dailydigest_admin'] : '';
 								if ($to_users == 'on' || $to_admin == 'on') {
-									echo "<div style='border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>Running...<br />";
+									echo "<div style='border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>Läuft...<br />";
 									if ($to_users == "on") {
-										echo "Sending summary report and to all users...<br />";
+										echo "Zusammenfassenden Bericht und an alle Benutzer senden...<br />";
 										$success = __cpc__notification_do_jobs('send_admin_summary_and_to_users');
 									}								
 									if ($to_admin == "on") {
-										echo "Sending summary report and daily digest to admin only... ";
+										echo "Zusammenfassenden Bericht und Tagesauszug werden nur an den Administrator gesendet... ";
 										$success = __cpc__notification_do_jobs('cpcommunitie_dailydigest_admin');
 									}			
 									echo $success;
-									echo "Complete.<br />";
+									echo "Vollständig.<br />";
 									if ($success == 'OK' && $to_admin == 'on') {
 										echo "Summary report sent to ".get_bloginfo('admin_email').".<br />";
 									}
 									echo "</div>";
 								}
 							}
-							echo '<p>'.__('The Daily Digest also performs some basic database cleanup operations, which can be run at any time', 'cp-communitie').'.</p>';
+							echo '<p>'.__('Die Tägliche Zusammenfassung führt auch einige grundlegende Datenbankbereinigungsvorgänge durch, die jederzeit ausgeführt werden können', 'cp-communitie').'.</p>';
 							echo '<form method="post" action="">';
 							echo '<input type="hidden" name="cpcommunitie_dailydigest" value="Y">';
-							echo '<input type="checkbox" name="cpcommunitie_dailydigest_admin" > '.__('Send Daily Digest and summary to admin', 'cp-communitie').' ('.get_bloginfo('admin_email').')<br />';
-							echo '<input type="checkbox" name="cpcommunitie_dailydigest_users" > '.__('Send Daily Digest to users now (includes summary to admin)', 'cp-communitie');
-							echo '<p style="margin-top:10px"><input type="submit" name="Submit" class="button-primary" value="'.__('Send Daily Digest', 'cp-communitie').'" /></p>';
+							echo '<input type="checkbox" name="cpcommunitie_dailydigest_admin" > '.__('Sende Tägliche Zusammenfassung und Zusammenfassung an den Administrator', 'cp-communitie').' ('.get_bloginfo('admin_email').')<br />';
+							echo '<input type="checkbox" name="cpcommunitie_dailydigest_users" > '.__('Sende jetzt Tägliche Zusammenfassung an Benutzer (einschließlich Zusammenfassung an den Administrator)', 'cp-communitie');
+							echo '<p style="margin-top:10px"><input type="submit" name="Submit" class="button-primary" value="'.__('Tägliche Zusammenfassung senden', 'cp-communitie').'" /></p>';
 							echo '</form>';
 						echo '</td></tr></table>';
 		
@@ -2650,9 +2650,9 @@ function __cpc__plugin_debug() {
 						// CSS check
 						$myStyleFile = CPC_PLUGIN_DIR . '/css/'.get_option(CPC_OPTIONS_PREFIX.'_cpc_css_file');
 						if ( !file_exists($myStyleFile) ) {
-							echo $fail . sprintf(__('Stylesheet (%s) not found.', 'cp-communitie'), $myStyleFile) . $fail2;
+							echo $fail . sprintf(__('Stylesheet (%s) nicht gefunden.', 'cp-communitie'), $myStyleFile) . $fail2;
 						} else {
-							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__('Stylesheet (%s) found.', 'cp-communitie'), $myStyleFile) . "</p>";
+							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__('Stylesheet (%s) gefunden.', 'cp-communitie'), $myStyleFile) . "</p>";
 						}
 							
 						// ********** Javascript			
@@ -2661,14 +2661,14 @@ function __cpc__plugin_debug() {
 						// JS check
 						$myJSfile = CPC_PLUGIN_DIR . '/js/'.get_option(CPC_OPTIONS_PREFIX.'_cpc_js_file');
 						if ( !file_exists($myJSfile) ) {
-							echo $fail . sprintf(__('Javascript file (%s) not found.', 'cp-communitie'), $myJSfile) . $fail2;
+							echo $fail . sprintf(__('Javascript-Datei (%s) nicht gefunden.', 'cp-communitie'), $myJSfile) . $fail2;
 						} else {
-							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__("Javascript file (%s) found.", 'cp-communitie'), $myJSfile) . "</p>";
+							echo "<p style='color:green; font-weight:bold;'>" . sprintf(__("Javascript-Datei (%s) gefunden.", 'cp-communitie'), $myJSfile) . "</p>";
 						}
-						echo "<p>" . sprintf(__("If you find that certain %s things don't work, like buttons or uploading profile photos, it is probably because the %s Javascript file isn't loading and/or working. Usually, this is because of another ClassicPress plugin. Try deactivating all non-%s plugins and switching to the TwentyEleven theme. If %s then works, re-activate the plug-ins one at a time until the error re-occurs, this will help you locate the plugin that is clashing. Then switch your theme back. Also try using Firefox, with the Firebug add-in installed - this will show you where the Javascript error is occuring.", 'cp-communitie'), CPC_WL, CPC_WL, CPC_WL_SHORT, CPC_WL_SHORT)."</p>";
-						echo "<p>".__("If you are experiencing problems, <a href='https://cp-community.n3rds.work//trythisfirst' target='_blank'>try this first</a>.", 'cp-communitie')."</p>";
+						echo "<p>" . sprintf(__("Wenn Du feststellst, dass bestimmte %s-Dinge nicht funktionieren, wie z.B. Schaltflächen oder das Hochladen von Profilfotos, liegt dies wahrscheinlich daran, dass die %s-JavaScript-Datei nicht geladen wird und/oder nicht funktioniert. Normalerweise liegt dies an einem anderen ClassicPress-Plugin. Versuche alle Nicht-%s-Plug-ins zu deaktivieren und zum Design TwentyEleven zu wechseln. Wenn %s dann funktioniert, aktiviere die Plug-Ins nacheinander erneut, bis der Fehler erneut auftritt. Dies hilft Dir, das kollidierende Plug-In zu finden. Wechsel dann Dein Theme zurück. Versuche auch, die Entwicklertools Deines Browsers zu verwenden – dies zeigt Dir, wo der Javascript-Fehler auftritt.", 'cp-communitie'), CPC_WL, CPC_WL, CPC_WL_SHORT, CPC_WL_SHORT)."</p>";
+						echo "<p>".__("Wenn Du Probleme hast, <a href='https://cp-community.n3rds.work//trythisfirst' target='_blank'>versuche es zuerst hier</a>.", 'cp-communitie')."</p>";
 								
-						echo "<div id='jstest'>".$fail.sprintf(__( "You have problems with Javascript. This may be because a plugin is loading another version of jQuery or jQuery UI - try deactivating all plugins apart from %s plugins, and re-activate them one at a time until the error re-occurs, this will help you locate the plugin that is clashing. It might also be because there is an error in a JS file, either the cpcommunitie.js or another plugin script.", 'cp-communitie'), CPC_WL_SHORT).$fail2."</div>";
+						echo "<div id='jstest'>".$fail.sprintf(__( "Du hast Probleme mit Javascript. Dies kann daran liegen, dass ein Plug-in eine andere Version von jQuery oder der jQuery-Benutzeroberfläche lädt. Versuche alle Plug-ins außer %s-Plug-ins zu deaktivieren, und aktiviere sie nacheinander erneut, bis der Fehler erneut auftritt. Dies hilft Dir, das Plug-in zu finden kollidiert. Es kann auch daran liegen, dass eine JS-Datei, entweder cpcommunitie.js oder ein anderes Plugin-Skript, einen Fehler enthält.", 'cp-communitie'), CPC_WL_SHORT).$fail2."</div>";
 					echo '</td></tr></table>';
 		
 			
@@ -2724,13 +2724,13 @@ function __cpc__plugin_debug() {
 									) )
 								) {
 									
-									$success_message .= __("Forum created OK with stub ".$stub.".", 'cp-communitie')."<br />";
+									$success_message .= __("Forum erstellt OK mit Stub ".$stub.".", 'cp-communitie')."<br />";
 									
 									$new_forum_id = $wpdb->insert_id;
 			
 									$sql = "SELECT * FROM ".$wpdb->prefix."posts WHERE post_type = 'topic' AND post_parent = %d";
 									$topics = $wpdb->get_results($wpdb->prepare($sql, $id));
-									$success_message .= "Migrating topics to &quot;".$cat_title."&quot;.<br />";
+									$success_message .= "Migrieren von Themen zu &quot;".$cat_title."&quot;.<br />";
 									
 									if ($topics) {
 										
@@ -2771,7 +2771,7 @@ function __cpc__plugin_debug() {
 													) 
 												) ) ) {
 			
-													$success_message .= "Migrated &quot;".$topic->post_title."&quot; OK.<br />";	
+													$success_message .= "Migriert &quot;".$topic->post_title."&quot; OK.<br />";	
 													
 													$new_topic_id = $wpdb->insert_id;
 							
@@ -2821,15 +2821,15 @@ function __cpc__plugin_debug() {
 			
 														if ($failed_replies == 0) {
 								
-															$success_message .= __("Replies migrated OK.", 'cp-communitie')."<br />";
+															$success_message .= __("Antworten migriert OK.", 'cp-communitie')."<br />";
 															
 														} else {
-															$success_message .= sprintf(__("Failed to migrate %d replies.", 'cp-communitie'), $failed_replies)."<br />";
+															$success_message .= sprintf(__("%d Antworten konnten nicht migriert werden.", 'cp-communitie'), $failed_replies)."<br />";
 															$success = false;
 														}
 			
 													} else {
-														$success_message .= __("No replies to migrate.", 'cp-communitie')."<br />";
+														$success_message .= __("Keine Antworten zum Migrieren.", 'cp-communitie')."<br />";
 													}
 											
 											} else {
@@ -2840,31 +2840,31 @@ function __cpc__plugin_debug() {
 										
 										if ($failed == 0) {
 				
-											$success_message .= __("Topics and replies migrated OK.", 'cp-communitie')."<br />";
+											$success_message .= __("Themen und Antworten wurden OK migriert.", 'cp-communitie')."<br />";
 											
 										} else {
-											$success_message .= sprintf(__("Failed to migrate %d topics.", 'cp-communitie'), $failed)."<br />";
+											$success_message .= sprintf(__("%d Themen konnten nicht migriert werden.", 'cp-communitie'), $failed)."<br />";
 											$success = false;
 										}
 									} else {
-											$success_message .= __("No topics to migrate.", 'cp-communitie')."<br />";
+											$success_message .= __("Keine Themen zum Migrieren.", 'cp-communitie')."<br />";
 									}
 									
 								} else {
-									$success_message .= __("Forum failed to migrate", 'cp-communitie')."<br />";
+									$success_message .= __("Forum konnte nicht migriert werden", 'cp-communitie')."<br />";
 									$success_message .= $wpdb->last_query."<br />";
 									$success = false;
 								}
 									
 									
 							} else {
-								$success_message .= __('Please enter a new forum category title', 'cp-communitie');
+								$success_message .= __('Bitte gib einen neuen Titel für die Forenkategorie ein', 'cp-communitie');
 							}
 							
 							if ($success) {
 								echo "<div style='margin-top:10px;border:1px solid #060;background-color: #9f9; border-radius:5px;padding-left:8px; margin-bottom:10px;'>";
 								echo $success_message;
-								echo "Complete.<br />";			
+								echo "Vollständig.<br />";			
 								echo "</div>";
 							} else {
 								echo "<div style='margin-top:10px;border:1px solid #600;background-color: #f99; border-radius:5px;padding-left:8px; margin-bottom:10px;'>";
@@ -3354,7 +3354,7 @@ function __cpc__plugin_bar() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('panel');
 
@@ -3462,13 +3462,13 @@ function __cpc__plugin_profile() {
 	echo '<div class="wrap">';
 
 	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('profile');
 
 	global $wpdb;
 	global $user_ID;
-	get_currentuserinfo();
+	wp_get_current_user();
 	
 	include_once( ABSPATH . 'wp-includes/formatting.php' );
 	
@@ -3630,7 +3630,7 @@ Profildetails=details
 Community-Einstellungen=settings
 Avatar hochladen=avatar
 [Aktivität]
-Activity=activitymy
+Aktivität=activitymy
 Freunde-Aktivität=activityfriends
 Alle Aktivitäten=activityall
 [Social]
@@ -5386,7 +5386,7 @@ function __cpc__plugin_forum() {
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 	__cpc__show_tabs_header('forum');
 
@@ -7431,7 +7431,7 @@ function __cpc__mail_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 	
 		__cpc__show_tabs_header('mail');
 		?>
@@ -7546,7 +7546,7 @@ function __cpc__members_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Optionen', 'cp-communitie'), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 	
 		__cpc__show_tabs_header('directory');
 		?>
@@ -7587,7 +7587,7 @@ function __cpc__members_menu() {
 			<td scope="row"><label for="show_dir_buttons"><?php echo __('Mitgliederaktionen einbeziehen?', 'cp-communitie') ?></label></td>
 			<td>
 			<input type="checkbox" name="show_dir_buttons" id="show_dir_buttons" <?php if ($show_dir_buttons == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Sollen Schaltflächen zum Hinzufügen als Freund oder zum Senden von E-Mails im Verzeichnis angezeigt werden?', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Sollen Schaltflächen zum Hinzufügen als Freund oder zum Senden von Mails im Verzeichnis angezeigt werden?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
@@ -7733,7 +7733,7 @@ function __cpc__show_manage_tabs_header($active_tab) {
 		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$thesaurus_active.'"><a href="admin.php?page=cpcommunitie_thesaurus" class="nav-tab-'.$thesaurus_active.'-link">'.__('Thesaurus', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__forum') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$categories_active.'"><a href="admin.php?page=cpcommunitie_categories" class="nav-tab-'.$categories_active.'-link">'.__('Kategorien', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__forum')) echo '<div class="mail_tab nav-tab-'.$posts_active.'"><a href="admin.php?page=cpcommunitie_moderation" class="nav-tab-'.$posts_active.'-link">'.sprintf(__('Forum %s', 'cp-communitie'), $count2).'</a></div>';
-		if (function_exists('__cpc__mail') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$messages_active.'"><a href="admin.php?page=__cpc__mail_messages_menu" class="nav-tab-'.$messages_active.'-link">'.__('E-Mail-Nachrichten', 'cp-communitie').'</a></div>';
+		if (function_exists('__cpc__mail') && current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$messages_active.'"><a href="admin.php?page=__cpc__mail_messages_menu" class="nav-tab-'.$messages_active.'-link">'.__('Mail-Nachrichten', 'cp-communitie').'</a></div>';
 		if (current_user_can('manage_options')) echo '<div class="mail_tab nav-tab-'.$templates_active.'"><a href="admin.php?page=cpcommunitie_templates" class="nav-tab-'.$templates_active.'-link">'.__('Vorlagen', 'cp-communitie').'</a></div>';
 		if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") echo '<div class="mail_tab nav-tab-'.$audit_active.'"><a href="admin.php?page=cpcommunitie_audit" class="nav-tab-'.$audit_active.'-link">'.__('Audit', 'cp-communitie').'</a></div>';
 		echo '</div>';

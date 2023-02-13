@@ -104,7 +104,7 @@ msgstr ""
 #: events_admin.php:4 facebook_admin.php:27 gallery_admin.php:4
 #: groups_admin.php:4 lounge_admin.php:13 mailinglist_admin.php:5
 #, php-format
-msgid "%s Options"
+msgid "%s Einstellungen"
 msgstr ""
 
 #: mailinglist.php:25
@@ -995,7 +995,7 @@ msgid "Du hast eine neue Nachricht von"
 msgstr ""
 
 #: profile.php:485 profile.php:515 profile.php:856
-msgid "E-Mail senden..."
+msgid "Mail senden..."
 msgstr ""
 
 #: events.php:68 ajax/events_functions.php:992

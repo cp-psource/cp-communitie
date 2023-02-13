@@ -311,7 +311,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 				$html .= "<div id='forum_options'>";
 
 					$html .= "<a id='show_search' href='javascript:void(0)'>".__("Search", 'cp-communitie')."</a>";
-					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", 'cp-communitie')."</a>";
+					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Aktivität", 'cp-communitie')."</a>";
 					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 
 					if (is_user_logged_in()) {
@@ -1800,7 +1800,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 			$forum_options = "<div id='forum_options'>";
 	
 				$forum_options .= "<a id='show_search' class='label' href='javascript:void(0)'>".__("Search", 'cp-communitie')."</a>";
-				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Activity", 'cp-communitie')."</a>";
+				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Aktivität", 'cp-communitie')."</a>";
 				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' class='label' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 	
 				if (is_user_logged_in()) {

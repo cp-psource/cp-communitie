@@ -161,7 +161,7 @@ This also assumes the .css file is also in the current theme folder along with t
 				if ($cpc_user->get_id() == $current_user->ID) {
 					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Meine Aktivität</div>';
 				} else {
-					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Activity</div>';
+					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Aktivität</div>';
 				}
 				echo '<div id="menu_activity" class="__cpc__my_profile_menu">Freunde-Aktivität</div>';
 				echo '<div id="menu_all" class="__cpc__my_profile_menu">Alle Aktivitäten</div>';

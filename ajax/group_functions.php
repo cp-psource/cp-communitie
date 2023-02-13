@@ -743,7 +743,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 							$html .= '<select name="default_page" id="default_page">';
 								$html .= '<option value="activity"';
 									if ($default_page == 'activity') { $html .= ' SELECTED'; }
-									$html .= '>'.__('Activity', 'cp-communitie').'</option>';
+									$html .= '>'.__('Aktivität', 'cp-communitie').'</option>';
 								$html .= '<option value="forum"';
 									if ($default_page == 'forum') { $html .= ' SELECTED'; }
 									$html .= '>'.__('Forum', 'cp-communitie').'</option>';

@@ -1812,7 +1812,7 @@ if ($_POST['action'] == 'addFriend') {
 		if (__cpc__sendmail($friend_to, sprintf(__("%s request", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body)) {
 			$r = "OK";
 		} else {
-			$r = "E-Mail konnte nicht gesendet werden:".$friend_to.'.';
+			$r = "Mail konnte nicht gesendet werden:".$friend_to.'.';
 		}
 
 		echo $r;		

@@ -157,7 +157,7 @@ __cpc__show_tabs_header('plus');
 	<td scope="row"><label for="show_forum_replies_on_activity"><?php _e('Forum Antworten in Aktivität', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="show_forum_replies_on_activity" id="show_forum_replies_on_activity" <?php if ($show_forum_replies_on_activity == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Forenantworten in Activity Stream aufnehmen', 'cp-communitie'); ?></span>
+	<span class="description"><?php echo __('Forenantworten in Aktivitäts-Stream aufnehmen', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		
@@ -165,7 +165,7 @@ __cpc__show_tabs_header('plus');
 	<td scope="row"><label for="show_group_replies_on_activity"><?php _e('Gruppenforum-Antworten auf Aktivität', 'cp-communitie'); ?></label></td>
 	<td>
 	<input type="checkbox" name="show_group_replies_on_activity" id="show_group_replies_on_activity" <?php if ($show_group_replies_on_activity == "on") { echo "CHECKED"; } ?>/>
-	<span class="description"><?php echo __('Füge Antworten aus Gruppenforen in den Activity Stream ein', 'cp-communitie'); ?></span>
+	<span class="description"><?php echo __('Füge Antworten aus Gruppenforen in den Aktivitäts-Stream ein', 'cp-communitie'); ?></span>
 	</td> 
 	</tr> 
 		

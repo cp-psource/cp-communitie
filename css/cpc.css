@@ -2202,7 +2202,7 @@ ul.__cpc__dropdown li.__cpc__dropdown_tab_off {
 .__cpc__wrapper #mail_recipient_list {
 	width:99% !important;
 	height:40px;
-	font-size: 24px !important;
+	font-size: 1em !important;
 	padding: 2px;
 	border: 1px solid black;
 	margin-left: 2px;

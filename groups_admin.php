@@ -1,7 +1,7 @@
 <div class="wrap">
 <div id="icon-themes" class="icon32"><br /></div>
 <?php
-echo '<h2>'.sprintf(__('%s Options', 'cp-communitie'), CPC_WL).'</h2><br />';
+echo '<h2>'.sprintf(__('%s Einstellungen', 'cp-communitie'), CPC_WL).'</h2><br />';
 
 __cpc__show_tabs_header('groups');
 ?>

@@ -482,7 +482,7 @@ function __cpc__show_profile($page)
 						// A friend
 						// Send mail
 						if (function_exists('__cpc__mail'))
-							$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
+							$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('Mail senden...', 'cp-communitie').'" />';
 						
 					} 
 					if (!__cpc__friend_of($uid, $uid2)) {
@@ -512,7 +512,7 @@ function __cpc__show_profile($page)
 						if (__cpc__get_current_userlevel() == 5) {
 							// Send mail if CPC admin
 							if (function_exists('__cpc__mail'))
-								$actions .= '<input type="submit" class="__cpc__button" style="float:left" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
+								$actions .= '<input type="submit" class="__cpc__button" style="float:left" id="profile_send_mail_button" value="'.__('Mail senden...', 'cp-communitie').'" />';
 						}
 						
 					}				
@@ -853,7 +853,7 @@ function __cpc__profile_header($uid1, $uid2, $url, $display_name) {
 				// A friend
 				// Send mail
 				if (function_exists('__cpc__mail'))
-					$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('E-Mail senden...', 'cp-communitie').'" />';
+					$actions .= '<input type="submit" class="__cpc__button" id="profile_send_mail_button" value="'.__('Mail senden...', 'cp-communitie').'" />';
 				
 			} else {
 				

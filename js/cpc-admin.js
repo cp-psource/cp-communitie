@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
 		jQuery('#profile_menu_structure').val(default_menu_structure);
 	})
 	jQuery('#__cpc__reset_profile_menu_other').click(function(e) {
-		var default_menu_structure_other = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nActivity=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social]\nFriends=myfriends\nGroups=mygroups\nThe Lounge=lounge\n@mentions=mentions\nFollowing=following\nFollowers=followers\n[Mehr]\nEvents=events\nGallery=gallery';
+		var default_menu_structure_other = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nAktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social]\nFriends=myfriends\nGroups=mygroups\nThe Lounge=lounge\n@mentions=mentions\nFollowing=following\nFollowers=followers\n[Mehr]\nEvents=events\nGallery=gallery';
 		jQuery('#profile_menu_structure_other').val(default_menu_structure_other);
 	})
 	

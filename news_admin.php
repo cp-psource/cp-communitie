@@ -31,7 +31,7 @@ if (isset($_POST['__cpc__alerts_update'])) {
 		<tr><td colspan="2"><h2><?php _e('Einstellungen', 'cp-communitie') ?></h2></td></tr>
 	
 		<tr><td colspan="2">
-				<?php _e('Das Alerts-Plugin aktualisiert ein DIV (das sich in einem ClassicPress-Menüelement befindet oder in ein Design eingebettet sein kann), das das Mitglied über Neuigkeiten/Benachrichtigungen wie neue E-Mails/Freunde/Aktivitäten/usw. benachrichtigt – Benachrichtigungen können von anderen Plugins hinzugefügt werden.', 'cp-communitie'); ?><br />
+				<?php _e('Das Alerts-Plugin aktualisiert ein DIV (das sich in einem ClassicPress-Menüelement befindet oder in ein Design eingebettet sein kann), das das Mitglied über Neuigkeiten/Benachrichtigungen wie neue Mails/Freunde/Aktivitäten/usw. benachrichtigt – Benachrichtigungen können von anderen Plugins hinzugefügt werden.', 'cp-communitie'); ?><br />
 				<?php _e('Je nach verwendetem Theme ist die Position der Liste der Warnungen möglicherweise nicht genau so, wie Du es wünschst.', 'cp-communitie'); ?><br />
 				<?php _e('Um die Liste der Warnungen nach links/rechts oder oben/unten zu verschieben, ändere die Offset-Werte unten. Verwende negative Werte, um sie nach links/oben zu bewegen, und positive Werte, um sie nach rechts/unten zu bewegen.', 'cp-communitie'); ?>
 		</td></tr>

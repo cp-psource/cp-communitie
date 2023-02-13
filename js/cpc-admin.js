@@ -51,17 +51,17 @@ jQuery(document).ready(function() {
 
 	// Reset profile page menus
 	jQuery('#__cpc__reset_profile_menu').click(function(e) {
-		var default_menu_structure = '[Profile]\nView Profile=viewprofile\nProfile Details=details\nCommunity Settings=settings\nUpload Avatar=avatar\n[Activity]\nMy Activity=activitymy\nFriends Activity=activityfriends\nAll Activity=activityall\n[Social%f]\nMy Friends=myfriends\nMy Groups=mygroups\nThe Lounge=lounge\nMy @mentions=mentions\nWho I am Following=following\nMy Followers=followers\n[More]\nMy Events=events\nMy Gallery=gallery';
+		var default_menu_structure = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nMeine Aktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social%f]\nMeine Freunde=myfriends\nMeine Gruppen=mygroups\nThe Lounge=lounge\nMy @mentions=mentions\nWem ich folge=following\nMeine Abonnenten=followers\n[Mehr]\nMeine Events=events\nMeine Gallerie=gallery';
 		jQuery('#profile_menu_structure').val(default_menu_structure);
 	})
 	jQuery('#__cpc__reset_profile_menu_other').click(function(e) {
-		var default_menu_structure_other = '[Profile]\nView Profile=viewprofile\nProfile Details=details\nCommunity Settings=settings\nUpload Avatar=avatar\n[Activity]\nActivity=activitymy\nFriends Activity=activityfriends\nAll Activity=activityall\n[Social]\nFriends=myfriends\nGroups=mygroups\nThe Lounge=lounge\n@mentions=mentions\nFollowing=following\nFollowers=followers\n[More]\nEvents=events\nGallery=gallery';
+		var default_menu_structure_other = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nActivity=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social]\nFriends=myfriends\nGroups=mygroups\nThe Lounge=lounge\n@mentions=mentions\nFollowing=following\nFollowers=followers\n[Mehr]\nEvents=events\nGallery=gallery';
 		jQuery('#profile_menu_structure_other').val(default_menu_structure_other);
 	})
 	
 	// Reset group page menus
 	jQuery('#__cpc__reset_group_menu').click(function(e) {
-		var default_menu_structure = '[Group]\nWelcome=welcome\nSettings=settings\nInvite=invites\n[Activity]\nGroup Activity=activity\nGroup Forum=forum\n[Members]\nDirectory=members';
+		var default_menu_structure = '[Group]\nWelcome=welcome\nSettings=settings\nInvite=invites\n[Aktivität]\nGroup Aktivität=activity\nGroup Forum=forum\n[Members]\nDirectory=members';
 		jQuery('#group_menu_structure').val(default_menu_structure);
 	})
 	

@@ -222,9 +222,9 @@ function __cpc__add_events_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_events')) {
 				if ($extra_class == '') {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', 'cp-communitie')).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('Meine Events', 'cp-communitie')).'</div>';  
 				} else {
-					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('My Events', 'cp-communitie')).'</div>';  
+					$html .= '<div id="menu_events" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_events_text')) != '' ? $t :  __('Meine Events', 'cp-communitie')).'</div>';  
 				}
 			}
 		} else {

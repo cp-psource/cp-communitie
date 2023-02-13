@@ -50,7 +50,7 @@ if ($uid > 0) {
 	} else {
 
 		echo '<item>';
-			echo '<title>'.__('This activity is now not available publicly.', 'cp-communitie').'</title>';
+			echo '<title>'.__('Diese Aktivität ist jetzt nicht öffentlich verfügbar.', 'cp-communitie').'</title>';
 		echo '</item>';
 		
 	}

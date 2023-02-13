@@ -315,7 +315,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 
 					if (is_user_logged_in()) {
-						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' href='javascript:void(0)'>".__("My Activity", 'cp-communitie')."</a>";
+						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' href='javascript:void(0)'>".__("Meine Aktivität", 'cp-communitie')."</a>";
 						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' href='javascript:void(0)'>".__("Favorites", 'cp-communitie')."</a>";
 					}
 
@@ -1804,7 +1804,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 				$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' class='label' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
 	
 				if (is_user_logged_in()) {
-					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' class='label' href='javascript:void(0)'>".__("My Activity", 'cp-communitie')."</a>";
+					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' class='label' href='javascript:void(0)'>".__("Meine Aktivität", 'cp-communitie')."</a>";
 					$forum_options .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' class='label' href='javascript:void(0)'>".__("Favorites", 'cp-communitie')."</a>";
 				}
 	
@@ -2772,9 +2772,9 @@ function __cpc__show_profile_menu($uid1, $uid2) {
 					$html .= '<div id="menu_avatar" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_avatar_text')) != '' ? $t :  __('Profile Photo', 'cp-communitie')).'</div>';
 				}
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_details'))
-					$html .= '<div id="menu_personal" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_details_text')) != '' ? $t :  __('Profile Details', 'cp-communitie')).'</div>';
+					$html .= '<div id="menu_personal" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_details_text')) != '' ? $t :  __('Profildetails', 'cp-communitie')).'</div>';
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_settings'))
-					$html .= '<div id="menu_settings" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text')) != '' ? $t :  __('Community Settings', 'cp-communitie')).'</div>';
+					$html .= '<div id="menu_settings" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text')) != '' ? $t :  __('', 'cp-communitie')).'</div>';
 
 			}
 			

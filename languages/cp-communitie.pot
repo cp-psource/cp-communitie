@@ -368,7 +368,7 @@ msgstr ""
 
 #: create_options.php:400 create_options.php:430 hooks_filters.php:206
 #: hooks_filters.php:211
-msgid "All Activity"
+msgid "Alle Aktivitäten"
 msgstr ""
 
 #: ajax/gallery_functions.php:595
@@ -746,7 +746,7 @@ msgid "Commented on"
 msgstr ""
 
 #: create_options.php:422 hooks_filters.php:564
-msgid "Community Settings"
+msgid "Community-Einstellungen"
 msgstr ""
 
 #: mail.php:40 mail.php:143
@@ -1270,10 +1270,10 @@ msgid "Friends"
 msgstr ""
 
 #: create_options.php:398 create_options.php:428 hooks_filters.php:196
-msgid "Friends Activity"
+msgid "Freunde-Aktivität"
 msgstr ""
 
-#: tutorials/profile_page_template/wps_profile_page_4.php:68
+#: tutorials/profile_page_template/cpc_profile_page_4.php:68
 msgid "Friendship requested."
 msgstr ""
 
@@ -1643,7 +1643,7 @@ msgstr ""
 
 #: create_options.php:51 create_options.php:93 create_options.php:103
 #: create_options.php:129 create_options.php:131 create_options.php:133
-msgid "Important: Please Visit Installation Page!"
+msgid "Wichtig: Bitte besuche die Installationsseite!"
 msgstr ""
 
 #: ajax/forum_functions.php:419 ajax/forum_functions.php:491
@@ -2083,31 +2083,31 @@ msgid "more..."
 msgstr ""
 
 #: create_options.php:396 hooks_filters.php:179
-msgid "My Activity"
+msgid "Meine Aktivität"
 msgstr ""
 
 #: create_options.php:408 events.php:225 events.php:227
-msgid "My Events"
+msgid "Meine Events"
 msgstr ""
 
 #: create_options.php:414
-msgid "My Followers"
+msgid "Meine Abonnenten"
 msgstr ""
 
 #: create_options.php:402 hooks_filters.php:238
-msgid "My Friends"
+msgid "Meine Freunde"
 msgstr ""
 
 #: hooks_filters.php:185
-msgid "My Friends Activity"
+msgid "My Freunde-Aktivität"
 msgstr ""
 
 #: create_options.php:410 gallery.php:359
-msgid "My Gallery"
+msgid "Meine Gallerie"
 msgstr ""
 
 #: create_options.php:406 hooks_filters.php:219
-msgid "My Groups"
+msgid "Meine Gruppen"
 msgstr ""
 
 #: create_options.php:394 hooks_filters.php:168
@@ -2613,7 +2613,7 @@ msgid "Profile"
 msgstr ""
 
 #: create_options.php:420 hooks_filters.php:369
-msgid "Profile Details"
+msgid "Profildetails"
 msgstr ""
 
 #: events_admin.php:89
@@ -2847,7 +2847,7 @@ msgid "Reverse list order"
 msgstr ""
 
 #: events_admin.php:92
-msgid "Roles who get \"My Events\" on profile page"
+msgid "Roles who get \"Meine Events\" on profile page"
 msgstr ""
 
 #: hooks_filters.php:409
@@ -3058,7 +3058,7 @@ msgid "Sorry, file type not allowed."
 msgstr ""
 
 #: ajax/profile_functions.php:713
-msgid "Sorry, there is no personal information to show."
+msgid "Entschuldigung, es können keine persönlichen Informationen angezeigt werden."
 msgstr ""
 
 #: ajax/profile_functions.php:719
@@ -3469,7 +3469,7 @@ msgid "What should the default page be?"
 msgstr ""
 
 #: create_options.php:304
-msgid "What`s up?"
+msgid "Was ist los?"
 msgstr ""
 
 #: ajax/profile_functions.php:966

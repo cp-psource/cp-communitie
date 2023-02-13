@@ -32,7 +32,7 @@ __cpc__show_tabs_header('groups');
 Welcome=welcome
 Settings=settings
 Invite=invites
-[Activity]
+[Aktivität]
 Group Activity=activity
 Group Forum=forum
 [Members]

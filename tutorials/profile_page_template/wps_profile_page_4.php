@@ -61,16 +61,16 @@ This also assumes the .css file is also in the current theme folder along with t
 
 				// Friends?
 				if ($cpc_user->is_friend()) {
-					echo 'You are friends.<br />';
+					echo __('Ihr seid Freunde.<br />', 'cp-communitie');
 				} else {
 					// Pending friend?
 					if ($cpc_user->is_pending_friend()) {
-						echo __('Friendship requested.', 'cp-communitie');
-						echo $cpc_ui->friendship_cancel($cpc_user->get_id(), 'Cancel', 'Cancelled!', 'my-submit-button');
+						echo __('Freundschaft erbeten.', 'cp-communitie');
+						echo $cpc_ui->friendship_cancel($cpc_user->get_id(), 'Abbrechen', 'Abgebrochen!', 'my-submit-button');
 					} else {
 						// Not a friend
 						echo 'Make friends with '.$cpc_user->get_display_name().'...';
-						echo $cpc_ui->friendship_add($cpc_user->get_id(), "Type a message, hit return!", "Request sent.", "my-input-box");
+						echo $cpc_ui->friendship_add($cpc_user->get_id(), "Gib eine Nachricht ein, drücke dann die Eingabetaste!", "Anfrage gesendet.", "my-input-box");
 					}
 				}
 				
@@ -83,7 +83,7 @@ This also assumes the .css file is also in the current theme folder along with t
 			if ($cpc_user->is_permitted('personal')) { // defaults to activity permission, set to "personal" for personal info
 
 				// Location
-				if ($cpc_user->get_city()) echo '<span class="my-info-label">Lives in:</span> '.$cpc_user->get_city();
+				if ($cpc_user->get_city()) echo '<span class="my-info-label">Lebt in:</span> '.$cpc_user->get_city();
 				if ($cpc_user->get_city() && ($cpc_user->get_country())) echo ', ';
 				if ($cpc_user->get_country()) echo $cpc_user->get_country();
 				if ($cpc_user->get_city() || $cpc_user->get_country()) echo '<br />';
@@ -114,13 +114,13 @@ This also assumes the .css file is also in the current theme folder along with t
 									$friend_user = new cpc_user($friend['id']);
 									echo '<div style="float:left;margin-right:6px">'.$friend_user->get_avatar(44).'</div>';
 									echo $friend_user->get_profile_url().'<br />';
-									echo '<span class="my-info-label">Active: '.__cpc__time_ago($friend_user->get_last_activity()).'</span>';
+									echo '<span class="my-info-label">Aktiv: '.__cpc__time_ago($friend_user->get_last_activity()).'</span>';
 								echo '</div>';
 							}
 						}
 					echo '</div>';
 				} else {
-					echo '<div id="my-friends-list">No friends</div>';
+					echo '<div id="my-friends-list">Keine Freunde</div>';
 				}
 
 			}
@@ -142,8 +142,8 @@ This also assumes the .css file is also in the current theme folder along with t
 
 		// Insert activity post form elements if on own profile page
 		if ($cpc_user->get_id() == $current_user->ID) {
-			$box = $cpc_ui->whatsup("What's up?", "my-input-box");  // parameters are optional
-			$button = $cpc_ui->whatsup_button("Post", "my-submit-button");  // parameters are optional
+			$box = $cpc_ui->whatsup("Was ist los?", "my-input-box");  // parameters are optional
+			$button = $cpc_ui->whatsup_button("Veröffentlichen", "my-submit-button");  // parameters are optional
 			echo '<div style="float:left;margin-top:10px;margin-right:10px;">'.$box.'</div>';
 			echo '<div style="float:left;margin-top:10px;">'.$button.'</div>';
 		}	
@@ -157,12 +157,12 @@ This also assumes the .css file is also in the current theme folder along with t
 			// Show menu of choices
 			echo '<div id="my-menu">';
 				if ($cpc_user->get_id() == $current_user->ID) {
-					echo '<div id="menu_wall" class="__cpc__my_profile_menu">My Activity</div>';
+					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Meine Aktivität</div>';
 				} else {
-					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Activity</div>';
+					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Aktivität</div>';
 				}
-				echo '<div id="menu_activity" class="__cpc__my_profile_menu">Friends Activity</div>';
-				echo '<div id="menu_all" class="__cpc__my_profile_menu">All Activity</div>';
+				echo '<div id="menu_activity" class="__cpc__my_profile_menu">Freunde-Aktivität</div>';
+				echo '<div id="menu_all" class="__cpc__my_profile_menu">Alle Aktivitäten</div>';
 	      		    
 			echo '</div>';
 			
@@ -172,7 +172,7 @@ This also assumes the .css file is also in the current theme folder along with t
 			echo '</div>';
 							
 		} else {
-			echo '&nbsp;Content is only available to friends.';
+			echo '&nbsp;Inhalte sind nur für Freunde verfügbar.';
 		}
 	echo '</div>';
 	?>

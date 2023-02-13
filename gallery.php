@@ -356,7 +356,7 @@ function __cpc__add_gallery_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
   
 		if ($uid1 == $uid2) {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery'))
-				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text')) != '' ? $t :  __('My Gallery', 'cp-communitie')).'</div>';  
+				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text')) != '' ? $t :  __('Meine Gallerie', 'cp-communitie')).'</div>';  
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other'))
 				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text')) != '' ? $t :  __('Gallery', 'cp-communitie')).'</div>';  

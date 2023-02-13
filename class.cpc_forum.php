@@ -299,7 +299,7 @@ class cpc_forum {
 					$parent = $wpdb->get_var($wpdb->prepare("SELECT topic_subject FROM ".$wpdb->prefix."cpcommunitie_topics WHERE tid = %d", $tid));
 					
 					$body = "<span style='font-size:24px'>".$parent."</span><br /><br />";
-					$body .= "<p>".$owner_name." ".__('replied', 'cp-communitie')."...</p>";
+					$body .= "<p>".$owner_name." ".__('antwortete', 'cp-communitie')."...</p>";
 					$body .= "<p>".$reply_text."</p>";
 					$url = $forum_url.$q."cid=".$cat_id."&show=".$tid;
 					$body .= "<p><a href='".$url."'>".$url."</a></p>";
@@ -328,7 +328,7 @@ class cpc_forum {
 
 								// Check for Reply-By-Email						
 								if ($replybyemail || function_exists('__cpc__mailinglist')) { 
-									$subject_add = ' #TID='.$tid.' ['.__('do not edit', 'cp-communitie').']'; 
+									$subject_add = ' #TID='.$tid.' ['.__('nicht bearbeiten', 'cp-communitie').']'; 
 									$body = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />'.'<br /><br />'.$body;
 								} else {
 									$subject_add = '';
@@ -422,8 +422,8 @@ class cpc_forum {
 						
 					} else {
 						// Email admin if post needs approval
-						$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation required for a reply", 'cp-communitie')."</span><br /><br />".$body;
-						__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation required for a reply', 'cp-communitie'), $body);
+						$body = "<span style='font-size:24px; font-style:italic;'>".__("Moderation für eine Antwort erforderlich", 'cp-communitie')."</span><br /><br />".$body;
+						__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation für eine Antwort erforderlich', 'cp-communitie'), $body);
 					}	
 										
 					return $new_id;

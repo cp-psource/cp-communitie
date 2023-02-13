@@ -89,7 +89,7 @@ __cpc__show_tabs_header('events');
 	<tr><td colspan="2"><h2><?php _e('Profile Menu Items', 'cp-communitie') ?></h2></td></tr>
 			
 	<tr valign="top"> 
-	<td scope="row"><label for="dir_level"><?php echo __('Roles who get "My Events" on profile page', 'cp-communitie') ?></label></td> 
+	<td scope="row"><label for="dir_level"><?php echo __('Roles who get "Meine Events" on profile page', 'cp-communitie') ?></label></td> 
 	<td>
 	<?php
 

@@ -66,9 +66,9 @@ if ($_POST['action'] == 'send_poke') {
 
 		$recipient = $_POST['recipient'];
 
-		$subject = __('You have been sent a ', 'cp-communitie').get_option(CPC_OPTIONS_PREFIX.'_poke_label');
+		$subject = __('Du hast gesendet eine ', 'cp-communitie').get_option(CPC_OPTIONS_PREFIX.'_poke_label');
 		$url = __cpc__get_url('profile');
-		$message = "<a href='".$url.__cpc__string_query($url)."uid=".$current_user->ID."'>".$current_user->display_name."</a>".__(' has sent you a ', 'cp-communitie').get_option(CPC_OPTIONS_PREFIX.'_poke_label');
+		$message = "<a href='".$url.__cpc__string_query($url)."uid=".$current_user->ID."'>".$current_user->display_name."</a>".__(' hat dir geschickt ', 'cp-communitie').get_option(CPC_OPTIONS_PREFIX.'_poke_label');
 	
 		// Add to activity
 		__cpc__add_activity_comment($current_user->ID, $current_user->display_name, $recipient, get_option(CPC_OPTIONS_PREFIX.'_poke_label'), 'poke');
@@ -381,7 +381,7 @@ if ($_POST['action'] == 'addStatus') {
 			  }
 			  
 			} else {					
-			  echo __('Failed to connect to Facebook', 'cp-communitie');
+			  echo __('Verbindung zu Facebook fehlgeschlagen', 'cp-communitie');
 			}
 							
 		}
@@ -407,10 +407,10 @@ if ($_POST['action'] == 'addStatus') {
 				$recipient = $wpdb->get_row($wpdb->prepare($sql, $subject_uid));	
 		
 				if ($recipient) {
-					$body = "<p>".$current_user->display_name." ".__('has added a new post on your profile', 'cp-communitie').":</p>";
+					$body = "<p>".$current_user->display_name." ".__('hat einen neuen Beitrag in Deinem Profil hinzugefügt', 'cp-communitie').":</p>";
 					$body .= "<p>".stripslashes($text)."</p>";
-					$body .= "<p><a href='".__cpc__get_url('profile')."?uid=".$subject_uid."&post=".$new_id."'>".__('Go to the post', 'cp-communitie')."...</a></p>";
-					__cpc__sendmail($recipient->user_email, __('New Profile Post', 'cp-communitie'), $body);
+					$body .= "<p><a href='".__cpc__get_url('profile')."?uid=".$subject_uid."&post=".$new_id."'>".__('Gehe zum Beitrag', 'cp-communitie')."...</a></p>";
+					__cpc__sendmail($recipient->user_email, __('Neuer Profilbeitrag', 'cp-communitie'), $body);
 				}
 			}
 		}
@@ -442,7 +442,7 @@ if ($_POST['action'] == 'addComment') {
 
 		if (is_user_logged_in()) {
 
-			if ( ($text != __(addslashes("Write a comment..."), "cp-communitie")) && ($text != '') ) {
+			if ( ($text != __(addslashes("Schreibe einen Kommentar..."), "cp-communitie")) && ($text != '') ) {
 	
 				$wpdb->query( $wpdb->prepare( "
 					INSERT INTO ".$wpdb->base_prefix."cpcommunitie_comments
@@ -485,10 +485,10 @@ if ($_POST['action'] == 'addComment') {
 						$profile_url .= __cpc__string_query($profile_url);
 						$url = $profile_url."uid=".$uid."&post=".$parent_post->cid;
 		
-						$body = "<p>".$current_user->display_name." ".__('has replied to a post you started', 'cp-communitie').":</p>";
+						$body = "<p>".$current_user->display_name." ".__('hat auf einen von Dir gestarteten Beitrag geantwortet', 'cp-communitie').":</p>";
 						$body .= "<p>".stripslashes($text)."</p>";
-						$body .= "<p><a href='".$url."'>".__('Go to the post', 'cp-communitie')."...</a></p>";
-						__cpc__sendmail($parent_post_recipient->user_email, __('Profile Reply', 'cp-communitie'), $body);				
+						$body .= "<p><a href='".$url."'>".__('Gehe zum Beitrag', 'cp-communitie')."...</a></p>";
+						__cpc__sendmail($parent_post_recipient->user_email, __('Profilantwort', 'cp-communitie'), $body);				
 					}
 				}
 
@@ -506,10 +506,10 @@ if ($_POST['action'] == 'addComment') {
 						if (__cpc__get_meta($parent_post_recipient->ID, 'notify_new_wall') == 'on') {
 	
 							if ($parent_post_recipient->notify_new_wall == 'on') {
-								$body = "<p>".$current_user->display_name." ".__('has replied to a post started on your profile', 'cp-communitie').":</p>";
+								$body = "<p>".$current_user->display_name." ".__('hat auf einen Beitrag geantwortet, der in Deinem Profil gestartet wurde', 'cp-communitie').":</p>";
 								$body .= "<p>".stripslashes($text)."</p>";
-								$body .= "<p><a href='".$url."'>".__('Go to the post', 'cp-communitie')."...</a></p>";
-								__cpc__sendmail($parent_post_recipient->user_email, __('Profile Reply', 'cp-communitie'), $body);				
+								$body .= "<p><a href='".$url."'>".__('Gehe zum Beitrag', 'cp-communitie')."...</a></p>";
+								__cpc__sendmail($parent_post_recipient->user_email, __('Profilantwort', 'cp-communitie'), $body);				
 							}	
 						}
 					}
@@ -534,10 +534,10 @@ if ($_POST['action'] == 'addComment') {
 							if ($reply_recipient->ID != $parent_post->subject_uid && $reply_recipient->ID != $parent_post->author_uid) {
 		
 								if ($reply_recipient->notify_new_wall == 'on') {
-									$body = "<p>".$current_user->display_name." ".__('has replied to a post you are involved in', 'cp-communitie').":</p>";
+									$body = "<p>".$current_user->display_name." ".__('hat auf einen Beitrag geantwortet, an dem Du beteiligt bist', 'cp-communitie').":</p>";
 									$body .= "<p>".stripslashes($text)."</p>";
-									$body .= "<p><a href='".$url."'>".__('Go to the post', 'cp-communitie')."...</a></p>";
-									__cpc__sendmail($reply_recipient->user_email, __('New Post Reply', 'cp-communitie'), $body);				
+									$body .= "<p><a href='".$url."'>".__('Gehe zum Beitrag', 'cp-communitie')."...</a></p>";
+									__cpc__sendmail($reply_recipient->user_email, __('Antwort auf neuen Beitrag', 'cp-communitie'), $body);				
 								}
 		
 								// Filter to allow further actions to take place
@@ -585,7 +585,7 @@ if ($_POST['action'] == 'menu_wall') {
 	
 }
 
-// Show Friends Activity
+// Show Freunde-Aktivität
 if ($_POST['action'] == 'menu_activity') {
 
 	global $current_user;
@@ -710,7 +710,7 @@ if ($_POST['action'] == 'menu_extended') {
 				
 				if ($city == '' && $country == '' && !$ext_rows) {
 	
-					$html .= '<p>'.__("Sorry, there is no personal information to show.", 'cp-communitie').'</p>';
+					$html .= '<p>'.__("Entschuldigung, es können keine persönlichen Informationen angezeigt werden.", 'cp-communitie').'</p>';
 	
 				}
 						
@@ -1209,42 +1209,42 @@ if ($_POST['action'] == 'menu_personal') {
 	
 				// Sharing personal information
 				$html .= '<div class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Who do you want to share personal information with?', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Mit wem möchtest Du persönliche Informationen teilen?', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<select id="share" name="share">';
 							$html .= "<option value='Nobody'";
 								if ($share == 'Nobody') { $html .= ' SELECTED'; }
-								$html .= '>'.__('Nobody', 'cp-communitie').'</option>';
+								$html .= '>'.__('Niemand', 'cp-communitie').'</option>';
 							$html .= "<option value='Friends only'";
 								if ($share == 'Friends only') { $html .= ' SELECTED'; }
-								$html .= '>'.sprintf(__('%s Only', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
+								$html .= '>'.sprintf(__('Nur %s', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
 							$html .= "<option value='Everyone'";
 								if ($share == 'Everyone') { $html .= ' SELECTED'; }
 								$html .= '>'.stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')).'</option>';
 							$html .= "<option value='public'";
 								if ($share == 'public') { $html .= ' SELECTED'; }
-								$html .= '>'.__('Public', 'cp-communitie').'</option>';
+								$html .= '>'.__('Öffentlich', 'cp-communitie').'</option>';
 						$html .= '</select>';
 					$html .= '</div>';
 				$html .= '</div>';
 		
 				// Sharing wall
 				$html .= '<div class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Who do you want to share your activity with?', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Mit wem möchtest Du Deine Aktivität teilen?', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<select id="wall_share" name="wall_share">';
 							$html .= "<option value='Nobody'";
 								if ($wall_share == 'Nobody') { $html .= ' SELECTED'; }
-								$html .= '>'.__('Nobody', 'cp-communitie').'</option>';
+								$html .= '>'.__('Niemand', 'cp-communitie').'</option>';
 							$html .= "<option value='Friends only'";
 								if ($wall_share == 'Friends only') { $html .= ' SELECTED'; }
-								$html .= '>'.sprintf(__('%s Only', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
+								$html .= '>'.sprintf(__('Nur %s', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
 							$html .= "<option value='Everyone'";
 								if ($wall_share == 'Everyone') { $html .= ' SELECTED'; }
 								$html .= '>'.stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')).'</option>';
 							$html .= "<option value='public'";
 								if ($wall_share == 'public') { $html .= ' SELECTED'; }
-								$html .= '>'.__('Public', 'cp-communitie').'</option>';
+								$html .= '>'.__('Öffentlich', 'cp-communitie').'</option>';
 						$html .= '</select>';
 					$html .= '</div>';
 				$html .= '</div>';
@@ -1252,15 +1252,15 @@ if ($_POST['action'] == 'menu_personal') {
 				// Publish RSS feed?
 				if (function_exists('__cpc__rss_main')) {
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Publish your activity via RSS (only your initial posts)?', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('Veröffentliche Deine Aktivität über RSS (nur Deine ersten Posts)?', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= '<select id="rss_share" name="rss_share">';
 								$html .= "<option value=''";
 									if ($rss_share == '') { $html .= ' SELECTED'; }
-									$html .= '>'.__('No', 'cp-communitie').'</option>';
+									$html .= '>'.__('Nein', 'cp-communitie').'</option>';
 								$html .= "<option value='on'";
 									if ($rss_share == 'on') { $html .= ' SELECTED'; }
-									$html .= '>'.__('Yes', 'cp-communitie').'</option>';
+									$html .= '>'.__('Ja', 'cp-communitie').'</option>';
 							$html .= '</select>';
 						$html .= '</div>';
 					$html .= '</div>';
@@ -1271,12 +1271,12 @@ if ($_POST['action'] == 'menu_personal') {
 				// Panel/chat sound alert choice
 				if (function_exists('__cpc__add_notification_bar') && get_option(CPC_OPTIONS_PREFIX.'_use_chat') == "on") {
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Sound for new chat messages? (refresh browser after changing)', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('Ton für neue Chatnachrichten? (Browser nach Änderung aktualisieren)', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= '<select id="chat_sound" name="chat_sound">';
 								$html .= "<option value='none'";
 									if ($chat_sound == 'none') { $html .= ' SELECTED'; }
-									$html .= '>'.__('No sound', 'cp-communitie').'</option>';
+									$html .= '>'.__('Keinen Ton', 'cp-communitie').'</option>';
 								$html .= "<option value='Pop.mp3'";
 									if (!$chat_sound || $chat_sound == 'Pop.mp3') { $html .= ' SELECTED'; }
 									$html .= '>'.__('Pop', 'cp-communitie').'</option>';
@@ -1298,7 +1298,7 @@ if ($_POST['action'] == 'menu_personal') {
 				if (get_option(CPC_OPTIONS_PREFIX.'_show_dob') == 'on') {
 				
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Your date of birth', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('Dein Geburtsdatum', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= "<select id='dob_day' name='dob_day'>";
 								$html .= "<option value=0";
@@ -1316,18 +1316,18 @@ if ($_POST['action'] == 'menu_personal') {
 									$html .= '>---</option>';
 								for ($i = 1; $i <= 12; $i++) {
 									switch($i) {									
-										case 1:$monthname = __("January", 'cp-communitie');break;
-										case 2:$monthname = __("February", 'cp-communitie');break;
-										case 3:$monthname = __("March", 'cp-communitie');break;
+										case 1:$monthname = __("Januar", 'cp-communitie');break;
+										case 2:$monthname = __("Februar", 'cp-communitie');break;
+										case 3:$monthname = __("März", 'cp-communitie');break;
 										case 4:$monthname = __("April", 'cp-communitie');break;
-										case 5:$monthname = __("May", 'cp-communitie');break;
-										case 6:$monthname = __("June", 'cp-communitie');break;
-										case 7:$monthname = __("July", 'cp-communitie');break;
+										case 5:$monthname = __("Mai", 'cp-communitie');break;
+										case 6:$monthname = __("Juni", 'cp-communitie');break;
+										case 7:$monthname = __("Juli", 'cp-communitie');break;
 										case 8:$monthname = __("August", 'cp-communitie');break;
 										case 9:$monthname = __("September", 'cp-communitie');break;
-										case 10:$monthname = __("October", 'cp-communitie');break;
+										case 10:$monthname = __("Oktober", 'cp-communitie');break;
 										case 11:$monthname = __("November", 'cp-communitie');break;
-										case 12:$monthname = __("December", 'cp-communitie');break;
+										case 12:$monthname = __("Dezember", 'cp-communitie');break;
 									}
 									$html .= "<option value='".$i."'";
 										if ($dob_month == $i) { $html .= ' SELECTED'; }
@@ -1358,7 +1358,7 @@ if ($_POST['action'] == 'menu_personal') {
 				// City
 				if (!get_option(CPC_OPTIONS_PREFIX.'_hide_location')) {
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Which town/city are you in?', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('In welcher Stadt bist du?', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= '<input type="text" id="city" name="city" value="'.$city.'">';
 						$html .= '</div>';
@@ -1366,7 +1366,7 @@ if ($_POST['action'] == 'menu_personal') {
 			
 					// Country
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Which country are you in?', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('In welchem ​​Land bist du?', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= '<input type="text" id="country" name="country" value="'.$country.'">';
 						$html .= '</div>';
@@ -1374,12 +1374,12 @@ if ($_POST['action'] == 'menu_personal') {
 				} else {
 					$html .= '<input type="hidden" id="city" name="city" value="">';
 					$html .= '<input type="hidden" id="country" name="country" value="">';
-					if (CPC_DEBUG) $html .= '<div class="__cpc__settings_row">City/Country disabled</div>';
+					if (CPC_DEBUG) $html .= '<div class="__cpc__settings_row">Stadt/Land deaktiviert</div>';
 				}
 				
 				if (CPC_DEBUG) {
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Latitude/Longitude (from Google API)', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('Breitengrad/Längengrad (von Google API)', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= __cpc__get_meta($uid, 'plus_lat').'/'.__cpc__get_meta($uid, 'plus_long');
 						$html .= '</div>';
@@ -1485,7 +1485,7 @@ if ($_POST['action'] == 'menu_personal') {
 			$html .= '</div> ';
 	 
 			$html .= '<br /><p class="submit"> ';
-				$html .= '<input type="submit" id="updatePersonalButton" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Save', 'cp-communitie').'" /> ';
+				$html .= '<input type="submit" id="updatePersonalButton" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Speichern', 'cp-communitie').'" /> ';
 			$html .= '</p>';
 		
 		}
@@ -1604,7 +1604,7 @@ if ($_POST['action'] == 'menu_groups') {
 	$uid = $_POST['uid1'];
 	$share = __cpc__get_meta($uid, 'wall_share');
 
-	$html = "<p class='__cpc__profile_heading'>".__('Groups', 'cp-communitie')."</p>";
+	$html = "<p class='__cpc__profile_heading'>".__('Gruppen', 'cp-communitie')."</p>";
 
 	if (is_user_logged_in() || $share == 'public') {
 
@@ -1635,9 +1635,9 @@ if ($_POST['action'] == 'menu_groups') {
 						$html .= "</div>";
 						
 						$html .= "<div class='group_member_count'>";
-						$html .= __("Member Count:", 'cp-communitie')." ".$group->member_count;
+						$html .= __("Mitgliederzahl:", 'cp-communitie')." ".$group->member_count;
 						if ($group->last_activity) {
-							$html .= '<br /><em>'.__('last active', 'cp-communitie').' '.__cpc__time_ago($group->last_activity).".</em>";
+							$html .= '<br /><em>'.__('letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($group->last_activity).".</em>";
 						}
 						$html .= "</div>";
 						
@@ -1647,14 +1647,14 @@ if ($_POST['action'] == 'menu_groups') {
 				
 			}
 		} else {
-			$html .= __("Not a member of any groups.", 'cp-communitie');
+			$html .= __("Kein Mitglied irgendeiner Gruppe.", 'cp-communitie');
 		}
 
 		echo $html;
 		
 	} else {
 
-		echo __cpc__show_login_link(__("You need to be <a href='%s'>logged in</a> to view this member's groups.", 'cp-communitie'));
+		echo __cpc__show_login_link(__("Du musst <a href='%s'>eingeloggt</a> sein, um die Gruppen dieses Mitglieds anzuzeigen.", 'cp-communitie'));
 
 	}
 	exit;
@@ -1812,7 +1812,7 @@ if ($_POST['action'] == 'addFriend') {
 		if (__cpc__sendmail($friend_to, sprintf(__("%s request", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body)) {
 			$r = "OK";
 		} else {
-			$r = "Failed to email:".$friend_to.'.';
+			$r = "E-Mail konnte nicht gesendet werden:".$friend_to.'.';
 		}
 
 		echo $r;		
@@ -1937,21 +1937,21 @@ if ($_POST['action'] == 'acceptFriend') {
 			// send email
 			$friend_to_email = $wpdb->get_var($wpdb->prepare("SELECT user_email FROM ".$wpdb->base_prefix."users WHERE ID = %d", $friend_to));
 			
-			$body = "<h1>".sprintf(__("%s request accepted", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</h1>";
-			$body .= "<p>".sprintf(__("Your %s request to %s has been accepted", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'), $current_user->display_name)."</p>";
+			$body = "<h1>".sprintf(__("%s hat die Anfrage angenommen", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</h1>";
+			$body .= "<p>".sprintf(__("Deine %s-Anfrage an %s wurde akzeptiert", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'), $current_user->display_name)."</p>";
 			
 			$profile_url = __cpc__get_url('profile');
 			$profile_url .= __cpc__string_query($profile_url)."uid=".$current_user->ID."&view=friends";
-			$body .= "<p>".__("Go to", 'cp-communitie')." <a href='".$profile_url."'>".get_bloginfo('name')."</a>...</p>";
+			$body .= "<p>".__("Gehe zu", 'cp-communitie')." <a href='".$profile_url."'>".get_bloginfo('name')."</a>...</p>";
 			
-			__cpc__sendmail($friend_to_email, sprintf(__("%s request accepted", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body);
+			__cpc__sendmail($friend_to_email, sprintf(__("%s hat die Anfrage angenommen", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body);
 			
 			// Tell friends
 			if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite') && __cpc__is_plus()) {
 				$userdata = get_userdata($friend_to);
 				$profile_url = __cpc__get_url('profile');
 				$profile_url .= __cpc__string_query($profile_url);
-				$post = __('Has made friends with', 'cp-communitie').' <a href="'.$profile_url."uid=".$current_user->ID.'">'.$current_user->display_name.'</a>';
+				$post = __('Hat sich angefreundet mit', 'cp-communitie').' <a href="'.$profile_url."uid=".$current_user->ID.'">'.$current_user->display_name.'</a>';
 				$post = '<br /><div style="float:left;">'.get_avatar($current_user->ID, 32).'</div>'.$post;
 				__cpc__add_activity_comment($friend_to, $userdata->display_name, $friend_to, $post, 'friend');
 			}
@@ -1998,7 +1998,7 @@ function __cpc__profile_friends($uid, $limit_from) {
 			$requests = $wpdb->get_results($wpdb->prepare($sql, $current_user->ID));
 			if ($requests) {
 				
-				$html .= '<h2>'.sprintf(__('%s Requests', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...</h2>';
+				$html .= '<h2>'.sprintf(__('%s Anfragen', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')).'...</h2>';
 				
 				foreach ($requests as $request) {
 				
@@ -2012,10 +2012,10 @@ function __cpc__profile_friends($uid, $limit_from) {
 							$html .= "<em>".stripslashes($request->friend_message)."</em>";
 						$html .= "</div>";
 						$html .= "<div style='clear: both; float:right;'>";
-							$html .= '<input type="submit" title="'.$request->friend_from.'" id="rejectfriendrequest" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Reject', 'cp-communitie').'" /> ';
+							$html .= '<input type="submit" title="'.$request->friend_from.'" id="rejectfriendrequest" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Ablehnen', 'cp-communitie').'" /> ';
 						$html .= "</div>";
 						$html .= "<div style='float:right;'>";
-							$html .= '<input type="submit" title="'.$request->friend_from.'" id="acceptfriendrequest" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Accept', 'cp-communitie').'" /> ';
+							$html .= '<input type="submit" title="'.$request->friend_from.'" id="acceptfriendrequest" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Annehmen', 'cp-communitie').'" /> ';
 						$html .= "</div>";
 					$html .= "</div>";
 				}
@@ -2038,7 +2038,7 @@ function __cpc__profile_friends($uid, $limit_from) {
 		if ($friends) {
 		
 			if ($current_user->ID == $uid || __cpc__get_current_userlevel() == 5) {
-				$html .= '<input type="submit" id="removeAllFriends" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'; width:200px;" value="'.__('Remove all friends', 'cp-communitie').'" />';
+				$html .= '<input type="submit" id="removeAllFriends" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'; width:200px;" value="'.__('Alle Freunde entfernen', 'cp-communitie').'" />';
 			}
 		
 			$count = 0;
@@ -2088,12 +2088,12 @@ function __cpc__profile_friends($uid, $limit_from) {
 						$html .= __cpc__profile_link($friend->friend_to);
 						$html .= "<br />";
 						if ($last_active_minutes >= $offline) {
-							$html .= __('Logged out', 'cp-communitie').'. '.__('Last active', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
+							$html .= __('Abgemeldet', 'cp-communitie').'. '.__('Letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
 						} else {
 							if ($last_active_minutes >= $inactive) {
-								$html .= __('Offline', 'cp-communitie').'. '.__('Last active', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
+								$html .= __('Offline', 'cp-communitie').'. '.__('Letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
 							} else {
-								$html .= __('Last active', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
+								$html .= __('Letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($friend->last_activity).".";
 							}
 						}
 						if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
@@ -2127,7 +2127,7 @@ function __cpc__profile_friends($uid, $limit_from) {
 
 					if ($friend->friend_accepted != 'on') {
 						$html .= "<div style='float:left;'>";
-							$html .= "<strong>".sprintf(__("%s request sent.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</strong>";
+							$html .= "<strong>".sprintf(__("%s Anfrage gesendet.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</strong>";
 						$html .= "</div>";
 					}					
 
@@ -2136,20 +2136,20 @@ function __cpc__profile_friends($uid, $limit_from) {
 			}
 
 			if ($count == $limit_count) {
-				$html .= "<a href='javascript:void(0)' id='friends' class='showmore_wall' title='".($limit_from+$limit_count)."'>".__("more...", 'cp-communitie')."</a>";
+				$html .= "<a href='javascript:void(0)' id='friends' class='showmore_wall' title='".($limit_from+$limit_count)."'>".__("mehr...", 'cp-communitie')."</a>";
 			}
 			
 		} else {
-			$html .= __("Nothing to show, sorry.", 'cp-communitie');
+			$html .= __("Nichts zu zeigen, tut mir leid.", 'cp-communitie');
 		}
 		
 	} else {
 
 		if (strtolower($privacy) == 'friends only') {
-			$html .=  sprintf(__("Personal information only for %s.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'));
+			$html .=  sprintf(__("Persönliche Informationen nur für %s.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends'));
 		}
 		if (strtolower($privacy) == 'nobody') {
-			$html .= __("Personal information is private.", 'cp-communitie');
+			$html .= __("Persönliche Informationen sind privat.", 'cp-communitie');
 		}
 
 	}						

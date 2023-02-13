@@ -826,9 +826,9 @@
 	height: 26px !important;
 	margin: 0px !important;
 	border: 0px !important;
-	font-size: 10px !important;
+	font-size: small !important;
 	line-height: 17px !important;
-	width: 210px;
+	width: auto;
 	text-shadow: 0px 1px 1px #fff; 
 	border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
@@ -836,7 +836,7 @@
 	filter: alpha(opacity=100);
 	-moz-opacity: 1.00;
 	-khtml-opacity: 1.00;
- 	opacity: 1.00;
+ 	opacity: 0.80;
 }
 
 #__cpc__notification_bar #icons img {
@@ -863,7 +863,7 @@
 	float:right;
 	cursor: pointer;
 	margin-right:2px;
-	width: 62px;
+	width: auto;
 	height: 18px;
 	background-repeat:no-repeat;
 	padding-left: 20px;

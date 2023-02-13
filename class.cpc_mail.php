@@ -193,7 +193,7 @@ class cpc_mail {
 					$url = __cpc__get_url('mail');
 	
 					$body = "<h1>".$subject."</h1>";
-					$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".sprintf(__("Go to %s Mail", 'cp-communitie'), __cpc__get_url('mail'))."...</a></p>";
+					$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".sprintf(__("Gehe zu %s E-Mail", 'cp-communitie'), __cpc__get_url('mail'))."...</a></p>";
 					$body .= "<p>";
 					$body .= $message;
 					$body .= "</p>";

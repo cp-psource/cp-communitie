@@ -3323,7 +3323,7 @@ function __cpc__install_row($handle, $name, $shortcode, $function, $config_url, 
 					if (!$value && $status != 'add') { 
 						echo 'n/a';
 					} else {
-						if ($value != 'Important: Please Visit Installation Page!') {
+						if ($value != 'Wichtig: Bitte besuche die Installationsseite!') {
 							echo $value;
 						}	
 					}
@@ -3496,7 +3496,7 @@ function __cpc__plugin_profile() {
 			update_option(CPC_OPTIONS_PREFIX.'_offline', $_POST['offline'] != '' ? $_POST['offline'] : 15);
 			update_option(CPC_OPTIONS_PREFIX.'_use_poke', isset($_POST['use_poke']) ? $_POST['use_poke'] : '');
 			update_option(CPC_OPTIONS_PREFIX.'_poke_label', $_POST['poke_label'] != '' ? $_POST['poke_label'] : __('Hey!', "cp-communitie"));
-			update_option(CPC_OPTIONS_PREFIX.'_status_label', $_POST['status_label'] != '' ? str_replace("'", "`", $_POST['status_label']) : __('What`s up?', "cp-communitie"));
+			update_option(CPC_OPTIONS_PREFIX.'_status_label', $_POST['status_label'] != '' ? str_replace("'", "`", $_POST['status_label']) : __('Was ist los?', "cp-communitie"));
 			update_option(CPC_OPTIONS_PREFIX.'_enable_password', isset($_POST['enable_password']) ? $_POST['enable_password'] : '');
 			update_option(CPC_OPTIONS_PREFIX.'_show_wall_extras', isset($_POST['show_wall_extras']) ? $_POST['show_wall_extras'] : '');
 			update_option(CPC_OPTIONS_PREFIX.'_profile_google_map', $_POST['profile_google_map'] != '' ? $_POST['profile_google_map'] : 250);
@@ -3604,35 +3604,35 @@ function __cpc__plugin_profile() {
 			// Horizontal menu
 			if (get_option(CPC_OPTIONS_PREFIX.'_profile_menu_type') || get_option(CPC_OPTIONS_PREFIX.'_use_templates') != "on") {
 
-				$default_menu_structure = '[Profile]
-View Profile=viewprofile
-Profile Details=details
-Community Settings=settings
-Upload Avatar=avatar
-[Activity]
-My Activity=activitymy
-Friends Activity=activityfriends
-All Activity=activityall
+				$default_menu_structure = '[Profil]
+Profil anzeigen=viewprofile
+Profildetails=details
+Community-Einstellungen=settings
+Avatar hochladen=avatar
+[Aktivität]
+Meine Aktivität=activitymy
+Freunde-Aktivität=activityfriends
+Alle Aktivitäten=activityall
 [Social%f]
-My Friends=myfriends
-My Groups=mygroups
+Meine Freunde=myfriends
+Meine Gruppen=mygroups
 The Lounge=lounge
 My @mentions=mentions
-Who I am Following=following
-My Followers=followers
-[More]
-My Events=events
-My Gallery=gallery';
+Wem ich folge=following
+Meine Abonnenten=followers
+[Mehr]
+Meine Events=events
+Meine Gallerie=gallery';
 
-				$default_menu_structure_other = '[Profile]
-View Profile=viewprofile
-Profile Details=details
-Community Settings=settings
-Upload Avatar=avatar
-[Activity]
+				$default_menu_structure_other = '[Profil]
+Profil anzeigen=viewprofile
+Profildetails=details
+Community-Einstellungen=settings
+Avatar hochladen=avatar
+[Aktivität]
 Activity=activitymy
-Friends Activity=activityfriends
-All Activity=activityall
+Freunde-Aktivität=activityfriends
+Alle Aktivitäten=activityall
 [Social]
 Friends=myfriends
 Groups=mygroups
@@ -3640,7 +3640,7 @@ The Lounge=lounge
 @mentions=mentions
 Following=following
 Followers=followers
-[More]
+[Mehr]
 Events=events
 Gallery=gallery';
 
@@ -3938,21 +3938,21 @@ Gallery=gallery';
 									<td><input name="menu_profile_other_text" type="text" id="menu_profile_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_profile_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('My Activity', 'cp-communitie'); ?></span></td>
+									<td><span class="description"><?php echo __('Meine Aktivität', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_my_activity" id="menu_my_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_my_activity_text" type="text" id="menu_my_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_my_activity_other" id="menu_my_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_my_activity_other_text" type="text" id="menu_my_activity_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_my_activity_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Friends Activity', 'cp-communitie'); ?></span></span></td>
+									<td><span class="description"><?php echo __('Freunde-Aktivität', 'cp-communitie'); ?></span></span></td>
 									<td align='center'><input type="checkbox" name="menu_friends_activity" id="menu_friends_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_friends_activity_text" type="text" id="menu_friends_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_friends_activity_other" id="menu_friends_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_friends_activity_other_text" type="text" id="menu_friends_activity_other_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_friends_activity_other_text'); ?>" /></td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('All Activity', 'cp-communitie'); ?></span></td>
+									<td><span class="description"><?php echo __('Alle Aktivitäten', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_all_activity" id="menu_all_activity" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_all_activity_text" type="text" id="menu_all_activity_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_text'); ?>" /></td>
 									<td align='center'><input type="checkbox" name="menu_all_activity_other" id="menu_all_activity_other" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_all_activity_other') == "on") { echo "CHECKED"; } ?>/></td>
@@ -4034,14 +4034,14 @@ Gallery=gallery';
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Profile Details', 'cp-communitie'); ?></span></td>
+									<td><span class="description"><?php echo __('Profildetails', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_details" id="menu_details" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_details') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_details_text" type="text" id="menu_details_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_details_text'); ?>" /></td>
 									<td>&nbsp;</td>
 									<td>&nbsp;</td>
 								</tr>
 								<tr>
-									<td><span class="description"><?php echo __('Community Settings', 'cp-communitie'); ?></span></td>
+									<td><span class="description"><?php echo __('', 'cp-communitie'); ?></span></td>
 									<td align='center'><input type="checkbox" name="menu_settings" id="menu_settings" <?php if (get_option(CPC_OPTIONS_PREFIX.'_menu_settings') == "on") { echo "CHECKED"; } ?>/></td>
 									<td><input name="menu_settings_text" type="text" id="menu_settings_text"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_menu_settings_text'); ?>" /></td>
 									<td>&nbsp;</td>

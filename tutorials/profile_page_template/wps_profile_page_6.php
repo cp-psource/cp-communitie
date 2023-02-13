@@ -142,8 +142,8 @@ This also assumes the .css file is also in the current theme folder along with t
 			
 		// Insert activity post form elements if on own profile page
 		if ($cpc_user->get_id() == $current_user->ID) {
-			$box = $cpc_ui->whatsup("What's up?", "my-input-box");  // parameters are optional
-			$button = $cpc_ui->whatsup_button("Post", "my-submit-button");  // parameters are optional
+			$box = $cpc_ui->whatsup("Was ist los?", "my-input-box");  // parameters are optional
+			$button = $cpc_ui->whatsup_button("Veröffentlichen", "my-submit-button");  // parameters are optional
 			echo '<div style="float:left;margin-top:10px;margin-right:10px;">'.$box.'</div>';
 			echo '<div style="float:left;margin-top:10px;">'.$button.'</div>';
 			// Add Facebook Connect plugin (plugin needs to be activated)
@@ -159,12 +159,12 @@ This also assumes the .css file is also in the current theme folder along with t
 			// Show menu of choices
 			echo '<div id="my-menu">';
 				if ($cpc_user->get_id() == $current_user->ID) {
-					echo '<div id="menu_wall" class="__cpc__my_profile_menu">My Activity</div>';
+					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Meine Aktivität</div>';
 				} else {
 					echo '<div id="menu_wall" class="__cpc__my_profile_menu">Activity</div>';
 				}
-				echo '<div id="menu_activity" class="__cpc__my_profile_menu">Friends Activity</div>';
-				echo '<div id="menu_all" class="__cpc__my_profile_menu">All Activity</div>';
+				echo '<div id="menu_activity" class="__cpc__my_profile_menu">Freunde-Aktivität</div>';
+				echo '<div id="menu_all" class="__cpc__my_profile_menu">Alle Aktivitäten</div>';
 
 				// Additional items
 				echo '<div id="menu_friends" class="__cpc__profile_menu __cpc__profile_menu_icon"><img src="'.$cpc->get_images_url().'/tutorial_images/friends.png" /></div>';

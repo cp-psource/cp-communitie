@@ -40,7 +40,7 @@ jQuery(document).ready(function() {
 	if (jQuery("#__cpc__areyousure").length) {
 		var areyousure = jQuery("#__cpc__areyousure").html();
 	} else {
-		var areyousure = 'Are you sure?';
+		var areyousure = 'Bist du dir sicher?';
 	}
 
 	// Check if you are sure
@@ -51,17 +51,17 @@ jQuery(document).ready(function() {
 
 	// Reset profile page menus
 	jQuery('#__cpc__reset_profile_menu').click(function(e) {
-		var default_menu_structure = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nMeine Aktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social%f]\nMeine Freunde=myfriends\nMeine Gruppen=mygroups\nThe Lounge=lounge\nMy @mentions=mentions\nWem ich folge=following\nMeine Abonnenten=followers\n[Mehr]\nMeine Events=events\nMeine Gallerie=gallery';
+		var default_menu_structure = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nMeine Aktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social%f]\nMeine Freunde=myfriends\nMeine Gruppen=mygroups\nDie Lounge=lounge\nMeine @Erwähnungen=mentions\nWem ich folge=following\nMeine Abonnenten=followers\n[Mehr]\nMeine Events=events\nMeine Gallerie=gallery';
 		jQuery('#profile_menu_structure').val(default_menu_structure);
 	})
 	jQuery('#__cpc__reset_profile_menu_other').click(function(e) {
-		var default_menu_structure_other = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nAktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social]\nFriends=myfriends\nGroups=mygroups\nThe Lounge=lounge\n@mentions=mentions\nFollowing=following\nFollowers=followers\n[Mehr]\nEvents=events\nGallery=gallery';
+		var default_menu_structure_other = '[Profil]\nProfil anzeigen=viewprofile\nProfildetails=details\nCommunity-Einstellungen=settings\nAvatar hochladen=avatar\n[Aktivität]\nAktivität=activitymy\nFreunde-Aktivität=activityfriends\nAlle Aktivitäten=activityall\n[Social]\nFreunde=myfriends\nGruppen=mygroups\nDie Lounge=lounge\n@Erwähnungen=mentions\nIch folge=following\nMir folgen=followers\n[Mehr]\nEvents=events\nGalerie=gallery';
 		jQuery('#profile_menu_structure_other').val(default_menu_structure_other);
 	})
 	
 	// Reset group page menus
 	jQuery('#__cpc__reset_group_menu').click(function(e) {
-		var default_menu_structure = '[Group]\nWelcome=welcome\nSettings=settings\nInvite=invites\n[Aktivität]\nGroup Aktivität=activity\nGroup Forum=forum\n[Members]\nDirectory=members';
+		var default_menu_structure = '[Gruppe]\nWillkommen=welcome\nEinstellungen=settings\nEinladen=invites\n[Aktivität]\nGruppenaktivität=activity\nGruppenforum=forum\n[Members]\nMitglieder=members';
 		jQuery('#group_menu_structure').val(default_menu_structure);
 	})
 	
@@ -69,7 +69,7 @@ jQuery(document).ready(function() {
 	// Notice on settings page
 	
 	jQuery('#cpcommunitie_long_menu').click(function(e) {
-		alert('After saving, please visit the Dashboard to see the new menu.');
+		alert('Besuche nach dem Speichern bitte das Dashboard, um das neue Menü anzuzeigen.');
 	});
 	
 	// Colorpicker
@@ -143,7 +143,7 @@ jQuery(document).ready(function() {
 	// Show mail message content (Mail Messages admin menu)
 	jQuery(".show_full_message").click(function() {
 		var mail_mid = jQuery(this).attr("id");
-		jQuery("#cpcommunitie_dialog").html('Please wait, retrieving message...').dialog({
+		jQuery("#cpcommunitie_dialog").html('Bitte warten, Nachricht wird abgerufen...').dialog({
 			'dialogClass': 'wp-dialog'
 		});
 

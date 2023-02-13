@@ -81,10 +81,10 @@ function __cpc__add_lounge_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,
 	
 			if ($uid1 == $uid2) {
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge'))
-					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text')) != '' ? $t :  __('The Lounge', 'cp-communitie')).'</div>';  
+					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_text')) != '' ? $t :  __('Die Lounge', 'cp-communitie')).'</div>';  
 			} else {
 				if (get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other'))
-					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text')) != '' ? $t :  __('The Lounge', 'cp-communitie')).'</div>';  
+					$html .= '<div id="menu_lounge" class="__cpc__profile_menu '.$extra_class.'">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_lounge_other_text')) != '' ? $t :  __('Die Lounge', 'cp-communitie')).'</div>';  
 			}
 		}
 		
@@ -121,7 +121,7 @@ add_filter('__cpc__profile_menu_tabs', '__cpc__add_lounge_menu_tabs', 10, 9);
 function __cpc__add_lounge_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('The Lounge', 'cp-communitie'), __('The Lounge', 'cp-communitie'), 'edit_themes', CPC_DIR.'/lounge_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Die Lounge', 'cp-communitie'), __('Die Lounge', 'cp-communitie'), 'edit_themes', CPC_DIR.'/lounge_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_lounge_to_admin_menu');
 

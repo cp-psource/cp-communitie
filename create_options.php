@@ -494,7 +494,7 @@ Alle Aktivitäten=activityall
 Meine Freunde=myfriends
 Meine Gruppen=mygroups
 Die Lounge=lounge
-Meine @mentions=mentions
+Meine @Erwähnungen=mentions
 Wem ich folge=following
 Meine Abonnenten=followers
 [Mehr]

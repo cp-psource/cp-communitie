@@ -22,7 +22,7 @@ if (isset($_GET['term'])) {
 		foreach ($list as $item) {
 			$row_array['id'] = $item->gid;
 			$row_array['value'] = $item->gid;
-			$name = $item->name != '' ? stripslashes($item->name) : __('[No name]', 'cp-communitie');
+			$name = $item->name != '' ? stripslashes($item->name) : __('[Kein Name]', 'cp-communitie');
 			$row_array['name'] = $name;
 			$row_array['avatar'] = __cpc__get_group_avatar($item->gid, 40);
 			
@@ -159,14 +159,14 @@ if ($_POST['action'] == 'getGroups') {
 					$html .= "</div>";
 
 					$html .= "<div class='group_name'>";
-					$name = stripslashes($group->name) != '' ? stripslashes($group->name) : __('[No name]', 'cp-communitie');
+					$name = stripslashes($group->name) != '' ? stripslashes($group->name) : __('[Kein Name]', 'cp-communitie');
 					$html .= "<a class='row_link' href='".__cpc__get_url('group').__cpc__string_query($url)."gid=".$group->gid."'>".$name."</a>";
 					$html .= "</div>";
 					
 					$html .= "<div class='group_member_count'>";
-					$html .= __("Member Count:", 'cp-communitie')." ".$group->member_count;
+					$html .= __("Mitgliederzahl:", 'cp-communitie')." ".$group->member_count;
 					if ($group->last_activity) {
-						$html .= '<br /><em>'.__('last active', 'cp-communitie').' '.__cpc__time_ago($group->last_activity)."</em>";
+						$html .= '<br /><em>'.__('letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($group->last_activity)."</em>";
 					}
 					$html .= "</div>";
 				
@@ -180,7 +180,7 @@ if ($_POST['action'] == 'getGroups') {
 			
 		}
 	} else {
-		$html = __("No groups created yet....", 'cp-communitie');
+		$html = __("Noch keine Gruppen erstellt....", 'cp-communitie');
 	}
 	
 	echo $html;
@@ -287,7 +287,7 @@ if ($_POST['action'] == 'add_group_members') {
 			);	
 				
 			if ( $insert == false) {
-				$html .= 'Failed to add user '.$id;
+				$html .= 'Benutzer konnte nicht hinzugefügt werden '.$id;
 			}
 			
 		}

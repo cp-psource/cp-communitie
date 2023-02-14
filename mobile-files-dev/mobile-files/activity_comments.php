@@ -19,7 +19,7 @@ $cpc_user = new cpc_user($cpc->get_current_user_page()); // default to current u
 
 
 // Re-act to POSTed information *******************************************************************
-if (isset($_POST['post_comment']) && $_POST['post_comment'] != '' && $_POST['post_comment'] != __('Write a comment...', 'cp-communitie') && $current_user->ID > 0) {
+if (isset($_POST['post_comment']) && $_POST['post_comment'] != '' && $_POST['post_comment'] != __('Schreibe einen Kommentar...', 'cp-communitie') && $current_user->ID > 0) {
 	$new_status = $_POST['post_comment'];
 
 	// Don't allow HTML
@@ -226,7 +226,7 @@ if ( !is_user_logged_in() ) {
 		// Show reply form
 		echo '<form action="" id="reply_form" method="POST" onSubmit="document.getElementById(\'reply_form\').style.display = \'none\'">';
 		echo '<input type="hidden" name="tid" value="'.$tid.'" />';
-		echo $cpc_ui->comment_post(__('Write a comment...', 'cp-communitie'), 'input_text');
+		echo $cpc_ui->comment_post(__('Schreibe einen Kommentar...', 'cp-communitie'), 'input_text');
 		echo $cpc_ui->comment_post_button(__('Post', 'cp-communitie'), 'submit small red wide');
 		echo '</form>';
 		

@@ -1221,7 +1221,7 @@ function __cpc__scriptsAction() {
 			'add_a_comment' 	=> __( 'Add a comment:', 'cp-communitie'),
 			'add' 				=> __( 'Add', 'cp-communitie'),
 			'show_original' 	=> __( 'Show original', 'cp-communitie'),
-			'write_a_comment' 	=> __( 'Write a comment...', 'cp-communitie'),
+			'write_a_comment' 	=> __( 'Schreibe einen Kommentar...', 'cp-communitie'),
 			'follow_box' 		=> __( 'Hi', 'cp-communitie'),
 			'events_enable_places' => __( 'Enable booking places:', 'cp-communitie'),
 			'events_max_places' => __( 'Maximum places:', 'cp-communitie'),

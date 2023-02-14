@@ -470,7 +470,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 						$html .= "</div><div style='clear:both'></div>";
 										
 						$html .= "<div class='started-by' style='margin-top:10px'>";
-						$html .= __("Started by", 'cp-communitie');
+						$html .= __("Gestartet von", 'cp-communitie');
 						if ( substr(get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'), 0, 2) == 'on' ) {
 							$html .= " <span class='forum_rank'>".__cpc__forum_rank($post->topic_owner)."</span>";
 						}
@@ -903,7 +903,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 											$reply_html .= "<span class='forum_rank'>".__cpc__forum_rank($child->topic_owner)."</span> ";
 										}
 										$reply_html .= __cpc__profile_link($child->topic_owner);
-										$reply_html .= " ".__("replied", 'cp-communitie')." ".__cpc__time_ago($child->topic_date)."...";
+										$reply_html .= " ".__("antwortete", 'cp-communitie')." ".__cpc__time_ago($child->topic_date)."...";
 										if (isset($ttitle)) $reply_html .= $ttitle;
 										$reply_html .= "</div>";
 										$reply_html .= "<div id='child_".$child->tid."' class='child-reply-post'>";
@@ -1113,7 +1113,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 													$reply_html .= "</div>";
 
 
-													$reply_html .= "<div class='started-by'>".__cpc__profile_link($comment->topic_owner)." ".__('commented', 'cp-communitie')." ".__cpc__time_ago($comment->topic_date)."</div>";
+													$reply_html .= "<div class='started-by'>".__cpc__profile_link($comment->topic_owner)." ".__('kommentierte', 'cp-communitie')." ".__cpc__time_ago($comment->topic_date)."</div>";
 													$reply_html .= __cpc__buffer(stripslashes($comment->topic_post));
 												$reply_html .= "</div>";
 											$reply_html .= "</div>";
@@ -1127,7 +1127,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								// Quick comment box (show link)
 								if ($can_comment && $can_reply_switch) {
 									$reply_html .= "<div class='quick-comment-box-show'>";
-										$reply_html .= '<a class="quick-comment-box-show-link" href="javascript:void(0);">'.__('Add a quick comment...', 'cp-communitie').'</a>';
+										$reply_html .= '<a class="quick-comment-box-show-link" href="javascript:void(0);">'.__('Eeinen kurzen Kommentar hinzufügen...', 'cp-communitie').'</a>';
 									$reply_html .= "</div>";
 								}
 								
@@ -1136,7 +1136,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 								$reply_html .= "<div class='quick-comment-box'>";
 									$reply_html .= "<textarea class='quick-comment-box-comment ".$elastic."'>";
 									$reply_html .= "</textarea><br />";
-									$reply_html .= '<input type="submit" rel="'.$child->tid.'" class="quick-comment-box-add __cpc__button" value="'.__("Add Comment", 'cp-communitie').'" />';
+									$reply_html .= '<input type="submit" rel="'.$child->tid.'" class="quick-comment-box-add __cpc__button" value="'.__("Kommentar hinzufügen", 'cp-communitie').'" />';
 								$reply_html .= "</div>";
 								
 								$reply_html .= "</div>"; // End comments on the reply
@@ -1162,7 +1162,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 			} else {
 		
 				$html .= "<div class='child-reply'>";
-				$html .= __("No replies posted yet.", 'cp-communitie');
+				$html .= __("Noch keine Antworten gepostet.", 'cp-communitie');
 				$html .= "</div>";
 				$html .= "<div class='sep'></div>";						
 		
@@ -1180,7 +1180,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 						$html .= '<input type="hidden" id="__cpc__reply_tid" value="'.$post->tid.'">';
 						$html .= '<input type="hidden" id="__cpc__reply_cid" value="'.$cat_id.'">';
 											
-						$html .= '<div class="reply-topic-subject label">'.__("Reply to this Topic", 'cp-communitie').'</div>';
+						$html .= '<div class="reply-topic-subject label">'.__("Auf dieses Thema antworten", 'cp-communitie').'</div>';
 	
 						if (get_option(CPC_OPTIONS_PREFIX.'_elastic') == 'on') { $elastic = ' elastic'; } else { $elastic = ''; }
 	
@@ -3982,7 +3982,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 							$whatsup = stripslashes(get_option(CPC_OPTIONS_PREFIX.'_status_label'));
 							$whatsup = str_replace("'", "`", $whatsup);
 						} else {
-							$whatsup = __('Write a comment...', 'cp-communitie');
+							$whatsup = __('Schreibe einen Kommentar...', 'cp-communitie');
 						}
 
 						$html .= "<div id='cpcommunitie_user_id' style='display:none'>".strtolower($current_user->ID)."</div>";
@@ -4559,7 +4559,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 	
 													$comment_inner_div .= '<textarea title="'.$comment->cid.'" class="__cpc__reply';
 													if (get_option(CPC_OPTIONS_PREFIX.'_elastic')) $comment_inner_div .= ' elastic';
-													$comment_inner_div .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Write a comment...', 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__('Write a comment...', 'cp-communitie').'\') ? \'\' : this.value;">'.__('Write a comment...', 'cp-communitie').'</textarea>';
+													$comment_inner_div .= '" id="__cpc__reply_'.$comment->cid.'" onblur="this.value=(this.value==\'\') ? \''.__('Schreibe einen Kommentar...', 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__('Schreibe einen Kommentar...', 'cp-communitie').'\') ? \'\' : this.value;">'.__('Schreibe einen Kommentar...', 'cp-communitie').'</textarea>';
 													
 													if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
 														$comment_inner_div .= '<br /><input title="'.$comment->cid.'" type="submit" style="width:75px;'.$button_style.'" class="__cpc__button cpcommunitie_add_reply" value="'.__('Add', 'cp-communitie').'" />';
@@ -5602,7 +5602,7 @@ function __cpc__do_Alerts_Widget($postcount) {
 					if ($pages) {
 						$url = get_permalink($pages[0]->ID);
 					}
-					echo '<a id="__cpc__alerts_widget_more" style="float:right" href="'.$url.'">'.__('more...', 'cp-communitie').'</a>';
+					echo '<a id="__cpc__alerts_widget_more" style="float:right" href="'.$url.'">'.__('mehr...', 'cp-communitie').'</a>';
 					
 				echo '</div>';
 
@@ -5612,7 +5612,7 @@ function __cpc__do_Alerts_Widget($postcount) {
 		}
 		
 	} else {
-		echo __('Alerts module not activated. You can activate it on the CP Community installation page.', 'cp-communitie');
+		echo __('Benachrichtigungs-Modul nicht aktiviert. Du kannst es auf der Installationsseite der CP Community aktivieren.', 'cp-communitie');
 	}
 	
 }
@@ -5697,18 +5697,18 @@ function __cpc__get_monthname($month) {
 	$monthname = '';
 	switch($month) {									
 		case 0:$monthname = "";break;
-		case 1:$monthname = __("January", 'cp-communitie');break;
-		case 2:$monthname = __("February", 'cp-communitie');break;
-		case 3:$monthname = __("March", 'cp-communitie');break;
+		case 1:$monthname = __("Januar", 'cp-communitie');break;
+		case 2:$monthname = __("Februar", 'cp-communitie');break;
+		case 3:$monthname = __("März", 'cp-communitie');break;
 		case 4:$monthname = __("April", 'cp-communitie');break;
-		case 5:$monthname = __("May", 'cp-communitie');break;
-		case 6:$monthname = __("June", 'cp-communitie');break;
-		case 7:$monthname = __("July", 'cp-communitie');break;
+		case 5:$monthname = __("Mai", 'cp-communitie');break;
+		case 6:$monthname = __("Juni", 'cp-communitie');break;
+		case 7:$monthname = __("Juli", 'cp-communitie');break;
 		case 8:$monthname = __("August", 'cp-communitie');break;
 		case 9:$monthname = __("September", 'cp-communitie');break;
-		case 10:$monthname = __("October", 'cp-communitie');break;
+		case 10:$monthname = __("Oktober", 'cp-communitie');break;
 		case 11:$monthname = __("November", 'cp-communitie');break;
-		case 12:$monthname = __("December", 'cp-communitie');break;
+		case 12:$monthname = __("Dezember", 'cp-communitie');break;
 	}
 	return $monthname;
 }

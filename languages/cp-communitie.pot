@@ -228,7 +228,7 @@ msgid "[%s-alerts count=200]"
 msgstr ""
 
 #: groups.php:453 ajax/groups_functions.php:25 ajax/groups_functions.php:162
-msgid "[No name]"
+msgid "[Kein Name]"
 msgstr ""
 
 #: facebook_admin.php:36
@@ -3524,7 +3524,7 @@ msgstr ""
 #: ajax/group_functions.php:930 ajax/group_functions.php:1126
 #: ajax/group_functions.php:1233 ajax/group_functions.php:1233
 #: ajax/group_functions.php:1233
-msgid "Write a comment..."
+msgid "Schreibe einen Kommentar..."
 msgstr ""
 
 #: hooks_filters.php:416 yesno.php:165 ajax/profile_functions.php:1263

@@ -11,7 +11,7 @@ var YoutubeDialog = {
         
         //Add click event form selection
         $(".share-embed-size-list li.share-embed-size").each(function(){
-            $(this).click(function(){
+            $(this).on('click', function(){
                 $("li.share-embed-size").removeClass("selected");
                 $(this).addClass("selected");
             });

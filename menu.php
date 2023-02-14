@@ -5779,7 +5779,7 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_viewer');
 
-				echo '<input type="checkbox" name="viewers[]" value="'.__('Öffentlich', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="viewers[]" value="'.__('everyone', 'cp-communitie').'"';
 				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
@@ -5805,7 +5805,7 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_editor');
 
-				echo '<input type="checkbox" name="editors[]" value="'.__('Mitglied', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="editors[]" value="'.__('everyone', 'cp-communitie').'"';
 				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
@@ -5831,7 +5831,7 @@ function __cpc__plugin_forum() {
 		
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply');
 
-				echo '<input type="checkbox" name="repliers[]" value="'.__('Mitglied', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="repliers[]" value="'.__('everyone', 'cp-communitie').'"';
 				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}

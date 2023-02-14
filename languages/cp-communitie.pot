@@ -299,7 +299,7 @@ msgstr ""
 
 #: lounge.php:27 ajax/lounge_functions.php:20 ajax/lounge_functions.php:21
 #: ajax/lounge_functions.php:22
-msgid "Add a comment.."
+msgid "Einen Kommentar hinzufügen.."
 msgstr ""
 
 #: cp-communitie.php:1221
@@ -460,7 +460,7 @@ msgid "April"
 msgstr ""
 
 #: cp-communitie.php:1197
-msgid "Are you sure?"
+msgid "Bist du Dir sicher?"
 msgstr ""
 
 #: cp-communitie.php:1199

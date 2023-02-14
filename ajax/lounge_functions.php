@@ -17,9 +17,9 @@ if ($_POST['action'] == 'menu_lounge') {
 		$html .= '<div id="__cpc__lounge_add_comment_div">';
 		$html .= '<input type="text" class="input-field" id="__cpc__lounge_add_comment" 
 			onblur="this.value=(this.value==\'\') 
-			? \''.__("Add a comment..", 'cp-communitie').'\' 
-			: this.value;" onfocus="this.value=(this.value==\''.__("Add a comment..", 'cp-communitie').'\') ? \'\' 
-			: this.value;" value="'.__("Add a comment..", 'cp-communitie').'">';
+			? \''.__("Einen Kommentar hinzufügen..", 'cp-communitie').'\' 
+			: this.value;" onfocus="this.value=(this.value==\''.__("Einen Kommentar hinzufügen..", 'cp-communitie').'\') ? \'\' 
+			: this.value;" value="'.__("Einen Kommentar hinzufügen..", 'cp-communitie').'">';
 		$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', 'cp-communitie').'" /> ';
 		$html .= '</div>';
 
@@ -123,7 +123,7 @@ if ($_POST['action'] == 'add_comment') {
 
         $comment = sanitize_text_field($_POST['comment']);
 
-        if ( ($comment != __(addslashes("Add a comment.."), "cp-communitie")) && ($comment != '') ) {
+        if ( ($comment != __(addslashes("Einen Kommentar hinzufügen.."), "cp-communitie")) && ($comment != '') ) {
 
             $wpdb->query( $wpdb->prepare( "
                 INSERT INTO ".$wpdb->base_prefix."cpcommunitie_lounge

@@ -25,7 +25,7 @@ jQuery(document).ready(function() {
 
 
 	// Show/hide a div (with passed ID)
-	jQuery(".cpcommunitie_expand").click(function() {
+	jQuery(".cpcommunitie_expand").on('click', function() {
 		jQuery(this).hide();
 		jQuery(this).next(".expand_this").slideDown("slow");
 	});
@@ -59,17 +59,17 @@ jQuery(document).ready(function() {
 	}
 
 	// Check if really want to delete	    
-	jQuery(".delete").click(function() {
+	jQuery(".delete").on('click', function() {
 		var answer = confirm(areyousure);
 		return answer // answer is a boolean
 	});
-	jQuery(".deletebutton").on('click', function() {
+	jQuery(".deletebutton").live("click", function() {
 		var answer = confirm(areyousure);
 		return answer // answer is a boolean
 	});
 
 	// Global dialog
-	jQuery('.cpcommunitie-dialog').on('click', function() {
+	jQuery('.cpcommunitie-dialog').live("click", function() {
 		var id = jQuery(this).attr("rel");
 		var title = jQuery('#' + id).attr("title");
 		var str = '<div style="width:100%; text-align:center">' + jQuery('#' + id).html() + '</div>';
@@ -415,13 +415,13 @@ jQuery(document).ready(function() {
 
 
 	// Show advanced search
-	jQuery('#cpcommunitie_show_advanced').on('click', function() {
+	jQuery('#cpcommunitie_show_advanced').live("click", function() {
 		jQuery('#cpcommunitie_advanced_search').toggle();
 		jQuery('#cpcommunitie_show_advanced').hide();
 	});
 
 	// Show mail link on friend hover
-	jQuery('.members_row').on('mouseenter mouseleave', function(event) {
+	jQuery('.members_row').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".mail_icon").show();
 		} else {
@@ -429,7 +429,7 @@ jQuery(document).ready(function() {
 		}
 	});
 
-	jQuery('#cpcommunitie_member').on('keydown', function(e) {
+	jQuery('#cpcommunitie_member').live("keydown", function(e) {
 		var keyCode = e.keyCode || e.which;
 
 		if (keyCode == 9 || keyCode == 27) {
@@ -444,11 +444,11 @@ jQuery(document).ready(function() {
 		cpcommunitie_do_member_search(true);
 	});
 
-	jQuery('#members_go_button').on('click', function() {
+	jQuery('#members_go_button').live("click", function() {
 		jQuery("#cpcommunitie_directory_start").html(0);
 		cpcommunitie_do_member_search(true);
 	});
-	jQuery('#cpcommunitie_member').on('keypress', function(e) {
+	jQuery('#cpcommunitie_member').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			jQuery("#cpcommunitie_directory_start").html(0);
 			cpcommunitie_do_member_search(true);
@@ -456,7 +456,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Search
-	jQuery('#showmore_directory').on('click', function() {
+	jQuery('#showmore_directory').live("click", function() {
 		cpcommunitie_do_member_search(false);
 	});
 
@@ -600,7 +600,7 @@ jQuery(document).ready(function() {
 	   +------------------------------------------------------------------------------------------+
 	*/
 	// Switch tabs
-	jQuery("#cpcommunitie_compose_tab").on('click', function() {
+	jQuery("#cpcommunitie_compose_tab").live("click", function() {
 
 		jQuery('#cpcommunitie_compose_tab').removeClass("nav-tab-inactive");
 		jQuery('#cpcommunitie_compose_tab a').removeClass("nav-tab-inactive-link");
@@ -630,7 +630,7 @@ jQuery(document).ready(function() {
 		jQuery("#mail-main-div #mailbox").hide();
 
 	});
-	jQuery("#cpcommunitie_inbox_tab").on('click', function() {
+	jQuery("#cpcommunitie_inbox_tab").live("click", function() {
 
 		jQuery('#cpcommunitie_compose_tab').removeClass("nav-tab-active");
 		jQuery('#cpcommunitie_compose_tab a').removeClass("nav-tab-active-link");
@@ -653,7 +653,7 @@ jQuery(document).ready(function() {
 		change_tray();
 
 	});
-	jQuery("#cpcommunitie_sent_tab").on('click', function() {
+	jQuery("#cpcommunitie_sent_tab").live("click", function() {
 
 		jQuery('#cpcommunitie_compose_tab').removeClass("nav-tab-active");
 		jQuery('#cpcommunitie_compose_tab a').removeClass("nav-tab-active-link");
@@ -841,7 +841,7 @@ jQuery(document).ready(function() {
 	}
 	
 	// Mail bulk actions
-	jQuery(".bulk_action").on('click', function() {
+	jQuery(".bulk_action").live("click", function() {
 		if (jQuery('.bulk_action').is(":checked")) {
 			jQuery('#__cpc__mail_bulk_action').val('');
 		} else {
@@ -986,7 +986,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Clicked on More...
-	jQuery("#show_more_mail").on('click', function() {
+	jQuery("#show_more_mail").live("click", function() {
 		
 		var tray = 'in';
 		if (jQuery("#cpcommunitie_sent_tab").hasClass("nav-tab-active")) {
@@ -1065,7 +1065,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Send
-	jQuery("#mail_send_button").on('click', function() {
+	jQuery("#mail_send_button").live("click", function() {
 
 		var recipient_id = jQuery("#mail_recipient_list").val();
 
@@ -1128,7 +1128,7 @@ jQuery(document).ready(function() {
 
 
 	// Delete message
-	jQuery(".message_delete").on('click', function() {
+	jQuery(".message_delete").live("click", function() {
 
 		if (confirm(areyousure)) {
 
@@ -1167,7 +1167,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Reply
-	jQuery(".message_reply").on('click', function() {
+	jQuery(".message_reply").live("click", function() {
 
 		var mail_id = jQuery(this).attr("title");
 		var mail_from = jQuery(this).attr("id");
@@ -1235,10 +1235,10 @@ jQuery(document).ready(function() {
 	});
 
 	// Search
-	jQuery("#search_inbox_go").on('click', function() {
+	jQuery("#search_inbox_go").live("click", function() {
 		cpcommunitie_do_mail_search();
 	});
-	jQuery('#search_inbox').on('keypress', function(e) {
+	jQuery('#search_inbox').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			cpcommunitie_do_mail_search();
 		}
@@ -1334,11 +1334,11 @@ jQuery(document).ready(function() {
 	}
 
 	// Toggle Unread only
-	jQuery("#unread_only").on('click', function() {
+	jQuery("#unread_only").live("click", function() {
 		change_tray();
 	});
 	// Change tray
-	jQuery(".mail_tray").on('click', function() {
+	jQuery(".mail_tray").live("click", function() {
 		change_tray();
 	});
 
@@ -1469,7 +1469,7 @@ jQuery(document).ready(function() {
 	}
 
 	// React to click on message list
-	jQuery(".mail_item").on('click', function() {
+	jQuery(".mail_item").live("click", function() {
 		
 		jQuery('#messagebox').html("<img src='" + __cpc__.images_url + "/busy.gif' />");
 
@@ -1517,7 +1517,7 @@ jQuery(document).ready(function() {
 
 
 	// Cancel on Compose
-	jQuery("#mail_cancel_button").on('click', function() {
+	jQuery("#mail_cancel_button").live("click", function() {
 		jQuery("#compose_form").hide();
 		jQuery("#mail-main-div #mailbox").show();
 
@@ -1681,7 +1681,7 @@ jQuery(document).ready(function() {
 	// 2. Activity file upload (loads with page shortcode)
 	__cpc__init_file_upload();
 	
-	jQuery('.cpcommunitie_wall_replies').on('mouseenter mouseleave', function(event) {
+	jQuery('.cpcommunitie_wall_replies').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery("#__cpc__reply_div_" + jQuery(this).attr("id")).hide().slideDown("fast");
 		} else {
@@ -1690,7 +1690,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Show mail/delete link on friend hover
-	jQuery('.friend_div').on('mouseenter mouseleave', function(event) {
+	jQuery('.friend_div').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".friend_icons").show();
 		} else {
@@ -1699,7 +1699,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Remove all friends
-	jQuery("#removeAllFriends").on('click', function() {
+	jQuery("#removeAllFriends").live("click", function() {
 
 		if (confirm(areyousure)) {
 
@@ -1713,7 +1713,7 @@ jQuery(document).ready(function() {
 				dataType: "html",
 				async: false,
 				success: function(str) {
-					jQuery("#dialog").html('All friends removed!');
+					jQuery("#dialog").html('Alle Freunde entfernt!');
 					jQuery("#dialog").dialog({
 						title: __cpc__.site_title,
 						width: 200,
@@ -1733,7 +1733,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// Remove avatar
-	jQuery("#cpcommunitie_remove_avatar").on('click', function() {
+	jQuery("#cpcommunitie_remove_avatar").live("click", function() {
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/profile_functions.php",
 			type: "POST",
@@ -1750,7 +1750,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Poke
-	jQuery(".poke-button").on('click', function() {
+	jQuery(".poke-button").live("click", function() {
 		jQuery("#dialog").html('Message sent!');
 		jQuery("#dialog").dialog({
 			title: __cpc__.site_title,
@@ -1780,7 +1780,7 @@ jQuery(document).ready(function() {
 	
 
 	// Clicked on show more...
-	jQuery(".showmore_wall").on('click', function() {
+	jQuery(".showmore_wall").live("click", function() {
 
 		var limit_from = jQuery(this).attr("title");
 		jQuery(this).html("<img src='" + __cpc__.images_url + "/busy.gif' />");
@@ -1811,7 +1811,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Menu choices
-	jQuery(".__cpc__profile_menu").click(function() {
+	jQuery(".__cpc__profile_menu").on('click', function() {
 
 		// Check if using horizontal menu (tabs)
 		if (jQuery(".__cpc__top_menu").length) {
@@ -1934,7 +1934,7 @@ jQuery(document).ready(function() {
 	};
 
 	// Save profile avatar
-	jQuery("#saveProfileAvatar").on('click', function() {
+	jQuery("#saveProfileAvatar").live("click", function() {
 		
 
 		//if (jQuery("#w").val() > 0) {
@@ -1976,7 +1976,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Show delete link on wall post hover
-	jQuery('.wall_post_div').on('mouseenter mouseleave', function(event) {
+	jQuery('.wall_post_div').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".report_post_top").show();
 			jQuery(this).find(".delete_post_top").show();
@@ -1987,7 +1987,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Show delete link on reply hover
-	jQuery('.wall_reply').on('mouseenter mouseleave', function(event) {
+	jQuery('.wall_reply').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".report_post").show();
 			jQuery(this).find(".delete_reply").show();
@@ -1998,13 +1998,13 @@ jQuery(document).ready(function() {
 	});
 
 	// View all comments
-	jQuery(".view_all_comments").on('click', function() {
+	jQuery(".view_all_comments").live("click", function() {
 		var parent_comment_id = jQuery(this).attr("title");
 		jQuery('#' + parent_comment_id).find(".reply_div").slideDown("slow");
 	});
 
 	// Delete a reply
-	jQuery(".delete_post").on('click', function() {
+	jQuery(".delete_post").live("click", function() {
 
 		var comment_id = jQuery(this).attr("title");
 		if (jQuery(this).attr("rel") == 'post') {
@@ -2039,10 +2039,10 @@ jQuery(document).ready(function() {
 	});
 
 	// new post on activity stream
-	jQuery("#__cpc__add_comment").on('click', function() {
+	jQuery("#__cpc__add_comment").live("click", function() {
 		cpcommunitie_add_comment_to_profile();
 	});
-	jQuery('#__cpc__comment').on('keypress', function(e) {
+	jQuery('#__cpc__comment').live("keypress", function(e) {
 		if (e.keyCode == 13 && (!jQuery("#__cpc__add_comment").length)) {
 			cpcommunitie_add_comment_to_profile();
 		}
@@ -2172,7 +2172,7 @@ jQuery(document).ready(function() {
 	}
 
 	// new reply/comment
-	jQuery(".cpcommunitie_add_reply").on('click', function() {
+	jQuery(".cpcommunitie_add_reply").live("click", function() {
 		jQuery(this).parent().hide();
 		var t = this;
 		setTimeout(function() {
@@ -2181,7 +2181,7 @@ jQuery(document).ready(function() {
 		}, 3000);
 		cpcommunitie_add_comment(this);
 	});
-	jQuery('.__cpc__reply').on('keypress', function(e) {
+	jQuery('.__cpc__reply').live("keypress", function(e) {
 		if (e.keyCode == 13 && (!jQuery(".cpcommunitie_add_reply").length)) {
 			jQuery(this).parent().hide();
 			var t = this;
@@ -2252,7 +2252,7 @@ jQuery(document).ready(function() {
 	}
 
 	// update settings
-	jQuery("#updateSettingsButton").on('click', function() {
+	jQuery("#updateSettingsButton").live("click", function() {
 
 		var display_name = jQuery("#display_name").val().replace(/(<([^>]+)>)/ig, '');
 		var user_firstname = jQuery("#user_firstname").val().replace(/(<([^>]+)>)/ig, '');
@@ -2377,7 +2377,7 @@ jQuery(document).ready(function() {
 	});
 
 	// update personal
-	jQuery("#updatePersonalButton").on('click', function() {
+	jQuery("#updatePersonalButton").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		var extended = '';
@@ -2435,7 +2435,7 @@ jQuery(document).ready(function() {
 	});
 
 	// delete a friend
-	jQuery(".frienddelete").on('click', function() {
+	jQuery(".frienddelete").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		jQuery.ajax({
@@ -2465,24 +2465,24 @@ jQuery(document).ready(function() {
 	});
 
 	// send mail (via send mail button)
-	jQuery("#profile_send_mail_button").on('mousedown', function() {
+	jQuery("#profile_send_mail_button").live("mousedown", function() {
 		var q = cpcommunitie_q(__cpc__.mail_url);
 		document.location = __cpc__.mail_url + q + 'view=compose&to=' + __cpc__.current_user_page;
 	});
 
 	// add a friend request
-	jQuery("#addasfriend").on('click', function() {
+	jQuery("#addasfriend").live("click", function() {
 		addasfriend(this, '');
 	});
-	jQuery(".addasfriend").on('click', function() {
+	jQuery(".addasfriend").live("click", function() {
 		addasfriend(this, jQuery(this).prev().val());
 	});
-	jQuery('#addfriend').on('keypress', function(e) {
+	jQuery('#addfriend').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			addasfriend(this, '');
 		}
 	});
-	jQuery('.addfriend_text').on('keypress', function(e) {
+	jQuery('.addfriend_text').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			addasfriend(this, jQuery(this).val());
 		}
@@ -2531,7 +2531,7 @@ jQuery(document).ready(function() {
 	};
 
 	// cancel a friend request
-	jQuery("#cancelfriendrequest").on('click', function() {
+	jQuery("#cancelfriendrequest").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		jQuery.ajax({
@@ -2562,7 +2562,7 @@ jQuery(document).ready(function() {
 	});
 
 	// reject a friend request
-	jQuery("#rejectfriendrequest").on('click', function() {
+	jQuery("#rejectfriendrequest").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		jQuery.ajax({
@@ -2592,7 +2592,7 @@ jQuery(document).ready(function() {
 	});
 
 	// accept a friend request
-	jQuery("#acceptfriendrequest").on('click', function() {
+	jQuery("#acceptfriendrequest").live("click", function() {
 
 		jQuery("#request_" + jQuery(this).attr("title")).slideUp("slow");
 
@@ -2618,7 +2618,7 @@ jQuery(document).ready(function() {
 	});
 
 	// clear all current subscriptions
-	jQuery("#cpcommunitie_clear_all_subs").on('click', function() {
+	jQuery("#cpcommunitie_clear_all_subs").live("click", function() {
 
 		if (confirm(areyousure)) {
 
@@ -2739,7 +2739,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Likes/Dislikes on activity
-	jQuery(".wall_add_like").on('click', function() {
+	jQuery(".wall_add_like").live("click", function() {
 		var cid = jQuery(this).attr('rel');
 		var choice = jQuery(this).attr("data-action");
 		jQuery("#__cpc__likes_" + cid).html('<strong>' + jQuery(this).attr('title') + '</strong>').effect("slide");
@@ -2763,7 +2763,7 @@ jQuery(document).ready(function() {
 	})
 
 
-	jQuery("#cpcommunitie_show_likes").on('click', function() {
+	jQuery("#cpcommunitie_show_likes").live("click", function() {
 		var cid = jQuery(this).attr('rel');
 		var str = '';
 		var busy = "<img id='cpcommunitie_tmp' src='" + __cpc__.images_url + "/busy.gif' />";
@@ -2834,12 +2834,12 @@ jQuery(document).ready(function() {
 	})
 
 	// Info on what a usertag is
-	jQuery("#cpcommunitie_tag").on('click', function() {
+	jQuery("#cpcommunitie_tag").live("click", function() {
 		jQuery("#cpcommunitie_tag_info").show("fast");
 	})
 
 	// YouTube embed
-	jQuery("#activity_youtube_embed_button").on('click', function() {
+	jQuery("#activity_youtube_embed_button").live("click", function() {
 		var m = '';
 		m += 'Enter the YouTube video URL:<br /><br />';
 		m += '<input type="text" id="activity_youtube_embed" style="width:430px" />';
@@ -2954,7 +2954,7 @@ jQuery(document).ready(function() {
 
 	}
 
-	jQuery('.__cpc__follow').on('mouseenter mouseleave', function(event) {
+	jQuery('.__cpc__follow').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter' && __cpc__.current_user_id > 0) {
 
 			var display_name = jQuery(this).attr("title");
@@ -3020,7 +3020,7 @@ jQuery(document).ready(function() {
 			}
 		}
 	});
-	jQuery('#cpcommunitie_plus_box_avatar').on('mouseenter mouseleave', function(event) {
+	jQuery('#cpcommunitie_plus_box_avatar').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery('#__cpc__follow_box').css({
 				'height': '280px'
@@ -3031,7 +3031,7 @@ jQuery(document).ready(function() {
 			});
 		}
 	});
-	jQuery('#__cpc__follow_box').on('mouseenter mouseleave', function(event) {
+	jQuery('#__cpc__follow_box').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseleave') {
 			jQuery(this).hide();
 			jQuery('#__cpc__follow_box').css({
@@ -3041,21 +3041,21 @@ jQuery(document).ready(function() {
 	});
 
 	// Go to friends page
-	jQuery("#cpcommunitie_plus_friends").on('click', function() {
+	jQuery("#cpcommunitie_plus_friends").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var q = cpcommunitie_q(__cpc__.profile_url);
 		window.location = __cpc__.profile_url + q + 'uid=' + jQuery(this).attr("ref") + '&view=friends';
 	});
 
 	// Go to profile information page
-	jQuery("#cpcommunitie_plus_profile").on('click', function() {
+	jQuery("#cpcommunitie_plus_profile").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var q = cpcommunitie_q(__cpc__.profile_url);
 		window.location = __cpc__.profile_url + q + 'uid=' + jQuery(this).attr("ref") + '&view=extended';
 	});
 
 	// Post a status on pressing return (via hover box, if mail plugin not activated)
-	jQuery('#cpcommunitie_plus_post').on('keypress', function(e) {
+	jQuery('#cpcommunitie_plus_post').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			jQuery(".__cpc__pleasewait").inmiddle().show();
 			var message = jQuery(this).val().replace(/(<([^>]+)>)/ig, '');
@@ -3131,34 +3131,34 @@ jQuery(document).ready(function() {
 	});
 
 	// Following who?
-	jQuery("#cpcommunitie_following_who").on('click', function() {
+	jQuery("#cpcommunitie_following_who").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var q = cpcommunitie_q(__cpc__.profile_url);
 		window.location = __cpc__.profile_url + q + 'view=plus';
 	});
 
 	// Go to mail (via hover box)
-	jQuery("#cpcommunitie_plus_mail").on('click', function() {
+	jQuery("#cpcommunitie_plus_mail").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		window.location = __cpc__.mail_url;
 	});
 
 	// Gallery search (via hover box)
-	jQuery("#cpcommunitie_gallery_search").on('click', function() {
+	jQuery("#cpcommunitie_gallery_search").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var q = cpcommunitie_q(__cpc__.gallery_url);
 		window.location = __cpc__.gallery_url + q + 'term=' + jQuery(this).attr("rel");
 	});
 
 	// Forum search (via hover box)
-	jQuery("#cpcommunitie_forum_search").on('click', function() {
+	jQuery("#cpcommunitie_forum_search").live("click", function() {
 		do_show_search();
 		jQuery("#search-box-input").val(jQuery(this).attr("rel"));
 		do_forum_search();
 	});
 
 	// Grab attention
-	jQuery("#__cpc__attention").on('click', function() {
+	jQuery("#__cpc__attention").live("click", function() {
 		var avatar = "<img style='float:left; width:48px; height:48px;margin-right:5px;' src='" + jQuery('#cpcommunitie_plus_box_avatar').attr("src") + "' />";
 		jQuery("#dialog").html(avatar + __cpc__.sent);
 		jQuery("#dialog").dialog({
@@ -3187,7 +3187,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Toggle following (via profile header)
-	jQuery(".follow-button").on('click', function() {
+	jQuery(".follow-button").live("click", function() {
 
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
@@ -3210,7 +3210,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Toggle following (via hover box)
-	jQuery("#cpcommunitie_following").on('click', function() {
+	jQuery("#cpcommunitie_following").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		if (jQuery(this).attr("src") == __cpc__.images_url + '/fav-on.png') {
 			// Remove from following
@@ -3243,7 +3243,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Send mail on pressing return
-	jQuery('#cpcommunitie_plus_sendmail').on('keypress', function(e) {
+	jQuery('#cpcommunitie_plus_sendmail').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			jQuery(".__cpc__sending").inmiddle().show();
 			var recipient_id = jQuery(this).attr("ref");
@@ -3292,7 +3292,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Add as a friend on pressing return
-	jQuery('#cpcommunitie_plus_addasafriend').on('keypress', function(e) {
+	jQuery('#cpcommunitie_plus_addasafriend').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			jQuery(".__cpc__pleasewait").inmiddle().show();
 			addasfriend(this, jQuery('#cpcommunitie_plus_addasafriend').val());
@@ -3542,7 +3542,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Clicked on a social network icon
-	jQuery(".cpcommunitie_social_share").on('click', function() {
+	jQuery(".cpcommunitie_social_share").live("click", function() {
 		var destination = jQuery(this).attr("id");
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/forum_functions.php",
@@ -3557,14 +3557,14 @@ jQuery(document).ready(function() {
 	});
 
 	// Comment on a reply
-	jQuery(".quick-comment-box-show-link").on('click', function() {
+	jQuery(".quick-comment-box-show-link").live("click", function() {
 		jQuery(this).hide();
 		jQuery(this).parent().parent().find(".quick-comment-box").show();
 		if (jQuery(".elastic").length) {
 			jQuery('.elastic').elastic();
 		}
 	});
-	jQuery(".quick-comment-box-add").on('click', function() {
+	jQuery(".quick-comment-box-add").live("click", function() {
 		var comment = jQuery(this).parent().find(".quick-comment-box-comment").val();
 		comment = comment.replace(/\</g, "&lt;").replace(/\>/g, "&gt;").replace(/\n/g, "<br />");
 
@@ -3660,7 +3660,7 @@ jQuery(document).ready(function() {
 	
 
 	// Answer accepted
-	jQuery(".forum_post_answer").on('click', function() {
+	jQuery(".forum_post_answer").live("click", function() {
 		var tid = jQuery(this).attr("id");
 
 		jQuery(this).text("");
@@ -3703,7 +3703,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Remove uploaded image
-	jQuery(".remove_forum_post").on('click', function() {
+	jQuery(".remove_forum_post").live("click", function() {
 
 		var folder = jQuery(this).attr("id");
 		var file = jQuery(this).attr("title");
@@ -3736,7 +3736,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Warning
-	jQuery(".cpcommunitie_report").on('click', function() {
+	jQuery(".cpcommunitie_report").live("click", function() {
 
 		var code = jQuery(this).attr('title');
 		var str = '<p>Please provide as much information about your report to the site administrator as possible.</p>';
@@ -3792,8 +3792,8 @@ jQuery(document).ready(function() {
 	});
 
 	// Share permalink
-	jQuery("#share_permalink").on('click', function() {
-		var str = 'Copy and Paste the following:';
+	jQuery("#share_permalink").live("click", function() {
+		var str = 'Folgendes kopieren und einfügen:';
 		str += '<br /><input type="text" style="width:550px;" value="' + jQuery(this).attr("title") + '" />';
 		jQuery("#dialog").html(str);
 		jQuery("#dialog").dialog({
@@ -3806,7 +3806,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Clicked on show more...
-	jQuery("#showmore_forum").on('click', function() {
+	jQuery("#showmore_forum").live("click", function() {
 
 		var details = jQuery(this).attr("title").split(",");
 		limit_from = details[0];
@@ -3834,7 +3834,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Click on drop-down list to change category
-	jQuery("#__cpc__change_forum_category").on('change', function() {	
+	jQuery("#__cpc__change_forum_category").live("change", function() {	
 		var cat_id = jQuery(this).val();
 		if (cat_id >= 0) {
 			getForum(cat_id);
@@ -3842,7 +3842,7 @@ jQuery(document).ready(function() {
 	});	
 	
 	// Click on category title to drill down
-	jQuery(".category_title").on('click', function() {
+	jQuery(".category_title").live("click", function() {
 		getForum(jQuery(this).attr("title"));
 	});
 
@@ -3907,7 +3907,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Click on topic subject title
-	jQuery(".topic_subject").on('click', function() {
+	jQuery(".topic_subject").live("click", function() {
 		getTopic(jQuery(this).attr("title"));
 	});
 	function getTopic(id) {
@@ -3968,7 +3968,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Fav Icon
-	jQuery("#fav_link").on('click', function() {
+	jQuery("#fav_link").live("click", function() {
 
 		if (jQuery('#fav_link').attr('src') == __cpc__.images_url + '/fav-on.png') {
 			jQuery('#fav_link').attr({
@@ -3995,7 +3995,7 @@ jQuery(document).ready(function() {
 
 	
 	// Show favourites list
-	jQuery("#show_favs").on('click', function() {
+	jQuery("#show_favs").live("click", function() {
 
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
 		jQuery("#dialog").dialog({
@@ -4029,7 +4029,7 @@ jQuery(document).ready(function() {
 		});
 	});
 	// Delete a favourite
-	jQuery(".__cpc__delete_fav").on('click', function() {
+	jQuery(".__cpc__delete_fav").live("click", function() {
 
 		jQuery(".__cpc__notice").inmiddle().fadeIn();
 
@@ -4059,7 +4059,7 @@ jQuery(document).ready(function() {
 
 	});
 	// Delete fav link
-	jQuery('.fav_row').on('mouseenter mouseleave', function(event) {
+	jQuery('.fav_row').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".__cpc__delete_fav").show();
 		} else {
@@ -4068,7 +4068,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Show activity list
-	jQuery("#show_activity").on('click', function() {
+	jQuery("#show_activity").live("click", function() {
 
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
 		jQuery("#dialog").dialog({
@@ -4101,7 +4101,7 @@ jQuery(document).ready(function() {
 		});
 	});
 	// Show all activity list
-	jQuery("#show_all_activity").on('click', function() {
+	jQuery("#show_all_activity").live("click", function() {
 
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
 		jQuery("#dialog").dialog({
@@ -4135,7 +4135,7 @@ jQuery(document).ready(function() {
 		});
 	});
 	// Show all activity threads
-	jQuery("#show_threads_activity").on('click', function() {
+	jQuery("#show_threads_activity").live("click", function() {
 		
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
 		jQuery("#dialog").dialog({
@@ -4170,7 +4170,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Show search
-	jQuery("#show_search").on('click', function() {
+	jQuery("#show_search").live("click", function() {
 		do_show_search();
 	});
 
@@ -4191,13 +4191,13 @@ jQuery(document).ready(function() {
 	}
 
 	// Do search on pressing return
-	jQuery('#search-box-input').on('keypress', function(e) {
+	jQuery('#search-box-input').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			do_forum_search();
 		}
 	});
 	// Do search on pressing button
-	jQuery("#search-box-button").on('click', function() {
+	jQuery("#search-box-button").live("click", function() {
 		do_forum_search();
 	});
 
@@ -4228,7 +4228,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Edit topic (AJAX)
-	jQuery('#starting-post').on('mouseenter mouseleave', function(event) {
+	jQuery('#starting-post').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".cpcommunitie_report").show();
 			jQuery(this).find(".edit").show();
@@ -4239,7 +4239,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Edit the topic
-	jQuery("#edit-this-topic").on('click', function() {
+	jQuery("#edit-this-topic").live("click", function() {
 
 		var tid = jQuery(this).attr("title");
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
@@ -4357,7 +4357,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Edit a reply
-	jQuery(".edit_forum_reply").on('click', function() {
+	jQuery(".edit_forum_reply").live("click", function() {
 
 		var tid = jQuery(this).attr("id");
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />");
@@ -4477,7 +4477,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Add new reply to a topic
-	jQuery("#quick-reply-warning").on('click', function() {
+	jQuery("#quick-reply-warning").live("click", function() {
 
 		if (!__cpc__.use_wp_editor) {
 
@@ -4644,21 +4644,21 @@ jQuery(document).ready(function() {
 
 
 	// Show delete links on hover
-	jQuery('.row').on('mouseenter mouseleave', function(event) {
+	jQuery('.row').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".delete_topic").show()
 		} else {
 			jQuery(this).find(".delete_topic").hide();
 		}
 	});
-	jQuery('.row_odd').on('mouseenter mouseleave', function(event) {
+	jQuery('.row_odd').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".delete_topic").show()
 		} else {
 			jQuery(this).find(".delete_topic").hide();
 		}
 	});
-	jQuery('.child-reply').on('mouseenter mouseleave', function(event) {
+	jQuery('.child-reply').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".cpcommunitie_report").show();
 			jQuery(this).find(".delete_forum_reply").show();
@@ -4671,7 +4671,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete reply
-	jQuery('.delete_forum_reply').on('click', function(event) {
+	jQuery('.delete_forum_reply').live("click", function(event) {
 
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/forum_functions.php",
@@ -4695,7 +4695,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete topic
-	jQuery(".delete_topic").on('click', function() {
+	jQuery(".delete_topic").live("click", function() {
 
 		if (confirm(areyousure)) {
 
@@ -4724,7 +4724,7 @@ jQuery(document).ready(function() {
 	__cpc__evoke_bbcode_toolbar();
 
 	// Show new topic and reply topic forms
-	jQuery("#new-topic-button").on('click', function() {
+	jQuery("#new-topic-button").live("click", function() {
 		jQuery("#new-topic").show();
 		jQuery("#forum_options").hide();
 		jQuery("#share_link").hide();
@@ -4736,7 +4736,7 @@ jQuery(document).ready(function() {
 		// BB Toolbar
 		__cpc__evoke_bbcode_toolbar();
 	});
-	jQuery("#cancel_post").on('click', function() {
+	jQuery("#cancel_post").live("click", function() {
 		jQuery("#new-topic").hide();
 		jQuery("#forum_options").show();
 		jQuery("#share_link").show();
@@ -4748,7 +4748,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Post a new topic
-	jQuery("#cpcommunitie_new_post").on('click', function() {
+	jQuery("#cpcommunitie_new_post").live("click", function() {
 
 		var subject = jQuery('#new_topic_subject').val();
 		var text = jQuery('#new_topic_text').val();
@@ -4858,7 +4858,7 @@ jQuery(document).ready(function() {
 
 
 	// Has a checkbox been clicked? If so, check if one for cpcommunitie (AJAX)
-	jQuery("input[type='checkbox']").on('click', function() {
+	jQuery("input[type='checkbox']").live("click", function() {
 
 		var checkbox = jQuery(this).attr("id");
 
@@ -5108,10 +5108,10 @@ jQuery(document).ready(function() {
 	});
 
 	// Score
-	jQuery(".forum_post_score_change").on('click', function() {
+	jQuery(".forum_post_score_change").live("click", function() {
 
 		if (__cpc__.current_user_id == 0) {
-			alert('Please log in to register your vote.');
+			alert('Bitte melde Dich an, um Deine Stimme zu registrieren.');
 		} else {
 
 			var change = jQuery(this).attr("title");
@@ -5218,7 +5218,7 @@ jQuery(document).ready(function() {
 			//MINIMIZE, MAXIMIZE, CLOSE CHAT WINDOW			
 				
 				//minimize function
-			jQuery('.minimize_chatbox').on('click',function(){
+			jQuery('.minimize_chatbox').live("click",function(){
 				//remove chat,message area			
 				jQuery(this).closest('.chatbox').find('.chat_area,.chat_message').css('height','0px');		
 				jQuery(this).closest('.chatbox').css('height','25px');
@@ -5233,7 +5233,7 @@ jQuery(document).ready(function() {
 			
 			
 			//maximize function
-			jQuery('.maximize_chatbox').on('click',function(){
+			jQuery('.maximize_chatbox').live("click",function(){
 				//remove chat,message area	
 				jQuery(this).closest('.chatbox').find('.chat_area').css('height','200px');		
 				jQuery(this).closest('.chatbox').find('.chat_message').css('height','55px');		
@@ -5251,7 +5251,7 @@ jQuery(document).ready(function() {
 			});
 			
 			//clear function
-			jQuery('.clear_chatbox').on('click',function(){
+			jQuery('.clear_chatbox').live("click",function(){
 				jQuery(this).closest('.chatbox').find('.chat_area').html('<p class="system">'+__cpc__.pleasewait+'...</p>');
 				var to_id = jQuery(this).closest('.chatbox').attr('title');
 				var datastring = 'from_id='+__cpc__.current_user_id+'&to_id='+to_id;
@@ -5268,7 +5268,7 @@ jQuery(document).ready(function() {
 			});
 			
 			//popup function
-			jQuery('.popup_chatbox').on('click',function(){
+			jQuery('.popup_chatbox').live("click",function(){
 				var url = __cpc__.plugin_url+'ajax/chat/popup.html?heartBeat='+heartBeat+'&id='+__cpc__.current_user_id+'&partner='+jQuery(this).attr('title')+'&partner_id='+jQuery(this).attr('rel')+'&url='+__cpc__.plugin_url+'&chat_sound='+__cpc__.chat_sound;
 		        var windowName = "popUp"+Math.floor(Math.random()*1000);
 		        var windowSizeArray = [ "width=216,height=280","width=216,height=280,scrollbars=no" ]
@@ -5277,7 +5277,7 @@ jQuery(document).ready(function() {
 		    });
 
 			//close function
-			jQuery('.close_chatbox').on('click',function(){
+			jQuery('.close_chatbox').live("click",function(){
 				var closed_pos = parseInt(jQuery(this).closest('.chatbox').css('right'));
 				chatboxcount --;
 				jQuery(this).closest('.chatbox').remove();		
@@ -5311,7 +5311,7 @@ jQuery(document).ready(function() {
 			});
 			
 			// set focus in Message area
-			jQuery('.chatbox').on('click',function(){
+			jQuery('.chatbox').live("click",function(){
 				jQuerytextarea = jQuery('.chat_message textarea',this);		
 				jQuerytextarea.focus();
 			});
@@ -5319,7 +5319,7 @@ jQuery(document).ready(function() {
 		
 			
 			//HIGHLIGHT Active chat window
-			jQuery('.chat_message textarea').on('focus',function() {
+			jQuery('.chat_message textarea').live("focus",function() {
 				var chatbox = jQuery(this).closest('.chatbox');
 				this_chatbox_headerbg = jQuery('.header',chatbox);
 				this_chatbox_headerbg.removeClass("header_bg_blink").addClass("header_bg_default");
@@ -5328,14 +5328,14 @@ jQuery(document).ready(function() {
 				chatbox.data('havenewmessage',0); // clear new message
 				chatbox.data('playedsound',1); // clear new message
 			});
-			jQuery('.chat_message textarea').on('blur',function() {
+			jQuery('.chat_message textarea').live("blur",function() {
 				var chatbox = jQuery(this).closest('.chatbox');
 				chatbox.removeClass("cb_highlight").addClass("cb_default"); // remove highligt of chat window
 				chatbox.data('focused',0);	// disable focus variable
 			});
 			
 			//SEND MESSAGE ON ENTER		
-			jQuery('.chat_message textarea').on('keypress', function (e) {
+			jQuery('.chat_message textarea').live("keypress", function (e) {
 
 				if (e.keyCode == 13 && !e.shiftKey) {
 					e.preventDefault();
@@ -5552,7 +5552,7 @@ jQuery(document).ready(function() {
 			});
 
 			// Click on change online status?
-			jQuery("#__cpc__online_status").click(function() {
+			jQuery("#__cpc__online_status").on('click', function() {
 				var status = jQuery("#__cpc__online_status").is(":checked");
 				jQuery.ajax({
 					url: __cpc__.plugin_url + "ajax/bar_functions.php",
@@ -5567,7 +5567,7 @@ jQuery(document).ready(function() {
 			});
 
 			// Click on logout link
-			jQuery("#__cpc__logout-link").click(function() {
+			jQuery("#__cpc__logout-link").on('click', function() {
 				if (confirm(areyousure)) {
 					jQuery.ajax({
 						url: __cpc__.plugin_url + "ajax/ajax_functions.php",
@@ -5588,7 +5588,7 @@ jQuery(document).ready(function() {
 
 			// Email icon
 			if (jQuery("#__cpc__email_box").css("display") != "none") {
-				jQuery("#__cpc__email_box").click(function() {
+				jQuery("#__cpc__email_box").on('click', function() {
 					window.location.href = __cpc__.mail_url;
 				});
 
@@ -5596,14 +5596,14 @@ jQuery(document).ready(function() {
 
 			// Icon Actions
 			if (jQuery("#__cpc__friends_box").css("display") != "none") {
-				jQuery("#__cpc__friends_box").click(function() {
+				jQuery("#__cpc__friends_box").on('click', function() {
 					var q = cpcommunitie_q(__cpc__.profile_url);
 					window.location.href = __cpc__.profile_url + q + 'view=friends';
 				});
-				jQuery("#__cpc__online_box").click(function() {
+				jQuery("#__cpc__online_box").on('click', function() {
 					jQuery('#__cpc__who_online').show();
 				});
-				jQuery("#__cpc__who_online_close").click(function() {
+				jQuery("#__cpc__who_online_close").on('click', function() {
 					jQuery('#__cpc__who_online').hide();
 				});
 			}
@@ -5921,7 +5921,7 @@ jQuery(document).ready(function() {
 		}
 
 		// Show/hide news events as drop down below menu item
-		jQuery('#__cpc__alerts').on('mouseenter', function(event) {
+		jQuery('#__cpc__alerts').live("mouseenter", function(event) {
 			// Only show if list is present
 			if (!(jQuery('#__cpc__news_items').is(':visible'))) {
 				if (event.type == 'mouseenter') {
@@ -5949,7 +5949,7 @@ jQuery(document).ready(function() {
 				jQuery("#__cpc__news_highlight").remove();
 			}
 		});
-		jQuery('#__cpc__news_items').on('mouseleave', function(event) {
+		jQuery('#__cpc__news_items').live("mouseleave", function(event) {
 			if (event.type == 'mouseleave') {
 				jQuery("#__cpc__news_items").hide();
 				jQuery("#__cpc__news_highlight").remove();
@@ -5957,7 +5957,7 @@ jQuery(document).ready(function() {
 		});
 
 		// Clear all notifications
-		jQuery('#cpcommunitie_clear_news').on('click', function(event) {
+		jQuery('#cpcommunitie_clear_news').live("click", function(event) {
 			jQuery(".__cpc__news_item").remove();
 			jQuery("#__cpc__news_highlight").remove();
 			jQuery.ajax({
@@ -6141,7 +6141,7 @@ jQuery(document).ready(function() {
 			}
 		});		
 	}
-	jQuery("#__cpc__event_move").on('click', function() {
+	jQuery("#__cpc__event_move").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/events_functions.php",
@@ -6161,7 +6161,7 @@ jQuery(document).ready(function() {
 	});
 				
 	// Payment	
-	jQuery("#cpcommunitie_pay_event").on('click', function() {
+	jQuery("#cpcommunitie_pay_event").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/events_functions.php",
@@ -6190,7 +6190,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Cancel
-	jQuery("#cpcommunitie_cancel_event").on('click', function() {
+	jQuery("#cpcommunitie_cancel_event").live("click", function() {
 		var answer = confirm(areyousure);
 		if (answer) {			
 			jQuery('.cpcommunitie_cancel_event_button').hide();
@@ -6224,7 +6224,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Book
-	jQuery("#cpcommunitie_book_event").on('click', function() {
+	jQuery("#cpcommunitie_book_event").live("click", function() {
 
 		jQuery('.cpcommunitie_book_event_button').hide();
 
@@ -6246,7 +6246,7 @@ jQuery(document).ready(function() {
 			modal: true
 		});
 	});
-	jQuery("#cpcommunitie_book_event_next").on('click', function() {
+	jQuery("#cpcommunitie_book_event_next").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/events_functions.php",
@@ -6276,7 +6276,7 @@ jQuery(document).ready(function() {
 	});
 
 	/* Show/hide edit and delete icons */
-	jQuery('.__cpc__event_list_item').on('mouseenter mouseleave', function(event) {
+	jQuery('.__cpc__event_list_item').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".link_cursor").show();
 		} else {
@@ -6285,7 +6285,7 @@ jQuery(document).ready(function() {
 	});
 
 	/* Create button */
-	jQuery("#__cpc__create_event_button").on('click', function() {
+	jQuery("#__cpc__create_event_button").live("click", function() {
 		jQuery("#__cpc__create_event_button").hide();
 		jQuery("#__cpc__events_list").hide();
 		jQuery("#__cpc__create_event_form").show();
@@ -6295,14 +6295,14 @@ jQuery(document).ready(function() {
 	});
 
 	/* Cancel button */
-	jQuery("#cpcommunitie_cancel_event_button").on('click', function() {
+	jQuery("#cpcommunitie_cancel_event_button").live("click", function() {
 		jQuery("#__cpc__create_event_button").show();
 		jQuery("#__cpc__events_list").show();
 		jQuery("#__cpc__create_event_form").hide();
 	});
 
 	/* Create (save) button */
-	jQuery("#cpcommunitie_add_event_button").on('click', function() {
+	jQuery("#cpcommunitie_add_event_button").live("click", function() {
 		var name = jQuery("#__cpc__create_event_name").val().replace(/(<([^>]+)>)/ig, '');
 		if (name == '') {
 			jQuery("#__cpc__create_event_name").css('border', '1px solid red').effect("highlight", {}, 4000);
@@ -6371,7 +6371,7 @@ jQuery(document).ready(function() {
 	});
 
 	/* Delete event */
-	jQuery(".cpcommunitie_delete_event").on('click', function() {
+	jQuery(".cpcommunitie_delete_event").live("click", function() {
 
 		var answer = confirm(areyousure);
 		if (answer) {
@@ -6409,7 +6409,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Edit event
-	jQuery(".__cpc__edit_event").on('click', function() {
+	jQuery(".__cpc__edit_event").live("click", function() {
 
 		// Get translated strings
 		var events_max_places = __cpc__.events_max_places;
@@ -6700,7 +6700,7 @@ jQuery(document).ready(function() {
 					showButtonPanel: true
 				});
 				jQuery("#tabs").tabs();
-				jQuery("#tabs a").click(function() {
+				jQuery("#tabs a").on('click', function() {
 					var tab = jQuery(this).attr('id');
 				});
 			},
@@ -6716,7 +6716,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Make as paid
-	jQuery("#cpcommunitie_events_payment_processed").on('click', function() {
+	jQuery("#cpcommunitie_events_payment_processed").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var bid = jQuery(this).data("bid");
 		jQuery(this).hide();
@@ -6749,7 +6749,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Re-send confirmation email
-	jQuery("#cpcommunitie_events_resend_email").on('click', function() {
+	jQuery("#cpcommunitie_events_resend_email").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var bid = jQuery(this).data("bid");
 		jQuery.ajax({
@@ -6781,7 +6781,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Remove attendee
-	jQuery("#cpcommunitie_events_remove_attendee").on('click', function() {
+	jQuery("#cpcommunitie_events_remove_attendee").live("click", function() {
 		if (confirm(areyousure)) {
 			jQuery(".__cpc__pleasewait").inmiddle().show();
 			var bid = jQuery(this).data("bid");
@@ -6817,7 +6817,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Confirm attendee
-	jQuery("#cpcommunitie_events_confirm_attendee").on('click', function() {
+	jQuery("#cpcommunitie_events_confirm_attendee").live("click", function() {
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		var bid = jQuery(this).data("bid");
 		jQuery(this).hide();
@@ -6851,13 +6851,13 @@ jQuery(document).ready(function() {
 	});
 
 	// Help for Payment HTML
-	jQuery("#cpcommunitie_event_help").on('click', function() {
+	jQuery("#cpcommunitie_event_help").live("click", function() {
 		jQuery('#__cpc__edit_event_pay_link').hide();
 		jQuery('#cpcommunitie_event_help').hide();
 		jQuery('#cpcommunitie_event_help_close').show();
 		jQuery('#event_tag_help').show();
 	});
-	jQuery("#cpcommunitie_event_help_close").on('click', function() {
+	jQuery("#cpcommunitie_event_help_close").live("click", function() {
 		jQuery('#__cpc__edit_event_pay_link').show();
 		jQuery('#cpcommunitie_event_help').show();
 		jQuery('#cpcommunitie_event_help_close').hide();
@@ -6866,7 +6866,7 @@ jQuery(document).ready(function() {
 
 
 	// Update event
-	jQuery(".cpcommunitie_event_update_button").on('click', function() {
+	jQuery(".cpcommunitie_event_update_button").live("click", function() {
 
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 
@@ -7052,11 +7052,11 @@ jQuery(document).ready(function() {
 
 	}
 
-	jQuery('#gallery_go_button').on('click', function() {
+	jQuery('#gallery_go_button').live("click", function() {
 		jQuery("#cpcommunitie_gallery_start").html('0');
 		cpcommunitie_do_gallery_search();
 	});
-	jQuery('#gallery_member').on('keypress', function(e) {
+	jQuery('#gallery_member').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			jQuery("#cpcommunitie_gallery_start").html('0');
 			cpcommunitie_do_gallery_search();
@@ -7064,7 +7064,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Search
-	jQuery('#showmore_gallery').on('click', function() {
+	jQuery('#showmore_gallery').live("click", function() {
 		jQuery(this).html("<br /><img src='" + __cpc__.images_url + "/busy.gif' />");
 		cpcommunitie_do_gallery_search();
 	});
@@ -7302,7 +7302,7 @@ jQuery(document).ready(function() {
 
 	}
 
-	jQuery("#__cpc__photo_submit_comment").on('click', function() {
+	jQuery("#__cpc__photo_submit_comment").live("click", function() {
 		var comment = jQuery('#__cpc__photo_add_comment').val();
 		jQuery('#__cpc__photo_add_comment').val('');
 		jQuery('#__cpc__photo_add_comment').css('height', '40px');
@@ -7357,7 +7357,7 @@ jQuery(document).ready(function() {
 
 	})
 
-	jQuery(".cpc_gallery_album").on('click', function() {
+	jQuery(".cpc_gallery_album").live("click", function() {
 		prepare_colorbox(this);
 		var current = parseInt(jQuery(this).attr("rev")) - 1;
 		var t = jQuery("#thumb_" + current);
@@ -7566,7 +7566,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Show icons on hover
-	jQuery('.hover_row').on('mouseenter mouseleave', function(event) {
+	jQuery('.hover_row').live("mouseenter mouseleave", function(event) {
 		if (event.type == 'mouseenter') {
 			jQuery(this).find(".hover_child").show()
 		} else {
@@ -7575,7 +7575,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Edit photo comment
-  jQuery(".__cpc__photo_comment_edit_icon").on('click', function() {
+  jQuery(".__cpc__photo_comment_edit_icon").live("click", function() {
 		jQuery("#__cpc__add_a_comment_label").hide();
 		jQuery("#__cpc__photo_submit_comment").val(jQuery('#__cpc__update').html());
 		jQuery('#__cpc__photo_submit_comment_cancel').show();
@@ -7601,7 +7601,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// Cancel edit photo comment
-  jQuery("#__cpc__photo_submit_comment_cancel").on('click', function() {
+  jQuery("#__cpc__photo_submit_comment_cancel").live("click", function() {
 		jQuery(this).hide();
     jQuery("#__cpc__photo_submit_comment").val(btn_add);
 		jQuery('#__cpc__photo_add_comment').val('');
@@ -7609,7 +7609,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// Delete photo comment
-  jQuery(".__cpc__photo_comment_del_icon").on('click', function() {
+  jQuery(".__cpc__photo_comment_del_icon").live("click", function() {
 		var id = this.id;
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
@@ -7630,13 +7630,13 @@ jQuery(document).ready(function() {
 	});
 
 	// Stretch div on activity stream
-	jQuery("#cpc_gallery_comment_more").on('click', function() {
+	jQuery("#cpc_gallery_comment_more").live("click", function() {
 		jQuery(this).hide();
 		jQuery(this).parent().parent().find("#cpc_comment_plus").css("overflow", "visible");
 	});
 
 	// Manage album (select cover)
-	jQuery(".__cpc__photo_select_cover_button").on('click', function() {
+	jQuery(".__cpc__photo_select_cover_button").live("click", function() {
 
 		var current = jQuery("#cpcommunitie_current_image").val();
 		var t = this;
@@ -7669,7 +7669,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Change sharing status
-	jQuery("#gallery_share").on('change', function() {
+	jQuery("#gallery_share").live("change", function() {
 
 		jQuery('#__cpc__album_sharing_save').show();
 
@@ -7700,9 +7700,9 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete all
-	jQuery(".__cpc__photo_delete_all").on('click', function() {
+	jQuery(".__cpc__photo_delete_all").live("click", function() {
 
-		if (confirm("Are you sure?")) {
+		if (confirm("Bist du Dir sicher?")) {
 
 			__cpc__.album_id = jQuery(this).attr("rel");
 
@@ -7727,7 +7727,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete
-	jQuery(".__cpc__photo_delete").on('click', function() {
+	jQuery(".__cpc__photo_delete").live("click", function() {
 
 		var current = jQuery("#cpcommunitie_current_image").val();
 		var t = this;
@@ -7739,7 +7739,7 @@ jQuery(document).ready(function() {
 		var cnt = 0;
 		jQuery('#__cpc__photo_thumbnails').children(jQuery('.__cpc__photo_thumbnails')).each(function(i) {
 			if (cnt == current) {
-				if (confirm("Are you sure?")) {
+				if (confirm("Bist du Dir sicher?")) {
 					// Delete this thumbnail and image
 					var item_id = jQuery(this).attr("rel");
 					jQuery(this).remove();
@@ -7772,7 +7772,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Rename photo
-	jQuery("#__cpc__rename_button").on('click', function() {
+	jQuery("#__cpc__rename_button").live("click", function() {
 
 		var current = jQuery("#cpcommunitie_current_image").val();
 		var t = this;
@@ -7814,7 +7814,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Click on album cover
-	jQuery(".__cpc__album_cover_action").on('click', function() {
+	jQuery(".__cpc__album_cover_action").live("click", function() {
 
 		__cpc__.album_id = jQuery(this).attr("title");
 		cpcommunitie_show_album();
@@ -7822,13 +7822,13 @@ jQuery(document).ready(function() {
 	});
 
 	// Back to top
-	jQuery("#__cpc__gallery_top").on('click', function() {
+	jQuery("#__cpc__gallery_top").live("click", function() {
 		__cpc__.album_id = 0;
 		cpcommunitie_show_album();
 	});
 
 	// Up a level
-	jQuery("#cpcommunitie_gallery_up").on('click', function() {
+	jQuery("#cpcommunitie_gallery_up").live("click", function() {
 		__cpc__.album_id = jQuery(this).attr("title");
 		cpcommunitie_show_album();
 	});
@@ -7861,7 +7861,7 @@ jQuery(document).ready(function() {
 	}
 
 	// Toggle new album form
-	jQuery(".cpcommunitie_new_album_button").on('click', function() {
+	jQuery(".cpcommunitie_new_album_button").live("click", function() {
 
 		jQuery('.cpcommunitie_new_album_button').hide();
 		jQuery('.__cpc__photo_delete_all').hide();
@@ -7875,7 +7875,7 @@ jQuery(document).ready(function() {
 			jQuery(".__cpc__create_sub_gallery").hide();
 		}
 	});
-	jQuery("#cpcommunitie_cancel_album").on('click', function() {
+	jQuery("#cpcommunitie_cancel_album").live("click", function() {
 		jQuery('.cpcommunitie_new_album_button').show();
 		jQuery('.__cpc__photo_delete_all').show();
 		jQuery('.album_name').show();
@@ -7885,7 +7885,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Create new album
-	jQuery("#cpcommunitie_new_album").on('click', function() {
+	jQuery("#cpcommunitie_new_album").live("click", function() {
 
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 		jQuery.ajax({
@@ -7918,19 +7918,19 @@ jQuery(document).ready(function() {
 	lounge_polling();
 
 	// Add comment via button
-	jQuery("#__cpc__lounge_add_comment_button").on('click', function() {
+	jQuery("#__cpc__lounge_add_comment_button").live("click", function() {
 		add_comment_to_lounge();
 	});
 
 	// Add comment via Return on keyboard
-	jQuery('#__cpc__lounge_add_comment').on('keypress', function(e) {
+	jQuery('#__cpc__lounge_add_comment').live("keypress", function(e) {
 		if (e.keyCode == 13) {
 			add_comment_to_lounge();
 		}
 	});
 
 	// Delete comment via trash icon
-	jQuery(".__cpc__lounge_del_icon").on('click', function() {
+	jQuery(".__cpc__lounge_del_icon").live("click", function() {
 		var comment_id = jQuery(this).attr("id");
 		jQuery("#comment_" + comment_id).slideUp("slow");
 		jQuery.ajax({
@@ -7969,7 +7969,7 @@ jQuery(document).ready(function() {
 
 		var new_comment = jQuery('#__cpc__lounge_add_comment').val();
 
-		if (jQuery('#__cpc__lounge_add_comment').val() != 'Add a comment..') {
+		if (jQuery('#__cpc__lounge_add_comment').val() != 'Einen Kommentar hinzufügen..') {
 			var items = '';
 			items += '<div id="__cpc__lounge_comment">';
 			items += '<div class="__cpc__lounge_new_comment __cpc__lounge_new_comment_you">' + new_comment + '</div>';
@@ -8068,7 +8068,7 @@ jQuery(document).ready(function() {
 	*/
 
 
-	jQuery("#__cpc__rss_icon").on('click', function() {
+	jQuery("#__cpc__rss_icon").live("click", function() {
 		var str = "Use the following to receive an RSS feed of this member's activity:";
 		str += '<br /><input type="text" style="width:650px;" value="' + __cpc__.plugin_url + 'activity.php?uid=' + __cpc__.current_user_page + '" />';
 		str += '<br /><a href=' + __cpc__.plugin_url + 'activity.php?uid=' + __cpc__.current_user_page + ' target="_blank">View</a>';
@@ -8091,7 +8091,7 @@ jQuery(document).ready(function() {
 */
 
 	if (jQuery(".cpcommunitie_answer").length) {
-		jQuery(".cpcommunitie_answer").click(function() {
+		jQuery(".cpcommunitie_answer").on('click', function() {
 
 			var vote_answer = jQuery(this).attr("title");
 			jQuery("#__cpc__vote_thankyou").slideDown("fast").effect("highlight", {}, 3000);
@@ -8299,7 +8299,7 @@ jQuery(document).ready(function() {
 	});
 	
 	// Edit group about page
-	jQuery("#__cpc__about_group_edit").on('click', function() {
+	jQuery("#__cpc__about_group_edit").live("click", function() {
 
 		jQuery("#dialog").html("<img src='" + __cpc__.images_url + "/busy.gif' />").dialog({
 			title: __cpc__.site_title,
@@ -8610,9 +8610,9 @@ jQuery(document).ready(function() {
 	}
 
 	// Delete group member
-	jQuery(".delete_group_member").on('click', function() {
+	jQuery(".delete_group_member").live("click", function() {
 
-		if (confirm("Are you sure?")) {
+		if (confirm("Bist du dir sicher?")) {
 
 			var id = jQuery(this).attr("title");
 			jQuery(this).parent().parent().slideUp("slow");
@@ -8634,7 +8634,7 @@ jQuery(document).ready(function() {
 
 
 	// Clicked on show more...
-	jQuery("#showmore_group_wall").on('click', function() {
+	jQuery("#showmore_group_wall").live("click", function() {
 
 		var limit_from = jQuery(this).attr("title");
 		jQuery('#showmore_group_wall').html("<img src='" + __cpc__.images_url + "/busy.gif' />");
@@ -8660,7 +8660,7 @@ jQuery(document).ready(function() {
 	});
 
 	// new post to group wall
-	jQuery("#cpcommunitie_group_add_comment").on('click', function() {
+	jQuery("#cpcommunitie_group_add_comment").live("click", function() {
 		jQuery(this).parent().hide();
 		var t = this;
 		setTimeout(function() {
@@ -8668,7 +8668,7 @@ jQuery(document).ready(function() {
 		}, 3000);		
 		cpcommunitie_add_group_comment();
 	});
-	jQuery('#__cpc__group_comment').on('keypress', function(e) {
+	jQuery('#__cpc__group_comment').live("keypress", function(e) {
 		if (e.keyCode == 13 && (!jQuery("#cpcommunitie_group_add_comment").length)) {
 			jQuery(this).parent().hide();
 			var t = this;
@@ -8725,7 +8725,7 @@ jQuery(document).ready(function() {
 	}
 
 	// new reply
-	jQuery(".reply_field-button").on('click', function() {
+	jQuery(".reply_field-button").live("click", function() {
 		jQuery(this).parent().hide();
 		var t = this;
 		setTimeout(function() {
@@ -8790,7 +8790,7 @@ jQuery(document).ready(function() {
 
 
 	// update group settings
-	jQuery("#updateGroupSettingsButton").on('click', function() {
+	jQuery("#updateGroupSettingsButton").live("click", function() {
 
 		var complete = true;
 		var groupname = jQuery("#groupname").val();
@@ -8888,7 +8888,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Join group
-	jQuery("#groups_join_button").on('click', function() {
+	jQuery("#groups_join_button").live("click", function() {
 
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 
@@ -8920,9 +8920,9 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete group
-	jQuery("#groups_delete_button").on('click', function() {
+	jQuery("#groups_delete_button").live("click", function() {
 
-		var answer = confirm("This cannot be un-done - are you really sure?");
+		var answer = confirm("Dies kann nicht rückgängig gemacht werden - bist Du wirklich sicher?");
 
 		if (answer) {
 
@@ -8950,10 +8950,10 @@ jQuery(document).ready(function() {
 	});
 
 	// Delete group request
-	jQuery("#groups_delete_button_request").on('click', function() {
+	jQuery("#groups_delete_button_request").live("click", function() {
 
 		var group_id = jQuery(this).attr('title');
-		var str = '<p>Why do you want to delete this group?<br />Note: this cannot be reversed!';
+		var str = '<p>Warum möchtest Du diese Gruppe löschen?<br />Hinweis: Dies kann nicht rückgängig gemacht werden!';
 		str += '<br /><em>Ref: ' + group_id + '</em></p>';
 		str += '<textarea id="request_text" style="width:100%; height:180px"></textarea>';
 		jQuery("#dialog").html(str);
@@ -8975,7 +8975,7 @@ jQuery(document).ready(function() {
 						dataType: "html",
 						async: true,
 						success: function(str) {
-							jQuery("#dialog").html('Your request for this group to be deleted has been sent to the site administrator.');
+							jQuery("#dialog").html('Deine Anfrage zum Löschen dieser Gruppe wurde an den Webseiten-Administrator gesendet.');
 							jQuery("#dialog").dialog({
 								title: __cpc__.site_title,
 								width: 650,
@@ -9003,7 +9003,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Leave group
-	jQuery("#groups_leave_button").on('click', function() {
+	jQuery("#groups_leave_button").live("click", function() {
 
 		if (confirm(areyousure)) {
 
@@ -9030,7 +9030,7 @@ jQuery(document).ready(function() {
 	});
 
 	// Subscribe/unsubscribe
-	jQuery("#group_notify").on('click', function() {
+	jQuery("#group_notify").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		if (jQuery("#group_notify").is(":checked")) {
@@ -9056,7 +9056,7 @@ jQuery(document).ready(function() {
 	});
 
 	// reject a group request
-	jQuery("#rejectgrouprequest").on('click', function() {
+	jQuery("#rejectgrouprequest").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		jQuery.ajax({
@@ -9088,7 +9088,7 @@ jQuery(document).ready(function() {
 	});
 
 	// accept a group request
-	jQuery("#acceptgrouprequest").on('click', function() {
+	jQuery("#acceptgrouprequest").live("click", function() {
 		jQuery(".__cpc__notice").inmiddle().show();
 
 		jQuery.ajax({
@@ -9179,7 +9179,7 @@ jQuery(document).ready(function() {
 		});
 	};
 
-	jQuery("#groups_go_button").click(function() {
+	jQuery("#groups_go_button").on('click', function() {
 
 		jQuery.ajax({
 			url: __cpc__.plugin_url + "ajax/groups_functions.php",
@@ -9208,19 +9208,19 @@ jQuery(document).ready(function() {
 	});
 
 
-	jQuery("#show_create_group_button").click(function() {
+	jQuery("#show_create_group_button").on('click', function() {
 		jQuery("#show_create_group_button").hide();
 		jQuery("#groups_results").hide();
 		jQuery("#create_group_form").fadeIn("slow");
 	});
 
-	jQuery("#cancel_create_group_button").click(function() {
+	jQuery("#cancel_create_group_button").on('click', function() {
 		jQuery("#show_create_group_button").show();
 		jQuery("#create_group_form").hide();
 		jQuery("#groups_results").fadeIn("slow");
 	});
 
-	jQuery("#create_group_button").click(function() {
+	jQuery("#create_group_button").on('click', function() {
 
 		var name_of_group = jQuery('#name_of_group').val();
 		var description_of_group = jQuery('#description_of_group').val();
@@ -9256,7 +9256,7 @@ jQuery(document).ready(function() {
 	});
 
 
-	jQuery("#cpcommunitie_group_invites_button").on('click', function() {
+	jQuery("#cpcommunitie_group_invites_button").live("click", function() {
 
 		jQuery(".__cpc__pleasewait").inmiddle().show();
 
@@ -9826,12 +9826,12 @@ jQuery.fn.extend({
 
 function __cpc__evoke_bbcode_toolbar() {
 	if (jQuery(".__cpc__toolbar").length) {
-		jQuery(".__cpc__toolbar_bold").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[b]','[/b]'); exit; });
-		jQuery(".__cpc__toolbar_italic").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[i]','[/i]'); exit; });
-		jQuery(".__cpc__toolbar_underline").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[u]','[/u]'); exit; });
-		jQuery(".__cpc__toolbar_quote").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[quote]','[/quote]'); exit; });
-		jQuery(".__cpc__toolbar_code").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[code]','[/code]'); exit; });
-		jQuery(".__cpc__toolbar_url").on('click', function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[url=???]!!!','[/url]'); exit; });
+		jQuery(".__cpc__toolbar_bold").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[b]','[/b]'); exit; });
+		jQuery(".__cpc__toolbar_italic").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[i]','[/i]'); exit; });
+		jQuery(".__cpc__toolbar_underline").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[u]','[/u]'); exit; });
+		jQuery(".__cpc__toolbar_quote").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[quote]','[/quote]'); exit; });
+		jQuery(".__cpc__toolbar_code").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[code]','[/code]'); exit; });
+		jQuery(".__cpc__toolbar_url").live("click", function() { jQuery('#'+jQuery(this).attr('rel')).insertAtCaret('[url=???]!!!','[/url]'); exit; });
 	}
 }
 

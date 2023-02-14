@@ -23,7 +23,7 @@ jQuery(document).ready(function() {
 
 	// Show/hide compose form
 
-	jQuery("#my-show-compose-form").click(function(){
+	jQuery("#my-show-compose-form").on('click', function(){
 
 		// First clear any values using classes we have set (from a previous reply, just in case)
 
@@ -49,7 +49,7 @@ jQuery(document).ready(function() {
 
 	});
 
-	jQuery("#my-hide-compose-form").click(function(){
+	jQuery("#my-hide-compose-form").on('click', function(){
 
 		jQuery("#my-compose-form").hide();
 

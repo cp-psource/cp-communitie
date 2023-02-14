@@ -50,3 +50,15 @@ font[face=mceinline] {font-family:inherit !important}
 	z-index: 9999999 !important;
 }
 
+@media (max-width: 767px) {
+	body, td, pre {
+	font-size: 10px;
+	margin: 4px;
+	}
+	h1 {
+	font-size: 1.5em;
+	}
+	h2 {
+	font-size: 1.2em;
+	}
+}

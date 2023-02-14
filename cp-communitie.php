@@ -868,8 +868,8 @@ function __cpc__js_init() {
 		}
 
 		if (get_option(CPC_OPTIONS_PREFIX.'_jqueryui') == "on") {
-			wp_enqueue_script('jquery-ui-custom', $plugin.'/js/jquery-ui-1.10.3.custom.min.js', array('jquery'));	
-		    wp_register_style('__cpc__jquery-ui-css', CPC_PLUGIN_URL.'/css/jquery-ui-1.10.3.custom.css');
+			wp_enqueue_script('jquery-ui-custom', $plugin.'/js/jquery-ui-custom.min.js', array('jquery'));	
+		    wp_register_style('__cpc__jquery-ui-css', CPC_PLUGIN_URL.'/css/jquery-ui-custom.css');
 			wp_enqueue_style('__cpc__jquery-ui-css');
 		}	
 
@@ -1194,7 +1194,7 @@ function __cpc__scriptsAction() {
 			'saving' 			=> __( 'Saving', 'cp-communitie'),
 			'more' 				=> __( 'more...', 'cp-communitie'),
 			'next' 				=> __( 'Next', 'cp-communitie'),
-			'areyousure' 		=> __( 'Are you sure?', 'cp-communitie'),
+			'areyousure' 		=> __( 'Bist du Dir sicher?', 'cp-communitie'),
 			'browseforfile' 	=> __( 'Browse for file', 'cp-communitie'),
 			'attachimage' 		=> __( 'Attach an image', 'cp-communitie'),
 			'attachfile' 		=> __( 'Attach file', 'cp-communitie'),

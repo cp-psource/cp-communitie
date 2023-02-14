@@ -794,7 +794,7 @@ if ($_POST['action'] == 'group_menu_settings') {
 								WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/group_avatar_upload/', 
 								WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/group_avatar_upload/',
 								'group_avatar',
-								__('FGruppenbild hochladen', 'cp-communitie'),
+								__('Gruppenbild hochladen', 'cp-communitie'),
 								0,
 								$gid
 							);
@@ -1021,7 +1021,7 @@ if ($_POST['action'] == 'group_menu_about') {
 	$html .= stripslashes($source);
 	$html .= '</div>';
 	if (__cpc__group_admin($gid) == "yes") {
-		$html .= "<a href='javascript:void(0);' id='__cpc__about_group_edit'>Edit</a><br />";
+		$html .= "<a href='javascript:void(0);' id='__cpc__about_group_edit'>Gruppen-Startseite bearbeiten</a><br />";
 	}
 	
 	

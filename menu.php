@@ -5017,51 +5017,51 @@ function __cpc__plugin_settings() {
 	
 						<p><?php echo __('Um die Leistung weiter zu verbessern, wird Folgendes empfohlen:', 'cp-communitie'); ?></p>
 						<ul style="list-style-type: circle; margin: 10px 0 20px 30px;">
-							<li><?php echo sprintf(__('minimize the total number of all ClassicPress plugins and widgets used (%s and others). <a href="plugins.php?plugin_status=active">De-activate as many as possible!</a>', 'cp-communitie'), CPC_WL); ?></li>
+							<li><?php echo sprintf(__('Minimiere die Gesamtzahl aller verwendeten ClassicPress-Plugins und -Widgets (%s und andere). <a href="plugins.php?plugin_status=active">Deaktivier viele wie möglich!</a>', 'cp-communitie'), CPC_WL); ?></li>
 							<?php if (function_exists('__cpc__add_notification_bar')) { ?>
-								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Panel</a> or <a href="admin.php?page=cpcommunitie_bar">set the polling intervals</a> high, eg: at least 300 and 20 seconds.', 'cp-communitie'); ?></li>
+								<li><?php echo __('<a href="plugins.php?plugin_status=active">Panel deaktivieren</a> oder <a href="admin.php?page=cpcommunitie_bar">Polling-Intervalle hoch setzen</a>, zB: mindestens 300 und 20 Sekunden.', 'cp-communitie'); ?></li>
 							<?php } ?>
 							<?php if (function_exists('__cpc__news_main')) { ?>
-								<li><?php echo __('<a href="plugins.php?plugin_status=active">De-activate Alerts</a> or <a href="admin.php?page='.CPC_DIR.'/news_admin.php">set the polling interval</a> high, eg: at least 120 seconds.', 'cp-communitie'); ?></li>
+								<li><?php echo __('<a href="plugins.php?plugin_status=active">Benachrichtigungen deaktivieren</a> oder <a href="admin.php?page='.CPC_DIR.'/news_admin.php">das Abrufintervall festlegen< /a> hoch, zB: mindestens 120 Sekunden.', 'cp-communitie'); ?></li>
 							<?php } ?>
 						</ul>
 						
 						<?php if (function_exists('__cpc__add_notification_bar')) { ?>
 							<p><strong><?php echo __('Panel', 'cp-communitie'); ?></strong></p>
 							<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-								<li><?php echo __('Chat windows and the chatroom are disabled', 'cp-communitie'); ?></li>
-								<li><?php echo __('Notification of new mail (etc) requires a page reload', 'cp-communitie'); ?></li>
+								<li><?php echo __('Chatfenster und der Chatroom sind deaktiviert', 'cp-communitie'); ?></li>
+								<li><?php echo __('Die Benachrichtigung über neue E-Mails (usw.) erfordert ein Neuladen der Seite', 'cp-communitie'); ?></li>
 							</ul>
 						<?php } ?>
 						
 						<?php if (function_exists('__cpc__news_main')) { ?>
-						<p><strong><?php echo __('Alerts', 'cp-communitie'); ?></strong></p>
+						<p><strong><?php echo __('Benachrichtigungen', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Live notification of new messages disabled (page reload required)', 'cp-communitie'); ?></li>
+							<li><?php echo __('Live-Benachrichtigung bei neuen Nachrichten deaktiviert (Neuladen der Seite erforderlich)', 'cp-communitie'); ?></li>
 						</ul>
 						<?php } ?>
 						
 						<p><strong><?php echo __('Forum', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Topic, post and reply counts are not displayed', 'cp-communitie'); ?></li>
-							<li><?php echo __('Only new topics are shown, not latest replies', 'cp-communitie'); ?></li>
-							<li><?php echo __('Answered topics not shown in topics list', 'cp-communitie'); ?></li>
-							<li><?php echo __('Simplified breadcrumbs (forum navigation links)', 'cp-communitie'); ?></li>
-							<li><?php echo __('Smilies/emoticons not replaced with images', 'cp-communitie'); ?></li>
-							<li><?php echo __('User @tagging will not work', 'cp-communitie'); ?></li>
+							<li><?php echo __('Themen-, Beitrags- und Antwortzähler werden nicht angezeigt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Es werden nur neue Themen angezeigt, nicht die neuesten Antworten', 'cp-communitie'); ?></li>
+							<li><?php echo __('Beantwortete Themen werden nicht in der Themenliste angezeigt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Vereinfachte Breadcrumbs (Forennavigationslinks)', 'cp-communitie'); ?></li>
+							<li><?php echo __('Smilies/Emoticons werden nicht durch Bilder ersetzt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Benutzer-@tagging funktioniert nicht', 'cp-communitie'); ?></li>
 						</ul>
 						
-						<p><strong><?php echo __('Member Directory', 'cp-communitie'); ?></strong></p>
+						<p><strong><?php echo __('Mitgliederverzeichnis', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Latest activity post not shown', 'cp-communitie'); ?></li>
-							<li><?php echo __('Add as a friend/Send Mail buttons disabled', 'cp-communitie'); ?></li>
+							<li><?php echo __('Letzter Aktivitätsbeitrag wird nicht angezeigt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Schaltflächen Als Freund hinzufügen/E-Mail senden deaktiviert', 'cp-communitie'); ?></li>
 						</ul>
 						
-						<p><strong><?php echo __('Profile', 'cp-communitie'); ?></strong></p>
+						<p><strong><?php echo __('Profil', 'cp-communitie'); ?></strong></p>
 						<ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-							<li><?php echo __('Friends: Latest activity post not shown', 'cp-communitie'); ?></li>
-							<li><?php echo __('Friends: New friendships made are not shown', 'cp-communitie'); ?></li>
-							<li><?php echo __('Forum: Posts/replies are not shown on', 'cp-communitie'); ?></li>
+							<li><?php echo __('Freunde: Der letzte Aktivitätsbeitrag wird nicht angezeigt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Freunde: Neu geschlossene Freundschaften werden nicht angezeigt', 'cp-communitie'); ?></li>
+							<li><?php echo __('Forum: Beiträge/Antworten werden nicht angezeigt', 'cp-communitie'); ?></li>
 						</ul>
 						
 					</td>
@@ -5070,35 +5070,35 @@ function __cpc__plugin_settings() {
 				<?php } ?>
 									
 				<tr valign="top"> 
-				<td scope="row"><label for="img_db"><?php echo __('Store uploads in database', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="img_db"><?php echo __('Uploads in Datenbank speichern', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="img_db" id="img_db" <?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Off by default to save to the file system (recommended). Select to upload to database', 'cp-communitie').' - '; ?><span style='font-weight:bold; text-decoration: underline'><?php echo __("if you change, images will have to be reloaded, they remain in their storage 'state'.", 'cp-communitie'); ?></span></span></td> 
+				<span class="description"><?php echo __('Standardmäßig deaktiviert, um im Dateisystem zu speichern (empfohlen). Wähle zum Hochladen in die Datenbank', 'cp-communitie').' - '; ?><span style='font-weight:bold; text-decoration: underline'><?php echo __("Wenn Du änderst, müssen Bilder neu geladen werden, sie bleiben in ihrem Speicherzustand.", 'cp-communitie'); ?></span></span></td> 
 				</tr> 
 				
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') != "on") { ?>
 					
 					<tr valign="top" style='border-top: 1px dashed #666; border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-					<td class="highlighted_row" scope="row"><label for="img_path"><?php echo __('Images directory', 'cp-communitie'); ?></label></td> 
+					<td class="highlighted_row" scope="row"><label for="img_path"><?php echo __('Bildverzeichnis', 'cp-communitie'); ?></label></td> 
 					<td class="highlighted_row"><input name="img_path" type="text" id="img_path"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_img_path'); ?>" class="regular-text" /> 
 					<span class="description">
-					<?php echo __('Image upload directory, eg:', 'cp-communitie').' '.WP_CONTENT_DIR.'/cpc-content'; ?>
-					<input type="button" onclick="document.getElementById('img_path').value='<?php echo WP_CONTENT_DIR.'/cpc-content'; ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
+					<?php echo __('Bild-Upload-Verzeichnis, zB:', 'cp-communitie').' '.WP_CONTENT_DIR.'/cpc-content'; ?>
+					<input type="button" onclick="document.getElementById('img_path').value='<?php echo WP_CONTENT_DIR.'/cpc-content'; ?>'" value="<?php _e('Empfehlen', 'cp-communitie'); ?>" class="button" /></td> 
 					</tr> 					
 					
 					<tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-					<td class="highlighted_row" scope="row"><label for="img_url"><?php echo __('Images URL', 'cp-communitie'); ?></label></td> 
+					<td class="highlighted_row" scope="row"><label for="img_url"><?php echo __('Bild-URL', 'cp-communitie'); ?></label></td> 
 					<td class="highlighted_row"><input name="img_url" type="text" id="img_url"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_img_url'); ?>" class="regular-text" /> 
 					<?php $url = WP_CONTENT_URL.'/cpc-content'; $url = str_replace(__cpc__siteURL(), '', $url); ?>
-					<span class="description"><?php echo __('URL to the images directory, Do not include http:// or your domain name eg: ', 'cp-communitie').' <a href="'.$url.'">'.$url.'</a>'; ?>
-					<input type="button" onclick="document.getElementById('img_url').value='<?php echo $url; ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
+					<span class="description"><?php echo __('URL zum Bildverzeichnis, ohne http:// oder Ihren Domainnamen, z. B.: ', 'cp-communitie').' <a href="'.$url.'">'.$url.'</a>'; ?>
+					<input type="button" onclick="document.getElementById('img_url').value='<?php echo $url; ?>'" value="<?php _e('Empfehlen', 'cp-communitie'); ?>" class="button" /></td> 
 					</tr> 					
 	
 					<tr valign="top" style='border-right: 1px dashed #666; border-bottom: 1px dashed #666; border-left: 1px dashed #666; '> 
 					<td class="highlighted_row" colspan=2>
 						<?php $img_tmp = ini_get('upload_tmp_dir'); ?>
-						<?php echo __('For information, from PHP.INI on your server, the PHP temporary upload folder is:', 'cp-communitie').' '.$img_tmp; ?>
-						<?php if ($img_tmp == '') { echo '<strong>'.__("You need to <a href='http://uk.php.net/manual/en/ini.core.php#ini.upload-tmp-dir'>set this in your php.ini</a> file", 'cp-communitie').'</strong>'; } ?>
+						<?php echo __('Zur Information, aus der PHP.INI auf Deinem Server lautet der temporäre PHP-Upload-Ordner:', 'cp-communitie').' '.$img_tmp; ?>
+						<?php if ($img_tmp == '') { echo '<strong>'.__("Du musst dies <a href='http://uk.php.net/manual/en/ini.core.php#ini.upload-tmp-dir'>in Deiner php.ini</a>-Datei festlegen", 'cp-communitie').'</strong>'; } ?>
 					</td>
 					</tr> 	
 	
@@ -5110,51 +5110,51 @@ function __cpc__plugin_settings() {
 				<?php } ?>
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="images"><?php echo sprintf(__('%s images URL', 'cp-communitie'), CPC_WL_SHORT); ?></label></td> 
+				<td scope="row"><label for="images"><?php echo sprintf(__('%s Bilder-URL', 'cp-communitie'), CPC_WL_SHORT); ?></label></td> 
 				<td><input name="images" type="text" id="images" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_images'); ?>"/> 
-				<span class="description"><?php echo __('Change if you want to create your own set of custom images.', 'cp-communitie'); ?></span>
-				<input type="button" onclick="document.getElementById('images').value='<?php echo str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL.'/images'); ?>'" value="<?php _e('Suggest', 'cp-communitie'); ?>" class="button" /></td> 
+				<span class="description"><?php echo __('Ändere ob Du Deinen eigenen Satz benutzerdefinierter Bilder erstellen möchtest.', 'cp-communitie'); ?></span>
+				<input type="button" onclick="document.getElementById('images').value='<?php echo str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL.'/images'); ?>'" value="<?php _e('Empfehlen', 'cp-communitie'); ?>" class="button" /></td> 
 				</tr> 
 					
 				<tr valign="top"> 
-				<td scope="row"><label for="img_crop"><?php echo __('Crop avatar images', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="img_crop"><?php echo __('Avatarbilder zuschneiden', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="img_crop" id="img_crop" <?php if (get_option(CPC_OPTIONS_PREFIX.'_img_crop') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __("Allow uploaded images to be cropped</span>", 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __("Zuschneiden hochgeladener Bilder zulassen</span>", 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="image_ext"><?php echo __('Image extensions', 'cp-communitie'); ?></label></td> 
+				<td scope="row"><label for="image_ext"><?php echo __('Bilderweiterungen', 'cp-communitie'); ?></label></td> 
 				<td><input name="image_ext" type="text" id="image_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_image_ext'); ?>"/> 
-				<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. *.jpg,*.jpeg,*.png and *.gif supported.', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Eine durch Kommas getrennte Liste zulässiger Dateierweiterungen, leer lassen für keine. *.jpg,*.jpeg,*.png und *.gif unterstützt.', 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_img_db') != "on") { ?>
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="video_ext"><?php echo __('Videoerweiterungen', 'cp-communitie'); ?></label></td> 
 					<td><input name="video_ext" type="text" id="video_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_video_ext'); ?>"/> 
-					<span class="description"><?php echo sprintf(__('A comma separated list of permitted file extensions, leave blank for none. H.264 format supported, <a %s>see here</a>.', 'cp-communitie'), 'href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/12539/supported-video-and-audio-formats" target="_blank"'); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Eine durch Kommas getrennte Liste zulässiger Dateierweiterungen, leer lassen für keine. H.264-Format wird unterstützt, <a %s>siehe hier</a>.', 'cp-communitie'), 'href="http://www.longtailvideo.com/support/jw-player/jw-player-for-flash-v5/12539/supported-video-and-audio-formats" target="_blank"'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="doc_ext"><?php echo __('Dokumenterweiterungen', 'cp-communitie'); ?></label></td> 
 					<td><input name="doc_ext" type="text" id="doc_ext" class="regular-text" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_doc_ext'); ?>"/> 
-					<span class="description"><?php echo __('A comma separated list of permitted file extensions, leave blank for none. Viewed in separate window or downloaded.', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Eine durch Kommas getrennte Liste zulässiger Dateierweiterungen, leer lassen für keine. In separatem Fenster angezeigt oder heruntergeladen.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 					
 				<?php } else { ?>
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="video_ext"><?php echo __('Video extensions', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="video_ext"><?php echo __('Videoerweiterungen', 'cp-communitie'); ?></label></td> 
 					<td><input name="video_ext" type="hidden" id="video_ext" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_video_ext'); ?>"/> 
-					<span class="description"><?php echo __('Sorry, videos can only be saved when storing to the filesystem.', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Entschuldigung, Videos können nur gespeichert werden, wenn sie im Dateisystem gespeichert werden.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="doc_ext"><?php echo __('Document extensions', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="doc_ext"><?php echo __('Dokumenterweiterungen', 'cp-communitie'); ?></label></td> 
 					<td><input name="doc_ext" type="hidden" id="doc_ext" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_doc_ext'); ?>"/> 
-					<span class="description"><?php echo __('Sorry, documents can only be saved when storing to the filesystem.', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Entschuldigung, Dokumente können nur beim Speichern im Dateisystem gespeichert werden.', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 				<?php } ?>
@@ -5162,113 +5162,112 @@ function __cpc__plugin_settings() {
 			<?php } ?>
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="email_footer"><?php echo __('Email Notifications', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="email_footer"><?php echo __('E-Mail Benachrichtigungen', 'cp-communitie'); ?></label></td> 
 			<td><input name="email_footer" type="text" id="email_footer"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_footer')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('Footer appended to notification emails', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Fußzeile an Benachrichtigungs-E-Mails angehängt', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="from_email">&nbsp;</label></td> 
 			<td><input name="from_email" type="text" id="from_email"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_from_email'); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('Email address used for email notifications', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('E-Mail-Adresse, die für E-Mail-Benachrichtigungen verwendet wird', 'cp-communitie'); ?></span></td> 
 			</tr> 
 										
 			<tr valign="top"> 
-			<td scope="row"><label for="subject_mail_new"><?php echo __('Mail subject lines', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="subject_mail_new"><?php echo __('Mail Betreffzeile', 'cp-communitie'); ?></label></td> 
 			<td><input name="subject_mail_new" type="text" id="subject_mail_new"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_mail_new')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Mail Message, [subject] will be replaced by the message subject', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Neue E-Mail-Nachricht, [subject] wird durch den Betreff der Nachricht ersetzt', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="subject_forum_new">&nbsp;</label></td> 
 			<td><input name="subject_forum_new" type="text" id="subject_forum_new"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_forum_new')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Forum Topic, [topic] will be replaced by the topic subject', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Neues Forumsthema, [topic] wird durch das Thema Betreff ersetzt', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
 			<td scope="row"><label for="subject_forum_reply">&nbsp;</label></td> 
 			<td><input name="subject_forum_reply" type="text" id="subject_forum_reply"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_subject_forum_reply')); ?>" class="regular-text" /> 
-			<span class="description"><?php echo __('New Forum Reply, [topic] will be replaced by the topic subject', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Neue Forumsantwort, [topic] wird durch den Betreff des Themas ersetzt', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="wp_width"><?php echo __('Width', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="wp_width"><?php echo __('Breite', 'cp-communitie'); ?></label></td>
 			<td><input name="wp_width" type="text" id="wp_width" style="width:50px" value="<?php echo str_replace('pc', '%', get_option(CPC_OPTIONS_PREFIX.'_wp_width')); ?>"/> 
-			<span class="description"><?php echo sprintf(__('Width of all %s plugins, eg: 600px or 100%%', 'cp-communitie'), CPC_WL); ?></span></td> 
+			<span class="description"><?php echo sprintf(__('Breite aller %s Plugins, zB: 600px oder 100%%', 'cp-communitie'), CPC_WL); ?></span></td> 
 			</tr> 
 
 			<tr valign="top">
-			<td scope="row"><label for="wp_alignment"><?php echo __('Alignment', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="wp_alignment"><?php echo __('Ausrichtung', 'cp-communitie'); ?></label></td> 
 			<td>
 			<select name="wp_alignment">
-				<option value='Left'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Left') { echo ' SELECTED'; } ?>><?php echo __('Left', 'cp-communitie'); ?></option>
-				<option value='Center'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Center') { echo ' SELECTED'; } ?>><?php echo __('Center', 'cp-communitie'); ?></option>
-				<option value='Right'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Right') { echo ' SELECTED'; } ?>><?php echo __('Right', 'cp-communitie'); ?></option>
+				<option value='Left'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Left') { echo ' SELECTED'; } ?>><?php echo __('Links', 'cp-communitie'); ?></option>
+				<option value='Center'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Center') { echo ' SELECTED'; } ?>><?php echo __('Zentriert', 'cp-communitie'); ?></option>
+				<option value='Right'<?php if (get_option(CPC_OPTIONS_PREFIX.'_wp_alignment') == 'Right') { echo ' SELECTED'; } ?>><?php echo __('Rechts', 'cp-communitie'); ?></option>
 			</select> 
-			<span class="description"><?php echo sprintf(__('Alignment of all %s plugins', 'cp-communitie'), CPC_WL); ?></span></td> 
+			<span class="description"><?php echo sprintf(__('Ausrichtung aller %s-Plugins', 'cp-communitie'), CPC_WL); ?></span></td> 
 			</tr> 		
 
 			<tr valign="top"> 
-			<td scope="row"><label for="show_buttons"><?php echo __('Buttons on Activity pages', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="show_buttons"><?php echo __('Schaltflächen auf Aktivitätsseiten', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="show_buttons" id="show_buttons" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Pressing return submits a post/comment, select this option to also show submit buttons.</span>", 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __("Durch Drücken der Eingabetaste wird ein Beitrag/Kommentar gesendet. Wähle diese Option, um auch Schaltflächen zum Senden anzuzeigen.</span>", 'cp-communitie'); ?></span></td> 
 			</tr>
 			<?php 
 			if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == 'on') {
 				?>
 				<tr valign="top"> 
-				<td scope="row"><label for="use_wysiwyg_media_manager"><?php echo __('Use media manager', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="use_wysiwyg_media_manager"><?php echo __('Verwende den Medienmanager', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="use_wysiwyg_media_manager" id="use_wysiwyg_media_manager" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_media_manager') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __("Will switch from entering an image URL (when inserting an image) to a list of images in the ClassicPress media manager.</span>", 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __("Wechselt von der Eingabe einer Bild-URL (beim Einfügen eines Bildes) zu einer Liste von Bildern im ClassicPress-Medienmanager.</span>", 'cp-communitie'); ?></span></td> 
 				</tr>
 			<?php } ?>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="striptags"><?php echo __('Strip tags', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="striptags"><?php echo __('Tags entfernen', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="striptags" id="striptags" <?php if (get_option(CPC_OPTIONS_PREFIX.'_striptags') == "on") { echo "CHECKED"; } ?>/>
 			<span class="description"><?php 
-			echo __("Completely remove HTML/script tags. If unchecked &lt; and &gt; will be replaced with &amp;lt; and &amp;gt;.", 'cp-communitie'); 
-			echo "<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;".__("NB. The Bronze member WYSIWYG editor, if in use, will display tags, whatever you set here, but not interpret them.", 'cp-communitie'); 
+			echo __("HTML/Script-Tags vollständig entfernen. Wenn nicht markiert &lt; und &gt; wird ersetzt durch &amp;lt; und &amp;gt;.", 'cp-communitie'); 
 			?></span></td> 
 			</tr>
 								
 			<tr valign="top"> 
-			<td scope="row"><label for="allow_reports"><?php echo __('Allow reports', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="allow_reports"><?php echo __('Berichte zulassen', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="allow_reports" id="allow_reports" <?php if (get_option(CPC_OPTIONS_PREFIX.'_allow_reports') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Shows a warning symbol to report content to the site administrator.", 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __("Zeigt ein Warnsymbol an, um Inhalte an den Webseiten-Administrator zu melden.", 'cp-communitie'); ?></span></td> 
 			</tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="basic_upload"><?php echo __('Basic File Upload', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="basic_upload"><?php echo __('Einfacher Datei-Upload', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="basic_upload" id="basic_upload" <?php if (get_option(CPC_OPTIONS_PREFIX.'_basic_upload') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __("Use basic HTML file upload to avoid clashes with themes and plugins.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Cannot crop avatars, and some features of upload reduced.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Can only be used when storing images on the filesystem.", 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __("Verwende das einfache Hochladen von HTML-Dateien, um Konflikte mit Designs und Plugins zu vermeiden.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Avatare können nicht zugeschnitten werden und einige Upload-Funktionen sind eingeschränkt.", 'cp-communitie'); ?><br /><?php echo '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' . __("Kann nur verwendet werden, wenn Bilder im Dateisystem gespeichert werden.", 'cp-communitie'); ?></span></td> 
 			</tr>
 			
 			<?php if (!$readonly) { ?>
 
 				<tr valign="top"> 
-				<td scope="row"><label for="cpc_login_url"><?php echo __('Login Page URL', 'cp-communitie'); ?></label></td> 
+				<td scope="row"><label for="cpc_login_url"><?php echo __('URL der Anmeldeseite', 'cp-communitie'); ?></label></td> 
 				<td><input name="cpc_login_url" type="text" id="cpc_login_url"  value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_cpc_login_url')); ?>" class="regular-text" /> 
-				<span class="description"><?php echo __('Override link to login page. [url] is substituted with current page URL.', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Link zur Anmeldeseite überschreiben. [url] wird durch die URL der aktuellen Seite ersetzt.', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="always_load"><?php echo sprintf(__('Load %s on every page', 'cp-communitie'), CPC_WL_SHORT); ?></label></td>
+				<td scope="row"><label for="always_load"><?php echo sprintf(__('Lade %s auf jeder Seite', 'cp-communitie'), CPC_WL_SHORT); ?></label></td>
 				<td>
 				<input type="checkbox" name="always_load" id="always_load" <?php if (get_option(CPC_OPTIONS_PREFIX.'_always_load') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Will always load %s components, or attempt a check if required.", 'cp-communitie'), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Lädt immer %s Komponenten oder versucht eine Überprüfung ob Bedarf besteht.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 
 				<tr valign="top"> 
-				<td scope="row"><label for="long_menu"><?php echo __('Admin Tabs', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="long_menu"><?php echo __('Admin-Tabs', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="long_menu" id="cpcommunitie_long_menu" <?php if (get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Reduce %s admin menu items and show as tabs.", 'cp-communitie'), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("%s Admin-Menüpunkte reduzieren und als Tabs anzeigen.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 			<?php } ?>				
 
@@ -5284,67 +5283,67 @@ function __cpc__plugin_settings() {
 			if (!$readonly) { ?>
 			
 				<tr valign="top"> 
-				<td colspan="2"><?php echo '<h2>'.__('Troubleshooting', 'cp-communitie').'</h2>'; echo __('The following may solve clashes with other ClassicPress plugins, etc.', 'cp-communitie'); ?>:</td>
+				<td colspan="2"><?php echo '<h2>'.__('Fehlerbehebung', 'cp-communitie').'</h2>'; echo __('Das Folgende kann Konflikte mit anderen ClassicPress-Plugins usw. lösen.', 'cp-communitie'); ?>:</td>
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="jquery"><?php echo __('Load jQuery', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="jquery"><?php echo __('Lade jQuery', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jquery" id="jquery" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jquery') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load jQuery on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Lade jQuery auf Nicht-Admin-Seiten, deaktiviere es, wenn es Probleme verursacht', 'cp-communitie'); ?></span></td> 
 				</tr> 
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="jqueryui"><?php echo __('Load jQuery UI', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="jqueryui"><?php echo __('Lade jQuery UI', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jqueryui" id="jqueryui" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jqueryui') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load jQuery UI on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Lade die jQuery-Benutzeroberfläche auf Nicht-Admin-Seiten, deaktiviere sie, wenn sie Probleme verursacht', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="tinymce"><?php echo __('Do NOT TinyMCE', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="tinymce"><?php echo __('Nicht TinyMCE', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="tinymce" id="tinymce" <?php if (get_option(CPC_OPTIONS_PREFIX.'_tinymce') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Do NOT load TinyMCE on non-admin pages, check if causing problems', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Lade TinyMCE NICHT auf Nicht-Admin-Seiten, deaktviere es, wenn es Probleme verursacht', 'cp-communitie'); ?></span></td> 
 				</tr> 
 
 				<tr valign="top"> 
-				<td scope="row"><label for="jscharts"><?php echo __('Load JScharts/Jcrop', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="jscharts"><?php echo __('Lade JScharts/Jcrop', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jscharts" id="jscharts" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jscharts') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load JSCharts and Jcrop on non-admin pages, disable if causing problems', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Lade JSCharts und Jcrop auf Nicht-Admin-Seiten, deaktiviere sie, wenn sie Probleme verursachen', 'cp-communitie'); ?></span></td> 
 				</tr>					
 			
 				<tr valign="top"> 
-				<td scope="row"><label for="jwplayer"><?php echo __('Load JW Player', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="jwplayer"><?php echo __('Lade JW Player', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="jwplayer" id="jwplayer" <?php if (get_option(CPC_OPTIONS_PREFIX.'_jwplayer') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Load JW Player for forum video uploads, disable if not required', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Lade den JW Player für das Hochladen von Forenvideos, deaktiviere ihn, falls nicht erforderlich', 'cp-communitie'); ?></span></td> 
 				</tr> 
 			
 				<tr valign="top"> 
 				<td scope="row"><label for="emoticons"><?php echo __('Smilies/Emoticons', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="emoticons" id="emoticons" <?php if (get_option(CPC_OPTIONS_PREFIX.'_emoticons') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Automatically replace smilies/emoticons with graphical images', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Smileys/Emoticons automatisch durch grafische Bilder ersetzen', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 														
 				<tr valign="top"> 
-				<td scope="row"><label for="elastic"><?php echo __('Elastic Textboxes', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="elastic"><?php echo __('Elastische Textfelder', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="elastic" id="elastic" <?php if (get_option(CPC_OPTIONS_PREFIX.'_elastic') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('Include jQuery elastic function (automatically expand textboxes)', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Elastische jQuery-Funktion einschließen (Textfelder automatisch erweitern)', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="force_utf8"><?php echo __('Force UTF8 decoding', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="force_utf8"><?php echo __('UTF8-Decodierung erzwingen', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="force_utf8" id="force_utf8" <?php if (get_option(CPC_OPTIONS_PREFIX.'_force_utf8') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo __('May solve accented characters not displaying properly', 'cp-communitie'); ?></span></td> 
+				<span class="description"><?php echo __('Kann akzentuierte Zeichen lösen, die nicht richtig angezeigt werden', 'cp-communitie'); ?></span></td> 
 				</tr> 		
 	
 				<tr valign="top"> 
-				<td colspan="2"><h2><?php echo __('Developers only', 'cp-communitie'); ?></h2></td>
+				<td colspan="2"><h2><?php echo __('Nur für Entwickler', 'cp-communitie'); ?></h2></td>
 				</tr> 
 	
 				<tr valign="top"> 
@@ -5352,17 +5351,17 @@ function __cpc__plugin_settings() {
 				<td>
 				<input type="checkbox" name="audit" id="cpcommunitie_audit" <?php if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") { echo "CHECKED"; } ?>/>
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_audit') == "on") { ?>
-					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (<a href='%s'>analyse</a>).", 'cp-communitie'), esc_url( admin_url('admin.php?page=cpcommunitie_audit') )); ?></span></td> 
+					<span class="description"><?php echo sprintf(__("Aktiviere die Überwachung wichtiger Ereignisse (<a href='%s'>analyse</a>).", 'cp-communitie'), esc_url( admin_url('admin.php?page=cpcommunitie_audit') )); ?></span></td> 
 				<?php } else { ?>
-					<span class="description"><?php echo sprintf(__("Switch on auditing of key events (results then available via %s->Manage->Audit).", 'cp-communitie'), CPC_WL); ?></span></td>
+					<span class="description"><?php echo sprintf(__("Auditing von Schlüsselereignissen einschalten (Ergebnisse dann verfügbar über %s->Manage->Audit).", 'cp-communitie'), CPC_WL); ?></span></td>
 				<?php } ?>
 				</tr>
 	
 				<tr valign="top"> 
-				<td scope="row"><label for="debug_mode"><?php echo __('Debug mode', 'cp-communitie'); ?></label></td>
+				<td scope="row"><label for="debug_mode"><?php echo __('Debug-Modus', 'cp-communitie'); ?></label></td>
 				<td>
 				<input type="checkbox" name="debug_mode" id="debug_mode" <?php if (get_option(CPC_OPTIONS_PREFIX.'_debug_mode') == "on") { echo "CHECKED"; } ?>/>
-				<span class="description"><?php echo sprintf(__("Display additional %s information on-screen and in dialog boxes.", 'cp-communitie'), CPC_WL); ?></span></td> 
+				<span class="description"><?php echo sprintf(__("Zeige zusätzliche %s-Informationen auf dem Bildschirm und in Dialogfeldern an.", 'cp-communitie'), CPC_WL); ?></span></td> 
 				</tr>
 				
 			<?php } ?>			
@@ -5370,7 +5369,7 @@ function __cpc__plugin_settings() {
 			</table>
 			 
 			<p class="submit" style="margin-left:6px"> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 			</p> 
 			
 			<?php
@@ -5529,7 +5528,7 @@ function __cpc__plugin_forum() {
 			update_option(CPC_OPTIONS_PREFIX.'_forum_reply_comment', serialize($level));	
 			
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Gespeichert', 'cp-communitie').".</p></div>";
 
 		}
 		
@@ -5542,19 +5541,19 @@ function __cpc__plugin_forum() {
 		
 			<tr><td colspan="2">
 			<div style="float: right; margin-top:-15px;">
-			<?php echo '<a href="admin.php?page=cpcommunitie_categories">'.__('Go to Forum Management', 'cp-communitie').'</a>'; ?>
+			<?php echo '<a href="admin.php?page=cpcommunitie_categories">'.__('Gehe zur Forenverwaltung', 'cp-communitie').'</a>'; ?>
 			</div>
 			<h2>Editor</h2></td></tr>
 
             <tr valign="top"> 
-            <td scope="row"><label for="use_wysiwyg_width"><?php echo __('Width', 'cp-communitie'); ?></label></td>
-            <td><span class="description"><?php echo __('Width of editor (eg: 300px or 100%)', 'cp-communitie'); ?></span><br />
+            <td scope="row"><label for="use_wysiwyg_width"><?php echo __('Breite', 'cp-communitie'); ?></label></td>
+            <td><span class="description"><?php echo __('Breite des Editors (zB: 300px oder 100%)', 'cp-communitie'); ?></span><br />
             <input name="use_wysiwyg_width" type="text" id="use_wysiwyg_width"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_width'); ?>" />
             </td> 
             </tr> 
             <tr valign="top"> 
-            <td scope="row"><label for="use_wysiwyg_height"><?php echo __('Height', 'cp-communitie'); ?></label></td>
-            <td><span class="description"><?php echo __('Height of editor (eg: 250px)', 'cp-communitie'); ?></span><br />
+            <td scope="row"><label for="use_wysiwyg_height"><?php echo __('Höhe', 'cp-communitie'); ?></label></td>
+            <td><span class="description"><?php echo __('Höhe des Editors (zB: 250px)', 'cp-communitie'); ?></span><br />
             <input name="use_wysiwyg_height" type="text" id="use_wysiwyg_height"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_height'); ?>" />
             </td> 
             </tr> 
@@ -5562,19 +5561,19 @@ function __cpc__plugin_forum() {
 			<?php if (get_option(CPC_OPTIONS_PREFIX.'__cpc__wysiwyg_activated') || get_option(CPC_OPTIONS_PREFIX.'__cpc__wysiwyg_network_activated')) { ?>
 
 	            <tr valign="top"> 
-	            <td scope="row"><label for="use_bbcode"><?php echo __('BB Code toolbar', 'cp-communitie'); ?></label></td>
+	            <td scope="row"><label for="use_bbcode"><?php echo __('BB-Code-Symbolleiste', 'cp-communitie'); ?></label></td>
 	            <td>
 	            <input type="checkbox" name="use_bbcode" id="use_bbcode" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_bbcode') == "on") { echo "CHECKED"; } ?>/>
 	            <span class="description">
-	            <?php echo __('Use BB Code toolbar on the forums (cannot be used with WYSIWYG editor).', 'cp-communitie'); ?><br />
+	            <?php echo __('Verwende die BB-Code-Symbolleiste in den Foren (kann nicht mit dem WYSIWYG-Editor verwendet werden).', 'cp-communitie'); ?><br />
 	            </span></td> 
 	            </tr> 
 
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_bbcode') == 'on') { ?>
                     <tr valign="top" style='border-bottom: 1px dashed #666;border-right: 1px dashed #666; border-left: 1px dashed #666; border-top: 1px dashed #666;'> 
-                    <td class="highlighted_row" scope="row"><label for="use_bbcode_icons"><?php echo __('BB Code toolbar icons', 'cp-communitie').'<br />bold|italic|underline|link|quote|code'; ?></label></td>
+                    <td class="highlighted_row" scope="row"><label for="use_bbcode_icons"><?php echo __('BB-Code-Symbolleistensymbole', 'cp-communitie').'<br />bold|italic|underline|link|quote|code'; ?></label></td>
                     <td class="highlighted_row"><span class="description">
-                    	<?php echo __('Icons to include in the BB Code toolbar.', 'cp-communitie'); ?></span><br />
+                    	<?php echo __('Symbole, die in die BB-Code-Symbolleiste aufgenommen werden sollen.', 'cp-communitie'); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons')) update_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons', 'bold|italic|underline|link|quote|code'); ?>
                     <input name="use_bbcode_icons" style="width:350px" type="text" id="use_bbcode_icons"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_bbcode_icons'); ?>" />
                     </td> 
@@ -5586,52 +5585,52 @@ function __cpc__plugin_forum() {
                 ?>
 
                 <tr valign="top"> 
-                <td scope="row"><label for="use_wysiwyg"><?php echo __('WYSIWYG editor', 'cp-communitie'); ?></label></td>
+                <td scope="row"><label for="use_wysiwyg"><?php echo __('WYSIWYG-Editor', 'cp-communitie'); ?></label></td>
                 <td>
                 <input type="checkbox" name="use_wysiwyg" id="use_wysiwyg" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == "on") { echo "CHECKED"; } ?>/>
                 <span class="description">
-                <?php echo __('Use the TinyMCE WYSIWYG editor/toolbar on the forums.', 'cp-communitie'); ?><br />
-                <?php echo __('NB. Some themes cause layout problems with TinyMCE. Verified with TwentyEleven and tested with many others, but', 'cp-communitie'); ?><br />
-                <?php echo __('if your editor toolbar layout is broken, check your theme stylesheets.', 'cp-communitie'); ?>
+                <?php echo __('Verwende den TinyMCE WYSIWYG-Editor/die Symbolleiste in den Foren.', 'cp-communitie'); ?><br />
+                <?php echo __('NB. Einige Themes verursachen Layoutprobleme mit TinyMCE. Mit TwentyEleven verifiziert und mit vielen anderen getestet, aber', 'cp-communitie'); ?><br />
+                <?php echo __('wenn das Layout Deiner Editor-Symbolleiste defekt ist, überprüfe Deine Design-Stylesheets.', 'cp-communitie'); ?>
                 </span></td> 
                 </tr> 
             	                
 				<?php if (get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg') == 'on') { ?>					
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; border-top: 1px dashed #666;'> 
-                    <td scope="row" class="highlighted_row"><label for="include_context"><?php echo __('Context menu', 'cp-communitie'); ?></label></td>
+                    <td scope="row" class="highlighted_row"><label for="include_context"><?php echo __('Kontextmenü', 'cp-communitie'); ?></label></td>
                     <td class="highlighted_row">
                     <input type="checkbox" name="include_context" id="include_context" <?php if (get_option(CPC_OPTIONS_PREFIX.'_include_context') == "on") { echo "CHECKED"; } ?>/>
-                    <span class="description"><?php echo __('Activate right-mouse click context menu.', 'cp-communitie'); ?></span></td> 
+                    <span class="description"><?php echo __('Rechtsklick-Kontextmenü aktivieren.', 'cp-communitie'); ?></span></td> 
                     </tr> 
                 
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666;'> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_1"><?php echo __('Editor Toolbars', 'cp-communitie'); ?><br />
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_1"><?php echo __('Editor-Symbolleisten', 'cp-communitie'); ?><br />
                     <a href="http://www.tinymce.com/wiki.php/Buttons/controls" target="_blank"><?php echo __('See all buttons/controls', 'cp-communitie') ?></a><br />
-                    <a href="javascript:void(0);" id="use_wysiwyg_reset"><?php echo __('Reset (full)', 'cp-communitie'); ?></a><br />
-                    <a href="javascript:void(0);" id="use_wysiwyg_reset_min"><?php echo __('Reset (minimal)', 'cp-communitie'); ?></a>
+                    <a href="javascript:void(0);" id="use_wysiwyg_reset"><?php echo __('Zurücksetzen (vollständig)', 'cp-communitie'); ?></a><br />
+                    <a href="javascript:void(0);" id="use_wysiwyg_reset_min"><?php echo __('Zurücksetzen (minimal)', 'cp-communitie'); ?></a>
                     </label></td>
                     <td class="highlighted_row">
-                        <span class="description"><?php echo __('Toolbar row 1', 'cp-communitie'); ?></span><br />
+                        <span class="description"><?php echo __('Symbolleiste Zeile 1', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_1" style="width:350px; height:80px" id="use_wysiwyg_1"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_1'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 2', 'cp-communitie'); ?></span><br />
+                        <span class="description"><?php echo __('Symbolleiste Zeile 2', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_2" style="width:350px; height:80px" id="use_wysiwyg_2"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_2'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 3', 'cp-communitie'); ?></span><br />
+                        <span class="description"><?php echo __('Symbolleiste Zeile 3', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_3" style="width:350px; height:80px" id="use_wysiwyg_3"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_3'); ?></textarea><br />
-                        <span class="description"><?php echo __('Toolbar row 4', 'cp-communitie'); ?></span><br />
+                        <span class="description"><?php echo __('Symbolleiste Zeile 4', 'cp-communitie'); ?></span><br />
                         <textarea name="use_wysiwyg_4" style="width:350px; height:80px" id="use_wysiwyg_4"><?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_4'); ?></textarea><br />
                     </td> 
                     </tr> 
                     <tr valign="top" style='border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_css"><?php echo __('Editor CSS', 'cp-communitie'); ?></label></td>
-                    <td class="highlighted_row"><span class="description"><?php echo __('Path for CSS file, eg:', 'cp-communitie').' '.str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css"); ?></span><br />
-                    <span class="description"><?php echo __('You may need to clear your browsing cache if changing the content of the file.', 'cp-communitie'); ?></span><br />
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_css"><?php echo __('Editor-CSS', 'cp-communitie'); ?></label></td>
+                    <td class="highlighted_row"><span class="description"><?php echo __('Pfad für CSS-Datei, zB:', 'cp-communitie').' '.str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css"); ?></span><br />
+                    <span class="description"><?php echo __('Möglicherweise musst Du Deinen Browser-Cache löschen, wenn Du den Inhalt der Datei änderst.', 'cp-communitie'); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css')) update_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css', str_replace(__cpc__siteURL(), '', CPC_PLUGIN_URL."/tiny_mce/themes/advanced/skins/cpc.css")); ?>
                     <input name="use_wysiwyg_css" style="width:350px" type="text" id="use_wysiwyg_css"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_css'); ?>" />
                     </td> 
                     </tr> 
                     <tr valign="top" style='border-bottom: 1px dashed #666; border-right: 1px dashed #666; border-left: 1px dashed #666; '> 
-                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_skin"><?php echo __('Skin folder', 'cp-communitie'); ?></label></td>
-                    <td class="highlighted_row"><span class="description"><?php echo sprintf(__('Folders are stored in %s/tiny_mce/themes/advanced/skins; eg: cirkuit', 'cp-communitie'), str_replace(get_bloginfo('url'), '', CPC_PLUGIN_URL)); ?></span><br />
+                    <td class="highlighted_row" scope="row"><label for="use_wysiwyg_skin"><?php echo __('Skin-Ordner', 'cp-communitie'); ?></label></td>
+                    <td class="highlighted_row"><span class="description"><?php echo sprintf(__('Ordner werden in %s/tiny_mce/themes/advanced/skins gespeichert; zB: cirkuit', 'cp-communitie'), str_replace(get_bloginfo('url'), '', CPC_PLUGIN_URL)); ?></span><br />
                     <?php if (!get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin')) update_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin', 'cirkuit'); ?>
                     <input name="use_wysiwyg_skin" type="text" id="use_wysiwyg_skin"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_skin'); ?>" />
                     </td> 
@@ -5648,8 +5647,7 @@ function __cpc__plugin_forum() {
 			} else {
 
 				echo '<tr valign="top"><td colspan="2">';
-				echo __("To access WYSWIYG forum editor and BB Code Toolbar settings, <a href='admin.php?page=cpcommunitie_debug'>activate the Bronze member feature</a>.", 'cp-communitie').'<br />';
-				echo '<em>NB. Some themes cause layout problems with TinyMCE WYSIWYG editor. The editor is verified with TwentyTwelve and tested with many others, but if your editor toolbar layout is broken, check your theme stylesheets.</em>';
+				echo '<em>NB. Einige Themen verursachen Layoutprobleme mit dem TinyMCE WYSIWYG-Editor. Der Editor wurde mit TwentyTwelve verifiziert und mit vielen anderen getestet, aber wenn das Layout Deiner Editor-Symbolleiste defekt ist, überprüfe Deine Design-Stylesheets.</em>';
 				echo '</td></tr>';
 				
 				echo '<input type="hidden" name="use_wysiwyg" id="use_wysiwyg" value="'.get_option(CPC_OPTIONS_PREFIX.'_use_wysiwyg_1').'" />';
@@ -5658,17 +5656,17 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><h2>AJAX/Refresh</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_ajax"><?php echo __('Use AJAX', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_ajax"><?php echo __('Verwende AJAX', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_ajax" id="forum_ajax" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Use AJAX, or hyperlinks and page re-loading?', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Verwende AJAX oder Hyperlinks und Seitenneuladen?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_refresh"><?php echo __('Refresh forum after reply', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_refresh"><?php echo __('Forum nach Antwort aktualisieren', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_refresh" id="forum_refresh" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_refresh') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Reload the page after posting a reply on the forum.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Lade die Seite neu, nachdem Du eine Antwort im Forum gepostet hast.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr><td colspan="2"><h2>Moderation</h2></td></tr>
@@ -5677,78 +5675,78 @@ function __cpc__plugin_forum() {
 			<td scope="row"><label for="moderation"><?php echo __('Moderation', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation" id="moderation" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('New topics and posts require admin approval', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Neue Themen und Beiträge müssen vom Administrator genehmigt werden', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_email_rejected"><?php echo __('Rejection email', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="moderation_email_rejected"><?php echo __('Ablehnungs-E-Mail', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation_email_rejected" id="moderation_email_rejected" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_rejected') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Send email to user when forum post rejected', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('E-Mail an Benutzer senden, wenn Forumsbeitrag abgelehnt wurde', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_email_accepted"><?php echo __('Accepted email', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="moderation_email_accepted"><?php echo __('Akzeptiert-E-Mail', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="moderation_email_accepted" id="moderation_email_accepted" <?php if (get_option(CPC_OPTIONS_PREFIX.'_moderation_email_accepted') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Send email to user when forum post accepted', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('E-Mail an den Benutzer senden, wenn der Forumsbeitrag angenommen wurde', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
-			<tr><td colspan="2"><h2>Attachments</h2></td></tr>
+			<tr><td colspan="2"><h2>Anhänge</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_uploads"><?php echo __('Allow uploads', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_uploads"><?php echo __('Hochladen zulassen', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_uploads" id="forum_uploads" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_uploads') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow members to upload files with forum posts (requires Flash to be installed)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Mitgliedern erlauben, Dateien mit Forumsbeiträgen hochzuladen', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_thumbs"><?php echo __('Inline attachments', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_thumbs"><?php echo __('Inline-Anhänge', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_thumbs" id="forum_thumbs" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_thumbs') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show uploaded forum attachments as images/videos (not links). Documents are always links.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Hochgeladene Forenanhänge als Bilder/Videos (keine Links) anzeigen. Dokumente sind immer Links.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_thumbs_size"><?php echo __('Thumbnail size', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_thumbs_size"><?php echo __('Thumbnail Größe', 'cp-communitie'); ?></label></td>
 			<td><input name="forum_thumbs_size" style="width:50px" type="text" id="forum_thumbs_size"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_forum_thumbs_size'); ?>" /> 
-			<span class="description"><?php echo __('If using inline attachments, maximum width', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Bei Verwendung von Inline-Anhängen maximale Breite', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
-			<tr><td colspan="2"><h2>Voting</h2></td></tr>
+			<tr><td colspan="2"><h2>Abstimmung</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes"><?php echo __('Use Votes', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="use_votes"><?php echo __('Verwende Abstimmung', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="use_votes" id="use_votes" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_votes') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow members to vote (plus or minus) on forum posts', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Erlaube Mitgliedern, über Forumsbeiträge abzustimmen (plus oder minus).', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes_min"><?php echo __('Votes (minimum posts)', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="use_votes_min"><?php echo __('Abstimmung (Mindestbeiträge)', 'cp-communitie'); ?></label></td>
 			<td><input name="use_votes_min" style="width:50px" type="text" id="use_votes_min"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_votes_min'); ?>" /> 
-			<span class="description"><?php echo __('How many posts a member must have made in order to vote', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wie viele Beiträge muss ein Mitglied gemacht haben, um abstimmen zu können', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="use_votes_remove"><?php echo __('Votes (removal point)', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="use_votes_remove"><?php echo __('Abstimmung (Entfernungspunkt)', 'cp-communitie'); ?></label></td>
 			<td><input name="use_votes_remove" style="width:50px" type="text" id="use_votes_remove"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove'); ?>" /> 
-			<span class="description"><?php echo __('When a forum post gets this many votes, it is removed. Can be + or -. Leave as 0 to ignore.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wenn ein Forumsbeitrag so viele Stimmen erhält, wird er entfernt. Kann + oder - sein. Zum Ignorieren auf 0 belassen.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="use_answers"><?php echo __('Votes (answers)', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="use_answers"><?php echo __('Abstimmung (Antworten)', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="use_answers" id="use_answers" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_answers') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allows topic owners and administrators to mark a reply as an answer (one per topic)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Ermöglicht Themeneigentümern und -administratoren, eine Antwort als Antwort zu markieren (eine pro Thema)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
-			<tr><td colspan="2"><h2>Permissions</h2></td></tr>
+			<tr><td colspan="2"><h2>Berechtigungen</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="moderation_roles"><?php echo __('Roles that can moderate the forum', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="moderation_roles"><?php echo __('Rollen, die das Forum moderieren können', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5766,13 +5764,13 @@ function __cpc__plugin_forum() {
 				}			
 			?>
 			<span class="description">
-					<?php echo sprintf(__('The ClassicPress roles that can <a href="%s">moderate forum posts</a>. Administrator will always be checked.', 'cp-communitie'), "admin.php?page=cpcommunitie_moderation"); ?><br />
-					<?php echo __('Checked roles can also manage the forum via the front-end.', 'cp-communitie'); ?>
+					<?php echo sprintf(__('Die ClassicPress-Rollen, die <a href="%s">Forenbeiträge moderieren</a> können. Administrator ist immer ausgewählt.', 'cp-communitie'), "admin.php?page=cpcommunitie_moderation"); ?><br />
+					<?php echo __('Aktivierte Rollen können das Forum auch über das Frontend verwalten.', 'cp-communitie'); ?>
 			</span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="viewer"><?php echo __('View forum roles', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="viewer"><?php echo __('Forenrollen anzeigen', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5781,11 +5779,11 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_viewer');
 
-				echo '<input type="checkbox" name="viewers[]" value="'.__('everyone', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="viewers[]" value="'.__('Öffentlich', 'cp-communitie').'"';
 				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Guests', 'cp-communitie').' ... <span class="description">'.__('means everyone can view the forum if checked', 'cp-communitie').'</span><br />';						
+				echo '> '.__('Gäste', 'cp-communitie').' ... <span class="description">'.__('bedeutet, dass jeder das Forum sehen kann, wenn es aktiviert ist', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="viewers[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($view_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5794,11 +5792,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The ClassicPress roles that can view the entire forum (fine tune with <a href="admin.php?page=cpcommunitie_categories">forum categories</a>)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Die ClassicPress-Rollen, die das gesamte Forum sehen können (Feinabstimmung mit <a href="admin.php?page=cpcommunitie_categories">Forenkategorien</a>)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_editor"><?php echo __('Forum new topic roles', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="forum_editor"><?php echo __('Forum neue Themenrollen', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5807,11 +5805,11 @@ function __cpc__plugin_forum() {
 		
 				$view_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_editor');
 
-				echo '<input type="checkbox" name="editors[]" value="'.__('everyone', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="editors[]" value="'.__('Mitglied', 'cp-communitie').'"';
 				if (strpos(strtolower($view_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can post new topics if checked', 'cp-communitie').'</span><br />';						
+				echo '> '.__('Mitglied', 'cp-communitie').' ... <span class="description">'.__('bedeutet, dass alle Mitglieder neue Themen posten können, wenn diese Option aktiviert ist', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="editors[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($view_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5820,11 +5818,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The ClassicPress roles that can post a new topic on the forum', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Die ClassicPress-Rollen, die ein neues Thema im Forum veröffentlichen können', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_reply"><?php echo __('Forum reply roles', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="forum_reply"><?php echo __('Rollen für Antworten im Forum', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5833,11 +5831,11 @@ function __cpc__plugin_forum() {
 		
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply');
 
-				echo '<input type="checkbox" name="repliers[]" value="'.__('everyone', 'cp-communitie').'"';
+				echo '<input type="checkbox" name="repliers[]" value="'.__('Mitglied', 'cp-communitie').'"';
 				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can reply to topics if checked', 'cp-communitie').'</span><br />';						
+				echo '> '.__('Mitglied', 'cp-communitie').' ... <span class="description">'.__('bedeutet, dass alle Mitglieder auf Themen antworten können, wenn diese Option aktiviert ist', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="repliers[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($reply_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5846,11 +5844,11 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The ClassicPress roles that can reply to a topic on the forum', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Die ClassicPress-Rollen, die auf ein Thema im Forum antworten können', 'cp-communitie'); ?></span></td> 
 			</tr> 
 		
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_comments"><?php echo __('Forum comment roles', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="forum_comments"><?php echo __('Rollen für Forumskommentare', 'cp-communitie'); ?></label></td> 
 			<td>
 			<?php		
 				// Get list of roles
@@ -5859,11 +5857,11 @@ function __cpc__plugin_forum() {
 		
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply_comment');
 
-				echo '<input type="checkbox" name="commenters[]" value="'.__('everyone', 'cp-communitie').'"';
-				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
+				echo '<input type="checkbox" name="commenters[]" value="'.__('Mitglied', 'cp-communitie').'"';
+				if (strpos(strtolower($reply_roles), strtolower(__('jeder', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
-				echo '> '.__('Everyone', 'cp-communitie').' ... <span class="description">'.__('means all members can comment on replies if checked', 'cp-communitie').'</span><br />';						
+				echo '> '.__('Mitglied', 'cp-communitie').' ... <span class="description">'.__('bedeutet, dass alle Mitglieder Antworten kommentieren können, wenn diese Option aktiviert ist', 'cp-communitie').'</span><br />';						
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="commenters[]" value="'.$role['name'].'"';
 					if (strpos(strtolower($reply_roles), strtolower($role['name']).',') !== FALSE) {
@@ -5872,7 +5870,7 @@ function __cpc__plugin_forum() {
 					echo '> '.$role['name'].'<br />';
 				}			
 			?>
-			<span class="description"><?php echo __('The ClassicPress roles that can add comments to forum replies', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Die ClassicPress-Rollen, die Kommentare zu Forumsantworten hinzufügen können', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr><td colspan="2"><a name="ranks"></a><h2>Ranks</h2></td></tr>
@@ -5881,10 +5879,10 @@ function __cpc__plugin_forum() {
 			$ranks = explode(';', get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'));
 			?>
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_ranks"><?php echo __('Forum ranks', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_ranks"><?php echo __('Forumsränge', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_ranks" id="forum_ranks" <?php if ($ranks[0] == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Use ranks on the forum?', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Ränge im Forum verwenden?', 'cp-communitie'); ?></span></td> 
 			</tr>
 
 			<?php
@@ -5893,7 +5891,7 @@ function __cpc__plugin_forum() {
 					if ($rank == 1) { 
 
 						echo '<td scope="row">';
-							echo __('Title and Posts Required', 'cp-communitie');
+							echo __('Titel und Beiträge erforderlich', 'cp-communitie');
 						echo '</td>';
 
 					} else {
@@ -5901,7 +5899,7 @@ function __cpc__plugin_forum() {
 						echo '<td scope="row">';
 						
 							if ($rank == 11) {
-								echo '<em>'.__('(blank ranks are not used)', 'cp-communitie').'</em>';
+								echo '<em>'.__('(leere Ränge werden nicht verwendet)', 'cp-communitie').'</em>';
 							} else {
 								echo "&nbsp;";
 							}
@@ -5934,9 +5932,9 @@ function __cpc__plugin_forum() {
 						<span class="description">
 						<?php 
 						if ($rank == 1) {
-							echo __('Most posts', 'cp-communitie'); 
+							echo __('Die meisten Beiträge', 'cp-communitie'); 
 						} else {
-							echo __('Rank', 'cp-communitie').' '.($rank-1); 							
+							echo __('Rang', 'cp-communitie').' '.($rank-1); 							
 						}
 						?></span>
 					</td> 
@@ -5949,165 +5947,165 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><a name="display"></a><h2>Display</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="_alt_subs"><?php echo __('Sub Categories', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="_alt_subs"><?php echo __('Unterkategorien', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="_alt_subs" id="_alt_subs" <?php if (get_option(CPC_OPTIONS_PREFIX.'_alt_subs') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show child categories under parent categories', 'cp-communitie'); ?></span>
+			<span class="description"><?php echo __('Untergeordnete Kategorien unter übergeordneten Kategorien anzeigen', 'cp-communitie'); ?></span>
 			</td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination"><?php echo __('Pagination', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="pagination"><?php echo __('Paginierung', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="pagination" id="pagination" <?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination') == "on" && get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') != "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Breaks topic replies into pages', 'cp-communitie'); ?></span>
+			<span class="description"><?php echo __('Teilt Themenantworten in Seiten auf', 'cp-communitie'); ?></span>
 			<?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == "on")
-				echo '<br /><span class="description" style="color:red;">'.__('Sorry, this is not compatible if using AJAX on the forum (above).', 'cp-communitie').'</span>';
+				echo '<br /><span class="description" style="color:red;">'.__('Entschuldigung, dies ist nicht kompatibel, wenn Du AJAX im Forum verwendest (oben).', 'cp-communitie').'</span>';
 			?>
 			</td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination_location"><?php echo __('Pagination Placement', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="pagination_location"><?php echo __('Platzierung der Paginierung', 'cp-communitie'); ?></label></td>
 			<td>
 			<select name="pagination_location">
-				<option value="both"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'both') echo ' SELECTED'; ?>><?php echo __('Above and below replies', 'cp-communitie'); ?></option>
-				<option value="top"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'top') echo ' SELECTED'; ?>><?php echo __('Above replies', 'cp-communitie'); ?></option>
-				<option value="bottom"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'bottom') echo ' SELECTED'; ?>><?php echo __('Below replies', 'cp-communitie'); ?></option>
+				<option value="both"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'both') echo ' SELECTED'; ?>><?php echo __('Ober und Unter Antworten', 'cp-communitie'); ?></option>
+				<option value="top"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'top') echo ' SELECTED'; ?>><?php echo __('Über Antworten', 'cp-communitie'); ?></option>
+				<option value="bottom"<?php if (get_option(CPC_OPTIONS_PREFIX.'_pagination_location') == 'bottom') echo ' SELECTED'; ?>><?php echo __('Unter Antworten', 'cp-communitie'); ?></option>
 			</select>
-			<span class="description"><?php echo __('If pagination is used, where to show page navigation', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wenn Paginierung verwendet wird, wo die Seitennavigation angezeigt werden soll', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="pagination_size"><?php echo __('Number of replies per page (pagination)', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="pagination_size"><?php echo __('Anzahl der Antworten pro Seite (Paginierung)', 'cp-communitie'); ?></label></td>
 			<td><input name="pagination_size" style="width:50px" type="text" id="pagination_size"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_pagination_size') ? get_option(CPC_OPTIONS_PREFIX.'_pagination_size') : 10; ?>" /> 
-			<span class="description"><?php echo __('If pagination is used, how many replies per page.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wenn Paginierung verwendet wird, wie viele Antworten pro Seite.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="topic_count"><?php echo __('Forum category post count', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="topic_count"><?php echo __('Beitragsanzahl der Forenkategorie', 'cp-communitie'); ?></label></td>
 			<td><input name="topic_count" style="width:50px" type="text" id="topic_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_topic_count') ? get_option(CPC_OPTIONS_PREFIX.'_topic_count') : 10; ?>" /> 
-			<span class="description"><?php echo __('How many topics are shown in a forum category (use an even number).', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wie viele Themen werden in einer Forenkategorie angezeigt (verwende eine gerade Zahl).', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="show_dropdown"><?php echo __('Dropdown category list', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="show_dropdown"><?php echo __('Dropdown-Kategorieliste', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="show_dropdown" id="show_dropdown" <?php if (get_option(CPC_OPTIONS_PREFIX.'_show_dropdown') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show a dropdown list of categories for quick navigation', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Zeige eine Dropdown-Liste mit Kategorien für eine schnelle Navigation an', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_info"><?php echo __('Member Info', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_info"><?php echo __('Mitgliedsinfo', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_info" id="forum_info" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_info') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show member info underneath avatar on forum', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Mitgliedsinformationen unter dem Avatar im Forum anzeigen', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_stars"><?php echo __('New post stars', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_stars"><?php echo __('Neue Beiträge-Sterne', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_stars" id="forum_stars" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_stars') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show stars for posts added since last login.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Sterne für Beiträge anzeigen, die seit der letzten Anmeldung hinzugefügt wurden.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
 			<td scope="row"><label for="forum_login"><?php echo __('Login Link', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_login" id="forum_login" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_login') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show login link on forum when not logged in?', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Login-Link im Forum anzeigen, wenn nicht eingeloggt?', 'cp-communitie'); ?></span></td> 
 			</tr> 
                                                 			
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_login_form"><?php echo __('Show login link below topic', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_login_form"><?php echo __('Login-Link unter dem Thema anzeigen', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="forum_login_form" id="forum_login_form" <?php if (get_option(CPC_OPTIONS_PREFIX.'_forum_login_form') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('If a user has to log in, show the login link underneath the topic/replies.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wenn sich ein Benutzer anmelden muss, zeigen Sie den Anmeldelink unter dem Thema/den Antworten an.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
-			<tr><td colspan="2"><a name="more"></a><h2>Subscriptions</h2></td></tr>
+			<tr><td colspan="2"><a name="more"></a><h2>Abonnements</h2></td></tr>
 									
 			<tr valign="top"> 
-			<td scope="row"><label for="suppress_forum_notify"><?php echo __('Forum subscription', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="suppress_forum_notify"><?php echo __('Forum-Abonnement', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="suppress_forum_notify" id="suppress_forum_notify" <?php if (get_option(CPC_OPTIONS_PREFIX.'_suppress_forum_notify') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Hide all forum subscription options', 'cp-communitie'); ?></span><br />
+			<span class="description"><?php echo __('Alle Abonnementoptionen für das Forum ausblenden', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="clear_forum_subs" id="clear_forum_subs" />
-			<span class="description"><?php echo __('If checked, all forum subscriptions will be cleared when you save (option not saved, applied just once)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wenn aktiviert, werden alle Forenabonnements beim Speichern gelöscht (Option nicht gespeichert, nur einmal angewendet).', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="allow_subscribe_all"><?php echo __('Subscribe to all forum activity', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="allow_subscribe_all"><?php echo __('Abonniere alle Forumsaktivitäten', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="allow_subscribe_all" id="allow_subscribe_all" <?php if (get_option(CPC_OPTIONS_PREFIX.'_allow_subscribe_all') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow subscribe to all via Profile page, Profile Details. If you have a lot of users, consider switching this off to improve forum performance.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Erlaubt Allen über die Profilseite, Profildetails zu abonnieren. Wenn Du viele Benutzer hast, solltest Du dies deaktivieren, um die Leistung des Forums zu verbessern.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
-			<tr><td colspan="2"><a name="more"></a><h2>More...</h2></td></tr>
+			<tr><td colspan="2"><a name="more"></a><h2>Mehr...</h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="send_summary"><?php echo __('Daily Digest', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="send_summary"><?php echo __('Tägliche Zusammenfassung', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="send_summary" id="send_summary" <?php if (get_option(CPC_OPTIONS_PREFIX.'_send_summary') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Enable daily summaries of forum activity to all members via email', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Ermögliche allen Mitgliedern tägliche Zusammenfassungen der Forumsaktivitäten per E-Mail', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="include_admin"><?php echo __('Admin views', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="include_admin"><?php echo __('Admin-Ansichten', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="include_admin" id="include_admin" <?php if (get_option(CPC_OPTIONS_PREFIX.'_include_admin') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Include administrator viewing a topic in the total view count', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Schließe den Administrator, der ein Thema ansieht, in die Gesamtzahl der Aufrufe ein', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="bump_topics"><?php echo __('Bump topics', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="bump_topics"><?php echo __('Schlage Themen', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="bump_topics" id="bump_topics" <?php if (get_option(CPC_OPTIONS_PREFIX.'_bump_topics') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Bumps topics to top of forum when new replies are posted', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Verschiebt Themen an den Anfang des Forums, wenn neue Antworten gepostet werden', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="oldest_first"><?php echo __('Order of replies', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="oldest_first"><?php echo __('Reihenfolge der Antworten', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="oldest_first" id="oldest_first" <?php if (get_option(CPC_OPTIONS_PREFIX.'_oldest_first') == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Show oldest replies first (uncheck to reverse order)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Älteste Antworten zuerst anzeigen (deaktivieren, um die Reihenfolge umzukehren)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="forum_lock"><?php echo __('Post lock time', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="forum_lock"><?php echo __('Bearbeitung Sperrzeit', 'cp-communitie'); ?></label></td>
 			<td><input name="forum_lock" style="width:50px" type="text" id="forum_lock"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_forum_lock'); ?>" /> 
-			<span class="description"><?php echo __('How many minutes before a forum topic/reply can no longer be edited/deleted, 0 for no lock.', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wie viele Minuten, bevor ein Forumsthema/eine Antwort nicht mehr bearbeitet/gelöscht werden kann, 0 für keine Sperre.', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="preview1"><?php echo __('Preview length', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="preview1"><?php echo __('Vorschaulänge', 'cp-communitie'); ?></label></td>
 			<td><input name="preview1" style="width:50px" type="text" id="preview1"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_preview1'); ?>" /> 
-			<span class="description"><?php echo __('Maximum number of characters to show in topic preview', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Maximale Anzahl von Zeichen, die in der Themenvorschau angezeigt werden', 'cp-communitie'); ?></span></td> 
 			</tr> 
 	
 			<tr valign="top"> 
 			<td scope="row"><label for="preview2"></label></td>
 			<td><input name="preview2" style="width:50px" type="text" id="preview2"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_preview2'); ?>" /> 
-			<span class="description"><?php echo __('Maximum number of characters to show in reply preview', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Maximale Anzahl von Zeichen, die in der Antwortvorschau angezeigt werden', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<tr valign="top"> 
-			<td scope="row"><label for="cpc_default_forum"><?php echo __('Default Categories', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="cpc_default_forum"><?php echo __('Standardkategorien', 'cp-communitie'); ?></label></td>
 			<td><input name="cpc_default_forum" type="text" id="cpc_default_forum"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpc_default_forum'); ?>" /> 
-			<span class="description"><?php echo __('List of forum categories IDs, that new site members automatically subscribe to (comma separated)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Liste der Forenkategorie-IDs, die neue Site-Mitglieder automatisch abonnieren (kommagetrennt)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 			
 			<tr valign="top"> 
-			<td scope="row"><label for="chatroom_banned"><?php echo __('Banned forum words', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="chatroom_banned"><?php echo __('Verbotene Forenwörter', 'cp-communitie'); ?></label></td> 
 			<td><input name="chatroom_banned" type="text" id="chatroom_banned"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_chatroom_banned'); ?>" /> 
-			<span class="description"><?php echo __('Comma separated list of words not allowed in the forum', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Kommaseparierte Liste von Wörtern, die im Forum nicht erlaubt sind', 'cp-communitie'); ?></td> 
 			</tr> 
 
 									
 			<tr valign="top"> 
-			<td scope="row"><label for="closed_word"><?php echo __('Closed word', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="closed_word"><?php echo __('Geschlossen-Wort', 'cp-communitie'); ?></label></td>
 			<td><input name="closed_word" type="text" id="closed_word"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_closed_word'); ?>" /> 
-			<span class="description"><?php echo __('Word used to denote a topic that is closed (see also Styles)', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Wort zur Kennzeichnung eines abgeschlossenen Themas (siehe auch Stile)', 'cp-communitie'); ?></span></td> 
 			</tr> 
 
 			<?php
@@ -6123,10 +6121,10 @@ function __cpc__plugin_forum() {
 			
 
 			<tr valign="top"> 
-			<td scope="row"><label for="sharing_permalink"><?php echo __('Sharing icons included', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="sharing_permalink"><?php echo __('Sharing-Icons enthalten', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="sharing_permalink" id="sharing_permalink" <?php if ($sharing_permalink == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Permalink (to copy)', 'cp-communitie'); ?></span><br />
+			<span class="description"><?php echo __('Permalink (zum Kopieren)', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_email" id="sharing_email" <?php if ($sharing_email == "on") { echo "CHECKED"; } ?>/>
 			<span class="description"><?php echo __('Email', 'cp-communitie'); ?></span><br />
 			<input type="checkbox" name="sharing_facebook" id="sharing_facebook" <?php if ($sharing_facebook == "on") { echo "CHECKED"; } ?>/>
@@ -6146,10 +6144,10 @@ function __cpc__plugin_forum() {
 			<td colspan=2>
 				<p>
 				<span class="description">
-				<strong><?php echo __('Notes', 'cp-communitie'); ?></strong>
+				<strong><?php echo __('Anmerkungen', 'cp-communitie'); ?></strong>
 				<ul style='margin-left:6px'>
-				<li>&middot;&nbsp;<?php echo __('Daily summaries (if there is anything to send) are sent when the first visitor comes to the site after midnight, local time.', 'cp-communitie'); ?></li>
-				<li>&middot;&nbsp;<?php echo __('Be aware of any limits set by your hosting provider for sending out bulk emails, they may suspend your website.', 'cp-communitie'); ?></li>
+				<li>&middot;&nbsp;<?php echo __('Tägliche Zusammenfassungen (falls es etwas zu senden gibt) werden gesendet, wenn der erste Besucher nach Mitternacht Ortszeit auf die Webseite kommt.', 'cp-communitie'); ?></li>
+				<li>&middot;&nbsp;<?php echo __('Beachte die von Deinem Hosting-Provider festgelegten Beschränkungen für das Versenden von Massen-E-Mails, da diese Deine Webseite möglicherweise sperren.', 'cp-communitie'); ?></li>
 				</ul>
 				</p>
 			</td>
@@ -6158,15 +6156,15 @@ function __cpc__plugin_forum() {
 			<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 
 			<tr><td><?php echo '['.CPC_SHORTCODE_PREFIX.'-forum]'; ?></td>
-				<td><?php _e('Display the forum.', 'cp-communitie'); ?></td></tr>
+				<td><?php _e('Zeige das Forum an.', 'cp-communitie'); ?></td></tr>
 			<tr><td><?php echo '['.CPC_SHORTCODE_PREFIX.'-forum cat="2"]'; ?></td>
-				<td><?php _e('Display just forum category ID 2 on a single ClassicPress page.', 'cp-communitie'); ?></td></tr>
+				<td><?php _e('Zeige nur die Forumskategorie-ID 2 auf einer einzigen ClassicPress-Seite an.', 'cp-communitie'); ?></td></tr>
 			<tr valign="top"> 
 			<td scope="row"><label for="cpcommunitie_forumlatestposts_count"><?php echo '['.CPC_SHORTCODE_PREFIX.'-forumlatestposts]'; ?></label></td>
-			<td><?php _e('Display most recent forum posts and replies.', 'cp-communitie'); ?><br /><input name="cpcommunitie_forumlatestposts_count" style="width:50px" type="text" id="cpcommunitie_forumlatestposts_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpcommunitie_forumlatestposts_count'); ?>" /> 
+			<td><?php _e('Zeige die neuesten Forenbeiträge und Antworten an.', 'cp-communitie'); ?><br /><input name="cpcommunitie_forumlatestposts_count" style="width:50px" type="text" id="cpcommunitie_forumlatestposts_count"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_cpcommunitie_forumlatestposts_count'); ?>" /> 
 			<span class="description"><?php 
-			echo sprintf(__('Default number of topics to show. Can be overridden, eg: [%s-forumlatestposts count=10]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'<br />'; 
-			echo '<span style="margin-left:55px">'.sprintf(__('Forum category IDs can be specified in the shortcode, eg: [%s-forumlatestposts cat=1]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'</span>'; ?></span></td> 
+			echo sprintf(__('Standardanzahl der anzuzeigenden Themen. Kann überschrieben werden, zB: [%s-forumlatestposts count=10]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'<br />'; 
+			echo '<span style="margin-left:55px">'.sprintf(__('Forenkategorie-IDs können im Shortcode angegeben werden, z. B.: [%s-forumlatestposts cat=1]', 'cp-communitie'), CPC_SHORTCODE_PREFIX).'</span>'; ?></span></td> 
 			</tr> 
 			
 
@@ -6174,7 +6172,7 @@ function __cpc__plugin_forum() {
 			</table> 	
 		 
 			<p class="submit" style='margin-left:6px;'> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 		
@@ -6190,7 +6188,7 @@ function __cpc__plugin_categories() {
 	global $wpdb;
 
   	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.', 'cp-communitie') );
+		wp_die( __('Du hast keine ausreichenden Berechtigungen, um auf diese Seite zuzugreifen.', 'cp-communitie') );
   	}
   	
   	if (isset($_GET['action'])) {
@@ -6242,10 +6240,10 @@ function __cpc__plugin_categories() {
 	}
 		
   	// Add new category?
-  	if ( (isset($_POST['new_title']) && $_POST['new_title'] != '') && ($_POST['new_title'] != __('Add New Category', 'cp-communitie').'...') ) {
+  	if ( (isset($_POST['new_title']) && $_POST['new_title'] != '') && ($_POST['new_title'] != __('Neue Kategorie hinzufügen', 'cp-communitie').'...') ) {
   		
   		$new_cat_desc = $_POST['new_cat_desc'];
-  		if ($new_cat_desc == __('Optional Description', 'cp-communitie')."...") {
+  		if ($new_cat_desc == __('Optionale Beschreibung', 'cp-communitie')."...") {
   			$new_cat_desc = '';  		
   		}
   	
@@ -6290,7 +6288,7 @@ function __cpc__plugin_categories() {
 				$wpdb->query( $wpdb->prepare("UPDATE ".$wpdb->prefix.'cpcommunitie_topics'." SET topic_category = 0 WHERE topic_category = %d", $_GET['cid']) );
 			}
 		} else {
-			echo "<div class='error'><p>".__('You must have at least one category', 'cp-communitie').".</p></div>";
+			echo "<div class='error'><p>".__('Du musst mindestens eine Kategorie haben', 'cp-communitie').".</p></div>";
 		}
   	}
  
@@ -6306,17 +6304,17 @@ function __cpc__plugin_categories() {
 			}
 	
 			// Put an settings updated message on the screen
-			echo "<div class='updated slideaway'><p>".__('Categories saved', 'cp-communitie')."</p></div>";
+			echo "<div class='updated slideaway'><p>".__('Kategorien gespeichert', 'cp-communitie')."</p></div>";
 	
 		}
  	
 
   	echo '<div class="wrap">';
   	echo '<div id="icon-themes" class="icon32"><br /></div>';
-  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
+  	echo '<h2>'.sprintf(__('%s-Verwaltung', 'cp-communitie'), CPC_WL).'</h2><br />';
 	__cpc__show_manage_tabs_header('categories');
 	echo '<div style="float:right">';
-	echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Go to Forum Options', 'cp-communitie').'</a><br /><br />';	 
+	echo '<a href="admin.php?page=cpcommunitie_forum">'.__('Gehe zu den Forum-Optionen', 'cp-communitie').'</a><br /><br />';	 
 	echo '</div>';
 	?> 
 	<form method="post" action=""> 
@@ -6325,12 +6323,12 @@ function __cpc__plugin_categories() {
 	<thead>
 	<tr>
 	<th style="width:40px">ID</th>
-	<th style="width:60px"><?php echo __('Parent ID', 'cp-communitie'); ?></th>
-	<th><?php echo __('Category Title and Description', 'cp-communitie'); ?></th>
-	<th><?php echo __('Permitted Roles', 'cp-communitie'); ?></th>
-	<th style="text-align:center"><?php echo __('Topics', 'cp-communitie'); ?></th>
-	<th><?php echo __('Order', 'cp-communitie'); ?></th>
-	<th><?php echo __('Options', 'cp-communitie'); ?></th>
+	<th style="width:60px"><?php echo __('Eltern ID', 'cp-communitie'); ?></th>
+	<th><?php echo __('Kategorietitel und Beschreibung', 'cp-communitie'); ?></th>
+	<th><?php echo __('Zulässige Rollen', 'cp-communitie'); ?></th>
+	<th style="text-align:center"><?php echo __('Themen', 'cp-communitie'); ?></th>
+	<th><?php echo __('Sortierung', 'cp-communitie'); ?></th>
+	<th><?php echo __('Einstellungen', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	</tr> 
 	</thead>
@@ -6356,7 +6354,7 @@ function __cpc__plugin_categories() {
 					<tr>
 					<th style="width:20px"></th>
 					<th style="width:60px">&nbsp;</th>
-					<th><strong><?php echo __('The following will not be displayed due to Parent ID (update or delete)', 'cp-communitie'); ?>...</strong></th>
+					<th><strong><?php echo __('Folgendes wird aufgrund der Eltern-ID nicht angezeigt (aktualisieren oder löschen)', 'cp-communitie'); ?>...</strong></th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
 					<th>&nbsp;</th>
@@ -6388,7 +6386,7 @@ function __cpc__plugin_categories() {
 					}
 					echo '> '.$role['name'].'<br />';
 				}				
-				echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', 'cp-communitie').'</a><br />';
+				echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Alle aktivieren/deaktivieren', 'cp-communitie').'</a><br />';
 				
 				echo '</td>';
 				echo '<td style="text-align:center;">';
@@ -6399,15 +6397,15 @@ function __cpc__plugin_categories() {
 				echo '<select name="allow_new[]">';
 				echo '<option value="on"';
 					if ($category->allow_new == "on") { echo " SELECTED"; }
-					echo '>'.__('Yes', 'cp-communitie').'</option>';
+					echo '>'.__('Ja', 'cp-communitie').'</option>';
 				echo '<option value=""';
 					if ($category->allow_new != "on") { echo " SELECTED"; }
-					echo '>'.__('No', 'cp-communitie').'</option>';
+					echo '>'.__('Nein', 'cp-communitie').'</option>';
 				echo '</select>';
 				echo '</td>';
 				echo '<td>';
-				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', 'cp-communitie').'</a><br />';
-				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', 'cp-communitie').'</a>';
+				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Kategorie löschen', 'cp-communitie').'</a><br />';
+				echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Kategorie und Beiträge löschen', 'cp-communitie').'</a>';
 				echo '</td>';
 				echo '</tr>';
 				
@@ -6415,7 +6413,7 @@ function __cpc__plugin_categories() {
 		}
 	}
 	echo '<tr><td colspan="8">';
-	echo sprintf(__('Note: "View forum roles", "Forum new topic roles" and "Forum reply roles" on <a href="%s">forum settings</a> effect the overall forum, the above permitted roles are for view and edit per forum category.', 'cp-communitie'), "admin.php?page=cpcommunitie_forum");
+	echo sprintf(__('Hinweis: "Forumsrollen anzeigen", "Forumsrollen für neue Themen" und "Forumsantwortrollen" in den <a href="%s">Forumseinstellungen</a> wirken sich auf das gesamte Forum aus, die oben erlaubten Rollen sind zum Anzeigen und Bearbeiten pro Forumskategorie.', 'cp-communitie'), "admin.php?page=cpcommunitie_forum");
 	echo '</td></tr>';
 	
 	?>
@@ -6423,12 +6421,12 @@ function __cpc__plugin_categories() {
 	<thead>
 	<tr>
 	<th style="width:20px"></th>
-	<th style="width:60px"><?php echo __('Parent ID', 'cp-communitie'); ?></th>
-	<th><?php echo __('Add New Category', 'cp-communitie'); ?></th>
+	<th style="width:60px"><?php echo __('Eltern ID', 'cp-communitie'); ?></th>
+	<th><?php echo __('Neue Kategorie hinzufügen', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	<th>&nbsp;</th>
-	<th><?php echo __('Order', 'cp-communitie'); ?></th>
-	<th><?php echo __('Allow new topics', 'cp-communitie'); ?></th>
+	<th><?php echo __('Sortierung', 'cp-communitie'); ?></th>
+	<th><?php echo __('Neue Themen zulassen', 'cp-communitie'); ?></th>
 	<th>&nbsp;</th>
 	</tr> 
 	</thead>
@@ -6437,8 +6435,8 @@ function __cpc__plugin_categories() {
 	<td>&nbsp;</td>
 	<td><input name="new_parent" type="text" value="0" style="width:50px" /></td>
 	<td>
-		<input name="new_title" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Add New Category', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" /><br />
-		<input name="new_cat_desc" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Optional Description', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" />
+		<input name="new_title" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Neue Kategorie hinzufügen', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" /><br />
+		<input name="new_cat_desc" type="text" onclick="javascript:this.value = ''" value="<?php echo __('Optionale Beschreibung', 'cp-communitie'); ?>..." class="regular-text" style="width:150px" />
 	</td>
 	<td>&nbsp;</td>
 	<td>&nbsp;</td>
@@ -6452,7 +6450,7 @@ function __cpc__plugin_categories() {
 	</tr>
 	</table> 
 
-	<br /><?php echo __('Default Category', 'cp-communitie'); ?>:
+	<br /><?php echo __('Standardkategorie', 'cp-communitie'); ?>:
 	<?php
 	$categories = $wpdb->get_results("SELECT * FROM ".$wpdb->prefix.'cpcommunitie_cats ORDER BY listorder');
 
@@ -6468,15 +6466,15 @@ function __cpc__plugin_categories() {
 	?>
 	 
 	<p class="submit"> 
-	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
+	<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 	</p> 
 	
 	<p>
 	<?php
-	echo __('Note:', 'cp-communitie');
-	echo '<li>'.__('choose "Delete category and posts" to delete a category and all topics in that category.', 'cp-communitie').'</li>';
-	echo '<li>'.sprintf(__('if category descriptions are not showing, try resetting your <a href="%s">forum templates</a>.', 'cp-communitie'), "admin.php?page=cpcommunitie_templates");
-	echo '<span class="__cpc__tooltip" title="'.__('The Forum Categories (list) template should include the [category_desc] code<br />to display the description of the forum category.', 'cp-communitie').'">?</span></li>';
+	echo __('Anmerkung:', 'cp-communitie');
+	echo '<li>'.__('Wähle „Kategorie und Beiträge löschen“, um eine Kategorie und alle Themen in dieser Kategorie zu löschen.', 'cp-communitie').'</li>';
+	echo '<li>'.sprintf(__('Wenn Kategoriebeschreibungen nicht angezeigt werden, versuche Deine <a href="%s">Forenvorlagen</a> zurückzusetzen.', 'cp-communitie'), "admin.php?page=cpcommunitie_templates");
+	echo '<span class="__cpc__tooltip" title="'.__('Die Vorlage für Forumkategorien (Liste) sollte den Code [category_desc] enthalten,<br />um die Beschreibung der Forumkategorie anzuzeigen.', 'cp-communitie').'">?</span></li>';
 	?>
 	<p>
 	</form> 
@@ -6535,14 +6533,14 @@ function __cpc__show_forum_children($id, $indent, $list) {
 			echo '<input name="cid[]" type="hidden" value="'.$category->cid.'" />';
 			echo '<td style="'.$style.'">'.str_repeat("...", $indent).'&nbsp;'.$category->cid.'</td>';
 			echo '<td><input name="cat_parent[]" type="text" value="'.stripslashes($category->cat_parent).'" style="width:30px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('ID of the forum category within which this forum category should appear.<br />Allows you to make a hierarchy of forum categories.', 'cp-communitie').'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('ID der Forenkategorie, in der diese Forenkategorie erscheinen soll.<br />Ermöglicht es Dir, eine Hierarchie von Forenkategorien zu erstellen.', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '<td>';
 			echo str_repeat("&nbsp;&nbsp;&nbsp;", $indent).'<input name="title[]" type="text" value="'.stripslashes($category->title).'" class="regular-text" style="width:150px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Title of the forum category', 'cp-communitie').'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Titel der Forumskategorie', 'cp-communitie').'">?</span>';
 			echo '<br />';
 			echo str_repeat("&nbsp;&nbsp;&nbsp;", $indent).'<input name="cat_desc[]" type="text" value="'.stripslashes($category->cat_desc).'" class="regular-text" style="width:150px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Optional description of the forum category', 'cp-communitie').'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Optionale Beschreibung der Forumskategorie', 'cp-communitie').'">?</span>';
 
 			// Add option for minimum forum rank if in use
 			$ranks = explode(';', get_option(CPC_OPTIONS_PREFIX.'_forum_ranks'));
@@ -6550,8 +6548,8 @@ function __cpc__show_forum_children($id, $indent, $list) {
 			if ($using_ranks) {
 				echo '<br /><br />';
 				echo '<table>';
-				echo '<tr><td style="border:0px;padding-top:8px">'.sprintf(__('Minimum <a href="%s">rank score</a>', 'cp-communitie'), 'admin.php?page=cpcommunitie_forum#ranks') . ':</td>';
-				echo '<td style="border:0px"><input name="min_rank[]" type="text" value="'.$category->min_rank.'" style="width:50px;" /><span class="__cpc__tooltip" title="'.__('Check Forum Rank scores via the link. A user must have at least<br />the score entered here to view the forum category.', 'cp-communitie').'">?</span></td></tr>';
+				echo '<tr><td style="border:0px;padding-top:8px">'.sprintf(__('Mindest-<a href="%s">Rangpunktzahl</a>', 'cp-communitie'), 'admin.php?page=cpcommunitie_forum#ranks') . ':</td>';
+				echo '<td style="border:0px"><input name="min_rank[]" type="text" value="'.$category->min_rank.'" style="width:50px;" /><span class="__cpc__tooltip" title="'.__('Überprüfe die Ergebnisse des Forum-Rangs über den Link. Ein Benutzer muss mindestens<br />die hier eingegebene Punktzahl haben, um die Forenkategorie sehen zu können.', 'cp-communitie').'">?</span></td></tr>';
 				echo '</table>';
 			}
 			echo '</td>';
@@ -6570,50 +6568,50 @@ function __cpc__show_forum_children($id, $indent, $list) {
 				echo '> '.$role['name'].'<br />';
 			}
 			
-			echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Check/uncheck all', 'cp-communitie').'</a><br />';
+			echo '<a href="javascript:void(0);" title="'.$category->cid.'" class="cpcommunitie_cats_check">'.__('Alle aktivieren/deaktivieren', 'cp-communitie').'</a><br />';
 			echo '</td>';
 			echo '<td style="text-align:center">';
 			echo $wpdb->get_var("SELECT count(*) FROM ".$wpdb->prefix."cpcommunitie_topics WHERE topic_parent = 0 AND topic_category = ".$category->cid);
 			echo '</td>';
 			echo '<td><input name="listorder[]" type="text" value="'.$category->listorder.'" style="width:50px" />';
-			echo '<span class="__cpc__tooltip" title="'.__('Set the order of the categories - use numeric values.', 'cp-communitie').'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Lege die Reihenfolge der Kategorien fest - verwende numerische Werte.', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '<td>';
-			echo __('Allow new topics?', 'cp-communitie').'<br />';
+			echo __('Neue Themen zulassen?', 'cp-communitie').'<br />';
 			echo '<select name="allow_new[]">';
 			echo '<option value="on"';
 				if ($category->allow_new == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', 'cp-communitie').'</option>';
+				echo '>'.__('Ja', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->allow_new != "on") { echo " SELECTED"; }
-				echo '>'.__('No', 'cp-communitie').'</option>';
+				echo '>'.__('Nein', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Should users be able to start<br />new topics in this category?<br />Administrators can always<br />create a new topic.', 'cp-communitie').'">?</span>';
-			echo '<br />'.__('Hide breadcrumbs?', 'cp-communitie').'<br />';
+			echo '<span class="__cpc__tooltip" title="'.__('Sollen Benutzer<br />neue Themen in dieser Kategorie starten können?<br />Administratoren können jederzeit<br />ein neues Thema erstellen.', 'cp-communitie').'">?</span>';
+			echo '<br />'.__('Breadcrumbs verstecken?', 'cp-communitie').'<br />';
 			echo '<select name="hide_breadcrumbs[]">';
 			echo '<option value="on"';
 				if ($category->hide_breadcrumbs == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', 'cp-communitie').'</option>';
+				echo '>'.__('Ja', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->hide_breadcrumbs != "on") { echo " SELECTED"; }
-				echo '>'.__('No', 'cp-communitie').'</option>';
+				echo '>'.__('Nein', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Hide the forum breadcrumbs for this category?', 'cp-communitie').'">?</span>';
-			echo '<br />'.__('Exclude from forum?', 'cp-communitie').'<br />';
+			echo '<span class="__cpc__tooltip" title="'.__('Die Breadcrumbs des Forums für diese Kategorie ausblenden?', 'cp-communitie').'">?</span>';
+			echo '<br />'.__('Vom Forum ausschließen?', 'cp-communitie').'<br />';
 			echo '<select name="hide_main[]">';
 			echo '<option value="on"';
 				if ($category->hide_main == "on") { echo " SELECTED"; }
-				echo '>'.__('Yes', 'cp-communitie').'</option>';
+				echo '>'.__('Ja', 'cp-communitie').'</option>';
 			echo '<option value=""';
 				if ($category->hide_main != "on") { echo " SELECTED"; }
-				echo '>'.__('No', 'cp-communitie').'</option>';
+				echo '>'.__('Nein', 'cp-communitie').'</option>';
 			echo '</select>';
-			echo '<span class="__cpc__tooltip" title="'.__('Exclude from the main forum?', 'cp-communitie').'">?</span>';
+			echo '<span class="__cpc__tooltip" title="'.__('Vom Hauptforum ausschließen?', 'cp-communitie').'">?</span>';
 			echo '</td>';
 			echo '</td>';
 			echo '<td>';
-			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Delete category', 'cp-communitie').'</a><br />';
-			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Delete category and posts', 'cp-communitie').'</a>';
+			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=0&cid='.$category->cid.'">'.__('Kategorie löschen', 'cp-communitie').'</a><br />';
+			echo '<a class="delete" href="?page=cpcommunitie_categories&action=delcid&all=1&cid='.$category->cid.'">'.__('Kategorie und Beiträge löschen', 'cp-communitie').'</a>';
 			echo '</td>';
 			echo '</tr>';
 
@@ -6630,12 +6628,12 @@ function __cpc__plugin_styles() {
 	global $wpdb;
 
 	if (!current_user_can('manage_options'))  {
-		wp_die( __('You do not have sufficient permissions to access this page.', 'cp-communitie') );
+		wp_die( __('Du hast keine ausreichenden Berechtigungen, um auf diese Seite zuzugreifen.', 'cp-communitie') );
 	}
 
   	echo '<div class="wrap">';
   		echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.__('Styles', 'cp-communitie').'</h2>';
+	  	echo '<h2>'.__('Stile', 'cp-communitie').'</h2>';
 
 		// See if the user has saved CSS
 		if( isset($_POST[ 'cpcommunitie_update' ]) && $_POST[ 'cpcommunitie_update' ] == 'CSS' ) {
@@ -6653,7 +6651,7 @@ function __cpc__plugin_styles() {
 		if ( isset($_GET[ 'delstyle' ]) ) {
 			$sql = "DELETE FROM ".$wpdb->prefix."cpcommunitie_styles WHERE sid = %d";
 			if ( $wpdb->query( $wpdb->prepare( $sql, $_GET[ 'delstyle' ])) ) {
-				echo "<div class='updated slideaway'><p>".__('Template Deleted', 'cp-communitie')."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Vorlage gelöscht', 'cp-communitie')."</p></div>";
 			}
 		}	
 		// See if the user has selected a template
@@ -6692,9 +6690,9 @@ function __cpc__plugin_styles() {
 				$style_id = $style->sid;
 
 				// Put an settings updated message on the screen
-				echo "<div class='updated slideaway'><p>".__('Template Applied', 'cp-communitie')."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Vorlage angewendet', 'cp-communitie')."</p></div>";
 			} else {
-				echo "<div class='error'><p>".__('Template Not Found', 'cp-communitie')."</p></div>";
+				echo "<div class='error'><p>".__('Vorlage nicht gefunden', 'cp-communitie')."</p></div>";
 			}
 		}
 
@@ -6768,7 +6766,7 @@ function __cpc__plugin_styles() {
 				) );	
 						
 				// Put an settings updated message on the screen
-				echo "<div class='updated slideaway'><p>".__('Template Saved', 'cp-communitie')."</p></div>";
+				echo "<div class='updated slideaway'><p>".__('Vorlage gespeichert', 'cp-communitie')."</p></div>";
 				
 				$style_save_as = $_POST[ 'style_save_as' ];	   
 			} else {
@@ -6802,9 +6800,9 @@ function __cpc__plugin_styles() {
 		echo '<div class="__cpc__wrapper" style="margin-top:15px">';
 	
 			echo '<div id="mail_tabs">';
-			echo '<div class="mail_tab nav-tab-'.$styles_active.'"><a href="admin.php?page=cpcommunitie_styles&view=styles" class="nav-tab-'.$styles_active.'-link">'.__('Styles', 'cp-communitie').'</a></div>';
+			echo '<div class="mail_tab nav-tab-'.$styles_active.'"><a href="admin.php?page=cpcommunitie_styles&view=styles" class="nav-tab-'.$styles_active.'-link">'.__('Stile', 'cp-communitie').'</a></div>';
 			echo '<div class="mail_tab nav-tab-'.$css_active.'"><a href="admin.php?page=cpcommunitie_styles&view=css" class="nav-tab-'.$css_active.'-link">'.__('CSS', 'cp-communitie').'</a></div>';
-			echo '<div class="mail_tab nav-tab-'.$responsive_active.'" style="width:100px"><a href="admin.php?page=cpcommunitie_styles&view=responsive" class="nav-tab-'.$responsive_active.'-link">'.__('Responsive', 'cp-communitie').'</a></div>';
+			echo '<div class="mail_tab nav-tab-'.$responsive_active.'" style="width:100px"><a href="admin.php?page=cpcommunitie_styles&view=responsive" class="nav-tab-'.$responsive_active.'-link">'.__('Responsiv', 'cp-communitie').'</a></div>';
 			echo '</div>';
 		
 			echo '<div id="mail-main">';
@@ -6816,9 +6814,9 @@ function __cpc__plugin_styles() {
 					$css = str_replace("[]", chr(13), stripslashes($css));
 
 					echo '<form method="post" action=""> ';
-					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', 'cp-communitie').'">';
+					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Speichern', 'cp-communitie').'">';
 
-					echo __('These styles affect output when your site is viewed on tablets and phones.', 'cp-communitie');
+					echo __('Diese Stile wirken sich auf die Ausgabe aus, wenn Deine Webseite auf Tablets und Telefonen angezeigt wird.', 'cp-communitie');
 
 					echo '<input type="hidden" name="cpcommunitie_update" value="responsive">';
 
@@ -6845,8 +6843,8 @@ function __cpc__plugin_styles() {
 					$css = str_replace("[]", chr(13), stripslashes($css));
 
 					echo '<form method="post" action=""> ';
-					echo __('Styles entered here will take priority over linked stylesheets but not the <a href="admin.php?page=cpcommunitie_styles&view=responsive">responsive styles</a>.', 'cp-communitie');
-					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Save', 'cp-communitie').'">';
+					echo __('Hier eingegebene Stile haben Vorrang vor verknüpften Stylesheets, nicht aber <a href="admin.php?page=cpcommunitie_styles&view=responsive">responsive Stile</a>.', 'cp-communitie');
+					echo '<input type="submit" class="button-primary" style="float:right;" value="'.__('Speichern', 'cp-communitie').'">';
 
 					echo '<input type="hidden" name="cpcommunitie_update" value="CSS">';
 
@@ -6861,20 +6859,20 @@ function __cpc__plugin_styles() {
 					echo '<td>';
 						echo '<table class="widefat">';
 						echo '<tr>';
-						echo '<td style="font-weight:bold">'.__('Notes', 'cp-communitie').'</td>';
+						echo '<td style="font-weight:bold">'.__('Anmerkungen', 'cp-communitie').'</td>';
 						echo '</tr>';
 						echo '<tbody>';
 						echo '<tr><td>';
-						echo __('To speed things up, why not open a new window and refresh it each time you save a change here?', 'cp-communitie');
+						echo __('Um die Dinge zu beschleunigen, warum öffnest Du nicht ein neues Fenster und aktualisieren es jedes Mal, wenn Du hier eine Änderung speicherst?', 'cp-communitie');
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo sprintf(__('CSS will over-ride the %s Styles (other tab), but your theme may take priority.', 'cp-communitie'), CPC_WL);
+						echo sprintf(__('CSS überschreibt die %s-Stile (andere Registerkarte), aber Dein Design hat möglicherweise Vorrang.', 'cp-communitie'), CPC_WL);
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo __('If a style doesn\'t apply, try putting !important after it. eg: color:red !important;', 'cp-communitie');
+						echo __('Wenn ein Stil nicht zutrifft, versuche es mit !important dahinter. zB: color:red !important;', 'cp-communitie');
 						echo '</td></tr>';
 						echo '<tr><td>';
-						echo __('Refer to www.cpcymposium.com/2013/01/styles for more help and examples.', 'cp-communitie');
+						echo __('Weitere Hilfe und Beispiele findest Du unter <a href="https://cp-community.n3rds.work/cpc_handbuch/styling-cp-community">Styling CP Community</a>.', 'cp-communitie');
 						echo '</td></tr>';
 						echo '</tbody>';
 						echo '</table>';
@@ -6898,254 +6896,254 @@ function __cpc__plugin_styles() {
 					<table class="form-table __cpc__admin_table"> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="use_styles"><?php echo __('Use Styles?', 'cp-communitie'); ?></label></td>
+					<td scope="row"><label for="use_styles"><?php echo __('Stile verwenden?', 'cp-communitie'); ?></label></td>
 					<td>
 					<input type="checkbox" name="use_styles" id="use_styles" <?php if (get_option(CPC_OPTIONS_PREFIX.'_use_styles') == "on") { echo "CHECKED"; } ?>/>
-					<span class="description"><?php echo __('Enable to use styles on this page, disable to rely on stylesheet', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Aktivieren, um Stile auf dieser Seite zu verwenden, deaktivieren, um sich auf Stylesheets zu verlassen', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="fontfamily"><?php echo __('Body Text', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="fontfamily"><?php echo __('Fließtext', 'cp-communitie'); ?></label></td> 
 					<td><input name="fontfamily" type="text" id="fontfamily" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_fontfamily')); ?>"/> 
-					<span class="description"><?php echo __('Font family for body text', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Schriftfamilie für Fließtext', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="fontsize"></label></td> 
 					<td><input name="fontsize" type="text" id="fontsize" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_fontsize'); ?>"/> 
-					<span class="description"><?php echo __('Font size in pixels for body text', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Schriftgröße in Pixel für Fließtext', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="headingsfamily"><?php echo __('Headings', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="headingsfamily"><?php echo __('Überschriften', 'cp-communitie'); ?></label></td> 
 					<td><input name="headingsfamily" type="text" id="headingsfamily" value="<?php echo stripslashes(get_option(CPC_OPTIONS_PREFIX.'_headingsfamily')); ?>"/> 
-					<span class="description"><?php echo __('Font family for headings and large text', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Schriftfamilie für Überschriften und großen Text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="headingssize"></label></td> 
 					<td><input name="headingssize" type="text" id="headingssize" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_headingssize'); ?>"/> 
-					<span class="description"><?php echo __('Font size in pixels for headings and large text', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Schriftgröße in Pixel für Überschriften und großen Text', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="main_background"><?php echo __('Main background', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="main_background"><?php echo __('Haupthintergrund', 'cp-communitie'); ?></label></td> 
 					<td><input name="main_background" type="text" id="main_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_main_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
 
-					<span class="description"><?php echo __('Main background colour (for example, new/edit forum topic/post)', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Haupthintergrundfarbe (z. B. neues/bearbeitetes Forumsthema/Beitrag)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="label"><?php echo __('Labels', 'cp-communitie'); ?></label></td> 
 					<td><input name="label" type="text" id="label" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_label'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Colour of text labels outside forum areas', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Farbe der Textbeschriftungen außerhalb der Forenbereiche', 'cp-communitie'); ?></span></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="text_color"><?php echo __('Text Colour', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="text_color"><?php echo __('Textfarbe', 'cp-communitie'); ?></label></td> 
 					<td><input name="text_color" type="text" id="text_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_text_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Primary Text Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Primäre Textfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="text_color_2"></label></td> 
 					<td><input name="text_color_2" type="text" id="text_color_2" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_text_color_2'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Secondary Text Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Sekundäre Textfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="link"><?php echo __('Links', 'cp-communitie'); ?></label></td> 
 					<td><input name="link" type="text" id="link" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_link'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Link Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Linkfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="link_hover"</label></td> 
 					<td><input name="link_hover" type="text" id="link_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_link_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Link Colour on mouse hover', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Linkfarbe bei Hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="underline"><?php echo __('Underlined?', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="underline"><?php echo __('Unterstrichen?', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="underline" id="underline"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='') { echo "selected='selected'"; } ?> value=''><?php echo __('No', 'cp-communitie'); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='on') { echo "selected='selected'"; } ?> value='on'><?php echo __('Yes', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='') { echo "selected='selected'"; } ?> value=''><?php echo __('Nein', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_underline')=='on') { echo "selected='selected'"; } ?> value='on'><?php echo __('Ja', 'cp-communitie'); ?></option> 
 					</select> 
-					<span class="description"><?php echo __('Whether links are underlined or not', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Ob Links unterstrichen sind oder nicht', 'cp-communitie'); ?></span></td> 
 					</tr> 
 			
 					<tr valign="top"> 
-					<td scope="row"><label for="border_radius"><?php echo __('Corners', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="border_radius"><?php echo __('Ecken', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="border_radius" id="border_radius"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='1') { echo "selected='selected'"; } ?> value='1'>1 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='4') { echo "selected='selected'"; } ?> value='4'>4 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='5') { echo "selected='selected'"; } ?> value='5'>5 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='6') { echo "selected='selected'"; } ?> value='6'>6 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='7') { echo "selected='selected'"; } ?> value='7'>7 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='8') { echo "selected='selected'"; } ?> value='8'>8 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='9') { echo "selected='selected'"; } ?> value='9'>9 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='10') { echo "selected='selected'"; } ?> value='10'>10 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='11') { echo "selected='selected'"; } ?> value='11'>11 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='12') { echo "selected='selected'"; } ?> value='12'>12 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='13') { echo "selected='selected'"; } ?> value='13'>13 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='14') { echo "selected='selected'"; } ?> value='14'>14 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='15') { echo "selected='selected'"; } ?> value='15'>15 pixels</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='0') { echo "selected='selected'"; } ?> value='0'>0 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='1') { echo "selected='selected'"; } ?> value='1'>1 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='2') { echo "selected='selected'"; } ?> value='2'>2 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='3') { echo "selected='selected'"; } ?> value='3'>3 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='4') { echo "selected='selected'"; } ?> value='4'>4 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='5') { echo "selected='selected'"; } ?> value='5'>5 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='6') { echo "selected='selected'"; } ?> value='6'>6 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='7') { echo "selected='selected'"; } ?> value='7'>7 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='8') { echo "selected='selected'"; } ?> value='8'>8 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='9') { echo "selected='selected'"; } ?> value='9'>9 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='10') { echo "selected='selected'"; } ?> value='10'>10 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='11') { echo "selected='selected'"; } ?> value='11'>11 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='12') { echo "selected='selected'"; } ?> value='12'>12 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='13') { echo "selected='selected'"; } ?> value='13'>13 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='14') { echo "selected='selected'"; } ?> value='14'>14 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_border_radius')=='15') { echo "selected='selected'"; } ?> value='15'>15 Pixel</option> 
 					</select> 
-					<span class="description"><?php echo __('Rounded Corner radius (not supported in all browsers)', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Abgerundeter Eckenradius (nicht in allen Browsern unterstützt)', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="bigbutton_background"><?php echo __('Buttons', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="bigbutton_background"><?php echo __('Schaltflächen', 'cp-communitie'); ?></label></td> 
 					<td><input name="bigbutton_background" type="text" id="bigbutton_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Hintergrundfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_background_hover"></label></td> 
 					<td><input name="bigbutton_background_hover" type="text" id="bigbutton_background_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_background_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background Colour on mouse hover', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Hintergrundfarbe bei Hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_color"></label></td> 
 					<td><input name="bigbutton_color" type="text" id="bigbutton_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Textfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bigbutton_color_hover"></label></td> 
 					<td><input name="bigbutton_color_hover" type="text" id="bigbutton_color_hover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bigbutton_color_hover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour on mouse hover', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Textfarbe bei Hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="bg_color_1"><?php echo __('Tables', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="bg_color_1"><?php echo __('Tabelle', 'cp-communitie'); ?></label></td> 
 					<td><input name="bg_color_1" type="text" id="bg_color_1" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_1'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Primary Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Primärfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bg_color_2"></label></td> 
 					<td><input name="bg_color_2" type="text" id="bg_color_2" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_2'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Row Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Zeilenfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="bg_color_3"></label></td> 
 					<td><input name="bg_color_3" type="text" id="bg_color_3" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_bg_color_3'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Alternative Row Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Alternative Zeilenfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="table_rollover"></label></td> 
 					<td><input name="table_rollover" type="text" id="table_rollover" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_table_rollover'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Row colour on mouse hover', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Zeilenfarbe bei Hover', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
 					<td scope="row"><label for="table_border"></label></td> 
 					<td>
 					<select name="table_border" id="table_border"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='1') { echo "selected='selected'"; } ?> value='1'>1 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='0') { echo "selected='selected'"; } ?> value='0'>0 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='1') { echo "selected='selected'"; } ?> value='1'>1 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='2') { echo "selected='selected'"; } ?> value='2'>2 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_table_border')=='3') { echo "selected='selected'"; } ?> value='3'>3 Pixel</option> 
 					</select> 
-					<span class="description"><?php echo __('Border Size', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Rahmengrösse', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="row_border_style"><?php echo __('Table/Rows', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="row_border_style"><?php echo __('Tabelle/Zeilen', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="row_border_style" id="row_border_styledefault_role"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dotted') { echo "selected='selected'"; } ?> value='dotted'><?php echo __('Dotted', 'cp-communitie'); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dashed') { echo "selected='selected'"; } ?> value='dashed'><?php echo __('Dashed', 'cp-communitie'); ?></option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='solid') { echo "selected='selected'"; } ?> value='solid'><?php echo __('Solid', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dotted') { echo "selected='selected'"; } ?> value='dotted'><?php echo __('Gepunktet', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='dashed') { echo "selected='selected'"; } ?> value='dashed'><?php echo __('Gestrichelt', 'cp-communitie'); ?></option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_style')=='solid') { echo "selected='selected'"; } ?> value='solid'><?php echo __('Solide', 'cp-communitie'); ?></option> 
 					</select> 
-					<span class="description"><?php echo __('Border style between rows', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Rahmenstil zwischen Reihen', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
 					<td scope="row"><label for="row_border_size"></label></td> 
 					<td>
 					<select name="row_border_size" id="row_border_size"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='1') { echo "selected='selected'"; } ?> value='1'>1 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='0') { echo "selected='selected'"; } ?> value='0'>0 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='1') { echo "selected='selected'"; } ?> value='1'>1 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_row_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 Pixel</option> 
 					</select> 
-					<span class="description"><?php echo __('Border size between rows', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Rahmengröße zwischen Zeilen', 'cp-communitie'); ?></span></td> 
 					</tr> 
 		
 					<tr valign="top"> 
-					<td scope="row"><label for="replies_border_size"><?php echo __('Other borders', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="replies_border_size"><?php echo __('Andere Rahmen', 'cp-communitie'); ?></label></td> 
 					<td>
 					<select name="replies_border_size" id="replies_border_size"> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='0') { echo "selected='selected'"; } ?> value='0'>0 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='1') { echo "selected='selected'"; } ?> value='1'>1 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 pixels</option> 
-						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 pixels</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='0') { echo "selected='selected'"; } ?> value='0'>0 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='1') { echo "selected='selected'"; } ?> value='1'>1 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='2') { echo "selected='selected'"; } ?> value='2'>2 Pixel</option> 
+						<option <?php if ( get_option(CPC_OPTIONS_PREFIX.'_replies_border_size')=='3') { echo "selected='selected'"; } ?> value='3'>3 Pixel</option> 
 					</select> 
-					<span class="description"><?php echo __('For new topics/replies and topic replies', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Für neue Themen/Antworten und Themenantworten', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td scope="row"><label for="__cpc__categories_background"><?php echo __('Miscellaneous', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="__cpc__categories_background"><?php echo __('Sonstiges', 'cp-communitie'); ?></label></td> 
 					<td><input name="__cpc__categories_background" type="text" id="__cpc__categories_background" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_categories_background'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Background colour of, for example, current category', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Hintergrundfarbe zB der aktuellen Kategorie', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
 					<td scope="row"><label for="categories_color"></label></td> 
 					<td><input name="categories_color" type="text" id="categories_color" class="cpc_pickColor" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_categories_color'); ?>"  /> 
 					<div style="position: absolute; margin-left:130px; margin-top:-110px;" class="colorpicker"></div>
-					<span class="description"><?php echo __('Text Colour', 'cp-communitie'); ?></span></td> 
+					<span class="description"><?php echo __('Textfarbe', 'cp-communitie'); ?></span></td> 
 					</tr> 
 
 					<tr valign="top"> 
-					<td colspan="2"><h3><?php echo __('Forum Styles', 'cp-communitie'); ?></h3></td> 
+					<td colspan="2"><h3><?php echo __('Forenstile', 'cp-communitie'); ?></h3></td> 
 					</tr> 
 	
 					<tr valign="top"> 
-					<td scope="row"><label for="closed_opacity"><?php echo __('Closed topics', 'cp-communitie'); ?></label></td> 
+					<td scope="row"><label for="closed_opacity"><?php echo __('Geschlossene Themen', 'cp-communitie'); ?></label></td> 
 					<td><input name="closed_opacity" type="text" id="closed_opacity" value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_closed_opacity'); ?>"  /> 
 					<?php
 					$closed_word = get_option(CPC_OPTIONS_PREFIX.'_closed_word');
 					?>
-					<span class="description"><?php echo sprintf(__('Opacity of topics with {%s} in the subject (between 0.0 and 1.0)', 'cp-communitie'), $closed_word); ?></span></td> 
+					<span class="description"><?php echo sprintf(__('Deckkraft von Themen mit {%s} im Betreff (zwischen 0.0 und 1.0)', 'cp-communitie'), $closed_word); ?></span></td> 
 					</tr> 
 
 					</table> 
 					<br />
 	 
-					<h2><?php echo __('Style Templates', 'cp-communitie'); ?></h2>
+					<h2><?php echo __('Stilvorlagen', 'cp-communitie'); ?></h2>
 						
-					<p><?php echo __('To save as a new style template, enter a name below, otherwise leave blank.', 'cp-communitie'); ?></p>
+					<p><?php echo __('Gib zum Speichern als neue Stilvorlage unten einen Namen ein, andernfalls lasse das Feld leer.', 'cp-communitie'); ?></p>
 
 					<p>
-					<?php echo __('Save as:', 'cp-communitie'); ?>
+					<?php echo __('Speichern als:', 'cp-communitie'); ?>
 					<input type='text' id='style_save_as' name='style_save_as' value='<?php if (isset($style_save_as)) { echo str_replace("'", "&apos;", stripslashes($style_save_as)); } ?>' />
-					<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save', 'cp-communitie') ?>" /> 
+					<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Speichern', 'cp-communitie') ?>" /> 
 					</p>
 					</form>
 						
@@ -7156,7 +7154,7 @@ function __cpc__plugin_styles() {
 						echo '<table class="widefat" style="width:450px">';
 						echo '<thead>';
 						echo '<tr>';
-						echo '<th style="font-size:1.2em">'.__('Load Style Template', 'cp-communitie').'</th>';
+						echo '<th style="font-size:1.2em">'.__('Stilvorlage laden', 'cp-communitie').'</th>';
 						echo '<th style="font-size:1.2em"></th>';
 						echo '</tr>';
 						echo '</thead>';
@@ -7168,8 +7166,8 @@ function __cpc__plugin_styles() {
 							echo '<tr valign="top"><td>';
 								echo stripslashes($style_lib->title);
 							echo "</td><td style='text-align:right'>";
-								echo "<input type='submit' id='style_save_as_button' style='margin-right:10px;' class='button' value='".__('Load', 'cp-communitie')."' />";
-								echo "<a class='delete' href='admin.php?page=cpcommunitie_styles&delstyle=".$style_lib->sid."'>".__('Delete', 'cp-communitie')."</a>";
+								echo "<input type='submit' id='style_save_as_button' style='margin-right:10px;' class='button' value='".__('Laden', 'cp-communitie')."' />";
+								echo "<a class='delete' href='admin.php?page=cpcommunitie_styles&delstyle=".$style_lib->sid."'>".__('Löschen', 'cp-communitie')."</a>";
 							echo "</td>";
 							
 							echo "</tr>";
@@ -7179,7 +7177,7 @@ function __cpc__plugin_styles() {
 					}
 					?>
 					<p style='clear:both;'><br />
-					<?php echo __("NB. If changes don't follow the above, you may be overriding them with the theme stylesheet.", 'cp-communitie') ?>
+					<?php echo __("NB. Wenn die Änderungen nicht den oben genannten folgen, überschreibe sie möglicherweise mit dem Design-Stylesheet.", 'cp-communitie') ?>
 					</p>
 	
 					<?php	
@@ -7212,7 +7210,7 @@ function __cpc__mail_messages_menu() {
   	echo '<div class="wrap">';
   	
 	  	echo '<div id="icon-themes" class="icon32"><br /></div>';
-	  	echo '<h2>'.sprintf(__('%s Management', 'cp-communitie'), CPC_WL).'</h2><br />';
+	  	echo '<h2>'.sprintf(__('%s-Verwaltung', 'cp-communitie'), CPC_WL).'</h2><br />';
 		__cpc__show_manage_tabs_header('messages');
 	  			
 	  	$all = $wpdb->get_var("SELECT count(*) FROM ".$wpdb->base_prefix."cpcommunitie_mail"); 
@@ -7239,21 +7237,21 @@ function __cpc__mail_messages_menu() {
 		echo '<thead>';
 		echo '<tr>';
 		echo '<th>ID</td>';
-		echo '<th>'.__('From', 'cp-communitie').'</th>';
-		echo '<th>'.__('To', 'cp-communitie').'</th>';
-		echo '<th>'.__('Subject', 'cp-communitie').'</th>';
-		echo '<th>'.__('Sent', 'cp-communitie').'</th>';
-		echo '<th>'.__('Action', 'cp-communitie').'</th>';
+		echo '<th>'.__('Von', 'cp-communitie').'</th>';
+		echo '<th>'.__('An', 'cp-communitie').'</th>';
+		echo '<th>'.__('Betreff', 'cp-communitie').'</th>';
+		echo '<th>'.__('Gesendet', 'cp-communitie').'</th>';
+		echo '<th>'.__('Aktion', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</thead>';
 		echo '<tfoot>';
 		echo '<tr>';
 		echo '<th>ID</th>';
-		echo '<th>'.__('From', 'cp-communitie').'</th>';
-		echo '<th>'.__('To', 'cp-communitie').'</th>';
-		echo '<th>'.__('Subject', 'cp-communitie').'</th>';
-		echo '<th>'.__('Sent', 'cp-communitie').'</th>';
-		echo '<th>'.__('Action', 'cp-communitie').'</th>';
+		echo '<th>'.__('Von', 'cp-communitie').'</th>';
+		echo '<th>'.__('An', 'cp-communitie').'</th>';
+		echo '<th>'.__('Betreff', 'cp-communitie').'</th>';
+		echo '<th>'.__('Gesendet', 'cp-communitie').'</th>';
+		echo '<th>'.__('Aktion', 'cp-communitie').'</th>';
 		echo '</tr>';
 		echo '</tfoot>';
 		echo '<tbody>';
@@ -7280,7 +7278,7 @@ function __cpc__mail_messages_menu() {
 				echo '<td valign="top" style="width: 150px">'.$message->mail_sent.'</td>';
 				echo '<td valign="top" style="width: 50px">';
 				$showpage = (isset($_GET['showpage'])) ? $_GET['showpage'] : 0;
-				echo "<span class='trash delete'><a href='admin.php?page=__cpc__mail_messages_menu&action=message_del&showpage=".$showpage."&mail_mid_del=".$message->mail_mid."'>".__('Trash', 'cp-communitie')."</a></span>";
+				echo "<span class='trash delete'><a href='admin.php?page=__cpc__mail_messages_menu&action=message_del&showpage=".$showpage."&mail_mid_del=".$message->mail_mid."'>".__('Müll', 'cp-communitie')."</a></span>";
 				echo '</td>';
 				echo '</tr>';			
 	
@@ -7322,7 +7320,7 @@ function __cpc__mail_menu() {
 		$message =$_POST['bulk_message'];
 		
 		if ($subject == '' || $message == '') {
-			echo "<div class='error'><p>".__('Please fill in the subject and message fields.', 'cp-communitie').".</p></div>";
+			echo "<div class='error'><p>".__('Bitte fülle die Felder Betreff und Nachricht aus.', 'cp-communitie').".</p></div>";
 		} else {
 
 			if (isset($_POST['roles'])) {
@@ -7385,7 +7383,7 @@ function __cpc__mail_menu() {
 						if ( __cpc__get_meta($member->ID, 'notify_new_messages') ) {
 		
 							$body = "<h1>".$subject."</h1>";
-							$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".__("Go to Mail", 'cp-communitie')."...</a></p>";
+							$body .= "<p><a href='".$url.__cpc__string_query($url)."mid=".$mail_id."'>".__("Gehe zu Mail", 'cp-communitie')."...</a></p>";
 							$body .= "<p>";
 							$body .= $message;
 							$body .= "</p>";
@@ -7399,7 +7397,7 @@ function __cpc__mail_menu() {
 		
 							// Send real email
 							if (isset($_POST['bulk_email'])) {
-								__cpc__sendmail($member->user_email, __('New Mail Message', 'cp-communitie'), $body);
+								__cpc__sendmail($member->user_email, __('Neue Mail-Nachricht', 'cp-communitie'), $body);
 							}
 						}
 					}		
@@ -7407,16 +7405,16 @@ function __cpc__mail_menu() {
 			
 				echo "<div class='updated'><p>";
 				if (isset($_POST['bulk_email'])) {
-					echo sprintf(__('Bulk message sent to %d members, and to their email addresses.', 'cp-communitie'), $cnt);
+					echo sprintf(__('Massennachricht an %d Mitglieder und an ihre E-Mail-Adressen gesendet.', 'cp-communitie'), $cnt);
 				} else {
-					echo sprintf(__('Bulk message sent to %d members (but not to their email addresses).', 'cp-communitie'), $cnt);
+					echo sprintf(__('Massennachricht an %d Mitglieder gesendet (aber nicht an ihre E-Mail-Adressen).', 'cp-communitie'), $cnt);
 				}
 				echo "</p></div>";	
 				$subject = '';
 				$message = '';			
 			} else {
 
-				echo "<div class='error'><p>".__('Please choose at least one ClassicPress role.', 'cp-communitie').".</p></div>";
+				echo "<div class='error'><p>".__('Bitte wähle mindestens eine ClassicPress-Rolle aus.', 'cp-communitie').".</p></div>";
 
 			}
 		}
@@ -7441,46 +7439,46 @@ function __cpc__mail_menu() {
 	
 			<table class="form-table __cpc__admin_table"> 
 			
-			<tr><td colspan="2"><h2><?php _e('Options', 'cp-communitie') ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php _e('Einstellungen', 'cp-communitie') ?></h2></td></tr>
 
 			<tr valign="top"> 
-			<td scope="row"><label for="mail_all"><?php echo __('Mail to all', 'cp-communitie'); ?></label></td>
+			<td scope="row"><label for="mail_all"><?php echo __('Mail an alle', 'cp-communitie'); ?></label></td>
 			<td>
 			<input type="checkbox" name="mail_all" id="mail_all" <?php if ($mail_all == "on") { echo "CHECKED"; } ?>/>
-			<span class="description"><?php echo __('Allow mail to all members, even if not a friend?', 'cp-communitie'); ?></span></td> 
+			<span class="description"><?php echo __('Mail an alle Mitglieder zulassen, auch wenn es kein Freund ist?', 'cp-communitie'); ?></span></td> 
 			</tr> 
 															
 			</table> 	
 		 
 			<p class="submit" style='margin-left:6px;'> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 			</p> 
 			</form> 
 
 		
 		<?php
 		echo '<div style="margin-left:10px">';
-		echo '<h2>'.__('Send bulk mail', 'cp-communitie').'</h2>';
-		echo '<p>'.sprintf(__('Send a message from you (%s) to all members of this website - if running ClassicPress MultiSite, this means all members on your site network.', 'cp-communitie'), $current_user->display_name).'</p>';
+		echo '<h2>'.__('Massenmail versenden', 'cp-communitie').'</h2>';
+		echo '<p>'.sprintf(__('Sende eine Nachricht von Dir (%s) an alle Mitglieder dieser Webseite - wenn Du ClassicPress MultiSite betreibst, bedeutet dies alle Mitglieder in Deinem Webseiten-Netzwerk.', 'cp-communitie'), $current_user->display_name).'</p>';
 		echo '<form method="post" action="">';
-		echo '<strong>'.__('Subject', 'cp-communitie').'</strong><br />';
+		echo '<strong>'.__('Betreff', 'cp-communitie').'</strong><br />';
 		echo '<textarea name="bulk_subject" style="width:500px; height:23px; margin-bottom:15px; overflow:hidden;">'.$subject.'</textarea><br />';
-		echo '<strong>'.__('Select ClassicPress roles to include', 'cp-communitie').'</strong><br />';
+		echo '<strong>'.__('Wähle die einzuschließenden ClassicPress-Rollen aus', 'cp-communitie').'</strong><br />';
 	  echo '<div style="margin:10px">';
 				// Get list of roles
 				global $wp_roles;
 				$all_roles = $wp_roles->roles;
-				echo '<input type="checkbox" name="roles[]" value="everyone"> '.__('All users', 'cp-communitie').'<br />';
+				echo '<input type="checkbox" name="roles[]" value="everyone"> '.__('Alle Benutzer', 'cp-communitie').'<br />';
 				foreach ($all_roles as $role) {
 					echo '<input type="checkbox" name="roles[]" value="'.$role['name'].'"';
 					echo '> '.$role['name'].'<br />';
 				}			
 		echo '</div>';
-		echo '<strong>'.__('Message', 'cp-communitie').'</strong><br />';
+		echo '<strong>'.__('Nachricht', 'cp-communitie').'</strong><br />';
 		echo '<textarea name="bulk_message" style="width:500px; height:200px;">'.$message.'</textarea><br />';
-		echo '<p><em>'.__('You can include HTML.', 'cp-communitie').'</em></p>';
-		echo '<input type="checkbox" name="bulk_email" CHECKED> '.__('Internal mail will be sent, but also send out email notifications?', 'cp-communitie');
-		echo '<br /><em>'.__('Be wary of limitations from your hosting provider. Members who do not want email notifications will not be sent one.', 'cp-communitie').'</em><br /><br />';
+		echo '<p><em>'.__('Du kannst HTML einschließen.', 'cp-communitie').'</em></p>';
+		echo '<input type="checkbox" name="bulk_email" CHECKED> '.__('Es soll interne Post versendet werden, aber auch E-Mail-Benachrichtigungen versendet werden?', 'cp-communitie');
+		echo '<br /><em>'.__('Sei vorsichtig mit den Einschränkungen Deines Hosting-Providers. Mitglieder, die keine E-Mail-Benachrichtigungen wünschen, erhalten keine.', 'cp-communitie').'</em><br /><br />';
 		echo '<input type="submit" name="Submit" class="button-primary" value="'.__('Senden', 'cp-communitie').'" />';
 		echo '</form></div>';
 
@@ -7556,7 +7554,7 @@ function __cpc__members_menu() {
 
 			<table class="form-table __cpc__admin_table">
 
-			<tr><td colspan="2"><h2><?php _e('Optionen', 'cp-communitie') ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php _e('Einstellungen', 'cp-communitie') ?></h2></td></tr>
 			
 			<tr valign="top">
 			<td scope="row"><label for="dir_atoz_order"><?php echo __('Standardansicht', 'cp-communitie'); ?></label></td> 

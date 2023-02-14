@@ -87,7 +87,7 @@ function __cpc__forum($atts) {
 		}
 	} 
 		
-	$everyone = str_replace(' ', '', strtolower(__('everyone', CPC_TEXT_DOMAIN))); // Deal with some foreign translations of 'everyone'
+	$everyone = str_replace(' ', '', strtolower(__('everyone', 'cp-communitie'))); // Deal with some foreign translations of 'everyone'
 	if ( $can_view || strpos($viewer, $everyone) !== FALSE ) {
 
 		$html .= "<div id='__cpc__forum_div'>";
@@ -107,8 +107,8 @@ function __cpc__forum($atts) {
 		
 	 } else {
 
-		$html .= "<p>".__("Sorry, but you are not permitted to view the forum.", CPC_TEXT_DOMAIN)."</p>";
-		if (__cpc__get_current_userlevel() == 5) $html .= sprintf(__('Permissions are set via the WordPress admin dashboard->%s->Options->Forum.', CPC_TEXT_DOMAIN), CPC_WL_SHORT);
+		$html .= "<p>".__("Sorry, but you are not permitted to view the forum.", 'cp-communitie')."</p>";
+		if (__cpc__get_current_userlevel() == 5) $html .= sprintf(__('Permissions are set via the WordPress admin dashboard->%s->Options->Forum.', 'cp-communitie'), CPC_WL_SHORT);
 
 	 }
 
@@ -192,7 +192,7 @@ function cpcommunitie_forum_latestposts_showThreadChildren($count, $cat_id, $par
 							$text = strip_tags(stripslashes($post->topic_post));
 							if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
 							$reply_text = $level == 1 ? 'replied' : 'commented';
-							$html .= __cpc__profile_link($post->topic_owner)." ".__($reply_text, CPC_TEXT_DOMAIN)." ";
+							$html .= __cpc__profile_link($post->topic_owner)." ".__($reply_text, 'cp-communitie')." ";
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 								$perma_cat = __cpc__get_forum_category_part_url($post->topic_category);
 								$html .= "<a title='".$text."' href='".$thispage.$perma_cat.$post->parent_stub."'>";
@@ -201,13 +201,13 @@ function cpcommunitie_forum_latestposts_showThreadChildren($count, $cat_id, $par
 							}
 							$html .= $text."</a> ".__cpc__time_ago($post->topic_started);
 							if ($use_answers == 'on' && $post->topic_answer == 'on') {
-								$html .= ' <img style="width:12px;height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', CPC_TEXT_DOMAIN).'" />';
+								$html .= ' <img style="width:12px;height:12px" src="'.get_option(CPC_OPTIONS_PREFIX.'_images').'/tick.png" alt="'.__('Answer Accepted', 'cp-communitie').'" />';
 							}
 							$html .= "<br>";
 						} else {
 							$text = stripslashes($post->topic_subject);
 							if ( strlen($text) > $preview ) { $text = substr($text, 0, $preview)."..."; }
-							$html .= __cpc__profile_link($post->topic_owner)." ".__('started', CPC_TEXT_DOMAIN);
+							$html .= __cpc__profile_link($post->topic_owner)." ".__('started', 'cp-communitie');
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure')) {
 								$perma_cat = __cpc__get_forum_category_part_url($post->topic_category);
 								$html .= " <a title='".$text."'  href='".$thispage.$perma_cat.$post->stub."'>".$text."</a> ";
@@ -223,7 +223,7 @@ function cpcommunitie_forum_latestposts_showThreadChildren($count, $cat_id, $par
 						$html .= "</div>";
 					}		
 					if ($post->topic_approved != 'on') {
-						$html .= "&nbsp;<em>[".__("pending approval", CPC_TEXT_DOMAIN)."]</em>";
+						$html .= "&nbsp;<em>[".__("pending approval", 'cp-communitie')."]</em>";
 					}
 				$html .= "</div>";
 				

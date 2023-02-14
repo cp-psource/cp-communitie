@@ -534,7 +534,7 @@ Invite=invites
 [Aktivität]
 Group Activity=activity
 Group Forum=forum
-[Members]
+[Mitglieder]
 Directory=members';
 
 	if (get_option(CPC_OPTIONS_PREFIX.'_group_menu_structure') === false) 

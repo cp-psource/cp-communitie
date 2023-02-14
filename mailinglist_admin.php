@@ -30,14 +30,14 @@ __cpc__show_tabs_header('replybyemail');
 			$username = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_username');
 			$password = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_password');
 
-			echo '<h3>'.__('Deleting POP3 mailbox contents', 'cp-communitie').'</h3>';
+			echo '<h3>'.__('Löschen von POP3-Postfachinhalten', 'cp-communitie').'</h3>';
 			
 			if ($mbox = imap_open ("{".$server.":".$port."/pop3}INBOX", $username, $password) ) {
 				
-				echo __('Connected', 'cp-communitie').', ';
+				echo __('Verbunden', 'cp-communitie').', ';
 				
 				$num_msg = imap_num_msg($mbox);
-				echo __('number of messages to be deleted', 'cp-communitie').': '.$num_msg.'<br />';
+				echo __('Anzahl der zu löschenden Nachrichten', 'cp-communitie').': '.$num_msg.'<br />';
 		
 				if ($num_msg > 0) {
 
@@ -49,7 +49,7 @@ __cpc__show_tabs_header('replybyemail');
 					}
 				} else {
 					
-					echo __('No messages found', 'cp-communitie').'.';
+					echo __('Keine Nachrichten gefunden', 'cp-communitie').'.';
 					
 				}
 
@@ -60,15 +60,15 @@ __cpc__show_tabs_header('replybyemail');
 				
 			} else {
 			
-				echo __('Problem connecting to mail server', 'cp-communitie').': ' . imap_last_error().' '.__('(or no internet connection)', 'cp-communitie').'.<br />';		
-				echo __('Check your mail server address and port number, username and password', 'cp-communitie').'.';
+				echo __('Problem bei der Verbindung zum Mailserver', 'cp-communitie').': ' . imap_last_error().' '.__('(oder keine Internetverbindung)', 'cp-communitie').'.<br />';		
+				echo __('Überprüfe die Adresse Ihres Mailservers und die Portnummer, den Benutzernamen und das Passwort', 'cp-communitie').'.';
 				
 			}
 			
 			$_SESSION['__cpc__mailinglist_lock'] = '';
 			
 		} else {
-			if ($output) echo __('Currently processing, please try again in a few minutes.', 'cp-communitie').'.<br />';		
+			if ($output) echo __('Wird gerade verarbeitet, bitte versuche es in ein paar Minuten erneut.', 'cp-communitie').'.<br />';		
 		}
 	}
 	
@@ -88,7 +88,7 @@ __cpc__show_tabs_header('replybyemail');
 		$_SESSION['__cpc__mailinglist_lock'] = '';
 	
 	    // Put an settings updated message on the screen
-		echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Speichern', 'cp-communitie').".</p></div>";
 		
 	}
 	
@@ -100,23 +100,23 @@ __cpc__show_tabs_header('replybyemail');
 				
 			<table class="form-table __cpc__admin_table"> 
 
-			<tr><td colspan="2"><h2><?php echo __('Options', 'cp-communitie'); ?></h2></td></tr>
+			<tr><td colspan="2"><h2><?php echo __('Einstellungen', 'cp-communitie'); ?></h2></td></tr>
 		
 			<tr><td colspan="2">
-				<?php echo __('Allows members to reply to forum topics by email (by replying to the notification received).', 'cp-communitie'); ?><br />
+				<?php echo __('Ermöglicht es Mitgliedern, per E-Mail auf Forenthemen zu antworten (indem sie auf die erhaltene Benachrichtigung antworten).', 'cp-communitie'); ?><br />
 				<?php
 				$cron = _get_cron_array();
 				$schedules = wp_get_schedules();
-				$date_format = _x( 'M j, Y @ G:i', 'Publish box date format', 'cp-communitie');
+				$date_format = _x( 'M j, Y @ G:i', 'Datumsformat der Veröffentlichungsbox', 'cp-communitie');
 				foreach ( $cron as $timestamp => $cronhooks ) {
 					foreach ( (array) $cronhooks as $hook => $events ) {
 						foreach ( (array) $events as $key => $event ) {
 							if ($hook == '__cpc__mailinglist_hook') {
 								if ($timestamp-time() < 0) {
-									echo __('Next scheduled run', 'cp-communitie').': '.date_i18n( $date_format, $timestamp ).'<br />';
+									echo __('Nächster geplanter Lauf', 'cp-communitie').': '.date_i18n( $date_format, $timestamp ).'<br />';
 								} else {
-									echo __('Next scheduled run', 'cp-communitie').': '.date_i18n( $date_format, $timestamp ).' ';
-									echo '('.sprintf(__('in %d seconds', 'cp-communitie'), $timestamp-time()).').<br />';
+									echo __('Nächster geplanter Lauf', 'cp-communitie').': '.date_i18n( $date_format, $timestamp ).' ';
+									echo '('.sprintf(__('in %d Sekunden', 'cp-communitie'), $timestamp-time()).').<br />';
 								}
 							}
 						}
@@ -124,7 +124,7 @@ __cpc__show_tabs_header('replybyemail');
 				}
 				
 				?>
-				<?php echo __('Click on the button below to check for replies by email and add to the forum (this may take a few minutes).', 'cp-communitie'); ?>
+				<?php echo __('Klicke auf die Schaltfläche unten, um nach Antworten per E-Mail zu suchen und sie zum Forum hinzuzufügen (dies kann einige Minuten dauern).', 'cp-communitie'); ?>
 			</td></tr>
 			
 			<tr><td colspan="2">
@@ -134,75 +134,75 @@ __cpc__show_tabs_header('replybyemail');
 			<tr valign="top"> 
 			<td scope="row"><label for="cpcommunitie_mailinglist_server"><?php echo __('Server', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_server" type="text" id="cpcommunitie_mailinglist_server"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_server'); ?>" /> 
-			<span class="description"><?php echo __('Server URL or IP address, eg: mail.example.com', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Server-URL oder IP-Adresse, z. B.: mail.example.com', 'cp-communitie'); ?></td> 
 			</tr> 
 															
 			<tr valign="top"> 
 			<td scope="row"><label for="cpcommunitie_mailinglist_port"><?php echo __('Port', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_port" type="text" id="cpcommunitie_mailinglist_port"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_port'); ?>" /> 
-			<span class="description"><?php echo __('Port used by mail server, eg: 110', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Vom Mailserver verwendeter Port, z. B.: 110', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_username"><?php echo __('Username', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_username"><?php echo __('Benutzername', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_username" type="text" id="cpcommunitie_mailinglist_username"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_username'); ?>" /> 
-			<span class="description"><?php echo __('Username of mail account', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Benutzername des E-Mail-Kontos', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_password"><?php echo __('Password', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_password"><?php echo __('Passwort', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_password" type="password" id="cpcommunitie_mailinglist_password"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_password'); ?>" /> 
-			<span class="description"><?php echo __('Password of mail account', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Passwort des Mailkontos', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_from"><?php echo __('Email sent from', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_from"><?php echo __('E-Mail gesendet von', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_from" type="text" id="cpcommunitie_mailinglist_from"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_from'); ?>" /> 
-			<span class="description"><?php echo __('Email address to reply to, eg: forum@example.com', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('E-Mail-Adresse, an die geantwortet werden soll, z. B.: forum@example.com', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_prompt"><?php echo __('Prompt', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_prompt"><?php echo __('Eingabeaufforderung', 'cp-communitie'); ?></label></td> 
 			<td><input style="width: 400px" name="cpcommunitie_mailinglist_prompt" type="text" id="cpcommunitie_mailinglist_prompt"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt'); ?>" /> 
-			<span class="description"><?php echo __('Line of text to appear as a prompt where to enter reply text', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Textzeile, die als Eingabeaufforderung für die Eingabe des Antworttexts angezeigt wird', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_divider"><?php echo __('Top divider', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_divider"><?php echo __('Oberer Teiler', 'cp-communitie'); ?></label></td> 
 			<td><input style="width: 400px" name="cpcommunitie_mailinglist_divider" type="text" id="cpcommunitie_mailinglist_divider"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider'); ?>" /> 
-			<span class="description"><?php echo __('The top boundary of where replies should be entered', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Die obere Grenze, wo Antworten eingegeben werden sollten', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_divider_bottom"><?php echo __('Bottom divider', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_divider_bottom"><?php echo __('Unterer Teiler', 'cp-communitie'); ?></label></td> 
 			<td><input style="width: 400px" name="cpcommunitie_mailinglist_divider_bottom" type="text" id="cpcommunitie_mailinglist_divider_bottom"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom'); ?>" /> 
-			<span class="description"><?php echo __('The bottom boundary of where replies should be entered', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Die untere Grenze, wo Antworten eingegeben werden sollten', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			<tr valign="top"> 
-			<td scope="row"><label for="cpcommunitie_mailinglist_cron"><?php echo __('Check Frequency', 'cp-communitie'); ?></label></td> 
+			<td scope="row"><label for="cpcommunitie_mailinglist_cron"><?php echo __('Frequenz prüfen', 'cp-communitie'); ?></label></td> 
 			<td><input name="cpcommunitie_mailinglist_cron" type="text" id="cpcommunitie_mailinglist_cron"  value="<?php echo get_option(CPC_OPTIONS_PREFIX.'_mailinglist_cron'); ?>" /> 
-			<span class="description"><?php echo __('Frequency (in seconds) to check, uses ClassicPress cron schedule, so requires your site to be visited. Not too low!!', 'cp-communitie'); ?></td> 
+			<span class="description"><?php echo __('Häufigkeit (in Sekunden) zur Überprüfung, verwendet den Cron-Zeitplan von ClassicPress, erfordert also, dass Deine Webseite besucht wird. Nicht zu niedrig!', 'cp-communitie'); ?></td> 
 			</tr> 
 	
 			</table> 	
 		 
 			<div style='margin-top:25px; margin-left:6px; float:left;'> 
-			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Save Changes', 'cp-communitie'); ?>" /> 
+			<input type="submit" name="Submit" class="button-primary" value="<?php echo __('Änderungen speichern', 'cp-communitie'); ?>" /> 
 			</div> 
 			
 	</form>		
 	<form action="" method="POST">
 		<input type='hidden' name='check_pop3' value='get' />
-		<input type="submit" name="submit" class="button-primary" style="float:left;margin-top:25px; margin-left:10px;" value="<?php echo __('Check for replies now and process', 'cp-communitie'); ?>" /> 
+		<input type="submit" name="submit" class="button-primary" style="float:left;margin-top:25px; margin-left:10px;" value="<?php echo __('Jetzt auf Antworten prüfen und bearbeiten', 'cp-communitie'); ?>" /> 
 	</form>
 	<form action="" method="POST">
 		<input type='hidden' name='check_pop3' value='check' />
-		<input type="submit" name="submit" class="button-primary" style="float:left;margin-top:25px; margin-left:10px;" value="<?php echo __('Check for replies now (but don\'t process any)', 'cp-communitie'); ?>" /> 
+		<input type="submit" name="submit" class="button-primary" style="float:left;margin-top:25px; margin-left:10px;" value="<?php echo __('Jetzt auf Antworten prüfen (aber keine bearbeiten)', 'cp-communitie'); ?>" /> 
 	</form>
 	<form action="" method="POST">
 		<input type='hidden' name='check_pop3' value='delete' />
-		<input type="submit" name="submit" class="button-primary" style="margin-top:25px; margin-left:10px;" value="<?php echo __('Delete POP3 mailbox contents', 'cp-communitie'); ?>" /> 
+		<input type="submit" name="submit" class="button-primary" style="margin-top:25px; margin-left:10px;" value="<?php echo __('Lösche den Inhalt des POP3-Postfachs', 'cp-communitie'); ?>" /> 
 	</form>
 		
 <?php __cpc__show_tabs_header_end(); ?>

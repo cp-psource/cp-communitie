@@ -16,47 +16,47 @@ __cpc__show_tabs_header('lounge');
 ?>
 
 <table class="form-table"><tr><td colspan="2">
-<h2><?php echo __('Options', 'cp-communitie'); ?></h2>
+<h2><?php echo __('Einstellungen', 'cp-communitie'); ?></h2>
 
 
 <div>
 <form action="" method="POST">
 	
 	<p>
-	<?php _e('The Lounge plugin provides a site wide chat room ("shoutbox").', 'cp-communitie'); ?>
+	<?php _e('Das Lounge-Plug-in bietet einen seitenweiten Chatroom ("Shoutbox").', 'cp-communitie'); ?>
 	</p>
-	<?php _e('Maximum number of returned rows', 'cp-communitie'); ?>: <input type="text" name="cpcommunitie_lounge_max_rows" style="width:40px" value="<?php echo get_option(CPC_OPTIONS_PREFIX."_lounge_max_rows")+0; ?>" />
+	<?php _e('Maximale Anzahl zurückgegebener Zeilen', 'cp-communitie'); ?>: <input type="text" name="cpcommunitie_lounge_max_rows" style="width:40px" value="<?php echo get_option(CPC_OPTIONS_PREFIX."_lounge_max_rows")+0; ?>" />
 	<br /><br />
-	<input type="submit" class="button-primary" value="<?php _e('Save', 'cp-communitie'); ?>">
+	<input type="submit" class="button-primary" value="<?php _e('Speichern', 'cp-communitie'); ?>">
 	
 </form>
 </div>
 </td></tr></table>
 
 <table class="form-table __cpc__admin_table"><tr><td colspan="2">
-<h2>Development Demonstrator</h2>
+<h2>Entwicklungsdemonstrator</h2>
 
 <div>
 <p>
-The primary purpose of the plugin is to act as a demonstrator and/or template for the development of plugins that are compatible with <?php echo CPC_WL; ?>.
+Der Hauptzweck des Plugins besteht darin, als Demonstrator und/oder Vorlage für die Entwicklung von Plugins zu dienen, die mit <?php echo CPC_WL; ?> sind.
 </p>
 
-It includes many features such as using:
+Es enthält viele Funktionen wie die Verwendung von:
 <ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-<li><?php echo CPC_WL; ?> Hooks and Filters</li>
-<li><?php echo CPC_WL; ?> functions</li>
-<li><?php echo CPC_WL; ?> Javascript variables</li>
+<li><?php echo CPC_WL; ?> Hooks und Filter</li>
+<li><?php echo CPC_WL; ?> Funktionen</li>
+<li><?php echo CPC_WL; ?> Javascript-Variablen</li>
 </ul>
 
 <p>
-It also demonstrates how to:
+Es zeigt auch, wie man:
 </p>
 
 <ul style="list-style-type: circle; margin: 10px 0 10px 30px;">
-<li>add to the Profile page menu and display content within the profile page without reloading whole page</li>
-<li>use AJAX to present information within ClassicPress and reload partial content without a page refresh</li>
-<li>plug in to the <?php echo CPC_WL; ?> installation page</li>
-<li>add a short-code to include content as part of a ClassicPress page</li>
+<li>Ein Profilseitenmenü hinzufügt und Inhalte innerhalb der Profilseite anzeigt, ohne die ganze Seite neu zu laden</li>
+<li>AJAX verwendet, um Informationen in ClassicPress zu präsentieren und teilweise Inhalte ohne Seitenaktualisierung neu zu laden</li>
+<li>Plug in <?php echo CPC_WL; ?> Installationsseite</li>
+<li>Einen Kurzcode hinzufügt, um Inhalte als Teil einer ClassicPress-Seite einzuschließen</li>
 </ul>
 </div>
 </td></tr></table>
@@ -65,7 +65,7 @@ It also demonstrates how to:
 <table class="form-table __cpc__admin_table">
 	<tr><td colspan="2"><h2>Shortcodes</h2></td></tr>
 	<tr><td width="165px">[<?php echo CPC_SHORTCODE_PREFIX; ?>-lounge]</td>
-		<td><?php echo __('Shortcode to display The Lounge within a page.', 'cp-communitie'); ?></td></tr>
+		<td><?php echo __('Shortcode zum Anzeigen von Die Lounge auf einer Seite.', 'cp-communitie'); ?></td></tr>
 </table>
 
 

@@ -57,22 +57,22 @@ function __cpc__events_main() {
 						
 							if ($event->event_google_map == 'on') {
 								$html .= "<div id='event_google_profile_map' style='float:right; margin-left:5px; width:128px; height:128px'>";
-								$html .= '<a target="_blank" href="http://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$event->event_location.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$event->event_location.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
-								$html .= '<img src="http://maps.google.com/maps/api/staticmap?center='.$event->event_location.'&zoom=5&size=128x128&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$event->event_location.'&sensor=false" />';
+								$html .= '<a target="_blank" href="https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$event->event_location.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$event->event_location.'&amp;output=embed&amp;z=5" alt="Zum Vergrößern auf die Karte klicken" title="Zum Vergrößern auf die Karte klicken">';
+								$html .= '<img src="https://maps.google.com/maps/api/staticmap?center='.$event->event_location.'&zoom=5&size=128x128&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$event->event_location.'&sensor=false" />';
 								$html .= "</a></div>";
 							}
 	
 							if ( ($event->event_owner == $current_user->ID) || (__cpc__get_current_userlevel() == 5) ) {
 								$html .= "<div class='__cpc__event_list_item_icons'>";
 								if ($event->event_live != 'on') {
-									$html .= '<div style="font-style:italic;float:right;">'.__('Edit to publish', 'cp-communitie').'</div>';
+									$html .= '<div style="font-style:italic;float:right;">'.__('Zum Veröffentlichen bearbeiten', 'cp-communitie').'</div>';
 								}
 								$html .= "<a href='javascript:void(0)' class='cpcommunitie_delete_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/delete.png' /></a>";
 								$html .= "<a href='javascript:void(0)' class='__cpc__edit_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/edit.png' /></a>";
 								$html .= "</div>";
 							}
 												
-							$html .= '<div class="__cpc__event_list_owner">'.__("Added by", 'cp-communitie')." ".__cpc__profile_link($event->ID).'</div>';
+							$html .= '<div class="__cpc__event_list_owner">'.__("Hinzugefügt von", 'cp-communitie')." ".__cpc__profile_link($event->ID).'</div>';
 							$html .= '<div class="__cpc__event_list_name">'.stripslashes($event->event_name).'</div>';
 							$html .= '<div class="__cpc__event_list_location">'.stripslashes($event->event_location).'</div>';
 							if ($event->event_enable_places && $event->event_show_max) {
@@ -80,14 +80,14 @@ function __cpc__events_main() {
 								$taken = $wpdb->get_var($wpdb->prepare($sql, $event->eid));
 								$html .= '<div class="__cpc__event_list_places">';
 									if ($event->event_max_places-$taken > 0) {
-										$html .= __('Tickets left:', 'cp-communitie').' '.($event->event_max_places-$taken);
+										$html .= __('Tickets übrig:', 'cp-communitie').' '.($event->event_max_places-$taken);
 									} else {
-										$html .= __('Event full', 'cp-communitie');
+										$html .= __('Ausgebucht', 'cp-communitie');
 									}
 								$html .= '</div>';
 							}
 							if (isset($event->event_cost) && $event->event_cost !== null) {
-								$html .= '<div class="cpcommunitie_event_cost">'.__('Cost per ticket:', 'cp-communitie').' '.$event->event_cost.'</div>';
+								$html .= '<div class="cpcommunitie_event_cost">'.__('Kosten pro Ticket:', 'cp-communitie').' '.$event->event_cost.'</div>';
 							}
 							$html .= '<div class="__cpc__event_list_description">';
 							$html .= stripslashes($event->event_description);
@@ -108,7 +108,7 @@ function __cpc__events_main() {
 									$html .= __('Start: ', 'cp-communitie').$event->event_start_hours.":".sprintf('%1$02d', $event->event_start_minutes);
 								}
 								if ($event->event_end_hours != 99) {
-									$html .= ' '.__('End: ', 'cp-communitie').$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
+									$html .= ' '.__('Ende: ', 'cp-communitie').$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
 								}
 							$html .= '</div>';
 	
@@ -116,7 +116,7 @@ function __cpc__events_main() {
 							if ($event->event_more) {
 								$more = str_replace(chr(10), '<br />', stripslashes($event->event_more));
 								$html .= '<div id="cpcommunitie_more_'.$event->eid.'" title="'.stripslashes($event->event_name).'" class="__cpc__dialog_content"><div style="text-align:left">'.$more.'</div></div>';
-								$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("More info", 'cp-communitie').'" />';
+								$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("Mehr Info", 'cp-communitie').'" />';
 							}
 							if (is_user_logged_in() && $event->event_enable_places) {
 									// check to see if already booked
@@ -124,12 +124,12 @@ function __cpc__events_main() {
 									$ret = $wpdb->get_row($wpdb->prepare($sql, $event->eid, $current_user->ID));
 									if (!$ret || !$ret->tickets) {
 										if ($event->event_max_places-$taken > 0)
-											$html .= '<input type="submit" id="cpcommunitie_book_event" data-eid="'.$event->eid.'" data-max="'.$event->event_tickets_per_booking.'" class="__cpc__button cpcommunitie_book_event_button" value="'.__("Book", 'cp-communitie').'" />';
+											$html .= '<input type="submit" id="cpcommunitie_book_event" data-eid="'.$event->eid.'" data-max="'.$event->event_tickets_per_booking.'" class="__cpc__button cpcommunitie_book_event_button" value="'.__("Buchen", 'cp-communitie').'" />';
 									} else {
-										$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'"  class="__cpc__button cpcommunitie_cancel_event_button" value="'.__("Cancel", 'cp-communitie').'" />';
+										$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'"  class="__cpc__button cpcommunitie_cancel_event_button" value="'.__("Abbrechen", 'cp-communitie').'" />';
 									}
 									if ($ret && !$ret->confirmed && !$ret->payment_processed && $ret->tickets && $ret->event_cost)
-										$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'" style="margin-left:5px" class="__cpc__button" value="'.__("Payment", 'cp-communitie').'" />';
+										$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'" style="margin-left:5px" class="__cpc__button" value="'.__("Zahlung", 'cp-communitie').'" />';
 									if ($ret && $ret->tickets ) {
 										if ($ret->confirmed) {
 											$html .= '<br />'.sprintf(_n('Confirmed by the event organiser for %d ticket.','Confirmed by the event organiser for %d tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);

@@ -31,7 +31,7 @@ function __cpc__group()
 		$default_page = $wpdb->get_var($wpdb->prepare("SELECT default_page FROM ".$wpdb->prefix . 'cpcommunitie_groups WHERE gid=%d', $gid));
 		return __cpc_show_group($default_page);
 	} else {
-		return 'No group ID sent....';
+		return 'Keine Gruppen-ID gesendet....';
 	}
 	
 	exit;
@@ -135,20 +135,20 @@ function __cpc_show_group($page)
 							$member_count = $wpdb->get_var($wpdb->prepare("SELECT COUNT(gmid) FROM ".$wpdb->prefix."cpcommunitie_group_members WHERE group_id = %d", $gid));
 							if ($group->max_members == 0 || $member_count < $group->max_members) {
 								if ($group->private != "on") {
-									$buttons .='<input type="submit" value="'.__("Join Group", 'cp-communitie').'" id="groups_join_button" class="__cpc__button">';
-									$buttons .='<p id="groups_join_button_done" style="padding:6px;display:none">'.__('You are now a member of this group.', 'cp-communitie').'</p>';
+									$buttons .='<input type="submit" value="'.__("Gruppe beitreten", 'cp-communitie').'" id="groups_join_button" class="__cpc__button">';
+									$buttons .='<p id="groups_join_button_done" style="padding:6px;display:none">'.__('Du bist jetzt Mitglied dieser Gruppe.', 'cp-communitie').'</p>';
 								} else {
-									$buttons .='<input type="submit" value="'.__("Request to Join", 'cp-communitie').'" id="groups_join_button" class="__cpc__button">';
-									$buttons .='<p id="groups_join_button_done" style="padding:6px;display:none">'.__('Your membership is awaiting approval.', 'cp-communitie').'</p>';
+									$buttons .='<input type="submit" value="'.__("Beitrittsanfrage", 'cp-communitie').'" id="groups_join_button" class="__cpc__button">';
+									$buttons .='<p id="groups_join_button_done" style="padding:6px;display:none">'.__('Deine Mitgliedschaft wartet auf die Genehmigung.', 'cp-communitie').'</p>';
 								}
 							} else {
-								$buttons .='<p>'.__('Group membership is full.', 'cp-communitie').'</p>';
+								$buttons .='<p>'.__('Die Gruppenmitgliedschaft ist voll.', 'cp-communitie').'</p>';
 							}
 
 						} else {
 							
 							// Asked to join, waiting for decision
-							$buttons .= "<p>".__("Your request to join is awaiting approval.", 'cp-communitie')."</p>";
+							$buttons .= "<p>".__("Deine Beitrittsanfrage wartet auf Genehmigung.", 'cp-communitie')."</p>";
 
 						}
 									
@@ -156,8 +156,8 @@ function __cpc_show_group($page)
 
 						if (__cpc__group_admin($gid) != "yes") {
 							// Is a member, so show leave button (if not an admin)
-							$buttons .='<input type="submit" value="'.__("Leave Group", 'cp-communitie').'" id="groups_leave_button" class="__cpc__button">';
-							$buttons .='<p id="groups_leave_button_done" style="padding:6px;display:none">'.__('You are no longer a member of this group.', 'cp-communitie').'</p>';
+							$buttons .='<input type="submit" value="'.__("Gruppe verlassen", 'cp-communitie').'" id="groups_leave_button" class="__cpc__button">';
+							$buttons .='<p id="groups_leave_button_done" style="padding:6px;display:none">'.__('Du bist kein Mitglied dieser Gruppe mehr.', 'cp-communitie').'</p>';
 						}
 						
 					}
@@ -165,10 +165,10 @@ function __cpc_show_group($page)
 					if (__cpc__group_admin($gid) == "yes" || __cpc__get_current_userlevel() == 5) {
 						// Admin, so can delete group
 						if (__cpc__get_current_userlevel() == 5) {
-							$buttons .= '<input type="submit" value="'.__("Delete Group", 'cp-communitie').'" id="groups_delete_button" class="__cpc__button">';
-							$buttons .='<p id="groups_delete_button_done" style="padding:6px;display:none">'.__('Group deleted.', 'cp-communitie').'</p>';
+							$buttons .= '<input type="submit" value="'.__("Gruppe löschen", 'cp-communitie').'" id="groups_delete_button" class="__cpc__button">';
+							$buttons .='<p id="groups_delete_button_done" style="padding:6px;display:none">'.__('Gruppe gelöscht.', 'cp-communitie').'</p>';
 						} else {
-							$buttons .= '<input type="submit" title="'.$gid.'" value="'.__("Delete Group", 'cp-communitie').'" id="groups_delete_button_request" class="__cpc__button">';
+							$buttons .= '<input type="submit" title="'.$gid.'" value="'.__("Gruppe löschen", 'cp-communitie').'" id="groups_delete_button_request" class="__cpc__button">';
 						}
 					} 
 				
@@ -200,19 +200,19 @@ function __cpc_show_group($page)
 				if (strpos($template, '[menu]') !== false) {
 					// vertical menu
 					$menu = "";
-					$menu .= '<div id="group_menu_all" class="__cpc__group_menu">'.__('All Groups', 'cp-communitie').'</div>';
-					$menu .= '<div id="group_menu_about" class="__cpc__group_menu">'.__('Welcome page', 'cp-communitie').'</div>';
+					$menu .= '<div id="group_menu_all" class="__cpc__group_menu">'.__('Alle Gruppen', 'cp-communitie').'</div>';
+					$menu .= '<div id="group_menu_about" class="__cpc__group_menu">'.__('Startseite', 'cp-communitie').'</div>';
 					if ($member_of == "yes" || $group->content_private != "on") {
-						$menu .= '<div id="group_menu_wall" class="__cpc__group_menu">'.__('Group Activity', 'cp-communitie').'</div>';
+						$menu .= '<div id="group_menu_wall" class="__cpc__group_menu">'.__('Gruppenaktivität', 'cp-communitie').'</div>';
 						if ($group->group_forum == "on") {
-							$menu .= '<div id="group_menu_forum" class="__cpc__group_menu">'.__('Group Forum', 'cp-communitie').'</div>';
+							$menu .= '<div id="group_menu_forum" class="__cpc__group_menu">'.__('Gruppenforum', 'cp-communitie').'</div>';
 						}
-						$menu .= '<div id="group_menu_members" class="__cpc__group_menu">'.__('Active Members', 'cp-communitie').'</div>';
+						$menu .= '<div id="group_menu_members" class="__cpc__group_menu">'.__('Aktive Mitglieder', 'cp-communitie').'</div>';
 					}
 					if (__cpc__group_admin($gid) == "yes" || __cpc__get_current_userlevel() == 5) {
-						$menu .= '<div id="group_menu_settings" class="__cpc__group_menu">'.__('Group Settings', 'cp-communitie').'</div>';
+						$menu .= '<div id="group_menu_settings" class="__cpc__group_menu">'.__('Gruppeneinstellungen', 'cp-communitie').'</div>';
 						if (get_option(CPC_OPTIONS_PREFIX.'_group_invites') == 'on') {
-							$menu .= '<div id="group_menu_invites" class="__cpc__group_menu">'.__('Group Invites', 'cp-communitie').'</div>';
+							$menu .= '<div id="group_menu_invites" class="__cpc__group_menu">'.__('Gruppeneinladungen', 'cp-communitie').'</div>';
 						}
 					}
 					$template = str_replace("[menu]", $menu, $template);
@@ -243,12 +243,12 @@ function __cpc_show_group($page)
 						
 		} else {
 			
-			$html = __("Group not found, sorry.", 'cp-communitie');
+			$html = __("Gruppe nicht gefunden, tut mir leid.", 'cp-communitie');
 		}
 		
 	} else {
 		
-		$html = __cpc__show_login_link(__("You need to <a href='%s'>login</a> to access this group.", 'cp-communitie'));
+		$html = __cpc__show_login_link(__("Du musst Dich <a href='%s'>anmelden</a>, um auf diese Gruppe zuzugreifen.", 'cp-communitie'));
 		
 	}
 	
@@ -386,22 +386,22 @@ function __cpc__groups() {
 
 		if ( (is_user_logged_in()) && ($group_all_create == "on" || __cpc__get_current_userlevel() == 5) ) {
 
-			$html .= "<input type='submit' id='show_create_group_button' class='__cpc__button' value='".__("Create Group", 'cp-communitie')."'>";
+			$html .= "<input type='submit' id='show_create_group_button' class='__cpc__button' value='".__("Gruppe erstellen", 'cp-communitie')."'>";
 
 			$html .= "<div id='create_group_form' style='display:none'>";
 				$html .= "<div>";
-				$html .= "<strong>".__("Name of Group", 'cp-communitie')."</strong><br />";
+				$html .= "<strong>".__("Name der Gruppe", 'cp-communitie')."</strong><br />";
 				$html .= "<input type='text' id='name_of_group' class='new-topic-subject-input' style='width: 98% !important;'>";
 				$html .= "</div>";
 
 				$html .= "<div>";
-				$html .= "<strong>".__("Description", 'cp-communitie')."</strong><br />";
+				$html .= "<strong>".__("Beschreibung", 'cp-communitie')."</strong><br />";
 				$html .= "<input type='text' id='description_of_group' style='width: 98% !important;'>";
 				$html .= "</div>";
 
 				$html .= "<div style='margin-top:10px'>";
-				$html .= "<input type='submit' id='create_group_button' class='__cpc__button' value='".__("Create", 'cp-communitie')."'>";
-				$html .= "<input type='submit' id='cancel_create_group_button' class='__cpc__button' value='".__("Cancel", 'cp-communitie')."'>";
+				$html .= "<input type='submit' id='create_group_button' class='__cpc__button' value='".__("Erstellen", 'cp-communitie')."'>";
+				$html .= "<input type='submit' id='cancel_create_group_button' class='__cpc__button' value='".__("Abbrechen", 'cp-communitie')."'>";
 				$html .= "</div>";
 			$html .= "</div>";
 
@@ -422,7 +422,7 @@ function __cpc__groups() {
 			$html .= "<div style='padding:0px;'>";
 			$html .= '<input type="text" id="group" name="group" autocomplete="off" class="groups_search_box" value="'.$term.'" style="margin-right:10px" />';
 			$html .= '<input type="hidden" id="group_id" name="group_id" />';
-			$html .= '<input id="groups_go_button" type="submit" class="__cpc__button" value="'.__("Search", 'cp-communitie').'" />';
+			$html .= '<input id="groups_go_button" type="submit" class="__cpc__button" value="'.__("Suche", 'cp-communitie').'" />';
 			$html .= "</div>";	
 
 	
@@ -450,14 +450,14 @@ function __cpc__groups() {
 						$html .= "</div>";
 
 						$html .= "<div class='group_name'>";
-						$name = stripslashes($group->name) != '' ? stripslashes($group->name) : __('[No name]', 'cp-communitie');
+						$name = stripslashes($group->name) != '' ? stripslashes($group->name) : __('[Kein Name]', 'cp-communitie');
 						$html .= "<a class='row_link' href='".__cpc__get_url('group')."?gid=".$group->gid."'>".$name."</a>";
 						$html .= "</div>";
 						
 						$html .= "<div class='group_member_count'>";
-						$html .= __("Member Count:", 'cp-communitie')." ".$group->member_count;
+						$html .= __("Mitgliederzahl:", 'cp-communitie')." ".$group->member_count;
 						if ($group->last_activity) {
-							$html .= '<br /><em>'.__('last active', 'cp-communitie').' '.__cpc__time_ago($group->last_activity)."</em>";
+							$html .= '<br /><em>'.__('letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($group->last_activity)."</em>";
 						}
 						$html .= "</div>";
 					
@@ -477,7 +477,7 @@ function __cpc__groups() {
 			$html .= "<div style='padding:0px;'>";
 			$html .= '<input type="text" id="__cpc__group" name="group" autocomplete="off" class="groups_search_box" value="'.$term.'" style="margin-right:10px" />';
 			$html .= '<input type="hidden" id="group_id" name="group_id" />';
-			$html .= '<input id="groups_go_button" type="submit" class="__cpc__button" value="'.__("Search", 'cp-communitie').'" />';
+			$html .= '<input id="groups_go_button" type="submit" class="__cpc__button" value="'.__("Suche", 'cp-communitie').'" />';
 			$html .= "</div>";	
 	
 			
@@ -488,7 +488,7 @@ function __cpc__groups() {
 		$html .= "</div>"; // End of Groups Results
 		
 		if (isset($groups) && !$groups) 
-				$html .= "<div style='clear:both'>".__("No group found....", 'cp-communitie')."</div>";
+				$html .= "<div style='clear:both'>".__("Keine Gruppe gefunden....", 'cp-communitie')."</div>";
 		
 	$html .= '</div>'; // End of Wrapper
 	
@@ -504,7 +504,7 @@ function __cpc__groups() {
 function __cpc__add_groups_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden' : '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Groups', 'cp-communitie'), __('Groups', 'cp-communitie'), 'manage_options', CPC_DIR.'/groups_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Gruppen', 'cp-communitie'), __('Gruppen', 'cp-communitie'), 'manage_options', CPC_DIR.'/groups_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_groups_to_admin_menu');
 

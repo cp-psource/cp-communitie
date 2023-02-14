@@ -41,7 +41,7 @@ class cpc_ui {
 		return $html;
 	}
 	function friendship_add_button($id, $button_class='') {
-		return '<input type="submit" title="'.$id.'" id="addasfriend" class="'.$button_class.'" value="'.__('Add', 'cp-communitie').'" />';
+		return '<input type="submit" title="'.$id.'" id="addasfriend" class="'.$button_class.'" value="'.__('Hinzufügen', 'cp-communitie').'" />';
 	}
 	function friendship_cancel($id, $cancel_text='Cancel', $done_cancel_text='Cancelled', $button_class='', $style = '') {
 		$html = '<input type="submit" title="'.$id.'" id="cancelfriendrequest" class="'.$button_class.'" style="'.$style.'" value="'.$cancel_text.'" />';
@@ -55,7 +55,7 @@ class cpc_ui {
 	}
 	
 	function activity_post($post_text='', $box_class='input-field') {
-		$post_text = $post_text ? $post_text : __('Write a comment...', 'cp-communitie');	
+		$post_text = $post_text ? $post_text : __('Schreibe einen Kommentar...', 'cp-communitie');	
 		$post_text = str_replace('\'', '`', $post_text);	
 		return '<input id="__cpc__comment"  type="text" name="post_comment" class="'.$box_class.'" onblur="this.value=(this.value==\'\') ? \''.$post_text.'\' : this.value;" onfocus="this.value=(this.value==\''.$post_text.'\') ? \'\' : this.value;" value="'.$post_text.'" />';		
 	}
@@ -65,7 +65,7 @@ class cpc_ui {
 	}
 	
 	function comment_post($post_text='', $box_class='input-field') {
-		$post_text = $post_text ? $post_text : __('Write a comment...', 'cp-communitie');		
+		$post_text = $post_text ? $post_text : __('Schreibe einen Kommentar...', 'cp-communitie');		
 		return '<input id="__cpc__comment"  type="text" name="post_comment" class="'.$box_class.'" onblur="this.value=(this.value==\'\') ? \''.$post_text.'\' : this.value;" onfocus="this.value=(this.value==\''.$post_text.'\') ? \'\' : this.value;" value="'.$post_text.'" />';		
 	}
 
@@ -77,15 +77,15 @@ class cpc_ui {
 		return '<input type="submit" class="'.$button_class.' poke-button" style="'.$style.'" value="'.$text.'" />';
 	}
 	
-	function unfollow_button($text='Unfollow', $button_class='', $style='') {
+	function unfollow_button($text='Entfolgen', $button_class='', $style='') {
 		return '<input type="submit" ref="unfollow" class="'.$button_class.' follow-button" style="'.$style.'" value="'.$text.'" />';
 	}
 	
-	function follow_button($text='Follow', $button_class='', $style='') {
+	function follow_button($text='Folgen', $button_class='', $style='') {
 		return '<input type="submit" ref="follow" class="'.$button_class.' follow-button" style="'.$style.'" value="'.$text.'" />';
 	}
 	
-	function mail_button($button_text='Send Mail', $button_class='', $style='') {
+	function mail_button($button_text='Sende Mail', $button_class='', $style='') {
 		$html = '';
 		$html .= '<input type="submit" class="'.$button_class.'" id="profile_send_mail_button" style="'.$style.'" value="'.__($button_text, 'cp-communitie').'" />';
 		return $html;
@@ -100,7 +100,7 @@ class cpc_ui {
 	}
 	
 	function facebook_connect($id, $post_text="Post to Facebook", $connect_text="Connect to Facebook", $cancel_text="Cancel") {
-		return 'Please inform admin at www.cpcymposium.com';
+		return 'Please inform admin at https://cp-community.n3rds.work/';
 	}
 	
 	// *** FORUM

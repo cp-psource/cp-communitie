@@ -158,7 +158,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 			// Store removal limit for votes
 			$html .= '<div id="cpcommunitie_forum_vote_remove" style="display:none">'.get_option(CPC_OPTIONS_PREFIX.'_use_votes_remove').'</div>';
-			$html .= '<div id="cpcommunitie_forum_vote_remove_msg" style="display:none">'.__('This post has been voted off the forum', 'cp-communitie').'</div>';
+			$html .= '<div id="cpcommunitie_forum_vote_remove_msg" style="display:none">'.__('Dieser Beitrag wurde aus dem Forum entfernt', 'cp-communitie').'</div>';
 		
 
 			$html .= '<div id="__cpc__forum_topic_header">';
@@ -174,12 +174,12 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 						$this_level = $wpdb->get_row($wpdb->prepare("SELECT cid, title, cat_parent, stub FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
 
 						if (get_option(CPC_OPTIONS_PREFIX.'_forum_ajax') == 'on') { 
-							$html .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
+							$html .= '<a href="#cid='.$this_level->cid.'" class="category_title" title="'.$this_level->cid.'">'.__('Zurück zu', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 						} else { 
 							if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $group_id == 0) {
-								$html .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
+								$html .= '<a href="'.$forum_url.'/'.$this_level->stub.'" title="'.$this_level->cid.'">'.__('Zurück zu', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 							} else {
-								$html .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.__('Back to', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
+								$html .= '<a href="'.$forum_url.$q."cid=".$this_level->cid.'" title="'.$this_level->cid.'">'.__('Zurück zu', 'cp-communitie').' '.trim(stripslashes($this_level->title)).'</a>'; 
 							}
 						} 
 
@@ -312,11 +312,11 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 
 					$html .= "<a id='show_search' href='javascript:void(0)'>".__("Search", 'cp-communitie')."</a>";
 					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_all_activity' href='javascript:void(0)'>".__("Aktivität", 'cp-communitie')."</a>";
-					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Latest Topics", 'cp-communitie')."</a>";
+					$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_threads_activity' href='javascript:void(0)'>".__("Neueste Themen", 'cp-communitie')."</a>";
 
 					if (is_user_logged_in()) {
 						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_activity' href='javascript:void(0)'>".__("Meine Aktivität", 'cp-communitie')."</a>";
-						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' href='javascript:void(0)'>".__("Favorites", 'cp-communitie')."</a>";
+						$html .= "&nbsp;&nbsp;&nbsp;&nbsp;<a id='show_favs' href='javascript:void(0)'>".__("Favoriten", 'cp-communitie')."</a>";
 					}
 
 				$html .= "</div>";

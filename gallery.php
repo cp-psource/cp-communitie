@@ -335,7 +335,7 @@ if (!is_admin()) {
 function __cpc__add_gallery_to_admin_menu()
 {
 	$hidden = get_option(CPC_OPTIONS_PREFIX.'_long_menu') == "on" ? '_hidden': '';
-	add_submenu_page('cpcommunitie_debug'.$hidden, __('Gallery', 'cp-communitie'), __('Gallery', 'cp-communitie'), 'manage_options', CPC_DIR.'/gallery_admin.php');
+	add_submenu_page('cpcommunitie_debug'.$hidden, __('Galerie', 'cp-communitie'), __('Galerie', 'cp-communitie'), 'manage_options', CPC_DIR.'/gallery_admin.php');
 }
 add_action('__cpc__admin_menu_hook', '__cpc__add_gallery_to_admin_menu');
 
@@ -359,7 +359,7 @@ function __cpc__add_gallery_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended
 				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_text')) != '' ? $t :  __('Meine Gallerie', 'cp-communitie')).'</div>';  
 		} else {
 			if (get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other'))
-				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text')) != '' ? $t :  __('Gallery', 'cp-communitie')).'</div>';  
+				$html .= '<div id="menu_gallery" class="__cpc__profile_menu">'.(($t = get_option(CPC_OPTIONS_PREFIX.'_menu_gallery_other_text')) != '' ? $t :  __('Galerie', 'cp-communitie')).'</div>';  
 		}
 	}
 	return $html;

@@ -61,7 +61,7 @@ jQuery(document).ready(function() {
 	
 	// Reset group page menus
 	jQuery('#__cpc__reset_group_menu').click(function(e) {
-		var default_menu_structure = '[Gruppe]\nWillkommen=welcome\nEinstellungen=settings\nEinladen=invites\n[Aktivität]\nGruppenaktivität=activity\nGruppenforum=forum\n[Members]\nMitglieder=members';
+		var default_menu_structure = '[Gruppe]\nWillkommen=welcome\nEinstellungen=settings\nEinladen=invites\n[Aktivität]\nGruppenaktivität=activity\nGruppenforum=forum\n[Mitglieder]\nMitglieder=members';
 		jQuery('#group_menu_structure').val(default_menu_structure);
 	})
 	

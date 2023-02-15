@@ -24,7 +24,7 @@ __cpc__show_tabs_header('gallery');
 		update_option(CPC_OPTIONS_PREFIX."_gallery_preview", $gallery_preview);
 
         // Put an settings updated message on the screen
-		echo "<div class='updated slideaway'><p>".__('Saved', 'cp-communitie').".</p></div>";
+		echo "<div class='updated slideaway'><p>".__('Gespeichert', 'cp-communitie').".</p></div>";
 		
     }
 

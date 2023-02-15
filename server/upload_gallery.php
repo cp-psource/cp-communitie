@@ -44,7 +44,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					// Check that upload folder exists
 					if (!file_exists(WP_CONTENT_DIR."/uploads")) {
 						if (!mkdir(WP_CONTENT_DIR."/uploads", 0777, true)) {
-							echo '>Failed to create temporary upload folder: '.WP_CONTENT_DIR."/uploads, please create manually with permissions to allow uploads.";
+							echo '>Fehler beim Erstellen des temporären Upload-Ordners: '.WP_CONTENT_DIR."/uploads, erstelle ihn bitte manuell mit Berechtigungen zum Zulassen von Uploads.";
 							exit;
 						}
 					}
@@ -115,7 +115,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 	
 	
 					} else {
-						echo 'Failed to move uploaded file - check the permissions of '.WP_CONTENT_DIR.'/uploads.';
+						echo 'Die hochgeladene Datei konnte nicht verschoben werden. Überprüfen Sie die Berechtigungen von '.WP_CONTENT_DIR.'/uploads.';
 						exit;
 					}
 	
@@ -256,7 +256,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", 'cp-communitie');
+			echo __("Die Datei konnte nicht hochgeladen werden.", 'cp-communitie');
 			exit;
 		}
 	} else {

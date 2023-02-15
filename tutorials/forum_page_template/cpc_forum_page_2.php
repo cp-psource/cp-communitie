@@ -68,10 +68,10 @@ This also assumes the .css file is also in the current theme folder along with t
 		if ($categories) {
 			echo '<div class="my-forum-row my-forum-row my-forum-row-header">';
 				echo '<div class="my-forum-title">';
-					echo '<strong>CATEGORY</strong>';
+					echo '<strong>KATEGORIE</strong>';
 				echo '</div>';
 				echo '<div class="my-forum-title-topic">';
-					echo '<strong>LAST TOPIC</strong>';
+					echo '<strong>LETZTES THEMA</strong>';
 				echo '</div>';
 			echo '</div>';
 			foreach ($categories as $category) {
@@ -104,13 +104,13 @@ This also assumes the .css file is also in the current theme folder along with t
 			// Header
 			echo '<div class="my-topic-row-header">';
 				echo '<div class="my-forum-title">';
-					echo '<strong>TOPIC</strong>';
+					echo '<strong>THEMA</strong>';
 				echo '</div>';
 				echo '<div class="my-topics-title-topic">';
-					echo '<strong>LAST REPLY</strong>';
+					echo '<strong>LETZTE ANTWORT</strong>';
 				echo '</div>';
 				echo '<div class="my-topics-title-replies">';
-					echo '<strong>REPLIES</strong>';
+					echo '<strong>ANTWORTEN</strong>';
 				echo '</div>';
 			echo '</div>';
 			foreach ($topics as $topic) {

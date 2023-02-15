@@ -55,7 +55,7 @@ This also assumes the .css file is also in the current theme folder along with t
 				echo 'Message: '.$mail['mail_message'].'<br /><br />';
 			}
 		} else {
-			echo "You have no mail in your inbox.";
+			echo "Dein Posteingang ist leer.";
 		}
 		
 		?>

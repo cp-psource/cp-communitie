@@ -70,7 +70,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					// Check that upload folder exists
 					if (!file_exists(WP_CONTENT_DIR."/uploads")) {
 						if (!mkdir(WP_CONTENT_DIR."/uploads", 0777, true)) {
-							$html .= '<p>Failed to create temporary upload folder: '.WP_CONTENT_DIR."/uploads, please create manually with permissions to allow uploads.</p>";
+							$html .= '<p>Fehler beim Erstellen des temporären Upload-Ordners: '.WP_CONTENT_DIR."/uploads, erstelle ihn bitte manuell mit Berechtigungen zum Zulassen von Uploads.</p>";
 						}
 					}
 				
@@ -130,12 +130,12 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 						unlink($myFile);	
 					
 					} else {
-						$html .= '<p><span style="color:red;font-weight:bold">Failed to move uploaded file - check the permissions of '.WP_CONTENT_DIR.'/uploads.</span></p>';
+						$html .= '<p><span style="color:red;font-weight:bold">Die hochgeladene Datei konnte nicht verschoben werden. Überprüfe die Berechtigungen von '.WP_CONTENT_DIR.'/uploads.</span></p>';
 					}
 	
 				} else {
 					// Invalid extension, just remove uploaded file
-					$html .= __('Invalid file extension, the following are permitted:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
+					$html .= __('Ungültige Dateiendung, erlaubt sind:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
 				}	        
 		
 			} else {
@@ -222,7 +222,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					
 				} else {
 					// Invalid extension, just remove uploaded file
-					$html .= __('Invalid file extension, the following are permitted:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
+					$html .= __('Ungültige Dateiendung, erlaubt sind:', 'cp-communitie').' '.get_option(CPC_OPTIONS_PREFIX.'_image_ext').','.get_option(CPC_OPTIONS_PREFIX.'_video_ext').','.get_option(CPC_OPTIONS_PREFIX.'_doc_ext');
 				}
 	
 			}
@@ -232,7 +232,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", 'cp-communitie');
+			echo __("Die Datei konnte nicht hochgeladen werden.", 'cp-communitie');
 			exit;
 		}
 	} else {

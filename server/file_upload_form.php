@@ -199,7 +199,7 @@ if (is_user_logged_in()) {
 				}
 				
 			} else {
-				echo 'Sorry, file upload does not work here yet.';
+				echo __('Der Datei-Upload funktioniert hier leider noch nicht.', 'cp-communitie');
 			}
 
 		} else {
@@ -219,13 +219,13 @@ if (is_user_logged_in()) {
 		$subject_uid = isset($_GET['subject_uid']) ? $_GET['subject_uid'] : $current_user->ID;
 		 
 		if ($uploader_ver == 'forum' || $uploader_ver == 'activity') {
-			echo '<div id="__cpc__file_upload_basic_label" style="font-weight:bold;">'.__('Attach file', 'cp-communitie').'</div>';
+			echo '<div id="__cpc__file_upload_basic_label" style="font-weight:bold;">'.__('Datei anhängen', 'cp-communitie').'</div>';
 		} 
 		if ($uploader_ver == 'avatar') {
-			echo '<strong>'.__('Please ensure that the image is no bigger than 300x300 pixels.', 'cp-communitie').'</strong><br />';
+			echo '<strong>'.__('Bitte achte darauf, dass das Bild nicht größer als 300x300 Pixel ist.', 'cp-communitie').'</strong><br />';
 		}
 		if ($uploader_ver == 'group_avatar') {
-			echo '<strong>'.__('No bigger than 300x300 pixels.', 'cp-communitie').'</strong><br />';
+			echo '<strong>'.__('Nicht größer als 300x300 Pixel.', 'cp-communitie').'</strong><br />';
 		}
 
 		echo '<form action="file_upload_form.php" enctype="multipart/form-data" method="post">';

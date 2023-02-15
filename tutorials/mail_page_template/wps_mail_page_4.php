@@ -60,7 +60,7 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			if ( !$cpc_mail->set_as_deleted($_GET['id']) ) {
 
-				echo '<p>Problem deleting mail, sorry.</p>';
+				echo '<p>Problem beim Löschen von Mails, sorry.</p>';
 
 			}
 
@@ -77,11 +77,11 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			echo '<div id="my-inbox-header">';
 
-				echo '<div class="my-inbox-from">From</div>';
+				echo '<div class="my-inbox-from">Von</div>';
 
-				echo '<div class="my-inbox-message">Subject</div>';
+				echo '<div class="my-inbox-message">Betreff</div>';
 
-				echo '<div class="my-inbox-sent">Received</div>';
+				echo '<div class="my-inbox-sent">Erhalten</div>';
 
 			echo '</div>';
 
@@ -163,9 +163,9 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			$current_page = floor($start/$page_length)+1;
 
-			if ($current_page > 1) echo '<a href="'.$cpc->get_mail_url().'?start=0">First</a> ';
+			if ($current_page > 1) echo '<a href="'.$cpc->get_mail_url().'?start=0">Erste</a> ';
 
-			if ($current_page > 1) echo '<a href="'.$cpc->get_mail_url().'?start='.((($current_page-1)*$page_length)-$page_length).'">Previous</a> ';
+			if ($current_page > 1) echo '<a href="'.$cpc->get_mail_url().'?start='.((($current_page-1)*$page_length)-$page_length).'">Vorherige</a> ';
 
 			for ($p=1; $p<=$pages; $p++) {
 
@@ -181,9 +181,9 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			}
 
-			if ($current_page < $pages) echo ' <a href="'.$cpc->get_mail_url().'?start='.((($current_page+1)*$page_length)-$page_length).'">Next</a>';
+			if ($current_page < $pages) echo ' <a href="'.$cpc->get_mail_url().'?start='.((($current_page+1)*$page_length)-$page_length).'">Nächste</a>';
 
-			if ($current_page < $pages) echo ' <a href="'.$cpc->get_mail_url().'?start='.(($pages*$page_length)-$page_length).'">Last</a>';
+			if ($current_page < $pages) echo ' <a href="'.$cpc->get_mail_url().'?start='.(($pages*$page_length)-$page_length).'">Letzte</a>';
 
 		}		
 
@@ -203,17 +203,17 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			$t=explode(':',$dt[1]);
 
-			echo '<a href="'.$cpc->get_mail_url().'">Back to inbox...</a>';
+			echo '<a href="'.$cpc->get_mail_url().'">Zurück zum Posteingang...</a>';
 
 			echo '<div id="my-mail">';
 
 				echo '<div id="my-mail-avatar">'.$sender->get_avatar(120).'</div>';
 
-				echo '<div id="my-mail-from"><div class="my-mail-label"></span>From:</div> '.$sender->get_profile_url().'</div>';
+				echo '<div id="my-mail-from"><div class="my-mail-label"></span>Von:</div> '.$sender->get_profile_url().'</div>';
 
-				echo '<div id="my-mail-subject"><div class="my-mail-label">Subject:</div> '.stripslashes($message->mail_subject).'</div>';
+				echo '<div id="my-mail-subject"><div class="my-mail-label">Betreff:</div> '.stripslashes($message->mail_subject).'</div>';
 
-				echo '<div id="my-mail-sent"><div class="my-mail-label">Received:</div> '.$d[2].' '.substr(__cpc__get_monthname($d[1]),0,3).' '.$d[0].', '.$t[0].':'.$t[1].'</div>';
+				echo '<div id="my-mail-sent"><div class="my-mail-label">Erhalten:</div> '.$d[2].' '.substr(__cpc__get_monthname($d[1]),0,3).' '.$d[0].', '.$t[0].':'.$t[1].'</div>';
 
 				echo '<div id="my-mail-message">'.stripslashes($message->mail_message).'</div>';
 

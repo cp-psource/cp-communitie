@@ -108,7 +108,7 @@ This also assumes the .css file is also in the current theme folder along with t
 			// Show initial topic post
 			echo '<div id="my-forum-topic">';
 				if ( ($topic->topic_owner == $current_user->ID || current_user_can('manage_options')) && (!$cpc_forum->is_topic_locked($topic->tid)) ) {
-					echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'&tid='.$tid.'&del_id='.$topic->tid.'" class="delete">Delete topic and replies</a>';
+					echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'&tid='.$tid.'&del_id='.$topic->tid.'" class="delete">Thema und Antworten löschen</a>';
 				}
 				echo '<div id="my-topic-subject">';
 				echo stripslashes($topic->topic_subject);
@@ -131,7 +131,7 @@ This also assumes the .css file is also in the current theme folder along with t
 				// Show avatar
 					echo '<div class="my-forum-reply">';
 						if ( ($reply->topic_owner == $current_user->ID || current_user_can('manage_options')) && (!$cpc_forum->is_topic_locked($reply->tid)) ) {
-							echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'&tid='.$tid.'&del_id='.$reply->tid.'" class="delete">Delete reply</a>';
+							echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'&tid='.$tid.'&del_id='.$reply->tid.'" class="delete">Antwort löschen</a>';
 						}
 						echo '<div class="my-reply-avatar">';
 							$cpc_user = new cpc_user($reply->topic_owner);
@@ -152,14 +152,14 @@ This also assumes the .css file is also in the current theme folder along with t
 			
 			// Reply field
 			echo '<div style="margin-left:118px; margin-bottom:15px;">';
-				echo '<strong>Add a reply:</strong><br />';
-				echo $cpc_ui->forum_reply('Reply', 'my-submit-button', 'my-reply-textarea', true);
+				echo '<strong>Antwort hinzufügen:</strong><br />';
+				echo $cpc_ui->forum_reply('Antworten', 'my-submit-button', 'my-reply-textarea', true);
 			echo '</div>';
 			
 		} else {
 			
-			echo '<strong>Topic not available, sorry</strong><br />';
-			echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'">Go to forum category</a>';			
+			echo '<strong>Thema nicht verfügbar, tut mir leid</strong><br />';
+			echo '<a href="'.$cpc->get_forum_url().$cpc->get_url_q($cpc->get_forum_url()).'catid='.$catid.'">Gehe zur Forumskategorie</a>';			
 			
 		}
 		
@@ -176,10 +176,10 @@ This also assumes the .css file is also in the current theme folder along with t
 			if ($categories) {
 				echo '<div class="my-forum-row my-forum-row my-forum-row-header">';
 					echo '<div class="my-forum-title">';
-						echo '<strong>CATEGORY</strong>';
+						echo '<strong>KATEGORIE</strong>';
 					echo '</div>';
 					echo '<div class="my-forum-title-topic">';
-						echo '<strong>LAST TOPIC</strong>';
+						echo '<strong>LETZTES THEMA</strong>';
 					echo '</div>';
 				echo '</div>';
 				foreach ($categories as $category) {
@@ -214,13 +214,13 @@ This also assumes the .css file is also in the current theme folder along with t
 				// Header
 				echo '<div class="my-topic-row-header">';
 					echo '<div class="my-forum-title">';
-						echo '<strong>TOPIC</strong>';
+						echo '<strong>THEMA</strong>';
 					echo '</div>';
 					echo '<div class="my-topics-title-topic">';
-						echo '<strong>LAST REPLY</strong>';
+						echo '<strong>LETZTE ANTWORT</strong>';
 					echo '</div>';
 					echo '<div class="my-topics-title-replies">';
-						echo '<strong>REPLIES</strong>';
+						echo '<strong>ANTWORTEN</strong>';
 					echo '</div>';
 				echo '</div>';
 				foreach ($topics as $topic) {

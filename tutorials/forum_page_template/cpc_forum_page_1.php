@@ -56,10 +56,10 @@ This also assumes the .css file is also in the current theme folder along with t
 	echo '<div id="my-forum-table">';
 		echo '<div class="my-forum-row" style="background-color:#ccc">';
 			echo '<div class="my-forum-title">';
-				echo '<strong>CATEGORY</strong>';
+				echo '<strong>KATEGORIE</strong>';
 			echo '</div>';
 			echo '<div class="my-forum-title-topic" style="float:right">';
-				echo '<strong>LAST TOPIC</strong>';
+				echo '<strong>LETZTES THEMA</strong>';
 			echo '</div>';
 		echo '</div>';
 		$categories = $cpc_forum->get_categories();

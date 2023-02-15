@@ -61,11 +61,11 @@ This also assumes the .css file is also in the current theme folder along with t
 
 			echo '<div id="my-inbox-header">';
 
-				echo '<div class="my-inbox-from">From</div>';
+				echo '<div class="my-inbox-from">Von</div>';
 
-				echo '<div class="my-inbox-message">Subject</div>';
+				echo '<div class="my-inbox-message">Betreff</div>';
 
-				echo '<div class="my-inbox-sent">Received</div>';
+				echo '<div class="my-inbox-sent">Erhalten</div>';
 
 			echo '</div>';
 
@@ -119,7 +119,7 @@ This also assumes the .css file is also in the current theme folder along with t
 
 				echo '<div class="my-inbox-row">';
 
-					echo "You have no mail in your inbox.";
+					echo "Dein Posteingang ist leer.";
 
 				echo '</div>';
 

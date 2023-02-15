@@ -65,7 +65,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 				// Check that upload folder exists
 				if (!file_exists(WP_CONTENT_DIR."/uploads")) {
 					if (!mkdir(WP_CONTENT_DIR."/uploads", 0777, true)) {
-						$html .= '<p>Failed to create temporary upload folder: '.WP_CONTENT_DIR."/uploads, please create manually with permissions to allow uploads.</p>";
+						$html .= '<p>Fehler beim Erstellen des temporären Upload-Ordners: '.WP_CONTENT_DIR."/uploads, erstelle ihn bitte manuell mit Berechtigungen zum Zulassen von Uploads.</p>";
 					}
 				}
 	
@@ -93,7 +93,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					$img_src = WP_CONTENT_URL."/plugins/".CPC_DIR."/server/get_profile_avatar.php?uid=".$uid."&r=".time();
 	
 				} else {
-					$html .= '<p><span style="color:red;font-weight:bold">Failed to move uploaded file - check the permissions of '.WP_CONTENT_DIR.'/uploads.</span></p>';
+					$html .= '<p><span style="color:red;font-weight:bold">Die hochgeladene Datei konnte nicht verschoben werden. Überprüfen Sie die Berechtigungen von '.WP_CONTENT_DIR.'/uploads.</span></p>';
 				}
 	
 			} else {
@@ -147,7 +147,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 				} else {
 					
 					// Not an image file type
-					$html = sprintf(__("Please use an image file for your avatar (%s)", $name), 'cp-communitie');
+					$html = sprintf(__("Bitte verwende eine Bilddatei für Deinen Avatar (%s)", $name), 'cp-communitie');
 					echo $html;
 				}
 	
@@ -166,7 +166,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					$html .= '</div>';
 	
 					$html .= '<div id="image_instructions"> ';
-					$html .= '<p>'.__('Select an area above...', 'cp-communitie').'</p>';
+					$html .= '<p>'.__('Wähle einen Bereich aus...', 'cp-communitie').'</p>';
 						$html .= '<input type="hidden" id="x" name="x" />';
 						$html .= '<input type="hidden" id="y" name="y" />';
 						$html .= '<input type="hidden" id="x2" name="x2" />';
@@ -192,7 +192,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 	
 		} else {
 	
-			echo __("Failed to upload the file.", 'cp-communitie');
+			echo __("Die Datei konnte nicht hochgeladen werden.", 'cp-communitie');
 		}
 		
 	} else {

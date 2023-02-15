@@ -31,7 +31,7 @@ function show_upload_form($uploader_dir, $uploader_url, $ver, $button_text='?', 
 	                    $html .= '<input type="file" name="files[]" '.$multiple.'>';
 	                $html .= '</div>';
 					$html .= '<div id="fileupload-info"></div>';
-					if ($ver == 'activity') $html .= '<div id="fileupload-info-label" style="display:none">'.__('will be attached to your post.', 'cp-communitie').'</div>';
+					if ($ver == 'activity') $html .= '<div id="fileupload-info-label" style="display:none">'.__('wird an deinen Beitrag angehängt.', 'cp-communitie').'</div>';
 					if ($ver == 'gallery') $html .= '<div id="fileupload-info-label" style="display:none"></div>';
 					if ($ver == 'forum') $html .= '<div id="fileupload-info-label" style="display:none"></div>';
 					if ($ver == 'avatar' || $ver == 'group_avatar') $html .= '<div id="fileupload-info-label" style="display:none"></div>';

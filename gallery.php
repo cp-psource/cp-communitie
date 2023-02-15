@@ -145,7 +145,7 @@ function __cpc__do_Gallery_Widget($albumcount) {
 									echo get_avatar($album->owner, 32);
 								echo "</div>";
 								echo "<div class='__cpc__gallery_recent_activity_row_post'>";
- 									$text = __('added to ', 'cp-communitie')." <a href='".$profile_url.$q."uid=".$album->owner."&embed=on&album_id=".$album->gid."'>".stripslashes($album->name)."</a>";
+ 									$text = __('hinzugefügt zu ', 'cp-communitie')." <a href='".$profile_url.$q."uid=".$album->owner."&embed=on&album_id=".$album->gid."'>".stripslashes($album->name)."</a>";
 									echo "<a href='".$profile_url.$q."uid=".$album->owner."'>".$album->display_name."</a> ".$text." ".__cpc__time_ago($album->updated);
 								echo "</div>";
 							echo "</div>";
@@ -177,7 +177,7 @@ function __cpc__show_gallery() {
 		
 	$html .= "<div style='padding:0px'>";
 	$html .= '<input type="text" id="gallery_member" autocomplete="off" name="gallery_member" class="gallery_member_box" value="'.$term.'" style="margin-right:10px" />';
-	$html .= '<input id="gallery_go_button" type="submit" class="__cpc__button" value="'.__("Search", 'cp-communitie').'" />';
+	$html .= '<input id="gallery_go_button" type="submit" class="__cpc__button" value="'.__("Suche", 'cp-communitie').'" />';
 	$html .= "</div>";	
 	
 	$sql = "SELECT g.*, u.display_name FROM ".$wpdb->base_prefix."cpcommunitie_gallery g
@@ -285,7 +285,7 @@ function __cpc__show_gallery() {
 					     				$html .= '</div>';
 			
 						       		if (count($photos) > $preview_count && $cnt == $preview_count) {
-						       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('more...', 'cp-communitie').'<div style="clear:both"></div></div>';
+						       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('mehr...', 'cp-communitie').'<div style="clear:both"></div></div>';
 						       		}   		
 					      				
 					       		}
@@ -294,7 +294,7 @@ function __cpc__show_gallery() {
 							
 							} else {
 							
-						      	 $html .= __("No photos yet.", 'cp-communitie');
+						      	 $html .= __("Noch keine Fotos.", 'cp-communitie');
 						     
 							}
 			
@@ -308,7 +308,7 @@ function __cpc__show_gallery() {
 		
 		}
 	
-		$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("more...", 'cp-communitie')."</a></div>";
+		$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("mehr...", 'cp-communitie')."</a></div>";
 		
 		$html .= '</div>';
 		

@@ -91,7 +91,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 					$img_src = WP_CONTENT_URL.'/plugins/'.CPC_DIR.'/server/get_group_avatar.php?gid='.$gid."&r=".time();
 				
 				} else {
-					$html .= '<p><span style="color:red;font-weight:bold">Failed to move uploaded file - check the permissions of '.WP_CONTENT_DIR.'/uploads.</span></p>';
+					$html .= '<p><span style="color:red;font-weight:bold">Die hochgeladene Datei konnte nicht verschoben werden. Überprüfe die Berechtigungen von '.WP_CONTENT_DIR.'/uploads.</span></p>';
 				}
 			
 			} else {
@@ -203,7 +203,7 @@ if (isset($_POST['action']) && $_POST['action'] == 'after_upload_complete') {
 		
 		} else {
 		
-			echo __("Failed to upload the file.", 'cp-communitie');
+			echo __("Die Datei konnte nicht hochgeladen werden.", 'cp-communitie');
 			exit;
 		}
 		

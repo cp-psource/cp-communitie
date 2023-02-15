@@ -1249,7 +1249,7 @@ if ($_POST['action'] == 'group_menu_wall') {
 				$html .= "<a href='javascript:void(0)' id='showmore_group_wall' title='".($limit_from+$limit_count)."'>".__("mehr...", 'cp-communitie')."</a>";
 
 			} else {
-				$html .= "<br />".__("Nichts zu zeigen, tut mir leid.", 'cp-communitie');
+				$html .= "<br />".__("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 			}
 		
 		$html .= "</div>";

@@ -62,12 +62,12 @@
 					var this_textarea = jQuery('.chat_message textarea');
 					var datastring = 'from_id='+current_user_id+'&to_id='+to_id+'&message='+this_textarea.val();
 
-					if (this_textarea.val() != 'Sending... Please wait  ') {
+					if (this_textarea.val() != 'Senden... Bitte warten  ') {
 
 						if (this_textarea.val() != '') {
 					
 							// show sending message
-							this_textarea.val('Sending... Please wait  ').attr('disabled', 'disabled');
+							this_textarea.val('Senden... Bitte warten  ').attr('disabled', 'disabled');
 			
 							jQuery.ajax({
 								type: "POST",
@@ -80,7 +80,7 @@
 										this_textarea.val('').removeAttr('disabled');							
 									}else{					
 										//if error,  print it into chat
-										print_to_chat(this_chat_window_id,'<p><span class="error">Error! Message not sent!</span></p>');
+										print_to_chat(this_chat_window_id,'<p><span class="error">Fehler! Nachricht nicht gesendet!</span></p>');
 										//uncomment to print mysql error to chat
 										print_to_chat(i);								
 									}
@@ -244,7 +244,7 @@
 
 				var mp3html = '<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" ';
 				mp3html += 'width="1" height="1" ';
-				mp3html += 'codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">';
+				mp3html += 'codebase="https://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab">';
 				mp3html += '<param name="movie" value="'+playerpath+'?';
 				mp3html += 'showDownload=false&file=' + filename + '&autoStart=true';
 				mp3html += '&backColor=ffffff&frontColor=ffffff';
@@ -255,7 +255,7 @@
 				mp3html += 'showDownload=false&file=' + filename + '&autoStart=true';
 				mp3html += '&backColor=ffffff&frontColor=ffffff';
 				mp3html += '&repeatPlay=false&songVolume=50" ';
-				mp3html += 'type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" />';
+				mp3html += 'type="application/x-shockwave-flash" pluginspage="https://www.macromedia.com/go/getflashplayer" />';
 				mp3html += '</object>';
 				return mp3html;
 		

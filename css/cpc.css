@@ -320,24 +320,6 @@
 	width: 100% !important;
 }
 
-/* Mobile */
-#mobile_notice {
-	padding:18px;
-	width:90%;
-	font-size:48px;
-	font-family: Calibri,arial,helvetica;
-	line-height:36px;
-	margin: 0 auto 10px auto;
-	text-align:center;
-	background-color: #f90;
-	border:1px solid #000;
-	border-radius:5px;
-}
-#mobile_notice a {
-	color: #000;
-	text-decoration:none !important;
-}
-
 /* Tabs */
 .__cpc__wrapper #mail_tabs {
 	border-radius:0px;
@@ -828,7 +810,7 @@
 	border: 0px !important;
 	font-size: small !important;
 	line-height: 17px !important;
-	width: auto;
+	width: 210px;
 	text-shadow: 0px 1px 1px #fff; 
 	border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
@@ -2918,4 +2900,8 @@ input#groupdescription {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
 }
-
+@media screen and (max-width: 368px){
+	.__cpc__wrapper .avatar {
+    	width: 200px !important;
+	}
+}

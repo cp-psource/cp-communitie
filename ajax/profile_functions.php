@@ -334,9 +334,9 @@ if ($_POST['action'] == 'addStatus') {
 			if ($user) {
 			  try {
 
-				$iframe = __cpc__extract_unit($text, '<iframe width=\"100%\" height=\"250\" src=\"http://www.youtube.com/embed/', '?wmode=transparent\" frameborder=\"0\" allowfullscreen></iframe>');		
+				$iframe = __cpc__extract_unit($text, '<iframe width=\"100%\" height=\"250\" src=\"https://www.youtube.com/embed/', '?wmode=transparent\" frameborder=\"0\" allowfullscreen></iframe>');		
 				if ($iframe) {
-					$iframe = 'http://www.youtube.com/watch?v='.$iframe;
+					$iframe = 'https://www.youtube.com/watch?v='.$iframe;
 					$ftext = strip_tags($text);
 				} else {
 					$ftext = $text;
@@ -650,8 +650,8 @@ if ($_POST['action'] == 'menu_extended') {
 				if ( ($city != '' || $country != '') && (get_option(CPC_OPTIONS_PREFIX.'_profile_google_map') > 0) ){ 	
 									
 					$html .= "<div id='google_profile_map' style='width:".get_option(CPC_OPTIONS_PREFIX.'_profile_google_map')."px; height:".get_option(CPC_OPTIONS_PREFIX.'_profile_google_map')."px'>";
-					$html .= '<a target="_blank" href="http://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$city.',+'.$country.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$city.',+'.$country.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
-					$html .= '<img src="http://maps.google.com/maps/api/staticmap?center='.$city.',.+'.$country.'&zoom=5&size='.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'x'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$city.',+'.$country.'&sensor=false" />';
+					$html .= '<a target="_blank" href="https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$city.',+'.$country.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$city.',+'.$country.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
+					$html .= '<img src="https://maps.google.com/maps/api/staticmap?center='.$city.',.+'.$country.'&zoom=5&size='.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'x'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$city.',+'.$country.'&sensor=false" />';
 					$html .= "</a></div>";
 				
 					$has_map = true;
@@ -716,7 +716,7 @@ if ($_POST['action'] == 'menu_extended') {
 						
 			} else {
 			
-				$html .= '<p>'.__("Sorry, this member has chosen not to share their personal information.", 'cp-communitie').'</p>';
+				$html .= '<p>'.__("Entschuldigung, dieses Mitglied hat sich entschieden, seine persönlichen Daten nicht zu teilen.", 'cp-communitie').'</p>';
 			
 			}
 
@@ -742,7 +742,7 @@ if ($_POST['action'] == 'menu_mentions') {
 	$tag = strtolower(str_replace(' ', '', $r->display_name));
 	$tag2 = strtolower(str_replace(' ', '', $r->user_login));
 	
-	$html = "<p class='__cpc__profile_heading'>".__('@mentions', 'cp-communitie')."</p>";
+	$html = "<p class='__cpc__profile_heading'>".__('@Erwähnungen', 'cp-communitie')."</p>";
 
 	$sql = "SELECT * FROM 
 	(
@@ -777,7 +777,7 @@ if ($_POST['action'] == 'menu_mentions') {
 								$url .= 'gid='.$mention->parent_topic_group.'&cid=0&show='.$mention->parent_id;
 							}
 						}	
-						$pre_text = __('Replied to', 'cp-communitie').' ';
+						$pre_text = __('Geantwortet auf', 'cp-communitie').' ';
 						$text = $mention->parent_text;
 					} else {
 						if (get_option(CPC_OPTIONS_PREFIX.'_permalink_structure') && $mention->topic_group == 0) {
@@ -794,7 +794,7 @@ if ($_POST['action'] == 'menu_mentions') {
 								$url .= 'gid='.$mention->topic_group.'&cid=0&show='.$mention->id;
 							}
 						}
-						$pre_text = __('Started', 'cp-communitie').' ';
+						$pre_text = __('Gestartet', 'cp-communitie').' ';
 						$text = $mention->text;
 					}
 					break;
@@ -804,27 +804,27 @@ if ($_POST['action'] == 'menu_mentions') {
 						  $url = __cpc__get_url('profile');
 						  $url .= __cpc__string_query($url);
 						  $url .= 'uid='.$mention->author.'&post='.$mention->id;
-						  $pre_text = __('Posted on', 'cp-communitie').' ';
-						  $text = sprintf(__("%s's activity", 'cp-communitie'), $mention->parent_stub);
+						  $pre_text = __('Veröffentlicht am', 'cp-communitie').' ';
+						  $text = sprintf(__("%s's Aktivitäten", 'cp-communitie'), $mention->parent_stub);
 						} else {
 						  $url = __cpc__get_url('profile');
 						  $url .= __cpc__string_query($url);
 						  $url .= 'uid='.$mention->author.'&post='.$mention->parent_id;
-						  $pre_text = __('Replied to a post on', 'cp-communitie').' ';
-						  $text = sprintf(__("%s's activity", 'cp-communitie'), $mention->parent_stub);
+						  $pre_text = __('Antworte auf Beitrag in', 'cp-communitie').' ';
+						  $text = sprintf(__("%s's Aktivitäten", 'cp-communitie'), $mention->parent_stub);
 						}
 					} else {
 						if ($mention->parent_id == 0) {
 						  $url = __cpc__get_url('group');
 						  $url .= __cpc__string_query($url);
 						  $url .= 'gid='.$mention->parent_category.'&post='.$mention->id;					
-						  $pre_text = __('Posted on', 'cp-communitie').' ';
-						  $text = sprintf(__("%s group activity", 'cp-communitie'), $mention->stub);
+						  $pre_text = __('Veröffentlicht am', 'cp-communitie').' ';
+						  $text = sprintf(__("%s Gruppenaktivität", 'cp-communitie'), $mention->stub);
 						} else {
 						  $url = __cpc__get_url('group');
 						  $url .= __cpc__string_query($url);
 						  $url .= 'gid='.$mention->parent_category.'&post='.$mention->parent_id;					
-						  $pre_text = __('Replied to a post on', 'cp-communitie').' ';
+						  $pre_text = __('Antworte auf Beitrag in', 'cp-communitie').' ';
 						  $text = sprintf(__("%s group activity", 'cp-communitie'), $mention->stub);
 						}
 					}
@@ -849,7 +849,7 @@ if ($_POST['action'] == 'menu_mentions') {
 		}
 	} else {
 
-		$html .= __("Nothing to show, sorry.", 'cp-communitie');
+		$html .= __("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 		
 	}
 		
@@ -867,8 +867,8 @@ if ($_POST['action'] == 'menu_avatar') {
 		$html = "";
 		$uid1 = $_POST['uid1'];
 		
-		$html .= '<p>'.__('Choose an image...', 'cp-communitie').' (';
-		$html .= '<a id="cpcommunitie_remove_avatar" href="javascript:void(0)">'.__('or click here to remove', 'cp-communitie').'</a>)';
+		$html .= '<p>'.__('Wähle ein Bild...', 'cp-communitie').' (';
+		$html .= '<a id="cpcommunitie_remove_avatar" href="javascript:void(0)">'.__('oder klicke hier, zum entfernen', 'cp-communitie').'</a>)';
 		$html .= '</p>';
 		
 		include_once('../server/file_upload_include.php');
@@ -876,7 +876,7 @@ if ($_POST['action'] == 'menu_avatar') {
 			WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/avatar_upload/', 
 			WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/avatar_upload/',
 			'avatar',
-			__('Upload photo', 'cp-communitie'),
+			__('Foto hochladen', 'cp-communitie'),
 			0,
 			0,
 			0,
@@ -920,16 +920,16 @@ if ($_POST['action'] == 'menu_settings') {
 				if (__cpc__get_current_userlevel() == 5) {
 					$html .= '<div style="border:1px solid #aaa; padding:6px 0 0 10px;margin-bottom:15px;">';
 						$html .= '<div class="__cpc__settings_row">';
-						$html .= '<em>'.__('These options are only visible to site administrator.', 'cp-communitie').'</em><br />';
+						$html .= '<em>'.__('Diese Optionen sind nur für Webseiten-Administratoren sichtbar.', 'cp-communitie').'</em><br />';
 						$html .= '</div>';
 						$html .= '<div class="__cpc__settings_row">';
 						$html .= '<input type="checkbox" name="trusted" id="trusted"';
 							if ($trusted == "on") { $html .= "CHECKED"; }
 							$html .= '/> ';
-							$html .= __('Is this member trusted (highlighted on forum)?', 'cp-communitie');
+							$html .= __('Ist dieses Mitglied vertrauenswürdig (im Forum hervorgehoben)?', 'cp-communitie');
 						$html .= '</div>';
 						$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('Profile page header label', 'cp-communitie').'</strong><br />';
+						$html .= '<strong>'.__('Header-Label der Profilseite', 'cp-communitie').'</strong><br />';
 						$html .= '<input type="text" name="profile_label" id="__cpc__profile_label" class="input-field" style="width:300px" value="'.$profile_label.'" /> ';
 						$html .= '</div>';
 					$html .= '</div>';
@@ -940,7 +940,7 @@ if ($_POST['action'] == 'menu_settings') {
 
 				// First name
 				$html .= '<div id="cpcommunitie_settings_firstname" class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Your first name', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Dein Vorname', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<input type="text" class="input-field" id="user_firstname" name="user_firstname" value="'.$user_info->user_firstname.'">';
 					$html .= '</div>';
@@ -948,7 +948,7 @@ if ($_POST['action'] == 'menu_settings') {
 			
 				// Last name
 				$html .= '<div id="cpcommunitie_settings_lastname" class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Your last name', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Dein Nachname', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<input type="text" class="input-field" id="user_lastname" name="user_lastname" value="'.$user_info->user_lastname.'">';
 					$html .= '</div>';
@@ -956,15 +956,15 @@ if ($_POST['action'] == 'menu_settings') {
 			
 				// Display name
 				$html .= '<div id="cpcommunitie_settings_displayname" class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Your name as shown', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Dein Anzeigename', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<input type="text" class="input-field" id="display_name" name="display_name" value="'.$user_info->display_name.'">';
 						
 						if (get_option(CPC_OPTIONS_PREFIX.'_tags') == "on" && !get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
-							$html .= '<br /><br />'.__('Your user tag is ', 'cp-communitie').'<span id="cpcommunitie_tag" class="__cpc__usertag">@'.strtolower(str_replace(' ', '', $user_info->display_name)).'</span>';
+							$html .= '<br /><br />'.__('Dein Benutzer-Tag ist ', 'cp-communitie').'<span id="cpcommunitie_tag" class="__cpc__usertag">@'.strtolower(str_replace(' ', '', $user_info->display_name)).'</span>';
 							$html .= '<div id="cpcommunitie_tag_info" style="display:none;">';
-							$html .= __('When your @tag is clicked, the browser is taken to your profile page.', 'cp-communitie').' ';
-							$html .= __('Refer to others with @tags, using their display name (without spaces).', 'cp-communitie');
+							$html .= __('Wenn Dein @Benutzer-Tag angeklickt wird, wird der Browser zu Deiner Profilseite weitergeleitet.', 'cp-communitie').' ';
+							$html .= __('Verweise auf andere mit @Benutzer-Tags unter Verwendung ihres Anzeigenamens (ohne Leerzeichen).', 'cp-communitie');
 							$html .= '</div>';
 						}
 						
@@ -973,7 +973,7 @@ if ($_POST['action'] == 'menu_settings') {
 			
 				// Email address
 				$html .= '<div id="cpcommunitie_settings_email" class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Your email address', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Deine E-Mail-Adresse', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<input type="text" class="input-field" id="user_email" name="user_email" style="width:300px" value="'.$user_info->user_email.'">';
 					$html .= '</div>';
@@ -981,7 +981,7 @@ if ($_POST['action'] == 'menu_settings') {
 			
 				// Signature (for forum)
 				$html .= '<div id="cpcommunitie_settings_signature" class="__cpc__settings_row">';
-					$html .= '<strong>'.__('Forum signature', 'cp-communitie').'</strong>';
+					$html .= '<strong>'.__('Forumssignatur', 'cp-communitie').'</strong>';
 					$html .= '<div>';
 						$html .= '<input type="text" class="input-field" id="signature" name="signature" style="width:300px" value="'.str_replace("\\", "", $signature).'">';
 					$html .= '</div>';
@@ -992,7 +992,7 @@ if ($_POST['action'] == 'menu_settings') {
 					$html .= '<input type="checkbox" name="notify_new_messages" id="notify_new_messages"';
 						if ($notify_new_messages == "on") { $html .= "CHECKED"; }
 						$html .= '/> ';
-						$html .= __('Receive an email when you get new mail messages?', 'cp-communitie');
+						$html .= __('E-Mail erhalten, wenn Du neue Mail-Nachrichten erhältst?', 'cp-communitie');
 				$html .= '</div>';
 
 				// Email wall
@@ -1000,7 +1000,7 @@ if ($_POST['action'] == 'menu_settings') {
 					$html .= '<input type="checkbox" name="notify_new_wall" id="notify_new_wall"';
 						if ($notify_new_wall == "on") { $html .= "CHECKED"; }
 						$html .= '/> ';
-						$html .= sprintf(__('Receive an email when a %s adds a post?', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'));
+						$html .= sprintf(__('E-Mail erhalten, wenn ein %s einen Beitrag hinzufügt?', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'));
 				$html .= '</div>';
 
 				// Email wall likes/dislikes
@@ -1009,7 +1009,7 @@ if ($_POST['action'] == 'menu_settings') {
 						$html .= '<input type="checkbox" name="notify_likes" id="notify_likes"';
 							if ($notify_likes == "on") { $html .= "CHECKED"; }
 							$html .= '/> ';
-							$html .= __('Receive an email when you receive likes/dislikes?', 'cp-communitie');
+							$html .= __('E-Mail erhalten, wenn Du Likes/Dislikes erhältst?', 'cp-communitie');
 					$html .= '</div>';
 				}
 														
@@ -1020,15 +1020,15 @@ if ($_POST['action'] == 'menu_settings') {
 							$html .= '<input type="checkbox" name="forum_all" id="forum_all"';
 								if ($forum_all == "on") { $html .= "CHECKED"; }
 								$html .= '/> ';
-								$html .= __('Receive an email for all new forum topics and replies?', 'cp-communitie').'<br />';
-								$html .= '<a id="cpcommunitie_clear_all_subs" href="javascript:void(0);">'.__('Clear all existing forum subscriptions', 'cp-communitie').'</a>';
+								$html .= __('Erhalte eine E-Mail für alle neuen Forenthemen und Antworten?', 'cp-communitie').'<br />';
+								$html .= '<a id="cpcommunitie_clear_all_subs" href="javascript:void(0);">'.__('Lösche alle bestehenden Forenabonnements', 'cp-communitie').'</a>';
 						$html .= '</div>';
 					}
 				} else {
 					if (get_option(CPC_OPTIONS_PREFIX.'_suppress_forum_notify') != "on") {
 						$html .= '<div id="cpcommunitie_settings_forum_all" class="__cpc__settings_row">';
 							$html .= '<input type="hidden" name="forum_all" value="" />';
-							$html .= '<a id="cpcommunitie_clear_all_subs" href="javascript:void(0);">'.__('Clear all existing forum subscriptions', 'cp-communitie').'</a>';
+							$html .= '<a id="cpcommunitie_clear_all_subs" href="javascript:void(0);">'.__('Lösche alle bestehenden Forenabonnements', 'cp-communitie').'</a>';
 						$html .= '</div>';
 					}
 				}
@@ -1038,13 +1038,13 @@ if ($_POST['action'] == 'menu_settings') {
 					$html .= '<div id="cpcommunitie_settings_password" class="__cpc__settings_row">';
 						$html .= '<div class="sep"></div>';
 						$html .= '<div style="margin-bottom:15px; padding-top:15px;">';
-							$html .= '<strong>'.__('Change your password', 'cp-communitie').'</strong>';
+							$html .= '<strong>'.__('Ändere Dein Passwort', 'cp-communitie').'</strong>';
 							$html .= '<div>';
 								$html .= '<input class="input-field" type="text" id="xyz1" name="xyz1" value="">';
 							$html .= '</div>';
 						$html .= '</div>';
 						$html .= '<div style="clear:both">';
-							$html .= __('Re-enter to confirm', 'cp-communitie');
+							$html .= __('Erneut eingeben um zu bestätigen', 'cp-communitie');
 							$html .= '<div>';
 								$html .= '<input class="input-field" type="text" id="xyz2" name="xyz2" value="">';
 							$html .= '</div>';
@@ -1062,7 +1062,7 @@ if ($_POST['action'] == 'menu_settings') {
 				do_action ( '__cpc__menu_settings_hook', $uid, $current_user->ID );
 				 
 				$html .= '<br /><div class="__cpc__settings_row">';
-				$html .= '<input type="submit" id="updateSettingsButton" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Save', 'cp-communitie').'" /> ';
+				$html .= '<input type="submit" id="updateSettingsButton" name="Submit" class="__cpc__button" style="'.__cpc__get_extension_button_style().'" value="'.__('Speichern', 'cp-communitie').'" /> ';
 				$html .= '</div>';
 
 			$html .= '</div>';
@@ -1148,10 +1148,10 @@ if ($_POST['action'] == 'updateSettings') {
 						$pwmsg = "PASSWORD CHANGED";										
 					
 				    } else {
-				    	$pwmsg = __("Failed to update password, sorry.", 'cp-communitie');
+				    	$pwmsg = __("Passwort konnte nicht aktualisiert werden, tut mir leid.", 'cp-communitie');
 				    }
 				} else {
-			    	$pwmsg = __("Passwords different, please try again.", 'cp-communitie');
+			    	$pwmsg = __("Passwörter unterschiedlich, bitte versuche es erneut.", 'cp-communitie');
 				}
 			}
 			
@@ -1159,7 +1159,7 @@ if ($_POST['action'] == 'updateSettings') {
 			
 		} else {
 			
-			echo __("Invalid email address, please re-enter", 'cp-communitie');
+			echo __("Ungültige E-Mail-Adresse, bitte erneut eingeben", 'cp-communitie');
 			
 		}
 		
@@ -1366,7 +1366,7 @@ if ($_POST['action'] == 'menu_personal') {
 			
 					// Country
 					$html .= '<div class="__cpc__settings_row">';
-						$html .= '<strong>'.__('In welchem ​​Land bist du?', 'cp-communitie').'</strong>';
+						$html .= '<strong>'.__('In welchem Land bist du?', 'cp-communitie').'</strong>';
 						$html .= '<div>';
 							$html .= '<input type="text" id="country" name="country" value="'.$country.'">';
 						$html .= '</div>';
@@ -1546,7 +1546,7 @@ if ($_POST['action'] == 'updatePersonal') {
 					$city = str_replace(' ','%20',$city);
 					$country = str_replace(' ','%20',$country);
 	
-					$fgc = 'http://maps.googleapis.com/maps/api/geocode/json?address='.$city.'+'.$country.'&sensor=false';
+					$fgc = 'https://maps.googleapis.com/maps/api/geocode/json?address='.$city.'+'.$country.'&sensor=false';
 			
 					if ($json = @file_get_contents($fgc) ) {
 						if (CPC_DEBUG) echo "Connect URL to Google API with: ".$fgc.", ";
@@ -1637,7 +1637,7 @@ if ($_POST['action'] == 'menu_groups') {
 						$html .= "<div class='group_member_count'>";
 						$html .= __("Mitgliederzahl:", 'cp-communitie')." ".$group->member_count;
 						if ($group->last_activity) {
-							$html .= '<br /><em>'.__('letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($group->last_activity).".</em>";
+							$html .= '<br /><em>'.__('Letzte Aktivität', 'cp-communitie').' '.__cpc__time_ago($group->last_activity).".</em>";
 						}
 						$html .= "</div>";
 						
@@ -1801,15 +1801,15 @@ if ($_POST['action'] == 'addFriend') {
 		$sql = "SELECT user_email FROM ".$wpdb->base_prefix."users WHERE ID = %d";
 		$friend_to = $wpdb->get_var($wpdb->prepare($sql, $friend_to));
 		
-		$body .= "<h1>".sprintf(__("%s request", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</h1>";
-		$body .= "<p>".sprintf(__("You have received a %s request from %s", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'), $current_user->display_name)."</p>";
+		$body .= "<h1>".sprintf(__("%s Anfrage", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'))."</h1>";
+		$body .= "<p>".sprintf(__("Du hast eine %s-Anfrage von %s erhalten", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend'), $current_user->display_name)."</p>";
 		$body .= "<p>".$friend_message."</p>";
 		
 		$profile_url = __cpc__get_url('profile');
 		$profile_url .= __cpc__string_query($profile_url)."view=friends";
-		$body .= "<p>".__("Go to", 'cp-communitie')." <a href='".$profile_url."'>".get_bloginfo('name')."</a>...</p>";	
+		$body .= "<p>".__("Gehe zu", 'cp-communitie')." <a href='".$profile_url."'>".get_bloginfo('name')."</a>...</p>";	
 			
-		if (__cpc__sendmail($friend_to, sprintf(__("%s request", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body)) {
+		if (__cpc__sendmail($friend_to, sprintf(__("%s Anfrage", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')), $body)) {
 			$r = "OK";
 		} else {
 			$r = "Mail konnte nicht gesendet werden:".$friend_to.'.';
@@ -2140,7 +2140,7 @@ function __cpc__profile_friends($uid, $limit_from) {
 			}
 			
 		} else {
-			$html .= __("Nichts zu zeigen, tut mir leid.", 'cp-communitie');
+			$html .= __("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 		}
 		
 	} else {

@@ -78,12 +78,12 @@ if ($_POST['action'] == 'calendar_view') {
 	$html .= '<div id="__cpc__event_nav">';
 		$html .= '<div id="__cpc__event_move" data-month="'.$prev_month.'" data-year="'.$prev_year.'"><a href="javascript:void(0);">'.__('<<', 'cp-communitie').'</a></div>';
 		$html .= '<div id="__cpc__event_move" data-month="'.$next_month.'" data-year="'.$next_year.'"><a href="javascript:void(0);">'.__('>>', 'cp-communitie').'</a></div>';
-		$html .= '<div id="__cpc__event_move" data-month="'.$current_month.'" data-year="'.$current_year.'"><a href="javascript:void(0);">'.__('Today', 'cp-communitie').'</a></div>';
+		$html .= '<div id="__cpc__event_move" data-month="'.$current_month.'" data-year="'.$current_year.'"><a href="javascript:void(0);">'.__('Heute', 'cp-communitie').'</a></div>';
 		
 		$html .= '<table cellpadding="0" cellspacing="0" class="calendar" style="width:100% !important;">';
 		
 		/* table headings */
-		$headings = array(__('Sunday', 'cp-communitie'),__('Monday', 'cp-communitie'),__('Tuesday', 'cp-communitie'),__('Wednesday', 'cp-communitie'),__('Thursday', 'cp-communitie'),__('Friday', 'cp-communitie'),__('Saturday', 'cp-communitie'));
+		$headings = array(__('SOnntag', 'cp-communitie'),__('Montag', 'cp-communitie'),__('Dienstag', 'cp-communitie'),__('Mittwoch', 'cp-communitie'),__('Donnerstag', 'cp-communitie'),__('Freitag', 'cp-communitie'),__('Samstag', 'cp-communitie'));
 		$html .= '<tr class="calendar-row"><td class="calendar-day-head">'.implode('</td><td class="calendar-day-head">',$headings).'</td></tr>';
 		
 		/* days and weeks vars now ... */
@@ -141,7 +141,7 @@ if ($_POST['action'] == 'calendar_view') {
 	
 						$html .= '<div class="__cpc__event_list_location">'.stripslashes($i['event_location']).'</div>';
 						if (isset($i['event_cost']) && $i['event_cost'] !== '') {
-							$html .= '<div class="cpcommunitie_event_cost">'.__('Cost:', 'cp-communitie').' '.$i['event_cost'].'</div>';
+							$html .= '<div class="cpcommunitie_event_cost">'.__('Kosten:', 'cp-communitie').' '.$i['event_cost'].'</div>';
 						}
 						$html .= '<div class="__cpc__event_list_times">';
 							if ($i['event_start_hours'] != 99) {
@@ -164,27 +164,27 @@ if ($_POST['action'] == 'calendar_view') {
 								$ret = $wpdb->get_row($wpdb->prepare($sql, $event->eid, $current_user->ID));
 								if (!$ret || !$ret->tickets) {
 									if ($i['event_max_places']-$taken > 0)
-										$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_book_event" data-eid="'.$i['eid'].'" data-max="'.$i['event_tickets_per_booking'].'" class="cpcommunitie_book_event_button_calendar" style="margin:0">'.__('Book', 'cp-communitie').'</a></div>';
+										$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_book_event" data-eid="'.$i['eid'].'" data-max="'.$i['event_tickets_per_booking'].'" class="cpcommunitie_book_event_button_calendar" style="margin:0">'.__('Buchen', 'cp-communitie').'</a></div>';
 								} else {
 									$made_a_booking = true;
-									$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_cancel_event" data-eid="'.$i['eid'].'"  class="cpcommunitie_cancel_event_button_calendar" style="margin:0">'.__("Cancel", 'cp-communitie').'</a></div>';
+									$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_cancel_event" data-eid="'.$i['eid'].'"  class="cpcommunitie_cancel_event_button_calendar" style="margin:0">'.__("Abbrechen", 'cp-communitie').'</a></div>';
 								}
 								if ($ret && !$ret->confirmed && !$ret->payment_processed && $ret->tickets && $ret->event_cost )
-									$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_pay_event" class="cpcommunitie_pay_event_button_calendar" data-bid="'.$ret->bid.'">'.__("Pay!", 'cp-communitie').'</a></div>';
+									$html .= '<div class="cpcommunitie_event_button_div"><a href="javascript:void(0)" id="cpcommunitie_pay_event" class="cpcommunitie_pay_event_button_calendar" data-bid="'.$ret->bid.'">'.__("Bezahlen!", 'cp-communitie').'</a></div>';
 								if ($ret && $ret->tickets ) {
 									if ($ret->confirmed) {
-										$html .= sprintf(_n('%d ticket confirmed','%d tickets confirmed', $ret->tickets, 'cp-communitie'), $ret->tickets);
+										$html .= sprintf(_n('%d Ticket bestätigt','%d Tickets bestätigt', $ret->tickets, 'cp-communitie'), $ret->tickets);
 									} else {
-										$html .= sprintf(_n('Awaiting confirmation for %d ticket.','Awaiting confirmation for %d tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);
+										$html .= sprintf(_n('Warten auf Bestätigung für %d Ticket.','Warten auf Bestätigung für %d Tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);
 									}
 								}								
 						}
 						if ($i['event_enable_places'] && $i['event_show_max'] && !$made_a_booking) {
 							$html .= '<div class="__cpc__event_list_places">';
 								if ($i['event_max_places']-$taken > 0) {
-									$html .= __('Remaining:', 'cp-communitie').' '.($i['event_max_places']-$taken);
+									$html .= __('Verbleibend', 'cp-communitie').' '.($i['event_max_places']-$taken);
 								} else {
-									$html .= __('Event full', 'cp-communitie');
+									$html .= __('Ausgebucht', 'cp-communitie');
 								}
 							$html .= '</div>';
 						}
@@ -258,8 +258,8 @@ if ($_POST['action'] == 'event_payment') {
 
 	if (is_user_logged_in()) {
 		
-		echo __('Booking reference:', 'cp-communitie').' '.$mi->eid.'/'.$bid;
-		echo '<p>'.__('If you have already paid, please do not pay again - your payment is being processed. Thank you.', 'cp-communitie').'</p>';
+		echo __('Buchungsreferenz:', 'cp-communitie').' '.$mi->eid.'/'.$bid;
+		echo '<p>'.__('Wenn Du bereits bezahlt hast, zahle bitte nicht noch einmal - Deine Zahlung wird bearbeitet. Danke.', 'cp-communitie').'</p>';
 		
 		if ($mi->event_cost) {
 			if ($mi->event_pay_link) {
@@ -276,7 +276,7 @@ if ($_POST['action'] == 'event_payment') {
 		}
 		
 	} else {
-		echo __cpc__show_login_link(__("You need to be <a href='%s'>logged in</a> to book events.", 'cp-communitie'));
+		echo __cpc__show_login_link(__("Du musst <a href='%s'>eingeloggt</a> sein, um Veranstaltungen buchen zu können.", 'cp-communitie'));
 	}
 		
 	exit;
@@ -304,7 +304,7 @@ if ($_POST['action'] == 'resendEmail') {
 	$crlf = PHP_EOL;
 	$headers = "MIME-Version: 1.0" . $crlf;
 	$headers .= "Content-type:text/html;charset=utf-8" . $crlf;
-	$headers .= "From: " . $from_name . " <" . $from_email . ">" . $crlf;
+	$headers .= "Von: " . $from_name . " <" . $from_email . ">" . $crlf;
 	$event_email = __cpc__events_confirm_email_fields($event_email, $ret->eid, $bid, $ret->uid);
 
 	$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->base_prefix."cpcommunitie_events_bookings SET 
@@ -316,8 +316,8 @@ if ($_POST['action'] == 'resendEmail') {
 	 ) ));
 	if (PS_DEBUG) echo $wpdb->last_query;
 
-	if (!wp_mail($user_email, __('Booking confirmation', 'cp-communitie'), $event_email, $headers))
-		echo sprintf(__('Tried to send an email to %s, but it failed, sorry.', 'cp-communitie'), $user_email).'<br /><br />';
+	if (!wp_mail($user_email, __('Buchungsbestätigung', 'cp-communitie'), $event_email, $headers))
+		echo sprintf(__('Es wurde versucht, eine E-Mail an %s zu senden, aber es ist fehlgeschlagen, Entschuldigung.', 'cp-communitie'), $user_email).'<br /><br />';
 		
 	echo 'OK';
 	exit;
@@ -365,13 +365,13 @@ if ($_POST['action'] == 'confirmAttendee') {
 	 ) ));
 	if (CPC_DEBUG) echo $wpdb->last_query;
 
-	if (!wp_mail($user_email, __('Booking confirmation', 'cp-communitie'), $event_email, $headers))
-		echo sprintf(__('Tried to send an email to %s, but it failed, sorry.', 'cp-communitie'), $user_email).'<br /><br />';
+	if (!wp_mail($user_email, __('Buchungsbestätigung', 'cp-communitie'), $event_email, $headers))
+		echo sprintf(__('Es wurde versucht, eine E-Mail an %s zu senden, aber es ist fehlgeschlagen, Entschuldigung.', 'cp-communitie'), $user_email).'<br /><br />';
 
 	// Inform the organiser (for audit purposes)
-	$msg = '<p>'.sprintf(__('You have confirmed the booking for %s, for %d ticket(s) for event (%s) ID:', 'cp-communitie'), $display_name, $howmany, stripslashes($event_name)).$eid.'<br />';
-	$msg .= __('If payment is required, please follow this up.', 'cp-communitie').'</p>';
-	$subject = sprintf(__('Attendee confirmation for Event (%s) ID:', 'cp-communitie'), $event_name).$eid;
+	$msg = '<p>'.sprintf(__('Du hast die Buchung für %s bestätigt, für %d Ticket(s) für Veranstaltung (%s) ID:', 'cp-communitie'), $display_name, $howmany, stripslashes($event_name)).$eid.'<br />';
+	$msg .= __('Wenn eine Zahlung erforderlich ist, gehe dem bitte nach.', 'cp-communitie').'</p>';
+	$subject = sprintf(__('Teilnehmerbestätigung für Event (%s) ID:', 'cp-communitie'), $event_name).$eid;
 	__cpc__sendmail($owner_email, $subject, $msg);
 	if (CPC_DEBUG) echo '<p>'.$subject.'<br />'.$event_owner_email.'<br />'.$msg.'</p>';	
 	
@@ -407,9 +407,9 @@ if ($_POST['action'] == 'removeAttendee') {
 	if (CPC_DEBUG) echo '<p>'.$wpdb->last_query.'</p>';
 
 	// Inform the organiser (for audit purposes)
-	$msg = '<p>'.sprintf(__('You removed %s from event (%s) ID:', 'cp-communitie'), $display_name, $event_name).$eid.'<br />';
-	$msg .= __('If a refund is required, please follow this up.', 'cp-communitie').'</p>';
-	$subject = sprintf(__('Attendee removal for Event (%s) ID:', 'cp-communitie'), stripslashes($event_name)).$eid;
+	$msg = '<p>'.sprintf(__('Du hast %s aus der Ereignis-ID (%s) entfernt:', 'cp-communitie'), $display_name, $event_name).$eid.'<br />';
+	$msg .= __('Wenn eine Rückerstattung erforderlich ist, gehen dem bitte nach.', 'cp-communitie').'</p>';
+	$subject = sprintf(__('Teilnehmerentfernung für Event (%s) ID:', 'cp-communitie'), stripslashes($event_name)).$eid;
 	__cpc__sendmail($event_owner_email, $subject, $msg);
 	if (CPC_DEBUG) echo '<p>'.$subject.'<br />'.$event_owner_email.'<br />'.$msg.'</p>';
 	
@@ -434,13 +434,13 @@ if ($_POST['action'] == 'cancel_event') {
 	if (CPC_DEBUG) echo '<p>'.$wpdb->last_query.'</p>';
 
 	// Inform the organiser
-	$msg = '<p>'.$current_user->display_name.sprintf(__(' has cancelled their booking for event (%s) ID:', 'cp-communitie'), $event->event_name).$eid.'<br />';
-	$msg .= __('If a refund is required, please follow this up.', 'cp-communitie').'</p>';
-	$subject = sprintf(__('Attendee cancellation for Event (%s) ID:', 'cp-communitie'), $event->event_name).$eid;
+	$msg = '<p>'.$current_user->display_name.sprintf(__(' hat die Buchung für Veranstaltung (%s) ID storniert:', 'cp-communitie'), $event->event_name).$eid.'<br />';
+	$msg .= __('Wenn eine Rückerstattung erforderlich ist, gehen dem bitte nach.', 'cp-communitie').'</p>';
+	$subject = sprintf(__('Teilnehmerstornierung für Event (%s) ID:', 'cp-communitie'), $event->event_name).$eid;
 	__cpc__sendmail($event_owner_email, $subject, $msg);
 	if (CPC_DEBUG) echo '<p>'.$subject.'<br />'.$event_owner_email.'<br />'.$msg.'</p>';
 
-	echo __('Your booking has been cancelled, the event organiser has been informed.<br /><br />If you need a refund, please contact the event organiser directly.', 'cp-communitie');
+	echo __('Deine Buchung wurde storniert, der Veranstalter wurde informiert.<br /><br />Wenn Du eine Rückerstattung benötigst, wende Dich bitte direkt an den Veranstalter.', 'cp-communitie');
 	exit;
 
 }
@@ -494,9 +494,9 @@ if ($_POST['action'] == 'register_event') {
 		if (CPC_DEBUG) echo '<p>'.$wpdb->last_query.'</p>';
 	
 		// Inform the organiser
-		$msg = '<p>'.$current_user->display_name.sprintf(__(' has booked %d ticket(s) for event (%s) ID:', 'cp-communitie'), $howmany, stripslashes($event->event_name)).$eid.'<br />';
-		$msg .= __('If payment is required, please follow this up.', 'cp-communitie').'</p>';
-		$subject = sprintf(__('Attendee booking for Event (%s) ID:', 'cp-communitie'), $event->event_name).$eid;
+		$msg = '<p>'.$current_user->display_name.sprintf(__(' hat %d Tickets gebucht für Veranstaltung (%s) ID:', 'cp-communitie'), $howmany, stripslashes($event->event_name)).$eid.'<br />';
+		$msg .= __('Wenn eine Zahlung erforderlich ist, gehen dem bitte nach.', 'cp-communitie').'</p>';
+		$subject = sprintf(__('Teilnehmerbuchung für Event (%s) ID:', 'cp-communitie'), $event->event_name).$eid;
 		__cpc__sendmail($event_owner_email, $subject, $msg);
 		if (CPC_DEBUG) echo '<p>'.$subject.'<br />'.$event_owner_email.'<br />'.$msg.'</p>';
 	
@@ -510,7 +510,7 @@ if ($_POST['action'] == 'register_event') {
 			$headers .= "From: " . $from_name . " <" . $from_email . ">" . $crlf;
 			$event_email = __cpc__events_confirm_email_fields($event->event_email, $eid, $new_bid, $current_user->ID);
 			
-			if (wp_mail($current_user->user_email, __('Booking confirmation', 'cp-communitie'), $event_email, $headers)) {
+			if (wp_mail($current_user->user_email, __('Buchungsbestätigung', 'cp-communitie'), $event_email, $headers)) {
 				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->base_prefix."cpcommunitie_events_bookings SET 
 					email_sent = %s
 					WHERE bid = %d", 
@@ -519,11 +519,11 @@ if ($_POST['action'] == 'register_event') {
 					$new_bid
 				 ) ));
 			} else {
-				echo sprintf(__('Tried to send an email to %s, but it failed, sorry.', 'cp-communitie'), $current_user->user_email).'<br /><br />';
+				echo sprintf(__('Es wurde versucht, eine E-Mail an %s zu senden, aber es ist fehlgeschlagen, Entschuldigung.', 'cp-communitie'), $current_user->user_email).'<br /><br />';
 			}
 		}
 	
-		echo __('Your booking has been reserved, the event organiser has been informed.', 'cp-communitie');
+		echo __('Deine Buchung ist reserviert, der Veranstalter informiert.', 'cp-communitie');
 		
 		if ($mi->event_cost) {
 			if ($mi->event_pay_link) {
@@ -535,14 +535,14 @@ if ($_POST['action'] == 'register_event') {
 				$pay = str_replace('##quantity##', $howmany, $pay);
 				$pay = str_replace('##unitcost##', $event->event_cost, $pay);
 				
-				echo '<br />'.__('Please now purchase your tickets below:', 'cp-communitie');
+				echo '<br />'.__('Bitte kaufe jetzt Deine Tickets:', 'cp-communitie');
 				echo '<p>'.$pay.'</p>';
 			}
 		}
 		
 	} else {
 
-		echo __cpc__show_login_link(__("You need to be <a href='%s'>logged in</a> to book events.", 'cp-communitie'));
+		echo __cpc__show_login_link(__("Du musst <a href='%s'>eingeloggt</a> sein, um Veranstaltungen buchen zu können.", 'cp-communitie'));
 
 	}
 
@@ -801,7 +801,7 @@ if ($_POST['action'] == 'deleteEvent') {
 		}
 		
 	} else {
-		echo __cpc__show_login_link(__("You need to be <a href='%s'>logged in</a> to delete events.", 'cp-communitie'));
+		echo __cpc__show_login_link(__("Du musst <a href='%s'>eingeloggt</a> sein, um Ereignisse zu löschen.", 'cp-communitie'));
 	}
 	
 	echo 'OK';
@@ -915,7 +915,7 @@ if ($_POST['action'] == 'menu_events') {
 		// Create events form
 		if ($uid1 == $uid2) {		
 
-			$html .= '<input type="submit" id="__cpc__create_event_button" class="__cpc__button" value="'.__('Create Event', 'cp-communitie').'">';
+			$html .= '<input type="submit" id="__cpc__create_event_button" class="__cpc__button" value="'.__('Event erstellen', 'cp-communitie').'">';
 		
 			$html .= '<div id="__cpc__create_event_form" style="display:none">';
 
@@ -925,14 +925,14 @@ if ($_POST['action'] == 'menu_events') {
 				$html .= '<div class="new-topic-subject label">'.__("Location", 'cp-communitie').'</div>';
 				$html .= '<input id="__cpc__create_event_location" class="new-topic-subject-input" type="text" value="">';
 
-				$html .= '<div class="new-topic-subject label">'.__("Description", 'cp-communitie').'</div>';
+				$html .= '<div class="new-topic-subject label">'.__("Beschreibung", 'cp-communitie').'</div>';
 				$html .= '<textarea id="__cpc__create_event_desc" class="new-topic-subject-text elastic"></textarea>';
 
 				$html .= '<div>';
 					$html .= '<div style="float:left; margin-right:15px;">';
-						$html .= '<div class="new-topic-subject label">'.__("Start Date", 'cp-communitie').'</div>';
+						$html .= '<div class="new-topic-subject label">'.__("Startdatum", 'cp-communitie').'</div>';
 						$html .= '<input type="text" id="event_start" style="width:100px;" class="datepicker" />';
-						$html .= '<div class="new-topic-subject label">'.__("Start Time", 'cp-communitie').'</div>';
+						$html .= '<div class="new-topic-subject label">'.__("Startzeit", 'cp-communitie').'</div>';
 						$html .= '<select id="event_start_time_hours">';
 						$html .= '<option value=99>-</option>';
 					 	for($i=0;$i<=23;$i++){
@@ -947,9 +947,9 @@ if ($_POST['action'] == 'menu_events') {
 						$html .= '</select>';
 					$html .= '</div>';
 					$html .= '<div style="float:left">';
-						$html .= '<div class="new-topic-subject label">'.__("End Date", 'cp-communitie').'</div>';
+						$html .= '<div class="new-topic-subject label">'.__("Enddatum", 'cp-communitie').'</div>';
 						$html .= '<input type="text" id="event_end" class="datepicker" />';
-						$html .= '<div class="new-topic-subject label">'.__("End Time", 'cp-communitie').'</div>';
+						$html .= '<div class="new-topic-subject label">'.__("Endzeit", 'cp-communitie').'</div>';
 						$html .= '<select id="event_end_time_hours">';
 						$html .= '<option value=99>-</option>';
 					 	for($i=0;$i<=23;$i++){
@@ -966,8 +966,8 @@ if ($_POST['action'] == 'menu_events') {
 				$html .= '</div>';
 
 				$html .= '<div style="clear:both">';
-					$html .= '<input type="submit" id="cpcommunitie_add_event_button" class="__cpc__button" style="margin-top:15px" value="'.__('Create Event', 'cp-communitie').'">';
-					$html .= '<input type="submit" id="cpcommunitie_cancel_event_button" class="__cpc__button" style="margin-top:15px" value="'.__('Cancel', 'cp-communitie').'">';
+					$html .= '<input type="submit" id="cpcommunitie_add_event_button" class="__cpc__button" style="margin-top:15px" value="'.__('Event erstellen', 'cp-communitie').'">';
+					$html .= '<input type="submit" id="cpcommunitie_cancel_event_button" class="__cpc__button" style="margin-top:15px" value="'.__('Abbrechen', 'cp-communitie').'">';
 				$html .= '</div>';
 		
 			$html .= '</div>';
@@ -989,7 +989,7 @@ if ($_POST['action'] == 'menu_events') {
 						if ( ($event->event_owner == $uid1) || (__cpc__get_current_userlevel() == 5) ) {
 							$html .= "<div class='__cpc__event_list_item_icons'>";
 							if ($event->event_live != 'on') {
-								$html .= '<div style="font-style:italic;float:right;">'.__('Edit to publish', 'cp-communitie').'</div>';
+								$html .= '<div style="font-style:italic;float:right;">'.__('Zum Veröffentlichen bearbeiten', 'cp-communitie').'</div>';
 							}
 							$html .= "<a href='javascript:void(0)' class='cpcommunitie_delete_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/delete.png' /></a>";
 							$html .= "<a href='javascript:void(0)' class='__cpc__edit_event floatright link_cursor' style='display:none;margin-right: 5px' id='".$event->eid."'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/edit.png' /></a>";
@@ -1002,14 +1002,14 @@ if ($_POST['action'] == 'menu_events') {
 							$sql = "SELECT SUM(tickets) FROM ".$wpdb->base_prefix."cpcommunitie_events_bookings WHERE event_id = %d";
 							$taken = $wpdb->get_var($wpdb->prepare($sql, $event->eid));
 							$html .= '<div class="__cpc__event_list_places">';
-								$html .= __('Tickets left:', 'cp-communitie').' '.($event->event_max_places-$taken);
+								$html .= __('Tickets übrig:', 'cp-communitie').' '.($event->event_max_places-$taken);
 							$html .= '</div>';
 						}
 						$html .= '<div class="__cpc__event_list_description">';
 							if ($event->event_google_map == 'on') {
 								$html .= "<div id='event_google_profile_map' style='float:right; margin-left:5px; width:128px; height:128px'>";
-								$html .= '<a target="_blank" href="http://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$event->event_location.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$event->event_location.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
-								$html .= '<img src="http://maps.google.com/maps/api/staticmap?center='.$event->event_location.'&zoom=5&size=128x128&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$event->event_location.'&sensor=false" />';
+								$html .= '<a target="_blank" href="https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$event->event_location.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$event->event_location.'&amp;output=embed&amp;z=5" alt="Zum Vergrößern auf die Karte klicken" title="Zum Vergrößern auf die Karte klicken">';
+								$html .= '<img src="https://maps.google.com/maps/api/staticmap?center='.$event->event_location.'&zoom=5&size=128x128&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$event->event_location.'&sensor=false" />';
 								$html .= "</a></div>";
 							}
 							$html .= str_replace(PHP_EOL, '<br />',stripslashes($event->event_description));
@@ -1030,7 +1030,7 @@ if ($_POST['action'] == 'menu_events') {
 								$html .= __('Start: ', 'cp-communitie').$event->event_start_hours.":".sprintf('%1$02d', $event->event_start_minutes);
 							}
 							if ($event->event_end_hours != 99) {
-								$html .= ' '.__('End: ', 'cp-communitie').$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
+								$html .= ' '.__('Ende: ', 'cp-communitie').$event->event_end_hours.":".sprintf('%1$02d', $event->event_end_minutes);
 							}
 						$html .= '</div>';
 
@@ -1045,7 +1045,7 @@ if ($_POST['action'] == 'menu_events') {
 							
 							$more = '<div style="text-align:left">'.str_replace(chr(10), '<br />', stripslashes($event->event_more)).'</div>';
 							$html .= '<div id="cpcommunitie_more_'.$event->eid.'" title="'.stripslashes($event->event_name).'" class="__cpc__dialog_content">'.$more.'</div>';
-							$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("More info", 'cp-communitie').'" />';
+							$html .= '<input type="submit" id="cpcommunitie_event_more" rel="cpcommunitie_more_'.$event->eid.'" class="cpcommunitie-dialog __cpc__button" value="'.__("Mehr Info", 'cp-communitie').'" />';
 						}
 						if (is_user_logged_in() && $event->event_enable_places) {
 							// check to see if already booked
@@ -1053,20 +1053,20 @@ if ($_POST['action'] == 'menu_events') {
 							$ret = $wpdb->get_row($wpdb->prepare($sql, $event->eid, $current_user->ID));
 							if ($ret && !$ret->confirmed && $ret->tickets ) {
 								if (!$ret->payment_processed) {
-									$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'"  class="__cpc__button" value="'.__("Payment", 'cp-communitie').'" /><br />';
+									$html .= '<input type="submit" id="cpcommunitie_pay_event" data-bid="'.$ret->bid.'"  class="__cpc__button" value="'.__("Zahlung", 'cp-communitie').'" /><br />';
 								}
 								$html .= sprintf(_n('Awaiting confirmation from the organiser for %d ticket.','Awaiting confirmation from the organiser for %d tickets.', $ret->tickets, 'cp-communitie'), $ret->tickets);
 							}
 							if (!$ret || !$ret->tickets) {
 								$html .= '<input type="submit" id="cpcommunitie_book_event" data-eid="'.$event->eid.'" data-max="'.$event->event_tickets_per_booking.'" class="__cpc__button" value="'.__("Book", 'cp-communitie').'" /><br />';
 							} else {
-								$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'" class="__cpc__button" value="'.__("Cancel", 'cp-communitie').'" style="margin:0" /><br />';
+								$html .= '<input type="submit" id="cpcommunitie_cancel_event" data-eid="'.$event->eid.'" class="__cpc__button" value="'.__("Abbrechen", 'cp-communitie').'" style="margin:0" /><br />';
 							}
 						}
 					$html .= '</div>';
 				}
 			} else {
-				$html .= __('No events yet.', 'cp-communitie');
+				$html .= __('Noch keine Veranstaltungen.', 'cp-communitie');
 			}
 
 		
@@ -1111,13 +1111,13 @@ function __cpc__events_confirm_email_fields($text, $eid, $bid, $uid) {
 
 function __cpc__youtube($string,$autoplay=0,$width=480,$height=390)
 {
-    preg_match('#(?:http://)?(?:www\.)?(?:youtube\.com/(?:v/|watch\?v=)|youtu\.be/)([\w-]+)(?:\S+)?#', $string, $match);
+    preg_match('#(?:https://)?(?:www\.)?(?:youtube\.com/(?:v/|watch\?v=)|youtu\.be/)([\w-]+)(?:\S+)?#', $string, $match);
     
     if (isset($match[1])) {
         
 $embed = <<<YOUTUBE
 <div align="center">
-<iframe title="YouTube video player" width="$width" height="$height" src="http://www.youtube.com/embed/$match[1]?autoplay=$autoplay" frameborder="0" allowfullscreen></iframe>
+<iframe title="YouTube video player" width="$width" height="$height" src="https://www.youtube.com/embed/$match[1]?autoplay=$autoplay" frameborder="0" allowfullscreen></iframe>
 </div>
 YOUTUBE;
 	

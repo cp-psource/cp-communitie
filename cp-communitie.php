@@ -31,8 +31,7 @@ define('CPC_VER', '1.5.9');
 require_once(dirname(__FILE__).'/widgets.php');
 require_once(dirname(__FILE__).'/yesno.php');
 	
-// Load optionally activated sub-plugins (via Installation page)	
-if ((get_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_activated') 				|| get_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_network_activated'))				&& file_exists(dirname(__FILE__).'/mobile.php')) 		require_once(dirname(__FILE__).'/mobile.php');
+// Load optionally activated sub-plugins (via Installation page)
 if ((get_option(CPC_OPTIONS_PREFIX.'__cpc__forum_activated') 				|| get_option(CPC_OPTIONS_PREFIX.'__cpc__forum_network_activated')) 				&& file_exists(dirname(__FILE__).'/forum.php')) 		require_once(dirname(__FILE__).'/forum.php');
 if ((get_option(CPC_OPTIONS_PREFIX.'__cpc__profile_activated') 				|| get_option(CPC_OPTIONS_PREFIX.'__cpc__profile_network_activated'))				&& file_exists(dirname(__FILE__).'/profile.php')) 		require_once(dirname(__FILE__).'/profile.php');
 if ((get_option(CPC_OPTIONS_PREFIX.'__cpc__mail_activated')					|| get_option(CPC_OPTIONS_PREFIX.'__cpc__mail_network_activated'))					&& file_exists(dirname(__FILE__).'/mail.php')) 			require_once(dirname(__FILE__).'/mail.php');
@@ -70,7 +69,7 @@ function __cpc__dialogs() {
 	// Dialog
 	echo "<div id='dialog' style='display:none'></div>";	
 	echo "<div class='__cpc__notice' style='display:none; z-index:999999;'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/busy.gif' /> ".__('Saving...', 'cp-communitie')."</div>";
-	echo "<div class='__cpc__pleasewait' style='display:none; z-index:999999;'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/busy.gif' /> ".__('Please Wait...', 'cp-communitie')."</div>";	
+	echo "<div class='__cpc__pleasewait' style='display:none; z-index:999999;'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/busy.gif' /> ".__('Bitte warte...', 'cp-communitie')."</div>";	
 	echo "<div class='__cpc__sending' style='display:none; z-index:999999;'><img src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/busy.gif' /> ".__('Sending...', 'cp-communitie')."</div>";	
 
 	// Make a note of the "nobody" user (for access from Javascript)
@@ -202,7 +201,6 @@ function __cpc__admin_warnings() {
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-gallery')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-gallery<br />'; }
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-groups')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-groups<br />'; }
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-lounge')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-lounge<br />'; }
-	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-mobile')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-mobile<br />'; }
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-plus')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-plus<br />'; }
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-mailinglist')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-mailinglist<br />'; }
 	if (file_exists(WP_PLUGIN_DIR.'/cp-communitie-rss')) { $list .= WP_PLUGIN_DIR.'/cp-communitie-rss<br />'; }
@@ -210,7 +208,7 @@ function __cpc__admin_warnings() {
 	if ($list != '') {
 		echo '<div class="updated" style="margin-top:15px">';
 		echo "<strong>".CPC_WL."</strong><br /><div style='padding:4px;'>";
-		echo __('Please remove the following folders via FTP.<br />Do <strong>NOT</strong> remove them via the plugins admin page as this could delete data from your database:', 'cp-communitie').'<br /><br />';
+		echo __('Bitte entferne die folgenden Ordner per FTP.<br />Entferne sie <strong>NICHT</strong> über die Admin-Seite des Plugins, da dies Daten aus Deiner Datenbank löschen könnte:', 'cp-communitie').'<br /><br />';
 		echo $list;
 		echo '</div></div>';
 	}
@@ -231,7 +229,7 @@ function __cpc__widget() {
 	
 		echo '<table>';
 		echo '<tr><td colspan="2" style="padding:4px"><strong>'.__('Forum', 'cp-communitie').'</strong></td></tr>';
-		echo '<tr><td style="padding:4px"><a href="admin.php?page=cpcommunitie_categories">'.__('Categories', 'cp-communitie').'</a></td>';
+		echo '<tr><td style="padding:4px"><a href="admin.php?page=cpcommunitie_categories">'.__('Kategorien', 'cp-communitie').'</a></td>';
 		echo '<td style="padding:4px">'.$wpdb->get_var("SELECT COUNT(*) FROM ".$wpdb->prefix.'cpcommunitie_cats').'</td></tr>';
 		echo '<tr><td style="padding:4px">'.__('Topics', 'cp-communitie').'</td>';
 		echo '<td style="padding:4px">'.$wpdb->get_var("SELECT COUNT(*) FROM ".$wpdb->prefix.'cpcommunitie_topics'." WHERE topic_parent = 0").'</td></tr>';
@@ -243,7 +241,7 @@ function __cpc__widget() {
 		$mailcount = $wpdb->get_var("SELECT COUNT(*) FROM ".$wpdb->base_prefix.'cpcommunitie_mail');
 		$unread = $wpdb->get_var("SELECT COUNT(*) FROM ".$wpdb->base_prefix.'cpcommunitie_mail'." WHERE mail_read != 'on'");
 		echo '<td style="padding:4px">'.$mailcount.' ';
-		printf (__('(%s unread)', 'cp-communitie'), $unread);
+		printf (__('(%s ungelesen)', 'cp-communitie'), $unread);
 		echo '</td></tr>';
 		echo '</table>';
 		
@@ -253,7 +251,7 @@ function __cpc__widget() {
 			echo '<tr><td colspan="2" style="padding:4px"><strong>'.__('Plugins', 'cp-communitie').'</strong></td></tr>';
 			echo '<tr><td colspan="2" style="padding:4px">';
 			if (function_exists('__cpc__forum')) {
-				echo '<a href="'.__cpc__get_url('forum').'">'.__('Go to Forum', 'cp-communitie').'</a>';
+				echo '<a href="'.__cpc__get_url('forum').'">'.__('Gehe zum Forum', 'cp-communitie').'</a>';
 			} else {
 				echo __('Forum not activated', 'cp-communitie');
 			}
@@ -262,7 +260,7 @@ function __cpc__widget() {
 			echo '<tr><td colspan="2" style="padding:4px">';
 			if (function_exists('__cpc__profile')) {
 				$url = __cpc__get_url('profile');
-				echo '<a href="'.$url.__cpc__string_query($url).'uid='.$current_user->ID.'">'.__('Go to Profile', 'cp-communitie').'</a>';
+				echo '<a href="'.$url.__cpc__string_query($url).'uid='.$current_user->ID.'">'.__('Gehe zu Profil', 'cp-communitie').'</a>';
 			} else {
 				echo __('Profile not activated', 'cp-communitie');
 			}
@@ -270,7 +268,7 @@ function __cpc__widget() {
 	
 			echo '<tr><td colspan="2" style="padding:4px">';
 			if (function_exists('__cpc__mail')) {
-				echo '<a href="'.__cpc__get_url('mail').'">'.__('Go to Mail', 'cp-communitie').'</a>';
+				echo '<a href="'.__cpc__get_url('mail').'">'.__('Gehe zu Mail', 'cp-communitie').'</a>';
 			} else {
 				echo __('Mail not activated', 'cp-communitie');
 			}
@@ -278,17 +276,17 @@ function __cpc__widget() {
 			
 			echo '<tr><td colspan="2" style="padding:4px">';
 			if (function_exists('__cpc__members')) {
-				echo '<a href="'.__cpc__get_url('members').'">'.__('Go to Member Directory', 'cp-communitie').'</a>';
+				echo '<a href="'.__cpc__get_url('members').'">'.__('Gehe zum Mitgliederverzeichnis', 'cp-communitie').'</a>';
 			} else {
-				echo __('Member Directory not activated', 'cp-communitie');
+				echo __('Mitgliederverzeichnis nicht aktiviert', 'cp-communitie');
 			}
 			echo "</td></tr>";
 			
 			echo '<tr><td colspan="2" style="padding:4px">';
 			if (function_exists('__cpc__group')) {
-				echo '<a href="'.__cpc__get_url('groups').'">'.__('Go to Group Directory', 'cp-communitie').'</a><br />';
+				echo '<a href="'.__cpc__get_url('groups').'">'.__('Gehe zum Gruppenverzeichnis', 'cp-communitie').'</a><br />';
 			} else {
-				echo __('Groups not activated', 'cp-communitie');
+				echo __('Gruppen nicht aktiviert', 'cp-communitie');
 			}
 			echo "</td></tr>";
 			
@@ -336,12 +334,12 @@ function __cpc__notification_trigger_schedule() {
 function __cpc__notification_do_jobs($mode) {
 	
 	global $wpdb;
-	$summary_email = __("Website Title", 'cp-communitie').": ".get_bloginfo('name')."<br />";
-	$summary_email .= __("Website URL", 'cp-communitie').": ".get_bloginfo('wpurl')."<br />";
-	$summary_email .= __("Admin Email", 'cp-communitie').": ".get_bloginfo('admin_email')."<br />";
-	$summary_email .= __("ClassicPress version", 'cp-communitie').": ".get_bloginfo('version')."<br />";
-	$summary_email .= sprintf(__("%s version", 'cp-communitie'), CPC_WL).": ".CPC_VER."<br />";
-	$summary_email .= __("Daily Digest mode", 'cp-communitie').": ".$mode."<br /><br />";
+	$summary_email = __("Webseitentitel", 'cp-communitie').": ".get_bloginfo('name')."<br />";
+	$summary_email .= __("Webadresse", 'cp-communitie').": ".get_bloginfo('wpurl')."<br />";
+	$summary_email .= __("Admin-E-Mail", 'cp-communitie').": ".get_bloginfo('admin_email')."<br />";
+	$summary_email .= __("ClassicPress-Version", 'cp-communitie').": ".get_bloginfo('version')."<br />";
+	$summary_email .= sprintf(__("%s Version", 'cp-communitie'), CPC_WL).": ".CPC_VER."<br />";
+	$summary_email .= __("Tägliche Zusammenfassung-Modus", 'cp-communitie').": ".$mode."<br /><br />";
 	$topics_count = 0;
 	$user_count = 0;
 	$success = "INCOMPLETE. ";
@@ -389,7 +387,7 @@ function __cpc__notification_do_jobs($mode) {
 							$shown_category = true;
 							$body .= "<h1>".stripslashes($category->title)."</h1>";
 						}
-						$body .= "<h2>".__('New Topics', 'cp-communitie')."</h2>";
+						$body .= "<h2>".__('Neue Themen', 'cp-communitie')."</h2>";
 						$body .= "<ol>";
 						foreach ($topics as $topic) {
 							$body .= "<li><strong><a href='".$forum_url.$q."cid=".$category->cid."&show=".$topic->tid."'>".stripslashes($topic->topic_subject)."</a></strong>";
@@ -410,7 +408,7 @@ function __cpc__notification_do_jobs($mode) {
 							$shown_category = true;
 							$body .= "<h1>".$category->title."</h1>";
 						}
-						$body .= "<h2>".__('Replies in', 'cp-communitie')." ".$category->title."</h2>";
+						$body .= "<h2>".__('Antworten ein', 'cp-communitie')." ".$category->title."</h2>";
 						$current_parent = '';
 						foreach ($replies as $reply) {
 							$parent = $wpdb->get_var($wpdb->prepare("SELECT topic_subject FROM ".$wpdb->prefix.'cpcommunitie_topics'." WHERE tid = %d", $reply->topic_parent));
@@ -421,10 +419,10 @@ function __cpc__notification_do_jobs($mode) {
 							$body .= "<em>".$reply->display_name." wrote:</em> ";
 							$post = __cpc__clean_html(stripslashes($reply->topic_post));							
 							if (strlen($post) > 100) { $post = substr($post, 0, 100)."..."; }
-							if (strpos($reply->topic_post, '<iframe src=\"http://www.youtube.com') !== FALSE)
+							if (strpos($reply->topic_post, '<iframe src=\"https://www.youtube.com') !== FALSE)
 								$post .= " (".__('video', 'cp-communitie').")";
 							$body .= $post;
-							$body .= " <a href='".$forum_url.$q."cid=".$category->cid."&show=".$topic->tid."'>".__('View topic', 'cp-communitie')."...</a>";
+							$body .= " <a href='".$forum_url.$q."cid=".$category->cid."&show=".$topic->tid."'>".__('Thema anzeigen', 'cp-communitie')."...</a>";
 							$body .= "<br />";
 							$body .= "<br />";
 						}						
@@ -432,7 +430,7 @@ function __cpc__notification_do_jobs($mode) {
 				}
 			}
 			
-			$body .= "<p>".__("You can stop receiving these emails at", 'cp-communitie')." <a href='".$forum_url."'>".$forum_url."</a>.</p>";
+			$body .= "<p>".__("Du kannst den Erhalt dieser E-Mails beenden unter", 'cp-communitie')." <a href='".$forum_url."'>".$forum_url."</a>.</p>";
 			
 			// Send the mail
 			if (($mode == 'cron' && get_option(CPC_OPTIONS_PREFIX.'_send_summary') == "on") || $mode == 'send_admin_summary_and_to_users') {
@@ -446,7 +444,7 @@ function __cpc__notification_do_jobs($mode) {
 					foreach ($users as $user) {
 						$user_count++;
 						$email = $user->user_email;
-						if(__cpc__sendmail($email, __('Daily Forum Digest', 'cp-communitie'), $body)) {
+						if(__cpc__sendmail($email, __('Tägliche Forumszusammenfassung', 'cp-communitie'), $body)) {
 							$users_sent_to_success .= $user->user_email.'<br />';
 							update_option(CPC_OPTIONS_PREFIX."_notification_triggercount",get_option(CPC_OPTIONS_PREFIX."_notification_triggercount")+1);
 						} else {
@@ -454,12 +452,12 @@ function __cpc__notification_do_jobs($mode) {
 						}						
 					}
 				} else {
-					$users_sent_to_success = __('No users have selected to receive the digest.', 'cp-communitie').'<br />';
+					$users_sent_to_success = __('Kein Benutzer hat ausgewählt, die Forumszusammenfassung zu erhalten.', 'cp-communitie').'<br />';
 				}
 			}
 			if ($mode == 'cpcommunitie_dailydigest_admin') {
 				// send to admin only
-				if(__cpc__sendmail(get_bloginfo('admin_email'), __('Daily Forum Digest (admin only)', 'cp-communitie'), $body)) {
+				if(__cpc__sendmail(get_bloginfo('admin_email'), __('Tägliche Forumszusammenfassung (nur Administrator)', 'cp-communitie'), $body)) {
 					$users_sent_to_success .= get_bloginfo('admin_email').'<br />';
 				} else {
 					$users_sent_to_failed .= get_bloginfo('admin_email').'<br />';
@@ -470,9 +468,9 @@ function __cpc__notification_do_jobs($mode) {
 	}
 	
 	// Send admin summary
-	$summary_email .= __("Forum topic count for previous day (midnight to midnight)", 'cp-communitie').": ".$topics_count."<br />";
-	$summary_email .= __("Daily Digest sent count", 'cp-communitie').": ".$user_count."<br /><br />";
-	$summary_email .= "<b>".__("List of recipients sent to:", 'cp-communitie')."</b><br />";
+	$summary_email .= __("Anzahl der Forenthemen für den Vortag (Mitternacht bis Mitternacht)", 'cp-communitie').": ".$topics_count."<br />";
+	$summary_email .= __("Anzahl der gesendeten Täglichen Forumszusammenfassungen", 'cp-communitie').": ".$user_count."<br /><br />";
+	$summary_email .= "<b>".__("Liste der Empfänger gesendet an:", 'cp-communitie')."</b><br />";
 	if ($users_sent_to_success != '') {
 	$summary_email .= $users_sent_to_success;
 	} else {
@@ -485,7 +483,7 @@ function __cpc__notification_do_jobs($mode) {
 		$summary_email .= 'None.';
 	}
 	$email = get_bloginfo('admin_email');
-	if (__cpc__sendmail($email, __('Daily Digest Summary Report', 'cp-communitie'), $summary_email)) {
+	if (__cpc__sendmail($email, __('Tägliche Forumszusammenfassung', 'cp-communitie'), $summary_email)) {
 		$success = "OK<br />(summary sent to ".get_bloginfo('admin_email').")<br />";
 	} else {
 		$success = "FAILED sending to ".get_bloginfo('admin_email').". ";
@@ -577,9 +575,9 @@ if ( (get_option(CPC_OPTIONS_PREFIX.'_profile_avatars') == "on") && ( !function_
 			$host = 'https://secure.gravatar.com';
 		} else {
 			if ( !empty($email) )
-				$host = sprintf( "http://%d.gravatar.com", ( hexdec( $email_hash[0] ) % 2 ) );
+				$host = sprintf( "https://%d.gravatar.com", ( hexdec( $email_hash[0] ) % 2 ) );
 			else
-				$host = 'http://0.gravatar.com';
+				$host = 'https://0.gravatar.com';
 		}
 	
 		if ( 'mystery' == $default )
@@ -715,7 +713,7 @@ function __cpc__concealed_avatar() {
 
 function __cpc__footer_admin () {
 	// Hidden DIV for admin dialog boxes
-	echo '<span id="footer-thankyou">' . __( 'Thank you for creating with <a href="http://wordpress.org/">ClassicPress</a>.' ) . '</span>';
+	echo '<span id="footer-thankyou">' . __( 'Vielen Dank für die Erstellung mit <a href="https://www.classicpress.net//">ClassicPress</a>.' ) . '</span>';
 	echo "<div id='cpcommunitie_dialog' class='wp-dialog' style='padding:10px;display:none'></div>";				
 }
 
@@ -1141,7 +1139,7 @@ function __cpc__scriptsAction() {
 			'current_user_page' => $page_uid,
 			'current_group' => $page_gid,
 			'post' => $GETpost,
-			'please_wait' => __('Please Wait...', 'cp-communitie'),
+			'please_wait' => __('Bitte warte...', 'cp-communitie'),
 			'saving' => __('Saving...', 'cp-communitie'),
 			'site_title' => get_bloginfo('name'),
 			'site_url' => get_bloginfo('url'),
@@ -1187,39 +1185,39 @@ function __cpc__scriptsAction() {
 			'chat_sound' => $chat_sound,
 			'cpc_content' => $cpc_content,
 			// translations
-			'clear' 			=> __( 'Clear', 'cp-communitie'),
-			'update' 			=> __( 'Update', 'cp-communitie'),
-			'cancel' 			=> __( 'Cancel', 'cp-communitie'),
-			'pleasewait' 		=> __( 'Please wait', 'cp-communitie'),
-			'saving' 			=> __( 'Saving', 'cp-communitie'),
-			'more' 				=> __( 'more...', 'cp-communitie'),
-			'next' 				=> __( 'Next', 'cp-communitie'),
+			'clear' 			=> __( 'Leeren', 'cp-communitie'),
+			'update' 			=> __( 'Aktualisieren', 'cp-communitie'),
+			'cancel' 			=> __( 'Abbrechen', 'cp-communitie'),
+			'pleasewait' 		=> __( 'Bitte warte', 'cp-communitie'),
+			'saving' 			=> __( 'Speichern', 'cp-communitie'),
+			'more' 				=> __( 'mehr...', 'cp-communitie'),
+			'next' 				=> __( 'Nächste', 'cp-communitie'),
 			'areyousure' 		=> __( 'Bist du Dir sicher?', 'cp-communitie'),
-			'browseforfile' 	=> __( 'Browse for file', 'cp-communitie'),
-			'attachimage' 		=> __( 'Attach an image', 'cp-communitie'),
-			'attachfile' 		=> __( 'Attach file', 'cp-communitie'),
+			'browseforfile' 	=> __( 'Nach Datei suchen', 'cp-communitie'),
+			'attachimage' 		=> __( 'Bild anhängen', 'cp-communitie'),
+			'attachfile' 		=> __( 'Datei anhängen', 'cp-communitie'),
 			'whatsup' 			=> stripslashes(get_option(CPC_OPTIONS_PREFIX.'_status_label')),
-			'whatsup_done' 		=> __( 'Post added to your activity.', 'cp-communitie'),
-			'sendmail' 			=> __( 'Send a private mail...', 'cp-communitie'),
+			'whatsup_done' 		=> __( 'Beitrag zu Deiner Aktivität hinzugefügt.', 'cp-communitie'),
+			'sendmail' 			=> __( 'Sende eine private Mail...', 'cp-communitie'),
 			'privatemail' 		=> __( 'Private Mail', 'cp-communitie'),
-			'privatemailsent' 	=> __( 'Private mail sent!', 'cp-communitie'),
-			'addasafriend' 		=> sprintf(__("Add as a %s...", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')),
-			'friendpending' 	=> sprintf(__("%s request sent", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')),
+			'privatemailsent' 	=> __( 'Private Mail verschickt!', 'cp-communitie'),
+			'addasafriend' 		=> sprintf(__("Als %s hinzufügen...", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')),
+			'friendpending' 	=> sprintf(__("%s Anfrage gesendet", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')),
 			'attention' 		=> get_option(CPC_OPTIONS_PREFIX.'_poke_label'),
-			'follow' 			=> __( 'Follow', 'cp-communitie'),
-			'unfollow' 			=> __( 'Unfollow', 'cp-communitie'),
-			'sent' 				=> __( 'Message sent!', 'cp-communitie'),
+			'follow' 			=> __( 'Folgen', 'cp-communitie'),
+			'unfollow' 			=> __( 'Entfolgen', 'cp-communitie'),
+			'sent' 				=> __( 'Nachricht verschickt!', 'cp-communitie'),
 			'likes' 			=> __( 'Likes', 'cp-communitie'),
 			'dislikes'		 	=> __( 'Dislikes', 'cp-communitie'),
-			'forumsearch' 		=> __( 'Search on forum', 'cp-communitie'),
-			'gallerysearch' 	=> __( 'Search Gallery', 'cp-communitie'),
-			'profile_info' 		=> __( 'Member Profile', 'cp-communitie'),
+			'forumsearch' 		=> __( 'Suche im Forum', 'cp-communitie'),
+			'gallerysearch' 	=> __( 'Galerie durchsuchen', 'cp-communitie'),
+			'profile_info' 		=> __( 'Mitgliedsprofil', 'cp-communitie'),
 			'plus_mail' 		=> __( 'Mailbox', 'cp-communitie'),
-			'plus_follow_who' 	=> __( 'Who am I following?', 'cp-communitie'),
+			'plus_follow_who' 	=> __( 'Wem folge ich?', 'cp-communitie'),
 			'plus_friends' 		=> get_option(CPC_OPTIONS_PREFIX.'_alt_friends'),
 			'request_sent' 		=> sprintf(__("Your %s request has been sent.", 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friend')),
 			'add_a_comment' 	=> __( 'Add a comment:', 'cp-communitie'),
-			'add' 				=> __( 'Add', 'cp-communitie'),
+			'add' 				=> __( 'Hinzufügen', 'cp-communitie'),
 			'show_original' 	=> __( 'Show original', 'cp-communitie'),
 			'write_a_comment' 	=> __( 'Schreibe einen Kommentar...', 'cp-communitie'),
 			'follow_box' 		=> __( 'Hi', 'cp-communitie'),

@@ -1717,7 +1717,7 @@ msgid "Ja"
 msgstr ""
 
 #: hooks_filters.php:444 ajax/profile_functions.php:1319
-msgid "January"
+msgid "Januar"
 msgstr ""
 
 #: plus_admin.php:252
@@ -2307,7 +2307,7 @@ msgstr ""
 
 #: ajax/group_functions.php:1252 ajax/plus_functions.php:306
 #: ajax/profile_functions.php:852 ajax/profile_functions.php:2143
-msgid "Nothing to show, sorry."
+msgid "Nichts zu sehen, tut mir leid."
 msgstr ""
 
 #: ajax/group_functions.php:731
@@ -2545,7 +2545,7 @@ msgid "Please wait"
 msgstr ""
 
 #: cp-communitie.php:73 cp-communitie.php:1144
-msgid "Please Wait..."
+msgid "Bitte warte..."
 msgstr ""
 
 #: cp-communitie.php:253

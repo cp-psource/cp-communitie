@@ -303,7 +303,7 @@ if ($_POST['action'] == 'menu_plus' || $_POST['action'] == 'menu_plus_me') {
 				$html .= __('Limit reached', 'cp-communitie');
 			}
 		} else {
-			$html .= __("Nothing to show, sorry.", 'cp-communitie');
+			$html .= __("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 		}		
 
 	echo $html;

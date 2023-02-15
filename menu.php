@@ -420,7 +420,6 @@ function __cpc__menu_options() {
 	if (function_exists('__cpc__facebook')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php">'.__('Profilnachrichten auf Facebook posten', 'cp-communitie').'</a></li>';
 	if (function_exists('__cpc__mailinglist')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php">'.__('Antworte auf Forenthemen und Antworten per Mail', 'cp-communitie').'</a></li>';
 	if (function_exists('__cpc__lounge_main')) $show2 .= '<li><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php">'.__('Die Lounge-Optionen (Demonstration)', 'cp-communitie').'</a></li>';
-	if (function_exists('__cpc__mobile')) $show2 .= '<li><a href="admin.php?page=__cpc__mobile_menu">'.__('Zugriff für mobile Geräte', 'cp-communitie').'</a></li>';
 	
 	if (!$show && !$show2) {
 		echo '<h2>'.sprintf(__('Einige %s-Plugins aktivieren', 'cp-communitie'), CPC_WL).'</h2>';
@@ -1817,7 +1816,6 @@ function __cpc__plugin_debug() {
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_network_activated', isset($_POST['__cpc__gallery_network_activated']), true);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__groups_network_activated', isset($_POST['__cpc__groups_network_activated']), true);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__lounge_main_network_activated', isset($_POST['__cpc__lounge_main_network_activated']), true);
-			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_network_activated', isset($_POST['__cpc__mobile_network_activated']), true);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__news_main_network_activated', isset($_POST['__cpc__news_main_network_activated']), true);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__profile_plus_network_activated', isset($_POST['__cpc__profile_plus_network_activated']), true);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__rss_main_network_activated', isset($_POST['__cpc__rss_main_network_activated']), true);
@@ -1834,7 +1832,6 @@ function __cpc__plugin_debug() {
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated', isset($_POST['__cpc__gallery_activated']), false);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__groups_activated', isset($_POST['__cpc__groups_activated']), false);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__lounge_main_activated', isset($_POST['__cpc__lounge_main_activated']), false);
-			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_activated', isset($_POST['__cpc__mobile_activated']), false);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__news_main_activated', isset($_POST['__cpc__news_main_activated']), false);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__profile_plus_activated', isset($_POST['__cpc__profile_plus_activated']), false);
 			__cpc__update_option(CPC_OPTIONS_PREFIX.'__cpc__rss_main_activated', isset($_POST['__cpc__rss_main_activated']), false);
@@ -1884,10 +1881,8 @@ function __cpc__plugin_debug() {
 			echo '</tr>';
 
 			// Get version numbers installed (if applicable)
-			$mobile_ver = get_option(CPC_OPTIONS_PREFIX."_mobile_version");
-			if ($mobile_ver != '') $mobile_ver = "v".$mobile_ver;
 
-			__cpc__install_row('profile', __('Profile', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-profile', '__cpc__profile', get_option(CPC_OPTIONS_PREFIX.'_profile_url'), CPC_DIR.'/profile.php', 'admin.php?page=profile', '__cpc__<a href="admin.php?page=cpcommunitie_profile">Einstellungen</a>');
+			__cpc__install_row('profile', __('Profil', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-profile', '__cpc__profile', get_option(CPC_OPTIONS_PREFIX.'_profile_url'), CPC_DIR.'/profile.php', 'admin.php?page=profile', '__cpc__<a href="admin.php?page=cpcommunitie_profile">Einstellungen</a>');
 			__cpc__install_row('forum', __('Forum', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-forum', '__cpc__forum', get_option(CPC_OPTIONS_PREFIX.'_forum_url'), CPC_DIR.'/forum.php', 'admin.php?page=forum', '__cpc__<a href="admin.php?page=cpcommunitie_forum">Einstellungen</a>');
 			__cpc__install_row('members', __('Mitglieder', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-members', '__cpc__members', get_option(CPC_OPTIONS_PREFIX.'_members_url'), CPC_DIR.'/members.php', 'admin.php?page=__cpc__members_menu', '__cpc__<a href="admin.php?page=__cpc__members_menu">Einstellungen</a>');
 			__cpc__install_row('mail', __('Mail', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-mail', '__cpc__mail', get_option(CPC_OPTIONS_PREFIX.'_mail_url'), CPC_DIR.'/mail.php', '', '__cpc__<a href="admin.php?page=__cpc__mail_menu">Einstellungen</a>');		
@@ -1899,7 +1894,6 @@ function __cpc__plugin_debug() {
 			__cpc__install_row('gallery', __('Galerie', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-galleries', '__cpc__gallery', '/gallery/', CPC_DIR.'/gallery.php','admin.php?page='.CPC_DIR.'/gallery_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/gallery_admin.php">Einstellungen</a>');
 			__cpc__install_row('alerts', __('Benachrichtigungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-alerts', '__cpc__news_main', '-', CPC_DIR.'/news.php', 'admin.php?page='.CPC_DIR.'/news_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/news_admin.php">Einstellungen</a>');
 			__cpc__install_row('events', __('Veranstaltungen', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-events', '__cpc__events_main', '-', CPC_DIR.'/events.php', 'admin.php?page='.CPC_DIR.'/events_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/events_admin.php">Einstellungen</a>');
-			__cpc__install_row('mobile', __('Mobil', 'cp-communitie'), '', '__cpc__mobile', '-', CPC_DIR.'/mobile.php', 'admin.php?page=__cpc__mobile_menu', '__cpc__<a href="admin.php?page=__cpc__mobile_menu">Optionen</a>');
 			__cpc__install_row('reply_by_email', __('Antwort_per_Mail', 'cp-communitie'), '', '__cpc__mailinglist', '-', CPC_DIR.'/mailinglist.php', 'admin.php?page='.CPC_DIR.'/cpcommunitie_mailinglist_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/mailinglist_admin.php">Einstellungen</a>');
 			__cpc__install_row('the_lounge', __('Die_Lounge', 'cp-communitie'), CPC_SHORTCODE_PREFIX.'-lounge', '__cpc__lounge_main', '-', CPC_DIR.'/lounge.php', 'admin.php?page='.CPC_DIR.'/lounge_admin.php', '__cpc__<a href="admin.php?page=cp-communitie/lounge_admin.php">Einstellungen</a>');
 			__cpc__install_row('rss_feed', __('RSS_Feed', 'cp-communitie'), '', '__cpc__rss_main', '-', CPC_DIR.'/rss.php', '', '__cpc__');
@@ -7659,7 +7653,6 @@ function __cpc__show_tabs_header($active_tab) {
 		$bar_active = $active_tab == 'panel' ? 'active' : 'inactive';
 		$directory_active = $active_tab == 'directory' ? 'active' : 'inactive';
 		$mail_active = $active_tab == 'mail' ? 'active' : 'inactive';
-		$mobile_active = $active_tab == 'mobile' ? 'active' : 'inactive';
 		$plus_active = $active_tab == 'plus' ? 'active' : 'inactive';
 		$events_active = $active_tab == 'events' ? 'active' : 'inactive';
 		$facebook_active = $active_tab == 'facebook' ? 'active' : 'inactive';
@@ -7682,7 +7675,6 @@ function __cpc__show_tabs_header($active_tab) {
 		if (function_exists('__cpc__add_notification_bar')) 	echo '<div class="mail_tab nav-tab-'.$bar_active.'"><a href="admin.php?page=cpcommunitie_bar" class="nav-tab-'.$bar_active.'-link">'.__('Panel', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__events_main')) 	echo '<div class="mail_tab nav-tab-'.$events_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/events_admin.php" class="nav-tab-'.$events_active.'-link">'.__('Veranstaltungen', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__facebook')) 		echo '<div class="mail_tab nav-tab-'.$facebook_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/facebook_admin.php" class="nav-tab-'.$facebook_active.'-link">'.__('Facebook', 'cp-communitie').'</a></div>';
-		if (function_exists('__cpc__mobile')) 		echo '<div class="mail_tab nav-tab-'.$mobile_active.'"><a href="admin.php?page=__cpc__mobile_menu" class="nav-tab-'.$mobile_active.'-link">'.__('Mobil', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__mailinglist')) 	echo '<div class="mail_tab nav-tab-'.$replybyemail_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/mailinglist_admin.php" class="nav-tab-'.$replybyemail_active.'-link">'.__('Antwort', 'cp-communitie').'</a></div>';
 		if (function_exists('__cpc__lounge_main')) 	echo '<div class="mail_tab nav-tab-'.$lounge_active.' bronze"><a href="admin.php?page='.CPC_DIR.'/lounge_admin.php" class="nav-tab-'.$lounge_active.'-link">'.__('Lounge', 'cp-communitie').'</a></div>';
 		echo '</div>';

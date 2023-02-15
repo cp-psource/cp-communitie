@@ -20,7 +20,7 @@ if (is_user_logged_in()) {
 		}
 	
 		//insert info message as system into current chat
-		$wpdb->query($wpdb->prepare("INSERT INTO ".$wpdb->base_prefix."cpcommunitie_chat2 (from_id,to_id,message,sent,system_message) VALUES(%s,%s,'".__('These are unreceived messages from the previous chat session!', 'cp-communitie')."',%s,'yes')", $_POST['partner_id'], $_POST['own_id'], time()));
+		$wpdb->query($wpdb->prepare("INSERT INTO ".$wpdb->base_prefix."cpcommunitie_chat2 (from_id,to_id,message,sent,system_message) VALUES(%s,%s,'".__('Dies sind nicht erhaltene Nachrichten aus der vorherigen Chat-Sitzung!', 'cp-communitie')."',%s,'yes')", $_POST['partner_id'], $_POST['own_id'], time()));
 	}
 
 	// set typing flag, or clear

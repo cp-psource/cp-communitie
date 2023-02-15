@@ -4603,12 +4603,12 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 						if (is_user_logged_in()) $html .= "<a href='javascript:void(0)' id='".$id."' class='showmore_wall' title='".($next)."'>".__("more...", 'cp-communitie')."</a>";
 					} else {
 						if ($post == '') {
-							$html .= "<br />".__("Nothing to show, sorry.", 'cp-communitie');
+							$html .= "<br />".__("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 						}
 					}
 						
 				} else {
-					$html .= "<br />".__("Nothing to show, sorry.", 'cp-communitie');
+					$html .= "<br />".__("Nichts zu sehen, tut mir leid.", 'cp-communitie');
 				}
 			
 			$html .= "</div>";
@@ -5636,7 +5636,6 @@ function has_bronze_plug_actived() {
 	// Do check for Bronze plugins and activation code
 	$has_bronze_plug_actived = false;
 
-	if (get_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_activated') 				|| get_option(CPC_OPTIONS_PREFIX.'__cpc__mobile_network_activated'))				$has_bronze_plug_actived = true;
 	if (get_option(CPC_OPTIONS_PREFIX.'__cpc__add_notification_bar_activated') 	|| get_option(CPC_OPTIONS_PREFIX.'__cpc__add_notification_bar_network_activated'))	$has_bronze_plug_actived = true;
 	if (get_option(CPC_OPTIONS_PREFIX.'__cpc__events_main_activated') 			|| get_option(CPC_OPTIONS_PREFIX.'__cpc__events_main_network_activated'))			$has_bronze_plug_actived = true;
 	if (get_option(CPC_OPTIONS_PREFIX.'__cpc__facebook_activated')				|| get_option(CPC_OPTIONS_PREFIX.'__cpc__facebook_network_activated'))				$has_bronze_plug_actived = true;

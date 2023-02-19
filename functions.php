@@ -4000,7 +4000,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 							$html .= '</textarea>';
 
 							if (get_option(CPC_OPTIONS_PREFIX.'_show_buttons')) {
-								$html .= '<input id="__cpc__add_comment" type="submit" class="__cpc__button" style="'.$button_style.'" value="'.__('Post', 'cp-communitie').'" /><br />';
+								$html .= '<input id="__cpc__add_comment" type="submit" class="__cpc__button" style="'.$button_style.'" value="'.__('Veröffentlichen', 'cp-communitie').'" /><br />';
 							} else {
 								$html .= '<br />';
 							}
@@ -4018,7 +4018,7 @@ function __cpc__activity_stream($uid1='', $version='wall', $limit_from=0, $limit
 									WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/activity_upload/', 
 									WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/activity_upload/',
 									'activity',
-									__('Add image', 'cp-communitie'),
+									__('Bild hinzufügen', 'cp-communitie'),
 									0,
 									0,
 									0,

@@ -245,7 +245,7 @@ if (is_user_logged_in()) {
 
 } else {
 	
-	echo 'Not logged in';
+	echo __('NICHT EINGELOGGT', 'cp-communitie');
 }
 
 

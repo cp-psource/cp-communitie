@@ -72,10 +72,10 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 			for($i=0;$i < sizeof($order);$i++){
 				$wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->base_prefix."cpcommunitie_gallery_items SET photo_order = %d WHERE iid = %d AND gid = %d AND owner = %d", ($i+1), $order[$i], $album_id, $current_user->ID  ) );  
 			};
-			echo __('Order saved, reload page to view new order.', 'cp-communitie');
+			echo __('Sortierung gespeichert, Seite neu laden, um neue Sortierung anzuzeigen.', 'cp-communitie');
 			
 		} else {
-			echo 'NOT LOGGED IN';
+			echo __('NICHT EINGELOGGT', 'cp-communitie');
 		}
 	}
 	
@@ -323,7 +323,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 				     			$html .= '</div>';
 		
 					       		if ($cnt == $preview_count) {
-					       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('more...', 'cp-communitie').'<div style="clear:both"></div></div>';
+					       		    $html .= '<div id="cpc_gallery_comment_more" style="cursor:pointer">'.__('mehr...', 'cp-communitie').'<div style="clear:both"></div></div>';
 					       		}   		
 				      				
 				       		}
@@ -332,7 +332,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 						
 						} else {
 						
-					      	 $html .= __("No photos yet.", 'cp-communitie');
+					      	 $html .= __("Noch keine Fotos.", 'cp-communitie');
 					     
 						}
 		
@@ -344,12 +344,12 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 				}
 	
 			}
-			$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("more...", 'cp-communitie')."</a></div>";
+			$html .= "<div style='clear:both;text-align:center; margin-top:20px; width:100%'><a href='javascript:void(0)' id='showmore_gallery'>".__("mehr...", 'cp-communitie')."</a></div>";
 			
 			$html .= '</div>';
 				
 		} else {
-			$html .= '<div style="clear:both;text-align:center; width:100%;">'.__('No albums to show', 'cp-communitie').".</div>";
+			$html .= '<div style="clear:both;text-align:center; width:100%;">'.__('Keine Alben zum Anzeigen', 'cp-communitie').".</div>";
 		}
 		
 		$html = $total_count."[split]".$html;
@@ -442,10 +442,10 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 			// Rebuild activity entry
 			add_to_create_activity_feed($photo->gid);
 			
-			echo __('Photo deleted.', 'cp-communitie');
+			echo __('Foto gelöscht.', 'cp-communitie');
 	
 	    } else {
-	      echo __('No item ID passed', 'cp-communitie');
+	      echo __('Keine Element-ID übergeben', 'cp-communitie');
 	    }
 	
 	    exit;   
@@ -473,7 +473,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 			}
 		
 			if ($albums) {
-		      	echo __('Please delete sub albums first.', 'cp-communitie');
+		      	echo __('Bitte lösche zuerst Unteralben.', 'cp-communitie');
 			} else {
 		
 		  		$sql = "SELECT * FROM ".$wpdb->base_prefix."cpcommunitie_gallery_items WHERE gid = %d";
@@ -536,7 +536,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 			}
 			
 	    } else {
-	      echo __('No item ID passed', 'cp-communitie');
+	      echo __('Keine Element-ID übergeben', 'cp-communitie');
 	    }
 	
 	    exit;   
@@ -558,7 +558,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 	      $wpdb->query( $wpdb->prepare( "UPDATE ".$wpdb->base_prefix."cpcommunitie_gallery_items SET title = %s WHERE iid = %d", $new_name, $item_id  ) );  
 	      echo 'OK';
 	    } else {
-	      echo __('Please enter a title', 'cp-communitie');
+	      echo __('Bitte gib einen Titel ein', 'cp-communitie');
 	    }
 	
 	    exit;   
@@ -575,10 +575,10 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 		$user_page = $_POST['uid1'];
 		$user_id = $current_user->ID;
 		
-		$html = "<p class='__cpc__profile_heading'>".__('Gallery', 'cp-communitie')."</p>";
+		$html = "<p class='__cpc__profile_heading'>".__('Galerie', 'cp-communitie')."</p>";
 		
 	    if ($album_id == 0 && $user_page == $user_id) {
-			$html .= '<input type="submit" class="cpcommunitie_new_album_button __cpc__button" value="'.__("Create", 'cp-communitie').'" />';	
+			$html .= '<input type="submit" class="cpcommunitie_new_album_button __cpc__button" value="'.__("Erstellen", 'cp-communitie').'" />';	
 		}
 	
 		// Get current album
@@ -592,7 +592,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 		    
 			$html .= '<div id="__cpc__gallery_breadcrumb">';
 		
-				$html .= '<a href="javascript:void(0);" id="__cpc__gallery_top">'.__('All albums', 'cp-communitie').'</a>';
+				$html .= '<a href="javascript:void(0);" id="__cpc__gallery_top">'.__('Alle Alben', 'cp-communitie').'</a>';
 		
 			   	if ($this_album->parent_gid != 0) {
 					$sql = "SELECT gid, name FROM ".$wpdb->base_prefix."cpcommunitie_gallery WHERE gid = %d";
@@ -602,8 +602,8 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 	
 				$html .= '&nbsp;&rarr;&nbsp;<strong>'.stripslashes($this_album->name).'</strong>';
 				if ($album_id != 0 && ($user_page == $user_id || __cpc__get_current_userlevel($current_user->ID) == 5)) {
-					$html .= '<div style="float:right"><a href="javascript:void(0);" rel="'.$album_id.'" type="submit" class="__cpc__photo_delete_all">'.__('Delete this album', 'cp-communitie').'</a>';
-					$html .= '<br /><a href="javascript:void(0);" class="cpcommunitie_new_album_button">'.__("Create sub album", 'cp-communitie').'</a></div>';	
+					$html .= '<div style="float:right"><a href="javascript:void(0);" rel="'.$album_id.'" type="submit" class="__cpc__photo_delete_all">'.__('Dieses Album löschen', 'cp-communitie').'</a>';
+					$html .= '<br /><a href="javascript:void(0);" class="cpcommunitie_new_album_button">'.__("Unteralbum erstellen", 'cp-communitie').'</a></div>';	
 		   	  	}
 	
 			$html .= '</div>';
@@ -667,9 +667,9 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 	    } else {
 	
 	    	if ($user_page == $user_id) {
-	        	$html .= "<div class='cpcommunitie_new_album_button __cpc__menu_gallery_alert'>".__("Start by creating an album", 'cp-communitie')."</div>";
+	        	$html .= "<div class='cpcommunitie_new_album_button __cpc__menu_gallery_alert'>".__("Beginne mit der Erstellung eines Albums", 'cp-communitie')."</div>";
 	        } else {
-	        	$html .= __("No albums yet.", 'cp-communitie');
+	        	$html .= __("Noch keine Alben.", 'cp-communitie');
 	       	}
 	       		
 	    }
@@ -689,28 +689,28 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 				$share = $this_album->sharing;
 				$album_owner = $this_album->owner;
 		
-				$html .= __('Share with:', 'cp-communitie').' ';
+				$html .= __('Teilen mit:', 'cp-communitie').' ';
 				$html .= '<select title = '.$album_id.' id="gallery_share">';
 					$html .= "<option value='nobody'";
 						if ($share == 'nobody') { $html .= ' SELECTED'; }
-						$html .= '>'.__('Nobody', 'cp-communitie').'</option>';
+						$html .= '>'.__('Niemanden', 'cp-communitie').'</option>';
 					$html .= "<option value='friends only'";
 						if ($share == 'friends only') { $html .= ' SELECTED'; }
-						$html .= '>'.sprintf(__('%s Only', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
+						$html .= '>'.sprintf(__('Nur %s', 'cp-communitie'), get_option(CPC_OPTIONS_PREFIX.'_alt_friends')).'</option>';
 					$html .= "<option value='everyone'";
 						if ($share == 'everyone') { $html .= ' SELECTED'; }
 						$html .= '>'.stripslashes(get_option(CPC_OPTIONS_PREFIX.'_alt_everyone')).'</option>';
 					$html .= "<option value='public'";
 						if ($share == 'public') { $html .= ' SELECTED'; }
-						$html .= '>'.__('Public', 'cp-communitie').'</option>';
+						$html .= '>'.__('Öffentlich', 'cp-communitie').'</option>';
 				$html .= '</select>';
 				$html .= " <img id='__cpc__album_sharing_save' style='display:none' src='".get_option(CPC_OPTIONS_PREFIX.'_images')."/busy.gif' /><br />";
 				
 				// Show maximum file upload size as set in PHP.INI to admin's
 				if (__cpc__get_current_userlevel($current_user->ID) == 5) {
-					$html .= '<p>As set in PHP.INI, the upload_max_filesize is: '.ini_get('upload_max_filesize').'<br />(this message is only shown to site administrators)</p>';
+					$html .= '<p>Wie in PHP.INI festgelegt, ist die upload_max_filesize: '.ini_get('upload_max_filesize').'<br />(Diese Nachricht wird nur Webseiten-Administratoren angezeigt)</p>';
 				} else {
-					$html .= '<p>'.__('The maximum size of uploaded files is', 'cp-communitie').' '.ini_get('upload_max_filesize').'.</p>';
+					$html .= '<p>'.__('Die maximale Größe der hochgeladenen Dateien beträgt', 'cp-communitie').' '.ini_get('upload_max_filesize').'.</p>';
 				}
 
 				include_once('../server/file_upload_include.php');
@@ -718,7 +718,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 					WP_CONTENT_DIR.'/cpc-content/members/'.$current_user->ID.'/gallery_upload/', 
 					WP_CONTENT_URL.'/cpc-content/members/'.$current_user->ID.'/gallery_upload/',
 					'gallery',
-					__('Upload photo(s)', 'cp-communitie'),
+					__('Fotos hochladen)', 'cp-communitie'),
 					0,
 					0,
 					$album_id
@@ -774,7 +774,7 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 	  	
 	    	} else {
 	  	
-	          	 	$html .= __("No photos yet.", 'cp-communitie');
+	          	 	$html .= __("Noch keine Fotos.", 'cp-communitie');
 	         
 	    	}
 	   
@@ -792,18 +792,18 @@ if (get_option(CPC_OPTIONS_PREFIX.'__cpc__gallery_activated') || get_option(CPC_
 	
 		$html .= "<div id='__cpc__create_gallery'>";
 	
-			$html .= '<div class="new-topic-subject label">'.__("Name of new album", 'cp-communitie').'</div>';
+			$html .= '<div class="new-topic-subject label">'.__("Name des neuen Albums", 'cp-communitie').'</div>';
 			$html .= "<input id='cpcommunitie_new_album_title' class='new-topic-subject-input' type='text'>";
 	
 			if ($this_id > 0) {
 				$html .= "<div class='__cpc__create_sub_gallery label'>";
-				$html .= "<input type='checkbox' title='".$this_id."' id='__cpc__create_sub_gallery_select' CHECKED> ".__("Create as a sub-album of ".$this_album, 'cp-communitie');
+				$html .= "<input type='checkbox' title='".$this_id."' id='__cpc__create_sub_gallery_select' CHECKED> ".__("Als Unteralbum erstellen von ".$this_album, 'cp-communitie');
 				$html .= "</div>";
 			}
 			
 			$html .= "<div style='margin-top:10px'>";
-			$html .= '<input id="cpcommunitie_new_album" type="submit" class="__cpc__button" style="float: left" value="'.__("Create", 'cp-communitie').'" />';
-			$html .= '<input id="cpcommunitie_cancel_album" type="submit" class="__cpc__button clear" onClick="javascript:void(0)" value="'.__("Cancel", 'cp-communitie').'" />';
+			$html .= '<input id="cpcommunitie_new_album" type="submit" class="__cpc__button" style="float: left" value="'.__("Erstellen", 'cp-communitie').'" />';
+			$html .= '<input id="cpcommunitie_cancel_album" type="submit" class="__cpc__button clear" onClick="javascript:void(0)" value="'.__("Abbrechen", 'cp-communitie').'" />';
 			$html .= "</div>";
 	
 		$html .= "</div>";
@@ -880,7 +880,7 @@ function add_to_create_activity_feed($aid) {
 	$name = $wpdb->get_var($wpdb->prepare($sql, $aid));
 	
 	// Work out message
-	$msg = __("Added to", 'cp-communitie').' '.$name.'[]'.$aid.'[]added';
+	$msg = __("Hinzugefügt zu", 'cp-communitie').' '.$name.'[]'.$aid.'[]added';
 	
 	// First remove any older messages to avoid duplication that mention this album
 	$sql = "DELETE FROM ".$wpdb->base_prefix."cpcommunitie_comments WHERE subject_uid = ".$current_user->ID." AND author_uid = ".$current_user->ID." AND comment LIKE '%".$name."%' AND type = 'gallery'";

@@ -19,7 +19,7 @@ if ($_POST['action'] == 'bulk_readall') {
 
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	
 	}
 		
@@ -45,7 +45,7 @@ if ($_POST['action'] == 'bulk_recover') {
 
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	
 	}
 		
@@ -95,7 +95,7 @@ if ($_POST['action'] == 'bulk_delete') {
 
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	
 	}
 		

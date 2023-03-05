@@ -799,7 +799,7 @@ msgid "Create Group"
 msgstr ""
 
 #: ajax/gallery_functions.php:606
-msgid "Create sub album"
+msgid "Unteralbum erstellen"
 msgstr ""
 
 #: mailinglist.php:244 mailinglist_admin.php:71
@@ -890,7 +890,7 @@ msgid "Delete POP3 mailbox contents"
 msgstr ""
 
 #: ajax/gallery_functions.php:605
-msgid "Delete this album"
+msgid "Dieses Album löschen"
 msgstr ""
 
 #: groups_admin.php:168

@@ -4,8 +4,6 @@ CP Community Gallery
 Description: Photo Albums for CP Community. Add [cpcommunitie-galleries] to display all galleries across the site.
 */
 
-
-
 // Get constants
 require_once(dirname(__FILE__).'/default-constants.php');
 

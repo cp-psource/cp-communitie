@@ -262,7 +262,7 @@ if ($_POST['action'] == 'acceptGroup') {
 		echo $uid;		
 		
 	} else {
-		echo __('NOT LOGGED IN', 'cp-communitie');
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 	}
 		
 	exit;
@@ -286,7 +286,7 @@ if ($_POST['action'] == 'rejectGroup') {
 		echo $uid;		
 		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 		
 	exit;
@@ -414,7 +414,7 @@ if ($_POST['action'] == 'joinGroup') {
 			        
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 		
 	}
 	

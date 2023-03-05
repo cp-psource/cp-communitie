@@ -422,7 +422,7 @@ if ($_POST['action'] == 'addStatus') {
 			
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 		
 	}
 		
@@ -1165,7 +1165,7 @@ if ($_POST['action'] == 'updateSettings') {
 		
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 		
 	}
 	
@@ -1589,7 +1589,7 @@ if ($_POST['action'] == 'updatePersonal') {
 		echo 'OK';
 					
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 	
 	exit;
@@ -1754,7 +1754,7 @@ if ($_POST['action'] == 'deleteFriend') {
 		echo $friend;
 		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 	exit;
 }	
@@ -1817,7 +1817,7 @@ if ($_POST['action'] == 'addFriend') {
 
 		echo $r;		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 	
 	exit;
@@ -1842,7 +1842,7 @@ if ($_POST['action'] == 'cancelFriend') {
 		
 		echo "OK";		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 
 	exit;
@@ -1866,7 +1866,7 @@ if ($_POST['action'] == 'rejectFriend') {
 
 		echo $friend_to;		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 	
 	exit;
@@ -1963,7 +1963,7 @@ if ($_POST['action'] == 'acceptFriend') {
 	
 		echo $friend_to;		
 	} else {
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 	}
 
 	exit;

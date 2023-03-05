@@ -414,7 +414,7 @@ if ($_POST['action'] == 'forumNewPost') {
 		}
 		if ($topic_approved != 'on') {
 			$owner_name = $wpdb->get_var($wpdb->prepare("SELECT display_name FROM ".$wpdb->base_prefix."users WHERE ID = %d", $current_user->ID));
-			$body = "<p>".$owner_name." ".__('has started a new topic', 'cp-communitie');
+			$body = "<p>".$owner_name." ".__('hat ein neues Thema gestartet', 'cp-communitie');
 			$category = $wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id));
 			$body .= " ".__('in', 'cp-communitie')." ".$category;
 			$body .= "...</p>";
@@ -425,17 +425,17 @@ if ($_POST['action'] == 'forumNewPost') {
 			$body = str_replace(chr(13), "<br />", $body);
 			$body = str_replace("\\r\\n", "<br />", $body);
 			$body = str_replace("\\", "", $body);
-			$body = "<span style='font-size:24px font-style:italic;'>".__('Moderation Required', 'cp-communitie')."</span><br /><br />".$body;
-			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation Required', 'cp-communitie'), $body);
+			$body = "<span style='font-size:24px font-style:italic;'>".__('Moderation erforderlich', 'cp-communitie')."</span><br /><br />".$body;
+			__cpc__sendmail(get_bloginfo('admin_email'), __('Moderation erforderlich', 'cp-communitie'), $body);
 		}
 
 		// Hook to add new forum topic to activity
 		if (!get_option(CPC_OPTIONS_PREFIX.'_cpc_lite')) {
 			$category = '<a href="'.$cat_url.'">'.$wpdb->get_var($wpdb->prepare("SELECT title FROM ".$wpdb->prefix."cpcommunitie_cats WHERE cid = %d", $cat_id)).'</a>';
 			if ($group_id == 0) {
-				$prompt = sprintf(__('Started a new forum topic in %s:', 'cp-communitie'), $category);
+				$prompt = sprintf(__('Neues Forenthema in %s gestartet:', 'cp-communitie'), $category);
 			} else {
-				$prompt = sprintf(__('Started a new group forum topic:', 'cp-communitie'), $category);
+				$prompt = sprintf(__('Neues Gruppenforum-Thema gestartet:', 'cp-communitie'), $category);
 			}
 			$post = $prompt.' <a href="'.$url.'">'.$new_topic_subject.'</a>';
 			do_action('__cpc__forum_newtopic_hook', $current_user->ID, $current_user->display_name, $current_user->ID, $post, 'forum', $new_tid);			
@@ -447,7 +447,7 @@ if ($_POST['action'] == 'forumNewPost') {
 				
 	} else {
 	
-		echo 'NOT LOGGED IN';
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 		exit;
 		
 	}
@@ -509,7 +509,7 @@ if ($_POST['action'] == 'forumNewPostEmails') {
 			$body = str_replace("\\", "", $body);
 
 			if (function_exists('__cpc__mailinglist')) { 
-				$subject_add = ' #TID='.$new_tid.' ['.__('do not edit', 'cp-communitie').']'; 
+				$subject_add = ' #TID='.$new_tid.' ['.__('nicht bearbeiten', 'cp-communitie').']'; 
 				$body_prefix = get_option(CPC_OPTIONS_PREFIX.'_mailinglist_prompt').'<br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider').'<br /><br />'.get_option(CPC_OPTIONS_PREFIX.'_mailinglist_divider_bottom').'<br /><br />';
 			} else {
 				$subject_add = '';
@@ -671,7 +671,7 @@ if ($_POST['action'] == 'forumNewPostEmails') {
 				
 	} else {
 	
-		echo 'NOT LOGGED IN';
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 		exit;
 		
 	}
@@ -996,7 +996,7 @@ if ($_POST['action'] == 'replycommentemails') {
 		
 	} else {
 		
-		echo 'NOT LOGGED IN';
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 		exit;
 		
 	}
@@ -1360,7 +1360,7 @@ if ($_POST['action'] == 'forumReplyEmails') {
 		
 	} else {
 		
-		echo 'NOT LOGGED IN';
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 		exit;
 		
 	}

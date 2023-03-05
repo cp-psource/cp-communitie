@@ -158,8 +158,7 @@ function __cpc__post_content_filter( $content ) {
 }
 
 // Profile Menu hook
-function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,$share,$extra_class)  
-{  
+function __cpc__add_profile_menu($html,$uid1,$uid2,$privacy,$is_friend,$extended,$share,$extra_class) {  
 	global $wpdb,$current_user;
 	
 			if ( ( get_option(CPC_OPTIONS_PREFIX.'_menu_profile') == 'on') ) {
@@ -272,7 +271,7 @@ function __cpc__header() {
 			echo '<strong>'.sprintf(__('%s Debug-Modus', 'cp-communitie'), CPC_WL).'</strong><br />';
 	
 			global $wp_rewrite;
-			echo '<a href="javascript:void(0);" rel="rewrite_rules" class="cpcommunitie-dialog">Show rewrite rules</a><br />';
+			echo '<a href="javascript:void(0);" rel="rewrite_rules" class="cpcommunitie-dialog">Umschreibungsregeln anzeigen</a><br />';
 				echo '<div id="rewrite_rules" title="Rewrite rules" style="display:none;margin-top:10px;background-color:#fff;color:#000;padding:6px;border:1px solid #000; border-radius:3px;">';
 				echo __cpc__displayArray($wp_rewrite->rewrite_rules());
 				echo '</div>';
@@ -492,8 +491,8 @@ function __cpc__show_metadata($user) {
 	if ( ($city != '' || $country != '') && (get_option(CPC_OPTIONS_PREFIX.'_profile_google_map') > 0) ){ 	
 						
 		$html .= '<tr><th></th><td>';
-		$html .= '<a target="_blank" style="width:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px; height:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px;" href="http://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$city.',+'.$country.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$city.',+'.$country.'&amp;output=embed&amp;z=5" alt="Click on map to enlarge" title="Click on map to enlarge">';
-		$html .= '<img src="http://maps.google.com/maps/api/staticmap?center='.$city.',.+'.$country.'&zoom=5&size='.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'x'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$city.',+'.$country.'&sensor=false" />';
+		$html .= '<a target="_blank" style="width:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px; height:'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'px;" href="https://maps.google.co.uk/maps?f=q&amp;source=embed&amp;hl=en&amp;geocode=&amp;q='.$city.',+'.$country.'&amp;ie=UTF8&amp;hq=&amp;hnear='.$city.',+'.$country.'&amp;output=embed&amp;z=5" alt="Zum Vergrößern auf die Karte klicken" title="Zum Vergrößern auf die Karte klicken">';
+		$html .= '<img src="https://maps.google.com/maps/api/staticmap?center='.$city.',.+'.$country.'&zoom=5&size='.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'x'.get_option(CPC_OPTIONS_PREFIX.'_profile_google_map').'&maptype=roadmap&markers=color:blue|label:&nbsp;|'.$city.',+'.$country.'&sensor=false" />';
 		$html .= '</a><br /><span class="description"> '.sprintf(__("Die Google-Karte, die oben auf Ihrer %s-Profilseite angezeigt wird und sich aus Deinen oben genannten persönlichen Daten ergibt.", 'cp-communitie'), CPC_WL).'</span></td></tr>';
 	
 	}

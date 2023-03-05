@@ -345,7 +345,7 @@ if ($_POST['action'] == 'toggle_following') {
 
 	} else {
 		
-		echo 'NOT LOGGED IN';
+		echo __('NICHT EINGELOGGT', 'cp-communitie');
 		
 	}
 	
@@ -428,7 +428,7 @@ if ($_POST['action'] == 'likeDislike') {
 		
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 		
 	}	
 
@@ -469,7 +469,7 @@ if ($_POST['action'] == 'getLikesDislikes') {
 		
 	} else {
 		
-		echo "NOT LOGGED IN";
+		echo __("NICHT EINGELOGGT", 'cp-communitie');
 		
 	}	
 

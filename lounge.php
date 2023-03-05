@@ -25,7 +25,7 @@ function __cpc__lounge_main() {
 			// Display the comment form
 			$html .= '<div id="__cpc__lounge_add_comment_div">';
 			$html .= '<input type="text" class="input-field" id="__cpc__lounge_add_comment" onblur="this.value=(this.value==\'\') ? \''.__("Einen Kommentar hinzufügen..", 'cp-communitie').'\' : this.value;" onfocus="this.value=(this.value==\''.__("Einen Kommentar hinzufügen..", 'cp-communitie').'\') ? \'\' : this.value;" value="'.__("Einen Kommentar hinzufügen..", 'cp-communitie').'">';
-			$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Add', 'cp-communitie').'" /> ';
+			$html .= '&nbsp;<input id="__cpc__lounge_add_comment_button" type="submit" class="__cpc__button" value="'.__('Hinzufügen', 'cp-communitie').'" /> ';
 			$html .= '</div>';
 		
 		}

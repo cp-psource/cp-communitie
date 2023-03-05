@@ -183,7 +183,7 @@ if ($_POST['action'] == 'doVote') {
 		echo $vote;
 
 	} else {
-		echo "NOT LOGGED IN";		
+		echo __("NICHT EINGELOGGT", 'cp-communitie');		
 	}
 	
 	exit;

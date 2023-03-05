@@ -62,3 +62,7 @@ font[face=mceinline] {font-family:inherit !important}
 	font-size: 1.2em;
 	}
 }
+
+.mceToolbar > tbody > tr > td { 
+	display:table-row; float: left;
+}

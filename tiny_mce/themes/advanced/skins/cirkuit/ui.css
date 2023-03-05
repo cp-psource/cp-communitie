@@ -16,7 +16,9 @@
 	
 }
 
-
+.mceToolbar > tbody > tr > td { 
+	display:table-row; float: left;
+}
 
 .cirkuitSkin a:hover, .cirkuitSkin a:link, .cirkuitSkin a:visited, .cirkuitSkin a:active {
 	text-decoration: none;

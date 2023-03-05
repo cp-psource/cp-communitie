@@ -329,7 +329,7 @@ function __cpc__getTopic($topic_id, $group_id=0, $pagination=9999, $page=1) {
 				// Edit Form
 				$html .= '<div id="edit-topic-div">';
 
-					$html .= '<div class="new-topic-subject label">'.__("Thema Gegenstand", 'cp-communitie').'</div>';
+					$html .= '<div class="new-topic-subject label">'.__("Thema Betreff", 'cp-communitie').'</div>';
 					$html .= '<div id="'.$post->tid.'" class="edit-topic-tid"></div>';
 					$html .= '<div id="" class="edit-topic-parent"></div>';
 					$html .= '<input class="new-topic-subject-input" type="text" name="edit_topic_subject">';
@@ -1687,7 +1687,7 @@ function __cpc__getForum($cat_id, $limit_from=0, $group_id=0) {
 						}
 						
 						$new_topic_form .= '<div style="clear:both"></div>';
-						$new_topic_form .= '<div id="new-topic-subject-label" class="new-topic-subject label">'.__("Thema Gegenstand", 'cp-communitie').'</div>';
+						$new_topic_form .= '<div id="new-topic-subject-label" class="new-topic-subject label">'.__("Thema Betreff", 'cp-communitie').'</div>';
 						$new_topic_form .= '<div style="clear:both"></div>';
 						$new_topic_form .= '<input class="new-topic-subject-input" type="text" id="new_topic_subject" value="">';
 						$new_topic_form .= '<div style="clear:both"></div>';

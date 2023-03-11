@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: CP Community BETA
-Plugin URI: https://n3rds.work
+Plugin URI: https://cp-community.n3rds.work/
 Description: Turn your ClassicPress site into a social network. Activate features on the Installation page.
 Version: 1.5.9
 Author: DerN3rd

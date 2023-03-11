@@ -5852,7 +5852,7 @@ function __cpc__plugin_forum() {
 				$reply_roles = get_option(CPC_OPTIONS_PREFIX.'_forum_reply_comment');
 
 				echo '<input type="checkbox" name="commenters[]" value="'.__('Mitglied', 'cp-communitie').'"';
-				if (strpos(strtolower($reply_roles), strtolower(__('jeder', 'cp-communitie')).',') !== FALSE) {
+				if (strpos(strtolower($reply_roles), strtolower(__('everyone', 'cp-communitie')).',') !== FALSE) {
 					echo ' CHECKED';
 				}
 				echo '> '.__('Mitglied', 'cp-communitie').' ... <span class="description">'.__('bedeutet, dass alle Mitglieder Antworten kommentieren können, wenn diese Option aktiviert ist', 'cp-communitie').'</span><br />';						
@@ -7768,7 +7768,7 @@ function __cpc__update_option($option, $value, $update_network)
 	}
 }
 
-function __cpc__set_options($blog_id = null, $option, $value)
+function __cpc__set_options($option, $value, $blog_id = null )
 {
     if ($blog_id) {
         switch_to_blog($blog_id);

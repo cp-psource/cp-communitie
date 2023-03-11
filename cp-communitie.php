@@ -14,7 +14,13 @@ License: GPL3
 /* Please see licence.txt for End User Licence Agreement */
  
 /* ====================================================== SETUP ====================================================== */
-
+require 'psource/psource-plugin-update/psource-plugin-updater.php';
+use Psource\PluginUpdateChecker\v5\PucFactory;
+$MyUpdateChecker = PucFactory::buildUpdateChecker(
+	'https://n3rds.work//wp-update-server/?action=get_metadata&slug=cp-communitie', 
+	__FILE__, 
+	'cp-communitie' 
+);
 
 // Get constants
 require_once(dirname(__FILE__).'/default-constants.php');

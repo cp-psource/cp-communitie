@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CP Community\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-10 10:59+0000\n"
-"PO-Revision-Date: 2023-03-11 08:10+0000\n"
+"POT-Creation-Date: 2023-02-10 14:54+0000\n"
+"PO-Revision-Date: 2023-03-11 08:06+0000\n"
 "Last-Translator: \n"
-"Language-Team: English (United States)\n"
-"Language: en_US\n"
+"Language-Team: Italian\n"
+"Language: it_IT\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -16,34 +16,36 @@ msgstr ""
 "X-Domain: CPC_TEXT_DOMAIN"
 
 #: facebook_admin.php:41
+#, fuzzy
 msgid " button"
-msgstr " button"
+msgstr " pulsante"
 
 #: ajax/events_functions.php:497
-#, php-format
+#, fuzzy, php-format
 msgid " has booked %d ticket(s) for event (%s) ID:"
-msgstr " has booked %d ticket(s) for event (%s) ID:"
+msgstr " ha prenotato %d biglietti per l'evento (%s) ID:"
 
 #: ajax/events_functions.php:437
-#, php-format
+#, fuzzy, php-format
 msgid " has cancelled their booking for event (%s) ID:"
-msgstr " has cancelled their booking for event (%s) ID:"
+msgstr " ha cancellato la propria prenotazione per l'evento (%s) ID:"
 
 #: ajax/profile_functions.php:71
+#, fuzzy
 msgid " has sent you a "
-msgstr " has sent you a"
+msgstr " vi ha inviato un"
 
 #: news.php:205
 #, fuzzy
 msgid " hat dir geschickt "
-msgstr " hat dir geschickt"
+msgstr " ha scelto di farlo"
 
 #: ajax/events_functions.php:176
-#, php-format
+#, fuzzy, php-format
 msgid "%d ticket confirmed"
 msgid_plural "%d tickets confirmed"
-msgstr[0] "%d ticket confirmed"
-msgstr[1] "%d tickets confirmed"
+msgstr[0] "%d biglietto confermato"
+msgstr[1] "%d biglietti confermati"
 
 #: profile.php:492 profile.php:862
 #, fuzzy, php-format
@@ -66,12 +68,11 @@ msgid "%s Anfrage gesendet"
 msgstr "%s Anfrage gesendet"
 
 #: hooks_filters.php:272
-#, php-format
+#, fuzzy, php-format
 msgid "%s Debug Mode"
-msgstr "%s Debug Mode"
+msgstr "%s Modalità Debug"
 
-#: events_admin.php:4 facebook_admin.php:27 gallery_admin.php:4
-#: groups_admin.php:4 lounge_admin.php:13 mailinglist_admin.php:5
+#: mobile.php:85 news_admin.php:5 plus_admin.php:7
 #, fuzzy, php-format
 msgid "%s Einstellungen"
 msgstr "%s Einstellungen"
@@ -87,9 +88,9 @@ msgid "%s Fotoalben in Suchergebnisse einbeziehen"
 msgstr "%s Fotoalben in Suchergebnisse einbeziehen"
 
 #: ajax/profile_functions.php:822 ajax/profile_functions.php:828
-#, php-format
+#, fuzzy, php-format
 msgid "%s group activity"
-msgstr "%s group activity"
+msgstr "attività di gruppo %s"
 
 #: plus_admin.php:273
 #, fuzzy, php-format
@@ -98,88 +99,93 @@ msgstr "%s Gruppen in Suchergebnisse einbeziehen"
 
 #: hooks_filters.php:381 hooks_filters.php:398 ajax/gallery_functions.php:699
 #: ajax/profile_functions.php:1220 ajax/profile_functions.php:1241
-#, php-format
+#, fuzzy, php-format
 msgid "%s Only"
-msgstr "%s Only"
+msgstr "solo %s"
 
 #: mailinglist.php:25
-#, php-format
+#, fuzzy, php-format
 msgid "%s reply-by-email interval"
-msgstr "%s reply-by-email interval"
+msgstr "%s intervallo di risposta per e-mail"
 
 #: ajax/profile_functions.php:1804 ajax/profile_functions.php:1812
-#, php-format
+#, fuzzy, php-format
 msgid "%s request"
-msgstr "%s request"
+msgstr "richiesta %s"
 
 #: ajax/profile_functions.php:1940 ajax/profile_functions.php:1947
-#, php-format
+#, fuzzy, php-format
 msgid "%s request accepted"
-msgstr "%s request accepted"
+msgstr "richiesta %s accettata"
 
 #: members.php:424 ajax/members_functions.php:435
-#, php-format
+#, fuzzy, php-format
 msgid "%s Request Sent"
-msgstr "%s Request Sent"
+msgstr "%s Richiesta inviata"
 
 #: cp-communitie.php:1207
-#, php-format
+#, fuzzy, php-format
 msgid "%s request sent"
-msgstr "%s request sent"
+msgstr "richiesta %s inviata"
 
 #: members.php:416 ajax/members_functions.php:427
 #: ajax/profile_functions.php:2130
-#, php-format
+#, fuzzy, php-format
 msgid "%s request sent."
-msgstr "%s request sent."
+msgstr "richiesta %s inviata."
 
 #: ajax/profile_functions.php:2001
-#, php-format
+#, fuzzy, php-format
 msgid "%s Requests"
-msgstr "%s Requests"
+msgstr "%s Richieste"
 
 #: panel.php:121 widgets.php:36
-#, php-format
+#, fuzzy, php-format
 msgid "%s Status"
-msgstr "%s Status"
+msgstr "%s Stato"
 
 #: cp-communitie.php:343
-#, php-format
+#, fuzzy, php-format
 msgid "%s version"
-msgstr "%s version"
+msgstr "versione %s"
 
 #: ajax/plus_functions.php:412 ajax/plus_functions.php:419
-#, php-format
+#, fuzzy, php-format
 msgid "%s your %s"
-msgstr "%s your %s"
+msgstr "%s il tuo %s"
 
 #: ajax/profile_functions.php:808 ajax/profile_functions.php:814
-#, php-format
+#, fuzzy, php-format
 msgid "%s's activity"
-msgstr "%s's activity"
+msgstr "attività di %s"
 
 #: cp-communitie.php:246
-#, php-format
+#, fuzzy, php-format
 msgid "(%s unread)"
-msgstr "(%s unread)"
+msgstr "(%s non letto)"
 
 #: facebook_admin.php:46
+#, fuzzy
 msgid "(including trailing slash)."
-msgstr "(including trailing slash)."
+msgstr "(compresa la barra di separazione)."
 
 #: mailinglist.php:236 mailinglist_admin.php:63
+#, fuzzy
 msgid "(or no internet connection)"
-msgstr "(or no internet connection)"
+msgstr "(o senza connessione a Internet)"
 
 #: ajax/profile_functions.php:1119
+#, fuzzy
 msgid ") is not available, it must be unique, sorry."
-msgstr ") is not available, it must be unique, sorry."
+msgstr ") non è disponibile, deve essere unico, mi dispiace."
 
 #: groups_admin.php:149
+#, fuzzy
 msgid "-- Select a group --"
-msgstr "-- Select a group --"
+msgstr "-- Selezionare un gruppo --"
 
 #: ajax/events_functions.php:79
+#, fuzzy
 msgid "<<"
 msgstr "<<"
 
@@ -193,39 +199,45 @@ msgstr ""
 "Standardanzahl der angezeigten Warnungen (50)"
 
 #: ajax/forum_functions.php:1583
+#, fuzzy
 msgid "<p>You have not replied to any forum topics.</p>"
-msgstr "<p>You have not replied to any forum topics.</p>"
+msgstr "<p>Non hai risposto a nessun argomento del forum.</p>"
 
 #: ajax/forum_functions.php:1517
+#, fuzzy
 msgid "<p>You have not started any forum topics.</p>"
-msgstr "<p>You have not started any forum topics.</p>"
+msgstr "<p>Non hai iniziato alcun argomento del forum.</p>"
 
 #: widgets.php:893 widgets.php:1005
+#, fuzzy
 msgid ""
 "<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 "
 "for none)"
 msgstr ""
-"<strong>Categories to exclude</strong><br />List IDs, comma separated. (0 "
-"for none)"
+"<strong>Categorie da escludere</strong><br />Identificativi dell'elenco, "
+"separati da virgole. (0 per nessuna)"
 
 #: widgets.php:890 widgets.php:1002
+#, fuzzy
 msgid ""
 "<strong>Categories to include</strong><br />List IDs, comma separated. (0 "
 "for all)"
 msgstr ""
-"<strong>Categories to include</strong><br />List IDs, comma separated. (0 "
-"for all)"
+"<strong>Categorie da includere</strong><br />Identificativi dell'elenco, "
+"separati da virgole. (0 per tutti)"
 
 #: ajax/events_functions.php:80
+#, fuzzy
 msgid ">>"
 msgstr ">>"
 
 #: ajax/profile_functions.php:745
+#, fuzzy
 msgid "@mentions"
-msgstr "@mentions"
+msgstr "@menzioni"
 
 #: news_admin.php:103
-#, php-format
+#, fuzzy, php-format
 msgid "[%s-alerts count=200]"
 msgstr "[%s-alerts count=200]"
 
@@ -235,24 +247,27 @@ msgid "[Kein Name]"
 msgstr "[Kein Name]"
 
 #: facebook_admin.php:36
+#, fuzzy
 msgid ""
 "A Facebook application is used to post messages to Facebook Walls - you need "
 "to create a Facebook application for your website:"
 msgstr ""
-"A Facebook application is used to post messages to Facebook Walls - you need "
-"to create a Facebook application for your website:"
+"Un'applicazione Facebook viene utilizzata per pubblicare messaggi sulle "
+"bacheche di Facebook: dovete creare un'applicazione Facebook per il vostro "
+"sito web:"
 
 #: ajax/forum_functions.php:2314
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "A maxium of %d search results will be displayed, please narrow your search."
 msgstr ""
-"A maxium of %d search results will be displayed, please narrow your search."
+"Verrà visualizzato un massimo di %d risultati di ricerca, si prega di "
+"restringere la ricerca."
 
 #: news_admin.php:54
 #, fuzzy
 msgid "Abfrageintervall (Sekunden)"
-msgstr "Abfrageintervall (Sekunden)"
+msgstr "Intervallo di tempo (giorni)"
 
 #: plus.php:87
 #, fuzzy
@@ -267,19 +282,19 @@ msgstr "Abonnierte Forumantwort von"
 #: news.php:260
 #, fuzzy
 msgid "Abonnierter Forumskommentar von"
-msgstr "Abonnierter Forumskommentar von"
+msgstr "Il forum è stato aggiornato con i commenti di"
 
 #: news.php:241
 #, fuzzy
 msgid "Abonniertes Forumsthema von"
-msgstr "Abonniertes Forumsthema von"
+msgstr "Il forum è stato aperto da"
 
 #: plus_admin.php:149
 #, fuzzy
 msgid ""
 "Abstand über dem Menü, wenn sie sich mit der Seite nach unten bewegt (Pixel)"
 msgstr ""
-"Abstand über dem Menü, wenn sie sich mit der Seite nach unten bewegt (Pixel)"
+"Posizione rispetto al menu, se ci si sposta dal sito verso l'esterno (Pixel)"
 
 #: yesno.php:30
 #, fuzzy
@@ -287,69 +302,86 @@ msgid "Abstimmung"
 msgstr "Abstimmung"
 
 #: ajax/group_functions.php:1386 ajax/profile_functions.php:2018
+#, fuzzy
 msgid "Accept"
-msgstr "Accept"
+msgstr "Accettare"
 
 #: groups_admin.php:70
-#, php-format
+#, fuzzy, php-format
 msgid ""
 "Activate <a href=\"%s\">templates</a> for the group page (default layout "
 "used if not)"
 msgstr ""
-"Activate <a href=\"%s\">templates</a> for the group page (default layout "
-"used if not)"
+"Attivare <a href=\"%s\">templates</a> per la pagina del gruppo (in caso "
+"contrario, viene utilizzato il layout predefinito)"
 
 #: groups.php:210
+#, fuzzy
 msgid "Active Members"
-msgstr "Active Members"
+msgstr "Membri attivi"
 
 #: create_options.php:426 hooks_filters.php:190 ajax/group_functions.php:746
+#, fuzzy
 msgid "Activity"
-msgstr "Activity"
+msgstr "Attività"
 
 #: class.cpc_ui.php:44 cp-communitie.php:1222 lounge.php:28 members.php:422
 #: ajax/group_functions.php:1236 ajax/lounge_functions.php:23
 #: ajax/members_functions.php:433
+#, fuzzy
 msgid "Add"
-msgstr "Add"
+msgstr "Aggiungi"
+
+#: lounge.php:27 ajax/lounge_functions.php:20 ajax/lounge_functions.php:21
+#: ajax/lounge_functions.php:22
+#, fuzzy
+msgid "Einen Kommentar hinzufügen.."
+msgstr "Un commento in più...."
 
 #: cp-communitie.php:1221
+#, fuzzy
 msgid "Add a comment:"
-msgstr "Add a comment:"
+msgstr "Aggiungi un commento:"
 
 #: cp-communitie.php:1206 members.php:421 ajax/members_functions.php:432
-#, php-format
+#, fuzzy, php-format
 msgid "Add as a %s..."
-msgstr "Add as a %s..."
+msgstr "Aggiungi come %s..."
 
 #: events.php:75
+#, fuzzy
 msgid "Added by"
-msgstr "Added by"
+msgstr "Aggiunto da"
 
 #: ajax/gallery_functions.php:883 server/file_upload_form.php:261
+#, fuzzy
 msgid "Added to"
-msgstr "Added to"
+msgstr "Aggiunto a"
 
 #: gallery.php:148
+#, fuzzy
 msgid "added to "
-msgstr "added to"
+msgstr "aggiunto a"
 
 #: mailinglist.php:162
+#, fuzzy
 msgid "Added to forum."
-msgstr "Added to forum."
+msgstr "Aggiunto al forum."
 
 #: cp-communitie.php:341
+#, fuzzy
 msgid "Admin Email"
-msgstr "Admin Email"
+msgstr "Email amministratore"
 
 #: members.php:68
+#, fuzzy
 msgid "Advanced search"
-msgstr "Advanced search"
+msgstr "Ricerca avanzata"
 
 #: plus_admin.php:197
 #, fuzzy
 msgid "Aktiviere @user-Tags"
-msgstr "Aktiviere @user-Tags"
+msgstr "Etichette utente"
 
 #: plus_admin.php:243
 #, fuzzy, php-format
@@ -357,89 +389,100 @@ msgid ""
 "Aktiviert das Hover-Feld, wenn der Cursor über den Profil-Avatar bewegt wird."
 " Erfordert die Aktivierung von <a href=\"%s\">Profilfotos</a>."
 msgstr ""
-"Aktiviert das Hover-Feld, wenn der Cursor über den Profil-Avatar bewegt wird."
-" Erfordert die Aktivierung von <a href=\"%s\">Profilfotos</a>."
+"Attiva il campo Hover, quando il cursore si sposta sull'avatar del profilo. "
+"Consente di attivare le <a href=\"%s\">foto</a>."
 
 #: plus_admin.php:173
 #, fuzzy
 msgid "Aktivität Gefällt mir/Gefällt mir nicht"
-msgstr "Aktivität Gefällt mir/Gefällt mir nicht"
+msgstr "Attività Gefällt mir/Gefällt mir nicht"
 
 #: plus_admin.php:189
 #, fuzzy
 msgid "Aktivität/Status YouTube zulassen"
-msgstr "Aktivität/Status YouTube zulassen"
+msgstr "Attività/Stato YouTube zulassen"
 
 #: plus_admin.php:181
 #, fuzzy
 msgid "Aktivitäts-/Statusbilder zulassen"
-msgstr "Aktivitäts-/Statusbilder zulassen"
+msgstr "Attività/Statuto da gestire"
 
 #: news.php:72
 #, fuzzy
 msgid "Alerts"
-msgstr "Alerts"
+msgstr "Avvisi"
 
 #: widgets.php:513
+#, fuzzy
 msgid "All"
-msgstr "All"
-
-#: ajax/gallery_functions.php:595
-msgid "All albums"
-msgstr "All albums"
-
-#: groups.php:203
-msgid "All Groups"
-msgstr "All Groups"
-
-#: groups_admin.php:74
-msgid "All users can create"
-msgstr "All users can create"
-
-#: groups_admin.php:77
-msgid "All users or restricted to administrators only"
-msgstr "All users or restricted to administrators only"
+msgstr "Tutti"
 
 #: create_options.php:400 create_options.php:430 hooks_filters.php:206
 #: hooks_filters.php:211
 #, fuzzy
 msgid "Alle Aktivitäten"
-msgstr "Alle Aktivitäten"
+msgstr "Tutte le attività"
+
+#: ajax/gallery_functions.php:595
+#, fuzzy
+msgid "All albums"
+msgstr "Tutti gli album"
+
+#: groups.php:203
+#, fuzzy
+msgid "All Groups"
+msgstr "Tutti i gruppi"
+
+#: groups_admin.php:74
+#, fuzzy
+msgid "All users can create"
+msgstr "Tutti gli utenti possono creare"
+
+#: groups_admin.php:77
+#, fuzzy
+msgid "All users or restricted to administrators only"
+msgstr "Tutti gli utenti o solo per gli amministratori"
 
 #: plus_admin.php:122
 #, fuzzy
 msgid "Alle Benutzer sind jetzt miteinander befreundet."
-msgstr "Alle Benutzer sind jetzt miteinander befreundet."
+msgstr "Tutti i partecipanti sono già stati finanziati in modo congiunto."
 
 #: plus_admin.php:79 plus_admin.php:90
 #, fuzzy
 msgid "Alle Benutzer zu Freunden machen"
-msgstr "Alle Benutzer zu Freunden machen"
+msgstr "Tutti i clienti sono amici e si impegnano a lavorare con loro"
 
 #: plus_admin.php:232
 #, fuzzy
 msgid "Alle sind Freunde?"
-msgstr "Alle sind Freunde?"
+msgstr "Tutti sono amici?"
 
 #: groups_admin.php:90
+#, fuzzy
 msgid "Allow group admin's to invite people to join via email."
-msgstr "Allow group admin's to invite people to join via email."
+msgstr ""
+"Consentire agli amministratori dei gruppi di invitare le persone a "
+"partecipare via e-mail."
 
 #: groups_admin.php:87
+#, fuzzy
 msgid "Allow group invites"
-msgstr "Allow group invites"
+msgstr "Consentire inviti di gruppo"
 
 #: ajax/group_functions.php:721
+#, fuzzy
 msgid "Allow members to create forum topics?"
-msgstr "Allow members to create forum topics?"
+msgstr "Consentire ai membri di creare argomenti del forum?"
 
 #: mailinglist_admin.php:106
+#, fuzzy
 msgid ""
 "Allows members to reply to forum topics by email (by replying to the "
 "notification received)."
 msgstr ""
-"Allows members to reply to forum topics by email (by replying to the "
-"notification received)."
+"Consente ai membri di rispondere agli argomenti del forum via e-mail "
+"(rispondendo alla notifica ricevuta)."
 
 #: profile.php:498 profile.php:868
 #, fuzzy, php-format
@@ -452,81 +495,95 @@ msgid "Als Menüpunkt hinzufügen"
 msgstr "Als Menüpunkt hinzufügen"
 
 #: facebook_admin.php:62
+#, fuzzy
 msgid "Also called your OAuth client_id"
-msgstr "Also called your OAuth client_id"
+msgstr "Chiamato anche OAuth client_id"
 
 #: facebook_admin.php:68
+#, fuzzy
 msgid "Also called your OAuth client_secret"
-msgstr "Also called your OAuth client_secret"
+msgstr "Chiamato anche client_secret di OAuth"
 
 #: news.php:151
+#, fuzzy
 msgid "Alt"
 msgstr "Alt"
 
 #: plus_admin.php:225
 #, fuzzy
 msgid "Alternative anzeigen"
-msgstr "Alternative anzeigen"
+msgstr "Anzeigen alternativo"
 
 #: forum.php:204 ajax/forum_functions.php:1565 ajax/forum_functions.php:1681
 #: ajax/forum_functions.php:1831
+#, fuzzy
 msgid "Answer Accepted"
-msgstr "Answer Accepted"
+msgstr "Risposta accettata"
 
 #: ajax/forum_functions.php:48 ajax/forum_functions.php:51
+#, fuzzy
 msgid "Answer accepted"
-msgstr "Answer accepted"
+msgstr "Risposta accettata"
 
 #: members.php:100 ajax/members_functions.php:261
+#, fuzzy
 msgid "Any"
-msgstr "Any"
+msgstr "Qualsiasi"
 
 #: hooks_filters.php:447 ajax/profile_functions.php:1322
 #, fuzzy
 msgid "April"
-msgstr "April"
+msgstr "Aprile"
+
+#: cp-communitie.php:1197
+#, fuzzy
+msgid "Bist du Dir sicher?"
+msgstr "Bist du Dir sicher?"
 
 #: cp-communitie.php:1199
+#, fuzzy
 msgid "Attach an image"
-msgstr "Attach an image"
+msgstr "Allegare un'immagine"
 
 #: cp-communitie.php:1200 server/file_upload_form.php:222
+#, fuzzy
 msgid "Attach file"
-msgstr "Attach file"
+msgstr "Allegare il file"
 
 #: ajax/events_functions.php:499
-#, php-format
+#, fuzzy, php-format
 msgid "Attendee booking for Event (%s) ID:"
-msgstr "Attendee booking for Event (%s) ID:"
+msgstr "Prenotazione di un partecipante per l'evento (%s) ID:"
 
 #: ajax/events_functions.php:439
-#, php-format
+#, fuzzy, php-format
 msgid "Attendee cancellation for Event (%s) ID:"
-msgstr "Attendee cancellation for Event (%s) ID:"
+msgstr "Cancellazione di un partecipante per l'evento (%s) ID:"
 
 #: ajax/events_functions.php:374
-#, php-format
+#, fuzzy, php-format
 msgid "Attendee confirmation for Event (%s) ID:"
-msgstr "Attendee confirmation for Event (%s) ID:"
+msgstr "Conferma del partecipante per l'evento (%s) ID:"
 
 #: ajax/events_functions.php:412
-#, php-format
+#, fuzzy, php-format
 msgid "Attendee removal for Event (%s) ID:"
-msgstr "Attendee removal for Event (%s) ID:"
+msgstr "Rimozione del partecipante per l'evento (%s) ID:"
 
 #: cp-communitie.php:1234
+#, fuzzy
 msgid "Attendees"
-msgstr "Attendees"
+msgstr "Partecipanti"
 
 #: news.php:270
 #, fuzzy
 msgid "auf Deinem Profil gepostet hat."
-msgstr "auf Deinem Profil gepostet hat."
+msgstr "sul profilo del cliente."
 
 #: hooks_filters.php:451 ajax/profile_functions.php:1326
 #, fuzzy
 msgid "August"
-msgstr "August"
+msgstr "Agosto"
 
 #: news_admin.php:68
 #, fuzzy
@@ -534,8 +591,8 @@ msgid ""
 "Ausblenden, wenn Probleme auftreten, der Menüpunkt wechselt stattdessen zur "
 "Seite „Warnungen“."
 msgstr ""
-"Ausblenden, wenn Probleme auftreten, der Menüpunkt wechselt stattdessen zur "
-"Seite „Warnungen“."
+"Se si verificano problemi, il punto di menu si sposta al punto "
+"\"Avvertenze\"."
 
 #: panel.php:135 panel.php:136 panel.php:143
 #, fuzzy
@@ -543,43 +600,49 @@ msgid "Ausloggen"
 msgstr "Ausloggen"
 
 #: plus_admin.php:246
+#, fuzzy
 msgid "Autocomplete search box"
-msgstr "Autocomplete search box"
+msgstr "Casella di ricerca con completamento automatico"
 
 #: groups_admin.php:175
+#, fuzzy
 msgid "Available users"
-msgstr "Available users"
+msgstr "Utenti disponibili"
 
 #: server/file_upload_form.php:120
+#, fuzzy
 msgid "Avatar updated!"
-msgstr "Avatar updated!"
+msgstr "Avatar aggiornato!"
 
 #: ajax/group_functions.php:1325
+#, fuzzy
 msgid "Awaiting approval"
-msgstr "Awaiting approval"
+msgstr "In attesa di approvazione"
 
 #: ajax/events_functions.php:178
-#, php-format
+#, fuzzy, php-format
 msgid "Awaiting confirmation for %d ticket."
 msgid_plural "Awaiting confirmation for %d tickets."
-msgstr[0] "Awaiting confirmation for %d ticket."
-msgstr[1] "Awaiting confirmation for %d tickets."
+msgstr[0] "In attesa di conferma per il biglietto %d."
+msgstr[1] "In attesa di conferma per %d biglietti."
 
 #: events.php:137 ajax/events_functions.php:1058
-#, php-format
+#, fuzzy, php-format
 msgid "Awaiting confirmation from the organiser for %d ticket."
 msgid_plural "Awaiting confirmation from the organiser for %d tickets."
-msgstr[0] "Awaiting confirmation from the organiser for %d ticket."
-msgstr[1] "Awaiting confirmation from the organiser for %d tickets."
+msgstr[0] ""
+"In attesa di conferma da parte dell'organizzatore per il biglietto %d."
+msgstr[1] "In attesa di conferma da parte dell'organizzatore per %d biglietti."
 
 #: mail.php:135
+#, fuzzy
 msgid "Back to mail"
-msgstr "Back to mail"
+msgstr "Torna alla posta"
 
 #: news_admin.php:102
 #, fuzzy
 msgid "Beispiel"
-msgstr "Beispiel"
+msgstr "Esempio"
 
 #: news_admin.php:65
 #, fuzzy
@@ -589,22 +652,19 @@ msgstr "Benachrichtigungsliste ausblenden"
 #: mobile.php:113
 #, fuzzy
 msgid "Benutzeragent anzeigen"
-msgstr "Benutzeragent anzeigen"
+msgstr "Anzeigen Benutzeragent"
 
 #: plus_admin.php:184
 #, fuzzy
 msgid "Benutzern erlauben, Bilder in den Aktivitätsfeed hochzuladen"
-msgstr "Benutzern erlauben, Bilder in den Aktivitätsfeed hochzuladen"
+msgstr ""
+"I clienti possono scegliere, le immagini nel feed dell'attività vengono "
+"visualizzate"
 
 #: yesno.php:164
 #, fuzzy
 msgid "Bisherige Ergebnisse"
-msgstr "Bisherige Ergebnisse"
-
-#: cp-communitie.php:1197
-#, fuzzy
-msgid "Bist du Dir sicher?"
-msgstr "Bist du Dir sicher?"
+msgstr "I risultati migliori"
 
 #: plus_admin.php:80
 #, fuzzy
@@ -613,9 +673,9 @@ msgid ""
 "<strong>Dies kann nicht rückgängig gemacht werden!</strong> Bitte erstelle "
 "zuerst eine Sicherungskopie Deiner Datenbank!"
 msgstr ""
-"Bist Du sicher, dass Du ALLE Benutzer miteinander befreunden möchtes? "
-"<strong>Dies kann nicht rückgängig gemacht werden!</strong> Bitte erstelle "
-"zuerst eine Sicherungskopie Deiner Datenbank!"
+"Sei sicuro che i tuoi alleati siano tutti coinvolti? <strong>Non può essere "
+"un problema di sicurezza! </strong> Per prima cosa, inserisci una copia di "
+"sicurezza della tua banca dati!"
 
 #: profile.php:568 profile.php:630
 #, fuzzy, php-format
@@ -629,15 +689,10 @@ msgstr ""
 msgid "Bitte einloggen, danke."
 msgstr "Bitte einloggen, danke."
 
-#: cp-communitie.php:73 cp-communitie.php:1144
-#, fuzzy
-msgid "Bitte warte..."
-msgstr "Bitte warte..."
-
 #: ajax/plus_functions.php:98
 #, fuzzy
 msgid "Blog Post"
-msgstr "Blog Post"
+msgstr "Post sul blog"
 
 #: plus_admin.php:284
 #, fuzzy
@@ -645,144 +700,159 @@ msgid "Blogbeiträge"
 msgstr "Blogbeiträge"
 
 #: events.php:127 ajax/events_functions.php:167 ajax/events_functions.php:1061
+#, fuzzy
 msgid "Book"
-msgstr "Book"
+msgstr "Libro"
 
 #: ajax/events_functions.php:319 ajax/events_functions.php:368
 #: ajax/events_functions.php:513
+#, fuzzy
 msgid "Booking confirmation"
-msgstr "Booking confirmation"
+msgstr "Conferma della prenotazione"
 
 #: ajax/events_functions.php:261
+#, fuzzy
 msgid "Booking reference:"
-msgstr "Booking reference:"
+msgstr "Riferimento della prenotazione:"
 
 #: cp-communitie.php:1229
+#, fuzzy
 msgid "Bookings require confirmation:"
-msgstr "Bookings require confirmation:"
+msgstr "Le prenotazioni richiedono una conferma:"
 
 #: mailinglist_admin.php:177
+#, fuzzy
 msgid "Bottom divider"
-msgstr "Bottom divider"
+msgstr "Divisorio inferiore"
 
 #: cp-communitie.php:1198
+#, fuzzy
 msgid "Browse for file"
-msgstr "Browse for file"
+msgstr "Cercare il file"
 
 #: mail.php:59
+#, fuzzy
 msgid "Bulk action..."
-msgstr "Bulk action..."
+msgstr "Azione di massa..."
 
 #: widgets.php:763
+#, fuzzy
 msgid "Button text"
-msgstr "Button text"
+msgstr "Testo del pulsante"
 
 #: ajax/forum_functions.php:2364 ajax/forum_functions.php:2380
 #: ajax/news_functions.php:163
+#, fuzzy
 msgid "by"
-msgstr "by"
+msgstr "da"
 
 #: events_admin.php:66
+#, fuzzy
 msgid "Calendar"
-msgstr "Calendar"
+msgstr "Calendario"
 
 #: events_admin.php:80
+#, fuzzy
 msgid ""
 "Can non-administrators set up event bookings (or just list basic information)"
 "?"
 msgstr ""
-"Can non-administrators set up event bookings (or just list basic information)"
-"?"
+"I non amministratori possono creare prenotazioni di eventi (o solo elencare "
+"le informazioni di base)?"
 
 #: cp-communitie.php:1192 events.php:129 groups.php:404 mail.php:83
 #: ajax/events_functions.php:170 ajax/events_functions.php:970
 #: ajax/events_functions.php:1063 ajax/gallery_functions.php:806
+#, fuzzy
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullamento"
 
 #: cp-communitie.php:234
+#, fuzzy
 msgid "Categories"
-msgstr "Categories"
+msgstr "Categorie"
 
 #: widgets.php:640
 #, fuzzy
 msgid "Category ID (0 for all)"
-msgstr "Category ID (0 for all)"
+msgstr "ID categoria (0 per tutti)"
 
 #: groups_admin.php:171
 #, fuzzy
 msgid "Change this group&apos;s order"
-msgstr "Change this group&apos;s order"
+msgstr "Modificare l'ordine di questo gruppo"
 
 #: ajax/profile_functions.php:1041
 #, fuzzy
 msgid "Change your password"
-msgstr "Change your password"
+msgstr "Cambiare la password"
 
 #: ajax/chat/clear_chat.php:16
 #, fuzzy, php-format
 msgid "Chat cleared by %s at %s"
-msgstr "Chat cleared by %s at %s"
+msgstr "Chat cancellata da %s a %s"
 
 #: mailinglist_admin.php:201
 #, fuzzy
 msgid "Check for replies now (but don't process any)"
-msgstr "Check for replies now (but don't process any)"
+msgstr "Controllare le risposte (ma non elaborarne nessuna)"
 
 #: mailinglist_admin.php:197
 #, fuzzy
 msgid "Check for replies now and process"
-msgstr "Check for replies now and process"
+msgstr "Controllare le risposte e procedere con l'elaborazione"
 
 #: mailinglist_admin.php:183
 #, fuzzy
 msgid "Check Frequency"
-msgstr "Check Frequency"
+msgstr "Controllare la frequenza"
 
 #: mailinglist.php:237 mailinglist_admin.php:64
 #, fuzzy
 msgid "Check your mail server address and port number, username and password"
-msgstr "Check your mail server address and port number, username and password"
+msgstr ""
+"Controllare l'indirizzo e il numero di porta del server di posta, il nome "
+"utente e la password"
 
 #: mailinglist.php:60
 #, fuzzy
 msgid "Checking for waiting email, but not processing..."
-msgstr "Checking for waiting email, but not processing..."
+msgstr "Controlla le e-mail in attesa, ma non le elabora..."
 
 #: ajax/group_functions.php:802
 #, fuzzy
 msgid "Choose an image for the group..."
-msgstr "Choose an image for the group..."
+msgstr "Scegliere un'immagine per il gruppo..."
 
 #: ajax/profile_functions.php:870
 #, fuzzy
 msgid "Choose an image..."
-msgstr "Choose an image..."
+msgstr "Scegliere un'immagine..."
 
 #: cp-communitie.php:342
 #, fuzzy
 msgid "ClassicPress version"
-msgstr "ClassicPress version"
+msgstr "Versione ClassicPress"
 
 #: cp-communitie.php:1190
 #, fuzzy
 msgid "Clear"
-msgstr "Clear"
+msgstr "Libero"
 
 #: ajax/profile_functions.php:1024 ajax/profile_functions.php:1031
 #, fuzzy
 msgid "Clear all existing forum subscriptions"
-msgstr "Clear all existing forum subscriptions"
+msgstr "Cancellare tutte le iscrizioni al forum esistenti"
 
 #: facebook_admin.php:41
 #, fuzzy
 msgid "Click on "
-msgstr "Click on"
+msgstr "Fare clic su"
 
 #: facebook_admin.php:47
 #, fuzzy
 msgid "Click on <strong>Save Changes</strong> on Facebook"
-msgstr "Click on <strong>Save Changes</strong> on Facebook"
+msgstr "Cliccare su <strong>Salva le modifiche</strong> su Facebook"
 
 #: facebook_admin.php:46
 #, fuzzy
@@ -790,8 +860,8 @@ msgid ""
 "Click on <strong>Website with Facebook Login</strong> and enter your site "
 "URL, eg: "
 msgstr ""
-"Click on <strong>Website with Facebook Login</strong> and enter your site "
-"URL, eg:"
+"Cliccate su <strong>Sito web con accesso a Facebook</strong> e inserite "
+"l'URL del vostro sito, ad esempio:"
 
 #: mailinglist_admin.php:127
 #, fuzzy
@@ -799,13 +869,13 @@ msgid ""
 "Click on the button below to check for replies by email and add to the forum "
 "(this may take a few minutes)."
 msgstr ""
-"Click on the button below to check for replies by email and add to the forum "
-"(this may take a few minutes)."
+"Fare clic sul pulsante qui sotto per controllare le risposte via e-mail e "
+"aggiungerle al forum (l'operazione potrebbe richiedere alcuni minuti)."
 
 #: create_options.php:71
 #, fuzzy
 msgid "closed"
-msgstr "closed"
+msgstr "chiuso"
 
 #: groups_admin.php:83
 #, fuzzy
@@ -813,45 +883,45 @@ msgid ""
 "Comma separated list of group ID's that new members are assigned to (leave "
 "blank for none)"
 msgstr ""
-"Comma separated list of group ID's that new members are assigned to (leave "
-"blank for none)"
+"Elenco separato da virgole di ID di gruppo a cui sono assegnati i nuovi "
+"membri (lasciare vuoto per nessuno)"
 
 #: ajax/forum_functions.php:877
 #, fuzzy
 msgid "commented"
-msgstr "commented"
+msgstr "commentato"
 
 #: ajax/gallery_functions.php:228
 #, fuzzy
 msgid "Commented on"
-msgstr "Commented on"
+msgstr "Commentato su"
 
 #: create_options.php:422 hooks_filters.php:564
 #, fuzzy
 msgid "Community-Einstellungen"
-msgstr "Community-Einstellungen"
+msgstr "Installazioni comunitarie"
 
 #: mail.php:40 mail.php:143
 #, fuzzy
 msgid "Compose"
-msgstr "Compose"
+msgstr "Comporre"
 
 #: cp-communitie.php:1233
 #, fuzzy
 msgid "Confirmation Email"
-msgstr "Confirmation Email"
+msgstr "Email di conferma"
 
 #: events.php:135
 #, fuzzy, php-format
 msgid "Confirmed by the event organiser for %d ticket."
 msgid_plural "Confirmed by the event organiser for %d tickets."
-msgstr[0] "Confirmed by the event organiser for %d ticket."
-msgstr[1] "Confirmed by the event organiser for %d tickets."
+msgstr[0] "Confermato dall'organizzatore dell'evento per il biglietto %d."
+msgstr[1] "Confermato dall'organizzatore dell'evento per %d biglietti."
 
 #: mailinglist.php:71 mailinglist_admin.php:37
 #, fuzzy
 msgid "Connected"
-msgstr "Connected"
+msgstr "Collegato"
 
 #: facebook_admin.php:48
 #, fuzzy
@@ -859,73 +929,78 @@ msgid ""
 "Copy and Paste the <strong>App ID</strong> and <strong>App Secret</strong> "
 "below, and click on the Save Changes button below"
 msgstr ""
-"Copy and Paste the <strong>App ID</strong> and <strong>App Secret</strong> "
-"below, and click on the Save Changes button below"
+"Copiare e incollare l'<strong>App ID</strong> e l'<strong>App Secret</strong>"
+" qui sotto e fare clic sul pulsante Salva modifiche qui sotto"
 
 #: events.php:90
 #, fuzzy
 msgid "Cost per ticket:"
-msgstr "Cost per ticket:"
+msgstr "Costo per biglietto:"
 
 #: ajax/events_functions.php:144
 #, fuzzy
 msgid "Cost:"
-msgstr "Cost:"
+msgstr "Costo:"
 
 #. Name of the plugin
 #, fuzzy
 msgid "CP Community"
-msgstr "CP Community"
+msgstr "Comunità CP"
 
 #: groups.php:403 ajax/gallery_functions.php:581 ajax/gallery_functions.php:805
 #, fuzzy
 msgid "Create"
-msgstr "Create"
+msgstr "Creare"
 
 #: ajax/events_functions.php:918 ajax/events_functions.php:969
 #, fuzzy
 msgid "Create Event"
-msgstr "Create Event"
+msgstr "Crea evento"
 
 #: groups.php:389
 #, fuzzy
 msgid "Create Group"
-msgstr "Create Group"
+msgstr "Crea gruppo"
+
+#: ajax/gallery_functions.php:606
+#, fuzzy
+msgid "Unteralbum erstellen"
+msgstr "Creazione di un album"
 
 #: mailinglist.php:244 mailinglist_admin.php:71
 #, fuzzy
 msgid "Currently processing, please try again in a few minutes."
-msgstr "Currently processing, please try again in a few minutes."
+msgstr "Attualmente in fase di elaborazione, riprovare tra qualche minuto."
 
 #: groups_admin.php:67
 #, fuzzy
 msgid "Custom Group Page templates"
-msgstr "Custom Group Page templates"
+msgstr "Modelli di pagina di gruppo personalizzati"
 
 #: cp-communitie.php:344
 #, fuzzy
 msgid "Daily Digest mode"
-msgstr "Daily Digest mode"
+msgstr "Modalità Daily Digest"
 
 #: cp-communitie.php:474
 #, fuzzy
 msgid "Daily Digest sent count"
-msgstr "Daily Digest sent count"
+msgstr "Conteggio degli invii del Daily Digest"
 
 #: cp-communitie.php:488
 #, fuzzy
 msgid "Daily Digest Summary Report"
-msgstr "Daily Digest Summary Report"
+msgstr "Rapporto di riepilogo giornaliero"
 
 #: cp-communitie.php:449
 #, fuzzy
 msgid "Daily Forum Digest"
-msgstr "Daily Forum Digest"
+msgstr "Digest giornaliero del forum"
 
 #: cp-communitie.php:462
 #, fuzzy
 msgid "Daily Forum Digest (admin only)"
-msgstr "Daily Forum Digest (admin only)"
+msgstr "Digest giornaliero del forum (solo per gli amministratori)"
 
 #: yesno.php:87
 #, fuzzy
@@ -944,7 +1019,7 @@ msgstr ""
 "Das Alerts-Plugin aktualisiert ein DIV (das sich in einem ClassicPress-"
 "Menüelement befindet oder in ein Design eingebettet sein kann), das das "
 "Mitglied über Neuigkeiten/Benachrichtigungen wie neue E-"
-"Mails/Freunde/Aktivitäten/usw. benachrichtigt – Benachrichtigungen können "
+"Mails/Freunde/Aktivitäten/usw. benachrichtigt - Benachrichtigungen können "
 "von anderen Plugins hinzugefügt werden."
 
 #: plus_admin.php:139
@@ -953,68 +1028,73 @@ msgid ""
 "Das Profilmenü (nur vertikale Version) scrollt mit der Seite nach unten und "
 "bleibt sichtbar"
 msgstr ""
-"Das Profilmenü (nur vertikale Version) scrollt mit der Seite nach unten und "
-"bleibt sichtbar"
+"Il Profilmenü (solo versione verticale) scorre con il sito verso l'alto e si "
+"illumina"
 
 #: mailinglist.php:86
 #, fuzzy
 msgid "Date"
-msgstr "Date"
+msgstr "Data"
 
 #: hooks_filters.php:271
 #, fuzzy
 msgid "De-activate"
-msgstr "De-activate"
+msgstr "Disattivare"
 
 #: hooks_filters.php:455 ajax/profile_functions.php:1330
 #, fuzzy
 msgid "December"
-msgstr "December"
+msgstr "Dicembre"
 
 #: groups_admin.php:81
 #, fuzzy
 msgid "Default Groups"
-msgstr "Default Groups"
+msgstr "Gruppi predefiniti"
 
 #: groups_admin.php:94
 #, fuzzy
 msgid "Default maximum members"
-msgstr "Default maximum members"
+msgstr "Membri massimi predefiniti"
 
 #: mail.php:62
 #, fuzzy
 msgid "Delete all mail!"
-msgstr "Delete all mail!"
+msgstr "Cancellare tutta la posta!"
 
 #: mail.php:60
 #, fuzzy
 msgid "Delete checked items"
-msgstr "Delete checked items"
+msgstr "Cancellare gli elementi controllati"
 
 #: groups.php:168 groups.php:171
 #, fuzzy
 msgid "Delete Group"
-msgstr "Delete Group"
+msgstr "Cancellare il gruppo"
 
 #: groups_admin.php:134
 #, fuzzy
 msgid "Delete group / manage group members"
-msgstr "Delete group / manage group members"
+msgstr "Cancellare il gruppo / gestire i membri del gruppo"
 
 #: mailinglist_admin.php:205
 #, fuzzy
 msgid "Delete POP3 mailbox contents"
-msgstr "Delete POP3 mailbox contents"
+msgstr "Eliminare il contenuto della cassetta postale POP3"
+
+#: ajax/gallery_functions.php:605
+#, fuzzy
+msgid "Dieses Album löschen"
+msgstr "Questo album è stato pubblicato"
 
 #: groups_admin.php:168
 #, fuzzy
 msgid "Delete this group"
-msgstr "Delete this group"
+msgstr "Cancellare questo gruppo"
 
 #: mailinglist_admin.php:33
 #, fuzzy
 msgid "Deleting POP3 mailbox contents"
-msgstr "Deleting POP3 mailbox contents"
+msgstr "Eliminazione del contenuto della cassetta postale POP3"
 
 #. Author of the plugin
 #, fuzzy
@@ -1024,82 +1104,78 @@ msgstr "DerN3rd"
 #: groups.php:398 ajax/events_functions.php:928
 #, fuzzy
 msgid "Description"
-msgstr "Description"
+msgstr "Descrizione"
 
 #: widgets.php:201
 #, fuzzy
 msgid "Details als Liste anzeigen"
-msgstr "Details als Liste anzeigen"
+msgstr "Dettagli come Liste anzeigen"
 
 #: yesno.php:199
 #, fuzzy
 msgid "Diagramm Typ"
-msgstr "Diagramm Typ"
+msgstr "Diagramma Tipo"
 
 #: mobile.php:109
 #, fuzzy
 msgid "Die Thread-Ansicht ist ebenfalls auf die letzten 7 Tage beschränkt"
-msgstr "Die Thread-Ansicht ist ebenfalls auf die letzten 7 Tage beschränkt"
+msgstr "L'analisi del filo è ancora più complessa negli ultimi 7 giorni"
 
 #: news.php:143
 #, fuzzy
 msgid "Diesen Monat"
-msgstr "Diesen Monat"
-
-#: ajax/gallery_functions.php:605
-#, fuzzy
-msgid "Dieses Album löschen"
-msgstr "Dieses Album löschen"
+msgstr "Il mese scorso"
 
 #: facebook_admin.php:45
 #, fuzzy
 msgid "Disable <strong>Sandbox Mode</strong>"
-msgstr "Disable <strong>Sandbox Mode</strong>"
+msgstr "Disabilitare la modalità <strong>Sandbox</strong>"
 
 #: profile.php:1087
 #, fuzzy
 msgid "Disconnect"
-msgstr "Disconnect"
+msgstr "Disconnessione"
 
 #: hooks_filters.php:152
 #, fuzzy
 msgid "Discuss on the forum..."
-msgstr "Discuss on the forum..."
+msgstr "Discutere sul forum..."
 
 #: yesno.php:89 yesno.php:101 yesno.php:109
 #, fuzzy
 msgid "Diskutiere dies im Forum"
-msgstr "Diskutiere dies im Forum"
+msgstr "Discutere nel forum"
 
 #: cp-communitie.php:1213
 #, fuzzy
 msgid "Dislikes"
-msgstr "Dislikes"
+msgstr "Antipatie"
 
 #: members.php:132
 #, fuzzy
 msgid "Display name"
-msgstr "Display name"
+msgstr "Nome visualizzato"
 
 #: events_admin.php:68
 #, fuzzy
 msgid "Display the global events page as a list or as a calendar"
-msgstr "Display the global events page as a list or as a calendar"
+msgstr ""
+"Visualizzare la pagina degli eventi globali come elenco o come calendario"
 
 #: groups_admin.php:194
 #, fuzzy
 msgid "Display the groups on the site."
-msgstr "Display the groups on the site."
+msgstr "Visualizzare i gruppi sul sito."
 
 #: gallery_admin.php:77
 #, fuzzy
 msgid "Displays a gallery of all the user albums."
-msgstr "Displays a gallery of all the user albums."
+msgstr "Visualizza una galleria di tutti gli album dell'utente."
 
 #: members.php:139 members.php:366 ajax/members_functions.php:375
 #, fuzzy
 msgid "Distance"
-msgstr "Distance"
+msgstr "Distanza"
 
 #: plus_admin.php:211
 #, fuzzy
@@ -1109,23 +1185,23 @@ msgstr "Distanz aktivieren"
 #: plus_admin.php:214
 #, fuzzy
 msgid "Distanz im Mitgliederverzeichnis aktivieren"
-msgstr "Distanz im Mitgliederverzeichnis aktivieren"
+msgstr "Attivare il Distanz im Mitgliederverzeichnis"
 
 #: ajax/group_functions.php:682
 #, fuzzy
 msgid "Do new members have to be accepted?"
-msgstr "Do new members have to be accepted?"
+msgstr "I nuovi membri devono essere accettati?"
 
 #: events_admin.php:74
 #, fuzzy
 msgid "Do not display events that have finished (by end date)"
-msgstr "Do not display events that have finished (by end date)"
+msgstr "Non visualizzare gli eventi che sono terminati (per data di fine)"
 
 #: class.cpc_forum.php:331 ajax/forum_functions.php:512
 #: ajax/forum_functions.php:900 ajax/forum_functions.php:1255
 #, fuzzy
 msgid "do not edit"
-msgstr "do not edit"
+msgstr "non modificare"
 
 #: yesno.php:177
 #, fuzzy
@@ -1137,96 +1213,95 @@ msgstr "Domänenschlüssel"
 msgid "Du hast eine neue Nachricht von"
 msgstr "Du hast eine neue Nachricht von"
 
+#: profile.php:485 profile.php:515 profile.php:856
+#, fuzzy
+msgid "Mail senden..."
+msgstr "Invio di posta..."
+
 #: events.php:68 ajax/events_functions.php:992
 #, fuzzy
 msgid "Edit to publish"
-msgstr "Edit to publish"
+msgstr "Modifica per la pubblicazione"
 
 #: plus_admin.php:204
 #, fuzzy
 msgid "Eindeutige Anzeigenamen"
-msgstr "Eindeutige Anzeigenamen"
+msgstr "Anzeigenamen Eindeutige"
 
 #: yesno.php:158
 #, fuzzy
 msgid "Eine Ja/Nein-Frage..."
 msgstr "Eine Ja/Nein-Frage..."
 
-#: lounge.php:27 ajax/lounge_functions.php:20 ajax/lounge_functions.php:21
-#: ajax/lounge_functions.php:22
-#, fuzzy
-msgid "Einen Kommentar hinzufügen.."
-msgstr "Einen Kommentar hinzufügen.."
-
 #: plus_admin.php:259
 #, fuzzy
 msgid "Eingabeaufforderung für Suchfeldtext"
-msgstr "Eingabeaufforderung für Suchfeldtext"
+msgstr "Ordinazione per il testo in questione"
 
 #: mobile.php:96 news_admin.php:31
 #, fuzzy
 msgid "Einstellungen"
-msgstr "Einstellungen"
+msgstr "Installazioni"
 
 #: mailinglist_admin.php:161
 #, fuzzy
 msgid "Email address to reply to, eg: forum@example.com"
-msgstr "Email address to reply to, eg: forum@example.com"
+msgstr "Indirizzo e-mail a cui rispondere, ad esempio: forum@example.com"
 
 #: mailinglist_admin.php:159
 #, fuzzy
 msgid "Email sent from"
-msgstr "Email sent from"
+msgstr "Email inviata da"
 
 #: hooks_filters.php:606
 #, fuzzy
 msgid "Emails for all new forum topics and replies"
-msgstr "Emails for all new forum topics and replies"
+msgstr "Email per tutti i nuovi argomenti del forum e le risposte"
 
 #: hooks_filters.php:595
 #, fuzzy
 msgid "Emails for posts on the Wall"
-msgstr "Emails for posts on the Wall"
+msgstr "Email per i messaggi sulla bacheca"
 
 #: hooks_filters.php:587
 #, fuzzy
 msgid "Emails for private messages"
-msgstr "Emails for private messages"
+msgstr "Email per messaggi privati"
 
 #: mailinglist.php:182
 #, fuzzy
 msgid "Empty reply. No boundaries found"
-msgstr "Empty reply. No boundaries found"
+msgstr "Risposta vuota. Nessun confine trovato"
 
 #: cp-communitie.php:1226
 #, fuzzy
 msgid "Enable booking places:"
-msgstr "Enable booking places:"
+msgstr "Abilitare la prenotazione dei posti:"
 
 #: ajax/group_functions.php:711
 #, fuzzy
 msgid "Enable the group forum?"
-msgstr "Enable the group forum?"
+msgstr "Attivare il forum di gruppo?"
 
 #: ajax/events_functions.php:950
 #, fuzzy
 msgid "End Date"
-msgstr "End Date"
+msgstr "Data di fine"
 
 #: ajax/events_functions.php:952
 #, fuzzy
 msgid "End Time"
-msgstr "End Time"
+msgstr "Tempo di fine"
 
 #: events.php:111 ajax/events_functions.php:1033
 #, fuzzy
 msgid "End: "
-msgstr "End:"
+msgstr "Fine:"
 
 #: cp-communitie.php:1244
 #, fuzzy
 msgid "Enter a website URL..."
-msgstr "Enter a website URL..."
+msgstr "Inserire l'URL di un sito web..."
 
 #: facebook_admin.php:42
 #, fuzzy
@@ -1234,8 +1309,8 @@ msgid ""
 "Enter an <strong>App Display Name</strong> (that will appear under Facebook "
 "Wall posts), eg: Example Web Site"
 msgstr ""
-"Enter an <strong>App Display Name</strong> (that will appear under Facebook "
-"Wall posts), eg: Example Web Site"
+"Inserire un <strong>Nome di visualizzazione dell'applicazione</strong> (che "
+"apparirà nei post della bacheca di Facebook), ad es: Sito web di esempio"
 
 #: ajax/group_functions.php:28
 #, fuzzy
@@ -1243,35 +1318,30 @@ msgid ""
 "Enter email addresses of people you would like to invite to your group, "
 "separated by commas, or on separate lines."
 msgstr ""
-"Enter email addresses of people you would like to invite to your group, "
-"separated by commas, or on separate lines."
+"Inserite gli indirizzi e-mail delle persone che desiderate invitare nel "
+"vostro gruppo, separati da virgole o su righe separate."
 
 #: cp-communitie.php:1246
 #, fuzzy
 msgid "Enter text to show..."
-msgstr "Enter text to show..."
+msgstr "Inserire il testo per mostrare..."
 
 #: facebook_admin.php:44
 #, fuzzy
 msgid "Enter the security check words to continue to the next screen"
-msgstr "Enter the security check words to continue to the next screen"
+msgstr ""
+"Immettere le parole di controllo di sicurezza per passare alla schermata "
+"successiva"
 
 #: profile.php:265 profile.php:753
 #, fuzzy
 msgid "Entfolgen"
 msgstr "Entfolgen"
 
-#: ajax/profile_functions.php:713
-#, fuzzy
-msgid ""
-"Entschuldigung, es können keine persönlichen Informationen angezeigt werden."
-msgstr ""
-"Entschuldigung, es können keine persönlichen Informationen angezeigt werden."
-
 #: yesno.php:193
 #, fuzzy
 msgid "Ergebnisse anzeigen"
-msgstr "Ergebnisse anzeigen"
+msgstr "Risultati anzeigen"
 
 #: plus_admin.php:200
 #, fuzzy
@@ -1279,34 +1349,34 @@ msgid ""
 "Ersetze @user durch einen Link zur Profilseite. Versteht Benutzernamen und "
 "Anzeigenamen (ohne Leerzeichen)"
 msgstr ""
-"Ersetze @user durch einen Link zur Profilseite. Versteht Benutzernamen und "
-"Anzeigenamen (ohne Leerzeichen)"
+"Ersetze @user durch einen Link zur Profilseite. Consente di ottenere "
+"informazioni e valutazioni (senza leerzeichen)"
 
 #: events.php:85 ajax/events_functions.php:187
 #, fuzzy
 msgid "Event full"
-msgstr "Event full"
+msgstr "Evento completo"
 
 #: ajax/events_functions.php:922
 #, fuzzy
 msgid "Event Name"
-msgstr "Event Name"
+msgstr "Nome dell'evento"
 
 #: create_options.php:438 events.php:233 events.php:235 events.php:295
 #: events.php:295 ajax/events_functions.php:913
 #, fuzzy
 msgid "Events"
-msgstr "Events"
+msgstr "Eventi"
 
 #: forum.php:90
 #, fuzzy
 msgid "everyone"
-msgstr "everyone"
+msgstr "tutti"
 
 #: facebook_admin.php:79
 #, fuzzy
 msgid "Example Facebook Application values"
-msgstr "Example Facebook Application values"
+msgstr "Esempio di valori dell'applicazione Facebook"
 
 #: facebook.php:26
 #, fuzzy
@@ -1316,64 +1386,64 @@ msgstr "Facebook"
 #: facebook_admin.php:60
 #, fuzzy
 msgid "Facebook Application ID"
-msgstr "Facebook Application ID"
+msgstr "ID applicazione Facebook"
 
 #: facebook_admin.php:66
 #, fuzzy
 msgid "Facebook Application Secret"
-msgstr "Facebook Application Secret"
+msgstr "Applicazione Facebook segreta"
 
 #: facebook_admin.php:52
 #, fuzzy
 msgid "Facebook Application values"
-msgstr "Facebook Application values"
+msgstr "Valori dell'applicazione Facebook"
 
 #: facebook_admin.php:15
 #, fuzzy
 msgid "Facebook options saved"
-msgstr "Facebook options saved"
+msgstr "Opzioni Facebook salvate"
 
 #: mailinglist.php:169
 #, fuzzy
 msgid "Failed to add to forum"
-msgstr "Failed to add to forum"
+msgstr "Impossibile aggiungere al forum"
 
 #: ajax/profile_functions.php:384
 #, fuzzy
 msgid "Failed to connect to Facebook"
-msgstr "Failed to connect to Facebook"
+msgstr "Impossibile connettersi a Facebook"
 
 #: ajax/forum_functions.php:94
 #, fuzzy
 msgid "Failed to remove image"
-msgstr "Failed to remove image"
+msgstr "Impossibile rimuovere l'immagine"
 
 #: ajax/forum_functions.php:79
 #, fuzzy
 msgid "Failed to remove image from database"
-msgstr "Failed to remove image from database"
+msgstr "Impossibile rimuovere l'immagine dal database"
 
 #: ajax/profile_functions.php:1151
 #, fuzzy
 msgid "Failed to update password, sorry."
-msgstr "Failed to update password, sorry."
+msgstr "Non è stato possibile aggiornare la password, mi dispiace."
 
 #: ajax/upload_activity_file.php:107 server/upload_activity.php:126
 #: server/upload_avatar.php:195 server/upload_forum.php:235
 #: server/upload_gallery.php:259 server/upload_group_avatar.php:206
 #, fuzzy
 msgid "Failed to upload the file."
-msgstr "Failed to upload the file."
+msgstr "Impossibile caricare il file."
 
 #: hooks_filters.php:445 ajax/profile_functions.php:1320
 #, fuzzy
 msgid "February"
-msgstr "February"
+msgstr "Febbraio"
 
 #: profile.php:267 profile.php:755
 #, fuzzy
 msgid "Folgen"
-msgstr "Folgen"
+msgstr "Folgore"
 
 #: plus.php:85
 #, fuzzy
@@ -1383,32 +1453,32 @@ msgstr "Folgt"
 #: cp-communitie.php:1209 ajax/plus_functions.php:327
 #, fuzzy
 msgid "Follow"
-msgstr "Follow"
+msgstr "Seguire"
 
 #: create_options.php:444 ajax/plus_functions.php:206
 #, fuzzy
 msgid "Followers"
-msgstr "Followers"
+msgstr "Seguaci"
 
 #: create_options.php:442 ajax/plus_functions.php:190
 #, fuzzy
 msgid "Following"
-msgstr "Following"
+msgstr "Di seguito"
 
 #: plus_admin.php:160
 #, fuzzy
 msgid "Forenantworten in Activity Stream aufnehmen"
-msgstr "Forenantworten in Activity Stream aufnehmen"
+msgstr "Eseguire i resoconti forensi nel flusso di attività"
 
 #: widgets.php:766
 #, fuzzy
 msgid "Forgot password prompt"
-msgstr "Forgot password prompt"
+msgstr "Richiesta di password dimenticata"
 
 #: widgets.php:747
 #, fuzzy
 msgid "Forgotten password?"
-msgstr "Forgotten password?"
+msgstr "Dimenticato la password?"
 
 #: ajax/plus_functions.php:66
 #, fuzzy
@@ -1423,7 +1493,7 @@ msgstr "Forum"
 #: create_options.php:404 create_options.php:434 plus.php:41 plus.php:44
 #, fuzzy
 msgid "Forum @mentions"
-msgstr "Forum @mentions"
+msgstr "Forum @menzioni"
 
 #: plus_admin.php:157
 #, fuzzy
@@ -1433,47 +1503,49 @@ msgstr "Forum Antworten in Aktivität"
 #: ajax/plus_functions.php:83
 #, fuzzy
 msgid "Forum Comment"
-msgstr "Forum Comment"
+msgstr "Commento del forum"
 
 #: cp-communitie.php:258
 #, fuzzy
 msgid "Forum not activated"
-msgstr "Forum not activated"
+msgstr "Forum non attivato"
 
 #: ajax/plus_functions.php:86
 #, fuzzy
 msgid "Forum Reply"
-msgstr "Forum Reply"
+msgstr "Risposta al forum"
 
 #: hooks_filters.php:617 ajax/profile_functions.php:984
 #, fuzzy
 msgid "Forum signature"
-msgstr "Forum signature"
+msgstr "Firma del forum"
 
 #: ajax/plus_functions.php:76
 #, fuzzy
 msgid "Forum Topic"
-msgstr "Forum Topic"
+msgstr "Argomento del forum"
 
 #: cp-communitie.php:473
 #, fuzzy
 msgid "Forum topic count for previous day (midnight to midnight)"
-msgstr "Forum topic count for previous day (midnight to midnight)"
+msgstr ""
+"Conteggio argomenti del forum per il giorno precedente (da mezzanotte a "
+"mezzanotte)"
 
 #: yesno.php:188
 #, fuzzy
 msgid "Forum-Link"
-msgstr "Forum-Link"
+msgstr "Collegamento al forum"
 
 #: plus_admin.php:291
 #, fuzzy
 msgid "Forumsthemen"
-msgstr "Forumsthemen"
+msgstr "Forumisti"
 
 #: yesno.php:183
 #, fuzzy
 msgid "Frage"
-msgstr "Frage"
+msgstr "Frasi"
 
 #: mailinglist_admin.php:185
 #, fuzzy
@@ -1481,54 +1553,54 @@ msgid ""
 "Frequency (in seconds) to check, uses ClassicPress cron schedule, so "
 "requires your site to be visited. Not too low!!"
 msgstr ""
-"Frequency (in seconds) to check, uses ClassicPress cron schedule, so "
-"requires your site to be visited. Not too low!!"
-
-#: create_options.php:398 create_options.php:428 hooks_filters.php:196
-#, fuzzy
-msgid "Freunde-Aktivität"
-msgstr "Freunde-Aktivität"
+"Frequenza (in secondi) di controllo, utilizza la pianificazione cron di "
+"ClassicPress, quindi richiede che il sito sia visitato. Non troppo basso!"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Friday"
-msgstr "Friday"
+msgstr "Venerdì"
 
 #: create_options.php:432 hooks_filters.php:242
 #, fuzzy
 msgid "Friends"
-msgstr "Friends"
+msgstr "Gli amici"
+
+#: create_options.php:398 create_options.php:428 hooks_filters.php:196
+#, fuzzy
+msgid "Freunde-Aktivität"
+msgstr "Attività con i partner"
 
 #: tutorials/profile_page_template/cpc_profile_page_4.php:68
 #, fuzzy
 msgid "Friendship requested."
-msgstr "Friendship requested."
+msgstr "Richiesta di amicizia."
 
 #: mailinglist.php:85 ajax/ajax_functions.php:31 ajax/ajax_functions.php:54
 #: ajax/mail_functions.php:428
 #, fuzzy
 msgid "From"
-msgstr "From"
+msgstr "Da"
 
 #: ajax/group_functions.php:14 ajax/group_functions.php:77
 #, fuzzy
 msgid "From:"
-msgstr "From:"
+msgstr "Da:"
 
 #: plus_admin.php:168
 #, fuzzy
 msgid "Füge Antworten aus Gruppenforen in den Activity Stream ein"
-msgstr "Füge Antworten aus Gruppenforen in den Activity Stream ein"
+msgstr "Inserire le risposte dei gruppi nel flusso di attività"
 
 #: plus_admin.php:287
 #, fuzzy
 msgid "Füge ClassicPress-Blogbeiträge in die Suchergebnisse ein"
-msgstr "Füge ClassicPress-Blogbeiträge in die Suchergebnisse ein"
+msgstr "Inserite i loghi di ClassicPress nei vostri annunci"
 
 #: plus_admin.php:280
 #, fuzzy
 msgid "Füge ClassicPress-Seiten in die Suchergebnisse ein"
-msgstr "Füge ClassicPress-Seiten in die Suchergebnisse ein"
+msgstr "Inserite ClassicPress-Seiten nella lista delle offerte"
 
 #: plus_admin.php:176
 #, fuzzy
@@ -1536,8 +1608,8 @@ msgid ""
 "Fügt allen Aktivitätsbeiträgen ein „Gefällt mir“- und „Gefällt mir nicht“-"
 "Symbol hinzu"
 msgstr ""
-"Fügt allen Aktivitätsbeiträgen ein „Gefällt mir“- und „Gefällt mir nicht“-"
-"Symbol hinzu"
+"Per tutte le attività di ricerca è previsto un simbolo \"Gefällt mir\" e "
+"\"Gefällt mir nicht\""
 
 #: plus_admin.php:263
 #, fuzzy
@@ -1548,7 +1620,7 @@ msgstr "Galerie"
 #: gallery.php:362 ajax/gallery_functions.php:578
 #, fuzzy
 msgid "Gallery"
-msgstr "Gallery"
+msgstr "Galleria"
 
 #: profile.php:420 profile.php:791
 #, fuzzy
@@ -1558,7 +1630,7 @@ msgstr "Geboren"
 #: panel.php:147
 #, fuzzy, php-format
 msgid "Gehe zu %s"
-msgstr "Gehe zu %s"
+msgstr "Vai a %s"
 
 #: panel.php:155
 #, fuzzy
@@ -1573,290 +1645,291 @@ msgstr "Gespeichert"
 #: news.php:131
 #, fuzzy
 msgid "Gestern"
-msgstr "Gestern"
+msgstr "Gesterno"
 
 #: events_admin.php:50
 #, fuzzy
 msgid "Global events list"
-msgstr "Global events list"
+msgstr "Elenco globale degli eventi"
 
 #: cp-communitie.php:1243 facebook_admin.php:40
 #, fuzzy
 msgid "Go"
-msgstr "Go"
+msgstr "Vai"
 
 #: ajax/profile_functions.php:1810 ajax/profile_functions.php:1945
 #, fuzzy
 msgid "Go to"
-msgstr "Go to"
+msgstr "Vai a"
 
 #: class.cpc_mail.php:196 ajax/mail_functions.php:255
 #, fuzzy, php-format
 msgid "Go to %s Mail"
-msgstr "Go to %s Mail"
+msgstr "Vai alla posta %s"
 
 #: cp-communitie.php:256
 #, fuzzy
 msgid "Go to Forum"
-msgstr "Go to Forum"
+msgstr "Vai al forum"
 
 #: cp-communitie.php:289
 #, fuzzy
 msgid "Go to Group Directory"
-msgstr "Go to Group Directory"
+msgstr "Vai all'elenco dei gruppi"
 
 #: cp-communitie.php:273
 #, fuzzy
 msgid "Go to Mail"
-msgstr "Go to Mail"
+msgstr "Vai alla posta"
 
 #: cp-communitie.php:281
 #, fuzzy
 msgid "Go to Member Directory"
-msgstr "Go to Member Directory"
+msgstr "Vai all'elenco dei membri"
 
 #: cp-communitie.php:265
 #, fuzzy
 msgid "Go to Profile"
-msgstr "Go to Profile"
+msgstr "Vai al profilo"
 
 #: ajax/group_functions.php:248
 #, fuzzy
 msgid "Go to the group"
-msgstr "Go to the group"
+msgstr "Vai al gruppo"
 
 #: ajax/group_functions.php:889 ajax/group_functions.php:981
 #, fuzzy
 msgid "Go to the group post"
-msgstr "Go to the group post"
+msgstr "Vai al post del gruppo"
 
 #: ajax/plus_functions.php:418 ajax/profile_functions.php:412
 #: ajax/profile_functions.php:490 ajax/profile_functions.php:511
 #: ajax/profile_functions.php:539
 #, fuzzy
 msgid "Go to the post"
-msgstr "Go to the post"
+msgstr "Vai al post"
 
 #: ajax/plus_functions.php:146
 #, fuzzy
 msgid "Group"
-msgstr "Group"
+msgstr "Gruppo"
 
 #: groups.php:206
 #, fuzzy
 msgid "Group Activity"
-msgstr "Group Activity"
+msgstr "Attività di gruppo"
 
 #: ajax/group_functions.php:1376
 #, fuzzy
 msgid "group admin"
-msgstr "group admin"
+msgstr "amministratore del gruppo"
 
 #: server/file_upload_form.php:130
 #, fuzzy
 msgid "Group avatar updated!"
-msgstr "Group avatar updated!"
+msgstr "Avatar di gruppo aggiornato!"
 
 #: ajax/group_functions.php:14
 #, fuzzy
 msgid "Group Delete Request"
-msgstr "Group Delete Request"
+msgstr "Richiesta di cancellazione del gruppo"
 
 #: groups.php:169
 #, fuzzy
 msgid "Group deleted."
-msgstr "Group deleted."
+msgstr "Gruppo cancellato."
 
 #: ajax/group_functions.php:674
 #, fuzzy
 msgid "Group description"
-msgstr "Group description"
+msgstr "Descrizione del gruppo"
 
 #: groups.php:208
 #, fuzzy
 msgid "Group Forum"
-msgstr "Group Forum"
+msgstr "Forum di gruppo"
 
 #: ajax/group_functions.php:74 ajax/group_functions.php:99
 #, fuzzy
 msgid "Group Invitation"
-msgstr "Group Invitation"
+msgstr "Invito di gruppo"
 
 #: ajax/group_functions.php:26
 #, fuzzy
 msgid "Group Invitations"
-msgstr "Group Invitations"
+msgstr "Inviti di gruppo"
 
 #: groups.php:215
 #, fuzzy
 msgid "Group Invites"
-msgstr "Group Invites"
+msgstr "Inviti di gruppo"
 
 #: groups_admin.php:180
 #, fuzzy
 msgid "Group members"
-msgstr "Group members"
+msgstr "Membri del gruppo"
 
 #: ajax/group_functions.php:246 ajax/group_functions.php:251
 #, fuzzy
 msgid "Group Membership"
-msgstr "Group Membership"
+msgstr "Membri del gruppo"
 
 #: groups.php:145
 #, fuzzy
 msgid "Group membership is full."
-msgstr "Group membership is full."
+msgstr "Il gruppo è al completo."
 
 #: groups_admin.php:114
 #, fuzzy
 msgid "Group Menu Items"
-msgstr "Group Menu Items"
+msgstr "Voci di menu del gruppo"
 
 #: ajax/group_functions.php:666
 #, fuzzy
 msgid "Group name"
-msgstr "Group name"
+msgstr "Nome del gruppo"
 
 #: groups.php:246
 #, fuzzy
 msgid "Group not found, sorry."
-msgstr "Group not found, sorry."
+msgstr "Gruppo non trovato, mi dispiace."
 
 #: ajax/group_functions.php:988
 #, fuzzy
 msgid "Group post:"
-msgstr "Group post:"
+msgstr "Gruppo post:"
 
 #: ajax/group_functions.php:896
 #, fuzzy
 msgid "Group reply:"
-msgstr "Group reply:"
+msgstr "Risposta del gruppo:"
 
 #: ajax/group_functions.php:388 ajax/group_functions.php:402
 #, fuzzy
 msgid "Group Request"
-msgstr "Group Request"
+msgstr "Richiesta di gruppo"
 
 #: groups.php:213
 #, fuzzy
 msgid "Group Settings"
-msgstr "Group Settings"
+msgstr "Impostazioni di gruppo"
 
 #: ajax/plus_functions.php:144
 #, fuzzy
 msgid "GROUPS"
-msgstr "GROUPS"
+msgstr "GRUPPI"
 
 #: create_options.php:436 groups.php:507 groups.php:507 hooks_filters.php:222
 #: ajax/profile_functions.php:1607
 #, fuzzy
 msgid "Groups"
-msgstr "Groups"
+msgstr "Gruppi"
 
 #: cp-communitie.php:291
 #, fuzzy
 msgid "Groups not activated"
-msgstr "Groups not activated"
+msgstr "Gruppi non attivati"
 
 #: plus_admin.php:270
 #, fuzzy
 msgid "Gruppen"
-msgstr "Gruppen"
+msgstr "Gruppo"
 
 #: plus_admin.php:165
 #, fuzzy
 msgid "Gruppenforum-Antworten auf Aktivität"
-msgstr "Gruppenforum-Antworten auf Aktivität"
+msgstr "Contributi del Gruppenforum sull'attività"
 
 #: ajax/profile_functions.php:410
 #, fuzzy
 msgid "has added a new post on your profile"
-msgstr "has added a new post on your profile"
+msgstr "ha aggiunto un nuovo post sul suo profilo"
 
 #: ajax/group_functions.php:979
 #, fuzzy
 msgid "has added a new post to the group"
-msgstr "has added a new post to the group"
+msgstr "ha aggiunto un nuovo messaggio al gruppo"
 
 #: ajax/group_functions.php:887
 #, fuzzy
 msgid "has added a new reply to the group"
-msgstr "has added a new reply to the group"
+msgstr "ha aggiunto una nuova risposta al gruppo"
 
 #: ajax/profile_functions.php:1954
 #, fuzzy
 msgid "Has made friends with"
-msgstr "Has made friends with"
+msgstr "Ha fatto amicizia con"
 
 #: ajax/group_functions.php:988
 #, fuzzy
 msgid "has posted in"
-msgstr "has posted in"
+msgstr "ha pubblicato in"
 
 #: ajax/group_functions.php:896
 #, fuzzy
 msgid "has replied in"
-msgstr "has replied in"
+msgstr "ha risposto in"
 
 #: ajax/profile_functions.php:509
 #, fuzzy
 msgid "has replied to a post started on your profile"
-msgstr "has replied to a post started on your profile"
+msgstr "ha risposto a un post iniziato sul tuo profilo"
 
 #: ajax/profile_functions.php:537
 #, fuzzy
 msgid "has replied to a post you are involved in"
-msgstr "has replied to a post you are involved in"
+msgstr "ha risposto a un post in cui sei coinvolto"
 
 #: ajax/profile_functions.php:488
 #, fuzzy
 msgid "has replied to a post you started"
-msgstr "has replied to a post you started"
+msgstr "ha risposto a un post iniziato da te"
 
 #: ajax/forum_functions.php:417 ajax/forum_functions.php:488
 #, fuzzy
 msgid "has started a new topic"
-msgstr "has started a new topic"
+msgstr "ha iniziato un nuovo argomento"
 
 #: news.php:297
 #, fuzzy
 msgid "hat auf einen Beitrag geantwortet, an dem Du beteiligt bist"
-msgstr "hat auf einen Beitrag geantwortet, an dem Du beteiligt bist"
+msgstr ""
+"ha scritto su un articolo, che è stato inserito nel sito di Du Beteiligt bist"
 
 #: news.php:282
 #, fuzzy
 msgid "hat auf einen Beitrag in Deinem Profil geantwortet"
-msgstr "hat auf einen Beitrag in Deinem Profil geantwortet"
+msgstr "ha scritto un messaggio nel suo profilo"
 
 #: news.php:285
 #, fuzzy
 msgid "hat auf einen von Dir gestarteten Beitrag geantwortet"
-msgstr "hat auf einen von Dir gestarteten Beitrag geantwortet"
+msgstr "ha scritto un articolo su un tema gestito da te"
 
 #: facebook_admin.php:40
 #, fuzzy
 msgid "here"
-msgstr "here"
+msgstr "qui"
 
 #: news.php:127
 #, fuzzy
 msgid "Heute"
-msgstr "Heute"
+msgstr "In fretta e furia"
 
 #: cp-communitie.php:1225
 #, fuzzy
 msgid "Hi"
-msgstr "Hi"
+msgstr "Ciao"
 
 #: events_admin.php:72
 #, fuzzy
 msgid "Hide expired events"
-msgstr "Hide expired events"
+msgstr "Nascondere gli eventi scaduti"
 
 #: mobile.php:99
 #, fuzzy
 msgid "Hinweis für Mobilgeräte/Tablets"
-msgstr "Hinweis für Mobilgeräte/Tablets"
+msgstr "Indicazioni per i dispositivi mobili/tablet"
 
 #: profile.php:504 profile.php:874
 #, fuzzy
@@ -1866,12 +1939,12 @@ msgstr "Hinzufügen"
 #: news_admin.php:40
 #, fuzzy
 msgid "Horizontaler Versatz"
-msgstr "Horizontaler Versatz"
+msgstr "Versante orizzontale"
 
 #: plus_admin.php:240
 #, fuzzy
 msgid "Hoverbox aktivieren"
-msgstr "Hoverbox aktivieren"
+msgstr "Hoverbox attivo"
 
 #: groups_admin.php:105
 #, fuzzy
@@ -1879,18 +1952,18 @@ msgid ""
 "How many invitations to join the group can be sent out at one time (to avoid "
 "spamming from your server)."
 msgstr ""
-"How many invitations to join the group can be sent out at one time (to avoid "
-"spamming from your server)."
+"Quanti inviti a unirsi al gruppo possono essere inviati in una sola volta "
+"(per evitare lo spamming dal vostro server)."
 
 #: cp-communitie.php:1239
 #, fuzzy
 msgid "How many tickets do you want?"
-msgstr "How many tickets do you want?"
+msgstr "Quanti biglietti vuoi?"
 
 #: cp-communitie.php:1237
 #, fuzzy
 msgid "HTML for payment:"
-msgstr "HTML for payment:"
+msgstr "HTML per il pagamento:"
 
 #. Author URI of the plugin
 #, fuzzy
@@ -1905,22 +1978,22 @@ msgstr "https://n3rds.work"
 #: create_options.php:412
 #, fuzzy
 msgid "I am Following"
-msgstr "I am Following"
+msgstr "Sto seguendo"
 
 #: plus.php:80
 #, fuzzy
 msgid "Ich folge"
-msgstr "Ich folge"
+msgstr "Io seguo"
 
 #: ajax/events_functions.php:411 ajax/events_functions.php:438
 #, fuzzy
 msgid "If a refund is required, please follow this up."
-msgstr "If a refund is required, please follow this up."
+msgstr "Se è richiesto un rimborso, si prega di seguire questa procedura."
 
 #: ajax/events_functions.php:373 ajax/events_functions.php:498
 #, fuzzy
 msgid "If payment is required, please follow this up."
-msgstr "If payment is required, please follow this up."
+msgstr "Se è richiesto un pagamento, si prega di seguire questa procedura."
 
 #: ajax/group_functions.php:30
 #, fuzzy
@@ -1928,8 +2001,7 @@ msgid ""
 "If they are not members of this site, they will be able to register before "
 "logging in."
 msgstr ""
-"If they are not members of this site, they will be able to register before "
-"logging in."
+"Se non sono membri di questo sito, potranno registrarsi prima di accedere."
 
 #: ajax/events_functions.php:262
 #, fuzzy
@@ -1937,30 +2009,37 @@ msgid ""
 "If you have already paid, please do not pay again - your payment is being "
 "processed. Thank you."
 msgstr ""
-"If you have already paid, please do not pay again - your payment is being "
-"processed. Thank you."
+"Se avete già pagato, non pagate di nuovo: il vostro pagamento è in fase di "
+"elaborazione. Grazie."
 
 #: hooks_filters.php:619
 #, fuzzy
 msgid ""
 "If you want a signature to be appended automatically under your forum posts"
 msgstr ""
-"If you want a signature to be appended automatically under your forum posts"
+"Se si desidera che una firma venga aggiunta automaticamente ai propri "
+"messaggi nel forum"
 
 #: ajax/forum_functions.php:97
 #, fuzzy
 msgid "Image to remove is not there..."
-msgstr "Image to remove is not there..."
+msgstr "L'immagine da rimuovere non c'è..."
 
 #: server/file_upload_form.php:190
 #, fuzzy
 msgid "Image uploaded"
-msgstr "Image uploaded"
+msgstr "Immagine caricata"
 
 #: news_admin.php:71
 #, fuzzy
 msgid "Implementieren"
-msgstr "Implementieren"
+msgstr "Impieghi"
+
+#: create_options.php:51 create_options.php:93 create_options.php:103
+#: create_options.php:129 create_options.php:131 create_options.php:133
+#, fuzzy
+msgid "Wichtig: Bitte besuche die Installationsseite!"
+msgstr "Wichtig: Bitte besuche die Installationsseite!"
 
 #: ajax/forum_functions.php:419 ajax/forum_functions.php:491
 #, fuzzy
@@ -1970,78 +2049,78 @@ msgstr "in"
 #: mailinglist_admin.php:119
 #, fuzzy, php-format
 msgid "in %d seconds"
-msgstr "in %d seconds"
+msgstr "in %d secondi"
 
 #: mail.php:41
 #, fuzzy
 msgid "In Box"
-msgstr "In Box"
+msgstr "In scatola"
 
 #: ajax/forum_functions.php:2348
 #, fuzzy
 msgid "in reply to"
-msgstr "in reply to"
+msgstr "in risposta a"
 
 #: mail.php:144
 #, fuzzy
 msgid "Inbox"
-msgstr "Inbox"
+msgstr "Posta in arrivo"
 
 #: ajax/group_functions.php:760
 #, fuzzy
 msgid "Include activity posts in Alerts?"
-msgstr "Include activity posts in Alerts?"
+msgstr "Includere i messaggi di attività negli avvisi?"
 
 #: widgets.php:632
 #, fuzzy
 msgid "Include category"
-msgstr "Include category"
+msgstr "Includere la categoria"
 
 #: widgets.php:902 widgets.php:1014
 #, fuzzy
 msgid "Include groups"
-msgstr "Include groups"
+msgstr "Includere gruppi"
 
 #: widgets.php:310
 #, fuzzy
 msgid "Include site activity"
-msgstr "Include site activity"
+msgstr "Includere l'attività del sito"
 
 #: mobile.php:127
 #, fuzzy
 msgid "Installationsschritte"
-msgstr "Installationsschritte"
+msgstr "Installazione"
 
 #: ajax/profile_functions.php:1162
 #, fuzzy
 msgid "Invalid email address, please re-enter"
-msgstr "Invalid email address, please re-enter"
+msgstr "Indirizzo e-mail non valido, inserire nuovamente"
 
 #: ajax/upload_activity_file.php:99 server/upload_activity.php:118
 #: server/upload_forum.php:138 server/upload_forum.php:225
 #, fuzzy
 msgid "Invalid file extension, the following are permitted:"
-msgstr "Invalid file extension, the following are permitted:"
+msgstr "Estensione file non valida, sono consentite le seguenti estensioni:"
 
 #: ajax/group_functions.php:35
 #, fuzzy
 msgid "Invite"
-msgstr "Invite"
+msgstr "Invito"
 
 #: ajax/group_functions.php:692
 #, fuzzy
 msgid "Is content hidden from non-members?"
-msgstr "Is content hidden from non-members?"
+msgstr "I contenuti sono nascosti ai non membri?"
 
 #: ajax/profile_functions.php:929
 #, fuzzy
 msgid "Is this member trusted (highlighted on forum)?"
-msgstr "Is this member trusted (highlighted on forum)?"
+msgstr "Questo membro è affidabile (evidenziato sul forum)?"
 
 #: hooks_filters.php:573
 #, fuzzy
 msgid "Is this member trusted?"
-msgstr "Is this member trusted?"
+msgstr "Questo membro è fidato?"
 
 #: plus_admin.php:83 yesno.php:98 yesno.php:98
 #, fuzzy
@@ -2051,7 +2130,7 @@ msgstr "Ja"
 #: hooks_filters.php:444 ajax/profile_functions.php:1319
 #, fuzzy
 msgid "Januar"
-msgstr "Januar"
+msgstr "Gennaio"
 
 #: plus_admin.php:252
 #, fuzzy
@@ -2059,8 +2138,8 @@ msgid ""
 "Je mehr Ergebnisse enthalten sind, desto langsamer kann die Suche sein und "
 "desto größer sind die Auswirkungen auf Deinn Server/Deine Datenbank."
 msgstr ""
-"Je mehr Ergebnisse enthalten sind, desto langsamer kann die Suche sein und "
-"desto größer sind die Auswirkungen auf Deinn Server/Deine Datenbank."
+"Se si ottengono più risultati, la strada può essere più lunga e gli effetti "
+"sul server o sulla banca dati più gravi."
 
 #: news_admin.php:35
 #, fuzzy
@@ -2068,35 +2147,36 @@ msgid ""
 "Je nach verwendetem Theme ist die Position der Liste der Warnungen "
 "möglicherweise nicht genau so, wie Du es wünschst."
 msgstr ""
-"Je nach verwendetem Theme ist die Position der Liste der Warnungen "
-"möglicherweise nicht genau so, wie Du es wünschst."
+"In base al tema utilizzato, la posizione della lista degli avvisi non è "
+"esattamente quella desiderata."
 
 #: plus_admin.php:81
 #, fuzzy
 msgid ""
 "Je nachdem, wie viele Benutzer Du hast, kann dies einige Minuten dauern."
 msgstr ""
-"Je nachdem, wie viele Benutzer Du hast, kann dies einige Minuten dauern."
+"Se non si vuole che il cliente abbia un'altra possibilità, è possibile che "
+"il suo lavoro sia durato un paio di minuti."
 
 #: groups.php:138
 #, fuzzy
 msgid "Join Group"
-msgstr "Join Group"
+msgstr "Unirsi al gruppo"
 
 #: hooks_filters.php:450 ajax/profile_functions.php:1325
 #, fuzzy
 msgid "July"
-msgstr "July"
+msgstr "Luglio"
 
 #: hooks_filters.php:449 ajax/profile_functions.php:1324
 #, fuzzy
 msgid "June"
-msgstr "June"
+msgstr "Giugno"
 
 #: widgets.php:617
 #, fuzzy
 msgid "Just member's own posts"
-msgstr "Just member's own posts"
+msgstr "Solo i messaggi dei membri"
 
 #: members.php:361 members.php:371 ajax/members_functions.php:370
 #, fuzzy
@@ -2118,55 +2198,55 @@ msgstr "Kürzlich online"
 #: ajax/profile_functions.php:2094 ajax/profile_functions.php:2096
 #, fuzzy
 msgid "Last active"
-msgstr "Last active"
+msgstr "Ultimo attivo"
 
 #: groups.php:460 members.php:341 ajax/groups_functions.php:169
 #: ajax/group_functions.php:1365 ajax/members_functions.php:349
 #: ajax/profile_functions.php:1640
 #, fuzzy
 msgid "last active"
-msgstr "last active"
+msgstr "ultimo attivo"
 
 #: members.php:129
 #, fuzzy
 msgid "Last activity"
-msgstr "Last activity"
+msgstr "Ultima attività"
 
 #: ajax/news_functions.php:142
 #, fuzzy
 msgid "Last month"
-msgstr "Last month"
+msgstr "Il mese scorso"
 
 #: ajax/forum_functions.php:1436 ajax/forum_functions.php:1507
 #: ajax/forum_functions.php:1943
 #, fuzzy
 msgid "last one"
-msgstr "last one"
+msgstr "l'ultimo"
 
 #: ajax/forum_functions.php:1572
 #, fuzzy
 msgid "last reply by"
-msgstr "last reply by"
+msgstr "ultima risposta di"
 
 #: ajax/news_functions.php:134
 #, fuzzy
 msgid "Last week"
-msgstr "Last week"
+msgstr "La scorsa settimana"
 
 #: widgets.php:540
 #, fuzzy
 msgid "Latest Forum Posts"
-msgstr "Latest Forum Posts"
+msgstr "Ultimi messaggi del forum"
 
 #: widgets.php:332
 #, fuzzy
 msgid "Latest New Members"
-msgstr "Latest New Members"
+msgstr "Ultimi nuovi membri"
 
 #: ajax/profile_functions.php:1382
 #, fuzzy
 msgid "Latitude/Longitude (from Google API)"
-msgstr "Latitude/Longitude (from Google API)"
+msgstr "Latitudine/Longitudine (da Google API)"
 
 #: widgets.php:797
 #, fuzzy
@@ -2174,38 +2254,39 @@ msgid ""
 "Leave blank for current page (if the current page has values after # in the "
 "URL, they are not included as not passed to ClassicPress authentication)."
 msgstr ""
-"Leave blank for current page (if the current page has values after # in the "
-"URL, they are not included as not passed to ClassicPress authentication)."
+"Lasciare vuoto per la pagina corrente (se la pagina corrente ha valori dopo "
+"# nell'URL, questi non sono inclusi perché non vengono passati "
+"all'autenticazione di ClassicPress)."
 
 #: groups.php:159
 #, fuzzy
 msgid "Leave Group"
-msgstr "Leave Group"
+msgstr "Gruppo di congedo"
 
 #: plus_admin.php:236
 #, fuzzy
 msgid "Lege alle Benutzer als Freunde für alle fest"
-msgstr "Lege alle Benutzer als Freunde für alle fest"
+msgstr "Legare tutti i Benutzer come amici per tutti i giorni"
 
 #: news.php:139
 #, fuzzy
 msgid "Letzte Woche"
-msgstr "Letzte Woche"
+msgstr "La nostra settimana"
 
 #: news.php:147
 #, fuzzy
 msgid "Letzten Monat"
-msgstr "Letzten Monat"
+msgstr "Il mese di settembre"
 
 #: cp-communitie.php:1212
 #, fuzzy
 msgid "Likes"
-msgstr "Likes"
+msgstr "Preferiti"
 
 #: ajax/plus_functions.php:303
 #, fuzzy
 msgid "Limit reached"
-msgstr "Limit reached"
+msgstr "Limite raggiunto"
 
 #: events_admin.php:52
 #, fuzzy
@@ -2213,163 +2294,160 @@ msgid ""
 "Limits the members included when using [cpcommunitie-events]. Enter User IDs "
 "(comma separated) or leave blank for all."
 msgstr ""
-"Limits the members included when using [cpcommunitie-events]. Enter User IDs "
-"(comma separated) or leave blank for all."
+"Limita i membri inclusi quando si usa [cpcommunitie-events]. Inserire gli ID "
+"utente (separati da virgole) o lasciare vuoto per tutti."
 
 #: mailinglist_admin.php:167
 #, fuzzy
 msgid "Line of text to appear as a prompt where to enter reply text"
-msgstr "Line of text to appear as a prompt where to enter reply text"
+msgstr ""
+"Riga di testo da visualizzare come prompt in cui inserire il testo di "
+"risposta"
 
 #: hooks_filters.php:81
 #, fuzzy
 msgid "Link to Forum"
-msgstr "Link to Forum"
+msgstr "Collegamento al forum"
 
 #: events_admin.php:65
 #, fuzzy
 msgid "List"
-msgstr "List"
+msgstr "Elenco"
 
 #: cp-communitie.php:475
 #, fuzzy
 msgid "List of recipients sent to:"
-msgstr "List of recipients sent to:"
+msgstr "Elenco dei destinatari inviati a:"
 
 #: ajax/events_functions.php:925
 #, fuzzy
 msgid "Location"
-msgstr "Location"
+msgstr "Posizione"
 
 #: ajax/members_functions.php:382
 #, fuzzy
 msgid "Location is set to private"
-msgstr "Location is set to private"
+msgstr "La posizione è impostata su privato"
 
 #: invite.php:31
 #, fuzzy
 msgid "Log In"
-msgstr "Log In"
+msgstr "Accedi"
 
 #: facebook_admin.php:39
 #, fuzzy
 msgid "Log in to "
-msgstr "Log in to"
+msgstr "Accedere a"
 
 #: ajax/plus_functions.php:260 ajax/profile_functions.php:2091
 #, fuzzy
 msgid "Logged out"
-msgstr "Logged out"
+msgstr "Disconnesso"
 
 #: groups.php:231 widgets.php:747
 #, fuzzy
 msgid "Login"
-msgstr "Login"
+msgstr "Accesso"
 
 #: widgets.php:794
 #, fuzzy
 msgid "Login URL (if using login form)"
-msgstr "Login URL (if using login form)"
+msgstr "URL di accesso (se si utilizza il modulo di accesso)"
 
 #: invite.php:41 invite.php:43
 #, fuzzy
 msgid "Lost your password?"
-msgstr "Lost your password?"
+msgstr "Avete perso la password?"
 
 #: cp-communitie.php:242
 #, fuzzy
 msgid "Mail"
-msgstr "Mail"
+msgstr "Posta"
 
 #: cp-communitie.php:275
 #, fuzzy
 msgid "Mail not activated"
-msgstr "Mail not activated"
-
-#: profile.php:485 profile.php:515 profile.php:856
-#, fuzzy
-msgid "Mail senden..."
-msgstr "Mail senden..."
+msgstr "Posta non attivata"
 
 #: widgets.php:212
 #, fuzzy
 msgid "Mail-Link anzeigen"
-msgstr "Mail-Link anzeigen"
+msgstr "Anzeigen Mail-Link"
 
 #: cp-communitie.php:1217
 #, fuzzy
 msgid "Mailbox"
-msgstr "Mailbox"
+msgstr "Cassetta postale"
 
 #: hooks_filters.php:446 ajax/profile_functions.php:1321
 #, fuzzy
 msgid "March"
-msgstr "March"
+msgstr "Marzo"
 
 #: mail.php:61
 #, fuzzy
 msgid "Mark all mail as read"
-msgstr "Mark all mail as read"
+msgstr "Contrassegnare tutta la posta come letta"
 
 #: widgets.php:307 widgets.php:643 widgets.php:905
 #, fuzzy
 msgid "Max length of preview"
-msgstr "Max length of preview"
+msgstr "Lunghezza massima dell'anteprima"
 
 #: gallery.php:107
 #, fuzzy
 msgid "Max number of albums"
-msgstr "Max number of albums"
+msgstr "Numero massimo di album"
 
 #: widgets.php:304 widgets.php:637
 #, fuzzy
 msgid "Max number of posts"
-msgstr "Max number of posts"
+msgstr "Numero massimo di messaggi"
 
 #: widgets.php:391 widgets.php:486
 #, fuzzy
 msgid "Max number shown"
-msgstr "Max number shown"
+msgstr "Numero massimo indicato"
 
 #: cp-communitie.php:1230
 #, fuzzy
 msgid "Max tickets per booking:"
-msgstr "Max tickets per booking:"
+msgstr "Biglietti massimi per prenotazione:"
 
 #: widgets.php:198
 #, fuzzy
 msgid "Maximal angezeigt"
-msgstr "Maximal angezeigt"
+msgstr "Massimo angezeigt"
 
 #: widgets.php:101
 #, fuzzy
 msgid "Maximale Anzahl von Beiträgen"
-msgstr "Maximale Anzahl von Beiträgen"
+msgstr "Massima quantità di contributi"
 
 #: mobile.php:107
 #, fuzzy
 msgid "Maximale Anzahl von Themen"
-msgstr "Maximale Anzahl von Themen"
+msgstr "Massimo numero di temi"
 
 #: widgets.php:104
 #, fuzzy
 msgid "Maximale Länge der Vorschau"
-msgstr "Maximale Länge der Vorschau"
+msgstr "Lunghezza massima del pannello di controllo"
 
 #: groups_admin.php:102
 #, fuzzy
 msgid "Maximum invitations"
-msgstr "Maximum invitations"
+msgstr "Inviti massimi"
 
 #: widgets.php:1020 widgets.php:1103
 #, fuzzy
 msgid "Maximum number of experts"
-msgstr "Maximum number of experts"
+msgstr "Numero massimo di esperti"
 
 #: ajax/group_functions.php:702
 #, fuzzy
 msgid "Maximum number of members (0 for unlimited)"
-msgstr "Maximum number of members (0 for unlimited)"
+msgstr "Numero massimo di membri (0 per illimitato)"
 
 #: groups_admin.php:97
 #, fuzzy
@@ -2377,58 +2455,33 @@ msgid ""
 "Maximum number of members a new group allows (can be changed in group "
 "settings), 0=unlimited."
 msgstr ""
-"Maximum number of members a new group allows (can be changed in group "
-"settings), 0=unlimited."
+"Numero massimo di membri consentito per un nuovo gruppo (può essere "
+"modificato nelle impostazioni del gruppo), 0= illimitato."
 
 #: widgets.php:911
 #, fuzzy
 msgid "Maximum number of posts"
-msgstr "Maximum number of posts"
+msgstr "Numero massimo di messaggi"
 
 #: lounge_admin.php:28
 #, fuzzy
 msgid "Maximum number of returned rows"
-msgstr "Maximum number of returned rows"
+msgstr "Numero massimo di righe restituite"
 
 #: cp-communitie.php:1227 cp-communitie.php:1228
 #, fuzzy
 msgid "Maximum places:"
-msgstr "Maximum places:"
+msgstr "Posti massimi:"
 
 #: hooks_filters.php:448 ajax/profile_functions.php:1323
 #, fuzzy
 msgid "May"
-msgstr "May"
+msgstr "Maggio"
 
-#: create_options.php:414
+#: plus.php:82
 #, fuzzy
 msgid "Meine Abonnenten"
-msgstr "Meine Abonnenten"
-
-#: create_options.php:396 hooks_filters.php:179
-#, fuzzy
-msgid "Meine Aktivität"
-msgstr "Meine Aktivität"
-
-#: create_options.php:408 events.php:225 events.php:227
-#, fuzzy
-msgid "Meine Events"
-msgstr "Meine Events"
-
-#: create_options.php:402 hooks_filters.php:238
-#, fuzzy
-msgid "Meine Freunde"
-msgstr "Meine Freunde"
-
-#: create_options.php:410 gallery.php:359
-#, fuzzy
-msgid "Meine Gallerie"
-msgstr "Meine Gallerie"
-
-#: create_options.php:406 hooks_filters.php:219
-#, fuzzy
-msgid "Meine Gruppen"
-msgstr "Meine Gruppen"
+msgstr "I miei clienti"
 
 #: yesno.php:118
 #, fuzzy
@@ -2439,52 +2492,52 @@ msgstr "Melde Dich an, um abzustimmen..."
 #: ajax/profile_functions.php:1638
 #, fuzzy
 msgid "Member Count:"
-msgstr "Member Count:"
+msgstr "Numero di membri:"
 
 #: cp-communitie.php:283
 #, fuzzy
 msgid "Member Directory not activated"
-msgstr "Member Directory not activated"
+msgstr "Elenco membri non attivato"
 
 #: cp-communitie.php:1216
 #, fuzzy
 msgid "Member Profile"
-msgstr "Member Profile"
+msgstr "Profilo del membro"
 
 #: ajax/group_functions.php:1331
 #, fuzzy
 msgid "Members"
-msgstr "Members"
+msgstr "Membri"
 
 #: groups_admin.php:117
 #, fuzzy
 msgid "Menu structure"
-msgstr "Menu structure"
+msgstr "Struttura del menu"
 
 #: mail.php:123
 #, fuzzy
 msgid "Message"
-msgstr "Message"
+msgstr "Messaggio"
 
 #: ajax/mail_functions.php:194 ajax/mail_functions.php:201
 #, fuzzy
 msgid "Message deleted."
-msgstr "Message deleted."
+msgstr "Messaggio cancellato."
 
 #: ajax/mail_functions.php:240
 #, fuzzy
 msgid "Message sent to"
-msgstr "Message sent to"
+msgstr "Messaggio inviato a"
 
 #: cp-communitie.php:1211
 #, fuzzy
 msgid "Message sent!"
-msgstr "Message sent!"
+msgstr "Messaggio inviato!"
 
 #: members.php:364 members.php:369 ajax/members_functions.php:373
 #, fuzzy
 msgid "miles"
-msgstr "miles"
+msgstr "chilometri"
 
 #: profile.php:625
 #, fuzzy
@@ -2504,33 +2557,33 @@ msgstr "Mobile"
 #: mobile.php:142
 #, fuzzy, php-format
 msgid "Mobile Version von %s"
-msgstr "Mobile Version von %s"
+msgstr "Versione mobile von %s"
 
 #: ajax/forum_functions.php:428 ajax/forum_functions.php:429
 #, fuzzy
 msgid "Moderation Required"
-msgstr "Moderation Required"
+msgstr "Moderazione necessaria"
 
 #: class.cpc_forum.php:425 class.cpc_forum.php:426
 #: ajax/forum_functions.php:1357 ajax/forum_functions.php:1358
 #, fuzzy
 msgid "Moderation required for a reply"
-msgstr "Moderation required for a reply"
+msgstr "Moderazione necessaria per una risposta"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Monday"
-msgstr "Monday"
+msgstr "Lunedì"
 
 #: events.php:119 ajax/events_functions.php:1048
 #, fuzzy
 msgid "More info"
-msgstr "More info"
+msgstr "Più informazioni"
 
 #: cp-communitie.php:1232
 #, fuzzy
 msgid "More Information"
-msgstr "More Information"
+msgstr "Ulteriori informazioni"
 
 #: cp-communitie.php:1195 gallery.php:288 gallery.php:311 members.php:443
 #: ajax/gallery_functions.php:326 ajax/gallery_functions.php:347
@@ -2538,27 +2591,52 @@ msgstr "More Information"
 #: ajax/profile_functions.php:2139
 #, fuzzy
 msgid "more..."
-msgstr "more..."
+msgstr "di più..."
+
+#: create_options.php:396 hooks_filters.php:179
+#, fuzzy
+msgid "Meine Aktivität"
+msgstr "La mia attività"
+
+#: create_options.php:408 events.php:225 events.php:227
+#, fuzzy
+msgid "Meine Events"
+msgstr "Eventi"
+
+#: create_options.php:402 hooks_filters.php:238
+#, fuzzy
+msgid "Meine Freunde"
+msgstr "Meine Freunde"
 
 #: hooks_filters.php:185
 #, fuzzy
 msgid "My Freunde-Aktivität"
-msgstr "My Freunde-Aktivität"
+msgstr "La mia attività con i amici"
+
+#: create_options.php:410 gallery.php:359
+#, fuzzy
+msgid "Meine Gallerie"
+msgstr "La mia galleria"
+
+#: create_options.php:406 hooks_filters.php:219
+#, fuzzy
+msgid "Meine Gruppen"
+msgstr "I miei gruppi"
 
 #: create_options.php:394 hooks_filters.php:168
 #, fuzzy
 msgid "My Profile"
-msgstr "My Profile"
+msgstr "Il mio profilo"
 
 #: groups.php:393
 #, fuzzy
 msgid "Name of Group"
-msgstr "Name of Group"
+msgstr "Nome del gruppo"
 
 #: ajax/gallery_functions.php:795
 #, fuzzy
 msgid "Name of new album"
-msgstr "Name of new album"
+msgstr "Nome del nuovo album"
 
 #: plus_admin.php:85 yesno.php:99 yesno.php:99
 #, fuzzy
@@ -2568,78 +2646,72 @@ msgstr "Nein"
 #: news.php:224
 #, fuzzy, php-format
 msgid "Neue %s Anfrage von"
-msgstr "Neue %s Anfrage von"
+msgstr "Nuovo %s Anfrage von"
 
 #: plus_admin.php:235
 #, fuzzy
 msgid "Neue Benutzer automatisch als Freunde zu allen hinzufügen"
-msgstr "Neue Benutzer automatisch als Freunde zu allen hinzufügen"
+msgstr "I nuovi utenti sono automaticamente amici di tutti gli altri"
 
 #: create_options.php:332
 #, fuzzy
 msgid "New Forum Reply"
-msgstr "New Forum Reply"
+msgstr "Risposta al nuovo forum"
 
 #: create_options.php:330
 #, fuzzy
 msgid "New Forum Topic"
-msgstr "New Forum Topic"
+msgstr "Nuovo argomento del forum"
 
 #: ajax/group_functions.php:436 ajax/group_functions.php:452
 #, fuzzy
 msgid "New group member"
-msgstr "New group member"
+msgstr "Nuovo membro del gruppo"
 
 #: ajax/group_functions.php:389
 #, fuzzy, php-format
 msgid "New group member request for %s"
-msgstr "New group member request for %s"
+msgstr "Richiesta di nuovo membro del gruppo per %s"
 
 #: ajax/group_functions.php:893 ajax/group_functions.php:985
 #, fuzzy
 msgid "New Group Post"
-msgstr "New Group Post"
+msgstr "Nuovo messaggio di gruppo"
 
 #: mail.php:134
 #, fuzzy
 msgid "New mail can only be sent by this member."
-msgstr "New mail can only be sent by this member."
+msgstr "La nuova posta può essere inviata solo da questo membro."
 
 #: create_options.php:328
 #, fuzzy
 msgid "New Mail Message: [subject]"
-msgstr "New Mail Message: [subject]"
+msgstr "Nuovo messaggio di posta elettronica: [oggetto]"
 
 #: ajax/profile_functions.php:540
 #, fuzzy
 msgid "New Post Reply"
-msgstr "New Post Reply"
+msgstr "Nuovo messaggio Risposta"
 
 #: ajax/profile_functions.php:413
 #, fuzzy
 msgid "New Profile Post"
-msgstr "New Profile Post"
+msgstr "Nuovo post sul profilo"
 
 #: cp-communitie.php:392
 #, fuzzy
 msgid "New Topics"
-msgstr "New Topics"
+msgstr "Nuovi argomenti"
 
 #: cp-communitie.php:1196
 #, fuzzy
 msgid "Next"
-msgstr "Next"
+msgstr "Avanti"
 
 #: mailinglist_admin.php:116 mailinglist_admin.php:118
 #, fuzzy
 msgid "Next scheduled run"
-msgstr "Next scheduled run"
-
-#: ajax/group_functions.php:1252 ajax/plus_functions.php:306
-#: ajax/profile_functions.php:852 ajax/profile_functions.php:2143
-#, fuzzy
-msgid "Nichts zu sehen, tut mir leid."
-msgstr "Nichts zu sehen, tut mir leid."
+msgstr "Prossima corsa programmata"
 
 #: hooks_filters.php:413 yesno.php:166 ajax/profile_functions.php:1260
 #, fuzzy
@@ -2649,105 +2721,105 @@ msgstr "No"
 #: ajax/gallery_functions.php:352
 #, fuzzy
 msgid "No albums to show"
-msgstr "No albums to show"
+msgstr "Nessun album da mostrare"
 
 #: ajax/gallery_functions.php:672
 #, fuzzy
 msgid "No albums yet."
-msgstr "No albums yet."
+msgstr "Non ci sono ancora album."
 
 #: server/file_upload_form.php:228
 #, fuzzy
 msgid "No bigger than 300x300 pixels."
-msgstr "No bigger than 300x300 pixels."
+msgstr "Non più grande di 300x300 pixel."
 
 #: events.php:148 ajax/events_functions.php:1069
 #, fuzzy
 msgid "No events yet."
-msgstr "No events yet."
+msgstr "Non ci sono ancora eventi."
 
 #: groups.php:491
 #, fuzzy
 msgid "No group found...."
-msgstr "No group found...."
+msgstr "Nessun gruppo trovato...."
 
 #: groups_admin.php:201
 #, fuzzy
 msgid "No groups created yet."
-msgstr "No groups created yet."
+msgstr "Non sono ancora stati creati gruppi."
 
 #: ajax/groups_functions.php:183
 #, fuzzy
 msgid "No groups created yet...."
-msgstr "No groups created yet...."
+msgstr "Nessun gruppo creato ancora...."
 
 #: ajax/gallery_functions.php:448 ajax/gallery_functions.php:539
 #, fuzzy
 msgid "No item ID passed"
-msgstr "No item ID passed"
+msgstr "Non è stato passato l'ID dell'articolo"
 
 #: ajax/group_functions.php:1395
 #, fuzzy
 msgid "No members"
-msgstr "No members"
+msgstr "Nessun membro"
 
 #: members.php:446 ajax/members_functions.php:459
 #: ajax/members_functions.php:463
 #, fuzzy
 msgid "No members found"
-msgstr "No members found"
+msgstr "Nessun membro trovato"
 
 #: ajax/forum_functions.php:257
 #, fuzzy
 msgid "No message"
-msgstr "No message"
+msgstr "Nessun messaggio"
 
 #: mailinglist.php:225 mailinglist_admin.php:52
 #, fuzzy
 msgid "No messages found"
-msgstr "No messages found"
+msgstr "Nessun messaggio trovato"
 
 #: gallery.php:297 ajax/gallery_functions.php:335
 #: ajax/gallery_functions.php:777
 #, fuzzy
 msgid "No photos yet."
-msgstr "No photos yet."
+msgstr "Non ci sono ancora foto."
 
 #: ajax/forum_functions.php:1512
 #, fuzzy
 msgid "No replies"
-msgstr "No replies"
+msgstr "Nessuna risposta"
 
 #: ajax/profile_functions.php:1279
 #, fuzzy
 msgid "No sound"
-msgstr "No sound"
+msgstr "Nessun suono"
 
 #: ajax/forum_functions.php:256
 #, fuzzy
 msgid "No subject"
-msgstr "No subject"
+msgstr "Nessun soggetto"
 
 #: mailinglist.php:196
 #, fuzzy
 msgid "No TID found in subject"
-msgstr "No TID found in subject"
+msgstr "Nessun TID trovato nel soggetto"
 
 #: ajax/forum_functions.php:1448 ajax/forum_functions.php:1714
 #, fuzzy
 msgid "No topics started yet"
-msgstr "No topics started yet"
+msgstr "Nessun argomento ancora avviato"
 
 #: cp-communitie.php:457
 #, fuzzy
 msgid "No users have selected to receive the digest."
-msgstr "No users have selected to receive the digest."
+msgstr "Nessun utente ha scelto di ricevere il digest."
 
 #: hooks_filters.php:378 hooks_filters.php:395 ajax/gallery_functions.php:696
 #: ajax/profile_functions.php:1217 ajax/profile_functions.php:1238
 #, fuzzy
 msgid "Nobody"
-msgstr "Nobody"
+msgstr "Nessuno"
 
 #: news.php:174
 #, fuzzy
@@ -2757,27 +2829,27 @@ msgstr "Noch nichts zu zeigen."
 #: events_admin.php:78
 #, fuzzy
 msgid "Non-admin event manager"
-msgstr "Non-admin event manager"
+msgstr "Manager di eventi non amministrativi"
 
 #: hooks_filters.php:104
 #, fuzzy
 msgid "None"
-msgstr "None"
+msgstr "Nessuno"
 
 #: ajax/profile_functions.php:1650
 #, fuzzy
 msgid "Not a member of any groups."
-msgstr "Not a member of any groups."
+msgstr "Non sono membro di alcun gruppo."
 
 #: mailinglist.php:175
 #, fuzzy
 msgid "Not added, just checking."
-msgstr "Not added, just checking."
+msgstr "Non è stato aggiunto, ma solo controllato."
 
 #: mailinglist.php:204
 #, fuzzy
 msgid "not found in users"
-msgstr "not found in users"
+msgstr "non trovato negli utenti"
 
 #: groups_admin.php:106
 #, fuzzy
@@ -2785,38 +2857,45 @@ msgid ""
 "Note: If people who are invited to join via email are not members they will "
 "be able to register first (if the option is set in ClassicPress)."
 msgstr ""
-"Note: If people who are invited to join via email are not members they will "
-"be able to register first (if the option is set in ClassicPress)."
+"Nota: se le persone invitate a partecipare via e-mail non sono membri, "
+"potranno prima registrarsi (se l'opzione è impostata in ClassicPress)."
 
 #: ajax/news_functions.php:169
 #, fuzzy
 msgid "Nothing to show yet."
-msgstr "Nothing to show yet."
+msgstr "Non c'è ancora nulla da mostrare."
+
+#: ajax/group_functions.php:1252 ajax/plus_functions.php:306
+#: ajax/profile_functions.php:852 ajax/profile_functions.php:2143
+#, fuzzy
+msgid "Nichts zu sehen, tut mir leid."
+msgstr "Nichts zu sehen, tut mir leid."
 
 #: ajax/group_functions.php:731
 #, fuzzy
 msgid "Notify admin when a new member joins by email?"
-msgstr "Notify admin when a new member joins by email?"
+msgstr ""
+"Notificare all'amministratore quando un nuovo membro si unisce via e-mail?"
 
 #: hooks_filters.php:454 ajax/profile_functions.php:1329
 #, fuzzy
 msgid "November"
-msgstr "November"
+msgstr "Novembre"
 
 #: gallery_admin.php:61
 #, fuzzy
 msgid "Number of albums to show on the gallery page (shortcode)"
-msgstr "Number of albums to show on the gallery page (shortcode)"
+msgstr "Numero di album da mostrare nella pagina della galleria (shortcode)"
 
 #: mailinglist.php:74
 #, fuzzy
 msgid "number of messages found"
-msgstr "number of messages found"
+msgstr "numero di messaggi trovati"
 
 #: mailinglist_admin.php:40
 #, fuzzy
 msgid "number of messages to be deleted"
-msgstr "number of messages to be deleted"
+msgstr "numero di messaggi da cancellare"
 
 #: gallery_admin.php:67
 #, fuzzy
@@ -2824,8 +2903,8 @@ msgid ""
 "Number of photos to show on one row as an album preview on the gallery page "
 "(shortcode)"
 msgstr ""
-"Number of photos to show on one row as an album preview on the gallery page "
-"(shortcode)"
+"Numero di foto da mostrare su una riga come anteprima dell'album nella "
+"pagina della galleria (shortcode)"
 
 #: mobile.php:116
 #, fuzzy
@@ -2833,28 +2912,29 @@ msgid ""
 "Nur zur Verwendung durch den Administrator, um den Benutzeragenten für "
 "mobile Geräte zu überprüfen"
 msgstr ""
-"Nur zur Verwendung durch den Administrator, um den Benutzeragenten für "
-"mobile Geräte zu überprüfen"
+"Solo per l'utilizzo da parte dell'amministratore, in modo da poter "
+"utilizzare i Benutzeragenten per i dispositivi mobili"
 
 #: plus_admin.php:192
 #, fuzzy
 msgid "Nutzern erlauben, YouTube in den Aktivitätsfeed einzubetten"
-msgstr "Nutzern erlauben, YouTube in den Aktivitätsfeed einzubetten"
+msgstr ""
+"Gli utenti possono scegliere di inserire YouTube nel feed delle attività"
 
 #: hooks_filters.php:453 ajax/profile_functions.php:1328
 #, fuzzy
 msgid "October"
-msgstr "October"
+msgstr "Ottobre"
 
 #: yesno.php:98
 #, fuzzy
 msgid "oder"
-msgstr "oder"
+msgstr "o"
 
 #: ajax/plus_functions.php:263 ajax/profile_functions.php:2094
 #, fuzzy
 msgid "Offline"
-msgstr "Offline"
+msgstr "Non in linea"
 
 #: panel.php:132
 #, fuzzy
@@ -2864,22 +2944,22 @@ msgstr "Offline erscheinen?"
 #: ajax/news_functions.php:146
 #, fuzzy
 msgid "Old"
-msgstr "Old"
+msgstr "Vecchio"
 
 #: widgets.php:519
 #, fuzzy
 msgid "Online only"
-msgstr "Online only"
+msgstr "Solo online"
 
 #: widgets.php:207
 #, fuzzy
 msgid "Online-Statusanzeige anzeigen"
-msgstr "Online-Statusanzeige anzeigen"
+msgstr "Anzeigen Online-Stanzeige"
 
 #: widgets.php:516
 #, fuzzy
 msgid "Online/offline split"
-msgstr "Online/offline split"
+msgstr "Divisione online/offline"
 
 #: groups_admin.php:120
 #, fuzzy
@@ -2887,54 +2967,55 @@ msgid ""
 "Only applicable to the horizontal version of the group page menu, set on the "
 "Plus options tab."
 msgstr ""
-"Only applicable to the horizontal version of the group page menu, set on the "
-"Plus options tab."
+"Si applica solo alla versione orizzontale del menu della pagina del gruppo, "
+"impostata nella scheda Plus options."
 
 #: members.php:62
 #, fuzzy
 msgid "Only friends"
-msgstr "Only friends"
+msgstr "Solo amici"
 
 #: ajax/ajax_functions.php:16
 #, fuzzy
 msgid "Only site administrators can de-activate debug mode."
-msgstr "Only site administrators can de-activate debug mode."
+msgstr ""
+"Solo gli amministratori del sito possono disattivare la modalità di debug."
 
 #: events_admin.php:47 gallery_admin.php:43 groups_admin.php:64
 #: lounge_admin.php:19 mailinglist_admin.php:103 plus_admin.php:132
 #, fuzzy
 msgid "Options"
-msgstr "Options"
+msgstr "Opzioni"
 
 #: ajax/profile_functions.php:871
 #, fuzzy
 msgid "or click here to remove"
-msgstr "or click here to remove"
+msgstr "o fare clic qui per rimuovere"
 
 #: ajax/gallery_functions.php:75
 #, fuzzy
 msgid "Order saved, reload page to view new order."
-msgstr "Order saved, reload page to view new order."
+msgstr "Ordine salvato, ricaricare la pagina per visualizzare il nuovo ordine."
 
 #: ajax/plus_functions.php:114
 #, fuzzy
 msgid "Page"
-msgstr "Page"
+msgstr "Pagina"
 
 #: gallery_admin.php:59
 #, fuzzy
 msgid "Page size"
-msgstr "Page size"
+msgstr "Dimensione della pagina"
 
 #: ajax/plus_functions.php:112
 #, fuzzy
 msgid "PAGES"
-msgstr "PAGES"
+msgstr "PAGINE"
 
 #: news_admin.php:100
 #, fuzzy
 msgid "Parameter"
-msgstr "Parameter"
+msgstr "Parametro"
 
 #: mailinglist_admin.php:153 widgets.php:747
 #, fuzzy
@@ -2944,124 +3025,125 @@ msgstr "Password"
 #: invite.php:41 invite.php:43
 #, fuzzy
 msgid "Password Lost and Found"
-msgstr "Password Lost and Found"
+msgstr "Password persa e ritrovata"
 
 #: mailinglist_admin.php:155
 #, fuzzy
 msgid "Password of mail account"
-msgstr "Password of mail account"
+msgstr "Password dell'account di posta"
 
 #: widgets.php:757
 #, fuzzy
 msgid "Password prompt"
-msgstr "Password prompt"
+msgstr "Richiesta di password"
 
 #: ajax/profile_functions.php:1154
 #, fuzzy
 msgid "Passwords different, please try again."
-msgstr "Passwords different, please try again."
+msgstr "Le password sono diverse, riprovare."
 
 #: ajax/events_functions.php:173
 #, fuzzy
 msgid "Pay!"
-msgstr "Pay!"
+msgstr "Pagare!"
 
 #: events.php:132 ajax/events_functions.php:1056
 #, fuzzy
 msgid "Payment"
-msgstr "Payment"
+msgstr "Pagamento"
 
 #: forum.php:226
 #, fuzzy
 msgid "pending approval"
-msgstr "pending approval"
+msgstr "in attesa di approvazione"
 
 #: forum.php:111
 #, fuzzy, php-format
 msgid ""
 "Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum."
 msgstr ""
-"Permissions are set via the ClassicPress admin dashboard->%s->Options->Forum."
+"I permessi sono impostati tramite la dashboard di amministrazione di "
+"ClassicPress->%s->Opzioni->Forum."
 
 #: ajax/profile_functions.php:2152
 #, fuzzy
 msgid "Personal information is private."
-msgstr "Personal information is private."
+msgstr "Le informazioni personali sono private."
 
 #: ajax/profile_functions.php:2149
 #, fuzzy, php-format
 msgid "Personal information only for %s."
-msgstr "Personal information only for %s."
+msgstr "Informazioni personali solo per %s."
 
 #: profile.php:451 profile.php:822
 #, fuzzy, php-format
 msgid "Persönliche Informationen nur für %s."
-msgstr "Persönliche Informationen nur für %s."
+msgstr "Informazioni personali solo per %s."
 
 #: profile.php:455 profile.php:826
 #, fuzzy
 msgid "Persönliche Informationen sind privat."
-msgstr "Persönliche Informationen sind privat."
+msgstr "Le informazioni personali sono private."
 
 #: ajax/plus_functions.php:131
 #, fuzzy
 msgid "Photo Album"
-msgstr "Photo Album"
+msgstr "Album fotografico"
 
 #: ajax/plus_functions.php:129
 #, fuzzy
 msgid "PHOTO ALBUMS"
-msgstr "PHOTO ALBUMS"
+msgstr "ALBUM DI FOTO"
 
 #: ajax/gallery_functions.php:445
 #, fuzzy
 msgid "Photo deleted."
-msgstr "Photo deleted."
+msgstr "Foto cancellata."
 
 #: plus_admin.php:147
 #, fuzzy
 msgid "Platz über dem Menü"
-msgstr "Platz über dem Menü"
+msgstr "Posto sopra il menu"
 
 #: ajax/group_functions.php:79
 #, fuzzy, php-format
 msgid "Please come and join my group on %s"
-msgstr "Please come and join my group on %s"
+msgstr "Venite a unirvi al mio gruppo su %s"
 
 #: ajax/gallery_functions.php:476
 #, fuzzy
 msgid "Please delete sub albums first."
-msgstr "Please delete sub albums first."
+msgstr "Cancellare prima gli album secondari."
 
 #: create_options.php:47
 #, fuzzy
 msgid "Please don't reply to this email"
-msgstr "Please don't reply to this email"
+msgstr "Si prega di non rispondere a questa e-mail"
 
 #: server/file_upload_form.php:225
 #, fuzzy
 msgid "Please ensure that the image is no bigger than 300x300 pixels."
-msgstr "Please ensure that the image is no bigger than 300x300 pixels."
+msgstr "Assicuratevi che l'immagine non sia più grande di 300x300 pixel."
 
 #: ajax/gallery_functions.php:561
 #, fuzzy
 msgid "Please enter a title"
-msgstr "Please enter a title"
+msgstr "Inserire un titolo"
 
 #: ajax/news_functions.php:182
 #, fuzzy
 msgid "Please login, thank you."
-msgstr "Please login, thank you."
+msgstr "Si prega di effettuare il login, grazie."
 
 #: cp-communitie.php:1245
 #, fuzzy
 msgid "Please make sure all BB Codes have open and close tags!"
-msgstr "Please make sure all BB Codes have open and close tags!"
+msgstr "Assicuratevi che tutti i codici BB abbiano tag di apertura e chiusura!"
 
 #: ajax/events_functions.php:538
 #, fuzzy
 msgid "Please now purchase your tickets below:"
-msgstr "Please now purchase your tickets below:"
+msgstr "Acquistate ora i vostri biglietti qui sotto:"
 
 #: cp-communitie.php:213
 #, fuzzy
@@ -3070,9 +3152,9 @@ msgid ""
 "remove them via the plugins admin page as this could delete data from your "
 "database:"
 msgstr ""
-"Please remove the following folders via FTP.<br />Do <strong>NOT</strong> "
-"remove them via the plugins admin page as this could delete data from your "
-"database:"
+"Rimuovere le seguenti cartelle tramite FTP.<br />Non rimuoverle tramite la "
+"pagina di amministrazione dei plugin, in quanto ciò potrebbe cancellare i "
+"dati dal database:"
 
 #: ajax/mail_functions.php:120
 #, fuzzy, php-format
@@ -3080,18 +3162,23 @@ msgid ""
 "Please select a name from the drop down list to make sure you send to the "
 "right person (%s)."
 msgstr ""
-"Please select a name from the drop down list to make sure you send to the "
-"right person (%s)."
+"Selezionare un nome dall'elenco a discesa per assicurarsi di inviare alla "
+"persona giusta (%s)."
 
 #: cp-communitie.php:1193
 #, fuzzy
 msgid "Please wait"
-msgstr "Please wait"
+msgstr "Attendere prego"
+
+#: cp-communitie.php:73 cp-communitie.php:1144
+#, fuzzy
+msgid "Bitte warte..."
+msgstr "Bitte warte..."
 
 #: cp-communitie.php:253
 #, fuzzy
 msgid "Plugins"
-msgstr "Plugins"
+msgstr "Plugin"
 
 #: ajax/profile_functions.php:1282
 #, fuzzy
@@ -3101,107 +3188,107 @@ msgstr "Pop"
 #: mailinglist_admin.php:141
 #, fuzzy
 msgid "Port"
-msgstr "Port"
+msgstr "Porto"
 
 #: mailinglist_admin.php:143
 #, fuzzy
 msgid "Port used by mail server, eg: 110"
-msgstr "Port used by mail server, eg: 110"
+msgstr "Porta utilizzata dal server di posta, ad esempio: 110"
 
 #: ajax/group_functions.php:1135
 #, fuzzy
 msgid "Post"
-msgstr "Post"
+msgstr "Posta"
 
 #: cp-communitie.php:1202
 #, fuzzy
 msgid "Post added to your activity."
-msgstr "Post added to your activity."
+msgstr "Messaggio aggiunto alla tua attività."
 
 #: ajax/forum_functions.php:2407
 #, fuzzy
 msgid "Posted by"
-msgstr "Posted by"
+msgstr "Postato da"
 
 #: ajax/profile_functions.php:807 ajax/profile_functions.php:821
 #, fuzzy
 msgid "Posted on"
-msgstr "Posted on"
+msgstr "Pubblicato su"
 
 #: ajax/plus_functions.php:96
 #, fuzzy
 msgid "POSTS"
-msgstr "POSTS"
+msgstr "POSTI"
 
 #: gallery_admin.php:65
 #, fuzzy
 msgid "Preview photos"
-msgstr "Preview photos"
+msgstr "Foto in anteprima"
 
 #: cp-communitie.php:1238
 #, fuzzy
 msgid "Price per booking:"
-msgstr "Price per booking:"
+msgstr "Prezzo per prenotazione:"
 
 #: cp-communitie.php:1204
 #, fuzzy
 msgid "Private Mail"
-msgstr "Private Mail"
+msgstr "Posta privata"
 
 #: cp-communitie.php:1205
 #, fuzzy
 msgid "Private mail sent!"
-msgstr "Private mail sent!"
+msgstr "Inviato un messaggio privato!"
 
 #: mailinglist.php:236 mailinglist_admin.php:63
 #, fuzzy
 msgid "Problem connecting to mail server"
-msgstr "Problem connecting to mail server"
+msgstr "Problema di connessione al server di posta"
 
 #: mailinglist.php:58
 #, fuzzy
 msgid "Processing waiting email..."
-msgstr "Processing waiting email..."
-
-#: create_options.php:420 hooks_filters.php:369
-#, fuzzy
-msgid "Profildetails"
-msgstr "Profildetails"
+msgstr "Elaborazione delle e-mail in attesa..."
 
 #: create_options.php:424 hooks_filters.php:171
 #, fuzzy
 msgid "Profile"
-msgstr "Profile"
+msgstr "Profilo"
+
+#: create_options.php:420 hooks_filters.php:369
+#, fuzzy
+msgid "Profildetails"
+msgstr "Dettagli sul profilo"
 
 #: events_admin.php:89
 #, fuzzy
 msgid "Profile Menu Items"
-msgstr "Profile Menu Items"
+msgstr "Voci del menu Profilo"
 
 #: cp-communitie.php:267
 #, fuzzy
 msgid "Profile not activated"
-msgstr "Profile not activated"
+msgstr "Profilo non attivato"
 
 #: ajax/profile_functions.php:932
 #, fuzzy
 msgid "Profile page header label"
-msgstr "Profile page header label"
+msgstr "Etichetta di intestazione della pagina del profilo"
 
 #: create_options.php:418
 #, fuzzy
 msgid "Profile Photo"
-msgstr "Profile Photo"
+msgstr "Foto del profilo"
 
 #: plus.php:25
 #, fuzzy
 msgid "Profile Plus"
-msgstr "Profile Plus"
+msgstr "Profilo Plus"
 
 #: ajax/profile_functions.php:491 ajax/profile_functions.php:512
 #, fuzzy
 msgid "Profile Reply"
-msgstr "Profile Reply"
+msgstr "Profilo Risposta"
 
 #: mailinglist_admin.php:165
 #, fuzzy
@@ -3221,7 +3308,7 @@ msgstr ""
 #: ajax/profile_functions.php:1226 ajax/profile_functions.php:1247
 #, fuzzy
 msgid "Public"
-msgstr "Public"
+msgstr "Pubblico"
 
 #: mailinglist_admin.php:110
 #, fuzzy
@@ -3232,17 +3319,17 @@ msgstr "M j, Y @ G:i"
 #: hooks_filters.php:418 ajax/profile_functions.php:1255
 #, fuzzy
 msgid "Publish your activity via RSS (only your initial posts)?"
-msgstr "Publish your activity via RSS (only your initial posts)?"
+msgstr "Pubblicare la propria attività via RSS (solo i post iniziali)?"
 
 #: ajax/profile_functions.php:1047
 #, fuzzy
 msgid "Re-enter to confirm"
-msgstr "Re-enter to confirm"
+msgstr "Reinserire per confermare"
 
 #: gallery_admin.php:46
 #, fuzzy
 msgid "Re-size photos in slideshow"
-msgstr "Re-size photos in slideshow"
+msgstr "Ridimensionare le foto nella presentazione"
 
 #: gallery_admin.php:49
 #, fuzzy
@@ -3250,73 +3337,78 @@ msgid ""
 "Re-sizing photos will ensure that are displayed at nice size and speed up "
 "loading, but will stretch small images"
 msgstr ""
-"Re-sizing photos will ensure that are displayed at nice size and speed up "
-"loading, but will stretch small images"
+"Il ridimensionamento delle foto assicura che vengano visualizzate in "
+"dimensioni gradevoli e velocizza il caricamento, ma allunga le immagini "
+"piccole"
 
 #: hooks_filters.php:610 ajax/profile_functions.php:1023
 #, fuzzy
 msgid "Receive an email for all new forum topics and replies?"
-msgstr "Receive an email for all new forum topics and replies?"
+msgstr ""
+"Ricevere un'e-mail per tutti i nuovi argomenti e le risposte del forum?"
 
 #: ajax/profile_functions.php:1003
 #, fuzzy, php-format
 msgid "Receive an email when a %s adds a post?"
-msgstr "Receive an email when a %s adds a post?"
+msgstr "Ricevere un'e-mail quando un %s aggiunge un post?"
 
 #: hooks_filters.php:599
 #, fuzzy
 msgid "Receive an email when a friend adds a post?"
-msgstr "Receive an email when a friend adds a post?"
+msgstr "Ricevere un'e-mail quando un amico aggiunge un post?"
 
 #: hooks_filters.php:591 ajax/profile_functions.php:995
 #, fuzzy
 msgid "Receive an email when you get new mail messages?"
-msgstr "Receive an email when you get new mail messages?"
+msgstr "Ricevere un'e-mail quando si ricevono nuovi messaggi di posta?"
 
 #: ajax/profile_functions.php:1012
 #, fuzzy
 msgid "Receive an email when you receive likes/dislikes?"
-msgstr "Receive an email when you receive likes/dislikes?"
+msgstr ""
+"Ricevere un'e-mail quando si ricevono i \"mi piace\" e i \"non mi piace\"?"
 
 #: ajax/group_functions.php:1114
 #, fuzzy
 msgid "Receive emails when there are new posts and replies"
-msgstr "Receive emails when there are new posts and replies"
+msgstr "Ricevere e-mail quando ci sono nuovi messaggi e risposte"
 
 #: widgets.php:239
 #, fuzzy
 msgid "Recent Activity"
-msgstr "Recent Activity"
+msgstr "Attività recenti"
 
 #: widgets.php:1042
 #, fuzzy
 msgid "Recent Alerts"
-msgstr "Recent Alerts"
+msgstr "Avvisi recenti"
 
 #: ajax/forum_functions.php:1384
 #, fuzzy
 msgid "Recent Topics"
-msgstr "Recent Topics"
+msgstr "Argomenti recenti"
 
 #: ajax/news_functions.php:130
 #, fuzzy
 msgid "Recently"
-msgstr "Recently"
+msgstr "Recentemente"
 
 #: mail.php:63
 #, fuzzy
 msgid "Recover all deleted mail"
-msgstr "Recover all deleted mail"
+msgstr "Recuperare tutta la posta eliminata"
 
 #: ajax/profile_functions.php:967
 #, fuzzy
 msgid "Refer to others with @tags, using their display name (without spaces)."
-msgstr "Refer to others with @tags, using their display name (without spaces)."
+msgstr ""
+"Riferitevi agli altri con gli @tag, usando il loro nome visualizzato (senza "
+"spazi)."
 
 #: server/file_upload_form.php:191
 #, fuzzy
 msgid "refresh album"
-msgstr "refresh album"
+msgstr "aggiorna l'album"
 
 #: cp-communitie.php:1240
 #, fuzzy
@@ -3325,49 +3417,49 @@ msgid ""
 "Confirmed|Actions|Confirm attendee|Send Mail|Re-send confirmation "
 "email|Remove attendee|Confirm payment"
 msgstr ""
-"Ref|User|Booked|Confirmation email sent|# Tickets|Payment "
-"Confirmed|Actions|Confirm attendee|Send Mail|Re-send confirmation "
-"email|Remove attendee|Confirm payment"
+"Rif|Utente|Prenotazione|Email di conferma inviata|# Biglietti|Pagamento "
+"confermato|Azioni|Conferma partecipante|Invia posta|Invia email di "
+"conferma|Rimuovi partecipante|Conferma pagamento"
 
 #: invite.php:40 widgets.php:747
 #, fuzzy
 msgid "Register"
-msgstr "Register"
+msgstr "Registro"
 
 #: widgets.php:769
 #, fuzzy
 msgid "Register prompt"
-msgstr "Register prompt"
+msgstr "Richiesta di registrazione"
 
 #: ajax/group_functions.php:1383 ajax/profile_functions.php:2015
 #, fuzzy
 msgid "Reject"
-msgstr "Reject"
+msgstr "Rifiuto"
 
 #: ajax/events_functions.php:185
 #, fuzzy
 msgid "Remaining:"
-msgstr "Remaining:"
+msgstr "Rimangono:"
 
 #: invite.php:29
 #, fuzzy
 msgid "Remember Me"
-msgstr "Remember Me"
+msgstr "Ricordati di me"
 
 #: widgets.php:760
 #, fuzzy
 msgid "Remember me prompt"
-msgstr "Remember me prompt"
+msgstr "Richiesta di ricordare me"
 
 #: widgets.php:747
 #, fuzzy
 msgid "Remember me?"
-msgstr "Remember me?"
+msgstr "Ti ricordi di me?"
 
 #: ajax/profile_functions.php:2041
 #, fuzzy
 msgid "Remove all friends"
-msgstr "Remove all friends"
+msgstr "Rimuovere tutti gli amici"
 
 #: cp-communitie.php:1241
 #, fuzzy
@@ -3375,71 +3467,71 @@ msgid ""
 "Rename|Photo renamed.|Drag thumbnails to re-order, and then|save|Delete this "
 "photo|Set as album cover"
 msgstr ""
-"Rename|Photo renamed.|Drag thumbnails to re-order, and then|save|Delete this "
-"photo|Set as album cover"
+"Rinomina|Foto rinominata.|Trascina le miniature per riordinarle e "
+"poi|Salva|Elimina questa foto|Imposta come copertina dell'album"
 
 #: class.cpc_forum.php:302 ajax/forum_functions.php:1234
 #: ajax/forum_functions.php:1667 ajax/forum_functions.php:1818
 #, fuzzy
 msgid "replied"
-msgstr "replied"
+msgstr "risposto"
 
 #: ajax/profile_functions.php:780
 #, fuzzy
 msgid "Replied to"
-msgstr "Replied to"
+msgstr "Risponde a"
 
 #: ajax/forum_functions.php:1183
 #, fuzzy, php-format
 msgid "Replied to a forum topic in %s:"
-msgstr "Replied to a forum topic in %s:"
+msgstr "Risposta a un argomento del forum in %s:"
 
 #: ajax/forum_functions.php:1185
 #, fuzzy, php-format
 msgid "Replied to a group forum topic in %s:"
-msgstr "Replied to a group forum topic in %s:"
+msgstr "Ha risposto a un argomento del forum di gruppo in %s:"
 
 #: ajax/profile_functions.php:813 ajax/profile_functions.php:827
 #, fuzzy
 msgid "Replied to a post on"
-msgstr "Replied to a post on"
+msgstr "Ha risposto a un post su"
 
 #: cp-communitie.php:238
 #, fuzzy
 msgid "Replies"
-msgstr "Replies"
+msgstr "Risposte"
 
 #: ajax/forum_functions.php:1435 ajax/forum_functions.php:1506
 #: ajax/forum_functions.php:1942
 #, fuzzy
 msgid "replies"
-msgstr "replies"
+msgstr "risposte"
 
 #: cp-communitie.php:413
 #, fuzzy
 msgid "Replies in"
-msgstr "Replies in"
+msgstr "Risposte in"
 
 #: ajax/mail_functions.php:442 ajax/mail_functions.php:448
 #, fuzzy
 msgid "Reply"
-msgstr "Reply"
+msgstr "Risposta"
 
 #: ajax/forum_functions.php:1432 ajax/forum_functions.php:1503
 #: ajax/forum_functions.php:1939
 #, fuzzy
 msgid "reply"
-msgstr "reply"
+msgstr "risposta"
 
 #: mailinglist.php:257
 #, fuzzy
 msgid "Reply by Email"
-msgstr "Reply by Email"
+msgstr "Risposta via e-mail"
 
 #: groups.php:141
 #, fuzzy
 msgid "Request to Join"
-msgstr "Request to Join"
+msgstr "Richiesta di adesione"
 
 #: server/file_upload_form.php:134
 #, fuzzy
@@ -3449,78 +3541,70 @@ msgstr "Reset"
 #: groups_admin.php:121
 #, fuzzy
 msgid "Reset the above..."
-msgstr "Reset the above..."
+msgstr "Resettare quanto sopra..."
 
 #: ajax/forum_functions.php:2419
 #, fuzzy
 msgid "Results found:"
-msgstr "Results found:"
+msgstr "Risultati trovati:"
 
 #: events_admin.php:56
 #, fuzzy
 msgid "Reverse list order"
-msgstr "Reverse list order"
+msgstr "Invertire l'ordine dell'elenco"
 
 #: events_admin.php:92
 #, fuzzy
 msgid "Roles who get \"Meine Events\" on profile page"
-msgstr "Roles who get \"Meine Events\" on profile page"
+msgstr "Ruoli che ottengono \"Meine Events\" nella pagina del profilo"
 
 #: hooks_filters.php:409
 #, fuzzy
 msgid "RSS feed"
-msgstr "RSS feed"
+msgstr "Feed RSS"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Saturday"
-msgstr "Saturday"
+msgstr "Sabato"
 
 #: lounge_admin.php:30 ajax/profile_functions.php:1065
 #: ajax/profile_functions.php:1488
 #, fuzzy
 msgid "Save"
-msgstr "Save"
+msgstr "Risparmiare"
 
 #: events_admin.php:125 facebook_admin.php:75 gallery_admin.php:82
 #: groups_admin.php:130 mailinglist_admin.php:191
 #, fuzzy
 msgid "Save Changes"
-msgstr "Save Changes"
+msgstr "Salva le modifiche"
 
 #: ajax/group_functions.php:807
 #, fuzzy
 msgid "Save settings"
-msgstr "Save settings"
+msgstr "Salva le impostazioni"
 
 #: events_admin.php:34 gallery_admin.php:27 groups_admin.php:46
 #: mailinglist_admin.php:91
 #, fuzzy
 msgid "Saved"
-msgstr "Saved"
+msgstr "Salvati"
 
 #: cp-communitie.php:1194
 #, fuzzy
 msgid "Saving"
-msgstr "Saving"
+msgstr "Risparmio"
 
 #: cp-communitie.php:72 cp-communitie.php:1145
 #, fuzzy
 msgid "Saving..."
-msgstr "Saving..."
+msgstr "Risparmio..."
 
 #: panel.php:120
 #, fuzzy
 msgid "Schließen"
 msgstr "Schließen"
-
-#: class.cpc_ui.php:58 class.cpc_ui.php:68 cp-communitie.php:1224
-#: ajax/group_functions.php:930 ajax/group_functions.php:1126
-#: ajax/group_functions.php:1233 ajax/group_functions.php:1233
-#: ajax/group_functions.php:1233
-#, fuzzy
-msgid "Schreibe einen Kommentar..."
-msgstr "Schreibe einen Kommentar..."
 
 #: plus_admin.php:136
 #, fuzzy
@@ -3531,17 +3615,17 @@ msgstr "Scrollendes Profilmenü"
 #: mail.php:54 members.php:60
 #, fuzzy
 msgid "Search"
-msgstr "Search"
+msgstr "Ricerca"
 
 #: cp-communitie.php:1215
 #, fuzzy
 msgid "Search Gallery"
-msgstr "Search Gallery"
+msgstr "Galleria di ricerca"
 
 #: cp-communitie.php:1214
 #, fuzzy
 msgid "Search on forum"
-msgstr "Search on forum"
+msgstr "Ricerca nel forum"
 
 #: plus_admin.php:277
 #, fuzzy
@@ -3551,7 +3635,7 @@ msgstr "Seiten"
 #: widgets.php:107
 #, fuzzy
 msgid "Seiten-Aktivität einbeziehen"
-msgstr "Seiten-Aktivität einbeziehen"
+msgstr "Attività dei sedili"
 
 #: groups_admin.php:137
 #, fuzzy
@@ -3559,63 +3643,64 @@ msgid ""
 "Select a group to show current members. Then type part of a member's display "
 "name or username to search. Keep blank for all users."
 msgstr ""
-"Select a group to show current members. Then type part of a member's display "
-"name or username to search. Keep blank for all users."
+"Selezionare un gruppo per visualizzare i membri attuali. Digitare quindi una "
+"parte del nome visualizzato o del nome utente di un membro per effettuare la "
+"ricerca. Mantenere vuoto per tutti gli utenti."
 
 #: hooks_filters.php:96
 #, fuzzy
 msgid "Select a topic"
-msgstr "Select a topic"
+msgstr "Selezionare un argomento"
 
 #: server/upload_avatar.php:169 server/upload_group_avatar.php:181
 #, fuzzy
 msgid "Select an area above..."
-msgstr "Select an area above..."
+msgstr "Selezionare un'area sopra..."
 
 #: events_admin.php:58
 #, fuzzy
 msgid "Select to reverse list order (by start date)"
-msgstr "Select to reverse list order (by start date)"
+msgstr "Selezionare per invertire l'ordine dell'elenco (per data di inizio)"
 
 #: mail.php:84
 #, fuzzy
 msgid "Send"
-msgstr "Send"
+msgstr "Inviare"
 
 #: cp-communitie.php:1203
 #, fuzzy
 msgid "Send a private mail..."
-msgstr "Send a private mail..."
+msgstr "Invia una mail privata..."
 
 #: cp-communitie.php:1235
 #, fuzzy
 msgid "Send confirmation email:"
-msgstr "Send confirmation email:"
+msgstr "Inviare un'e-mail di conferma:"
 
 #: cp-communitie.php:1242
 #, fuzzy
 msgid "Sending"
-msgstr "Sending"
+msgstr "Invio"
 
 #: cp-communitie.php:74
 #, fuzzy
 msgid "Sending..."
-msgstr "Sending..."
+msgstr "Invio..."
 
 #: mail.php:145 ajax/ajax_functions.php:33
 #, fuzzy
 msgid "Sent"
-msgstr "Sent"
+msgstr "Inviato"
 
 #: mail.php:42
 #, fuzzy
 msgid "Sent Items"
-msgstr "Sent Items"
+msgstr "Articoli inviati"
 
 #: hooks_filters.php:452 ajax/profile_functions.php:1327
 #, fuzzy
 msgid "September"
-msgstr "September"
+msgstr "Settembre"
 
 #: mailinglist_admin.php:135
 #, fuzzy
@@ -3625,17 +3710,17 @@ msgstr "Server"
 #: mailinglist_admin.php:137
 #, fuzzy
 msgid "Server URL or IP address, eg: mail.example.com"
-msgstr "Server URL or IP address, eg: mail.example.com"
+msgstr "URL o indirizzo IP del server, ad esempio: mail.example.com"
 
 #: ajax/gallery_functions.php:692
 #, fuzzy
 msgid "Share with:"
-msgstr "Share with:"
+msgstr "Condividi con:"
 
 #: lounge_admin.php:68
 #, fuzzy
 msgid "Shortcode to display The Lounge within a page."
-msgstr "Shortcode to display The Lounge within a page."
+msgstr "Shortcode per visualizzare The Lounge all'interno di una pagina."
 
 #: news_admin.php:92
 #, fuzzy
@@ -3645,164 +3730,174 @@ msgstr "Shortcodes"
 #: widgets.php:509
 #, fuzzy
 msgid "Show"
-msgstr "Show"
+msgstr "Mostra"
 
 #: events_admin.php:120
 #, fuzzy
 msgid "Show all events on a site."
-msgstr "Show all events on a site."
+msgstr "Mostra tutti gli eventi di un sito."
 
 #: widgets.php:776
 #, fuzzy
 msgid "Show avatar"
-msgstr "Show avatar"
+msgstr "Mostra avatar"
 
 #: widgets.php:489
 #, fuzzy
 msgid "Show details as list"
-msgstr "Show details as list"
+msgstr "Mostra i dettagli come elenco"
 
 #: widgets.php:792
 #, fuzzy
 msgid "Show Login Form"
-msgstr "Show Login Form"
+msgstr "Mostra modulo di accesso"
 
 #: widgets.php:784
 #, fuzzy
 msgid "Show Login/Logout links"
-msgstr "Show Login/Logout links"
+msgstr "Mostra link di login/logout"
 
 #: widgets.php:500
 #, fuzzy
 msgid "Show mail link"
-msgstr "Show mail link"
+msgstr "Mostra il link per la posta"
 
 #: widgets.php:495
 #, fuzzy
 msgid "Show online status indicator"
-msgstr "Show online status indicator"
+msgstr "Mostra l'indicatore di stato online"
 
 #: cp-communitie.php:1223
 #, fuzzy
 msgid "Show original"
-msgstr "Show original"
+msgstr "Mostra l'originale"
 
 #: widgets.php:627
 #, fuzzy
 msgid "Show parent (replies)"
-msgstr "Show parent (replies)"
+msgstr "Mostra genitore (risposte)"
 
 #: widgets.php:622
 #, fuzzy
 msgid "Show replies"
-msgstr "Show replies"
+msgstr "Mostra le risposte"
 
 #: gallery.php:39
 #, fuzzy
 msgid "Shows albums that have had new items recently uploaded into them."
-msgstr "Shows albums that have had new items recently uploaded into them."
+msgstr "Mostra gli album in cui sono stati caricati di recente nuovi elementi."
 
 #: widgets.php:777
 #, fuzzy
 msgid "Size of avatar (in pixels, eg: 100)"
-msgstr "Size of avatar (in pixels, eg: 100)"
+msgstr "Dimensione dell'avatar (in pixel, es.: 100)"
 
 #: gallery_admin.php:55
 #, fuzzy
 msgid "Size of gallery thumbnails"
-msgstr "Size of gallery thumbnails"
+msgstr "Dimensione delle miniature della galleria"
 
 #: mailinglist.php:88
 #, fuzzy
 msgid "Snippet"
-msgstr "Snippet"
+msgstr "Frammento"
 
 #: mobile.php:130
 #, fuzzy
 msgid ""
 "So installierst Du das Mobile/SEO/Accessibility-Plugin auf Deiner Webseite:"
 msgstr ""
-"So installierst Du das Mobile/SEO/Accessibility-Plugin auf Deiner Webseite:"
+"Quindi installate il plugin Mobile/SEO/Accessibilità sul vostro sito web:"
 
 #: forum.php:110
 #, fuzzy
 msgid "Sorry, but you are not permitted to view the forum."
-msgstr "Sorry, but you are not permitted to view the forum."
+msgstr "Siamo spiacenti, ma non sei autorizzato a visualizzare il forum."
 
 #: server/file_upload_form.php:110
 #, fuzzy
 msgid "Sorry, file type not allowed."
-msgstr "Sorry, file type not allowed."
+msgstr "Spiacente, il tipo di file non è consentito."
+
+#: ajax/profile_functions.php:713
+#, fuzzy
+msgid ""
+"Entschuldigung, es können keine persönlichen Informationen angezeigt werden."
+msgstr ""
+"Entschuldigung, es können keine persönlichen Informationen angezeigt werden."
 
 #: ajax/profile_functions.php:719
 #, fuzzy
 msgid "Sorry, this member has chosen not to share their personal information."
-msgstr "Sorry, this member has chosen not to share their personal information."
+msgstr ""
+"Siamo spiacenti, questo utente ha scelto di non condividere le proprie "
+"informazioni personali."
 
 #: members.php:125
 #, fuzzy
 msgid "Sort by:"
-msgstr "Sort by:"
+msgstr "Ordina per:"
 
 #: ajax/profile_functions.php:1274
 #, fuzzy
 msgid "Sound for new chat messages? (refresh browser after changing)"
-msgstr "Sound for new chat messages? (refresh browser after changing)"
+msgstr ""
+"Suono per i nuovi messaggi di chat? (aggiornare il browser dopo la modifica)"
 
 #: ajax/gallery_functions.php:670
 #, fuzzy
 msgid "Start by creating an album"
-msgstr "Start by creating an album"
+msgstr "Iniziare creando un album"
 
 #: ajax/events_functions.php:933
 #, fuzzy
 msgid "Start Date"
-msgstr "Start Date"
+msgstr "Data di inizio"
 
 #: ajax/events_functions.php:935
 #, fuzzy
 msgid "Start Time"
-msgstr "Start Time"
+msgstr "Ora di inizio"
 
 #: events.php:108 ajax/events_functions.php:1030
 #, fuzzy
 msgid "Start: "
-msgstr "Start:"
+msgstr "Inizio:"
 
 #: ajax/profile_functions.php:797
 #, fuzzy
 msgid "Started"
-msgstr "Started"
+msgstr "Avviato"
 
 #: forum.php:210 ajax/forum_functions.php:1687 ajax/forum_functions.php:1837
 #, fuzzy
 msgid "started"
-msgstr "started"
+msgstr "iniziato"
 
 #: ajax/forum_functions.php:436
 #, fuzzy, php-format
 msgid "Started a new forum topic in %s:"
-msgstr "Started a new forum topic in %s:"
+msgstr "Avviato un nuovo argomento del forum in %s:"
 
 #: ajax/forum_functions.php:212
 #, fuzzy
 msgid "Started a new forum topic:"
-msgstr "Started a new forum topic:"
+msgstr "Avviato un nuovo argomento del forum:"
 
 #: ajax/forum_functions.php:438
 #, fuzzy
 msgid "Started a new group forum topic:"
-msgstr "Started a new group forum topic:"
+msgstr "Avviato un nuovo argomento del forum di gruppo:"
 
 #: ajax/forum_functions.php:1416
 #, fuzzy
 msgid "Started by"
-msgstr "Started by"
+msgstr "Iniziato da"
 
 #: plus_admin.php:221
 #, fuzzy
 msgid "Stelle die Entfernung auf Meilen ein, sonst auf Kilometer"
-msgstr "Stelle die Entfernung auf Meilen ein, sonst auf Kilometer"
+msgstr "Posizionare l'ingresso su Meilen, ma solo su Kilometraggio"
 
 #: yesno.php:205
 #, fuzzy
@@ -3812,12 +3907,12 @@ msgstr "Stimmen zurücksetzen?"
 #: events_admin.php:62
 #, fuzzy
 msgid "Style of display"
-msgstr "Style of display"
+msgstr "Stile di visualizzazione"
 
 #: mail.php:119 ajax/ajax_functions.php:34
 #, fuzzy
 msgid "Subject"
-msgstr "Subject"
+msgstr "Oggetto"
 
 #: plus.php:132
 #, fuzzy
@@ -3832,22 +3927,23 @@ msgstr "Suchmaschinen"
 #: cp-communitie.php:1231 widgets.php:664
 #, fuzzy
 msgid "Summary"
-msgstr "Summary"
+msgstr "Sintesi"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Sunday"
-msgstr "Sunday"
+msgstr "Domenica"
 
 #: members.php:135
 #, fuzzy
 msgid "Surname (if entered in display name)"
-msgstr "Surname (if entered in display name)"
+msgstr "Cognome (se inserito nel nome visualizzato)"
 
 #: profile.php:1085
 #, fuzzy, php-format
 msgid "Teile den Beitrag auf Facebook als <a target='_blank' href='%s'>%s</a>"
-msgstr "Teile den Beitrag auf Facebook als <a target='_blank' href='%s'>%s</a>"
+msgstr ""
+"Scrivete il messaggio su Facebook come <a target='_blank' href='%s'>%s</a>"
 
 #: mobile.php:102
 #, fuzzy
@@ -3856,14 +3952,14 @@ msgid ""
 "Handy/Tablet erkannt wird (HTML/Links erlaubt).<br />Geben Sie 'hide' ein, "
 "um die Anzeige zu vermeiden."
 msgstr ""
-"Text, der oben auf der relevanten Seite angezeigt wird, wenn ein "
-"Handy/Tablet erkannt wird (HTML/Links erlaubt).<br />Geben Sie 'hide' ein, "
-"um die Anzeige zu vermeiden."
+"Testo, che viene visualizzato sul sito pertinente, quando viene utilizzato "
+"un computer portatile (HTML/Links erlaubt).<br />Si prega di nascondere il "
+"testo, per evitare che l'immagine venga cancellata."
 
 #: plus_admin.php:257
 #, fuzzy
 msgid "Textaufforderung"
-msgstr "Textaufforderung"
+msgstr "Ordine del testo"
 
 #: ajax/forum_functions.php:126
 #, fuzzy
@@ -3871,13 +3967,13 @@ msgid ""
 "Thank you for voting. You can only have one vote per post, so your previous "
 "vote has been replaced."
 msgstr ""
-"Thank you for voting. You can only have one vote per post, so your previous "
-"vote has been replaced."
+"Grazie per aver votato. È possibile esprimere un solo voto per post, quindi "
+"il tuo voto precedente è stato sostituito."
 
 #: mailinglist_admin.php:179
 #, fuzzy
 msgid "The bottom boundary of where replies should be entered"
-msgstr "The bottom boundary of where replies should be entered"
+msgstr "Il confine inferiore del punto in cui inserire le risposte"
 
 #: facebook_admin.php:81
 #, fuzzy
@@ -3885,8 +3981,8 @@ msgid ""
 "The following settings are used with the www.cpcymposium.com website, as an "
 "example."
 msgstr ""
-"The following settings are used with the www.cpcymposium.com website, as an "
-"example."
+"Le seguenti impostazioni sono utilizzate a titolo di esempio con il sito web "
+"www.cpcymposium.com."
 
 #: hooks_filters.php:497
 #, fuzzy, php-format
@@ -3894,54 +3990,56 @@ msgid ""
 "The Google map that will be displayed on top of your %s profile page, "
 "resulting from your personal data above."
 msgstr ""
-"The Google map that will be displayed on top of your %s profile page, "
-"resulting from your personal data above."
+"La mappa di Google che verrà visualizzata in cima alla pagina del vostro "
+"profilo %s, risultante dai vostri dati personali di cui sopra."
 
 #: create_options.php:416 create_options.php:446 lounge.php:84 lounge.php:87
 #: lounge.php:124 lounge.php:124
 #, fuzzy
 msgid "The Lounge"
-msgstr "The Lounge"
+msgstr "Il salotto"
 
 #: lounge_admin.php:26
 #, fuzzy
 msgid "The Lounge plugin provides a site wide chat room (\"shoutbox\")."
-msgstr "The Lounge plugin provides a site wide chat room (\"shoutbox\")."
+msgstr ""
+"Il plugin Lounge fornisce una chat room (\"shoutbox\") a livello di sito."
 
 #: ajax/gallery_functions.php:713
 #, fuzzy
 msgid "The maximum size of uploaded files is"
-msgstr "The maximum size of uploaded files is"
+msgstr "La dimensione massima dei file caricati è"
 
 #: ajax/forum_functions.php:879
 #, fuzzy
 msgid "The reply commented on is"
-msgstr "The reply commented on is"
+msgstr "La risposta commentata è"
 
 #: mailinglist_admin.php:173
 #, fuzzy
 msgid "The top boundary of where replies should be entered"
-msgstr "The top boundary of where replies should be entered"
+msgstr ""
+"Il limite superiore del punto in cui devono essere inserite le risposte"
 
 #: ajax/mail_functions.php:275
 #, fuzzy
 msgid "There was a problem sending an email notification to"
-msgstr "There was a problem sending an email notification to"
+msgstr "Si è verificato un problema nell'invio di una notifica via e-mail a"
 
 #: ajax/mail_functions.php:242
 #, fuzzy
 msgid "There was a problem sending your mail to"
-msgstr "There was a problem sending your mail to"
+msgstr "Si è verificato un problema nell'invio della posta a"
 
 #: ajax/chat/load_message.php:23
 #, fuzzy
 msgid "These are unreceived messages from the previous chat session!"
-msgstr "These are unreceived messages from the previous chat session!"
+msgstr "Si tratta di messaggi non ricevuti dalla sessione di chat precedente!"
 
 #: ajax/profile_functions.php:923
 #, fuzzy
 msgid "These options are only visible to site administrator."
-msgstr "These options are only visible to site administrator."
+msgstr "Queste opzioni sono visibili solo all'amministratore del sito."
 
 #: ajax/group_functions.php:29
 #, fuzzy
@@ -3949,119 +4047,122 @@ msgid ""
 "They will receive an email with a link to click on that will take them to "
 "this site and group page."
 msgstr ""
-"They will receive an email with a link to click on that will take them to "
-"this site and group page."
+"Riceveranno un'e-mail con un link da cliccare che li porterà a questo sito e "
+"alla pagina del gruppo."
 
 #: activity.php:53
 #, fuzzy
 msgid "This activity is now not available publicly."
-msgstr "This activity is now not available publicly."
+msgstr "Questa attività non è ora disponibile pubblicamente."
 
 #: ajax/news_functions.php:138
 #, fuzzy
 msgid "This month"
-msgstr "This month"
+msgstr "Questo mese"
 
 #: widgets.php:1098
 #, fuzzy
 msgid "This widget is only shown to logged in users."
-msgstr "This widget is only shown to logged in users."
+msgstr ""
+"Questo widget viene mostrato solo agli utenti che hanno effettuato il login."
 
 #: gallery_admin.php:53
 #, fuzzy
 msgid "Thumbnail size"
-msgstr "Thumbnail size"
+msgstr "Dimensione miniatura"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Thursday"
-msgstr "Thursday"
+msgstr "Giovedì"
 
 #: events.php:83 ajax/events_functions.php:1005
 #, fuzzy
 msgid "Tickets left:"
-msgstr "Tickets left:"
+msgstr "Biglietti a sinistra:"
 
 #: widgets.php:908 widgets.php:1017
 #, fuzzy
 msgid "Time period (days)"
-msgstr "Time period (days)"
+msgstr "Periodo di tempo (giorni)"
 
 #: ajax/ajax_functions.php:32 ajax/mail_functions.php:430
 #, fuzzy
 msgid "To"
-msgstr "To"
+msgstr "A"
 
 #: invite.php:20
 #, fuzzy
 msgid "To continue, please log in or register."
-msgstr "To continue, please log in or register."
+msgstr "Per continuare, effettuare il login o registrarsi."
 
 #: ajax/group_functions.php:76
 #, fuzzy
 msgid "To:"
-msgstr "To:"
+msgstr "A:"
 
 #: ajax/events_functions.php:81 ajax/news_functions.php:122
 #, fuzzy
 msgid "Today"
-msgstr "Today"
+msgstr "Oggi"
 
 #: mailinglist_admin.php:171
 #, fuzzy
 msgid "Top divider"
-msgstr "Top divider"
+msgstr "Divisorio superiore"
 
 #: widgets.php:932
 #, fuzzy
 msgid "Top Experts"
-msgstr "Top Experts"
+msgstr "Esperti Top"
 
 #: class.cpc_ui.php:120 class.cpc_ui.php:121
 #, fuzzy
 msgid "Top Level"
-msgstr "Top Level"
+msgstr "Livello superiore"
 
 #: mailinglist.php:87
 #, fuzzy
 msgid "Topic ID"
-msgstr "Topic ID"
+msgstr "ID argomento"
 
 #: mailinglist.php:189
 #, fuzzy
 msgid "Topic ID not found"
-msgstr "Topic ID not found"
+msgstr "ID argomento non trovato"
 
 #: cp-communitie.php:236
 #, fuzzy
 msgid "Topics"
-msgstr "Topics"
+msgstr "Argomenti"
 
 #: widgets.php:817
 #, fuzzy
 msgid "Topics without an accepted answer"
-msgstr "Topics without an accepted answer"
+msgstr "Argomenti senza una risposta accettata"
 
 #: ajax/group_functions.php:771
 #, fuzzy
 msgid "Transfer group admin to:"
-msgstr "Transfer group admin to:"
+msgstr "Trasferire l'amministratore del gruppo a:"
 
 #: ajax/events_functions.php:320 ajax/events_functions.php:369
 #: ajax/events_functions.php:522
 #, fuzzy, php-format
 msgid "Tried to send an email to %s, but it failed, sorry."
-msgstr "Tried to send an email to %s, but it failed, sorry."
+msgstr ""
+"Ho provato a inviare un'e-mail a %s, ma non è andata a buon fine, mi "
+"dispiace."
 
 #: hooks_filters.php:569
 #, fuzzy
 msgid "Trusted Member?"
-msgstr "Trusted Member?"
+msgstr "Membro fidato?"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Tuesday"
-msgstr "Tuesday"
+msgstr "Martedì"
 
 #. Description of the plugin
 #, fuzzy
@@ -4069,8 +4170,8 @@ msgid ""
 "Turn your ClassicPress site into a social network. Activate features on the "
 "Installation page."
 msgstr ""
-"Turn your ClassicPress site into a social network. Activate features on the "
-"Installation page."
+"Trasformate il vostro sito ClassicPress in un social network. Attivate le "
+"funzioni nella pagina di installazione."
 
 #: news_admin.php:36
 #, fuzzy
@@ -4080,10 +4181,10 @@ msgid ""
 "links/oben zu bewegen, und positive Werte, um sie nach rechts/unten zu "
 "bewegen."
 msgstr ""
-"Um die Liste der Warnungen nach links/rechts oder oben/unten zu verschieben, "
-"ändere die Offset-Werte unten. Verwende negative Werte, um sie nach "
-"links/oben zu bewegen, und positive Werte, um sie nach rechts/unten zu "
-"bewegen."
+"Per modificare l'elenco delle avvertenze in corrispondenza di link/rechts o "
+"oben/unten, posizionare la voce Offset-Werte in alto. Verwende negative "
+"Werte, um sie nach links/oben zu bewegen, und positive Werte, um sie nach "
+"rechts/unten zu bewegen."
 
 #: plus_admin.php:251
 #, fuzzy, php-format
@@ -4092,56 +4193,52 @@ msgid ""
 "oder verwende &quot;echo %ssearch(150)&quot; in PHP, wobei 150 die Breite in "
 "Pixel ist."
 msgstr ""
-"Um eine Mitgliedersuche hinzuzufügen, verwende den Shortcode [%s-search] "
-"oder verwende &quot;echo %ssearch(150)&quot; in PHP, wobei 150 die Breite in "
-"Pixel ist."
+"Per ottenere un'analisi della situazione, utilizzare lo shortcode [%s-search]"
+" o utilizzare &quot;echo %ssearch(150)&quot; in PHP, se 150 è la dimensione "
+"in pixel."
 
 #: cp-communitie.php:1210 ajax/plus_functions.php:343
 #, fuzzy
 msgid "Unfollow"
-msgstr "Unfollow"
+msgstr "Non seguire"
 
 #: mail.php:146
 #, fuzzy
 msgid "Unread only"
-msgstr "Unread only"
-
-#: ajax/gallery_functions.php:606
-#, fuzzy
-msgid "Unteralbum erstellen"
-msgstr "Unteralbum erstellen"
+msgstr "Solo non letti"
 
 #: cp-communitie.php:1191 groups_admin.php:185
 #, fuzzy
 msgid "Update"
-msgstr "Update"
+msgstr "Aggiornamento"
 
 #: server/file_upload_form.php:190
 #, fuzzy
 msgid "Upload another"
-msgstr "Upload another"
+msgstr "Caricare un altro"
 
 #: ajax/group_functions.php:797 ajax/profile_functions.php:879
 #, fuzzy
 msgid "Upload photo"
-msgstr "Upload photo"
+msgstr "Carica foto"
 
 #: ajax/gallery_functions.php:721
 #, fuzzy
 msgid "Upload photo(s)"
-msgstr "Upload photo(s)"
+msgstr "Carica foto"
 
 #: events_admin.php:84
 #, fuzzy
 msgid "Use WYSIWYG editor"
-msgstr "Use WYSIWYG editor"
+msgstr "Utilizzare l'editor WYSIWYG"
 
 #: events_admin.php:86
 #, fuzzy
 msgid ""
 "Use WYSIWYG editor for more information and confirmation email (not summary)?"
 msgstr ""
-"Use WYSIWYG editor for more information and confirmation email (not summary)?"
+"Utilizzare l'editor WYSIWYG per ulteriori informazioni e per l'e-mail di "
+"conferma (non di riepilogo)?"
 
 #: groups_admin.php:192
 #, fuzzy
@@ -4149,48 +4246,50 @@ msgid ""
 "Used to display a group page, should not be included in user navigation or "
 "menu."
 msgstr ""
-"Used to display a group page, should not be included in user navigation or "
-"menu."
+"Utilizzato per visualizzare una pagina di gruppo, non deve essere incluso "
+"nella navigazione o nel menu dell'utente."
 
 #: invite.php:22 invite.php:26 mailinglist_admin.php:147 widgets.php:747
 #, fuzzy
 msgid "Username"
-msgstr "Username"
+msgstr "Nome utente"
 
 #: mailinglist_admin.php:149
 #, fuzzy
 msgid "Username of mail account"
-msgstr "Username of mail account"
+msgstr "Nome utente dell'account di posta"
 
 #: widgets.php:754
 #, fuzzy
 msgid "Username prompt"
-msgstr "Username prompt"
+msgstr "Richiesta del nome utente"
 
 #: profile.php:1106
 #, fuzzy
 msgid "Verbinde dich mit Facebook"
-msgstr "Verbinde dich mit Facebook"
+msgstr "Condividi con Facebook"
 
 #: news_admin.php:43
 #, fuzzy
 msgid "Verschiebe die Position der Liste der Warnungen nach links/rechts"
-msgstr "Verschiebe die Position der Liste der Warnungen nach links/rechts"
+msgstr "Cambiare la posizione dell'elenco degli avvisi in base a link/rechts"
 
 #: news_admin.php:50
 #, fuzzy
 msgid "Verschiebe die Position der Liste der Warnungen nach oben/unten"
-msgstr "Verschiebe die Position der Liste der Warnungen nach oben/unten"
+msgstr ""
+"Cambiare la posizione della lista degli avvisi in direzione di destra/di "
+"sinistra"
 
 #: news_admin.php:47
 #, fuzzy
 msgid "Vertikaler Versatz"
-msgstr "Vertikaler Versatz"
+msgstr "Versante verticale"
 
 #: plus_admin.php:218
 #, fuzzy
 msgid "Verwende Meilen für die Geokodierung der Entfernung"
-msgstr "Verwende Meilen für die Geokodierung der Entfernung"
+msgstr "Strumenti di verifica per la geocodifica dell'ingresso"
 
 #: cp-communitie.php:425
 #, fuzzy
@@ -4203,18 +4302,18 @@ msgid ""
 "Vielen Dank für Deine Stimmabgabe. Aktualisiere die Seite für die neuesten "
 "Ergebnisse"
 msgstr ""
-"Vielen Dank für Deine Stimmabgabe. Aktualisiere die Seite für die neuesten "
-"Ergebnisse"
+"Vielen Dank für Deine Stimmabgabe. Aggiornate il sito con i risultati più "
+"recenti"
 
 #: cp-communitie.php:427
 #, fuzzy
 msgid "View topic"
-msgstr "View topic"
+msgstr "Visualizza argomento"
 
 #: cp-communitie.php:240
 #, fuzzy
 msgid "Views"
-msgstr "Views"
+msgstr "Visualizzazioni"
 
 #: news.php:168
 #, fuzzy
@@ -4224,32 +4323,27 @@ msgstr "von"
 #: ajax/ajax_functions.php:54
 #, fuzzy
 msgid "Warning Report"
-msgstr "Warning Report"
-
-#: create_options.php:304
-#, fuzzy
-msgid "Was ist los?"
-msgstr "Was ist los?"
+msgstr "Rapporto di avviso"
 
 #: cp-communitie.php:339
 #, fuzzy
 msgid "Website Title"
-msgstr "Website Title"
+msgstr "Titolo del sito web"
 
 #: cp-communitie.php:340
 #, fuzzy
 msgid "Website URL"
-msgstr "Website URL"
+msgstr "URL del sito web"
 
 #: ajax/events_functions.php:86
 #, fuzzy
 msgid "Wednesday"
-msgstr "Wednesday"
+msgstr "Mercoledì"
 
 #: groups.php:204 ajax/group_functions.php:752
 #, fuzzy
 msgid "Welcome page"
-msgstr "Welcome page"
+msgstr "Pagina di benvenuto"
 
 #: news_admin.php:61
 #, fuzzy
@@ -4258,57 +4352,58 @@ msgid ""
 "Alternative darin, die Dropdown-Liste auszublenden, und der Benutzer wird "
 "zur Seite „Warnungen“ weitergeleitet, wenn auf das Menüelement geklickt wird:"
 msgstr ""
-"Wenn Dein Theme Probleme mit der Dropdown-Liste verursacht, besteht eine "
-"Alternative darin, die Dropdown-Liste auszublenden, und der Benutzer wird "
-"zur Seite „Warnungen“ weitergeleitet, wenn auf das Menüelement geklickt wird:"
+"Se il tema ha dei problemi con l'elenco a discesa, esiste un'alternativa, "
+"l'elenco a discesa è auszublenden, e l'utente può accedere alla sezione "
+"\"Avvertenze\", se l'elemento di menu è stato cliccato:"
 
 #: ajax/group_functions.php:741
 #, fuzzy
 msgid "What should the default page be?"
-msgstr "What should the default page be?"
+msgstr "Quale dovrebbe essere la pagina predefinita?"
+
+#: create_options.php:304
+#, fuzzy
+msgid "Was ist los?"
+msgstr "Cosa c'è di los?"
 
 #: ajax/profile_functions.php:966
 #, fuzzy
 msgid "When your @tag is clicked, the browser is taken to your profile page."
-msgstr "When your @tag is clicked, the browser is taken to your profile page."
+msgstr ""
+"Quando si clicca sul vostro @tag, il browser viene portato alla pagina del "
+"vostro profilo."
 
 #: hooks_filters.php:487 ajax/profile_functions.php:1369
 #, fuzzy
 msgid "Which country are you in?"
-msgstr "Which country are you in?"
+msgstr "In quale paese si trova?"
 
 #: hooks_filters.php:482 ajax/profile_functions.php:1361
 #, fuzzy
 msgid "Which town/city are you in?"
-msgstr "Which town/city are you in?"
+msgstr "In quale città si trova?"
 
 #: cp-communitie.php:1218
 #, fuzzy
 msgid "Who am I following?"
-msgstr "Who am I following?"
+msgstr "Chi sto seguendo?"
 
 #: hooks_filters.php:374 ajax/profile_functions.php:1212
 #, fuzzy
 msgid "Who do you want to share personal information with?"
-msgstr "Who do you want to share personal information with?"
+msgstr "Con chi volete condividere le informazioni personali?"
 
 #: hooks_filters.php:391 ajax/profile_functions.php:1233
 #, fuzzy
 msgid "Who do you want to share your activity with?"
-msgstr "Who do you want to share your activity with?"
-
-#: create_options.php:51 create_options.php:93 create_options.php:103
-#: create_options.php:129 create_options.php:131 create_options.php:133
-#, fuzzy
-msgid "Wichtig: Bitte besuche die Installationsseite!"
-msgstr "Wichtig: Bitte besuche die Installationsseite!"
+msgstr "Con chi volete condividere la vostra attività?"
 
 #: gallery.php:104 widgets.php:301 widgets.php:388 widgets.php:483
 #: widgets.php:614 widgets.php:751 widgets.php:887 widgets.php:999
 #: widgets.php:1100
 #, fuzzy
 msgid "Widget Title"
-msgstr "Widget Title"
+msgstr "Titolo del widget"
 
 #: widgets.php:98 widgets.php:195
 #, fuzzy
@@ -4318,39 +4413,47 @@ msgstr "Widget-Titel"
 #: server/file_upload_include.php:34
 #, fuzzy
 msgid "will be attached to your post."
-msgstr "will be attached to your post."
+msgstr "sarà allegato al vostro post."
 
 #: server/file_upload_form.php:133
 #, fuzzy
 msgid "will be attached..."
-msgstr "will be attached..."
+msgstr "sarà allegato..."
 
 #: widgets.php:62 widgets.php:157 widgets.php:265 widgets.php:357
 #: widgets.php:443 widgets.php:571 widgets.php:699 widgets.php:846
 #: widgets.php:960 widgets.php:1068
 #, fuzzy
 msgid "Wird geladen..."
-msgstr "Wird geladen..."
+msgstr "È stato gelatificato..."
+
+#: class.cpc_ui.php:58 class.cpc_ui.php:68 cp-communitie.php:1224
+#: ajax/group_functions.php:930 ajax/group_functions.php:1126
+#: ajax/group_functions.php:1233 ajax/group_functions.php:1233
+#: ajax/group_functions.php:1233
+#, fuzzy
+msgid "Schreibe einen Kommentar..."
+msgstr "Scrivi un commento..."
 
 #: hooks_filters.php:416 yesno.php:165 ajax/profile_functions.php:1263
 #, fuzzy
 msgid "Yes"
-msgstr "Yes"
+msgstr "Sì"
 
 #: ajax/news_functions.php:126
 #, fuzzy
 msgid "Yesterday"
-msgstr "Yesterday"
+msgstr "Ieri"
 
 #: groups.php:160
 #, fuzzy
 msgid "You are no longer a member of this group."
-msgstr "You are no longer a member of this group."
+msgstr "Non sei più un membro di questo gruppo."
 
 #: groups.php:139
 #, fuzzy
 msgid "You are now a member of this group."
-msgstr "You are now a member of this group."
+msgstr "Ora siete un membro di questo gruppo."
 
 #: ajax/forum_functions.php:1962
 #, fuzzy
@@ -4358,13 +4461,13 @@ msgid ""
 "You can add your favourite forum topics by clicking on the heart beside any "
 "forum topic title."
 msgstr ""
-"You can add your favourite forum topics by clicking on the heart beside any "
-"forum topic title."
+"È possibile aggiungere gli argomenti del forum preferiti facendo clic sul "
+"cuore accanto al titolo di un argomento del forum."
 
 #: ajax/group_functions.php:32
 #, fuzzy, php-format
 msgid "You can invite a maximum of %d people at a time."
-msgstr "You can invite a maximum of %d people at a time."
+msgstr "È possibile invitare un massimo di %d persone alla volta."
 
 #: facebook_admin.php:43
 #, fuzzy
@@ -4372,18 +4475,18 @@ msgid ""
 "You can leave <strong>App Namespace</strong> blank and ignore <strong>Web "
 "Hosting</strong>, click on Continue"
 msgstr ""
-"You can leave <strong>App Namespace</strong> blank and ignore <strong>Web "
-"Hosting</strong>, click on Continue"
+"È possibile lasciare vuoto <strong>App Namespace</strong> e ignorare <strong>"
+"Web Hosting</strong>, quindi fare clic su Continua"
 
 #: cp-communitie.php:435
 #, fuzzy
 msgid "You can stop receiving these emails at"
-msgstr "You can stop receiving these emails at"
+msgstr "È possibile interrompere la ricezione di queste e-mail all'indirizzo"
 
 #: cp-communitie.php:1236
 #, fuzzy
 msgid "You can use the following:"
-msgstr "You can use the following:"
+msgstr "È possibile utilizzare quanto segue:"
 
 #: groups_admin.php:138
 #, fuzzy
@@ -4391,8 +4494,8 @@ msgid ""
 "You cannot add or remove the group administrator. Group administrators are "
 "not displayed."
 msgstr ""
-"You cannot add or remove the group administrator. Group administrators are "
-"not displayed."
+"Non è possibile aggiungere o rimuovere l'amministratore del gruppo. Gli "
+"amministratori del gruppo non vengono visualizzati."
 
 #: ajax/forum_functions.php:50
 #, fuzzy
@@ -4400,13 +4503,13 @@ msgid ""
 "You have accepted an answer. If a better answer is posted, you can change "
 "your selection."
 msgstr ""
-"You have accepted an answer. If a better answer is posted, you can change "
-"your selection."
+"Avete accettato una risposta. Se viene pubblicata una risposta migliore, è "
+"possibile modificare la selezione."
 
 #: ajax/profile_functions.php:69
 #, fuzzy
 msgid "You have been sent a "
-msgstr "You have been sent a"
+msgstr "Vi è stato inviato un"
 
 #: ajax/forum_functions.php:47
 #, fuzzy
@@ -4414,86 +4517,89 @@ msgid ""
 "You have changed the answer. If a better answer is posted, you can change "
 "your selection again."
 msgstr ""
-"You have changed the answer. If a better answer is posted, you can change "
-"your selection again."
+"Hai cambiato la risposta. Se viene pubblicata una risposta migliore, è "
+"possibile modificare nuovamente la selezione."
 
 #: ajax/events_functions.php:372
 #, fuzzy, php-format
 msgid ""
 "You have confirmed the booking for %s, for %d ticket(s) for event (%s) ID:"
 msgstr ""
-"You have confirmed the booking for %s, for %d ticket(s) for event (%s) ID:"
+"È stata confermata la prenotazione per %s, per %d biglietti per l'evento (%s)"
+" ID:"
 
 #: ajax/profile_functions.php:1805
 #, fuzzy, php-format
 msgid "You have received a %s request from %s"
-msgstr "You have received a %s request from %s"
+msgstr "È stata ricevuta una richiesta %s da %s"
 
 #: ajax/group_functions.php:247
 #, fuzzy
 msgid "You have successfully joined this group"
-msgstr "You have successfully joined this group"
+msgstr "Siete entrati a far parte di questo gruppo con successo"
 
 #: mail.php:151
 #, fuzzy
 msgid "You have to login to access your mail."
-msgstr "You have to login to access your mail."
+msgstr "Per accedere alla posta è necessario effettuare il login."
 
 #: groups.php:251
 #, fuzzy, php-format
 msgid "You need to <a href='%s'>login</a> to access this group."
-msgstr "You need to <a href='%s'>login</a> to access this group."
+msgstr "Per accedere a questo gruppo è necessario <a href='%s'>login</a>."
 
 #: ajax/events_functions.php:279 ajax/events_functions.php:545
 #, fuzzy, php-format
 msgid "You need to be <a href='%s'>logged in</a> to book events."
-msgstr "You need to be <a href='%s'>logged in</a> to book events."
+msgstr "Per prenotare gli eventi è necessario essere <a href='%s'>loggati</a>."
 
 #: ajax/events_functions.php:804
 #, fuzzy, php-format
 msgid "You need to be <a href='%s'>logged in</a> to delete events."
-msgstr "You need to be <a href='%s'>logged in</a> to delete events."
+msgstr "Per eliminare gli eventi è necessario essere <a href='%s'>loggati</a>."
 
 #: members.php:29
 #, fuzzy, php-format
 msgid "You need to be <a href='%s'>logged in</a> to view the directory."
-msgstr "You need to be <a href='%s'>logged in</a> to view the directory."
+msgstr ""
+"Per visualizzare la directory è necessario essere <a href='%s'>loggati</a>."
 
 #: ajax/profile_functions.php:1657
 #, fuzzy, php-format
 msgid "You need to be <a href='%s'>logged in</a> to view this member's groups."
 msgstr ""
-"You need to be <a href='%s'>logged in</a> to view this member's groups."
+"È necessario essere <a href='%s'>loggati</a> per visualizzare i gruppi di "
+"questo membro."
 
 #: ajax/forum_functions.php:1455
 #, fuzzy
 msgid "You recently started"
-msgstr "You recently started"
+msgstr "Avete recentemente iniziato"
 
 #: ajax/events_functions.php:410
 #, fuzzy, php-format
 msgid "You removed %s from event (%s) ID:"
-msgstr "You removed %s from event (%s) ID:"
+msgstr "È stato rimosso %s dall'ID dell'evento (%s):"
 
 #: ajax/forum_functions.php:1569
 #, fuzzy
 msgid "You replied"
-msgstr "You replied"
+msgstr "Lei ha risposto"
 
 #: widgets.php:412
 #, fuzzy, php-format
 msgid "Your %s"
-msgstr "Your %s"
+msgstr "Il tuo %s"
 
 #: cp-communitie.php:1220
 #, fuzzy, php-format
 msgid "Your %s request has been sent."
-msgstr "Your %s request has been sent."
+msgstr "La richiesta %s è stata inviata."
 
 #: ajax/profile_functions.php:1941
 #, fuzzy, php-format
 msgid "Your %s request to %s has been accepted"
-msgstr "Your %s request to %s has been accepted"
+msgstr "La richiesta di %s a %s è stata accettata"
 
 #: ajax/events_functions.php:443
 #, fuzzy
@@ -4501,93 +4607,96 @@ msgid ""
 "Your booking has been cancelled, the event organiser has been informed.<br />"
 "<br />If you need a refund, please contact the event organiser directly."
 msgstr ""
-"Your booking has been cancelled, the event organiser has been informed.<br />"
-"<br />If you need a refund, please contact the event organiser directly."
+"La vostra prenotazione è stata cancellata, l'organizzatore dell'evento è "
+"stato informato.<br /><br />Se avete bisogno di un rimborso, siete pregati "
+"di contattare direttamente l'organizzatore dell'evento."
 
 #: ajax/events_functions.php:526
 #, fuzzy
 msgid "Your booking has been reserved, the event organiser has been informed."
-msgstr "Your booking has been reserved, the event organiser has been informed."
+msgstr ""
+"La prenotazione è stata prenotata, l'organizzatore dell'evento è stato "
+"informato."
 
 #: hooks_filters.php:427 ajax/profile_functions.php:1301
 #, fuzzy
 msgid "Your date of birth"
-msgstr "Your date of birth"
+msgstr "Data di nascita"
 
 #: ajax/profile_functions.php:976
 #, fuzzy
 msgid "Your email address"
-msgstr "Your email address"
+msgstr "Il vostro indirizzo e-mail"
 
 #: ajax/profile_functions.php:943
 #, fuzzy
 msgid "Your first name"
-msgstr "Your first name"
+msgstr "Il vostro nome"
 
 #: ajax/profile_functions.php:951
 #, fuzzy
 msgid "Your last name"
-msgstr "Your last name"
+msgstr "Il vostro cognome"
 
 #: groups.php:142
 #, fuzzy
 msgid "Your membership is awaiting approval."
-msgstr "Your membership is awaiting approval."
+msgstr "La tua iscrizione è in attesa di approvazione."
 
 #: ajax/profile_functions.php:959
 #, fuzzy
 msgid "Your name as shown"
-msgstr "Your name as shown"
+msgstr "Il vostro nome come indicato"
 
 #: ajax/forum_functions.php:1524
 #, fuzzy
 msgid "Your recent replies"
-msgstr "Your recent replies"
+msgstr "Le vostre risposte recenti"
 
 #: groups.php:151
 #, fuzzy
 msgid "Your request to join is awaiting approval."
-msgstr "Your request to join is awaiting approval."
+msgstr "La tua richiesta di adesione è in attesa di approvazione."
 
 #: ajax/profile_functions.php:964
 #, fuzzy
 msgid "Your user tag is "
-msgstr "Your user tag is"
+msgstr "Il tag utente è"
 
 #: yesno.php:97
 #, fuzzy
 msgid "Your vote"
-msgstr "Your vote"
+msgstr "Il tuo voto"
 
 #: plus_admin.php:228
 #, fuzzy
 msgid "z.B. Wenn oben Meilen eingestellt, werden auch Kilometer angezeigt"
-msgstr "z.B. Wenn oben Meilen eingestellt, werden auch Kilometer angezeigt"
+msgstr "z.B. Se oben Meilen eingestellt, werden auch Kilometre angezeigt"
 
 #: plus_admin.php:302
 #, fuzzy
 msgid "Zeige das Suchformular für die automatische Vervollständigung an."
-msgstr "Zeige das Suchformular für die automatische Vervollständigung an."
+msgstr "Scegliere il modulo per l'attivazione automatica della funzione."
 
 #: news_admin.php:99
 #, fuzzy
 msgid "Zeigt die neuesten Benachrichtigungen eines Mitglieds an."
-msgstr "Zeigt die neuesten Benachrichtigungen eines Mitglieds an."
+msgstr "Indica le ultime novità in materia di salute dei membri del gruppo."
 
 #: widgets.php:121
 #, fuzzy
 msgid "Zeigt Mitglieder an, die kürzlich online waren."
-msgstr "Zeigt Mitglieder an, die kürzlich online waren."
+msgstr "Indica i membri che erano già online."
 
 #: mobile.php:151
 #, fuzzy, php-format
 msgid "Zugängliche Version von %s"
-msgstr "Zugängliche Version von %s"
+msgstr "Versione di %s"
 
 #: news_admin.php:86
 #, fuzzy
 msgid "Zum Hinzufügen zu einer Theme-Vorlage"
-msgstr "Zum Hinzufügen zu einer Theme-Vorlage"
+msgstr "Per un'analisi del tema"
 
 #: news_admin.php:57
 #, fuzzy
@@ -4599,4 +4708,4 @@ msgstr ""
 #: mobile.php:122 news_admin.php:110 plus_admin.php:307
 #, fuzzy
 msgid "Änderungen speichern"
-msgstr "Änderungen speichern"
+msgstr "Modifiche da apportare"
